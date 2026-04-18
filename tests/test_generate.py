@@ -171,3 +171,19 @@ def test_protein_dist_sums_correctly():
     import re
     total = sum(int(re.search(r"\d+", s).group()) for s in dist)
     assert abs(total - 180) <= 20
+
+
+@patch("generate.get_wellness", return_value=MOCK_WELLNESS)
+@patch("generate.get_activities", return_value=MOCK_ACTIVITIES)
+@patch("generate.get_power_bests", return_value=[])
+def test_build_context_has_nutrition(mock_pb, mock_act, mock_well):
+    from generate import build_context
+    ctx = build_context(kw=16, monday=date(2026, 4, 13), sunday=date(2026, 4, 19))
+    assert "nutrition" in ctx
+    n = ctx["nutrition"]
+    assert "day_type" in n
+    assert "protein_g" in n
+    assert isinstance(n["protein_g"], int)
+    assert n["protein_g"] > 0
+    assert "tips" in n
+    assert len(n["tips"]) == 2

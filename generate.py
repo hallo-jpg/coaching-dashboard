@@ -504,6 +504,11 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         else f"{monday.day}. {MONTH_DE[monday.month]}–{sunday.day}. {MONTH_DE[sunday.month]} {monday.year}"
     )
 
+    today_tag = DAY_ORDER[date.today().weekday()]
+    today_day_plan = next((d for d in days if d["tag"] == today_tag),
+                          {"workout": "", "tss_plan": 0, "rest": True})
+    nutrition = get_nutrition_context(today_day_plan, bool(sick_notice))
+
     return {
         "kw": kw, "kw_dates": kw_dates,
         "phase_name": current_phase["name"], "next_phase": next_phase,
@@ -527,6 +532,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
         "outlook": outlook,
         "power_bests": get_power_bests(),
+        "nutrition": nutrition,
     }
 
 def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:
