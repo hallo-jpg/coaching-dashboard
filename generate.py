@@ -123,28 +123,55 @@ def _fmt_pace(secs: int, meters: int) -> str:
     m, s = divmod(round(pace_secs_km), 60)
     return f"{m}:{s:02d}/km"
 
+
+_MONTHS_DE = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]
+
+def _fmt_date(iso: str) -> str:
+    try:
+        d = date.fromisoformat(iso[:10])
+        return f"{d.day}. {_MONTHS_DE[d.month - 1]} {str(d.year)[2:]}"
+    except Exception:
+        return ""
+
+
+_activity_date_cache: dict[str, str] = {}
+
+def _activity_date(activity_id: str) -> str:
+    if not activity_id:
+        return ""
+    if activity_id not in _activity_date_cache:
+        try:
+            data = _api_get(f"/activities/{activity_id}")
+            _activity_date_cache[activity_id] = data.get("start_date_local", "")[:10]
+        except Exception:
+            _activity_date_cache[activity_id] = ""
+    return _fmt_date(_activity_date_cache[activity_id])
+
+
 def get_power_bests() -> list[dict]:
     """Fetch all-time power best efforts for target durations."""
     try:
-        data = _api_get("/power-curves?type=Ride")
+        data = _api_get("/power-curves?type=Ride&curves=all")
         entries = data.get("list", [])
         curve = next((c for c in entries if c.get("id") == "all"), None)
         if not curve:
             curve = next((c for c in entries if c.get("id") == "1y"), None)
         if not curve:
             return []
-        secs = curve.get("secs", [])
-        watts = curve.get("watts", [])
-        wkg = curve.get("watts_per_kg", [])
+        secs       = curve.get("secs", [])
+        watts      = curve.get("watts", [])
+        wkg        = curve.get("watts_per_kg", [])
+        act_ids    = curve.get("activity_id", [])
         results = []
         for target_s, label in POWER_TARGETS:
             if target_s in secs:
-                idx = secs.index(target_s)
-                w = watts[idx] if idx < len(watts) else None
+                idx  = secs.index(target_s)
+                w    = watts[idx] if idx < len(watts) else None
                 w_kg = round(wkg[idx], 2) if wkg and idx < len(wkg) else None
-                results.append({"label": label, "watts": w, "wkg": w_kg})
+                aid  = act_ids[idx] if idx < len(act_ids) else ""
+                results.append({"label": label, "watts": w, "wkg": w_kg, "date": _activity_date(aid)})
             else:
-                results.append({"label": label, "watts": None, "wkg": None})
+                results.append({"label": label, "watts": None, "wkg": None, "date": ""})
         return results
     except Exception:
         return []
@@ -174,18 +201,21 @@ def get_pace_bests() -> list[dict]:
             return PACE_BESTS_FALLBACK
         dist_list = curve.get("distance", curve.get("distances", curve.get("m", [])))
         secs_list = curve.get("values", curve.get("secs", []))
+        act_ids   = curve.get("activity_id", [])
         results = []
         for target_m, label in PACE_TARGETS:
             idx = next((i for i, d in enumerate(dist_list) if abs(float(d) - target_m) < 1.0), None)
             if idx is not None and idx < len(secs_list):
-                t = secs_list[idx]
+                t   = secs_list[idx]
+                aid = act_ids[idx] if idx < len(act_ids) else ""
                 results.append({
                     "label": label,
-                    "time": _fmt_time(t) if t else None,
-                    "pace": _fmt_pace(t, target_m) if t else None,
+                    "time":  _fmt_time(t) if t else None,
+                    "pace":  _fmt_pace(t, target_m) if t else None,
+                    "date":  _activity_date(aid),
                 })
             else:
-                results.append({"label": label, "time": None, "pace": None})
+                results.append({"label": label, "time": None, "pace": None, "date": ""})
         if not any(r["time"] for r in results):
             return PACE_BESTS_FALLBACK
         return results
