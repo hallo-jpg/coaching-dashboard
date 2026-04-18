@@ -454,6 +454,13 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     days    = build_day_rows(plan["days"], matched)
     tss_ist = sum(d["tss_ist"] for d in days)
 
+    tss_plan_week = plan["tss_plan"]
+    tss_compliance_pct = min(round(tss_ist / tss_plan_week * 100), 100) if tss_plan_week > 0 else 0
+    tss_compliance_offset = calc_ring_offset(tss_compliance_pct, 100, CIRC_OUTER)
+    tss_compliance_color = ("var(--green)" if tss_compliance_pct >= 80
+                            else "var(--yellow)" if tss_compliance_pct >= 40
+                            else "var(--accent)")
+
     sick_days   = [d for d in days if not d["done"] and not d["rest"] and _is_past(d["tag"])]
     sick_notice = ""
     if sick_days and all(not d["done"] for d in days if not d["rest"]):
@@ -515,6 +522,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "phases": phases,
         "season_kw_current": season_pos, "season_kw_total": season_total,
         "season_offset": season_offset,
+        "tss_compliance_pct": tss_compliance_pct,
+        "tss_compliance_offset": tss_compliance_offset,
+        "tss_compliance_color": tss_compliance_color,
         "readiness_score": r_score, "readiness_offset": r_offset,
         "readiness_color": r_color, "readiness_label": r_label, "readiness_sub": r_sub,
         "ctl": round(ctl, 1), "atl": round(atl, 1),

@@ -185,6 +185,7 @@
   .day-meal { font-size: 0.63rem; color: var(--muted); }
   .day-tss { font-size: 0.68rem; color: var(--muted); padding-top: 3px; white-space: nowrap; }
 
+  .left-col  { display: flex; flex-direction: column; gap: 12px; }
   .right-col { display: flex; flex-direction: column; gap: 12px; }
   .section-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
 
@@ -454,29 +455,30 @@
     </div>
   </div>
 
-  <!-- Saisonfortschritt: KW3 von 9 = 33% → offset = 345.4*(1-0.33) ≈ 231 -->
+  <!-- Wochen-TSS Compliance -->
   <div class="ring-card">
-    <div class="ring-card-title">Saisonfortschritt</div>
+    <div class="ring-card-title">Wochenziel</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#9b7fe8" stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="{{ season_offset }}" transform="rotate(-90 65 65)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="{{ tss_compliance_color }}" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}" transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#9b7fe8;font-size:1.8rem">KW{{ season_kw_current }}</span>
-        <span class="ring-sub">von {{ season_kw_total }}</span>
+        <span class="ring-num" style="color:{{ tss_compliance_color }};font-size:1.8rem">{{ tss_compliance_pct }}%</span>
+        <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">◉ {{ phase_name }}</div>
-      <div class="pri-sub">Nächste Phase: {{ next_phase }}</div>
+      <div class="pri-main">{{ tss_ist }} / {{ tss_plan }} TSS</div>
+      <div class="pri-sub">Wochenziel · KW{{ kw }}</div>
     </div>
   </div>
 </div>
 
 <!-- MAIN GRID -->
 <div class="main-grid">
+  <div class="left-col">
   <div class="week-card">
     <div class="week-header">
       <span class="week-title">Wochenplan</span>
@@ -509,6 +511,29 @@
     </div>
     {% endfor %}
   </div>
+
+  <!-- POLARISATION -->
+  <div class="polar-card">
+    <div class="section-label">Polarisation · KW{{ kw - 1 }} · Rad</div>
+    <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3{% endif %}</span>
+    <div class="polar-row">
+      <span class="polar-lbl">Z1–Z2</span>
+      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
+      <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
+    </div>
+    <div class="polar-row">
+      <span class="polar-lbl">Z3</span>
+      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
+      <span class="polar-pct">{{ polar_z3_pct }}%</span>
+    </div>
+    <div class="polar-row">
+      <span class="polar-lbl">Z4–Z7</span>
+      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
+      <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
+    </div>
+    <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
+  </div>
+  </div><!-- /left-col -->
 
   <div class="right-col">
     <!-- READINESS -->
@@ -608,27 +633,6 @@
     </div>
     {% endif %}
 
-    <!-- POLARISATION -->
-    <div class="polar-card">
-      <div class="section-label">Polarisation · KW{{ kw - 1 }} · Rad</div>
-      <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3{% endif %}</span>
-      <div class="polar-row">
-        <span class="polar-lbl">Z1–Z2</span>
-        <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
-        <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
-      </div>
-      <div class="polar-row">
-        <span class="polar-lbl">Z3</span>
-        <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
-        <span class="polar-pct">{{ polar_z3_pct }}%</span>
-      </div>
-      <div class="polar-row">
-        <span class="polar-lbl">Z4–Z7</span>
-        <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
-        <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
-      </div>
-      <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
-    </div>
   </div>
 </div>
 
