@@ -232,6 +232,51 @@
   .ausblick-tss { text-align: right; font-weight: 700; white-space: nowrap; }
   @media (max-width: 480px) { .ausblick-key { display: none; } }
 
+  /* ── ERNÄHRUNGS-KARTE ── */
+  .nutr-card { background: var(--surface); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
+  .nutr-banner {
+    border-radius: 10px; padding: 10px 12px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nutr-banner-orange { background: linear-gradient(135deg,rgba(249,115,22,0.12),rgba(249,115,22,0.04)); border: 1px solid rgba(249,115,22,0.18); }
+  .nutr-banner-blue   { background: linear-gradient(135deg,rgba(79,142,247,0.12),rgba(79,142,247,0.04)); border: 1px solid rgba(79,142,247,0.18); }
+  .nutr-banner-red    { background: linear-gradient(135deg,rgba(239,68,68,0.12),rgba(239,68,68,0.04)); border: 1px solid rgba(239,68,68,0.18); }
+  .nutr-banner-muted  { background: var(--surface2); border: 1px solid var(--border); }
+  .nutr-banner-text  { font-size: 0.76rem; font-weight: 700; }
+  .nutr-banner-sub   { font-size: 0.6rem; color: var(--muted); margin-top: 1px; }
+  .nutr-banner-orange .nutr-banner-text { color: var(--orange, #f97316); }
+  .nutr-banner-blue   .nutr-banner-text { color: var(--accent); }
+  .nutr-banner-red    .nutr-banner-text { color: var(--red, #ef4444); }
+  .nutr-banner-muted  .nutr-banner-text { color: var(--muted); }
+
+  .nutr-protein {
+    background: linear-gradient(135deg,rgba(62,207,142,0.1),rgba(62,207,142,0.04));
+    border: 1px solid rgba(62,207,142,0.2);
+    border-radius: 10px; padding: 10px 12px; margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nutr-protein-left { display: flex; align-items: center; gap: 8px; }
+  .nutr-protein-icon { font-size: 1.1rem; }
+  .nutr-protein-lbl  { font-size: 0.62rem; color: var(--muted); }
+  .nutr-protein-val  { font-size: 1.1rem; font-weight: 900; color: var(--green); }
+  .nutr-protein-unit { font-size: 0.6rem; color: var(--muted); font-weight: 400; }
+  .nutr-protein-dist { font-size: 0.56rem; color: var(--muted); text-align: right; line-height: 1.6; }
+
+  .nutr-timing { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .nutr-timing-block { background: var(--surface2); border-radius: 10px; padding: 10px 8px; text-align: center; }
+  .nutr-timing-lbl  { font-size: 0.5rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+  .nutr-timing-main { font-size: 0.7rem; font-weight: 700; margin-bottom: 3px; }
+  .nutr-timing-sub  { font-size: 0.56rem; color: var(--muted); line-height: 1.3; }
+
+  .nutr-tip { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .nutr-tip:last-child { border-bottom: none; }
+  .nutr-tip-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .nutr-tip-dot-green  { background: var(--green); }
+  .nutr-tip-dot-orange { background: var(--orange, #f97316); }
+  .nutr-tip-dot-blue   { background: var(--accent); }
+  .nutr-tip-dot-purple { background: var(--purple); }
+  .nutr-tip-text { font-size: 0.66rem; color: var(--muted); line-height: 1.4; }
+
   footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.62rem; text-align: center; }
 
   /* ── MOBILE ── */
@@ -597,6 +642,52 @@
         </div>
       </div>
     </div>
+
+    <!-- ERNÄHRUNG -->
+    
+    <div class="nutr-card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div class="section-label" style="margin:0">Ernährung · Heute</div>
+        <span class="kw-pill" style="margin-left:auto">sick</span>
+      </div>
+
+      <div class="nutr-banner nutr-banner-red">
+        <div>
+          <div class="nutr-banner-text">LIT-3h</div>
+          <div class="nutr-banner-sub">Krank → Leicht essen, viel trinken</div>
+        </div>
+      </div>
+
+      <div class="nutr-protein">
+        <div class="nutr-protein-left">
+          <div class="nutr-protein-icon">🥚</div>
+          <div>
+            <div class="nutr-protein-lbl">Protein-Ziel heute</div>
+            <div><span class="nutr-protein-val">160</span><span class="nutr-protein-unit"> g · 1.8 g/kg</span></div>
+          </div>
+        </div>
+        <div class="nutr-protein-dist">
+          ~40g Frühstück<br>~50g Mittagessen<br>~40g Abendessen<br>~30g Snacks<br>
+        </div>
+      </div>
+
+      
+
+      <div>
+        
+        <div class="nutr-tip">
+          <div class="nutr-tip-dot nutr-tip-dot-blue"></div>
+          <div class="nutr-tip-text">Leicht essen — kein Druck, Appetit bestimmt die Menge</div>
+        </div>
+        
+        <div class="nutr-tip">
+          <div class="nutr-tip-dot nutr-tip-dot-green"></div>
+          <div class="nutr-tip-text">Viel trinken: Wasser, Tee, Brühe — Immunsystem unterstützen</div>
+        </div>
+        
+      </div>
+    </div>
+    
 
     <!-- POLARISATION -->
     <div class="polar-card">
