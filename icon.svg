@@ -1,25 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="115" fill="#0a0a0a"/>
-  <rect width="512" height="512" rx="115" fill="url(#bg)"/>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0e1428"/>
-      <stop offset="100%" stop-color="#160e2a"/>
+    <linearGradient id="bgA" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/>
     </linearGradient>
+    <linearGradient id="r1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#30d158"/><stop offset="100%" stop-color="#34eba8"/>
+    </linearGradient>
+    <linearGradient id="r2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a84ff"/><stop offset="100%" stop-color="#5e5ce6"/>
+    </linearGradient>
+    <linearGradient id="r3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff375f"/><stop offset="100%" stop-color="#ff6b6b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <!-- Outer ring arc (CTL) -->
-  <circle cx="256" cy="256" r="160" fill="none" stroke="#1c1c1c" stroke-width="28"/>
-  <circle cx="256" cy="256" r="160" fill="none" stroke="#4f8ef7" stroke-width="28"
-    stroke-linecap="round" stroke-dasharray="502" stroke-dashoffset="251"
-    transform="rotate(-90 256 256)"/>
-  <!-- Inner ring arc (ATL) -->
-  <circle cx="256" cy="256" r="110" fill="none" stroke="#1c1c1c" stroke-width="24"/>
-  <circle cx="256" cy="256" r="110" fill="none" stroke="#9b7fe8" stroke-width="24"
-    stroke-linecap="round" stroke-dasharray="346" stroke-dashoffset="200"
-    transform="rotate(-90 256 256)"/>
-  <!-- Center: medal emoji substitute — TSB text -->
-  <text x="256" y="248" text-anchor="middle" font-family="-apple-system, sans-serif"
-    font-size="56" font-weight="900" fill="#3ecf8e">+20</text>
-  <text x="256" y="290" text-anchor="middle" font-family="-apple-system, sans-serif"
-    font-size="28" font-weight="700" fill="#444" letter-spacing="3">TSB</text>
+  <rect width="512" height="512" rx="115" fill="url(#bgA)"/>
+  <!-- Ring 3 outer – grün (Ausdauer) -->
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#1a2a1a" stroke-width="32"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#r1)" stroke-width="32"
+    stroke-linecap="round" stroke-dasharray="1056" stroke-dashoffset="320"
+    transform="rotate(-90 256 256)" filter="url(#glow)"/>
+  <!-- Ring 2 mitte – blau (Kraft) -->
+  <circle cx="256" cy="256" r="118" fill="none" stroke="#0d1a2a" stroke-width="30"/>
+  <circle cx="256" cy="256" r="118" fill="none" stroke="url(#r2)" stroke-width="30"
+    stroke-linecap="round" stroke-dasharray="742" stroke-dashoffset="260"
+    transform="rotate(-90 256 256)" filter="url(#glow)"/>
+  <!-- Ring 1 inner – rot (Intensität) -->
+  <circle cx="256" cy="256" r="70" fill="none" stroke="#2a0d0d" stroke-width="28"/>
+  <circle cx="256" cy="256" r="70" fill="none" stroke="url(#r3)" stroke-width="28"
+    stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="180"
+    transform="rotate(-90 256 256)" filter="url(#glow)"/>
 </svg>
