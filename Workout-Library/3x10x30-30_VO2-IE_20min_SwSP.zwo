@@ -1,0 +1,41 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>3x10x30/30 VO2Max + 20min SwSp</name>
+	<description>3x10x30/30 VO2 IE + 20min SwSP, TF: 90-110 U/min
+
+Versuche die Intervalle sehr kontrolliert zu fahren. Der Wiegetritt und starkes Ausweichen im Oberkörper sollte vermieden werden. Die Intensität der Intervalle sollte realistisch und wiederholbar sein.
+
+Belastungsempfinden: (8) 9-10 auf einer Skala von 1-10. Im SwSp sollte dies niedriger ausfallen.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="600" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="10" OnDuration="30" OnPower="1.3" OffDuration="30" OffPower="0.53">
+		</IntervalsT>
+		<SteadyState Duration="600" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="10" OnDuration="30" OnPower="1.3" OffDuration="30" OffPower="0.53">
+		</IntervalsT>
+		<SteadyState Duration="600" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="10" OnDuration="30" OnPower="1.3" OffDuration="30" OffPower="0.53">
+		</IntervalsT>
+		<SteadyState Duration="600" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="1200" Power="0.91">
+		</SteadyState>
+		<Cooldown Duration="780" PowerHigh="0.43" PowerLow="0.63">
+		</Cooldown>
+	</workout>
+</workout_file>

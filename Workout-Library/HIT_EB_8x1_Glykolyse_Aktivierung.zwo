@@ -1,0 +1,26 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>HIT - HIT_EB (8x1 min) Glykolyse Aktivierung</name>
+	<description>HIT_EB Training. Zeit 1h45
+Hauptmenü: 8x1 min HIT_EB (Pause: 6 min)
+Belastungsempfinden: 9 von 10
+Trittfrequenzvorgabe: 85-95</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1380" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.75">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.53">
+		</SteadyState>
+		<IntervalsT Repeat="8" OnDuration="60" OnPower="1.33" OffDuration="360" OffPower="0.53">
+		</IntervalsT>
+		<Cooldown Duration="720" PowerHigh="0.35" PowerLow="0.55">
+		</Cooldown>
+	</workout>
+</workout_file>

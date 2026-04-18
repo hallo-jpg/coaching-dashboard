@@ -1,0 +1,30 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>5x5 + 20min SwSp</name>
+	<description>5x5 min EB, TF: 90-110 U/min
+vorher ausreichend Kohlenhydrate aufnehmen, nachher auf jeden Fall Recovery-Shake</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="600" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="5" OnDuration="300" OnPower="1.1" OffDuration="150" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="360" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="1200" Power="0.91">
+		</SteadyState>
+		<Cooldown Duration="570" PowerHigh="0.43" PowerLow="0.63">
+		</Cooldown>
+	</workout>
+</workout_file>

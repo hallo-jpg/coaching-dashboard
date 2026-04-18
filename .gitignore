@@ -1,0 +1,22 @@
+# Sensitive
+.claude/settings.local.json
+
+# Node
+intervals-mcp/node_modules/
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Temp
+/tmp/
+*.log

@@ -1,0 +1,38 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>Aktivierung</name>
+	<description>1h30 Vorbelastung vor dem anstehenden Wettkampf:
+4x(30/30)+ 3x(1min EB + 4min SwSp)
+
+Nimm auch in dieser Einheit eine moderate bis hohe Menge an Kohlenyhdraten zu dir. Auch die Hydration solltest du heute nicht vernachlässigen, damit du morgen ohne Einschränkungen ins Rennen starten kannst.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<IntervalsT Repeat="4" OnDuration="30" OnPower="1.28" OffDuration="30" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="1500" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.18">
+		</SteadyState>
+		<SteadyState Duration="270" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.18">
+		</SteadyState>
+		<SteadyState Duration="270" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.18">
+		</SteadyState>
+		<SteadyState Duration="270" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="960" Power="0.55">
+		</SteadyState>
+	</workout>
+</workout_file>

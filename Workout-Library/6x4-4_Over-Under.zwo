@@ -1,0 +1,27 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>6x4/4 Over-Under</name>
+	<description>Das &quot;bessere&quot; Schwellentraining, weil es die Fähigkeit leicht über der Schwelle zu arbeiten und danach das überschüssige Laktat wieder zu verstoffwechseln schult und somit die Schwelle trainiert. Dieses Training ist sicher sehr fordernd, aber besonders für die Kurzdistanz enorm effektiv. Wenn vorher geschult, dann auf jeden Fall auch auf dem TT-Rad möglich.
+
+Auf der RPE Skala schwankt das Workout zwischen 6-8 (auf einer Skala von 1-10).</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="240" OnPower="1.03" OffDuration="240" OffPower="0.91" Cadence="90" CadenceResting="65" >
+		</IntervalsT>
+		<Cooldown Duration="600" PowerHigh="0.35" PowerLow="0.55">
+		</Cooldown>
+	</workout>
+</workout_file>

@@ -1,0 +1,27 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>1h30 LC Training - 5 x 2 min Over Under</name>
+	<description>Lactate Carrier Training. Zeit: 1h30
+Hauptmenü: 5x(2/2) VO2max IE und SwSp im Wechsel
+Trittfrequenz ca. 85-95 u/min</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1260" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="5" OnDuration="120" OnPower="1.07" OffDuration="120" OffPower="0.88">
+		</IntervalsT>
+		<Cooldown Duration="1920" PowerHigh="0.43" PowerLow="0.63">
+		</Cooldown>
+	</workout>
+</workout_file>

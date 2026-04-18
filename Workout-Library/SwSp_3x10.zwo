@@ -1,0 +1,26 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>MIT - SwSp (3x10 min)</name>
+	<description>SwSp Training. Zeit 1h30
+HF bei SwSp ca. 75% der HFmax
+Belastungsempfinden: 5-6 von 10
+Trittfrequenzvorgabe: 85-95 upm</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="120" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.75">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="600" OnPower="0.89" OffDuration="300" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="1140" Power="0.55">
+		</SteadyState>
+	</workout>
+</workout_file>

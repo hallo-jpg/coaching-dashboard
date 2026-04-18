@@ -1,0 +1,39 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>6 Min Test</name>
+	<description>Fahre die 6 min Allout! Am besten lässt du dir am Wahoo deine AVG Rundenzeit anzeigen. Ich starte gern die Aktivität auf beiden Geräten gleichzeitig und habe im Workout die AVG W pro Runde angezeigt. Pace dich in die Einheit und versuche so gleichmäßig wie möglich zu fahren. Fahre das Intervall im ERG Modus!
+
+Verpflege dich idealerweise vor der Einheit mit etwas leicht verdaulichem z.B. Weißbrot mit Zucker z.B. Marmelade. Zwischen Essen und Einheit sollten idealerweise min 1-2h liegen. Wärend der Einheit kannst du auch verpflegen. Idealerweise ein KH Getränk mit ca. 40g KH. Achte danach auf eine ausreichende Proteinzuvor und Verpflegung idealerweise 30-1h nach Einheit Ende. Auch hier gilt direkt danach etwas leicht verdauliches.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="30" Power="1.13">
+		</SteadyState>
+		<SteadyState Duration="90" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.13">
+		</SteadyState>
+		<SteadyState Duration="90" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.13">
+		</SteadyState>
+		<SteadyState Duration="90" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="600" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="360" Power="1.4">
+		</SteadyState>
+		<SteadyState Duration="720" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.45">
+		</SteadyState>
+	</workout>
+</workout_file>

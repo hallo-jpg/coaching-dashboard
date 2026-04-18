@@ -1,0 +1,29 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>3x20min. KA</name>
+	<description>3x20min. SwSp / 5min. TF: Ziel-TF (wie im Wettkampf, (letztes Intervall auf TF 50-60 U/min)
+Diese Einheit mit so wenig Kohlenhydraten wie möglich durchführen und Koffein vorher hilft. Danach auf jeden Fall Recovery-Shake.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="1200" OnPower="0.91" OffDuration="300" OffPower="0.55" Cadence="85" CadenceResting="85" >
+			<textevent timeoffset="0" message="Das letzte Intervall auf TF 50-60 U/min."/>
+			<textevent timeoffset="1500" message="Das letzte Intervall auf TF 50-60 U/min."/>
+			<textevent timeoffset="3000" message="Das letzte Intervall auf TF 50-60 U/min."/>
+		</IntervalsT>
+		<SteadyState Duration="2280" Power="0.7">
+		</SteadyState>
+	</workout>
+</workout_file>

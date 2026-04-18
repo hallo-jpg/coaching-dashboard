@@ -1,0 +1,25 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>12x30s HIT FatMax</name>
+	<description>12x30&quot; HIT mit FatMax
+Diese Einheit möglichst ohne Kohlenhydrate umsetzen. Notfallgel mitnehmen. Danach Recovery-Shake.
+Die TF sollte hier nicht zu niedrig gewählt werden. Die Sprints im Sitzen fahren!</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="600" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="60" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<IntervalsT Repeat="12" OnDuration="30" OnPower="1.63" OffDuration="270" OffPower="0.55">
+		</IntervalsT>
+		<Cooldown Duration="600" PowerHigh="0.35" PowerLow="0.55">
+		</Cooldown>
+	</workout>
+</workout_file>

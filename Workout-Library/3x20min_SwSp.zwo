@@ -1,0 +1,29 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>3x20min. SwSp</name>
+	<description>3x20min. SwSp / 5min. TF: Ziel-TF (wie im Wettkampf) // im 3ten TF: 50-60 U/min
+
+Belastungsempfinden: 5-6 auf einer Skala von 1-10. Im Verlauf der Einheit kannst Du natürlich auf Grund der geringeren KH-Verfügbarkeit auch eine 7 wahrnehmen, höher sollte es aber nicht gehen!</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="600" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="2" OnDuration="1200" OnPower="0.91" OffDuration="300" OffPower="0.55">
+		</IntervalsT>
+		<IntervalsT Repeat="1" OnDuration="1200" OnPower="0.91" OffDuration="300" OffPower="0.55" Cadence="55" CadenceResting="65" >
+		</IntervalsT>
+		<SteadyState Duration="1080" Power="0.7">
+		</SteadyState>
+	</workout>
+</workout_file>

@@ -1,0 +1,28 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>KA 1x10 + SwSp 3x12 min.</name>
+	<description>1x10min. KA + 3x12min. SwSp TF: (45)50-60 U/min. bzw. 80-90 U/min.
+
+Halte die Hände ruhig am Lenker und konzentriere dich darauf ein hohes Drehmoment aus dem Gesäß/Beinen zu generieren, ohne das dein Oberkörper dabei zu viel arbeitet - &quot;in der Ruhe liegt die Kraft&quot; ;)!
+
+Die Pause einfach bergab fahren. Dabei entweder rollen oder leicht pedalieren. Geübte können bergan auch bis 45 U/min. gehen. Aber hier lieber langsam herantasten.
+
+Diese Einheit mit so wenig Kohlenhydraten (20-30 g/h) wie möglich durchführen und Koffein vorher hilft. Danach auf jeden Fall Recovery-Shake.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.68" PowerLow="0.48" Cadence="90">
+			<textevent timeoffset="0" message=""/>
+		</Warmup>
+		<IntervalsT Repeat="1" OnDuration="600" OnPower="0.91" OffDuration="300" OffPower="0.55" Cadence="55" CadenceResting="65" >
+		</IntervalsT>
+		<IntervalsT Repeat="3" OnDuration="720" OnPower="0.91" OffDuration="360" OffPower="0.55" Cadence="85" CadenceResting="85" >
+			<textevent timeoffset="0" message=""/>
+			<textevent timeoffset="1080" message=""/>
+			<textevent timeoffset="2160" message=""/>
+		</IntervalsT>
+		<SteadyState Duration="900" Power="0.6" Cadence="95">
+			<textevent timeoffset="0" message=""/>
+		</SteadyState>
+	</workout>
+</workout_file>

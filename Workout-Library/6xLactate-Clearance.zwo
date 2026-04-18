@@ -1,0 +1,55 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>LC - 6 x Lactate Clearance</name>
+	<description>6 x Lactate Carrier Training. Zeit: 1h30
+Hauptmenü: 1 min VO2max IE / 3 min SwSp. Pause bei 3 min
+Trittfrequenz ca. 85-95 u/min</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<IntervalsT Repeat="4" OnDuration="30" OnPower="1.25" OffDuration="30" OffPower="0.65">
+		</IntervalsT>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.15">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.85">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.15">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.85">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6" Cadence="85">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.15">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.85">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.15">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.85">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.15">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.85">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.15">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.85">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="1140" Power="0.45">
+		</SteadyState>
+	</workout>
+</workout_file>

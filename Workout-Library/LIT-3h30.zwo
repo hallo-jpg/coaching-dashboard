@@ -1,0 +1,15 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>LIT - 3h30</name>
+	<description>LIT Training. Zeit: 3h30
+HF: ca. 60-70% der HFmax.
+Belastungsempfinden: 3 von 10
+Trittfrequenzvorgabe: 85 bis 95 upm
+#LIT</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<SteadyState Duration="12600" Power="0.55" Cadence="90">
+		</SteadyState>
+	</workout>
+</workout_file>

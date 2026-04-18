@@ -1,0 +1,37 @@
+<workout_file>
+	<author>🤖 CLAUDE-ERSTELLT</author>
+	<name>MIT TT-Simulation 1×22min (Rennsim Oberjochpass)</name>
+	<description>🤖 CLAUDE-ERSTELLT – Bitte vor Einsatz prüfen.
+
+Rennsimulation Oberjochpass: 6,81 km · 335 Hm · Ø 5%
+Geschätzte Zielzeit: 22–25min · 1 kontinuierlicher Block ohne Erholung.
+
+Unterschied zu MIT_4x16: Kein Intervall-Rescue. Wer hier falsch pacet, zahlt in der zweiten Hälfte.
+
+Pacing-Strategie (negative Split):
+– Erste 10min: ~99% FTP · kontrolliert, Laktat aufbauen lassen
+– Letzte 12min: auf 102–103% steigern wenn Reserven da
+
+Belastungsempfinden Ziel: 8–9/10 am Ende.
+Kadenz: 85–90rpm, aero Position halten.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="600" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="240" Power="0.83">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.88">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.93">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.00">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.53">
+		</SteadyState>
+		<SteadyState Duration="1320" Power="1.01">
+		</SteadyState>
+		<SteadyState Duration="900" Power="0.55">
+		</SteadyState>
+	</workout>
+</workout_file>

@@ -1,0 +1,31 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>Rad 4x16 MIT/HIT</name>
+	<description>MIT/HIT Serie Rad: 4x16min.
+
+Versuche die Intervalle sehr kontrolliert zu fahren. Der Wiegetritt und starkes Ausweichen im Oberkörper sollte vermieden werden. Die Intensität der Intervalle sollte realistisch und wiederholbar sein.
+
+Belastungsempfinden: 7-8 auf einer Skala von 1-10.
+
+Auf Grund der Länge der Intervalle, sollte auf ein gleichmäßiges Racing geachtet werden. Hier wird auf eine intensiveren Beginn des Intervalls verzichtet.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="600" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="240" Power="0.83">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.88">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.93">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.53">
+		</SteadyState>
+		<IntervalsT Repeat="4" OnDuration="960" OnPower="1.01" OffDuration="240" OffPower="0.53">
+		</IntervalsT>
+		<SteadyState Duration="840" Power="0.6">
+		</SteadyState>
+	</workout>
+</workout_file>

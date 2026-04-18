@@ -1,0 +1,45 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>HIT - IE 3x6x30/20 + EB 3min</name>
+	<description>HIT_IE Training. Zeit 1h30
+Hauptmenü: 3x (10x40s/20s)
+HF: ca. &gt;90% der HFmax
+Belastungsempfinden: 8-9 von 10
+Trittfrequenzvorgabe: 85-95 upm</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1500" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<IntervalsT Repeat="2" OnDuration="30" OnPower="1.04" OffDuration="30" OffPower="0.55">
+		</IntervalsT>
+		<IntervalsT Repeat="2" OnDuration="60" OnPower="0.9" OffDuration="90" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="480" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="30" OnPower="1.2" OffDuration="20" OffPower="0.53" Cadence="85" CadenceResting="85" >
+		</IntervalsT>
+		<SteadyState Duration="180" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="180" Power="1.04">
+		</SteadyState>
+		<SteadyState Duration="480" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="30" OnPower="1.2" OffDuration="20" OffPower="0.53" Cadence="85" CadenceResting="85" >
+		</IntervalsT>
+		<SteadyState Duration="180" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="180" Power="1.04">
+		</SteadyState>
+		<SteadyState Duration="480" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="30" OnPower="1.2" OffDuration="20" OffPower="0.53" Cadence="85" CadenceResting="85" >
+		</IntervalsT>
+		<SteadyState Duration="180" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="180" Power="1.04">
+		</SteadyState>
+		<Cooldown Duration="1860" PowerHigh="0.43" PowerLow="0.63">
+		</Cooldown>
+	</workout>
+</workout_file>

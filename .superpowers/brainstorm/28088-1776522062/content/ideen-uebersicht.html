@@ -1,0 +1,137 @@
+<style>
+  .cluster { margin-bottom: 36px; }
+  .cluster-title {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;
+    color: #4f8ef7; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .cluster-title::after { content: ''; flex: 1; height: 1px; background: rgba(79,142,247,0.15); }
+  .idea-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .idea-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 16px 18px; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .idea-card:hover { border-color: rgba(79,142,247,0.35); background: rgba(79,142,247,0.05); }
+  .idea-card.selected { border-color: #4f8ef7; background: rgba(79,142,247,0.1); }
+  .idea-icon { font-size: 1.5rem; margin-bottom: 8px; }
+  .idea-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+  .idea-tag {
+    display: inline-block; font-size: 0.55rem; font-weight: 700; padding: 1px 7px;
+    border-radius: 10px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tag-easy { background: rgba(62,207,142,0.15); color: #3ecf8e; }
+  .tag-medium { background: rgba(245,166,35,0.15); color: #f5a623; }
+  .tag-complex { background: rgba(224,82,82,0.12); color: #e05252; }
+  .idea-desc { font-size: 0.72rem; color: #888; line-height: 1.5; }
+  .idea-gain { font-size: 0.68rem; color: #5ab8b8; margin-top: 8px; font-style: italic; }
+  .page-note { font-size: 0.68rem; color: #555; text-align: center; margin-top: 28px; }
+</style>
+
+<h2>Ideen-Sammlung · Coaching-System</h2>
+<p class="subtitle">Grobe Skizze aller Erweiterungsideen — du kannst mehrere auswählen</p>
+
+<!-- CLUSTER 1: DASHBOARD VERFÜGBARKEIT -->
+<div class="cluster">
+  <div class="cluster-title">📲 Dashboard · Verfügbarkeit &amp; Zugriff</div>
+  <div class="idea-grid">
+
+    <div class="idea-card" data-choice="pwa" onclick="toggleSelect(this)">
+      <div class="idea-icon">📱</div>
+      <div class="idea-name">PWA – „Add to Home Screen"</div>
+      <span class="idea-tag tag-easy">Einfach</span>
+      <div class="idea-desc">Dashboard.html wird zur Progressive Web App: Manifest + Service Worker hinzufügen. Stefan fügt es wie eine App zum iPhone-Homescreen hinzu. Kein Server, kein Deploy — lokale Datei bleibt die Quelle, nur die Darstellung ändert sich.</div>
+      <div class="idea-gain">→ Sofortiger Zugriff vom Homescreen, funktioniert offline</div>
+    </div>
+
+    <div class="idea-card" data-choice="deploy" onclick="toggleSelect(this)">
+      <div class="idea-icon">🌐</div>
+      <div class="idea-name">Auto-Deploy auf Netlify / GitHub Pages</div>
+      <span class="idea-tag tag-medium">Mittel</span>
+      <div class="idea-desc">Jedes Mal wenn der Coach Skill dashboard.html aktualisiert, pushed ein Git-Hook automatisch zu einem privaten Netlify/GitHub-Pages-Repo. Dashboard ist dann unter einer festen URL erreichbar — von überall, ohne lokalen Server.</div>
+      <div class="idea-gain">→ Feste URL, immer aktuell, kein Öffnen von Dateien nötig</div>
+    </div>
+
+    <div class="idea-card" data-choice="live-api" onclick="toggleSelect(this)">
+      <div class="idea-icon">⚡</div>
+      <div class="idea-name">Live-Dashboard mit API-Backend</div>
+      <span class="idea-tag tag-complex">Komplex</span>
+      <div class="idea-desc">Cloudflare Worker oder kleines Node-Backend; der Coach Skill schreibt JSON-Daten in KV/DB, das Dashboard liest live via fetch(). Daten wie Readiness, CTL/ATL, Wochenplan sind immer aktuell ohne HTML-Neugenerierung.</div>
+      <div class="idea-gain">→ Echte Live-Daten, Dashboard trennt sich von Claude-Workflow</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CLUSTER 2: COACH SKILL AUTOMATION -->
+<div class="cluster">
+  <div class="cluster-title">🤖 Coach Skill · Automation &amp; Feedback-Loops</div>
+  <div class="idea-grid">
+
+    <div class="idea-card" data-choice="weekly-mail" onclick="toggleSelect(this)">
+      <div class="idea-icon">📬</div>
+      <div class="idea-name">Automatisches Weekly Briefing per E-Mail</div>
+      <span class="idea-tag tag-medium">Mittel</span>
+      <div class="idea-desc">Jeden Montag früh sendet ein Cron-Job (Claude Code Cron) automatisch das Wochen-Briefing via Gmail MCP an Stefan. Kein manueller /coach-Aufruf nötig — der Plan kommt einfach im Postfach an.</div>
+      <div class="idea-gain">→ Kein Aufwand um den Plan zu bekommen, Push statt Pull</div>
+    </div>
+
+    <div class="idea-card" data-choice="rpe-feedback" onclick="toggleSelect(this)">
+      <div class="idea-icon">🔄</div>
+      <div class="idea-name">Schneller Workout-Feedback-Loop</div>
+      <span class="idea-tag tag-easy">Einfach</span>
+      <div class="idea-desc">Ein kurzes Template: „✅ LIT-2h | RPE 6 | Knie ok" — Claude parsed das, aktualisiert TSS Ist in kw16.md, passt bei Bedarf die Restwoche an und updated dashboard.html. Alles in einem Rutsch, kein ausführliches Briefing nötig.</div>
+      <div class="idea-gain">→ Minimaler Aufwand für Stefan, maximale Aktualität</div>
+    </div>
+
+    <div class="idea-card" data-choice="season-wizard" onclick="toggleSelect(this)">
+      <div class="idea-icon">🧭</div>
+      <div class="idea-name">Interaktiver Saisonplanung-Wizard</div>
+      <span class="idea-tag tag-medium">Mittel</span>
+      <div class="idea-desc">Post-Season: Ein geführter Dialog (5–6 Fragen) fragt nach Zielen, Events, verfügbarer Zeit und Schwächen. Danach generiert der Coach einen kompletten neuen Saisonplan inkl. periodisierung.md, CTL-Kurve und Ausblick.</div>
+      <div class="idea-gain">→ Strukturierter Einstieg in neue Saison, keine leere Seite</div>
+    </div>
+
+    <div class="idea-card" data-choice="alerts" onclick="toggleSelect(this)">
+      <div class="idea-icon">🚨</div>
+      <div class="idea-name">Automatische Readiness-Alerts</div>
+      <span class="idea-tag tag-medium">Mittel</span>
+      <div class="idea-desc">Claude prüft täglich via Cron intervals.icu Readiness. Fällt der Score unter 50 oder springt ein Krank-Risiko-Muster auf, sendet Claude automatisch einen Hinweis (Push-Notification oder E-Mail): „Heute kein Training empfohlen."</div>
+      <div class="idea-gain">→ Proaktive Empfehlung ohne dass Stefan fragen muss</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CLUSTER 3: COACH SKILL INTELLIGENZ -->
+<div class="cluster">
+  <div class="cluster-title">🧠 Coach Skill · Intelligenz &amp; Tiefe</div>
+  <div class="idea-grid">
+
+    <div class="idea-card" data-choice="multi-week" onclick="toggleSelect(this)">
+      <div class="idea-icon">📈</div>
+      <div class="idea-name">Automatische Block-Skizze nach jeder Planung</div>
+      <span class="idea-tag tag-easy">Einfach</span>
+      <div class="idea-desc">Nach jeder Wochenplanung generiert der Coach automatisch einen aktualisierten 4-Wochen-Ausblick und schreibt ihn direkt ins Dashboard. Heute nur auf Abruf — zukünftig immer aktuell ohne extra Schritt.</div>
+      <div class="idea-gain">→ Dashboard zeigt immer den echten Vorausblick, kein manueller Trigger</div>
+    </div>
+
+    <div class="idea-card" data-choice="nutrition-tracking" onclick="toggleSelect(this)">
+      <div class="idea-icon">🍽️</div>
+      <div class="idea-name">Fueling-Einkaufsliste</div>
+      <span class="idea-tag tag-easy">Einfach</span>
+      <div class="idea-desc">Nach der Wochenplanung berechnet der Coach automatisch die Gesamtmengen: „Diese Woche brauchst du 480g Maltodextrin, 120g Fructose, 15g Salztabletten." Als einkaufbereite Liste, nicht als Tabelle.</div>
+      <div class="idea-gain">→ Direkt umsetzbar, kein Nachrechnen aus 7 Fueling-Zeilen</div>
+    </div>
+
+    <div class="idea-card" data-choice="retrospective" onclick="toggleSelect(this)">
+      <div class="idea-icon">📊</div>
+      <div class="idea-name">Monats-Retrospektive</div>
+      <span class="idea-tag tag-medium">Mittel</span>
+      <div class="idea-desc">Ende jeden Monats: Claude analysiert alle archivierten KW-Dateien + intervals.icu-Daten und erstellt eine Retrospektive: Soll vs. Ist TSS, Zonen-Compliance, Trends, was gut lief, was angepasst werden sollte.</div>
+      <div class="idea-gain">→ Strukturiertes Lernformat, Muster über Wochen hinweg sichtbar</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-note">Mehrfachauswahl möglich · Klick auf Karte zum Auswählen · Dann im Terminal bescheid geben welche Richtung interessant ist</div>

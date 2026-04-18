@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stefan · Coaching Dashboard</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0a0a">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coaching">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1c1c1c;
+    --border: #242424;
+    --accent: #4f8ef7;
+    --green: #3ecf8e;
+    --yellow: #f5a623;
+    --red: #e05252;
+    --purple: #9b7fe8;
+    --teal: #5ab8b8;
+    --text: #f0f0f0;
+    --muted: #666;
+    --subtle: #444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 22px;
+  }
+  .phase-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(79,142,247,0.1); color: var(--accent);
+    padding: 3px 11px; border-radius: 20px;
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 7px;
+  }
+  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .header-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px; }
+  .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .header-date { font-size: 0.72rem; color: var(--muted); }
+
+  /* ── COUNTDOWN ── */
+  .countdown-row { display: flex; gap: 10px; margin-bottom: 22px; }
+
+  .countdown-card-main {
+    flex: 1;
+    background: linear-gradient(135deg, #0e1428 0%, #160e2a 100%);
+    border-radius: 14px; padding: 16px 20px;
+    display: flex; gap: 16px; align-items: stretch;
+  }
+  .cd-main-left { flex: 1; }
+  .cd-flag { font-size: 1.4rem; margin-bottom: 6px; }
+  .cd-race-name { font-size: 0.92rem; font-weight: 800; color: #a0c0ff; margin-bottom: 10px; }
+
+  .cd-days { display: flex; flex-direction: column; gap: 5px; }
+  .cd-day-row { display: flex; align-items: center; gap: 8px; }
+  .cd-day-badge {
+    font-size: 0.56rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-primary { background: rgba(79,142,247,0.2); color: var(--accent); }
+  .badge-secondary { background: rgba(155,127,232,0.15); color: var(--purple); }
+  .cd-day-detail { font-size: 0.65rem; color: var(--muted); }
+  .cd-day-focus {
+    font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 3px;
+    margin-left: auto; white-space: nowrap;
+  }
+  .focus-primary { background: rgba(79,142,247,0.15); color: var(--accent); }
+  .focus-secondary { background: rgba(155,127,232,0.1); color: var(--purple); }
+
+  .cd-main-right {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: flex-end; gap: 8px; flex-shrink: 0;
+    border-left: 1px solid rgba(79,142,247,0.15); padding-left: 20px;
+  }
+  .cd-item { text-align: center; }
+  .cd-num { font-size: 2.2rem; font-weight: 900; line-height: 1; color: var(--accent); }
+  .cd-label { font-size: 0.52rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .countdown-card-secondary {
+    flex: 0 0 200px;
+    background: linear-gradient(135deg, #0e1a1a 0%, #101820 100%);
+    border-radius: 14px; padding: 16px 18px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .cd-sec-flag { font-size: 1.1rem; margin-bottom: 4px; }
+  .cd-sec-name { font-size: 0.78rem; font-weight: 700; color: var(--teal); margin-bottom: 2px; }
+  .cd-sec-detail { font-size: 0.62rem; color: var(--muted); }
+  .cd-sec-bottom { display: flex; gap: 14px; }
+  .cd-sec-num { font-size: 1.8rem; font-weight: 900; color: var(--teal); line-height: 1; }
+  .cd-sec-lbl { font-size: 0.5rem; color: var(--muted); text-transform: uppercase; }
+
+  /* ── PHASE BAR ── */
+  .phase-bar { margin-bottom: 22px; }
+  .phase-bar-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+  .phases { display: flex; gap: 4px; }
+  .phase { flex: 1; border-radius: 8px; padding: 7px 5px; font-size: 0.6rem; font-weight: 700; text-align: center; line-height: 1.3; }
+  .phase .kw { font-size: 0.52rem; opacity: 0.6; margin-top: 2px; }
+  .phase.done { background: rgba(62,207,142,0.08); color: rgba(62,207,142,0.6); }
+  .phase.active { background: linear-gradient(135deg, rgba(79,142,247,0.15), rgba(155,127,232,0.1)); color: #a0c0ff; outline: 1px solid rgba(79,142,247,0.3); outline-offset: -1px; }
+  .phase.upcoming { background: var(--surface); color: var(--subtle); }
+
+  /* ── RINGS ── */
+  .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+  .ring-card { background: var(--surface); border-radius: 16px; padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ring-card-title { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
+  .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; }
+  .ring-sub { font-size: 0.45rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 1px; }
+  .ring-status { text-align: center; }
+  .ring-status-tag { font-size: 0.62rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+  .ring-status-sub { font-size: 0.55rem; color: var(--muted); }
+  .dual-legend { display: flex; flex-direction: column; gap: 5px; width: 100%; }
+  .dual-legend-item { display: flex; align-items: center; gap: 7px; }
+  .dl-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dl-name { font-size: 0.55rem; color: var(--muted); flex: 1; }
+  .dl-val { font-size: 0.78rem; font-weight: 800; }
+  .phase-ring-info { text-align: center; }
+  .pri-main { font-size: 0.75rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .pri-sub { font-size: 0.55rem; color: var(--muted); }
+
+  /* ── SICK NOTICE ── */
+  .sick-notice {
+    background: rgba(224,82,82,0.08);
+    border: 1px solid rgba(224,82,82,0.2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 0.72rem;
+    color: var(--red);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sick-notice strong { font-weight: 700; }
+  .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
+  .day-sick .day-fuel,
+  .day-sick .day-meal { display: none; }
+  .day-sick .day-tss { color: var(--red); }
+  .day-sick .day-name { color: var(--subtle); }
+
+  /* ── MAIN GRID ── */
+  .main-grid { display: grid; grid-template-columns: 1fr 340px; gap: 12px; margin-bottom: 12px; }
+  .week-card { background: var(--surface); border-radius: 16px; padding: 20px; }
+  .week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .week-title { font-size: 0.9rem; font-weight: 800; }
+  .kw-pill { background: rgba(79,142,247,0.12); color: var(--accent); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
+  .tss-pill { background: var(--surface2); color: var(--muted); font-size: 0.62rem; padding: 2px 9px; border-radius: 20px; margin-left: auto; }
+  .day-row { display: grid; grid-template-columns: 28px 9px 1fr auto; align-items: start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .day-row:last-child { border-bottom: none; }
+  .day-name { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; padding-top: 3px; }
+  .day-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .dot-planned { background: var(--accent); }
+  .dot-key { background: var(--purple); }
+  .dot-run { background: var(--green); }
+  .dot-ka { background: var(--yellow); }
+  .dot-rest { background: transparent; border: 1px solid var(--border); }
+  .day-workout { font-size: 0.84rem; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 4px; }
+  .tag-key  { background: rgba(155,127,232,0.15); color: var(--purple); }
+  .tag-run  { background: rgba(62,207,142,0.12);  color: var(--green); }
+  .tag-ka   { background: rgba(245,166,35,0.12);  color: var(--yellow); }
+  .tag-koff { background: rgba(90,184,184,0.1);   color: var(--teal); }
+  .day-fuel { font-size: 0.68rem; color: #4a8a5a; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 2px; }
+  .day-meal { font-size: 0.63rem; color: var(--muted); }
+  .day-tss { font-size: 0.68rem; color: var(--muted); padding-top: 3px; white-space: nowrap; }
+
+  .right-col { display: flex; flex-direction: column; gap: 12px; }
+  .section-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+
+  .readiness-card { background: var(--surface); border-radius: 16px; padding: 18px; }
+  .readiness-score { font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+  .readiness-tag { font-size: 0.72rem; font-weight: 700; margin-bottom: 2px; }
+  .readiness-sub { font-size: 0.62rem; color: var(--muted); margin-bottom: 14px; }
+  .rbar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .rbar-lbl { font-size: 0.6rem; color: var(--muted); min-width: 36px; }
+  .rbar-track { flex: 1; height: 5px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .rbar-fill { height: 100%; border-radius: 3px; }
+  .rbar-val { font-size: 0.6rem; color: var(--muted); min-width: 32px; text-align: right; }
+  .sparkline-wrap { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .spark-label { font-size: 0.55rem; color: var(--muted); margin-bottom: 6px; }
+  .sparkline { display: flex; align-items: flex-end; gap: 3px; height: 30px; }
+  .spark-bar { flex: 1; border-radius: 2px 2px 0 0; min-height: 3px; }
+  .spark-today { outline: 1px solid rgba(255,255,255,0.2); outline-offset: 1px; }
+
+  .polar-card { background: var(--surface); border-radius: 16px; padding: 18px; }
+  .pi-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+  .pi-ok  { background: rgba(62,207,142,0.1); color: var(--green); }
+  .pi-warn { background: rgba(245,166,35,0.1); color: var(--yellow); }
+  .pi-bad  { background: rgba(224,82,82,0.1); color: var(--red); }
+  .polar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .polar-lbl { font-size: 0.6rem; color: var(--muted); min-width: 34px; }
+  .polar-track { flex: 1; height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+  .polar-fill { height: 100%; border-radius: 4px; }
+  .polar-pct { font-size: 0.65rem; font-weight: 700; min-width: 30px; text-align: right; }
+  .polar-note { font-size: 0.58rem; color: var(--muted); margin-top: 8px; }
+
+  .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .kraft-card { background: var(--surface); border-radius: 16px; padding: 18px; }
+  .kraft-card-title { font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; }
+  .kraft-card-sub { font-size: 0.62rem; color: var(--muted); margin-bottom: 12px; }
+  .kraft-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
+  .kraft-row:last-child { border-bottom: none; }
+  .kraft-sets { color: var(--accent); font-weight: 600; font-size: 0.7rem; }
+
+  .ausblick-card { background: var(--surface); border-radius: 16px; padding: 18px; }
+  .ausblick-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+  .ausblick-table th { text-align: left; padding: 0 8px 8px; font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; border-bottom: 1px solid var(--border); }
+  .ausblick-table td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ausblick-table tr:last-child td { border-bottom: none; }
+  .ausblick-kw { font-weight: 700; white-space: nowrap; }
+  .ausblick-sub { font-size: 0.62rem; color: var(--muted); margin-top: 1px; }
+  .ausblick-tss { text-align: right; font-weight: 700; white-space: nowrap; }
+
+  footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.62rem; text-align: center; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    body { padding: 18px 14px 48px; font-size: 13px; }
+
+    /* Header */
+    .header-title { font-size: 1.2rem; }
+
+    /* Countdown: stack vertically */
+    .countdown-row { flex-direction: column; }
+    .countdown-card-secondary { flex: unset; }
+    .cd-num { font-size: 1.8rem; }
+    .cd-day-detail { display: none; } /* too narrow on mobile */
+    .cd-day-focus { display: none; }
+
+    /* Phase bar: horizontal scroll */
+    .phases { overflow-x: auto; padding-bottom: 4px; gap: 3px; }
+    .phase { flex: 0 0 68px; font-size: 0.55rem; }
+
+    /* Rings: single column */
+    .rings-section { grid-template-columns: 1fr; gap: 10px; }
+
+    /* Main grid: stack */
+    .main-grid { grid-template-columns: 1fr; }
+    .right-col { flex-direction: column; }
+
+    /* Week plan: tighter */
+    .day-row { grid-template-columns: 24px 8px 1fr auto; gap: 7px; }
+    .day-workout { font-size: 0.78rem; }
+    .week-header { flex-wrap: wrap; gap: 6px; }
+    .tss-pill { margin-left: 0; }
+
+    /* Kraft: stack */
+    .bottom-grid { grid-template-columns: 1fr; }
+
+    /* Rings: smaller SVG */
+    .ring-wrap svg { width: 120px; height: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="phase-pill"><span class="dot"></span> Grundlagenblock</div>
+    <div class="header-title">Stefan</div>
+    <div class="header-sub">Coaching Dashboard · KW16</div>
+  </div>
+  <div style="text-align:right">
+    <div class="header-date">14.–20. April 2026</div>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="countdown-row">
+
+  <!-- RadRace: zwei Tage -->
+  <div class="countdown-card-main">
+    <div class="cd-main-left">
+      <div class="cd-flag">🏁</div>
+      <div class="cd-race-name">RadRace 120 · 12.–13. Juni 2026</div>
+      <div class="cd-days">
+        <div class="cd-day-row">
+          <span class="cd-day-badge badge-primary">Tag 1 · 12. Jun</span>
+          <span class="cd-day-detail">Zeitfahren · Oberjochpass · 6,81 km · 335 Hm · Ø 5%</span>
+          <span class="cd-day-focus focus-primary">Primärfokus</span>
+        </div>
+        <div class="cd-day-row">
+          <span class="cd-day-badge badge-secondary">Tag 2 · 13. Jun</span>
+          <span class="cd-day-detail">Rennen · 127 km · 2.300 Hm</span>
+          <span class="cd-day-focus focus-secondary">Sekundärfokus</span>
+        </div>
+      </div>
+    </div>
+    <div class="cd-main-right">
+      <div class="cd-item">
+        <div class="cd-num" id="rr-weeks">–</div>
+        <div class="cd-label">Wochen</div>
+      </div>
+      <div class="cd-item">
+        <div class="cd-num" id="rr-days">–</div>
+        <div class="cd-label">Tage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rosenheimer -->
+  <div class="countdown-card-secondary">
+    <div>
+      <div class="cd-sec-flag">🗺️</div>
+      <div class="cd-sec-name">Rosenheimer Radmarathon</div>
+      <div class="cd-sec-detail">28. Juni · Tour V · 197 km · 3.550 Hm · KW26</div>
+    </div>
+    <div class="cd-sec-bottom">
+      <div class="cd-item">
+        <div class="cd-sec-num" id="ro-weeks">–</div>
+        <div class="cd-sec-lbl">Wochen</div>
+      </div>
+      <div class="cd-item">
+        <div class="cd-sec-num" id="ro-days">–</div>
+        <div class="cd-sec-lbl">Tage</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PHASE BAR -->
+<div class="phase-bar">
+  <div class="phase-bar-label">Saisonverlauf bis RadRace</div>
+  <div class="phases">
+    <div class="phase done">✓ Baseline<div class="kw">KW14</div></div>
+    <div class="phase done">✓ Urlaub<div class="kw">KW15</div></div>
+    <div class="phase active">◉ Grundlage<div class="kw">KW16–17</div></div>
+    <div class="phase upcoming">HIT-Aufbau<div class="kw">KW18–21</div></div>
+    <div class="phase upcoming">TT-Spezifik<div class="kw">KW22</div></div>
+    <div class="phase upcoming">Tapering<div class="kw">KW23</div></div>
+    <div class="phase upcoming">🏁 RadRace<div class="kw">KW24</div></div>
+    <div class="phase upcoming">Erholung<div class="kw">KW25</div></div>
+    <div class="phase upcoming">🗺️ Rosen.<div class="kw">KW26</div></div>
+  </div>
+</div>
+
+<!-- 3 RINGS -->
+<div class="rings-section">
+
+  <!-- Recovery / Readiness: 86/100 → offset = 345.4*(1-0.86) ≈ 48 -->
+  <div class="ring-card">
+    <div class="ring-card-title">Recovery</div>
+    <div class="ring-wrap">
+      <svg viewBox="0 0 130 130" width="140" height="140">
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#3ecf8e" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="345.4" stroke-dashoffset="48" transform="rotate(-90 65 65)"/>
+      </svg>
+      <div class="ring-center">
+        <span class="ring-num" style="color:#3ecf8e">86</span>
+        <span class="ring-sub">/ 100</span>
+      </div>
+    </div>
+    <div class="ring-status">
+      <div class="ring-status-tag">🟢 Voll trainieren</div>
+      <div class="ring-status-sub">Puls leicht erhöht · Trend Fr: ↑</div>
+    </div>
+  </div>
+
+  <!-- CTL/ATL/TSB Dual Ring: CTL ~43/90 → offset≈180; ATL ~15/60 → offset≈193 -->
+  <div class="ring-card">
+    <div class="ring-card-title">Trainingsform</div>
+    <div class="ring-wrap">
+      <svg viewBox="0 0 130 130" width="140" height="140">
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="9"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#4f8ef7" stroke-width="9" stroke-linecap="round"
+          stroke-dasharray="345.4" stroke-dashoffset="180" transform="rotate(-90 65 65)"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="#1c1c1c" stroke-width="9"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="#f5a623" stroke-width="9" stroke-linecap="round"
+          stroke-dasharray="257.6" stroke-dashoffset="194" transform="rotate(-90 65 65)"/>
+      </svg>
+      <div class="ring-center">
+        <span class="ring-num" style="color:#3ecf8e;font-size:1.8rem">+28</span>
+        <span class="ring-sub">TSB</span>
+      </div>
+    </div>
+    <div class="dual-legend">
+      <div class="dual-legend-item">
+        <div class="dl-dot" style="background:#4f8ef7"></div>
+        <span class="dl-name">CTL · Fitness</span>
+        <span class="dl-val" style="color:#4f8ef7">43 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
+      </div>
+      <div class="dual-legend-item">
+        <div class="dl-dot" style="background:#f5a623"></div>
+        <span class="dl-name">ATL · Fatigue</span>
+        <span class="dl-val" style="color:#f5a623">15</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saisonfortschritt: KW3 von 9 = 33% → offset = 345.4*(1-0.33) ≈ 231 -->
+  <div class="ring-card">
+    <div class="ring-card-title">Saisonfortschritt</div>
+    <div class="ring-wrap">
+      <svg viewBox="0 0 130 130" width="140" height="140">
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#9b7fe8" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="345.4" stroke-dashoffset="231" transform="rotate(-90 65 65)"/>
+      </svg>
+      <div class="ring-center">
+        <span class="ring-num" style="color:#9b7fe8;font-size:1.8rem">KW3</span>
+        <span class="ring-sub">von 9</span>
+      </div>
+    </div>
+    <div class="phase-ring-info">
+      <div class="pri-main">◉ Grundlagenblock</div>
+      <div class="pri-sub">Nächste Phase: HIT-Aufbau ab KW18</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-grid">
+  <div class="week-card">
+    <div class="week-header">
+      <span class="week-title">Wochenplan</span>
+      <span class="kw-pill">KW16</span>
+      <span class="tss-pill">0 / ~493 TSS</span>
+    </div>
+
+    <div class="sick-notice">
+      🤒 <div><strong>Krankheit ab Mo 14. April</strong> – Komplette Woche ausgefallen. Kein Training. Meldung wenn Rückkehr möglich.</div>
+    </div>
+
+    <div class="day-row day-sick">
+      <span class="day-name">Mo</span>
+      <span class="day-dot dot-planned"></span>
+      <div><div class="day-workout">🚴 LIT-2h</div></div>
+      <span class="day-tss">❌ 0 TSS</span>
+    </div>
+    <div class="day-row day-sick">
+      <span class="day-name">Di</span>
+      <span class="day-dot dot-key"></span>
+      <div><div class="day-workout">🚴 SwSp 3×10min + Kraft A <span class="tag tag-key">Schlüssel</span></div></div>
+      <span class="day-tss">❌ 0 TSS</span>
+    </div>
+    <div class="day-row">
+      <span class="day-name">Mi</span>
+      <span class="day-dot dot-rest"></span>
+      <div><div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div></div>
+      <span class="day-tss" style="color:var(--subtle)">–</span>
+    </div>
+    <div class="day-row day-sick">
+      <span class="day-name">Do</span>
+      <span class="day-dot dot-run"></span>
+      <div><div class="day-workout">🏃 Lauf 2×8min + Kraft B <span class="tag tag-run">Lauf</span></div></div>
+      <span class="day-tss">❌ 0 TSS</span>
+    </div>
+    <div class="day-row day-sick">
+      <span class="day-name">Fr</span>
+      <span class="day-dot dot-ka"></span>
+      <div><div class="day-workout">🚴 KA 3×10min <span class="tag tag-ka">55rpm</span></div></div>
+      <span class="day-tss">❌ 0 TSS</span>
+    </div>
+    <div class="day-row day-sick">
+      <span class="day-name">Sa</span>
+      <span class="day-dot dot-key"></span>
+      <div><div class="day-workout">🚴 LIT-3h <span class="tag tag-key">Lange Einheit</span></div></div>
+      <span class="day-tss">❌ 0 TSS</span>
+    </div>
+    <div class="day-row day-sick">
+      <span class="day-name">So</span>
+      <span class="day-dot dot-planned"></span>
+      <div><div class="day-workout">🚴 LIT-2h</div></div>
+      <span class="day-tss">❌ 0 TSS</span>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <!-- READINESS -->
+    <div class="readiness-card">
+      <div class="section-label">Readiness Score</div>
+      <div class="readiness-score" style="color:var(--green)">86</div>
+      <div class="readiness-tag" style="color:var(--green)">🟢 Voll trainieren</div>
+      <div class="readiness-sub">Muster normal · Trend 7d: steigend ↑</div>
+      <!-- HRV 33/40 = 83% -->
+      <div class="rbar-row">
+        <span class="rbar-lbl">HRV</span>
+        <div class="rbar-track"><div class="rbar-fill" style="width:83%;background:var(--green)"></div></div>
+        <span class="rbar-val">33/40</span>
+      </div>
+      <!-- Schlaf 25/25 = 100% -->
+      <div class="rbar-row">
+        <span class="rbar-lbl">Schlaf</span>
+        <div class="rbar-track"><div class="rbar-fill" style="width:100%;background:var(--green)"></div></div>
+        <span class="rbar-val">25/25</span>
+      </div>
+      <!-- TSB 20/20 = 100% -->
+      <div class="rbar-row">
+        <span class="rbar-lbl">TSB</span>
+        <div class="rbar-track"><div class="rbar-fill" style="width:100%;background:var(--green)"></div></div>
+        <span class="rbar-val">20/20</span>
+      </div>
+      <!-- Puls 8/15 = 53% (59bpm, leicht erhöht) -->
+      <div class="rbar-row">
+        <span class="rbar-lbl">Puls</span>
+        <div class="rbar-track"><div class="rbar-fill" style="width:53%;background:var(--accent)"></div></div>
+        <span class="rbar-val">8/15</span>
+      </div>
+      <!-- Sparkline: KW15-Do=63, KW15-Fr=93, KW16-Mo=86, KW16-Di=58, KW16-Mi=77, KW16-Do=90, KW16-Fr=86 -->
+      <div class="sparkline-wrap">
+        <div class="spark-label">Readiness · 7 Tage</div>
+        <div class="sparkline">
+          <div class="spark-bar" style="height:63%;background:var(--yellow)"></div>
+          <div class="spark-bar" style="height:93%;background:var(--green)"></div>
+          <div class="spark-bar" style="height:86%;background:var(--green)"></div>
+          <div class="spark-bar" style="height:58%;background:var(--yellow)"></div>
+          <div class="spark-bar" style="height:77%;background:var(--yellow)"></div>
+          <div class="spark-bar" style="height:90%;background:var(--green)"></div>
+          <div class="spark-bar spark-today" style="height:86%;background:var(--green)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POLARISATION -->
+    <div class="polar-card">
+      <div class="section-label">Polarisation · KW15 · Rad</div>
+      <span class="pi-badge pi-ok">PI: 100% · ✅ Grüner Bereich</span>
+      <div class="polar-row">
+        <span class="polar-lbl">Z1–Z2</span>
+        <div class="polar-track"><div class="polar-fill" style="width:96%;background:#3a7a4a"></div></div>
+        <span class="polar-pct" style="color:var(--green)">96%</span>
+      </div>
+      <div class="polar-row">
+        <span class="polar-lbl">Z3</span>
+        <div class="polar-track"><div class="polar-fill" style="width:4%;background:#7a6a2a"></div></div>
+        <span class="polar-pct">4%</span>
+      </div>
+      <div class="polar-row">
+        <span class="polar-lbl">Z4–Z7</span>
+        <div class="polar-track"><div class="polar-fill" style="width:0%;background:#7040a0"></div></div>
+        <span class="polar-pct" style="color:var(--subtle)">0%</span>
+      </div>
+      <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
+    </div>
+  </div>
+</div>
+
+<!-- KRAFT (ausgefallen diese Woche) -->
+<div class="bottom-grid">
+  <div class="kraft-card">
+    <div class="kraft-card-title">Kraft A <span style="font-size:.65rem;color:var(--muted);font-weight:400">· Dienstag nach Rad · ~20 min</span></div>
+    <div class="kraft-card-sub" style="color:var(--red);opacity:0.7">❌ Ausgefallen – Krankheit</div>
+    <div class="kraft-row" style="opacity:0.35"><span>Single-Leg Glute Bridge</span><span class="kraft-sets">3 × 12 / Seite</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Banded Clamshell</span><span class="kraft-sets">3 × 20 / Seite</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Banded Monster Walk</span><span class="kraft-sets">3 × 15 Schritte</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Einbeiniges Romanian Deadlift</span><span class="kraft-sets">3 × 10 / Seite</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Plank</span><span class="kraft-sets">3 × 45 Sek.</span></div>
+  </div>
+  <div class="kraft-card">
+    <div class="kraft-card-title">Kraft B <span style="font-size:.65rem;color:var(--muted);font-weight:400">· Donnerstag nach Lauf · ~20 min</span></div>
+    <div class="kraft-card-sub" style="color:var(--red);opacity:0.7">❌ Ausgefallen – Krankheit</div>
+    <div class="kraft-row" style="opacity:0.35"><span>Side Plank</span><span class="kraft-sets">3 × 35 Sek. / Seite</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Band Pull-Apart</span><span class="kraft-sets">3 × 20</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Banded Row stehend</span><span class="kraft-sets">3 × 15</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Superman / Y-T-W</span><span class="kraft-sets">3 × 12</span></div>
+    <div class="kraft-row" style="opacity:0.35"><span>Dead Bug</span><span class="kraft-sets">3 × 10 / Seite</span></div>
+  </div>
+</div>
+
+<!-- 4-WOCHEN AUSBLICK -->
+<div class="ausblick-card">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <div class="section-label" style="margin:0">Nächste 4 Wochen</div>
+    <span class="kw-pill" style="margin-left:auto">Ausblick</span>
+  </div>
+  <table class="ausblick-table">
+    <thead>
+      <tr>
+        <th style="width:48px">KW</th>
+        <th>Thema</th>
+        <th style="text-align:right;width:70px">TSS</th>
+        <th>Schlüsseleinheiten</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(79,142,247,0.05)">
+        <td><span class="ausblick-kw" style="color:var(--accent)">KW16</span></td>
+        <td><div style="color:var(--red)">❌ Ausgefallen</div><div class="ausblick-sub">Krankheit ab Mo 14. April</div></td>
+        <td class="ausblick-tss" style="color:var(--red)">0 / ~493</td>
+        <td><div class="ausblick-sub" style="color:var(--subtle)">–</div></td>
+      </tr>
+      <tr>
+        <td><span class="ausblick-kw" style="color:var(--muted)">KW17</span></td>
+        <td><div>Grundlage Start</div><div class="ausblick-sub">SwSp + KA Einstieg · nach Rückkehr</div></td>
+        <td class="ausblick-tss">~446</td>
+        <td><div class="ausblick-sub">SwSp_3x10 · 3x10min_KA · LIT-3h</div></td>
+      </tr>
+      <tr>
+        <td><span class="ausblick-kw" style="color:var(--muted)">KW18</span></td>
+        <td><div>HIT-Einstieg</div><div class="ausblick-sub">VO2max + LC Einführung</div></td>
+        <td class="ausblick-tss">~380</td>
+        <td><div class="ausblick-sub">HIT_EB_4x4 · HIT-IE_3x6x30-30 · LC</div></td>
+      </tr>
+      <tr>
+        <td><span class="ausblick-kw" style="color:var(--muted)">KW19</span></td>
+        <td><div>HIT-Aufbau</div><div class="ausblick-sub">Volumen + Dichte steigern</div></td>
+        <td class="ausblick-tss">~390</td>
+        <td><div class="ausblick-sub">HIT_EB_4x6 · HIT-IE_3x8x40-20 · LC</div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>Stefan · Coaching Dashboard · FTP 305W (Sentiero) · KW16 · Powered by Claude Code</footer>
+
+<script>
+  // Service Worker registrieren (nur über HTTP/HTTPS, nicht file://)
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    navigator.serviceWorker.register('./sw.js');
+  }
+</script>
+
+<script>
+  (function() {
+    function daysBetween(toStr) {
+      var now = new Date();
+      now.setHours(0, 0, 0, 0);
+      var to = new Date(toStr + 'T00:00:00');
+      return Math.max(0, Math.ceil((to - now) / 86400000));
+    }
+    var rrDays = daysBetween('2026-06-12');
+    var roDays = daysBetween('2026-06-28');
+    document.getElementById('rr-days').textContent = rrDays;
+    document.getElementById('rr-weeks').textContent = Math.floor(rrDays / 7);
+    document.getElementById('ro-days').textContent = roDays;
+    document.getElementById('ro-weeks').textContent = Math.floor(roDays / 7);
+  })();
+</script>
+
+</body>
+</html>

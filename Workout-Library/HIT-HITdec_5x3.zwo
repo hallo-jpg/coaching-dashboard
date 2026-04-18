@@ -1,0 +1,57 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>HIT - HITdec (5x3min)</name>
+	<description>HITdec Training. Zeit 1h30
+Hauptmenü: 5x4 (1 min HIT_IE: 3 min HIT_EB)
+HF: ca. &gt;90% der HFmax
+Belastungsempfinden: 8-9 von 10
+Trittfrequenzvorgabe: 85-95 upm</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.53">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.23" Cadence="100">
+		</SteadyState>
+		<SteadyState Duration="120" Power="1.08">
+		</SteadyState>
+		<SteadyState Duration="360" Power="0.53">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.23" Cadence="100">
+		</SteadyState>
+		<SteadyState Duration="120" Power="1.08">
+		</SteadyState>
+		<SteadyState Duration="360" Power="0.53">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.23" Cadence="100">
+		</SteadyState>
+		<SteadyState Duration="120" Power="1.08">
+		</SteadyState>
+		<SteadyState Duration="360" Power="0.53">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.23" Cadence="100">
+		</SteadyState>
+		<SteadyState Duration="120" Power="1.08">
+		</SteadyState>
+		<SteadyState Duration="360" Power="0.53">
+		</SteadyState>
+		<SteadyState Duration="60" Power="1.23" Cadence="100">
+		</SteadyState>
+		<SteadyState Duration="120" Power="1.08">
+		</SteadyState>
+		<SteadyState Duration="360" Power="0.53">
+		</SteadyState>
+		<Cooldown Duration="780" PowerHigh="0.35" PowerLow="0.55">
+		</Cooldown>
+	</workout>
+</workout_file>

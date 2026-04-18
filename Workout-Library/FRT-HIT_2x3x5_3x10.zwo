@@ -1,0 +1,39 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>FRT - HIT 2x3x5 min VO2max_EB + 3x10 min SwSp - mind. 90g/h</name>
+	<description>HIT_EB Training. Zeit 3h30
+Hauptmenü: 3x3x5 min HIT_EB (Pause: 3 min)
+HF: ca. &gt;90% der HFmax
+Belastungsempfinden: 8-9 von 10 (letzte Serie auch 10 von 10)
+Ergänzung: 3x10min SwSp (Pause: 2 min) nach Vorbelastung.
+Trittfrequenzvorgabe: 85-110
+Die Intensität sollte so gewählt sein, dass du sie sowohl bei der ersten Wiederholung als auch bei der letzten beibehalten kannst.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.78">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.87">
+		</SteadyState>
+		<SteadyState Duration="60" Power="0.95">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="300" OnPower="1.06" OffDuration="180" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="2100" Power="0.58">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="300" OnPower="1.06" OffDuration="180" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="2100" Power="0.58">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="600" OnPower="0.84" OffDuration="120" OffPower="0.55">
+		</IntervalsT>
+		<Cooldown Duration="1380" PowerHigh="0.35" PowerLow="0.55">
+		</Cooldown>
+	</workout>
+</workout_file>

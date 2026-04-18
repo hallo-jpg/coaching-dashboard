@@ -1,0 +1,31 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>HIT - HIT_EB (4x6 min + 3x3 min)</name>
+	<description>HIT_EB Training. Zeit 2h
+Hauptmenü: 4x6 + 3x3 min HIT_EB (Pause: 2 min)
+HF: ca. &gt;90% der HFmax
+Belastungsempfinden: 8-9 von 10
+Trittfrequenzvorgabe: 85-95</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.55" PowerLow="0.35">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.75">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.53">
+		</SteadyState>
+		<IntervalsT Repeat="4" OnDuration="360" OnPower="1.06" OffDuration="150" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="600" Power="0.53">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="180" OnPower="1.12" OffDuration="150" OffPower="0.53">
+		</IntervalsT>
+		<Cooldown Duration="1530" PowerHigh="0.35" PowerLow="0.55">
+		</Cooldown>
+	</workout>
+</workout_file>

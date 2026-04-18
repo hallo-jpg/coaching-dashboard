@@ -1,0 +1,37 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>HIT - IE 3x6x30/30</name>
+	<description>HIT_IE Training. Zeit 1h30
+Hauptmenü: 3x (6x30s/30s)
+HF: ca. &gt;90% der HFmax
+Belastungsempfinden: 8-9 von 10
+Trittfrequenzvorgabe: 85-95 upm</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="30" OnPower="1.33" OffDuration="30" OffPower="0.53">
+		</IntervalsT>
+		<SteadyState Duration="180" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="30" OnPower="1.33" OffDuration="30" OffPower="0.53">
+		</IntervalsT>
+		<SteadyState Duration="180" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="6" OnDuration="30" OnPower="1.33" OffDuration="30" OffPower="0.53">
+		</IntervalsT>
+		<Cooldown Duration="2040" PowerHigh="0.43" PowerLow="0.63">
+		</Cooldown>
+	</workout>
+</workout_file>

@@ -1,0 +1,42 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>(1/2) - SwSp (3x10 min mit 30s intensivem Start)</name>
+	<description>SwSp Training. Zeit 2h0
+HF bei SwSp ca. 75% der HFmax
+Belastungsempfinden: 5-6 von 10
+Trittfrequenzvorgabe: 85-95 upm</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="120" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.75">
+		</SteadyState>
+		<SteadyState Duration="120" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.16">
+		</SteadyState>
+		<SteadyState Duration="570" Power="0.88">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.16">
+		</SteadyState>
+		<SteadyState Duration="570" Power="0.88">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="30" Power="1.16">
+		</SteadyState>
+		<SteadyState Duration="570" Power="0.88">
+		</SteadyState>
+		<SteadyState Duration="300" Power="0.55">
+		</SteadyState>
+		<SteadyState Duration="2640" Power="0.55">
+		</SteadyState>
+	</workout>
+</workout_file>

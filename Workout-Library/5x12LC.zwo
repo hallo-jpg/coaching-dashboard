@@ -1,0 +1,68 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>5x12 LC</name>
+	<description>Hier gibt es keine besondere Ernährungsvorgabe. Achte auf die TF-Angaben in den Details.
+
+Danach auf jeden Fall Recovery-Shake.</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="900" PowerHigh="0.7" PowerLow="0.5" Cadence="95">
+			<textevent timeoffset="0" message=""/>
+		</Warmup>
+		<IntervalsT Repeat="3" OnDuration="60" OnPower="1.08" OffDuration="180" OffPower="0.8" Cadence="83" CadenceResting="65" >
+			<textevent timeoffset="0" message=""/>
+			<textevent timeoffset="60" message=""/>
+			<textevent timeoffset="240" message=""/>
+			<textevent timeoffset="300" message=""/>
+			<textevent timeoffset="480" message=""/>
+			<textevent timeoffset="540" message=""/>
+		</IntervalsT>
+		<SteadyState Duration="480" Power="0.6" Cadence="95">
+			<textevent timeoffset="0" message=""/>
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="60" OnPower="1.08" OffDuration="180" OffPower="0.8" Cadence="83" CadenceResting="65" >
+			<textevent timeoffset="0" message=""/>
+			<textevent timeoffset="60" message=""/>
+			<textevent timeoffset="240" message=""/>
+			<textevent timeoffset="300" message=""/>
+			<textevent timeoffset="480" message=""/>
+			<textevent timeoffset="540" message=""/>
+		</IntervalsT>
+		<SteadyState Duration="480" Power="0.6" Cadence="95">
+			<textevent timeoffset="0" message=""/>
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="60" OnPower="1.08" OffDuration="180" OffPower="0.8" Cadence="83" CadenceResting="65" >
+			<textevent timeoffset="0" message=""/>
+			<textevent timeoffset="60" message=""/>
+			<textevent timeoffset="240" message=""/>
+			<textevent timeoffset="300" message=""/>
+			<textevent timeoffset="480" message=""/>
+			<textevent timeoffset="540" message=""/>
+		</IntervalsT>
+		<SteadyState Duration="480" Power="0.6" Cadence="95">
+			<textevent timeoffset="0" message=""/>
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="60" OnPower="1.08" OffDuration="180" OffPower="0.8" Cadence="83" CadenceResting="65" >
+			<textevent timeoffset="0" message=""/>
+			<textevent timeoffset="60" message=""/>
+			<textevent timeoffset="240" message=""/>
+			<textevent timeoffset="300" message=""/>
+			<textevent timeoffset="480" message=""/>
+			<textevent timeoffset="540" message=""/>
+		</IntervalsT>
+		<SteadyState Duration="480" Power="0.6" Cadence="95">
+			<textevent timeoffset="0" message=""/>
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="60" OnPower="1.08" OffDuration="180" OffPower="0.8" Cadence="83" CadenceResting="65" >
+			<textevent timeoffset="0" message=""/>
+			<textevent timeoffset="60" message=""/>
+			<textevent timeoffset="240" message=""/>
+			<textevent timeoffset="300" message=""/>
+			<textevent timeoffset="480" message=""/>
+			<textevent timeoffset="540" message=""/>
+		</IntervalsT>
+		<Cooldown Duration="780" PowerHigh="0.5" PowerLow="0.7" Cadence="95">
+		</Cooldown>
+	</workout>
+</workout_file>

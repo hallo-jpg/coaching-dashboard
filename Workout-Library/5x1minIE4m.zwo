@@ -1,0 +1,32 @@
+<workout_file>
+	<author>Stefan Kuerzinger (via TrainingPeaks)</author>
+	<name>5x1 min IE / 4 min Fatmax + 3x20 (2 x als KrA, 1 x SwSp)</name>
+	<description>IE + SwSp Training. Zeit 3h30
+HF bei SwSp ca. 75% der HFmax
+Belastungsempfinden: 5-6 von 10
+Trittfrequenzvorgabe bei KrA Intervallen: 50-60 rpm</description>
+	<sportType>bike</sportType>
+	<tags/>
+	<workout>
+		<Warmup Duration="1200" PowerHigh="0.65" PowerLow="0.45">
+		</Warmup>
+		<SteadyState Duration="180" Power="0.6">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.7">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.8">
+		</SteadyState>
+		<SteadyState Duration="180" Power="0.9">
+		</SteadyState>
+		<SteadyState Duration="600" Power="0.55">
+		</SteadyState>
+		<IntervalsT Repeat="5" OnDuration="60" OnPower="1.15" OffDuration="240" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="600" Power="0.45">
+		</SteadyState>
+		<IntervalsT Repeat="3" OnDuration="1200" OnPower="0.91" OffDuration="600" OffPower="0.55">
+		</IntervalsT>
+		<SteadyState Duration="2580" Power="0.6" Cadence="85">
+		</SteadyState>
+	</workout>
+</workout_file>
