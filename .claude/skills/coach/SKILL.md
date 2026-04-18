@@ -298,7 +298,7 @@ Je eine Zeile pro Woche:
 **Bei Block-Skizze-Modus** (2–4 Wochen ohne Workout-Erstellung):
 Tabelle mit: KW | Thema | Ziel-TSS | Schlüsseleinheiten (Dateiname) | Fueling-Schwerpunkt
 - Keine Workouts in intervals.icu anlegen – nur Übersicht ausgeben
-- dashboard.html Sektion "📅 Nächste 4 Wochen" aktualisieren (siehe Schritt 5)
+- Dashboard aktualisiert sich automatisch sobald `planung/kw[N].md` geschrieben wird
 
 ---
 
@@ -371,18 +371,7 @@ Der MCP-Server liest die Datei server-seitig und lädt sie als base64 hoch. Kein
 5. **`athlete/fortschritt.md`** – nur bei FTP-Update oder neuem Körpergewicht
 6. **`planung/periodisierung.md`** – nur nach expliziter Zustimmung zu Planänderungen
 7. **`CLAUDE.md`** – `Aktuelle KW` und `Wochen bis Rennen` aktualisieren
-8. **`dashboard.html`** – immer aktualisieren nach jeder Planung:
-   - Aktuelle KW + Wochenplan (alle 7 Tage mit Status-Dots)
-   - Countdown (Wochen + Tage bis RadRace)
-   - Phasenbalken (aktive Phase hervorheben)
-   - Aktuelle Metriken (HRV, CTL/ATL/TSB)
-   - Zielwattwerte + Zonen bleiben statisch bis FTP-Update
-   - **Krafteinheiten immer einfügen** – Kraft A + Kraft B mit Tag, Fokus und allen Übungen
-   - **Readiness Score** (aus `get_readiness_score`): Score-Zahl + CSS-Klasse auf `.readiness-num` (`green`/`yellow`/`red`), Muster + Trend als `.readiness-sub` Texte, 4 Komponenten-Balken (`rbar-fill` Breite = Punkte/Max in %), Sparkline als 7 `spark-bar` divs (`height` = Score/100 in %)
-   - **Polarisation** (aus `get_weekly_review.polarisation`, Vorwoche): PI-Badge-Klasse (`pi-ok` / `pi-warn` / `pi-bad`), 3 `polar-fill`-Balken je %-Wert als `style="width:X%"`, Z3 bei Drift → Klasse `polar-warn` statt `polar-mid`, Basis-Text mit Anzahl Rad-Einheiten
-   - **Nächste 4 Wochen** (Block-Skizze-Tabelle): 4 `<tr>` Zeilen mit KW, Thema, TSS Soll, Schlüsseleinheiten (Dateinamen aus workout_index.md), Fueling-Schwerpunkt; aktive Woche bekommt `background:rgba(79,142,247,0.05)` und `color:var(--accent)` — **diese Tabelle immer aktualisieren**, auch bei Ad-hoc-Anpassungen und Mid-Week Check-Ins (Ausnahme: reiner FTP-Update ohne Plankontext)
-   - **Countdown**: Wochen + Tage bis RadRace (KW24, 12. Juni) und Rosenheimer (KW26, 28. Juni) aktuell halten
-   - **Monats-Retrospektive-Karte** (nur bei Monats-Review-Modus, nach der Kraft-Sektion, vor dem Ausblick): `<div class="ausblick-card">` mit Monat + Compliance prominent, TSS-Tabelle kompakt, LIT-Balken (gleicher Stil wie `polar-card`), Coach-Prio als farbige Zeile. Karte bleibt stehen bis zur nächsten Retro. Wenn noch keine Retro existiert: Karte weglassen.
+8. **Dashboard** – **nicht manuell anfassen**. Das Dashboard unter `docs/dashboard.html` wird automatisch stündlich via GitHub Actions aus intervals.icu + `planung/kw[N].md` neu generiert. Alle Karten (Wochenplan, Readiness, Polarisation, Ernährung, Power/Lauf-Bestwerte, Ausblick) sind vollautomatisch. Der Skill muss nur die Planungsdateien (`planung/kw[N].md`) korrekt pflegen — der Rest passiert von selbst.
 
 ---
 

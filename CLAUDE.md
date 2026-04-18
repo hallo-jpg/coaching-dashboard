@@ -51,6 +51,27 @@ plane mir die nächste Woche
 | `coaching_science.md` | Wissenschaftliche Referenz (Rønnestad et al.) | Manuell |
 | `COACHING_AKTE.md` | Änderungs-Log, Coach-Notizen, Fehlen-Log | Skill |
 
+## Live Dashboard
+
+Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert — der Skill muss es **nicht manuell anfassen**.
+
+| | |
+|---|---|
+| **URL** | https://hallo-jpg.github.io/coaching-dashboard/ (Passwort-geschützt) |
+| **Rebuild** | Stündlich via GitHub Actions + manuell triggerbar |
+| **Generator** | `generate.py` + `dashboard.template.html` → `docs/dashboard.html` |
+| **Datenquellen** | intervals.icu API: Wellness, Activities, Power-Curves, Pace-Curves, Wochenplan aus `planung/kw[N].md` |
+
+**Karten im Dashboard (alle auto-generiert):**
+- Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), Wochenziel-Ring (TSS-Compliance)
+- Wochenplan (aus `planung/kw[N].md` + intervals.icu Aktivitäten)
+- Polarisations-Monitor (letzte Woche Rad-Zonen)
+- Readiness-Card mit HRV/Schlaf/TSB/Puls-Balken + Sparkline
+- Ernährungs-Karte (Tagestyp, Protein-Ziel, Pre/During/Post, Tipps)
+- Ausblick 4 Wochen (aus `planung/kw[N].md` bis kw[N+3].md)
+- Power Bestwerte All-Time (Rad, 13 Dauern)
+- Lauf Bestwerte All-Time (Tempokurven, 7 Distanzen)
+
 ## Wichtige Regeln
 
 - Alle Workouts laufen auf **%FTP** → .zwo Dateien skalieren automatisch
