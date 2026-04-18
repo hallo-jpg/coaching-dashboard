@@ -1,36 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="bgA" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d1f2d"/><stop offset="100%" stop-color="#080c0e"/>
     </linearGradient>
-    <linearGradient id="r1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#30d158"/><stop offset="100%" stop-color="#34eba8"/>
+    <linearGradient id="peak" x1="256" y1="80" x2="256" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e8f4f8"/><stop offset="60%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#4a6270"/>
     </linearGradient>
-    <linearGradient id="r2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a84ff"/><stop offset="100%" stop-color="#5e5ce6"/>
-    </linearGradient>
-    <linearGradient id="r3" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ff375f"/><stop offset="100%" stop-color="#ff6b6b"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
-  <rect width="512" height="512" rx="115" fill="url(#bgA)"/>
-  <!-- Ring 3 outer – grün (Ausdauer) -->
-  <circle cx="256" cy="256" r="168" fill="none" stroke="#1a2a1a" stroke-width="32"/>
-  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#r1)" stroke-width="32"
-    stroke-linecap="round" stroke-dasharray="1056" stroke-dashoffset="320"
-    transform="rotate(-90 256 256)" filter="url(#glow)"/>
-  <!-- Ring 2 mitte – blau (Kraft) -->
-  <circle cx="256" cy="256" r="118" fill="none" stroke="#0d1a2a" stroke-width="30"/>
-  <circle cx="256" cy="256" r="118" fill="none" stroke="url(#r2)" stroke-width="30"
-    stroke-linecap="round" stroke-dasharray="742" stroke-dashoffset="260"
-    transform="rotate(-90 256 256)" filter="url(#glow)"/>
-  <!-- Ring 1 inner – rot (Intensität) -->
-  <circle cx="256" cy="256" r="70" fill="none" stroke="#2a0d0d" stroke-width="28"/>
-  <circle cx="256" cy="256" r="70" fill="none" stroke="url(#r3)" stroke-width="28"
-    stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="180"
-    transform="rotate(-90 256 256)" filter="url(#glow)"/>
+  <rect width="512" height="512" rx="115" fill="url(#bg)"/>
+  <!-- Mountain outline with vertical gradient -->
+  <polyline points="92,400 256,80 420,400" fill="none" stroke="url(#peak)" stroke-width="22" stroke-linejoin="round"/>
+  <!-- Snow cap -->
+  <polyline points="218,152 256,80 294,152" fill="none" stroke="#e8f4f8" stroke-width="22" stroke-linejoin="round"/>
+  <!-- Baseline -->
+  <line x1="92" y1="400" x2="420" y2="400" stroke="#1c2830" stroke-width="8" stroke-linecap="round"/>
 </svg>
