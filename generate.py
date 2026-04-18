@@ -99,6 +99,30 @@ POWER_TARGETS = [
     (1200, "20 min"), (3600, "60 min"), (5400, "90 min"),
 ]
 
+PACE_TARGETS = [
+    (400,   "400 m"),
+    (800,   "800 m"),
+    (1500,  "1,5 km"),
+    (1609,  "1 Meile"),
+    (3000,  "3 km"),
+    (5000,  "5 km"),
+    (10000, "10 km"),
+]
+
+
+def _fmt_time(secs: int) -> str:
+    h, rem = divmod(int(secs), 3600)
+    m, s = divmod(rem, 60)
+    if h:
+        return f"{h}:{m:02d}:{s:02d}"
+    return f"{m}:{s:02d}"
+
+
+def _fmt_pace(secs: int, meters: int) -> str:
+    pace_secs_km = secs / (meters / 1000)
+    m, s = divmod(round(pace_secs_km), 60)
+    return f"{m}:{s:02d}/km"
+
 def get_power_bests() -> list[dict]:
     """Fetch all-time power best efforts for target durations."""
     try:
@@ -118,6 +142,35 @@ def get_power_bests() -> list[dict]:
                 results.append({"label": label, "watts": w, "wkg": w_kg})
             else:
                 results.append({"label": label, "watts": None, "wkg": None})
+        return results
+    except Exception:
+        return []
+
+
+def get_pace_bests() -> list[dict]:
+    """Fetch 1-year running pace best efforts for target distances."""
+    try:
+        dist_param = ",".join(str(m) for m, _ in PACE_TARGETS)
+        data = _api_get(f"/pace-curves?type=Run&distances={dist_param}")
+        curves = data.get("list", data if isinstance(data, list) else [])
+        curve = next((c for c in curves if c.get("id") == "1y"),
+                     curves[0] if curves else None)
+        if not curve:
+            return []
+        dist_list = curve.get("distances", curve.get("m", []))
+        secs_list = curve.get("secs", [])
+        results = []
+        for target_m, label in PACE_TARGETS:
+            if target_m in dist_list:
+                idx = dist_list.index(target_m)
+                t = secs_list[idx] if idx < len(secs_list) else None
+                results.append({
+                    "label": label,
+                    "time": _fmt_time(t) if t else None,
+                    "pace": _fmt_pace(t, target_m) if t else None,
+                })
+            else:
+                results.append({"label": label, "time": None, "pace": None})
         return results
     except Exception:
         return []
@@ -542,6 +595,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
         "outlook": outlook,
         "power_bests": get_power_bests(),
+        "pace_bests": get_pace_bests(),
         "nutrition": nutrition,
     }
 
