@@ -127,7 +127,10 @@ def get_power_bests() -> list[dict]:
     """Fetch all-time power best efforts for target durations."""
     try:
         data = _api_get("/power-curves?type=Ride")
-        curve = next((c for c in data.get("list", []) if c.get("id") == "all"), None)
+        entries = data.get("list", [])
+        curve = next((c for c in entries if c.get("id") == "all"), None)
+        if not curve:
+            curve = next((c for c in entries if c.get("id") == "1y"), None)
         if not curve:
             return []
         secs = curve.get("secs", [])
@@ -153,8 +156,9 @@ def get_pace_bests() -> list[dict]:
         dist_param = ",".join(str(m) for m, _ in PACE_TARGETS)
         data = _api_get(f"/pace-curves?type=Run&distances={dist_param}")
         curves = data.get("list", data if isinstance(data, list) else [])
-        curve = next((c for c in curves if c.get("id") == "all"),
-                     curves[0] if curves else None)
+        curve = (next((c for c in curves if c.get("id") == "all"), None)
+                 or next((c for c in curves if c.get("id") == "1y"), None)
+                 or (curves[0] if curves else None))
         if not curve:
             return []
         dist_list = curve.get("distances", curve.get("m", []))
