@@ -168,3 +168,83 @@ def parse_kw_plan(kw: int) -> dict:
 def _empty_days() -> list:
     return [{"tag": t, "workout": "", "tss_plan": 0, "status": "–",
              "rest": t == "Mi", "is_run": False} for t in DAY_ORDER]
+
+
+# ── Activity Matching & Data Building ────────────────────────────────────────
+
+SPORT_TYPE_MAP = {
+    "Ride": "ride", "VirtualRide": "ride", "GravelRide": "ride",
+    "Run":  "run",  "TrailRun": "run",
+    "WeightTraining": "strength", "Workout": "strength",
+}
+
+
+def match_activities(activities: list, plan_days: list, monday: date) -> dict:
+    """Match activities to plan days by date. Returns {tag: {tss_ist, done, activity_name}}"""
+    date_to_tag = {
+        (monday + timedelta(days=i)).isoformat(): DAY_ORDER[i]
+        for i in range(7)
+    }
+
+    matched = {
+        d["tag"]: {"tss_ist": 0, "done": False, "activity_name": ""}
+        for d in plan_days
+    }
+
+    for act in activities:
+        act_date = act.get("start_date_local", "")[:10]
+        tag = date_to_tag.get(act_date)
+        if not tag:
+            continue
+        tss = act.get("icu_training_load") or 0
+        matched[tag]["tss_ist"] += tss
+        matched[tag]["done"] = True
+        if not matched[tag]["activity_name"]:
+            matched[tag]["activity_name"] = act.get("name", "")
+
+    return matched
+
+
+def build_day_rows(plan_days: list, matched: dict) -> list:
+    """Merge plan + matched activity data into display rows."""
+    rows = []
+    for day in plan_days:
+        tag = day["tag"]
+        m = matched.get(tag, {"tss_ist": 0, "done": False, "activity_name": ""})
+        done = m["done"]
+        rest = day["rest"]
+
+        if rest:
+            dot = "dot-rest"
+        elif day["is_run"]:
+            dot = "dot-run"
+        elif "KA" in day["workout"] or "55rpm" in day["workout"].lower():
+            dot = "dot-ka"
+        elif any(k in day["workout"] for k in ["SwSp", "HIT", "EB", "Schlüssel"]):
+            dot = "dot-key"
+        else:
+            dot = "dot-planned"
+
+        if not rest and not done:
+            row_class = "day-missed" if _is_past(tag) else ""
+        else:
+            row_class = ""
+
+        rows.append({
+            "tag":           tag,
+            "workout":       day["workout"],
+            "tss_plan":      day["tss_plan"],
+            "tss_ist":       m["tss_ist"],
+            "done":          done,
+            "rest":          rest,
+            "is_run":        day["is_run"],
+            "dot_class":     dot,
+            "row_class":     row_class,
+            "activity_name": m["activity_name"],
+        })
+    return rows
+
+
+def _is_past(tag: str) -> bool:
+    today_tag = DAY_ORDER[date.today().weekday()]
+    return DAY_ORDER.index(tag) < DAY_ORDER.index(today_tag)

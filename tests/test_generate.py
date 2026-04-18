@@ -1,6 +1,6 @@
 import pytest
 from datetime import date
-from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan
+from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows
 
 
 def test_ring_offset_full():
@@ -67,3 +67,53 @@ def test_parse_kw_plan_rest_day():
 def test_parse_kw_plan_theme():
     plan = parse_kw_plan(16)
     assert "Grundlagen" in plan["theme"]
+
+
+SAMPLE_ACTIVITIES = [
+    {"start_date_local": "2026-04-13T09:00:00", "type": "Ride",
+     "icu_training_load": 71, "name": "Morgenfahrt"},
+    {"start_date_local": "2026-04-16T18:00:00", "type": "Run",
+     "icu_training_load": 48, "name": "Lauf"},
+]
+SAMPLE_PLAN_DAYS = [
+    {"tag": "Mo", "workout": "LIT-2h", "tss_plan": 74, "status": "❌",
+     "rest": False, "is_run": False},
+    {"tag": "Di", "workout": "SwSp 3×10", "tss_plan": 72, "status": "❌",
+     "rest": False, "is_run": False},
+    {"tag": "Mi", "workout": "Ruhetag", "tss_plan": 0, "status": "–",
+     "rest": True, "is_run": False},
+    {"tag": "Do", "workout": "Lauf 2×8min", "tss_plan": 50, "status": "❌",
+     "rest": False, "is_run": True},
+]
+
+
+def test_match_activities_monday():
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    assert matched["Mo"]["tss_ist"] == 71
+    assert matched["Mo"]["done"] is True
+
+
+def test_match_activities_run():
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    assert matched["Do"]["tss_ist"] == 48
+    assert matched["Do"]["done"] is True
+
+
+def test_match_activities_no_activity():
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    assert matched["Di"]["done"] is False
+    assert matched["Di"]["tss_ist"] == 0
+
+
+def test_build_day_rows():
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    rows = build_day_rows(SAMPLE_PLAN_DAYS, matched)
+    mo = rows[0]
+    assert mo["tag"] == "Mo"
+    assert mo["tss_ist"] == 71
+    assert mo["done"] is True
+    assert mo["rest"] is False
