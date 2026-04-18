@@ -329,8 +329,9 @@ def parse_kw_plan(kw: int) -> dict:
         if m:
             tss_plan = int(m.group(1))
 
-        is_run  = "🏃" in workout or "lauf" in workout.lower()
-        is_rest = workout.strip() in ("Ruhetag", "–", "")
+        is_run   = "🏃" in workout or "lauf" in workout.lower()
+        is_kraft = "💪" in workout or (workout.strip().lower().startswith("kraft") and "🚴" not in workout and "🏃" not in workout)
+        is_rest  = workout.strip() in ("Ruhetag", "–", "")
 
         # Strip emoji prefix
         workout_clean = re.sub(r"^[🚴🏃💪🧘]\s*", "", workout).strip()
@@ -342,6 +343,7 @@ def parse_kw_plan(kw: int) -> dict:
             "status":   status,
             "rest":     is_rest,
             "is_run":   is_run,
+            "is_kraft": is_kraft,
         })
 
     # Ensure all 7 days present
@@ -349,7 +351,7 @@ def parse_kw_plan(kw: int) -> dict:
     for t in DAY_ORDER:
         if t not in present:
             days.append({"tag": t, "workout": "", "tss_plan": 0,
-                         "status": "–", "rest": False, "is_run": False})
+                         "status": "–", "rest": False, "is_run": False, "is_kraft": False})
     days.sort(key=lambda d: DAY_ORDER.index(d["tag"]))
 
     return {"theme": theme, "sub": sub, "tss_plan": tss_plan_total, "days": days}
@@ -357,7 +359,7 @@ def parse_kw_plan(kw: int) -> dict:
 
 def _empty_days() -> list:
     return [{"tag": t, "workout": "", "tss_plan": 0, "status": "–",
-             "rest": t == "Mi", "is_run": False} for t in DAY_ORDER]
+             "rest": t == "Mi", "is_run": False, "is_kraft": False} for t in DAY_ORDER]
 
 
 # ── Activity Matching & Data Building ────────────────────────────────────────
@@ -408,6 +410,8 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
             dot = "dot-rest"
         elif day["is_run"]:
             dot = "dot-run"
+        elif day.get("is_kraft"):
+            dot = "dot-planned"
         elif "KA" in day["workout"] or "55rpm" in day["workout"].lower():
             dot = "dot-ka"
         elif any(k in day["workout"] for k in ["SwSp", "HIT", "EB", "Schlüssel"]):
@@ -428,6 +432,7 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
             "done":          done,
             "rest":          rest,
             "is_run":        day["is_run"],
+            "is_kraft":      day.get("is_kraft", False),
             "dot_class":     dot,
             "row_class":     row_class,
             "activity_name": m["activity_name"],
