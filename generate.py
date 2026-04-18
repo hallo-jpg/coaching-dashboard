@@ -142,6 +142,8 @@ def _activity_date(activity_id: str) -> str:
     if activity_id not in _activity_date_cache:
         try:
             data = _api_get(f"/activities/{activity_id}")
+            if isinstance(data, list):
+                data = data[0] if data else {}
             _activity_date_cache[activity_id] = data.get("start_date_local", "")[:10]
         except Exception:
             _activity_date_cache[activity_id] = ""
