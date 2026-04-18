@@ -712,8 +712,8 @@
     {% for pb in pace_bests %}
     <tr>
       <td style="font-weight:600;color:var(--text)">{{ pb.label }}</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">{% if pb.time %}{{ pb.time }}{% else %}–{% endif %}</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.pace %}{{ pb.pace }}{% else %}–{% endif %}</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.time %}{{ pb.time }}{% else %}–{% endif %}</td>
+      <td style="text-align:right;font-weight:700;color:var(--accent)">{% if pb.pace %}{{ pb.pace }}{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{{ pb.date or "" }}</td>
     </tr>
     {% endfor %}
