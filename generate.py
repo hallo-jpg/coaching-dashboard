@@ -7,6 +7,7 @@ import re
 from datetime import date, timedelta
 from pathlib import Path
 import requests
+from jinja2 import Environment, FileSystemLoader
 
 # ── Config ──────────────────────────────────────────────────────────────────
 API_KEY = os.environ.get("INTERVALS_API_KEY", "")
@@ -248,3 +249,196 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
 def _is_past(tag: str) -> bool:
     today_tag = DAY_ORDER[date.today().weekday()]
     return DAY_ORDER.index(tag) < DAY_ORDER.index(today_tag)
+
+
+# ── Season config ─────────────────────────────────────────────────────────────
+
+SEASON_PHASES = [
+    {"name": "Baseline",    "kw": "KW14",    "start_kw": 14, "end_kw": 14},
+    {"name": "Urlaub",      "kw": "KW15",    "start_kw": 15, "end_kw": 15},
+    {"name": "Grundlage",   "kw": "KW16–17", "start_kw": 16, "end_kw": 17},
+    {"name": "HIT-Aufbau",  "kw": "KW18–21", "start_kw": 18, "end_kw": 21},
+    {"name": "TT-Spezifik", "kw": "KW22",    "start_kw": 22, "end_kw": 22},
+    {"name": "Tapering",    "kw": "KW23",    "start_kw": 23, "end_kw": 23},
+    {"name": "🏁 RadRace",  "kw": "KW24",    "start_kw": 24, "end_kw": 24},
+    {"name": "Erholung",    "kw": "KW25",    "start_kw": 25, "end_kw": 25},
+    {"name": "🗺️ Rosen.",  "kw": "KW26",    "start_kw": 26, "end_kw": 26},
+]
+RACE_KW  = 24
+MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
+            "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+
+# ── Context builder ───────────────────────────────────────────────────────────
+
+def build_context(kw: int, monday: date, sunday: date) -> dict:
+    wellness   = get_wellness((monday - timedelta(7)).isoformat(), sunday.isoformat())
+    activities = get_activities(monday.isoformat(), sunday.isoformat())
+
+    today_w = wellness[-1] if wellness else {}
+    hrv     = today_w.get("hrv") or 0
+    sleep_s = today_w.get("sleepSecs") or 0
+    ctl     = today_w.get("ctl") or 0
+    atl     = today_w.get("atl") or 0
+    tsb     = round(ctl - atl, 1)
+    rhr     = today_w.get("restingHR") or 60
+
+    hrv_7d  = [w.get("hrv") or 0 for w in wellness if w.get("hrv")]
+    hrv_avg = (sum(hrv_7d) / len(hrv_7d)) if hrv_7d else hrv or 40
+
+    r_score = calc_readiness(hrv=hrv, hrv_7d_avg=hrv_avg, sleep_secs=sleep_s, tsb=tsb)
+    r_color = readiness_color(r_score)
+    r_label = readiness_label(r_score)
+    r_sub   = _readiness_sub(rhr, hrv, hrv_avg, wellness)
+
+    ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
+    atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
+    r_offset      = calc_ring_offset(r_score, 100, CIRC_OUTER)
+    season_pos    = kw - 14
+    season_total  = RACE_KW - 14 + 1
+    season_offset = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
+
+    current_phase = next(
+        (p for p in SEASON_PHASES if p["start_kw"] <= kw <= p["end_kw"]),
+        SEASON_PHASES[0]
+    )
+    next_phase_obj = next((p for p in SEASON_PHASES if p["start_kw"] > kw), None)
+    next_phase = (f"{next_phase_obj['name']} ab KW{next_phase_obj['start_kw']}"
+                  if next_phase_obj else "")
+
+    phases = [
+        {**p, "state": ("done"   if p["end_kw"] < kw else
+                         "active" if p["start_kw"] <= kw <= p["end_kw"] else
+                         "upcoming")}
+        for p in SEASON_PHASES
+    ]
+
+    plan    = parse_kw_plan(kw)
+    matched = match_activities(activities, plan["days"], monday)
+    days    = build_day_rows(plan["days"], matched)
+    tss_ist = sum(d["tss_ist"] for d in days)
+
+    sick_days   = [d for d in days if not d["done"] and not d["rest"] and _is_past(d["tag"])]
+    sick_notice = ""
+    if sick_days and all(not d["done"] for d in days if not d["rest"]):
+        sick_notice = f"Krank – alle Einheiten ausgefallen (Details in kw{kw}.md)"
+
+    def bar_color(pct: int) -> str:
+        return "var(--green)" if pct >= 75 else "var(--yellow)" if pct >= 50 else "var(--red)"
+
+    hrv_pct   = min(round(hrv / hrv_avg * 100), 100) if hrv_avg else 0
+    sleep_h   = sleep_s / 3600 if sleep_s else 0
+    sleep_pct = min(round(sleep_h / 8 * 100), 100)
+    tsb_pct   = min(max(round((tsb + 30) / 60 * 100), 0), 100)
+    rhr_base  = 50
+    pulse_pct = max(0, min(100, round((1 - (rhr - rhr_base) / 20) * 100)))
+
+    sparkline_data = wellness[-7:] if len(wellness) >= 7 else wellness
+    sparkline = []
+    for w in sparkline_data:
+        w_hrv   = w.get("hrv") or hrv_avg
+        w_sleep = w.get("sleepSecs") or 0
+        w_ctl   = w.get("ctl") or ctl
+        w_atl   = w.get("atl") or atl
+        pct = calc_readiness(hrv=w_hrv, hrv_7d_avg=hrv_avg,
+                             sleep_secs=w_sleep, tsb=w_ctl - w_atl)
+        sparkline.append({"pct": pct, "color": readiness_color(pct)})
+
+    prev_acts = get_activities(
+        (monday - timedelta(7)).isoformat(),
+        (monday - timedelta(1)).isoformat()
+    )
+    polar = _calc_polarisation(prev_acts)
+
+    outlook = []
+    for i in range(4):
+        p = parse_kw_plan(kw + i)
+        outlook.append({
+            "kw":          kw + i,
+            "theme":       p["theme"],
+            "sub":         p["sub"],
+            "tss_plan":    p["tss_plan"],
+            "tss_ist":     tss_ist if i == 0 else 0,
+            "key_workouts": _key_workouts(p["days"]),
+        })
+
+    kw_dates = (
+        f"{monday.day}.–{sunday.day}. {MONTH_DE[monday.month]} {monday.year}"
+        if monday.month == sunday.month
+        else f"{monday.day}. {MONTH_DE[monday.month]}–{sunday.day}. {MONTH_DE[sunday.month]} {monday.year}"
+    )
+
+    return {
+        "kw": kw, "kw_dates": kw_dates,
+        "phase_name": current_phase["name"], "next_phase": next_phase,
+        "phases": phases,
+        "season_kw_current": season_pos, "season_kw_total": season_total,
+        "season_offset": season_offset,
+        "readiness_score": r_score, "readiness_offset": r_offset,
+        "readiness_color": r_color, "readiness_label": r_label, "readiness_sub": r_sub,
+        "ctl": round(ctl, 1), "atl": round(atl, 1),
+        "tsb_display": f"+{round(tsb):.0f}" if tsb >= 0 else f"{round(tsb):.0f}",
+        "tsb_color": fmt_tsb_color(tsb),
+        "ctl_offset": ctl_offset, "atl_offset": atl_offset,
+        "tss_ist": tss_ist, "tss_plan": plan["tss_plan"],
+        "sick_notice": sick_notice, "days": days,
+        "hrv_pct": hrv_pct, "hrv_val": f"{round(hrv)}/40", "hrv_color": bar_color(hrv_pct),
+        "sleep_pct": sleep_pct, "sleep_val": f"{sleep_h:.1f}h", "sleep_color": bar_color(sleep_pct),
+        "tsb_bar_pct": tsb_pct, "tsb_bar_val": f"{tsb:+.0f}", "tsb_bar_color": bar_color(tsb_pct),
+        "pulse_pct": pulse_pct, "pulse_val": f"{round(rhr)} bpm", "pulse_color": bar_color(pulse_pct),
+        "sparkline": sparkline,
+        "polar_z12_pct": polar["z12"], "polar_z3_pct": polar["z3"],
+        "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
+        "outlook": outlook,
+    }
+
+def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:
+    trend = ""
+    if len(wellness) >= 2:
+        prev_hrv = wellness[-2].get("hrv") or hrv
+        diff = hrv - prev_hrv
+        trend = " · Trend: ↑" if diff > 2 else " · Trend: ↓" if diff < -2 else ""
+    rhr_note = " · Puls erhöht" if rhr > 55 else ""
+    return f"HRV {'über' if hrv > hrv_avg else 'unter'} Schnitt{rhr_note}{trend}"
+
+def _calc_polarisation(activities: list) -> dict:
+    """Estimate zone split from ride activities via icu_z1..icu_z7 fields."""
+    rides = [a for a in activities
+             if a.get("type") in ("Ride", "VirtualRide", "GravelRide")]
+    if not rides:
+        return {"z12": 80, "z3": 15, "z47": 5, "pi": 80, "ok": True}
+    totals = [0] * 8
+    for r in rides:
+        for z in range(1, 8):
+            totals[z] += r.get(f"icu_z{z}") or 0
+    total = sum(totals[1:]) or 1
+    z12 = round((totals[1] + totals[2]) / total * 100)
+    z3  = round(totals[3] / total * 100)
+    z47 = 100 - z12 - z3
+    return {"z12": z12, "z3": z3, "z47": z47, "pi": z12, "ok": z3 < 15}
+
+def _key_workouts(days: list) -> str:
+    non_lit = [d["workout"] for d in days
+               if d["workout"] and not d["rest"]
+               and not d["workout"].lower().startswith("lit")]
+    return " · ".join(non_lit[:3]) if non_lit else "–"
+
+# ── Renderer + entry point ────────────────────────────────────────────────────
+
+def render(ctx: dict) -> str:
+    env = Environment(loader=FileSystemLoader("."), autoescape=False)
+    return env.get_template("dashboard.template.html").render(**ctx)
+
+def main() -> None:
+    today          = date.today()
+    kw             = today.isocalendar()[1]
+    year           = today.isocalendar()[0]
+    monday, sunday = week_date_range(kw, year)
+    ctx  = build_context(kw=kw, monday=monday, sunday=sunday)
+    html = render(ctx)
+    out  = Path("docs/dashboard.html")
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    print(f"✓ docs/dashboard.html generated for KW{kw}")
+
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,30 @@
 import pytest
 from datetime import date
 from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows
+from unittest.mock import patch
+
+
+MOCK_WELLNESS = [
+    {"id": "2026-04-12", "hrv": 40, "sleepSecs": 25200, "ctl": 42.0, "atl": 38.0, "restingHR": 50},
+    {"id": "2026-04-13", "hrv": 43, "sleepSecs": 27000, "ctl": 42.5, "atl": 37.0, "restingHR": 49},
+    {"id": "2026-04-14", "hrv": 45, "sleepSecs": 28800, "ctl": 43.0, "atl": 36.0, "restingHR": 48},
+]
+MOCK_ACTIVITIES = []
+
+
+@patch("generate.get_wellness", return_value=MOCK_WELLNESS)
+@patch("generate.get_activities", return_value=MOCK_ACTIVITIES)
+def test_build_context_keys(mock_act, mock_well):
+    from generate import build_context
+    ctx = build_context(kw=16, monday=date(2026, 4, 13), sunday=date(2026, 4, 19))
+    required_keys = [
+        "kw", "kw_dates", "phase_name", "readiness_score", "readiness_color",
+        "ctl", "atl", "tsb_display", "ctl_offset", "atl_offset",
+        "tss_ist", "tss_plan", "days", "sparkline", "outlook",
+        "phases", "polar_z12_pct", "polar_z3_pct", "polar_z47_pct",
+    ]
+    for key in required_keys:
+        assert key in ctx, f"Missing key: {key}"
 
 
 def test_ring_offset_full():
