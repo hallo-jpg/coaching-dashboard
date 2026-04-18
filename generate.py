@@ -172,13 +172,13 @@ def get_pace_bests() -> list[dict]:
                  or (curves[0] if curves else None))
         if not curve:
             return PACE_BESTS_FALLBACK
-        dist_list = curve.get("distances", curve.get("m", []))
-        secs_list = curve.get("secs", [])
+        dist_list = curve.get("distance", curve.get("distances", curve.get("m", [])))
+        secs_list = curve.get("values", curve.get("secs", []))
         results = []
         for target_m, label in PACE_TARGETS:
-            if target_m in dist_list:
-                idx = dist_list.index(target_m)
-                t = secs_list[idx] if idx < len(secs_list) else None
+            idx = next((i for i, d in enumerate(dist_list) if abs(float(d) - target_m) < 1.0), None)
+            if idx is not None and idx < len(secs_list):
+                t = secs_list[idx]
                 results.append({
                     "label": label,
                     "time": _fmt_time(t) if t else None,
