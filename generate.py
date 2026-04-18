@@ -165,7 +165,7 @@ def get_pace_bests() -> list[dict]:
     """Fetch running pace best efforts for target distances. Falls back to known values."""
     try:
         dist_param = ",".join(str(m) for m, _ in PACE_TARGETS)
-        data = _api_get(f"/pace-curves?type=Run&distances={dist_param}")
+        data = _api_get(f"/pace-curves?type=Run&curves=all&distances={dist_param}")
         curves = data.get("list", data if isinstance(data, list) else [])
         curve = (next((c for c in curves if c.get("id") == "all"), None)
                  or next((c for c in curves if c.get("id") == "1y"), None)
