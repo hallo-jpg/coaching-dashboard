@@ -1,4 +1,4 @@
-const CACHE = 'coaching-v1';
+const CACHE = 'coaching-v2';
 const ASSETS = [
   './dashboard.html',
   './manifest.json'
@@ -18,15 +18,14 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// Cache-first: zeige gecachte Version sofort, hol im Hintergrund neue
+// Network-first: immer vom Netz laden, Cache nur als Fallback
 self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      const network = fetch(e.request).then(res => {
+    fetch(e.request)
+      .then(res => {
         if (res.ok) caches.open(CACHE).then(c => c.put(e.request, res.clone()));
         return res;
-      });
-      return cached || network;
-    })
+      })
+      .catch(() => caches.match(e.request))
   );
 });
