@@ -17,25 +17,25 @@ def get(path):
     print(f"  Status: {r.status_code}")
     return r.json()
 
-print("=== /pace-curves?type=Run&distances=... ===")
-data = get(f"/pace-curves?type=Run&distances={DISTANCES}")
-print(json.dumps(data, indent=2)[:3000])
+POWER_TARGETS = [1, 5, 30, 60, 180, 480, 1200, 3600]
 
-print("\n=== /pace-curves?type=Run (no distances filter) ===")
-data2 = get("/pace-curves?type=Run")
-# Only print top-level keys and first entry to avoid huge output
-if isinstance(data2, dict):
-    print("Top-level keys:", list(data2.keys()))
-    entries = data2.get("list", [])
-elif isinstance(data2, list):
-    entries = data2
-else:
-    entries = []
+def dump_curve_fields(label, entry, index_fields):
+    """Print parallel arrays for a given set of seconds/distance indices."""
+    print(f"\n--- {label} (id={entry.get('id')!r}) ---")
+    print(f"  keys: {list(entry.keys())}")
+    for field in list(entry.keys()):
+        val = entry.get(field)
+        if isinstance(val, list) and len(val) > 0:
+            print(f"  {field}[0:3] = {val[:3]}")
 
-print(f"Number of entries: {len(entries)}")
+print("=== POWER CURVES (Ride) ===")
+data = get("/power-curves?type=Ride")
+entries = data.get("list", []) if isinstance(data, dict) else data
 for e in entries:
-    print(f"  id={e.get('id')!r:12}  keys={list(e.keys())}")
-    secs = e.get("secs", [])
-    dists = e.get("distances", e.get("m", []))
-    print(f"    secs sample (first 5): {secs[:5]}")
-    print(f"    distances sample (first 5): {dists[:5]}")
+    dump_curve_fields("Power", e, POWER_TARGETS)
+
+print("\n=== PACE CURVES (Run, curves=all) ===")
+data2 = get(f"/pace-curves?type=Run&curves=all&distances={DISTANCES}")
+entries2 = data2.get("list", []) if isinstance(data2, dict) else data2
+for e in entries2:
+    dump_curve_fields("Pace", e, [])
