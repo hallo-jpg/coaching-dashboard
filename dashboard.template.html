@@ -575,6 +575,34 @@
   </table>
 </div>
 
+<!-- BESTWERTE -->
+{% if power_bests %}
+<div class="ausblick-card" style="margin-top:0">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <div class="section-label" style="margin:0">Power Bestwerte</div>
+    <span class="kw-pill" style="margin-left:auto">All-Time</span>
+  </div>
+  <table class="ausblick-table">
+    <thead>
+      <tr>
+        <th style="width:60px">Dauer</th>
+        <th style="text-align:right">Watt</th>
+        <th style="text-align:right">W/kg</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for pb in power_bests %}
+    <tr>
+      <td style="font-weight:600;color:var(--text)">{{ pb.label }}</td>
+      <td style="text-align:right;font-weight:700;color:var(--accent)">{% if pb.watts %}{{ pb.watts }}W{% else %}–{% endif %}</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.wkg %}{{ pb.wkg }}{% else %}–{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
 <footer>Stefan · Coaching Dashboard · FTP 305W (Sentiero) · KW{{ kw }} · Powered by Claude Code</footer>
 
 <script>

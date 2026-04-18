@@ -93,6 +93,36 @@ def get_activities(oldest: str, newest: str) -> list[dict]:
     return _api_get(f"/activities?oldest={oldest}&newest={newest}")
 
 
+POWER_TARGETS = [
+    (15, "15s"), (30, "30s"), (60, "1 min"), (180, "3 min"),
+    (360, "6 min"), (480, "8 min"), (600, "10 min"),
+    (1200, "20 min"), (3600, "60 min"), (5400, "90 min"),
+]
+
+def get_power_bests() -> list[dict]:
+    """Fetch all-time power best efforts for target durations."""
+    try:
+        data = _api_get("/power-curves?type=Ride")
+        curve = next((c for c in data.get("list", []) if c.get("id") == "1y"), None)
+        if not curve:
+            return []
+        secs = curve.get("secs", [])
+        watts = curve.get("watts", [])
+        wkg = curve.get("watts_per_kg", [])
+        results = []
+        for target_s, label in POWER_TARGETS:
+            if target_s in secs:
+                idx = secs.index(target_s)
+                w = watts[idx] if idx < len(watts) else None
+                w_kg = round(wkg[idx], 2) if wkg and idx < len(wkg) else None
+                results.append({"label": label, "watts": w, "wkg": w_kg})
+            else:
+                results.append({"label": label, "watts": None, "wkg": None})
+        return results
+    except Exception:
+        return []
+
+
 # ── KW Plan Parser ────────────────────────────────────────────────────────────
 
 DAY_ORDER = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
@@ -390,6 +420,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "polar_z12_pct": polar["z12"], "polar_z3_pct": polar["z3"],
         "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
         "outlook": outlook,
+        "power_bests": get_power_bests(),
     }
 
 def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:
