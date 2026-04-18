@@ -1,4 +1,4 @@
-const CACHE = 'coaching-v3';
+const CACHE = 'coaching-v2';
 const ASSETS = [
   './dashboard.html',
   './manifest.json'
