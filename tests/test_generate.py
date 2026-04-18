@@ -1,6 +1,6 @@
 import pytest
 from datetime import date
-from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color
+from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan
 
 
 def test_ring_offset_full():
@@ -37,3 +37,33 @@ def test_tsb_color_positive():
 
 def test_tsb_color_negative():
     assert fmt_tsb_color(-15) == "#ef4444"
+
+
+def test_parse_kw_plan_days():
+    plan = parse_kw_plan(16)
+    assert len(plan["days"]) == 7
+
+
+def test_parse_kw_plan_tss():
+    plan = parse_kw_plan(16)
+    assert plan["tss_plan"] == 493
+
+
+def test_parse_kw_plan_monday():
+    plan = parse_kw_plan(16)
+    mo = plan["days"][0]
+    assert mo["tag"] == "Mo"
+    assert mo["workout"] == "LIT-2h"
+    assert mo["tss_plan"] == 74
+
+
+def test_parse_kw_plan_rest_day():
+    plan = parse_kw_plan(16)
+    mi = plan["days"][2]
+    assert mi["tag"] == "Mi"
+    assert mi["rest"] is True
+
+
+def test_parse_kw_plan_theme():
+    plan = parse_kw_plan(16)
+    assert "Grundlagen" in plan["theme"]

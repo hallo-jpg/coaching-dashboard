@@ -3,7 +3,9 @@ from __future__ import annotations
 import os
 import base64
 import math
+import re
 from datetime import date, timedelta
+from pathlib import Path
 import requests
 
 # ── Config ──────────────────────────────────────────────────────────────────
@@ -88,3 +90,81 @@ def get_wellness(oldest: str, newest: str) -> list[dict]:
 def get_activities(oldest: str, newest: str) -> list[dict]:
     """Fetch activities for date range."""
     return _api_get(f"/activities?oldest={oldest}&newest={newest}")
+
+
+# ── KW Plan Parser ────────────────────────────────────────────────────────────
+
+DAY_ORDER = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+
+
+def parse_kw_plan(kw: int) -> dict:
+    """Parse planung/kw{kw}.md → {theme, sub, tss_plan, days: list[dict]}"""
+    path = Path(f"planung/kw{kw}.md")
+    if not path.exists():
+        return {"theme": f"KW{kw}", "sub": "", "tss_plan": 0, "days": _empty_days()}
+
+    text = path.read_text(encoding="utf-8")
+
+    # Theme from heading: "# KW16 – Grundlagenblock Start" → "Grundlagenblock Start"
+    m = re.search(r"^#\s+KW\d+\s+[-–]\s+(.+)$", text, re.MULTILINE)
+    theme = m.group(1).strip() if m else f"KW{kw}"
+
+    # Sub from "*Thema: ...*" line
+    m_sub = re.search(r"^\*Thema:\s*(.+?)\*$", text, re.MULTILINE)
+    sub = m_sub.group(1).strip() if m_sub else ""
+
+    # Parse markdown table rows
+    table_rows = re.findall(
+        r"^\|\s*(Mo|Di|Mi|Do|Fr|Sa|So|\*\*Total\*\*)\s*\|(.+)$",
+        text, re.MULTILINE
+    )
+
+    days = []
+    tss_plan_total = 0
+
+    for tag, rest in table_rows:
+        if tag == "**Total**":
+            m = re.search(r"\*\*~?(\d+)\*\*", rest)
+            if m:
+                tss_plan_total = int(m.group(1))
+            continue
+
+        cols = [c.strip() for c in rest.split("|")]
+        workout = cols[0] if len(cols) > 0 else ""
+        tss_soll_raw = cols[2] if len(cols) > 2 else "–"
+        status = cols[4] if len(cols) > 4 else "–"
+
+        tss_plan = 0
+        m = re.search(r"(\d+)", tss_soll_raw)
+        if m:
+            tss_plan = int(m.group(1))
+
+        is_run  = "🏃" in workout or "lauf" in workout.lower()
+        is_rest = workout.strip() in ("Ruhetag", "–", "")
+
+        # Strip emoji prefix
+        workout_clean = re.sub(r"^[🚴🏃💪🧘]\s*", "", workout).strip()
+
+        days.append({
+            "tag":      tag,
+            "workout":  workout_clean,
+            "tss_plan": tss_plan,
+            "status":   status,
+            "rest":     is_rest,
+            "is_run":   is_run,
+        })
+
+    # Ensure all 7 days present
+    present = {d["tag"] for d in days}
+    for t in DAY_ORDER:
+        if t not in present:
+            days.append({"tag": t, "workout": "", "tss_plan": 0,
+                         "status": "–", "rest": False, "is_run": False})
+    days.sort(key=lambda d: DAY_ORDER.index(d["tag"]))
+
+    return {"theme": theme, "sub": sub, "tss_plan": tss_plan_total, "days": days}
+
+
+def _empty_days() -> list:
+    return [{"tag": t, "workout": "", "tss_plan": 0, "status": "–",
+             "rest": t == "Mi", "is_run": False} for t in DAY_ORDER]
