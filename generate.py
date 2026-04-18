@@ -191,7 +191,7 @@ def _classify_day_type(day: dict, sick: bool) -> str:
     workout = (day.get("workout") or "").lower()
     if day.get("rest") or workout in ("–", "-", "ruhetag", ""):
         return "rest"
-    if any(k in workout for k in ("swsp", "hit", "vo2", "ka", "intervall", "eb")):
+    if any(k in workout for k in ("swsp", "hit", "vo2", "ka", "intervall", "_eb")):
         return "intense"
     if "lit" in workout and (day.get("tss_plan") or 0) >= 80:
         return "endurance_long"
