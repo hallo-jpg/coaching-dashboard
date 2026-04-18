@@ -24,6 +24,7 @@
     --green: #3ecf8e;
     --yellow: #f5a623;
     --red: #e05252;
+    --orange: #f97316;
     --purple: #9b7fe8;
     --teal: #5ab8b8;
     --text: #f0f0f0;
@@ -244,7 +245,7 @@
   .nutr-banner-muted  { background: var(--surface2); border: 1px solid var(--border); }
   .nutr-banner-text  { font-size: 0.76rem; font-weight: 700; }
   .nutr-banner-sub   { font-size: 0.6rem; color: var(--muted); margin-top: 1px; }
-  .nutr-banner-orange .nutr-banner-text { color: var(--orange, #f97316); }
+  .nutr-banner-orange .nutr-banner-text { color: var(--orange); }
   .nutr-banner-blue   .nutr-banner-text { color: var(--accent); }
   .nutr-banner-red    .nutr-banner-text { color: var(--red, #ef4444); }
   .nutr-banner-muted  .nutr-banner-text { color: var(--muted); }
@@ -272,7 +273,7 @@
   .nutr-tip:last-child { border-bottom: none; }
   .nutr-tip-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
   .nutr-tip-dot-green  { background: var(--green); }
-  .nutr-tip-dot-orange { background: var(--orange, #f97316); }
+  .nutr-tip-dot-orange { background: var(--orange); }
   .nutr-tip-dot-blue   { background: var(--accent); }
   .nutr-tip-dot-purple { background: var(--purple); }
   .nutr-tip-text { font-size: 0.66rem; color: var(--muted); line-height: 1.4; }
@@ -312,6 +313,9 @@
 
     /* Kraft: stack */
     .bottom-grid { grid-template-columns: 1fr; }
+
+    /* Nutrition timing: stack */
+    .nutr-timing { grid-template-columns: 1fr; gap: 6px; }
 
     /* Rings: smaller SVG */
     .ring-wrap svg { width: 120px; height: 120px; }
@@ -567,7 +571,7 @@
           </div>
         </div>
         <div class="nutr-protein-dist">
-          {% for line in nutrition.protein_dist %}{{ line }}<br>{% endfor %}
+          {% for line in nutrition.protein_dist %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}
         </div>
       </div>
 
@@ -591,6 +595,7 @@
       </div>
       {% endif %}
 
+      {% if nutrition.tips %}
       <div>
         {% for tip in nutrition.tips %}
         <div class="nutr-tip">
@@ -599,6 +604,7 @@
         </div>
         {% endfor %}
       </div>
+      {% endif %}
     </div>
     {% endif %}
 
