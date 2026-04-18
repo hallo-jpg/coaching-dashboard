@@ -17,25 +17,28 @@ def get(path):
     print(f"  Status: {r.status_code}")
     return r.json()
 
-POWER_TARGETS = [1, 5, 30, 60, 180, 480, 1200, 3600]
-
-def dump_curve_fields(label, entry, index_fields):
-    """Print parallel arrays for a given set of seconds/distance indices."""
-    print(f"\n--- {label} (id={entry.get('id')!r}) ---")
-    print(f"  keys: {list(entry.keys())}")
-    for field in list(entry.keys()):
-        val = entry.get(field)
-        if isinstance(val, list) and len(val) > 0:
-            print(f"  {field}[0:3] = {val[:3]}")
-
-print("=== POWER CURVES (Ride) ===")
-data = get("/power-curves?type=Ride")
+# Get one activity_id from power curves to test
+print("=== GET one activity_id from power curves ===")
+data = get("/power-curves?type=Ride&curves=all")
 entries = data.get("list", []) if isinstance(data, dict) else data
+act_id = None
 for e in entries:
-    dump_curve_fields("Power", e, POWER_TARGETS)
+    ids = e.get("activity_id", [])
+    if ids:
+        act_id = ids[0]
+        print(f"  Found activity_id: {act_id} from curve id={e.get('id')!r}")
+        break
 
-print("\n=== PACE CURVES (Run, curves=all) ===")
-data2 = get(f"/pace-curves?type=Run&curves=all&distances={DISTANCES}")
-entries2 = data2.get("list", []) if isinstance(data2, dict) else data2
-for e in entries2:
-    dump_curve_fields("Pace", e, [])
+if act_id:
+    print(f"\n=== GET /activities/{act_id} ===")
+    result = get(f"/activities/{act_id}")
+    if isinstance(result, list):
+        print(f"  Response is a LIST of {len(result)} items")
+        if result:
+            print(f"  First item keys: {list(result[0].keys())[:10]}")
+            print(f"  start_date_local: {result[0].get('start_date_local')}")
+    elif isinstance(result, dict):
+        print(f"  Response is a DICT, keys: {list(result.keys())[:10]}")
+        print(f"  start_date_local: {result.get('start_date_local')}")
+    else:
+        print(f"  Unexpected type: {type(result)}")
