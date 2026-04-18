@@ -123,6 +123,112 @@ def get_power_bests() -> list[dict]:
         return []
 
 
+ATHLETE_WEIGHT_KG = 88
+
+NUTRITION_CONFIG: dict = {
+    "intense": {
+        "protein_gkg": 2.0,
+        "banner_color": "orange",
+        "day_sub": "Intensiver Tag → Carbs + Protein hoch",
+        "pre":    {"emoji": "🍌", "title": "Leicht",   "sub": "Banane, Toast, 90min vorher"},
+        "during": {"emoji": "🍫", "title": "30–60g",   "sub": "Gel oder Riegel ab 45min"},
+        "post":   {"emoji": "🥛", "title": "3:1",      "sub": "Carbs:Protein in 30min"},
+        "tips": [
+            {"color": "green",  "text": "Anti-entzündlich: Beeren, Omega-3 — unterstützt Anpassung"},
+            {"color": "orange", "text": "Hydration: +500ml heute Abend, morgens Elektrolyte"},
+        ],
+    },
+    "endurance_long": {
+        "protein_gkg": 1.9,
+        "banner_color": "orange",
+        "day_sub": "Langer Ausdauertag → Kohlenhydrat-Fokus",
+        "pre":    {"emoji": "🍝", "title": "Carbs",    "sub": "Pasta, Reis, 2–3h vorher"},
+        "during": {"emoji": "🍫", "title": "60–90g/h", "sub": "Alle 20min essen/trinken"},
+        "post":   {"emoji": "🥛", "title": "4:1",      "sub": "Carbs:Protein in 30min"},
+        "tips": [
+            {"color": "orange", "text": "Laden: Kohlenhydratspeicher voll auffüllen"},
+            {"color": "green",  "text": "Hydration: 500ml extra + Elektrolyte vor dem Start"},
+        ],
+    },
+    "endurance_short": {
+        "protein_gkg": 1.8,
+        "banner_color": "blue",
+        "day_sub": "Kurzer Ausdauertag → Normal essen",
+        "pre":    {"emoji": "🥣", "title": "Normal",   "sub": "Haferbrei, 1–2h vorher"},
+        "during": {"emoji": "💧", "title": "Optional", "sub": "Wasser reicht bis 90min"},
+        "post":   {"emoji": "🥛", "title": "3:1",      "sub": "Carbs:Protein in 30min"},
+        "tips": [
+            {"color": "green", "text": "Protein-Fokus: Quark, Eier, Hülsenfrüchte nach dem Training"},
+            {"color": "blue",  "text": "Leichte Mahlzeiten — kein Volumen-Druck bei kurzen Einheiten"},
+        ],
+    },
+    "rest": {
+        "protein_gkg": 1.7,
+        "banner_color": "muted",
+        "day_sub": "Ruhetag → Carbs reduziert, Protein halten",
+        "pre": None, "during": None, "post": None,
+        "tips": [
+            {"color": "green",  "text": "Carbs reduzieren: Mehr Gemüse, weniger Getreide heute"},
+            {"color": "purple", "text": "Magnesium abends: 300–400mg unterstützt Schlafqualität"},
+        ],
+    },
+    "sick": {
+        "protein_gkg": 1.8,
+        "banner_color": "red",
+        "day_sub": "Krank → Leicht essen, viel trinken",
+        "pre": None, "during": None, "post": None,
+        "tips": [
+            {"color": "blue",  "text": "Leicht essen — kein Druck, Appetit bestimmt die Menge"},
+            {"color": "green", "text": "Viel trinken: Wasser, Tee, Brühe — Immunsystem unterstützen"},
+        ],
+    },
+}
+
+
+def _classify_day_type(day: dict, sick: bool) -> str:
+    if sick:
+        return "sick"
+    workout = (day.get("workout") or "").lower()
+    if day.get("rest") or workout in ("–", "-", "ruhetag", ""):
+        return "rest"
+    if any(k in workout for k in ("swsp", "hit", "vo2", "ka", "intervall", "eb")):
+        return "intense"
+    if "lit" in workout and (day.get("tss_plan") or 0) >= 80:
+        return "endurance_long"
+    return "endurance_short"
+
+
+def _protein_dist(protein_g: int) -> list:
+    def r5(x: float) -> int:
+        return round(x / 5) * 5
+    return [
+        f"~{r5(protein_g * 0.25)}g Frühstück",
+        f"~{r5(protein_g * 0.30)}g Mittagessen",
+        f"~{r5(protein_g * 0.25)}g Abendessen",
+        f"~{r5(protein_g * 0.20)}g Snacks",
+    ]
+
+
+def get_nutrition_context(today_day: dict, sick: bool) -> dict:
+    day_type = _classify_day_type(today_day, sick)
+    cfg = NUTRITION_CONFIG[day_type]
+    protein_g = round(cfg["protein_gkg"] * ATHLETE_WEIGHT_KG / 5) * 5
+    workout = today_day.get("workout") or "Ruhetag"
+    return {
+        "day_type":     day_type,
+        "day_label":    workout,
+        "day_sub":      cfg["day_sub"],
+        "banner_color": cfg["banner_color"],
+        "protein_g":    protein_g,
+        "protein_gkg":  cfg["protein_gkg"],
+        "protein_dist": _protein_dist(protein_g),
+        "pre":          cfg["pre"],
+        "during":       cfg["during"],
+        "post":         cfg["post"],
+        "tips":         cfg["tips"],
+    }
+
+
 # ── KW Plan Parser ────────────────────────────────────────────────────────────
 
 DAY_ORDER = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
