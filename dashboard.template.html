@@ -125,6 +125,7 @@
   .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
   .ring-card { background: var(--surface); border-radius: 16px; padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .ring-card-title { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .card-headline { border-left: 3px solid var(--accent); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
   .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; }
@@ -188,6 +189,7 @@
   .left-col  { display: flex; flex-direction: column; gap: 12px; }
   .right-col { display: flex; flex-direction: column; gap: 12px; }
   .section-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+  /* section-label kept for legacy; use card-headline for new cards */
 
   .readiness-card { background: var(--surface); border-radius: 16px; padding: 18px; }
   .readiness-score { font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
@@ -474,7 +476,7 @@
   <div class="left-col">
   <div class="week-card">
     <div class="week-header">
-      <span class="week-title">Wochenplan</span>
+      <span class="card-headline">Wochenplan</span>
       <span class="kw-pill">KW{{ kw }}</span>
       <span class="tss-pill">{{ tss_ist }} / ~{{ tss_plan }} TSS</span>
     </div>
@@ -507,7 +509,7 @@
 
   <!-- POLARISATION -->
   <div class="polar-card">
-    <div class="section-label">Polarisation · KW{{ kw - 1 }} · Rad</div>
+    <div class="card-headline" style="margin-bottom:14px">Polarisation · KW{{ kw - 1 }} · Rad</div>
     <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3{% endif %}</span>
     <div class="polar-row">
       <span class="polar-lbl">Z1–Z2</span>
@@ -531,7 +533,7 @@
   <div class="right-col">
     <!-- READINESS -->
     <div class="readiness-card">
-      <div class="section-label">Readiness Score</div>
+      <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
       <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
       <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
       <div class="readiness-sub">{{ readiness_sub }}</div>
@@ -569,7 +571,7 @@
     {% if nutrition %}
     <div class="nutr-card">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div class="section-label" style="margin:0">Ernährung · Heute</div>
+        <div class="card-headline">Ernährung · Heute</div>
         <span class="kw-pill" style="margin-left:auto">{{ nutrition.day_type }}</span>
       </div>
 
@@ -632,7 +634,7 @@
 <!-- 4-WOCHEN AUSBLICK -->
 <div class="ausblick-card">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="section-label" style="margin:0">Nächste 4 Wochen</div>
+    <div class="card-headline">Nächste 4 Wochen</div>
     <span class="kw-pill" style="margin-left:auto">Ausblick</span>
   </div>
   <table class="ausblick-table">
@@ -665,7 +667,7 @@
 {% if power_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="section-label" style="margin:0">🚴 Power Bestwerte</div>
+    <div class="card-headline">🚴 Power Bestwerte</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
@@ -694,7 +696,7 @@
 {% if pace_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="section-label" style="margin:0">🏃 Lauf Bestwerte</div>
+    <div class="card-headline">🏃 Lauf Bestwerte</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
