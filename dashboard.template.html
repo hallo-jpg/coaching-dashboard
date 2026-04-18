@@ -683,7 +683,7 @@
       <td style="font-weight:600;color:var(--text)">{{ pb.label }}</td>
       <td style="text-align:right;font-weight:700;color:var(--accent)">{% if pb.watts %}{{ pb.watts }}W{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.wkg %}{{ pb.wkg }}{% else %}–{% endif %}</td>
-      <td style="text-align:right;color:var(--subtle);font-size:0.65rem">{{ pb.date or "" }}</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem">{{ pb.date or "" }}</td>
     </tr>
     {% endfor %}
     </tbody>
@@ -712,7 +712,7 @@
       <td style="font-weight:600;color:var(--text)">{{ pb.label }}</td>
       <td style="text-align:right;font-weight:700;color:var(--green)">{% if pb.time %}{{ pb.time }}{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.pace %}{{ pb.pace }}{% else %}–{% endif %}</td>
-      <td style="text-align:right;color:var(--subtle);font-size:0.65rem">{{ pb.date or "" }}</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem">{{ pb.date or "" }}</td>
     </tr>
     {% endfor %}
     </tbody>
