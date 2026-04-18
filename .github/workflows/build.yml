@@ -6,6 +6,11 @@ on:
   repository_dispatch:
     types: [activity-uploaded]
   workflow_dispatch:
+    inputs:
+      debug_pace_api:
+        description: "Run pace API debug script instead of full build"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -24,7 +29,15 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Debug pace API (only when triggered manually with debug flag)
+        if: ${{ github.event.inputs.debug_pace_api == 'true' }}
+        env:
+          INTERVALS_API_KEY:    ${{ secrets.INTERVALS_API_KEY }}
+          INTERVALS_ATHLETE_ID: ${{ secrets.INTERVALS_ATHLETE_ID }}
+        run: python debug_pace_api.py
+
       - name: Generate dashboard
+        if: ${{ github.event.inputs.debug_pace_api != 'true' }}
         env:
           INTERVALS_API_KEY:    ${{ secrets.INTERVALS_API_KEY }}
           INTERVALS_ATHLETE_ID: ${{ secrets.INTERVALS_ATHLETE_ID }}
@@ -32,12 +45,14 @@ jobs:
         run: python generate.py
 
       - name: Copy static assets
+        if: ${{ github.event.inputs.debug_pace_api != 'true' }}
         run: |
           cp manifest.json docs/manifest.json
           cp sw.js docs/sw.js
           cp icon.svg docs/icon.svg
 
       - name: Commit generated files
+        if: ${{ github.event.inputs.debug_pace_api != 'true' }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
