@@ -274,7 +274,8 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     wellness   = get_wellness((monday - timedelta(7)).isoformat(), sunday.isoformat())
     activities = get_activities(monday.isoformat(), sunday.isoformat())
 
-    today_w = wellness[-1] if wellness else {}
+    today_iso = date.today().isoformat()
+    today_w = next((w for w in reversed(wellness) if w.get("id", "") <= today_iso and (w.get("ctl") or w.get("hrv"))), wellness[-1] if wellness else {})
     hrv     = today_w.get("hrv") or 0
     sleep_s = today_w.get("sleepSecs") or 0
     ctl     = today_w.get("ctl") or 0
