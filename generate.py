@@ -643,7 +643,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ctl_offset": ctl_offset, "atl_offset": atl_offset,
         "tss_ist": tss_ist, "tss_plan": plan["tss_plan"],
         "sick_notice": sick_notice, "days": days,
-        "hrv_pct": hrv_pct, "hrv_val": f"{round(hrv)}/40", "hrv_color": bar_color(hrv_pct),
+        "hrv_pct": hrv_pct, "hrv_val": f"{round(hrv)}/{round(hrv_avg)}", "hrv_color": bar_color(hrv_pct),
         "sleep_pct": sleep_pct, "sleep_val": f"{sleep_h:.1f}h", "sleep_color": bar_color(sleep_pct),
         "tsb_bar_pct": tsb_pct, "tsb_bar_val": f"{tsb:+.0f}", "tsb_bar_color": bar_color(tsb_pct),
         "pulse_pct": pulse_pct, "pulse_val": f"{round(rhr)} bpm", "pulse_color": bar_color(pulse_pct),
