@@ -256,6 +256,96 @@ Nur `planung/kw[N].md` + `COACHING_AKTE.md` + `get_readiness_score` – kein Per
 
 ---
 
+## Schritt K: Krank-Modus
+
+**Wann ausführen:** Nur wenn Modus-Erkennung Krank-Modus ergibt. Alle anderen Schritte (0a, 0, 1, 2, 3, 4, 5) überspringen — Schritt K ersetzt den gesamten normalen Ablauf.
+
+### Interview
+
+Stelle Stefan alle 3 Fragen in **einer** Nachricht:
+
+```
+Verstanden — ich kümmere mich darum. Drei kurze Fragen damit ich den Plan anpassen kann:
+
+1. Welcher Tag der Krankheit? (Tag 1 = heute begonnen, Tag 3 = seit 3 Tagen)
+2. Fieber? (ja + Temperatur wenn bekannt / nein)
+3. Symptome unterhalb des Halses? Husten, Brustenge oder Ganzkörperschmerzen — ja oder nein?
+```
+
+### Rückkehr-Logik (nach Stefans Antwort)
+
+**Neck-Check-Regel:**
+| Symptome | Rückkehrstart |
+|---|---|
+| Nur oberhalb Hals (Schnupfen, Hals) | Symptomfrei + 24h → LIT möglich |
+| Unterhalb Hals (Husten, Körperschmerzen) | Symptomfrei + 48h → Spaziergang; + 72h → LIT |
+
+**Fieber-Überlagerungsregel (immer zuerst prüfen):**
+Falls Fieber vorhanden: Fieberfrei + 24h warten, dann Neck-Check-Regel anwenden.
+
+**Verbleibende Kranktage schätzen (für Rückkehrdatum):**
+- Tag 1–2, keine Komplikationen → noch ~3–5 Tage
+- Tag 3+ → noch ~2–3 Tage
+- `rückkehrtag = heute + geschätzte_kranktage_rest + wartefrist_laut_tabelle`
+
+### Rampe nach Wiedereinstieg
+
+| Offset ab Rückkehrtag | Aktivität |
+|---|---|
+| +0 | Spaziergang / Mobilität ≤ 30 min |
+| +1 | LIT 45 min, RPE ≤ 12, HF < 130 |
+| +2 | LIT 60 min, Z1–Z2 normal |
+| +3–4 | Normales LIT-Programm |
+| +5+ | Volle Last möglich |
+
+### Plananpassung `planung/kw[N].md`
+
+1. Alle Einheiten **bis und einschließlich Tag vor Rückkehrtag** → Status `❌ Krank`, TSS Ist = 0
+2. Verbleibende Tage der Woche → durch Rampe ersetzen (Tabelle oben, ab +0)
+3. TSS-Wochenziel-Zeile in der Datei durch folgenden Text ersetzen:
+
+```markdown
+> **Krankheitswoche** — TSS-Ziel entfällt. Rückkehrtag: [Datum]. Rampe läuft bis [Datum +5].
+```
+
+4. Datei speichern (kein extra git commit — COACHING_AKTE-Commit folgt)
+
+### Sonderfall: < 3 Wochen bis nächstem Event
+
+Prüfe `tage_bis_event` aus `athlete/profil.md`:
+- Falls `tage_bis_event < 21`: Folgenden Hinweis an den Output anhängen:
+
+```
+⚠️ Taper-Phase — lieber 1 Extratag Pause als zu früh zurück.
+CTL-Verlust durch Krankheit wird nicht kompensiert; Taper läuft beim nächsten Wochenplan normal weiter.
+```
+
+### COACHING_AKTE.md Eintrag
+
+Anfügen:
+
+```markdown
+## [Datum heute] Krankheit KW[N]
+Krank ab [Datum] · [oberhalb/unterhalb Hals] · Fieber: [ja X°C / nein]
+Rückkehrtag: [Datum] · [N] Trainingstage ausgefallen
+→ Rückkehrwoche KW[N+1]: TSS-Ziel 50%, nur LIT
+```
+
+### Output im Chat
+
+```
+🤒 Krank-Modus
+
+Rückkehrdatum: [Datum] (LIT ab +1) · [Datum +5] (volle Last)
+
+Plananpassung KW[N]:
+[angepasste Wochentabelle — ❌ Krank bis Rückkehrtag, dann Rampe]
+
+Beim nächsten Wochenplan (KW[N+1]) plane ich automatisch mit 50% TSS und nur LIT.
+```
+
+---
+
 ## Schritt 3: Entscheidungslogik
 
 ### Wochenlast
