@@ -207,19 +207,8 @@ def get_power_bests() -> list[dict]:
         return []
 
 
-PACE_BESTS_FALLBACK = [
-    {"label": "400 m",   "time": "2:05",    "pace": "5:13/km"},
-    {"label": "800 m",   "time": "4:24",    "pace": "5:30/km"},
-    {"label": "1,5 km",  "time": "8:26",    "pace": "5:37/km"},
-    {"label": "1 Meile", "time": "9:09",    "pace": "5:41/km"},
-    {"label": "3 km",    "time": "18:04",   "pace": "6:01/km"},
-    {"label": "5 km",    "time": "31:08",   "pace": "6:14/km"},
-    {"label": "10 km",   "time": "1:11:28", "pace": "7:09/km"},
-]
-
-
 def get_pace_bests() -> list[dict]:
-    """Fetch running pace best efforts for target distances. Falls back to known values."""
+    """Fetch running pace best efforts for target distances. Returns [] on failure."""
     try:
         dist_param = ",".join(str(m) for m, _ in PACE_TARGETS)
         data = _api_get(f"/pace-curves?type=Run&curves=all&distances={dist_param}")
@@ -228,7 +217,7 @@ def get_pace_bests() -> list[dict]:
                  or next((c for c in curves if c.get("id") == "1y"), None)
                  or (curves[0] if curves else None))
         if not curve:
-            return PACE_BESTS_FALLBACK
+            return []
         dist_list = curve.get("distance", curve.get("distances", curve.get("m", [])))
         secs_list = curve.get("values", curve.get("secs", []))
         act_ids   = curve.get("activity_id", [])
@@ -247,10 +236,10 @@ def get_pace_bests() -> list[dict]:
             else:
                 results.append({"label": label, "time": None, "pace": None, "date": ""})
         if not any(r["time"] for r in results):
-            return PACE_BESTS_FALLBACK
+            return []
         return results
     except Exception:
-        return PACE_BESTS_FALLBACK
+        return []
 
 
 ATHLETE_WEIGHT_KG = 88
