@@ -219,6 +219,7 @@
   .polar-note { font-size: 0.58rem; color: var(--muted); margin-top: 8px; }
 
   .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
   .ausblick-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
   .ausblick-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
@@ -309,6 +310,7 @@
     .tss-pill { margin-left: 0; }
 
     .bottom-grid { grid-template-columns: 1fr; }
+    .two-col-grid { grid-template-columns: 1fr; }
 
     /* Nutrition timing: stack */
     .nutr-timing { grid-template-columns: 1fr; gap: 6px; }
@@ -674,7 +676,7 @@
 </div>
 
 <!-- CTL + TSS KACHELN -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+<div class="two-col-grid">
 
   <!-- CTL-VERLAUF 6 MONATE -->
   <div class="ausblick-card" style="margin-bottom:0">
@@ -682,7 +684,7 @@
       <div class="card-headline">CTL-Verlauf · 6 Monate</div>
     </div>
     {% if ctl_history.path %}
-    <div style="position:relative;width:100%;height:90px;margin-bottom:4px">
+    <div style="position:relative;width:100%;height:90px;margin-bottom:20px">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -704,7 +706,7 @@
         {% endfor %}
       </div>
     </div>
-    <div style="text-align:center;margin-top:18px;font-size:0.7rem;color:var(--muted)">
+    <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
       Aktuell: <span style="color:var(--green);font-weight:700">CTL {{ ctl_history.ctl_now }}</span>
     </div>
     {% else %}
