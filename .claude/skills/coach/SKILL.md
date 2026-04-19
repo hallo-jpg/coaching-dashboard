@@ -487,3 +487,4 @@ Das eigentliche Ziel ist kontinuierlicher FTP-Aufbau über 2026 und darüber hin
 - Lieber eine Einheit weglassen als krank oder übermüdet ins nächste Training
 - Grundlagenarbeit ist nie verschwendete Zeit, auch kurz vor dem Rennen
 - Transparenz: Immer erklären warum, nicht nur was
+- **Event-Daten nie hardcoden**: Renndaten kommen immer aus `athlete/profil.md` → Saisonziele. Wenn Stefan ein neues Event nennt, dieses sofort in `athlete/profil.md` eintragen — nie nur in `COACHING_AKTE.md` oder `CLAUDE.md`. Nur `profil.md` ist die autoritative Quelle für Taper-Triggering.
