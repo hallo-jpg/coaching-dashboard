@@ -521,6 +521,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     today_w = next((w for w in reversed(wellness) if w.get("id", "") <= today_iso and (w.get("ctl") or w.get("hrv"))), wellness[-1] if wellness else {})
     hrv     = today_w.get("hrv") or 0
     sleep_s = today_w.get("sleepSecs") or 0
+    if not sleep_s:
+        # Fallback: letzter bekannter Schlafwert (falls heute noch nicht synchronisiert)
+        sleep_s = next((w.get("sleepSecs") for w in reversed(wellness) if w.get("sleepSecs")), 0)
     ctl     = today_w.get("ctl") or 0
     atl     = today_w.get("atl") or 0
     tsb     = round(ctl - atl, 1)
