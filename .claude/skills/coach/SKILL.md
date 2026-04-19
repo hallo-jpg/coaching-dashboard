@@ -239,6 +239,7 @@ Lies `athlete/profil.md` → Abschnitt "Saisonziele". Identifiziere das nächste
 |---|---|
 | "KW__ planen", neue Woche, noch keine Planung vorhanden | **Wochenplanung** |
 | Einheiten-Status, TSS-Ist, Feedback zur laufenden Woche | **Wochen-Review + Weiterplanung** |
+| "krank", "Fieber", "Erkältung", "fühle mich nicht gut", "bin krank", "Halsweh", "Grippe" | **Krank-Modus** → Schritt K ausführen, alle anderen Schritte überspringen |
 | "fällt aus", "muss verschieben", Terminkonflikt | **Ad-hoc Anpassung** |
 | "neues FTP: __W" nach Test | **FTP-Update + Zonenberechnung** |
 | 7–14 Tage bis nächstem Event (aus `athlete/profil.md` Saisonziele) | **Tapering-Modus** |
