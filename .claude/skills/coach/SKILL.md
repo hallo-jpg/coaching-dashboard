@@ -223,7 +223,7 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 | Zeitraum | Volumen | Training |
 |---|---|---|
 | T-14 bis T-9 (Woche 2 vor Rennen) | −40% ggü. Vorwoche | 1× kurze HIT-Aktivierung (3×4min @ ~355W), Rest LIT |
-| T-8 bis T-2 (Rennwoche Anfang) | −55% | 1× kurze Aktivierung (20×30s @ 400W oder 3×5min @ 295W), Rest LIT |
+| T-8 bis T-7 | −55% | 1× kurze Aktivierung (20×30s @ 400W oder 3×5min @ 295W), Rest LIT |
 | T-1 (Vortag) | minimal | Aktivierun.zwo: 20–30min + kurze Intensität |
 
 **TSB-Ziel am Renntag:** +10 bis +20
@@ -237,6 +237,9 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 - Tage 1–4: Nur Easy LIT oder Pause, kein Kraft, kein HIT
 - Tage 5–10: Leicht aufbauen, LIT + optional kurze SwSp ab Tag 7 wenn HRV normal
 - Danach: Readiness-Score entscheidet über Rückkehr zu normalem Training
+
+**Sonderfall: Zwei Events nahe beieinander (≤14 Tage Abstand):**
+Wenn nach Event A das nächste Event B bereits ≤14 Tage entfernt ist, gibt es keine formelle Recovery-Phase. Stattdessen: Tage 1–4 nach Event A laufen als passive Erholung innerhalb des Tapering-Modus für Event B. HRV und Readiness entscheiden, ob T-8/T-7 Aktivierung stattfindet.
 
 ### Rennwoche-Modus (0–6 Tage bis Event)
 
