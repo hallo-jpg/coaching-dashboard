@@ -1,0 +1,255 @@
+<h2>App Icon Vorschläge</h2>
+<p class="subtitle">Klick auf ein Icon um es auszuwählen</p>
+
+<div class="cards" style="grid-template-columns: repeat(4, 1fr); gap: 20px;">
+
+  <!-- ICON 1: Puls / Waveform -->
+  <div class="card" data-choice="pulse" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <rect width="512" height="512" rx="115" fill="#0f1419"/>
+        <rect width="512" height="512" rx="115" fill="url(#grad1)" opacity="0.6"/>
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0f2a1a"/>
+            <stop offset="100%" stop-color="#0f1419"/>
+          </linearGradient>
+        </defs>
+        <!-- Puls-Linie -->
+        <polyline points="60,256 140,256 175,160 210,340 245,200 280,290 310,256 452,256"
+          fill="none" stroke="#22c55e" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Glow -->
+        <polyline points="60,256 140,256 175,160 210,340 245,200 280,290 310,256 452,256"
+          fill="none" stroke="#22c55e" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" opacity="0.15"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Puls</h3>
+      <p>EKG-Waveform · klar sportlich · grün auf dunkel</p>
+    </div>
+  </div>
+
+  <!-- ICON 2: Berg / Mountain -->
+  <div class="card" data-choice="mountain" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="mgrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0d1f2d"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="mline" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#94a3b8"/>
+            <stop offset="100%" stop-color="#e8f4f8"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#mgrad)"/>
+        <!-- Großer Berg -->
+        <polygon points="256,90 420,370 92,370" fill="none" stroke="url(#mline)" stroke-width="20" stroke-linejoin="round"/>
+        <!-- Kleiner Berg links -->
+        <polygon points="148,280 248,130 348,280" fill="#0d1f2d"/>
+        <polyline points="148,280 248,130 348,280" fill="none" stroke="#94a3b8" stroke-width="16" stroke-linejoin="round" opacity="0.5"/>
+        <!-- Schneegipfel -->
+        <polyline points="228,160 256,90 284,160" fill="none" stroke="#e8f4f8" stroke-width="18" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Gipfel</h3>
+      <p>Berg-Silhouette · Abenteuer · slate-weiß gradient</p>
+    </div>
+  </div>
+
+  <!-- ICON 3: Bolt / Power -->
+  <div class="card" data-choice="bolt" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="bgrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1a1408"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="bolt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#bgrad)"/>
+        <!-- Blitz -->
+        <polygon points="290,60 160,280 250,280 222,452 352,232 262,232 290,60"
+          fill="url(#bolt)"/>
+        <!-- Glow -->
+        <polygon points="290,60 160,280 250,280 222,452 352,232 262,232 290,60"
+          fill="#f59e0b" opacity="0.2" filter="blur(8px)"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Power</h3>
+      <p>Blitz · Energie · Amber-Gold auf dunkel</p>
+    </div>
+  </div>
+
+  <!-- ICON 4: Velocity / Speed lines -->
+  <div class="card" data-choice="velocity" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="vgrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0e0e18"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#vgrad)"/>
+        <!-- Rad-Kreis -->
+        <circle cx="256" cy="256" r="160" fill="none" stroke="#1c2830" stroke-width="3"/>
+        <!-- Speichen -->
+        <line x1="256" y1="96" x2="256" y2="416" stroke="#1c2830" stroke-width="3"/>
+        <line x1="96" y1="256" x2="416" y2="256" stroke="#1c2830" stroke-width="3"/>
+        <line x1="143" y1="143" x2="369" y2="369" stroke="#1c2830" stroke-width="3"/>
+        <line x1="369" y1="143" x2="143" y2="369" stroke="#1c2830" stroke-width="3"/>
+        <!-- Geschwindigkeits-Arc oben (fast komplett) -->
+        <circle cx="256" cy="256" r="160" fill="none" stroke="#94a3b8" stroke-width="16"
+          stroke-linecap="round" stroke-dasharray="1005" stroke-dashoffset="220" transform="rotate(-210 256 256)"/>
+        <!-- Needle -->
+        <line x1="256" y1="256" x2="355" y2="130" stroke="#22c55e" stroke-width="12" stroke-linecap="round"/>
+        <circle cx="256" cy="256" r="18" fill="#0f1419" stroke="#94a3b8" stroke-width="6"/>
+        <circle cx="256" cy="256" r="8" fill="#22c55e"/>
+        <!-- Glow tip -->
+        <circle cx="355" cy="130" r="10" fill="#22c55e" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Tachometer</h3>
+      <p>Rad + Nadel · Performance-Dashboard · slate + grün</p>
+    </div>
+  </div>
+
+  <!-- ICON 5: Minimalist S -->
+  <div class="card" data-choice="letter" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="sgrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#121a14"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#sgrad)"/>
+        <!-- Großes S aus zwei Arcs -->
+        <path d="M 320 170 A 80 80 0 1 0 192 220" fill="none" stroke="#e8f4f8" stroke-width="36" stroke-linecap="round"/>
+        <path d="M 192 292 A 80 80 0 1 0 320 342" fill="none" stroke="#22c55e" stroke-width="36" stroke-linecap="round"/>
+        <!-- Verbindungslinie -->
+        <line x1="192" y1="220" x2="320" y2="292" stroke="#94a3b8" stroke-width="36" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Monogram S</h3>
+      <p>Stefan · Arc-S · weiß + grün · brandable</p>
+    </div>
+  </div>
+
+  <!-- ICON 6: Chart bars minimal -->
+  <div class="card" data-choice="bars" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="bargrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0f1419"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#94a3b8"/>
+            <stop offset="100%" stop-color="#4a6270"/>
+          </linearGradient>
+          <linearGradient id="bar3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#22c55e"/>
+            <stop offset="100%" stop-color="#16a34a"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#bargrad)"/>
+        <!-- Balken, unterschiedliche Höhen, gerundet oben -->
+        <rect x="78" y="230" width="72" height="210" rx="12" fill="url(#bar1)"/>
+        <rect x="182" y="160" width="72" height="280" rx="12" fill="url(#bar1)" opacity="0.7"/>
+        <rect x="286" y="110" width="72" height="330" rx="12" fill="url(#bar1)" opacity="0.5"/>
+        <!-- Letzter Balken grün (aktuell/heute) -->
+        <rect x="362" y="72" width="72" height="368" rx="12" fill="url(#bar3)"/>
+        <!-- Baseline -->
+        <rect x="60" y="438" width="392" height="6" rx="3" fill="#1c2830"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Progress</h3>
+      <p>Balken-Chart · letzter Balken grün · Fortschritt sichtbar</p>
+    </div>
+  </div>
+
+  <!-- ICON 7: Cycling minimal -->
+  <div class="card" data-choice="cycling" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="cgrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0c1418"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#cgrad)"/>
+        <!-- Hinterrad -->
+        <circle cx="160" cy="320" r="110" fill="none" stroke="#1c2830" stroke-width="8"/>
+        <circle cx="160" cy="320" r="110" fill="none" stroke="#94a3b8" stroke-width="20"
+          stroke-linecap="round" stroke-dasharray="691" stroke-dashoffset="180" transform="rotate(-90 160 320)"/>
+        <circle cx="160" cy="320" r="14" fill="#94a3b8"/>
+        <!-- Vorderrad -->
+        <circle cx="370" cy="320" r="110" fill="none" stroke="#1c2830" stroke-width="8"/>
+        <circle cx="370" cy="320" r="110" fill="none" stroke="#94a3b8" stroke-width="20"
+          stroke-linecap="round" stroke-dasharray="691" stroke-dashoffset="180" transform="rotate(-90 370 320)"/>
+        <circle cx="370" cy="320" r="14" fill="#94a3b8"/>
+        <!-- Rahmen -->
+        <polyline points="160,320 240,170 310,320 160,320" fill="none" stroke="#e8f4f8" stroke-width="18" stroke-linejoin="round"/>
+        <line x1="240" y1="170" x2="370" y2="320" stroke="#e8f4f8" stroke-width="18" stroke-linecap="round"/>
+        <!-- Lenker -->
+        <line x1="310" y1="190" x2="370" y2="195" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+        <!-- Sattel -->
+        <line x1="210" y1="175" x2="270" y2="175" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+        <!-- Fahrer-Kopf -->
+        <circle cx="310" cy="135" r="28" fill="none" stroke="#22c55e" stroke-width="14"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Rad</h3>
+      <p>Fahrrad-Silhouette · primary sport · weiß + grün</p>
+    </div>
+  </div>
+
+  <!-- ICON 8: Shield / Target -->
+  <div class="card" data-choice="target" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 24px; display:flex; justify-content:center; background:#080c0e;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="tgrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0f1419"/>
+            <stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#tgrad)"/>
+        <!-- Outer ring -->
+        <circle cx="256" cy="256" r="180" fill="none" stroke="#1c2830" stroke-width="18"/>
+        <!-- Mid ring -->
+        <circle cx="256" cy="256" r="120" fill="none" stroke="#94a3b8" stroke-width="18" opacity="0.4"/>
+        <!-- Inner ring grün -->
+        <circle cx="256" cy="256" r="60" fill="none" stroke="#22c55e" stroke-width="22"/>
+        <!-- Center dot -->
+        <circle cx="256" cy="256" r="20" fill="#22c55e"/>
+        <!-- Cross hairs -->
+        <line x1="256" y1="60" x2="256" y2="136" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+        <line x1="256" y1="376" x2="256" y2="452" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+        <line x1="60" y1="256" x2="136" y2="256" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+        <line x1="376" y1="256" x2="452" y2="256" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>Ziel</h3>
+      <p>Target / Fadenkreuz · fokussiert · slate + grün</p>
+    </div>
+  </div>
+
+</div>

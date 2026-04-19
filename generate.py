@@ -649,6 +649,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                           {"workout": "", "tss_plan": 0, "rest": True})
     nutrition = get_nutrition_context(today_day_plan, bool(sick_notice))
 
+    ctl_history = get_ctl_history(weeks=26)
+    tss_weeks, tss_summary = get_tss_compliance_history(current_kw=kw, num_weeks=8)
+
     return {
         "kw": kw, "kw_dates": kw_dates,
         "phase_name": current_phase["name"], "next_phase": next_phase,
@@ -680,6 +683,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "power_bests": get_power_bests(),
         "pace_bests": get_pace_bests(),
         "nutrition": nutrition,
+        "ctl_history": ctl_history,
+        "tss_weeks": tss_weeks,
+        "tss_summary": tss_summary,
     }
 
 def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:
@@ -706,6 +712,131 @@ def _calc_polarisation(activities: list) -> dict:
     z3  = round(totals[3] / total * 100)
     z47 = 100 - z12 - z3
     return {"z12": z12, "z3": z3, "z47": z47, "pi": z12, "ok": z3 < 15, "no_data": False}
+
+def get_ctl_history(weeks: int = 26) -> dict:
+    """6-month CTL line for SVG. Returns path strings + current CTL + month labels."""
+    end = date.today()
+    start = end - timedelta(weeks=weeks)
+    try:
+        wellness = get_wellness(start.isoformat(), end.isoformat())
+    except Exception:
+        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": []}
+
+    points = [(w["id"][:10], w["ctl"]) for w in wellness if w.get("ctl") and w.get("id")]
+    if not points:
+        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": []}
+
+    ctl_values = [v for _, v in points]
+    ctl_max = max(ctl_values) * 1.1
+    ctl_now = ctl_values[-1]
+    total_days = max((end - start).days, 1)
+    SVG_W, SVG_H = 300, 80
+
+    coords = []
+    for d_str, ctl in points:
+        d = date.fromisoformat(d_str)
+        x = round((d - start).days / total_days * SVG_W, 1)
+        y = round(SVG_H - (ctl / ctl_max) * SVG_H, 1)
+        coords.append((x, y))
+
+    line_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y in coords[1:]]
+    line_path = " ".join(line_parts)
+    fill_path = line_path + f" L{SVG_W},{SVG_H} L0,{SVG_H} Z"
+
+    month_labels = []
+    cur = (start + timedelta(days=32)).replace(day=1)
+    while cur <= end:
+        x_pct = round((cur - start).days / total_days * 100, 1)
+        month_labels.append({"label": _MONTHS_DE[cur.month - 1], "x_pct": x_pct})
+        cur = (cur + timedelta(days=32)).replace(day=1)
+
+    return {
+        "path": line_path,
+        "fill_path": fill_path,
+        "ctl_now": round(ctl_now, 1),
+        "last_y": coords[-1][1],
+        "month_labels": month_labels,
+    }
+
+
+def get_tss_compliance_history(current_kw: int, num_weeks: int = 8) -> tuple:
+    """Last num_weeks weekly TSS compliance. Returns (weeks_list, summary_dict)."""
+    today = date.today()
+    year = today.isocalendar()[0]
+
+    first_kw = current_kw - (num_weeks - 1)
+    first_year = year
+    if first_kw < 1:
+        first_kw += 52
+        first_year -= 1
+    first_monday, _ = week_date_range(first_kw, first_year)
+
+    try:
+        all_acts = get_activities(first_monday.isoformat(), today.isoformat())
+    except Exception:
+        all_acts = []
+
+    tss_by_week: dict[tuple, int] = {}
+    for act in all_acts:
+        d_str = act.get("start_date_local", "")[:10]
+        if not d_str:
+            continue
+        try:
+            d = date.fromisoformat(d_str)
+            key = (d.isocalendar()[0], d.isocalendar()[1])
+            tss_by_week[key] = tss_by_week.get(key, 0) + (act.get("icu_training_load") or 0)
+        except Exception:
+            continue
+
+    weeks = []
+    for i in range(num_weeks - 1, -1, -1):
+        w_kw = current_kw - i
+        w_year = year
+        if w_kw < 1:
+            w_kw += 52
+            w_year -= 1
+        monday, _ = week_date_range(w_kw, w_year)
+        plan = parse_kw_plan(w_kw)
+        tss_plan = plan["tss_plan"]
+        is_current = w_kw == current_kw
+        is_future = monday > today
+
+        tss_ist = round(tss_by_week.get((w_year, w_kw), 0))
+        compliance = round(tss_ist / tss_plan * 100) if tss_plan > 0 and not is_future else 0
+
+        if is_current or is_future:
+            bar_color, label_color, arrow = "var(--muted)", "var(--muted)", ""
+        elif compliance > 115:
+            bar_color, label_color, arrow = "var(--yellow)", "var(--yellow)", " ↑"
+        elif compliance >= 80:
+            bar_color, label_color, arrow = "var(--green)", "var(--green)", ""
+        elif compliance >= 50:
+            bar_color, label_color, arrow = "var(--yellow)", "var(--yellow)", " ↓"
+        else:
+            bar_color, label_color, arrow = "var(--red)", "var(--red)", ""
+
+        bar_h = min(round(compliance / 115 * 100), 100) if compliance > 0 else (8 if is_current else 2)
+
+        weeks.append({
+            "kw": w_kw, "tss_plan": tss_plan, "tss_ist": tss_ist,
+            "compliance": compliance, "bar_color": bar_color,
+            "bar_height_pct": bar_h, "label_color": label_color,
+            "arrow": arrow, "is_current": is_current, "is_future": is_future,
+        })
+
+    done = [w for w in weeks if not w["is_current"] and not w["is_future"] and w["tss_plan"] > 0]
+    n = len(done) or 1
+    summary_compliance = round(sum(w["compliance"] for w in done) / n) if done else 0
+    summary = {
+        "avg_plan": round(sum(w["tss_plan"] for w in done) / n) if done else 0,
+        "avg_ist": round(sum(w["tss_ist"] for w in done) / n) if done else 0,
+        "avg_compliance": summary_compliance,
+        "avg_compliance_color": ("var(--green)" if summary_compliance >= 80
+                                 else "var(--yellow)" if summary_compliance >= 50
+                                 else "var(--red)"),
+    }
+    return weeks, summary
+
 
 def _key_workouts(days: list) -> str:
     non_lit = [d["workout"] for d in days

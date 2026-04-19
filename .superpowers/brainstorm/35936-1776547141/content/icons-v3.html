@@ -1,0 +1,181 @@
+<h2>Icon Vorschläge — Verfeinert</h2>
+<p class="subtitle">Nah am Original · Klick auf deinen Favoriten</p>
+
+<div class="cards" style="grid-template-columns: repeat(4, 1fr); gap: 20px;">
+
+  <!-- ANCHOR: Gipfel Original (Favorit) -->
+  <div class="card" data-choice="gipfel-original" onclick="toggleSelect(this)" style="outline:2px solid #22c55e;outline-offset:-2px">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="og-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0d1f2d"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="og-line" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#e8f4f8"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#og-bg)"/>
+        <polygon points="256,90 420,370 92,370" fill="none" stroke="url(#og-line)" stroke-width="20" stroke-linejoin="round"/>
+        <polygon points="148,280 248,130 348,280" fill="#0d1f2d"/>
+        <polyline points="148,280 248,130 348,280" fill="none" stroke="#94a3b8" stroke-width="16" stroke-linejoin="round" opacity="0.5"/>
+        <polyline points="228,160 256,90 284,160" fill="none" stroke="#e8f4f8" stroke-width="18" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>Gipfel ★ Original</h3><p>Dein bisheriger Favorit — als Referenz</p></div>
+  </div>
+
+  <!-- G2: Drei Ebenen — Tiefenwirkung durch Helligkeit -->
+  <div class="card" data-choice="drei-ebenen" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="g2-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0a1a26"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#g2-bg)"/>
+        <!-- Hinterster Berg (dunkelster) -->
+        <polyline points="96,390 300,130 430,390" fill="none" stroke="#2a3840" stroke-width="14" stroke-linejoin="round"/>
+        <!-- Mittlerer Berg -->
+        <polyline points="60,390 220,180 380,390" fill="none" stroke="#4a6270" stroke-width="16" stroke-linejoin="round"/>
+        <!-- Vorderster Berg (hellster, Schnee) -->
+        <polygon points="256,75 430,390 82,390" fill="#080c0e" opacity="0.01"/>
+        <polyline points="82,390 256,75 430,390" fill="none" stroke="#e8f4f8" stroke-width="20" stroke-linejoin="round"/>
+        <polyline points="224,148 256,75 288,148" fill="none" stroke="#e8f4f8" stroke-width="20" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>Drei Ebenen</h3><p>Tiefenwirkung durch Helligkeit · drei Bergketten</p></div>
+  </div>
+
+  <!-- G3: Solo Gipfel — einzelner scharfer Berg, zentriert -->
+  <div class="card" data-choice="solo-gipfel" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="g3-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0d1f2d"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="g3-stroke" x1="256" y1="80" x2="256" y2="400" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e8f4f8"/><stop offset="60%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#4a6270"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#g3-bg)"/>
+        <!-- Einzelner Berg mit vertikalem Stroke-Gradient -->
+        <polyline points="92,400 256,80 420,400" fill="none" stroke="url(#g3-stroke)" stroke-width="22" stroke-linejoin="round"/>
+        <!-- Schneegipfel -->
+        <polyline points="218,152 256,80 294,152" fill="none" stroke="#e8f4f8" stroke-width="22" stroke-linejoin="round"/>
+        <!-- Baseline -->
+        <line x1="92" y1="400" x2="420" y2="400" stroke="#1c2830" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>Solo Gipfel</h3><p>Ein Berg · vertikaler Gradient · sehr clean</p></div>
+  </div>
+
+  <!-- G4: Gipfel mit Plateau — flacher Sattel, massiver Look -->
+  <div class="card" data-choice="gipfel-plateau" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="g4-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0c1820"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="g4-line" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#e8f4f8"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#g4-bg)"/>
+        <!-- Zweiter kleinerer Berg rechts -->
+        <polyline points="280,230 400,390 500,390" fill="none" stroke="#2a3840" stroke-width="14" stroke-linejoin="round" opacity="0.8"/>
+        <!-- Hauptberg mit breitem Sattel-Gipfel -->
+        <polyline points="72,390 200,140 240,100 312,140 440,390" fill="none" stroke="url(#g4-line)" stroke-width="20" stroke-linejoin="round"/>
+        <!-- Schnee auf Sattel -->
+        <polyline points="210,138 256,95 306,138" fill="none" stroke="#e8f4f8" stroke-width="14" stroke-linejoin="round" opacity="0.9"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>Gipfel + Sattel</h3><p>Breiter Gipfelkamm · massiv · zwei Kuppen</p></div>
+  </div>
+
+  <!-- ANCHOR: Monogram S Original (Favorit) -->
+  <div class="card" data-choice="s-original" onclick="toggleSelect(this)" style="outline:2px solid #22c55e;outline-offset:-2px">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="og-s-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#121a14"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#og-s-bg)"/>
+        <path d="M 320 170 A 80 80 0 1 0 192 220" fill="none" stroke="#e8f4f8" stroke-width="36" stroke-linecap="round"/>
+        <path d="M 192 292 A 80 80 0 1 0 320 342" fill="none" stroke="#22c55e" stroke-width="36" stroke-linecap="round"/>
+        <line x1="192" y1="220" x2="320" y2="292" stroke="#94a3b8" stroke-width="36" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>Monogram S ★ Original</h3><p>Dein bisheriger Favorit — als Referenz</p></div>
+  </div>
+
+  <!-- M2: S — Gradient Stroke (smooth white → green) -->
+  <div class="card" data-choice="s-gradient" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="m2-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0f1c14"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+          <linearGradient id="m2-stroke" x1="256" y1="100" x2="256" y2="420" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e8f4f8"/>
+            <stop offset="50%" stop-color="#94a3b8"/>
+            <stop offset="100%" stop-color="#22c55e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#m2-bg)"/>
+        <!-- S als einzelner durchgehender Pfad mit Gradient-Stroke -->
+        <path d="M 330 155 Q 330 100 256 100 Q 160 100 160 190 Q 160 256 256 256 Q 352 256 352 330 Q 352 420 256 420 Q 160 420 160 360"
+          fill="none" stroke="url(#m2-stroke)" stroke-width="40" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>S — Gradient</h3><p>Fließender Übergang weiß → grün · eine Linie</p></div>
+  </div>
+
+  <!-- M3: S — Leichter, schlanker (elegantere Proportionen) -->
+  <div class="card" data-choice="s-slim" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="m3-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#121a14"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#m3-bg)"/>
+        <!-- Gleiche Arc-Konstruktion wie Original, aber schlanker (stroke-width 28) -->
+        <path d="M 310 175 A 72 72 0 1 0 198 220" fill="none" stroke="#e8f4f8" stroke-width="28" stroke-linecap="round"/>
+        <path d="M 198 292 A 72 72 0 1 0 314 337" fill="none" stroke="#22c55e" stroke-width="28" stroke-linecap="round"/>
+        <line x1="198" y1="220" x2="314" y2="292" stroke="#94a3b8" stroke-width="28" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>S — Slim</h3><p>Wie Original · schlanker Strich · eleganter</p></div>
+  </div>
+
+  <!-- M4: S mit Gipfel-Silhouette integriert -->
+  <div class="card" data-choice="s-peak" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:24px;display:flex;justify-content:center;background:#080c0e">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+        <defs>
+          <linearGradient id="m4-bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0e1c16"/><stop offset="100%" stop-color="#080c0e"/>
+          </linearGradient>
+        </defs>
+        <rect width="512" height="512" rx="115" fill="url(#m4-bg)"/>
+        <!-- S unten (grün) -->
+        <path d="M 320 200 A 80 80 0 1 0 192 252" fill="none" stroke="#e8f4f8" stroke-width="34" stroke-linecap="round"/>
+        <path d="M 192 318 A 80 80 0 1 0 320 368" fill="none" stroke="#22c55e" stroke-width="34" stroke-linecap="round"/>
+        <line x1="192" y1="252" x2="320" y2="318" stroke="#94a3b8" stroke-width="34" stroke-linecap="round"/>
+        <!-- Mini-Gipfel Akzent oben rechts -->
+        <polyline points="330,130 370,72 410,130" fill="none" stroke="#94a3b8" stroke-width="12" stroke-linejoin="round" opacity="0.6"/>
+        <polyline points="352,110 370,72 388,110" fill="none" stroke="#e8f4f8" stroke-width="10" stroke-linejoin="round" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="card-body"><h3>S + Peak</h3><p>Monogramm S mit Gipfel-Akzent · Hybrid</p></div>
+  </div>
+
+</div>

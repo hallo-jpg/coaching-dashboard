@@ -1,0 +1,202 @@
+<h2>Readiness Card — Varianten</h2>
+<p class="subtitle">Klick auf deinen Favoriten</p>
+
+<div class="cards" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+
+  <!-- VARIANT A: Aktuelle Bars → Trend-Pfeil statt Zahl/Zahl -->
+  <div class="card" data-choice="trend-arrows" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <!-- Score -->
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:16px">
+          <div style="font-size:48px;font-weight:900;color:#22c55e;line-height:1">78</div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:#22c55e">🟢 Normal trainieren</div>
+            <div style="font-size:9px;color:#4a6270;margin-top:2px">HRV über Schnitt · Trend ↑</div>
+          </div>
+        </div>
+
+        <!-- Bars mit Trend-Pfeil -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:9px;color:#4a6270;width:40px">HRV</span>
+            <div style="flex:1;height:5px;background:#1a2a35;border-radius:3px;overflow:hidden">
+              <div style="width:85%;height:100%;background:#22c55e;border-radius:3px"></div>
+            </div>
+            <span style="font-size:9px;color:#e8f4f8;width:24px;text-align:right">49</span>
+            <span style="font-size:10px;color:#22c55e;width:14px">↑</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:9px;color:#4a6270;width:40px">Schlaf</span>
+            <div style="flex:1;height:5px;background:#1a2a35;border-radius:3px;overflow:hidden">
+              <div style="width:91%;height:100%;background:#22c55e;border-radius:3px"></div>
+            </div>
+            <span style="font-size:9px;color:#e8f4f8;width:24px;text-align:right">7h15</span>
+            <span style="font-size:10px;color:#4a6270;width:14px">→</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:9px;color:#4a6270;width:40px">Form</span>
+            <div style="flex:1;height:5px;background:#1a2a35;border-radius:3px;overflow:hidden">
+              <div style="width:95%;height:100%;background:#22c55e;border-radius:3px"></div>
+            </div>
+            <span style="font-size:9px;color:#e8f4f8;width:24px;text-align:right">+28</span>
+            <span style="font-size:10px;color:#22c55e;width:14px">↑</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card-body"><h3>A — Trend-Pfeil</h3><p>Bars + aktueller Wert + ↑↓→ Trend statt Bruch · klar</p></div>
+  </div>
+
+  <!-- VARIANT B: 3 Mini-Kacheln als Score-Breakdown -->
+  <div class="card" data-choice="mini-tiles" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:14px">
+          <div style="font-size:48px;font-weight:900;color:#22c55e;line-height:1">78</div>
+          <div style="font-size:10px;font-weight:700;color:#22c55e">🟢 Normal trainieren</div>
+        </div>
+
+        <!-- 3 Mini Tiles -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(148,163,184,0.1);border-radius:10px;padding:8px;text-align:center">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">HRV</div>
+            <div style="font-size:16px;font-weight:800;color:#22c55e">49</div>
+            <div style="font-size:7px;color:#22c55e;margin-top:2px">↑ über Ø</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(148,163,184,0.1);border-radius:10px;padding:8px;text-align:center">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Schlaf</div>
+            <div style="font-size:16px;font-weight:800;color:#e8f4f8">7h15</div>
+            <div style="font-size:7px;color:#4a6270;margin-top:2px">von 8h</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(148,163,184,0.1);border-radius:10px;padding:8px;text-align:center">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">TSB</div>
+            <div style="font-size:16px;font-weight:800;color:#22c55e">+28</div>
+            <div style="font-size:7px;color:#22c55e;margin-top:2px">frisch</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card-body"><h3>B — Mini-Kacheln</h3><p>Jeder Faktor als eigene Tile mit klarer Aussage</p></div>
+  </div>
+
+  <!-- VARIANT C: Sparkline + Woche im Kontext -->
+  <div class="card" data-choice="sparkline" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px">
+          <div>
+            <div style="font-size:48px;font-weight:900;color:#22c55e;line-height:1">78</div>
+            <div style="font-size:9px;font-weight:700;color:#22c55e;margin-top:2px">🟢 Normal trainieren</div>
+          </div>
+          <!-- Sparkline (7 Tage) -->
+          <svg width="80" height="36" viewBox="0 0 80 36">
+            <polyline points="0,28 13,24 26,20 39,26 52,18 65,12 80,8"
+              fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <circle cx="80" cy="8" r="3" fill="#22c55e"/>
+          </svg>
+        </div>
+
+        <!-- Einzeilige Fact-Row -->
+        <div style="display:flex;gap:12px;padding-top:10px;border-top:1px solid rgba(148,163,184,0.08)">
+          <div style="text-align:center;flex:1">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">HRV</div>
+            <div style="font-size:13px;font-weight:800;color:#22c55e">49 <span style="font-size:9px;color:#22c55e">↑</span></div>
+          </div>
+          <div style="width:1px;background:rgba(148,163,184,0.08)"></div>
+          <div style="text-align:center;flex:1">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">Schlaf</div>
+            <div style="font-size:13px;font-weight:800;color:#e8f4f8">7h15</div>
+          </div>
+          <div style="width:1px;background:rgba(148,163,184,0.08)"></div>
+          <div style="text-align:center;flex:1">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">TSB</div>
+            <div style="font-size:13px;font-weight:800;color:#22c55e">+28</div>
+          </div>
+          <div style="width:1px;background:rgba(148,163,184,0.08)"></div>
+          <div style="text-align:center;flex:1">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">Puls</div>
+            <div style="font-size:13px;font-weight:800;color:#e8f4f8">57</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body"><h3>C — Sparkline</h3><p>7-Tage HRV-Verlauf sichtbar · Fakten in einer Zeile</p></div>
+  </div>
+
+  <!-- VARIANT D: Whoop-inspiriert — großer Ring + Faktoren -->
+  <div class="card" data-choice="ring-breakdown" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <div style="display:flex;gap:16px;align-items:center">
+
+          <!-- Ring -->
+          <div style="position:relative;flex-shrink:0">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#1a2a35" stroke-width="8"/>
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#22c55e" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="47"
+                transform="rotate(-90 40 40)"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-size:22px;font-weight:900;color:#22c55e;line-height:1">78</div>
+              <div style="font-size:6px;color:#4a6270;letter-spacing:0.5px">/ 100</div>
+            </div>
+          </div>
+
+          <!-- Faktoren -->
+          <div style="flex:1;display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:9px;font-weight:700;color:#22c55e;margin-bottom:2px">🟢 Normal trainieren</div>
+
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:8px;color:#4a6270;width:36px">HRV</span>
+              <div style="flex:1;height:4px;background:#1a2a35;border-radius:2px;overflow:hidden">
+                <div style="width:85%;height:100%;background:#22c55e"></div>
+              </div>
+              <span style="font-size:8px;color:#22c55e;width:18px;text-align:right">↑49</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:8px;color:#4a6270;width:36px">Schlaf</span>
+              <div style="flex:1;height:4px;background:#1a2a35;border-radius:2px;overflow:hidden">
+                <div style="width:91%;height:100%;background:#94a3b8"></div>
+              </div>
+              <span style="font-size:8px;color:#e8f4f8;width:18px;text-align:right">7h</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:8px;color:#4a6270;width:36px">TSB</span>
+              <div style="flex:1;height:4px;background:#1a2a35;border-radius:2px;overflow:hidden">
+                <div style="width:95%;height:100%;background:#22c55e"></div>
+              </div>
+              <span style="font-size:8px;color:#22c55e;width:18px;text-align:right">+28</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body"><h3>D — Ring + Breakdown</h3><p>Score als Ring · Faktoren rechts daneben · Whoop-Stil</p></div>
+  </div>
+
+</div>

@@ -1,0 +1,178 @@
+<h2>Neue Dashboard-Kacheln — Entwurf v2</h2>
+<p class="subtitle">CTL-Verlauf (6 Monate) + TSS-Compliance (8 Wochen) · Klick zum Auswählen</p>
+
+<div class="cards" style="grid-template-columns:1fr 1fr;gap:24px">
+
+  <!-- CTL VERLAUF 6 MONATE - nur Linie -->
+  <div class="card" data-choice="ctl-line-card" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px">CTL-VERLAUF · 6 Monate</div>
+        </div>
+
+        <!-- Chart Area -->
+        <div style="position:relative;height:110px;margin-bottom:4px">
+          <!-- Y-Achse Labels -->
+          <div style="position:absolute;left:0;top:0;bottom:14px;display:flex;flex-direction:column;justify-content:space-between">
+            <span style="font-size:7px;color:#4a6270">80</span>
+            <span style="font-size:7px;color:#4a6270">60</span>
+            <span style="font-size:7px;color:#4a6270">40</span>
+            <span style="font-size:7px;color:#4a6270">20</span>
+          </div>
+
+          <!-- Chart -->
+          <div style="position:absolute;left:22px;right:0;top:0;bottom:14px">
+            <svg width="100%" height="100%" viewBox="0 0 300 90" preserveAspectRatio="none">
+              <!-- Grid lines -->
+              <line x1="0" y1="22" x2="300" y2="22" stroke="#1c2830" stroke-width="0.5"/>
+              <line x1="0" y1="45" x2="300" y2="45" stroke="#1c2830" stroke-width="0.5"/>
+              <line x1="0" y1="67" x2="300" y2="67" stroke="#1c2830" stroke-width="0.5"/>
+
+              <!-- CTL Fläche (Gradient Fill) -->
+              <defs>
+                <linearGradient id="ctlGrad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#22c55e" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,82 L25,76 L50,70 L75,63 L100,56 L125,50 L150,54 L175,47 L200,40 L225,33 L250,27 L275,22 L300,26 L300,90 L0,90 Z"
+                fill="url(#ctlGrad2)"/>
+              <!-- CTL Linie -->
+              <path d="M0,82 L25,76 L50,70 L75,63 L100,56 L125,50 L150,54 L175,47 L200,40 L225,33 L250,27 L275,22 L300,26"
+                fill="none" stroke="#22c55e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+
+              <!-- Heute-Punkt -->
+              <circle cx="300" cy="26" r="3" fill="#22c55e"/>
+              <circle cx="300" cy="26" r="5" fill="#22c55e" opacity="0.2"/>
+            </svg>
+
+            <!-- X-Achse Monate -->
+            <div style="position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between">
+              <span style="font-size:6px;color:#4a6270">Okt</span>
+              <span style="font-size:6px;color:#4a6270">Nov</span>
+              <span style="font-size:6px;color:#4a6270">Dez</span>
+              <span style="font-size:6px;color:#4a6270">Jan</span>
+              <span style="font-size:6px;color:#4a6270">Feb</span>
+              <span style="font-size:6px;color:#4a6270">Mär</span>
+              <span style="font-size:6px;color:#e8f4f8">Apr ◀</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTL aktuell, zentriert -->
+        <div style="text-align:center;padding-top:6px">
+          <span style="font-size:8px;color:#4a6270">Aktuell: </span>
+          <span style="font-size:8px;color:#22c55e;font-weight:700">CTL 36</span>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>CTL-Verlauf · 6 Monate</h3>
+      <p>Fitness-Aufbau als Linienchart über 6 Monate. Grüner Gradient zeigt Trend auf einen Blick. Daten täglich aus intervals.icu wellness API.</p>
+    </div>
+  </div>
+
+  <!-- TSS VERLAUF 8 WOCHEN mit TSS-Zahlen -->
+  <div class="card" data-choice="tss-history-card" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px">TSS-COMPLIANCE · 8 Wochen</div>
+          <span style="font-size:8px;color:#22c55e;font-weight:700">Ø 84%</span>
+        </div>
+
+        <!-- Balken-Chart mit TSS-Zahlen -->
+        <div style="display:flex;align-items:flex-end;gap:5px;height:100px;margin-bottom:4px;padding-bottom:14px;position:relative">
+
+          <!-- KW10 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#94a3b8;margin-bottom:2px;opacity:0.7">391</span>
+            <div style="width:100%;height:88%;background:#22c55e;border-radius:3px 3px 0 0;opacity:0.5"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#4a6270;transform:translateY(14px)">KW10</span>
+          </div>
+
+          <!-- KW11 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#94a3b8;margin-bottom:2px;opacity:0.7">428</span>
+            <div style="width:100%;height:95%;background:#22c55e;border-radius:3px 3px 0 0;opacity:0.5"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#4a6270;transform:translateY(14px)">KW11</span>
+          </div>
+
+          <!-- KW12 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#94a3b8;margin-bottom:2px;opacity:0.7">362</span>
+            <div style="width:100%;height:78%;background:#22c55e;border-radius:3px 3px 0 0;opacity:0.5"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#4a6270;transform:translateY(14px)">KW12</span>
+          </div>
+
+          <!-- KW13 (118% — Überbelastung) -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#f59e0b;margin-bottom:2px;font-weight:700">496 ↑</span>
+            <div style="width:100%;height:100%;background:#f59e0b;border-radius:3px 3px 0 0;opacity:0.8"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#f59e0b;transform:translateY(14px)">KW13</span>
+          </div>
+
+          <!-- KW14 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#22c55e;margin-bottom:2px;font-weight:700">335</span>
+            <div style="width:100%;height:72%;background:#22c55e;border-radius:3px 3px 0 0;opacity:0.9"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#4a6270;transform:translateY(14px)">KW14</span>
+          </div>
+
+          <!-- KW15 -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#f59e0b;margin-bottom:2px;font-weight:700">256 ↓</span>
+            <div style="width:100%;height:55%;background:#f59e0b;border-radius:3px 3px 0 0;opacity:0.9"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#f59e0b;transform:translateY(14px)">KW15</span>
+          </div>
+
+          <!-- KW16 (Krankheit) -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#ef4444;margin-bottom:2px;font-weight:700">🤒 18</span>
+            <div style="width:100%;height:8%;background:#ef4444;border-radius:3px 3px 0 0;opacity:0.9"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#ef4444;transform:translateY(14px)">KW16</span>
+          </div>
+
+          <!-- KW17 (laufend) -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+            <span style="font-size:6px;color:#94a3b8;margin-bottom:2px">▶ 92</span>
+            <div style="width:100%;height:20%;background:#94a3b8;border-radius:3px 3px 0 0;opacity:0.6"></div>
+            <span style="position:absolute;bottom:0;font-size:6px;color:#e8f4f8;transform:translateY(14px)">KW17</span>
+          </div>
+
+        </div>
+
+        <!-- Plan vs Ist -->
+        <div style="display:flex;gap:8px;padding-top:8px;border-top:1px solid rgba(148,163,184,0.08);margin-top:6px">
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">Ø Plan/Woche</div>
+            <div style="font-size:13px;font-weight:800;color:#e8f4f8">420 TSS</div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">Ø Ist/Woche</div>
+            <div style="font-size:13px;font-weight:800;color:#22c55e">353 TSS</div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">Compliance</div>
+            <div style="font-size:13px;font-weight:800;color:#22c55e">84%</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>TSS-Compliance · 8 Wochen</h3>
+      <p>Grün ≥80%, Orange 50–80%, Rot &lt;50%. TSS-Ist-Wert über jedem Balken. Aktuell laufende Woche grau mit ▶. Schnitt Plan/Ist/Compliance unten.</p>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:16px;padding:12px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:10px;font-size:10px;color:#4a6270">
+  ℹ️ <strong style="color:#e8f4f8">Datenbasis:</strong> CTL-Verlauf aus intervals.icu Wellness-API (täglich). TSS-Compliance aus Activities-API (TSS pro Aktivität, summiert pro Woche) vs. Wochenplan aus <code>planung/kw[N].md</code>. Kein neuer API-Endpunkt nötig.
+</div>

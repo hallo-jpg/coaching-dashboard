@@ -1,0 +1,142 @@
+<h2>Card-Stile — Gradient &amp; Finish</h2>
+<p class="subtitle">Klick auf deinen Favoriten</p>
+
+<div class="cards" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+
+  <!-- STYLE A: Subtle radial highlight (Linear.app style) -->
+  <div class="card" data-choice="radial-highlight" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:20px;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;gap:12px">
+
+        <div style="
+          background: radial-gradient(ellipse at top left, #1a2e3a 0%, #0f1e28 60%, #0c1820 100%);
+          border: 1px solid #1c2830;
+          border-radius: 14px;
+          padding: 16px;
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">RECOVERY</div>
+          <div style="font-size:32px;font-weight:900;color:#22c55e">78</div>
+          <div style="font-size:9px;color:#4a6270;margin-top:4px">🟢 Normal trainieren</div>
+        </div>
+
+        <div style="
+          background: radial-gradient(ellipse at top left, #1a2e3a 0%, #0f1e28 60%, #0c1820 100%);
+          border: 1px solid #1c2830;
+          border-radius: 14px;
+          padding: 16px;
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">WOCHENPLAN</div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid #1c2830;color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Mo</span><span>🚴 LIT-2h</span><span style="color:#22c55e">✅ 98 TSS</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Di</span><span>🚴 SwSp 3×10</span><span style="color:#ef4444">❌ 0 TSS</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>A — Radial Highlight</h3><p>Subtiler Lichtschein oben-links · Linear.app-Stil</p></div>
+  </div>
+
+  <!-- STYLE B: Top accent glow (Vercel/GitHub style) -->
+  <div class="card" data-choice="top-glow" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:20px;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;gap:12px">
+
+        <div style="
+          background: #0f1e28;
+          border: 1px solid #1c2830;
+          border-top: 1px solid #2a4a5a;
+          border-radius: 14px;
+          padding: 16px;
+          box-shadow: 0 -1px 0 0 rgba(148,163,184,0.15) inset;
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">RECOVERY</div>
+          <div style="font-size:32px;font-weight:900;color:#22c55e">78</div>
+          <div style="font-size:9px;color:#4a6270;margin-top:4px">🟢 Normal trainieren</div>
+        </div>
+
+        <div style="
+          background: #0f1e28;
+          border: 1px solid #1c2830;
+          border-top: 1px solid #2a4a5a;
+          border-radius: 14px;
+          padding: 16px;
+          box-shadow: 0 -1px 0 0 rgba(148,163,184,0.15) inset;
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">WOCHENPLAN</div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid #1c2830;color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Mo</span><span>🚴 LIT-2h</span><span style="color:#22c55e">✅ 98 TSS</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Di</span><span>🚴 SwSp 3×10</span><span style="color:#ef4444">❌ 0 TSS</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>B — Top Glow</h3><p>Heller oberer Rand + Innen-Schimmer · Vercel-Stil</p></div>
+  </div>
+
+  <!-- STYLE C: Diagonal gradient (Raycast style) -->
+  <div class="card" data-choice="diagonal" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:20px;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;gap:12px">
+
+        <div style="
+          background: linear-gradient(135deg, #162432 0%, #0d1a22 50%, #0c1620 100%);
+          border: 1px solid rgba(148,163,184,0.1);
+          border-radius: 14px;
+          padding: 16px;
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">RECOVERY</div>
+          <div style="font-size:32px;font-weight:900;color:#22c55e">78</div>
+          <div style="font-size:9px;color:#4a6270;margin-top:4px">🟢 Normal trainieren</div>
+        </div>
+
+        <div style="
+          background: linear-gradient(135deg, #162432 0%, #0d1a22 50%, #0c1620 100%);
+          border: 1px solid rgba(148,163,184,0.1);
+          border-radius: 14px;
+          padding: 16px;
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">WOCHENPLAN</div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid rgba(148,163,184,0.08);color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Mo</span><span>🚴 LIT-2h</span><span style="color:#22c55e">✅ 98 TSS</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Di</span><span>🚴 SwSp 3×10</span><span style="color:#ef4444">❌ 0 TSS</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>C — Diagonal</h3><p>Diagonaler Verlauf + halbtransparenter Border · weich</p></div>
+  </div>
+
+  <!-- STYLE D: Glass / frosted (Apple style) -->
+  <div class="card" data-choice="glass" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:20px;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;gap:12px">
+
+        <div style="
+          background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%);
+          border: 1px solid rgba(148,163,184,0.12);
+          border-bottom-color: rgba(148,163,184,0.05);
+          border-radius: 14px;
+          padding: 16px;
+          box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3);
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">RECOVERY</div>
+          <div style="font-size:32px;font-weight:900;color:#22c55e">78</div>
+          <div style="font-size:9px;color:#4a6270;margin-top:4px">🟢 Normal trainieren</div>
+        </div>
+
+        <div style="
+          background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%);
+          border: 1px solid rgba(148,163,184,0.12);
+          border-bottom-color: rgba(148,163,184,0.05);
+          border-radius: 14px;
+          padding: 16px;
+          box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3);
+        ">
+          <div style="font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:0.3px;border-left:3px solid #94a3b8;padding-left:8px;margin-bottom:10px">WOCHENPLAN</div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid rgba(148,163,184,0.07);color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Mo</span><span>🚴 LIT-2h</span><span style="color:#22c55e">✅ 98 TSS</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;padding:5px 0;color:#4a6270"><span style="color:#e8f4f8;font-weight:600">Di</span><span>🚴 SwSp 3×10</span><span style="color:#ef4444">❌ 0 TSS</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>D — Glass</h3><p>Frosted-Glass-Effekt · Tiefe durch Schatten · Apple-Stil</p></div>
+  </div>
+
+</div>

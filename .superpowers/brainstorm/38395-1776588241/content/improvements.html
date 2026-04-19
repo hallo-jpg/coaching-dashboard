@@ -1,0 +1,154 @@
+<h2>Coaching Tool — Verbesserungsideen</h2>
+<p class="subtitle">Dashboard + Coaching Skill · Klick zum Markieren · Mehrfachauswahl möglich</p>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+
+  <!-- DASHBOARD -->
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;border-left:3px solid #94a3b8;padding-left:10px;margin-bottom:14px">Dashboard — Neue Kacheln & Daten</div>
+    <div class="cards" style="grid-template-columns:repeat(3,1fr);gap:14px">
+
+      <div class="card" data-choice="ramp-rate" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📈 Ramp Rate</h3>
+          <p>CTL-Zuwachs pro Woche. Warnung wenn &gt;8 CTL/Woche — Verletzungsrisiko steigt stark. Fehlt komplett im Dashboard.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Hohes Coaching-Impact</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="tsb-sparkline" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📉 TSB-Verlauf</h3>
+          <p>Form-Kurve der letzten 4 Wochen als Mini-Chart. Zeigt ob du rechtzeitig vor dem Rennen frisch wirst.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Rennen-Relevanz</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="next-workout" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🎯 Heutiges Workout</h3>
+          <p>Heutige Einheit prominent oben: Name, Zonen, Dauer, Ziel-Watt. Direkt actionable — kein Scrollen nötig.</p>
+          <div style="margin-top:8px;font-size:9px;color:#f59e0b">⭐ Daily UX</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="tss-history" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📊 TSS-Verlauf 8 Wochen</h3>
+          <p>Balken-Chart: geplante vs. tatsächliche TSS pro Woche. Compliance-Trend auf einen Blick.</p>
+          <div style="margin-top:8px;font-size:9px;color:#94a3b8">Kontext</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="fitness-timeline" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📈 CTL-Kurve zur Saison</h3>
+          <p>CTL-Ist vs. CTL-Zielkurve bis RadRace. Bist du auf Kurs für dein FTP-Ziel? Visual Progress.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Motivierend</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="power-zones-week" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>⚡ Power-Zonen Woche</h3>
+          <p>Wie die Polarisation, aber in Watt-Zonen statt HF — direkter aus den Ride-Daten, genauer.</p>
+          <div style="margin-top:8px;font-size:9px;color:#94a3b8">Genauigkeit</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COACHING SKILL -->
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;border-left:3px solid #94a3b8;padding-left:10px;margin-bottom:14px">Coaching Skill — Neue Fähigkeiten</div>
+    <div class="cards" style="grid-template-columns:repeat(3,1fr);gap:14px">
+
+      <div class="card" data-choice="week-retro" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📋 Wochen-Retro</h3>
+          <p>Automatische Wochenauswertung: Plan vs. Ist, was lief gut, was nicht, Empfehlung für KW+1. Wird in Archiv gespeichert.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Lerneffekt</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="taper-protocol" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🏁 Taper-Protokoll</h3>
+          <p>Ab KW22: automatischer Wechsel in Taper-Modus. Skill erkennt Rennwoche und passt Empfehlungen automatisch an.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Rennen-Kritisch</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="illness-protocol" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🤒 Krankheits-Protokoll</h3>
+          <p>Strukturierter Wiedereinstieg nach Krankheit: Tage-Ausfall → Empfehlung wie viel TSS-Rückbau, wann wieder HIT.</p>
+          <div style="margin-top:8px;font-size:9px;color:#f59e0b">⭐ Aktuell relevant</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="ftp-tracking" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📏 FTP-Test Erinnerung</h3>
+          <p>Skill erkennt wann letzter FTP-Test war und erinnert proaktiv. Protokoll integriert, Ergebnis wird direkt übernommen.</p>
+          <div style="margin-top:8px;font-size:9px;color:#94a3b8">Genauigkeit</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="race-readiness" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🎯 Race Readiness Score</h3>
+          <p>Ab KW20: wöchentlicher Score wie bereit du fürs Rennen bist — basierend auf CTL, FTP-Fortschritt, Schlaf-Trend, Compliance.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Motivation</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="nutrition-periodization" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🥗 Ernährungs-Periodisierung</h3>
+          <p>Kohlenhydrate angepasst an TSB: Formtief → mehr Carbs, Tapering → gezieltes Carb-Loading. Aktuell statisch nach Tagestyp.</p>
+          <div style="margin-top:8px;font-size:9px;color:#94a3b8">Feintuning</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DATENQUALITÄT -->
+  <div>
+    <div style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;border-left:3px solid #94a3b8;padding-left:10px;margin-bottom:14px">Datenqualität & Infrastruktur</div>
+    <div class="cards" style="grid-template-columns:repeat(3,1fr);gap:14px">
+
+      <div class="card" data-choice="data-validation" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🔍 Datenlücken-Erkennung</h3>
+          <p>Dashboard warnt wenn wichtige Daten fehlen: kein Schlaf heute, keine HRV seit 3 Tagen, Aktivität nicht synchronisiert.</p>
+          <div style="margin-top:8px;font-size:9px;color:#f59e0b">Zuverlässigkeit</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="workout-library" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>📚 Workout-Bibliothek Ausbau</h3>
+          <p>Aktuell 55 Workouts. Lücken: Berg-spezifische Einheiten, Zeitfahren-Simulation, Race-Pace-Intervalle für RadRace-Profil.</p>
+          <div style="margin-top:8px;font-size:9px;color:#22c55e">⭐ Qualität</div>
+        </div>
+      </div>
+
+      <div class="card" data-choice="strava-sync" onclick="toggleSelect(this)">
+        <div class="card-body">
+          <h3>🔄 Auto-Rebuild bei Aktivität</h3>
+          <p>intervals.icu Webhook → GitHub Actions sofort nach Upload. Aktuell alle 30 Min — nach Training wartet man bis zu 30 Min.</p>
+          <div style="margin-top:8px;font-size:9px;color:#94a3b8">UX</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:20px;padding:14px;background:rgba(148,163,184,0.06);border:1px solid rgba(148,163,184,0.1);border-radius:10px;font-size:10px;color:#4a6270">
+  💡 Klick auf eine oder mehrere Kacheln um Prioritäten zu setzen — danach gehen wir die Top-Picks durch
+</div>

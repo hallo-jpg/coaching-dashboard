@@ -1,0 +1,207 @@
+<h2>Readiness Card — Neue Vorschläge</h2>
+<p class="subtitle">HRV mit Normalbereich · Klick auf deinen Favoriten</p>
+
+<div class="cards" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+
+  <!-- E: HRV als Range-Bar mit Marker -->
+  <div class="card" data-choice="hrv-range" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:16px">
+          <div style="font-size:44px;font-weight:900;color:#22c55e;line-height:1">78</div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:#22c55e">🟢 Normal trainieren</div>
+            <div style="font-size:9px;color:#4a6270;margin-top:2px">HRV normal · Schlaf gut · TSB frisch</div>
+          </div>
+        </div>
+
+        <!-- HRV Range Bar -->
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+            <span style="font-size:8px;color:#4a6270">HRV — Normalbereich 40–50</span>
+            <span style="font-size:8px;font-weight:700;color:#22c55e">49 · Normal</span>
+          </div>
+          <div style="position:relative;height:6px;background:#1a2a35;border-radius:3px">
+            <!-- Normalbereich grün markiert -->
+            <div style="position:absolute;left:28%;width:36%;height:100%;background:rgba(34,197,94,0.2);border-radius:3px"></div>
+            <!-- Marker für aktuelle HRV -->
+            <div style="position:absolute;left:calc(64% - 3px);top:-2px;width:6px;height:10px;background:#22c55e;border-radius:2px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:3px">
+            <span style="font-size:7px;color:#4a6270">Niedrig</span>
+            <span style="font-size:7px;color:#22c55e;opacity:0.6">◀ Normal ▶</span>
+            <span style="font-size:7px;color:#4a6270">Erhöht</span>
+          </div>
+        </div>
+
+        <!-- Schlaf + TSB kompakt -->
+        <div style="display:flex;gap:8px">
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px">Schlaf</div>
+            <div style="font-size:14px;font-weight:800;color:#e8f4f8">7h15 <span style="font-size:8px;color:#4a6270">/ 8h</span></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px">TSB</div>
+            <div style="font-size:14px;font-weight:800;color:#22c55e">+28 <span style="font-size:8px;color:#4a6270">frisch</span></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px">RHR</div>
+            <div style="font-size:14px;font-weight:800;color:#e8f4f8">57 <span style="font-size:8px;color:#4a6270">bpm</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>E — HRV Range</h3><p>Normalbereich als grüne Zone auf der Bar · Marker zeigt Position</p></div>
+  </div>
+
+  <!-- F: Status-Label wie Coros (Erhöht / Normal / Reduziert / Niedrig) -->
+  <div class="card" data-choice="coros-status" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:16px">
+          <div style="font-size:44px;font-weight:900;color:#22c55e;line-height:1">78</div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:#22c55e">🟢 Normal trainieren</div>
+          </div>
+        </div>
+
+        <!-- HRV mit Coros-Status-Badge -->
+        <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:10px;margin-bottom:10px">
+          <div>
+            <div style="font-size:7px;color:#4a6270;margin-bottom:2px">Nächtliche HRV</div>
+            <div style="font-size:22px;font-weight:900;color:#e8f4f8;line-height:1">49 <span style="font-size:10px;color:#4a6270">ms</span></div>
+          </div>
+          <div style="margin-left:auto;text-align:right">
+            <div style="font-size:8px;font-weight:700;color:#22c55e;background:rgba(34,197,94,0.15);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Normal</div>
+            <div style="font-size:7px;color:#4a6270">Ø 30d: 44 ms</div>
+          </div>
+        </div>
+
+        <!-- Schlaf + TSB -->
+        <div style="display:flex;gap:8px">
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px">Schlaf</div>
+            <div style="font-size:14px;font-weight:800;color:#e8f4f8">7h15</div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px">TSB</div>
+            <div style="font-size:14px;font-weight:800;color:#22c55e">+28</div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px">
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px">RHR</div>
+            <div style="font-size:14px;font-weight:800;color:#e8f4f8">57</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>F — Coros-Status</h3><p>HRV mit Normal/Erhöht/Reduziert Badge + 30d-Schnitt · klar</p></div>
+  </div>
+
+  <!-- G: Minimalistisch — nur das Wesentliche -->
+  <div class="card" data-choice="minimal-facts" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:14px">READINESS</div>
+
+        <!-- Score + Label zentriert -->
+        <div style="text-align:center;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(148,163,184,0.08)">
+          <div style="font-size:52px;font-weight:900;color:#22c55e;line-height:1">78</div>
+          <div style="font-size:10px;font-weight:700;color:#22c55e;margin-top:4px">🟢 Normal trainieren</div>
+        </div>
+
+        <!-- 4 Fakten in einer Zeile -->
+        <div style="display:flex;justify-content:space-between;text-align:center">
+          <div>
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.4px">HRV</div>
+            <div style="font-size:15px;font-weight:800;color:#22c55e">49</div>
+            <div style="font-size:7px;color:#22c55e">Normal</div>
+          </div>
+          <div style="width:1px;background:rgba(148,163,184,0.08)"></div>
+          <div>
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.4px">Schlaf</div>
+            <div style="font-size:15px;font-weight:800;color:#e8f4f8">7h15</div>
+            <div style="font-size:7px;color:#4a6270">von 8h</div>
+          </div>
+          <div style="width:1px;background:rgba(148,163,184,0.08)"></div>
+          <div>
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.4px">TSB</div>
+            <div style="font-size:15px;font-weight:800;color:#22c55e">+28</div>
+            <div style="font-size:7px;color:#22c55e">frisch</div>
+          </div>
+          <div style="width:1px;background:rgba(148,163,184,0.08)"></div>
+          <div>
+            <div style="font-size:7px;color:#4a6270;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.4px">RHR</div>
+            <div style="font-size:15px;font-weight:800;color:#e8f4f8">57</div>
+            <div style="font-size:7px;color:#4a6270">bpm</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>G — Minimal</h3><p>Score groß · 4 Fakten darunter · ultra-clean</p></div>
+  </div>
+
+  <!-- H: Komplett wie Coros Nachtansicht -->
+  <div class="card" data-choice="full-context" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#060a0c;border-radius:8px 8px 0 0">
+      <div style="padding:18px;font-family:-apple-system,sans-serif;background:linear-gradient(160deg,rgba(30,50,65,0.9),rgba(12,24,32,0.95));border-radius:8px 8px 0 0">
+
+        <div style="border-left:3px solid #94a3b8;padding-left:10px;font-size:9px;font-weight:700;color:#e8f4f8;letter-spacing:0.2px;margin-bottom:12px">READINESS</div>
+
+        <!-- Score links, HRV rechts -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+          <div>
+            <div style="font-size:44px;font-weight:900;color:#22c55e;line-height:1">78</div>
+            <div style="font-size:9px;font-weight:700;color:#22c55e;margin-top:3px">🟢 Normal trainieren</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:8px;color:#4a6270;margin-bottom:3px">Nächtliche HRV</div>
+            <div style="font-size:22px;font-weight:900;color:#e8f4f8;line-height:1">49 <span style="font-size:9px;color:#4a6270">ms</span></div>
+            <div style="font-size:8px;font-weight:700;color:#22c55e;margin-top:3px">● Normal (40–50)</div>
+          </div>
+        </div>
+
+        <!-- Trennlinie -->
+        <div style="border-top:1px solid rgba(148,163,184,0.08);padding-top:10px;display:flex;flex-direction:column;gap:6px">
+
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:8px;color:#4a6270;width:38px">Schlaf</span>
+            <div style="flex:1;height:4px;background:#1a2a35;border-radius:2px;overflow:hidden">
+              <div style="width:91%;height:100%;background:#94a3b8;border-radius:2px"></div>
+            </div>
+            <span style="font-size:9px;font-weight:700;color:#e8f4f8;width:30px;text-align:right">7h15</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:8px;color:#4a6270;width:38px">TSB</span>
+            <div style="flex:1;height:4px;background:#1a2a35;border-radius:2px;overflow:hidden">
+              <div style="width:95%;height:100%;background:#22c55e;border-radius:2px"></div>
+            </div>
+            <span style="font-size:9px;font-weight:700;color:#22c55e;width:30px;text-align:right">+28</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:8px;color:#4a6270;width:38px">RHR</span>
+            <div style="flex:1;height:4px;background:#1a2a35;border-radius:2px;overflow:hidden">
+              <div style="width:72%;height:100%;background:#94a3b8;border-radius:2px"></div>
+            </div>
+            <span style="font-size:9px;font-weight:700;color:#e8f4f8;width:30px;text-align:right">57 bpm</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body"><h3>H — Vollständig</h3><p>Score + HRV mit Normalbereich + Bars für alle Faktoren</p></div>
+  </div>
+
+</div>
