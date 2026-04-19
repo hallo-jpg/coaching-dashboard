@@ -422,10 +422,10 @@
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#3ecf8e" stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="34.6" transform="rotate(-90 65 65)"/>
+          stroke-dasharray="345.4" stroke-dashoffset="13.8" transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#3ecf8e">90</span>
+        <span class="ring-num" style="color:#3ecf8e">96</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
@@ -622,46 +622,62 @@
     <!-- READINESS -->
     <div class="readiness-card">
       <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
-      <div class="readiness-score" style="color:#3ecf8e">90</div>
-      <div class="readiness-tag" style="color:#3ecf8e">🟢 Voll trainieren</div>
-      <div class="readiness-sub">HRV über Schnitt · Puls erhöht</div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">HRV</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:100%;background:var(--green)"></div></div>
-        <span class="rbar-val">49/46</span>
+
+      <!-- Score + Label -->
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+        <div class="readiness-score" style="color:#3ecf8e">96</div>
+        <div class="readiness-tag" style="color:#3ecf8e">🟢 Voll trainieren</div>
       </div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">Schlaf</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:91%;background:var(--green)"></div></div>
-        <span class="rbar-val">7.2h</span>
+
+      <!-- HRV Block (Coros-Style F) -->
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
+        <div>
+          <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">49 ms</div>
+        </div>
+        <div style="margin-left:auto;text-align:right">
+          <div style="font-size:0.6rem;font-weight:700;color:var(--green);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Normal</div>
+          <div class="rbar-lbl">Normalber. 39–50 ms</div>
+        </div>
       </div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">TSB</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:97%;background:var(--green)"></div></div>
-        <span class="rbar-val">+28</span>
+
+      <!-- 3 Mini-Tiles -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+          <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
+          <div style="font-size:0.85rem;font-weight:800;color:var(--green)">7.2h</div>
+          <div class="rbar-lbl">/ 8h</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+          <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
+          <div style="font-size:0.85rem;font-weight:800;color:var(--green)">+28</div>
+          <div class="rbar-lbl">Form</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+          <div class="rbar-lbl" style="margin-bottom:3px">RHR</div>
+          <div style="font-size:0.85rem;font-weight:800;color:var(--text)">57 bpm</div>
+          <div class="rbar-lbl">Puls</div>
+        </div>
       </div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">Puls</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:65%;background:var(--yellow)"></div></div>
-        <span class="rbar-val">57 bpm</span>
-      </div>
+
+      <!-- Sparkline -->
       <div class="sparkline-wrap">
         <div class="spark-label">Readiness · 7 Tage</div>
         <div class="sparkline">
           
-          <div class="spark-bar " style="height:93%;background:#3ecf8e"></div>
+          <div class="spark-bar " style="height:95%;background:#3ecf8e"></div>
           
-          <div class="spark-bar " style="height:91%;background:#3ecf8e"></div>
+          <div class="spark-bar " style="height:98%;background:#3ecf8e"></div>
           
-          <div class="spark-bar " style="height:83%;background:#3ecf8e"></div>
-          
-          <div class="spark-bar " style="height:81%;background:#3ecf8e"></div>
-          
-          <div class="spark-bar " style="height:92%;background:#3ecf8e"></div>
+          <div class="spark-bar " style="height:88%;background:#3ecf8e"></div>
           
           <div class="spark-bar " style="height:93%;background:#3ecf8e"></div>
           
-          <div class="spark-bar spark-today" style="height:90%;background:#3ecf8e"></div>
+          <div class="spark-bar " style="height:99%;background:#3ecf8e"></div>
+          
+          <div class="spark-bar " style="height:99%;background:#3ecf8e"></div>
+          
+          <div class="spark-bar spark-today" style="height:96%;background:#3ecf8e"></div>
           
         </div>
       </div>
