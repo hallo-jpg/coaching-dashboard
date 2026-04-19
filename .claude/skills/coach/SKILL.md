@@ -40,6 +40,8 @@ Rufe auf: `get_weekly_review(week_start: Montag der Vorwoche)`
 
 **TSS-Erreichung:** `tss_pct = tss_ist / tss_soll × 100`
 
+Falls `tss_soll` nicht vorhanden oder 0: TSS-Compliance überspringen, Gesamtnote basiert nur auf HRV-Trend.
+
 **Polarisation:** Aus Zonen-Daten (intervals.icu Mapping anwenden — siehe Schritt 0):
 - LIT = Z1+Z2, Grauzone = Z3+unteres Z4, HIT = Z5+Z6+Z7
 - Bewertung: `Z3+Z4 < 15% Gesamtvolumen` → gut polarisiert
@@ -50,13 +52,13 @@ Rufe auf: `get_weekly_review(week_start: Montag der Vorwoche)`
 - `↘ fallend` = letzter < erster − 3 Punkte
 - Differenz für Schwellen-Prüfung: `hrv_abfall = erster_wert − letzter_wert`
 
-**Gesamtnote:**
-| Bedingung | Note |
-|---|---|
-| TSS ≥ 85% UND HRV stabil oder steigend | 🟢 Gut |
-| TSS 65–84% ODER HRV leicht fallend (≤10 Punkte) | 🟡 Mittel |
-| TSS < 65% ODER HRV stark fallend (>10 Punkte) | 🔴 Schwach |
-| TSS > 120% (Überbelastung) | 🟡 Mittel + Hinweis auf Überbelastung |
+**Gesamtnote (erste zutreffende Bedingung gewinnt):**
+| Priorität | Bedingung | Note |
+|---|---|---|
+| 1 | TSS > 120% (Überbelastung) | 🟡 Mittel + Hinweis auf Überbelastung |
+| 2 | TSS ≥ 85% UND HRV stabil oder steigend | 🟢 Gut |
+| 3 | TSS < 65% ODER HRV stark fallend (>10 Punkte) | 🔴 Schwach |
+| 4 | Alle übrigen Fälle | 🟡 Mittel |
 
 ### Retro-Abschnitt ausgeben (im Chat) und in Datei schreiben
 
@@ -65,7 +67,7 @@ Rufe auf: `get_weekly_review(week_start: Montag der Vorwoche)`
 ```markdown
 ## Wochen-Retro
 
-**TSS:** Ist [tss_ist] / Soll [tss_soll] → [tss_pct]% ([✅ im Plan / ⚠️ unter Plan / 🔥 über Plan])
+**TSS:** Ist [tss_ist] / Soll [tss_soll] → [tss_pct]% ([✅ 85–120% / ⚠️ <85% / 🔥 >120%])
 **Polarisation:** Z1 [X]% · Z2 [Y]% · Z3 [Z]% → [gut polarisiert / zu viel Grauzone / etc.]
 **HRV-Trend:** [↗ steigend / → stabil / ↘ fallend] ([erster_wert] → [letzter_wert])
 
@@ -86,6 +88,9 @@ Rufe auf: `get_weekly_review(week_start: Montag der Vorwoche)`
 ### Datei archivieren
 
 Nach dem Schreiben des Retro-Abschnitts:
+
+Stelle sicher dass `planung/archiv/` existiert (falls nicht: `mkdir -p planung/archiv/`).
+
 ```
 git mv planung/kw[N-1].md planung/archiv/kw[N-1].md
 git commit -m "archiv: KW[N-1] Retro abgeschlossen"
