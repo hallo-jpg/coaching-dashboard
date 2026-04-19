@@ -216,11 +216,38 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 - Warmup immer mit Staircase (60/70/80/90%)
 - Ernährungshinweis: Wenig KH, Koffein vorher
 
-### Tapering-Modus (KW23 + KW25)
-- **KW23** (vor RadRace): TSS auf ~50% der Vorwoche, 1× kurze HIT-Aktivierung, kein neues Reiz-Setzen, Schlaf + Ernährung priorisieren
-- **KW25** (Recovery nach RadRace, vor Rosenheimer): lockere Erholung Mi–Fr, leichtes Aufbauen Sa/So; kein Kraft, kein HIT – nur LIT + optional kurze SwSp am So wenn Erholung gut
+### Tapering-Modus (≤14 Tage vor Event)
 
-### Rennwoche-Modus (KW24 + KW26)
+**Grundregel:** Volumen runter, Intensität halten. Kein neues Reiz-Setzen ab T-10.
+
+| Zeitraum | Volumen | Training |
+|---|---|---|
+| T-14 bis T-9 (Woche 2 vor Rennen) | −40% ggü. Vorwoche | 1× kurze HIT-Aktivierung (3×4min @ ~355W), Rest LIT |
+| T-8 bis T-2 (Rennwoche Anfang) | −55% | 1× kurze Aktivierung (20×30s @ 400W oder 3×5min @ 295W), Rest LIT |
+| T-1 (Vortag) | minimal | Aktivierun.zwo: 20–30min + kurze Intensität |
+
+**TSB-Ziel am Renntag:** +10 bis +20
+**TSB-Prognose berechnen** (immer im Tapering-Output ausgeben):
+- CTL decays: × 0.965 pro Tag (42-Tage-Zeitkonstante)
+- ATL decays: × 0.916 pro Tag (7-Tage-Zeitkonstante)
+- Nimm aktuellen CTL und ATL aus `get_current_fitness`, reduziere ATL mit reduzierten TSS-Werten, projiziere T Tage voraus
+- Ausgabe: `Prognose TSB Renntag: +XX (Ziel: +10 bis +20) → [auf Kurs / zu niedrig / zu hoch]`
+
+**Recovery-Modus (1–14 Tage nach Event, nächstes Event >14 Tage):**
+- Tage 1–4: Nur Easy LIT oder Pause, kein Kraft, kein HIT
+- Tage 5–10: Leicht aufbauen, LIT + optional kurze SwSp ab Tag 7 wenn HRV normal
+- Danach: Readiness-Score entscheidet über Rückkehr zu normalem Training
+
+### Rennwoche-Modus (0–6 Tage bis Event)
+
+**Allgemeines Rennwoche-Schema (T-6 bis T-0):**
+- T-6 bis T-4: LIT oder Pause, viel Schlaf, Carb-Loading starten (siehe coaching_science.md Abschnitt 6 → Carb-Loading-Protokoll)
+- T-3: LIT-1h locker
+- T-2: Aktivierun.zwo (Aktivierung)
+- T-1: Pause oder 20min Easy Spin
+- T-0: Renntag — Warm-up-Protokoll (siehe coaching_science.md Abschnitt 6 → Renntag Warm-up)
+
+**RadRace spezifisch (Zeitfahren T-1, Rennen T-0):**
 **KW24 – RadRace:**
 - Mo–Di: LIT oder Pause, viel Schlaf, Carb-Loading starten (10g KH/kg/Tag ab Mi)
 - Mi: LIT-1h locker
