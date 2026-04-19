@@ -114,14 +114,19 @@ Sektions-Referenz: 1=Block-Periodisierung · 2=Polarized · 3=HRV · 4=VO2max ·
 
 Anhand des Briefings und der Akte entscheiden:
 
+**Event-Erkennung (immer zuerst):**
+Lies `athlete/profil.md` → Abschnitt "Saisonziele". Identifiziere das nächste bevorstehende Event mit Datum. Berechne `tage_bis_event = event_datum - heute`. Alle Modus-Entscheidungen basieren auf diesem Wert — nie auf fixen KW-Nummern. Bei mehreren Events: immer das nächste verwenden.
+
 | Signal | Modus |
 |---|---|
 | "KW__ planen", neue Woche, noch keine Planung vorhanden | **Wochenplanung** |
 | Einheiten-Status, TSS-Ist, Feedback zur laufenden Woche | **Wochen-Review + Weiterplanung** |
 | "fällt aus", "muss verschieben", Terminkonflikt | **Ad-hoc Anpassung** |
 | "neues FTP: __W" nach Test | **FTP-Update + Zonenberechnung** |
-| KW23 / KW25 (Tapering oder Recovery nach Rennen) | **Tapering / Recovery-Modus** |
-| KW24 (RadRace-Woche) / KW26 (Rosenheimer-Woche) | **Rennwoche-Modus** |
+| ≤14 Tage bis nächstem Event (aus `athlete/profil.md` Saisonziele) | **Tapering-Modus** |
+| 0–6 Tage bis Event (Rennwoche) | **Rennwoche-Modus** |
+| 1–14 Tage nach Event, nächstes Event >21 Tage weg | **Recovery-Modus** |
+| "schlapp", "faul", "sollte ich mehr trainieren", "reicht das" während Tapering | **Taper-Anxiety** → in Tapering-Modus behandeln, kein Extra-Training |
 | Laufende Woche, 1–3 Einheiten bereits absolviert, Rest offen | **Mid-Week Check-In** |
 | "nächste 4 Wochen skizzieren", "Block-Überblick" | **Block-Skizze** |
 | "Monats-Retro [Monat]", "Retro [Monat]", "Retrospektive [Monat]" | **Monats-Review** |
