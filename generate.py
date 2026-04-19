@@ -801,9 +801,10 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         tss_ist = round(tss_by_week.get((w_year, w_kw), 0))
         weeks_raw.append({"kw": w_kw, "tss_ist": tss_ist, "is_current": is_current, "is_future": is_future})
 
-    # Average from completed weeks only
+    # Average from completed weeks with meaningful training load (exclude sick/vacation outliers)
     completed = [w["tss_ist"] for w in weeks_raw if not w["is_current"] and not w["is_future"]]
-    avg_tss = round(sum(completed) / len(completed)) if completed else 1
+    normal = [t for t in completed if t >= 150]
+    avg_tss = round(sum(normal) / len(normal)) if normal else (round(sum(completed) / len(completed)) if completed else 1)
     max_tss = max((w["tss_ist"] for w in weeks_raw), default=1)
     bar_scale = max(max_tss * 1.05, avg_tss * 1.2, 1)  # headroom above tallest bar
     # Avg-line position as % from bottom
