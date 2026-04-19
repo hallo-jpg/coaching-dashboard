@@ -108,35 +108,25 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 
 ## Krafttraining
 
+**Ziel:** Ganzkörper-Erhalt — Oberkörper (Brust, Arme, Schultern), Rumpf, hintere Kette. Kein Aufbau, kein Sport-Spezifisch. Stefan möchte nicht "verkümmern" als reiner Ausdauerathlet.
+
 **Equipment:** Eigengewicht · Widerstandsbänder · Hanteln bis 10kg
 
-**Regel:** Immer NACH der Rad- oder Laufeinheit — nie vorher. Nie vor HIT oder MIT.
+**Umfang:** Max. 1×/Woche · ~25–30 min · immer NACH einer Rad- oder Laufeinheit, nie vor HIT/MIT.
 
-**Umfang:** 2×/Woche · je ~20–25 min
+**Typische Übungen (Ganzkörper):**
 
-### Einheit A – Hintere Kette + Hüfte
-*Typisch: nach Radeinheit*
+| Bereich | Beispielübungen |
+|---|---|
+| Brust / Drücken | Liegestütze (Varianten), Dumbbell Press |
+| Rücken / Ziehen | Banded Row, Band Pull-Apart, Superman |
+| Schultern / Arme | Dumbbell Curl, Overhead Press mit Bändern |
+| Rumpf | Plank, Side Plank, Dead Bug |
+| Hintere Kette / Hüfte | Single-Leg Glute Bridge, RDL einbeinig |
 
-| Übung | Sets/Wdh | Fokus |
-|---|---|---|
-| Single-Leg Glute Bridge | 3×12/Seite | Gesäß, hintere Kette |
-| Banded Clamshell | 3×20/Seite | Abduktoren, Kniestabilität |
-| Banded Monster Walk | 3×15 Schritte | Hüftstabilisatoren |
-| Einbeiniges Romanian Deadlift | 3×10/Seite | Hintere Kette, Balance |
-| Plank | 3×45 Sek. | Rumpfstabilität |
+**Coach-Regel:** Kraft wird **nicht aktiv in den Wochenplan eingeplant**. Nur auf Nachfrage oder wenn Stefan es explizit erwähnt. KA-Training auf der Tacx (55rpm) ist der primäre Kraftreiz für Radperformance.
 
-### Einheit B – Rumpf + Oberkörper
-*Typisch: nach Laufeinheit*
-
-| Übung | Sets/Wdh | Fokus |
-|---|---|---|
-| Side Plank | 3×35 Sek./Seite | Laterale Rumpfstabilität |
-| Band Pull-Apart | 3×20 | Schulter, oberer Rücken |
-| Banded Row stehend | 3×15 | Mittlerer Rücken |
-| Superman / Y-T-W | 3×12 | Unterer Rücken, Schultern |
-| Dead Bug | 3×10/Seite | Tiefe Rumpfmuskulatur |
-
-**Tapering:** Ab T-10 Kraft auf Halten reduzieren · ab T-4 weglassen.
+**Tapering:** Ab T-10 weglassen.
 
 ## Geräte & Plattformen
 

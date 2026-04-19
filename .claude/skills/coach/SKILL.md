@@ -424,6 +424,9 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 - VO2max 3×5min (50min gesamt): ~55 rTSS
 
 **Kraft-Einheiten:**
+- Werden **nicht aktiv eingeplant** — nur auf explizite Nachfrage von Stefan oder wenn er es erwähnt
+- Wenn geplant: 1×/Woche Ganzkörper (Erhalt), nach Rad- oder Laufeinheit, nie vor HIT/MIT, ab T-10 weglassen
+- Übungen und Equipment: siehe `athlete/profil.md` Abschnitt Krafttraining
 - Via `create_planned_workout` (type: "WeightTraining") mit Übungsliste in description
 
 **KA-Protokoll (wichtig):**
