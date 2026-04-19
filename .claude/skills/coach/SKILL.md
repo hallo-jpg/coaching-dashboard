@@ -242,6 +242,13 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 **Sonderfall: Zwei Events nahe beieinander (≤14 Tage Abstand):**
 Wenn nach Event A das nächste Event B bereits ≤14 Tage entfernt ist, gibt es keine formelle Recovery-Phase. Stattdessen: Tage 1–4 nach Event A laufen als passive Erholung innerhalb des Tapering-Modus für Event B. HRV und Readiness entscheiden, ob T-8/T-7 Aktivierung stattfindet.
 
+**Taper-Anxiety erkennen und behandeln:**
+Wenn Stefan während Tapering schreibt: "ich fühle mich schlapp", "reicht das", "sollte ich mehr trainieren", "fühle mich faul", "bin ich fit genug" — dies ist Taper-Anxiety. Standardantwort:
+1. Bestätigen dass das Gefühl normal ist (Glykogenspeicher füllen sich, Muskeln reparieren — das fühlt sich träge an)
+2. TSB-Prognose ausgeben (konkrete Zahl beruhigt)
+3. Kein Extra-Training — jede zusätzliche Einheit kostet mehr als sie bringt
+4. Letztes Training war ausreichend — Fitness verliert man in 14 Tagen nicht
+
 ### Rennwoche-Modus (0–6 Tage bis Event)
 
 **Allgemeines Rennwoche-Schema (T-6 bis T-0):**
@@ -335,6 +342,22 @@ Je eine Zeile pro Woche:
 Tabelle mit: KW | Thema | Ziel-TSS | Schlüsseleinheiten (Dateiname) | Fueling-Schwerpunkt
 - Keine Workouts in intervals.icu anlegen – nur Übersicht ausgeben
 - Dashboard aktualisiert sich automatisch sobald `planung/kw[N].md` geschrieben wird
+
+### 🗓 Taper-Checkliste (nur bei Tapering-Modus und Rennwoche-Modus ausgeben)
+
+Immer wenn `tage_bis_event ≤ 7`, diese Tag-für-Tag-Liste ausgeben:
+
+| Tag | Training | Ernährung | Schlaf | Check |
+|---|---|---|---|---|
+| T-6 | LIT 60min easy | Normal + leicht mehr KH | Ziel 8h | ☐ |
+| T-5 | LIT 45min oder Pause | Normal + mehr KH (7g/kg) | Ziel 8h | ☐ |
+| T-4 | Aktivierung 30min | Carb-Loading Start (8g KH/kg) | Ziel 8–9h | ☐ |
+| T-3 | Pause oder 20min Easy | Carb-Loading voll (10g KH/kg) | Ziel 9h | ☐ |
+| T-2 | Aktivierun.zwo | Carb-Loading (10g KH/kg) | Ziel 9h | ☐ |
+| T-1 | Pause / 20min Easy Spin | Leichtes Frühstück + KH-reich Mittag | Früh ins Bett | ☐ |
+| T-0 | 🏁 Renntag | Renntag-Frühstück 3h vorher (150g KH) | — | ☐ |
+
+KH-Mengen für Stefan (88kg): 7g/kg = 616g · 8g/kg = 704g · 10g/kg = 880g
 
 ---
 
