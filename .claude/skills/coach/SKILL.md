@@ -21,6 +21,87 @@ Beispiele:
 
 ---
 
+## Schritt 0a: Vorwoche prüfen & Retro (nur bei Wochenplanung)
+
+**Wann ausführen:** Nur wenn der Aufruf eine neue Wochenplanung ist (Modus-Erkennung ergibt Planungs-Modus oder ähnlich). Bei Ad-hoc-Anfragen, Taper-Modus und Monats-Retro überspringen.
+
+### Pre-Check
+
+Prüfe ob `planung/kw[N-1].md` existiert (d.h. die Datei liegt in `planung/`, nicht in `planung/archiv/`):
+- **Datei nicht vorhanden oder bereits in archiv/** → Schritt 0a überspringen, weiter mit Schritt 0
+- **Datei vorhanden in `planung/`** → Retro ausführen (Schritte unten)
+
+### Daten abrufen
+
+Rufe auf: `get_weekly_review(week_start: Montag der Vorwoche)`
+→ Liefert: TSS Ist/Soll, Zonen-Verteilung (Z1–Z7), HRV-Verlauf (Tageswerte), abgeschlossene Aktivitäten
+
+### Retro berechnen
+
+**TSS-Erreichung:** `tss_pct = tss_ist / tss_soll × 100`
+
+**Polarisation:** Aus Zonen-Daten (intervals.icu Mapping anwenden — siehe Schritt 0):
+- LIT = Z1+Z2, Grauzone = Z3+unteres Z4, HIT = Z5+Z6+Z7
+- Bewertung: `Z3+Z4 < 15% Gesamtvolumen` → gut polarisiert
+
+**HRV-Trend:** Vergleich erster und letzter HRV-Wert der Woche:
+- `↗ steigend` = letzter > erster + 3 Punkte
+- `→ stabil` = Differenz ≤ 3 Punkte
+- `↘ fallend` = letzter < erster − 3 Punkte
+- Differenz für Schwellen-Prüfung: `hrv_abfall = erster_wert − letzter_wert`
+
+**Gesamtnote:**
+| Bedingung | Note |
+|---|---|
+| TSS ≥ 85% UND HRV stabil oder steigend | 🟢 Gut |
+| TSS 65–84% ODER HRV leicht fallend (≤10 Punkte) | 🟡 Mittel |
+| TSS < 65% ODER HRV stark fallend (>10 Punkte) | 🔴 Schwach |
+| TSS > 120% (Überbelastung) | 🟡 Mittel + Hinweis auf Überbelastung |
+
+### Retro-Abschnitt ausgeben (im Chat) und in Datei schreiben
+
+**Format — exakt so an `planung/kw[N-1].md` anhängen:**
+
+```markdown
+## Wochen-Retro
+
+**TSS:** Ist [tss_ist] / Soll [tss_soll] → [tss_pct]% ([✅ im Plan / ⚠️ unter Plan / 🔥 über Plan])
+**Polarisation:** Z1 [X]% · Z2 [Y]% · Z3 [Z]% → [gut polarisiert / zu viel Grauzone / etc.]
+**HRV-Trend:** [↗ steigend / → stabil / ↘ fallend] ([erster_wert] → [letzter_wert])
+
+### Einheiten
+| Tag | Workout | TSS Ist | Status | Notiz |
+|---|---|---|---|---|
+[Tabelle aus der Planung — Status ✅/❌/⬜ und TSS Ist aus intervals.icu-Aktivitäten befüllen]
+
+### Bewertung
+**Was lief gut:** [konkret aus den Aktivitätsdaten und Kontext ableiten]
+**Was fehlte / warum:** [konkret, sachlich, kein Vorwurf]
+**Lernpunkt für KW[N]:** [eine konkrete Handlungsempfehlung]
+
+### Gesamtnote
+[🟢 Gut / 🟡 Mittel / 🔴 Schwach] — [ein Satz Begründung]
+```
+
+### Datei archivieren
+
+Nach dem Schreiben des Retro-Abschnitts:
+```
+git mv planung/kw[N-1].md planung/archiv/kw[N-1].md
+git commit -m "archiv: KW[N-1] Retro abgeschlossen"
+```
+
+### COACHING_AKTE.md Eintrag anfügen
+
+Unter dem neuesten Eintrag in `COACHING_AKTE.md` anfügen:
+
+```markdown
+## [Datum heute] KW[N-1] Retro
+[🟢/🟡/🔴] TSS [tss_ist]/[tss_soll] ([tss_pct]%) · HRV [Trend] · [ein Satz Kernerkenntnis]
+```
+
+---
+
 ## Schritt 0: Metriken & Review automatisch abrufen
 
 ### Bei Wochenplanung (neue KW planen):
