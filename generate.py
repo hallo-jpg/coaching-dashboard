@@ -686,6 +686,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "sparkline": sparkline,
         "polar_z12_pct": polar["z12"], "polar_z3_pct": polar["z3"],
         "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
+        "polar_no_data": polar["no_data"],
         "outlook": outlook,
         "power_bests": get_power_bests(),
         "pace_bests": get_pace_bests(),
@@ -706,7 +707,7 @@ def _calc_polarisation(activities: list) -> dict:
     rides = [a for a in activities
              if a.get("type") in ("Ride", "VirtualRide", "GravelRide")]
     if not rides:
-        return {"z12": 80, "z3": 15, "z47": 5, "pi": 80, "ok": True}
+        return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
     totals = [0] * 8
     for r in rides:
         for z in range(1, 8):
@@ -715,7 +716,7 @@ def _calc_polarisation(activities: list) -> dict:
     z12 = round((totals[1] + totals[2]) / total * 100)
     z3  = round(totals[3] / total * 100)
     z47 = 100 - z12 - z3
-    return {"z12": z12, "z3": z3, "z47": z47, "pi": z12, "ok": z3 < 15}
+    return {"z12": z12, "z3": z3, "z47": z47, "pi": z12, "ok": z3 < 15, "no_data": False}
 
 def _key_workouts(days: list) -> str:
     non_lit = [d["workout"] for d in days
