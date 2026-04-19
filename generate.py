@@ -650,7 +650,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     nutrition = get_nutrition_context(today_day_plan, bool(sick_notice))
 
     ctl_history = get_ctl_history(weeks=26)
-    tss_weeks, tss_summary = get_tss_compliance_history(current_kw=kw, num_weeks=8)
+    tss_weeks, tss_summary = get_tss_overview_history(current_kw=kw, num_weeks=8)
 
     return {
         "kw": kw, "kw_dates": kw_dates,
@@ -759,8 +759,8 @@ def get_ctl_history(weeks: int = 26) -> dict:
     }
 
 
-def get_tss_compliance_history(current_kw: int, num_weeks: int = 8) -> tuple:
-    """Last num_weeks weekly TSS compliance. Returns (weeks_list, summary_dict)."""
+def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
+    """Last num_weeks weekly TSS overview, colored relative to own average. Returns (weeks_list, summary_dict)."""
     today = date.today()
     year = today.isocalendar()[0]
 
@@ -788,7 +788,7 @@ def get_tss_compliance_history(current_kw: int, num_weeks: int = 8) -> tuple:
         except Exception:
             continue
 
-    weeks = []
+    weeks_raw = []
     for i in range(num_weeks - 1, -1, -1):
         w_kw = current_kw - i
         w_year = year
@@ -796,44 +796,55 @@ def get_tss_compliance_history(current_kw: int, num_weeks: int = 8) -> tuple:
             w_kw += 52
             w_year -= 1
         monday, _ = week_date_range(w_kw, w_year)
-        plan = parse_kw_plan(w_kw)
-        tss_plan = plan["tss_plan"]
         is_current = w_kw == current_kw
         is_future = monday > today
-
         tss_ist = round(tss_by_week.get((w_year, w_kw), 0))
-        compliance = round(tss_ist / tss_plan * 100) if tss_plan > 0 and not is_future else 0
+        weeks_raw.append({"kw": w_kw, "tss_ist": tss_ist, "is_current": is_current, "is_future": is_future})
+
+    # Average from completed weeks only
+    completed = [w["tss_ist"] for w in weeks_raw if not w["is_current"] and not w["is_future"]]
+    avg_tss = round(sum(completed) / len(completed)) if completed else 1
+    max_tss = max((w["tss_ist"] for w in weeks_raw), default=1)
+    bar_scale = max(max_tss * 1.05, avg_tss * 1.2, 1)  # headroom above tallest bar
+    # Avg-line position as % from bottom
+    avg_pct = round(avg_tss / bar_scale * 100)
+
+    weeks = []
+    for w in weeks_raw:
+        tss = w["tss_ist"]
+        is_current, is_future = w["is_current"], w["is_future"]
+        ratio = tss / avg_tss if avg_tss > 0 and not is_future else 0
 
         if is_current or is_future:
             bar_color, label_color, arrow = "var(--muted)", "var(--muted)", ""
-        elif compliance > 115:
+        elif ratio > 1.15:
             bar_color, label_color, arrow = "var(--yellow)", "var(--yellow)", " ↑"
-        elif compliance >= 80:
+        elif ratio >= 0.75:
             bar_color, label_color, arrow = "var(--green)", "var(--green)", ""
-        elif compliance >= 50:
+        elif ratio >= 0.50:
             bar_color, label_color, arrow = "var(--yellow)", "var(--yellow)", " ↓"
         else:
             bar_color, label_color, arrow = "var(--red)", "var(--red)", ""
 
-        bar_h = min(round(compliance / 115 * 100), 100) if compliance > 0 else (8 if is_current else 2)
+        bar_h = max(round(tss / bar_scale * 100), 3) if tss > 0 else (5 if is_current else 2)
 
         weeks.append({
-            "kw": w_kw, "tss_plan": tss_plan, "tss_ist": tss_ist,
-            "compliance": compliance, "bar_color": bar_color,
-            "bar_height_pct": bar_h, "label_color": label_color,
-            "arrow": arrow, "is_current": is_current, "is_future": is_future,
+            "kw": w["kw"], "tss_ist": tss,
+            "bar_color": bar_color, "bar_height_pct": bar_h,
+            "label_color": label_color, "arrow": arrow,
+            "is_current": is_current, "is_future": is_future,
         })
 
-    done = [w for w in weeks if not w["is_current"] and not w["is_future"] and w["tss_plan"] > 0]
-    n = len(done) or 1
-    summary_compliance = round(sum(w["compliance"] for w in done) / n) if done else 0
+    max_week = max(weeks_raw, key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0})
+    min_week = min(
+        (w for w in weeks_raw if not w["is_current"] and not w["is_future"]),
+        key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0}
+    )
     summary = {
-        "avg_plan": round(sum(w["tss_plan"] for w in done) / n) if done else 0,
-        "avg_ist": round(sum(w["tss_ist"] for w in done) / n) if done else 0,
-        "avg_compliance": summary_compliance,
-        "avg_compliance_color": ("var(--green)" if summary_compliance >= 80
-                                 else "var(--yellow)" if summary_compliance >= 50
-                                 else "var(--red)"),
+        "avg_tss": avg_tss,
+        "max_tss": max_week["tss_ist"], "max_kw": max_week["kw"],
+        "min_tss": min_week["tss_ist"], "min_kw": min_week["kw"],
+        "avg_line_pct": avg_pct,
     }
     return weeks, summary
 
