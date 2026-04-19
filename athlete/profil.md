@@ -106,6 +106,38 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 | HIT_EB (VO2max Dauer) | 106–112% | 323–341W | 100–110rpm |
 | HIT_IE (VO2max Intervall) | 125% | 381W | 100–110rpm |
 
+## Krafttraining
+
+**Equipment:** Eigengewicht · Widerstandsbänder · Hanteln bis 10kg
+
+**Regel:** Immer NACH der Rad- oder Laufeinheit — nie vorher. Nie vor HIT oder MIT.
+
+**Umfang:** 2×/Woche · je ~20–25 min
+
+### Einheit A – Hintere Kette + Hüfte
+*Typisch: nach Radeinheit*
+
+| Übung | Sets/Wdh | Fokus |
+|---|---|---|
+| Single-Leg Glute Bridge | 3×12/Seite | Gesäß, hintere Kette |
+| Banded Clamshell | 3×20/Seite | Abduktoren, Kniestabilität |
+| Banded Monster Walk | 3×15 Schritte | Hüftstabilisatoren |
+| Einbeiniges Romanian Deadlift | 3×10/Seite | Hintere Kette, Balance |
+| Plank | 3×45 Sek. | Rumpfstabilität |
+
+### Einheit B – Rumpf + Oberkörper
+*Typisch: nach Laufeinheit*
+
+| Übung | Sets/Wdh | Fokus |
+|---|---|---|
+| Side Plank | 3×35 Sek./Seite | Laterale Rumpfstabilität |
+| Band Pull-Apart | 3×20 | Schulter, oberer Rücken |
+| Banded Row stehend | 3×15 | Mittlerer Rücken |
+| Superman / Y-T-W | 3×12 | Unterer Rücken, Schultern |
+| Dead Bug | 3×10/Seite | Tiefe Rumpfmuskulatur |
+
+**Tapering:** Ab T-10 Kraft auf Halten reduzieren · ab T-4 weglassen.
+
 ## Geräte & Plattformen
 
 | Gerät | Funktion | Verbindung |
