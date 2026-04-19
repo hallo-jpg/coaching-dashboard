@@ -154,6 +154,39 @@ Bosquet et al. (2007, Meta-Analyse n=27, Med Sci Sports Exerc): Optimales Taperi
 
 **TSB-Ziel**: +10 bis +20 am Renntag. Keine neuen Belastungsreize in letzten 10 Tagen.
 
+### Carb-Loading-Protokoll (vor Ausdauerevents >2h)
+
+Wissenschaftliche Basis: Bergström et al. (1967) – Glykogensupercompensation. Burke et al. (2011, IJSNEM): 10g KH/kg/Tag für 24–48h vor Event maximiert Glykogenspeicher auf ~750mmol/kg DM. Jeukendrup (2017): Bei gut trainierten Athleten reichen 24–36h Carb-Loading.
+
+**Stefan-spezifisch (88kg):**
+
+| Zeitraum | KH-Ziel | Beispielquellen | Hinweise |
+|---|---|---|---|
+| T-3 (3 Tage vor Rennen) | 7g/kg = 616g | Normal essen + extra Pasta/Reis | Fett und Protein normal |
+| T-2 | 8g/kg = 704g | Pasta, Reis, Brot, Bananen, Gels | Ballaststoffe reduzieren |
+| T-1 | 10g/kg = 880g | Weißer Reis, Weißbrot, Maltodextrin | Kein Salat, kein Rohkost |
+| Renntag-Frühstück (3h vor Start) | 150–200g KH | Reis + Honig, Weißbrot + Marmelade, Gels | Fett und Protein minimal |
+| 30min vor Start | 30–40g KH | Gel + Wasser | Koffein-Gel wenn gewünscht |
+
+**Wichtig:** Während des Carb-Loadings +500–700ml mehr Wasser/Tag trinken (Glykogen bindet Wasser ~3:1).
+
+### Renntag Warm-up (Zeitfahren)
+
+Wissenschaftliche Basis: Burnley et al. (2005, JAP): VO2-Kinetik-Priming durch Warm-up reduziert O2-Deficit in den ersten Minuten des Zeitfahrens. Bishop (2003): 15–20min progressives Warm-up + kurze Intensität optimiert Muskeltemperatur und metabolische Bereitschaft.
+
+**Standardprotokoll Zeitfahren (35–40min gesamt):**
+
+```
+1. 10min @ 160–180W (Z1, locker einkurbeln)
+2. 5min @ 200–230W (Z2, Aerob aufwärmen)
+3. 2× 1min @ 300–320W (FTP-Bereich), 2min Pause dazwischen
+4. 1× 20s @ 400–430W (neurales Priming)
+5. 5min @ 160W (Auskurbeln, klar werden)
+→ Start: 3–5min nach Ende des Warm-ups
+```
+
+Bei Massenstart-Rennen (kein Zeitfahren): Warm-up 20min, weniger Intensität, mehr Aerob.
+
 ---
 
 ## 7. Laktat-Clearance Training (MCT-Transporter)
