@@ -613,7 +613,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     def bar_color(pct: int) -> str:
         return "var(--green)" if pct >= 75 else "var(--yellow)" if pct >= 50 else "var(--red)"
 
-    hrv_pct   = min(round(hrv / hrv_avg * 100), 100) if hrv_avg else 0
+    hrv_pct   = min(round(hrv / hrv_mean * 100), 100) if hrv_mean else 0
     sleep_h   = sleep_s / 3600 if sleep_s else 0
     sleep_pct = min(round(sleep_h / 8 * 100), 100)
     tsb_pct   = min(max(round((tsb + 30) / 60 * 100), 0), 100)
@@ -623,7 +623,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     sparkline_data = wellness[-7:] if len(wellness) >= 7 else wellness
     sparkline = []
     for w in sparkline_data:
-        w_hrv   = w.get("hrv") or hrv_avg
+        w_hrv   = w.get("hrv") or hrv_mean
         w_sleep = w.get("sleepSecs") or 0
         w_ctl   = w.get("ctl") or ctl
         w_atl   = w.get("atl") or atl
