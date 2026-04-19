@@ -105,6 +105,37 @@ Unter dem neuesten Eintrag in `COACHING_AKTE.md` anfügen:
 [🟢/🟡/🔴] TSS [tss_ist]/[tss_soll] ([tss_pct]%) · HRV [Trend] · [ein Satz Kernerkenntnis]
 ```
 
+### Periodisierungsempfehlung (nur wenn Schwelle erreicht)
+
+Prüfe ob eine der folgenden Bedingungen zutrifft:
+- TSS-Erreichung < 75%
+- TSS-Erreichung > 120%
+- HRV-Abfall > 10 Punkte über die Woche
+- Letzte zwei archivierte Wochen haben beide 🔴 oder 🟡 (aus `planung/archiv/` lesbar)
+
+**Wenn keine Bedingung zutrifft:** Keine Empfehlung ausgeben — weiter mit Archivieren.
+
+**Wenn mind. eine Bedingung zutrifft:** Konkrete Änderung vorschlagen und auf Bestätigung warten:
+
+```
+📋 Periodisierungsempfehlung:
+→ [Konkrete Änderung, z.B. "KW18 TSS-Ziel von 420 auf 360 reduzieren"]
+Grund: [eine Zeile Begründung aus den Daten]
+Bestätigen? (ja / nein / später)
+```
+
+**Bei "ja":** `planung/periodisierung.md` entsprechend anpassen, Änderung in `COACHING_AKTE.md` dokumentieren:
+```markdown
+→ periodisierung.md angepasst: [was genau geändert wurde]
+```
+
+**Bei "nein" oder "später":** Keine Änderung, Eintrag in `COACHING_AKTE.md`:
+```markdown
+→ Empfehlung abgelehnt: [kurze Beschreibung der vorgeschlagenen Änderung]
+```
+
+**Dann:** Datei archivieren und COACHING_AKTE-Eintrag schreiben (wie oben beschrieben).
+
 ---
 
 ## Schritt 0: Metriken & Review automatisch abrufen
@@ -510,7 +541,7 @@ Der MCP-Server liest die Datei server-seitig und lädt sie als base64 hoch. Kein
 
 **Dateien aktualisieren:**
 1. **`planung/kw[N].md`** – Neue Wochenplanung anlegen
-2. **`planung/kw[N-1].md`** – Status-Updates: ✅/❌, TSS Ist eintragen; danach in `planung/archiv/` verschieben wenn abgeschlossen
+2. **`planung/kw[N-1].md`** – wird via **Schritt 0a** automatisch mit Retro-Abschnitt befüllt und nach `planung/archiv/` archiviert. Manuell anfassen nur wenn Schritt 0a übersprungen wurde (Ad-hoc-Modus).
 3. **`COACHING_AKTE.md`** – Änderungs-Log + Coach-Notiz mit Datum aktualisieren
 4. **`athlete/profil.md`** – nur bei FTP-Update
 5. **`athlete/fortschritt.md`** – nur bei FTP-Update oder neuem Körpergewicht
