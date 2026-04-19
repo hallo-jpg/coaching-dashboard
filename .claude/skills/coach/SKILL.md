@@ -380,6 +380,12 @@ Wenn kein Bibliotheks-Workout für die Phase existiert:
 ```
 Workout-Name in intervals.icu beginnt immer mit `🤖` wenn Claude es erstellt.
 
+Nach Erstellung: Eintrag in `planung/workout_index.md` in der passenden Sektion anfügen:
+```
+| 🤖 [Workout-Name] | [Dauer] | [TSS ca.] | [aktuelle KW] · Claude-erstellt |
+```
+→ Index ist damit aktuell; nächster Aufruf findet das Workout ohne Neuanlage.
+
 **Schritt 3b: Bibliotheks-Workout vorhanden, aber modifizierte Version besser → auch erlaubt**
 Wenn ein Bibliotheks-Workout vorhanden ist, der Coach aber eine abgewandelte Version für sinnvoller hält (andere Intensität, anderes Volumen, angepasster Fokus für aktuelle Situation):
 - Bibliotheks-Workout als Basis benennen
