@@ -11,6 +11,10 @@ on:
         description: "Run pace API debug script instead of full build"
         type: boolean
         default: false
+      debug_wellness:
+        description: "Run wellness debug script instead of full build"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,8 +40,15 @@ jobs:
           INTERVALS_ATHLETE_ID: ${{ secrets.INTERVALS_ATHLETE_ID }}
         run: python debug_pace_api.py
 
+      - name: Debug wellness API (only when triggered manually with debug flag)
+        if: ${{ github.event.inputs.debug_wellness == 'true' }}
+        env:
+          INTERVALS_API_KEY:    ${{ secrets.INTERVALS_API_KEY }}
+          INTERVALS_ATHLETE_ID: ${{ secrets.INTERVALS_ATHLETE_ID }}
+        run: python debug_wellness.py
+
       - name: Generate dashboard
-        if: ${{ github.event.inputs.debug_pace_api != 'true' }}
+        if: ${{ github.event.inputs.debug_pace_api != 'true' && github.event.inputs.debug_wellness != 'true' }}
         env:
           INTERVALS_API_KEY:    ${{ secrets.INTERVALS_API_KEY }}
           INTERVALS_ATHLETE_ID: ${{ secrets.INTERVALS_ATHLETE_ID }}
@@ -45,14 +56,14 @@ jobs:
         run: python generate.py
 
       - name: Copy static assets
-        if: ${{ github.event.inputs.debug_pace_api != 'true' }}
+        if: ${{ github.event.inputs.debug_pace_api != 'true' && github.event.inputs.debug_wellness != 'true' }}
         run: |
           cp manifest.json docs/manifest.json
           cp sw.js docs/sw.js
           cp icon.svg docs/icon.svg
 
       - name: Commit generated files
-        if: ${{ github.event.inputs.debug_pace_api != 'true' }}
+        if: ${{ github.event.inputs.debug_pace_api != 'true' && github.event.inputs.debug_wellness != 'true' }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
