@@ -26,12 +26,40 @@ def calc_ring_offset(value: float, max_value: float, circumference: float) -> fl
     return round(circumference * (1 - pct), 1)
 
 
-def calc_readiness(hrv: float, hrv_7d_avg: float, sleep_secs: float, tsb: float) -> int:
-    """Composite readiness score 0–100. Weights: HRV 40%, Sleep 35%, TSB 25%."""
-    hrv_score = min(hrv / hrv_7d_avg, 1.25) / 1.25 * 100 if hrv_7d_avg else 50
+def calc_readiness(hrv: float, hrv_mean: float, hrv_std: float, sleep_secs: float, tsb: float) -> int:
+    """Composite readiness score 0–100. Weights: HRV 40%, Sleep 35%, TSB 25%.
+    HRV scored against 30-day baseline — both directions penalized per Coros/RMSSD science.
+    Normal range = mean ± 1 std dev. Below normal: steep penalty. Above normal: light penalty.
+    """
+    if hrv_mean > 0 and hrv_std > 0:
+        dev = (hrv - hrv_mean) / hrv_std
+        if -1.0 <= dev <= 1.0:
+            hrv_score = 100
+        elif dev < -1.0:
+            hrv_score = max(0, 100 + (dev + 1) * 40)   # −40 pts per std below normal
+        else:
+            hrv_score = max(60, 100 - (dev - 1) * 20)  # −20 pts per std above normal
+    elif hrv_mean > 0:
+        hrv_score = min(hrv / hrv_mean, 1.25) / 1.25 * 100
+    else:
+        hrv_score = 50
     sleep_score = min(sleep_secs / (8 * 3600), 1.0) * 100
     tsb_score = min(max((tsb + 30) / 60, 0), 1) * 100
     return round(hrv_score * 0.40 + sleep_score * 0.35 + tsb_score * 0.25)
+
+
+def hrv_status_label(hrv: float, hrv_mean: float, hrv_std: float) -> tuple[str, str]:
+    """Returns (label, color) for HRV status per Coros 4-level classification."""
+    if hrv_std == 0 or hrv_mean == 0:
+        return "Normal", "var(--accent)"
+    dev = (hrv - hrv_mean) / hrv_std
+    if dev > 1.0:
+        return "Erhöht", "var(--yellow)"
+    if dev >= -1.0:
+        return "Normal", "var(--green)"
+    if dev >= -2.0:
+        return "Reduziert", "var(--orange)"
+    return "Niedrig", "var(--red)"
 
 
 def week_date_range(kw: int, year: int) -> tuple[date, date]:
@@ -517,25 +545,31 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     wellness   = get_wellness((monday - timedelta(7)).isoformat(), sunday.isoformat())
     activities = get_activities(monday.isoformat(), sunday.isoformat())
 
-    today_iso = date.today().isoformat()
+    # 30-day HRV baseline for accurate normal range (Coros/RMSSD science)
+    today_iso   = date.today().isoformat()
+    wellness_30 = get_wellness((date.today() - timedelta(30)).isoformat(), today_iso)
+    hrv_30_vals = [w.get("hrv") for w in wellness_30 if w.get("hrv")]
+    hrv_mean    = sum(hrv_30_vals) / len(hrv_30_vals) if hrv_30_vals else 40.0
+    hrv_std     = (sum((v - hrv_mean) ** 2 for v in hrv_30_vals) / len(hrv_30_vals)) ** 0.5 if len(hrv_30_vals) > 1 else 5.0
+    hrv_low     = round(hrv_mean - hrv_std)
+    hrv_high    = round(hrv_mean + hrv_std)
+
     today_w = next((w for w in reversed(wellness) if w.get("id", "") <= today_iso and (w.get("ctl") or w.get("hrv"))), wellness[-1] if wellness else {})
     hrv     = today_w.get("hrv") or 0
     sleep_s = today_w.get("sleepSecs") or 0
     if not sleep_s:
-        # Fallback: letzter bekannter Schlafwert (falls heute noch nicht synchronisiert)
         sleep_s = next((w.get("sleepSecs") for w in reversed(wellness) if w.get("sleepSecs")), 0)
     ctl     = today_w.get("ctl") or 0
     atl     = today_w.get("atl") or 0
     tsb     = round(ctl - atl, 1)
     rhr     = today_w.get("restingHR") or 60
 
-    hrv_7d  = [w.get("hrv") or 0 for w in wellness if w.get("hrv")]
-    hrv_avg = (sum(hrv_7d) / len(hrv_7d)) if hrv_7d else hrv or 40
+    hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
-    r_score = calc_readiness(hrv=hrv, hrv_7d_avg=hrv_avg, sleep_secs=sleep_s, tsb=tsb)
+    r_score = calc_readiness(hrv=hrv, hrv_mean=hrv_mean, hrv_std=hrv_std, sleep_secs=sleep_s, tsb=tsb)
     r_color = readiness_color(r_score)
     r_label = readiness_label(r_score)
-    r_sub   = _readiness_sub(rhr, hrv, hrv_avg, wellness)
+    r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
 
     ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
@@ -593,7 +627,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         w_sleep = w.get("sleepSecs") or 0
         w_ctl   = w.get("ctl") or ctl
         w_atl   = w.get("atl") or atl
-        pct = calc_readiness(hrv=w_hrv, hrv_7d_avg=hrv_avg,
+        pct = calc_readiness(hrv=w_hrv, hrv_mean=hrv_mean, hrv_std=hrv_std,
                              sleep_secs=w_sleep, tsb=w_ctl - w_atl)
         sparkline.append({"pct": pct, "color": readiness_color(pct)})
 
@@ -643,7 +677,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ctl_offset": ctl_offset, "atl_offset": atl_offset,
         "tss_ist": tss_ist, "tss_plan": plan["tss_plan"],
         "sick_notice": sick_notice, "days": days,
-        "hrv_pct": hrv_pct, "hrv_val": f"{round(hrv)}/{round(hrv_avg)}", "hrv_color": bar_color(hrv_pct),
+        "hrv_val": f"{round(hrv)} ms", "hrv_status": hrv_status, "hrv_status_color": hrv_status_color,
+        "hrv_range": f"{hrv_low}–{hrv_high}", "hrv_30d_avg": round(hrv_mean),
+        "hrv_pct": hrv_pct, "hrv_color": bar_color(hrv_pct),
         "sleep_pct": sleep_pct, "sleep_val": f"{sleep_h:.1f}h", "sleep_color": bar_color(sleep_pct),
         "tsb_bar_pct": tsb_pct, "tsb_bar_val": f"{tsb:+.0f}", "tsb_bar_color": bar_color(tsb_pct),
         "pulse_pct": pulse_pct, "pulse_val": f"{round(rhr)} bpm", "pulse_color": bar_color(pulse_pct),

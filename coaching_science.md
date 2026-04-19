@@ -53,13 +53,32 @@ Seiler & Kjerland (2006): ~80% der Einheiten unter der aeroben Schwelle (Z1), ~2
 
 ## 3. HRV-gesteuertes Training
 
+### Metrik: RMSSD (nächtlich)
+
+Coros, Whoop und die Sportwissenschaft verwenden **RMSSD** (Root Mean Square of Successive Differences) als HRV-Metrik. RMSSD ist stabil, wenig von der Atmung beeinflusst und sensitiv für autonome Veränderungen. Stefan's Coros misst RMSSD automatisch während des Schlafs — diese Werte fließen in das Dashboard ein.
+
+### Normalbereich: 30-Tage-Baseline
+
+**Kritisch:** Der Normalbereich ist individuell und muss aus den eigenen Daten berechnet werden. Stefan's Normalbereich: ~40–50 ms RMSSD. Berechnung: Mittelwert ± 1 Standardabweichung der letzten 30 Tage.
+
+**Beide Richtungen sind relevant** (laut Coros-Klassifikation):
+
+| Status | Kriterium | Bedeutung | Konsequenz |
+|---|---|---|---|
+| Erhöht | > Normalbereich (+1σ) | Entspannt, aber Ursache prüfen | Mit Vorsicht trainieren |
+| Normal | Innerhalb Normalbereich (±1σ) | Guter Zustand | Plan wie vorgesehen |
+| Reduziert | Leicht unter Normalbereich (−1–2σ) | Körper unter Stress | Zusätzliche Erholung erwägen |
+| Niedrig | Deutlich unter Normalbereich (<−2σ) | Stark gestresst | Ruhetag empfohlen |
+
+**Frühere Fehleinschätzung korrigiert:** Nur höhere HRV als gut zu werten ist falsch — auch deutlich erhöhte HRV (>1σ über Baseline) kann auf physiologischen Stress hinweisen (z.B. beginnende Krankheit, parasympathische Überreaktion).
+
 ### Kernaussage der Forschung
 
 Kiviniemi et al. (2007): HRV-gesteuertes Training > fixer Plan in Ausdauerleistung. Plews et al. (2012–2016): 7-Tage-Trend des RMSSD als Entscheidungsanker. Buchheit (2014): Absolute Tagesschwankungen (±10–15% RMSSD) sind normal – erst Trends über 5–7 Tage sind handlungsrelevant. Meta-Analyse Duking et al. (2021): HRV-gesteuertes Training → ~5–7% mehr Leistungszuwachs als vorprogrammierte Pläne.
 
 ### Entscheidungsregeln (Plews-Protokoll)
 
-**Messung**: Täglich nach dem Aufwachen, liegend, 60 Sekunden RMSSD, gleiche Bedingungen.
+**Messung**: Nächtlich automatisch via Coros (RMSSD-Durchschnitt über gesamten Schlaf).
 
 | 7-Tage-Trend | Signal | Konsequenz |
 |---|---|---|
@@ -68,10 +87,11 @@ Kiviniemi et al. (2007): HRV-gesteuertes Training > fixer Plan in Ausdauerleistu
 | Fallend (<−5%) | Kumulative Erschöpfung | 1 HIT → LIT ersetzen |
 | Stark fallend (<−10%) | Overtraining-Risiko | 2–3 Tage nur LIT |
 
-**Tageswert** (ergänzend):
-- >5% über Durchschnitt: Volle Intensität optimal
-- ±5%: Normal, Plan wie vorgesehen
-- >10% unter Durchschnitt: Einheit als LIT anpassen
+**Tageswert** (ergänzend, relativ zum 30-Tage-Schnitt):
+- Innerhalb ±1σ: Normal, Plan wie vorgesehen
+- > +1σ (erhöht): Vorsichtig trainieren, andere Faktoren beobachten
+- −1 bis −2σ (reduziert): Intensität reduzieren
+- < −2σ (niedrig): Ruhetag
 
 ---
 

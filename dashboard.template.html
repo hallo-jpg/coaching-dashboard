@@ -534,29 +534,45 @@
     <!-- READINESS -->
     <div class="readiness-card">
       <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
-      <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
-      <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
-      <div class="readiness-sub">{{ readiness_sub }}</div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">HRV</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:{{ hrv_pct }}%;background:{{ hrv_color }}"></div></div>
-        <span class="rbar-val">{{ hrv_val }}</span>
+
+      <!-- Score + Label -->
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+        <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
+        <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
       </div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">Schlaf</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:{{ sleep_pct }}%;background:{{ sleep_color }}"></div></div>
-        <span class="rbar-val">{{ sleep_val }}</span>
+
+      <!-- HRV Block (Coros-Style F) -->
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent)">
+        <div>
+          <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
+          <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
+        </div>
+        <div style="margin-left:auto;text-align:right">
+          <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
+          <div class="rbar-lbl">Normalber. {{ hrv_range }} ms</div>
+        </div>
       </div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">TSB</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:{{ tsb_bar_pct }}%;background:{{ tsb_bar_color }}"></div></div>
-        <span class="rbar-val">{{ tsb_bar_val }}</span>
+
+      <!-- 3 Mini-Tiles -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+          <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
+          <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
+          <div class="rbar-lbl">/ 8h</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+          <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
+          <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
+          <div class="rbar-lbl">Form</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+          <div class="rbar-lbl" style="margin-bottom:3px">RHR</div>
+          <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
+          <div class="rbar-lbl">Puls</div>
+        </div>
       </div>
-      <div class="rbar-row">
-        <span class="rbar-lbl">Puls</span>
-        <div class="rbar-track"><div class="rbar-fill" style="width:{{ pulse_pct }}%;background:{{ pulse_color }}"></div></div>
-        <span class="rbar-val">{{ pulse_val }}</span>
-      </div>
+
+      <!-- Sparkline -->
       <div class="sparkline-wrap">
         <div class="spark-label">Readiness · 7 Tage</div>
         <div class="sparkline">
