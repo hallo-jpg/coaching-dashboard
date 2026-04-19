@@ -355,12 +355,8 @@
     </div>
     <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-num" id="rr-weeks">–</div>
-        <div class="cd-label">Wochen</div>
-      </div>
-      <div class="cd-item">
         <div class="cd-num" id="rr-days">–</div>
-        <div class="cd-label">Tage</div>
+        <div class="cd-label">Tage <span id="rr-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
@@ -374,12 +370,8 @@
     </div>
     <div class="cd-sec-bottom">
       <div class="cd-item">
-        <div class="cd-sec-num" id="ro-weeks">–</div>
-        <div class="cd-sec-lbl">Wochen</div>
-      </div>
-      <div class="cd-item">
         <div class="cd-sec-num" id="ro-days">–</div>
-        <div class="cd-sec-lbl">Tage</div>
+        <div class="cd-sec-lbl">Tage <span id="ro-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
@@ -700,7 +692,6 @@
 
       <div class="nutr-protein">
         <div class="nutr-protein-left">
-          <div class="nutr-protein-icon">🥚</div>
           <div>
             <div class="nutr-protein-lbl">Protein-Ziel heute</div>
             <div><span class="nutr-protein-val">160</span><span class="nutr-protein-unit"> g · 1.8 g/kg</span></div>
@@ -1002,9 +993,9 @@
     var rrDays = daysBetween('2026-06-12');
     var roDays = daysBetween('2026-06-28');
     document.getElementById('rr-days').textContent = rrDays;
-    document.getElementById('rr-weeks').textContent = Math.floor(rrDays / 7);
+    document.getElementById('rr-weeks').textContent = '(' + Math.floor(rrDays / 7) + ' Wo.)';
     document.getElementById('ro-days').textContent = roDays;
-    document.getElementById('ro-weeks').textContent = Math.floor(roDays / 7);
+    document.getElementById('ro-weeks').textContent = '(' + Math.floor(roDays / 7) + ' Wo.)';
   })();
 </script>
 
