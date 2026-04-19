@@ -631,11 +631,11 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                              sleep_secs=w_sleep, tsb=w_ctl - w_atl)
         sparkline.append({"pct": pct, "color": readiness_color(pct)})
 
-    prev_acts = get_activities(
-        (monday - timedelta(7)).isoformat(),
-        (monday - timedelta(1)).isoformat()
+    polar_acts = get_activities(
+        (date.today() - timedelta(7)).isoformat(),
+        date.today().isoformat()
     )
-    polar = _calc_polarisation(prev_acts)
+    polar = _calc_polarisation(polar_acts)
 
     outlook = []
     for i in range(4):
