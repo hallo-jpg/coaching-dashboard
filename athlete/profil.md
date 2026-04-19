@@ -33,6 +33,15 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 **Nebenevent: Rosenheimer Radmarathon Tour V – 28. Juni 2026 (KW26)**
 - 197km / 3.550hm – Ausdauercharakter, Fueling-Herausforderung
 
+### Event-Kalender (autoritativ für Taper-Triggering)
+
+| Event | Datum | Tage bis Event (auto) | Charakter | Taper-Start |
+|---|---|---|---|---|
+| RadRace 120 – Zeitfahren | 2026-06-12 | — | TT + Rennen | 2026-05-29 (T-14) |
+| Rosenheimer Radmarathon | 2026-06-28 | — | 197km / 3.550hm | 2026-06-14 (T-14) |
+
+*"Tage bis Event" wird vom Coach-Skill beim Aufruf berechnet (heute − Event-Datum). Neue Events hier eintragen.*
+
 ### Weitere Ziele
 - Laufleistung verbessern (kein Rennen-Ziel)
 - Kein Profi-Fokus: bestmöglich performen, nicht um jeden Preis
