@@ -90,12 +90,7 @@ def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None 
         elif diff_hr <=  6: hr_pts = 3
         else:               hr_pts = 0
 
-    total = min(100, hrv_pts + sleep_pts + tsb_pts + hr_pts)
-    print(f"[readiness] HRV={hrv_pts} Sleep={sleep_pts} TSB={tsb_pts} RHR={hr_pts} → {total} "
-          f"(hrv_vals={len(hrv_today_vals)} baseline={len(hrv_baseline_vals)} "
-          f"sleep_quality={quality_vals} sleep_secs={sleep_vals} "
-          f"hr_vals={hr_vals})", flush=True)
-    return total
+    return min(100, hrv_pts + sleep_pts + tsb_pts + hr_pts)
 
 
 def hrv_status_label(hrv: float, hrv_mean: float, hrv_std: float) -> tuple[str, str]:
@@ -605,7 +600,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
-    r_score = calc_readiness(wellness[-7:], hrv_baseline=wellness_30)
+    r_score = calc_readiness(wellness_30[-7:], hrv_baseline=wellness_30)
     r_color = readiness_color(r_score)
     r_label = readiness_label(r_score)
     r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
@@ -659,7 +654,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     rhr_base  = 50
     pulse_pct = max(0, min(100, round((1 - (rhr - rhr_base) / 20) * 100)))
 
-    sparkline_data = wellness[-7:] if len(wellness) >= 7 else wellness
+    sparkline_data = wellness_30[-7:] if len(wellness_30) >= 7 else wellness_30
     sparkline = []
     for w in sparkline_data:
         pct = calc_readiness([w], hrv_baseline=wellness_30)
