@@ -630,14 +630,16 @@ function _stdDev(arr) {
 
 // Berechnet Score aus einem Array von Wellness-Einträgen (chronologisch, min. 3)
 // Gibt score, ampel, empfehlung, komponenten und interne _meta zurück
-function computeReadiness(data) {
-  // HRV (40 Punkte)
-  const hrvValues = data.map(d => d.hrv).filter(Boolean);
+function computeReadiness(data, hrvBaseline30 = null) {
+  // HRV (40 Punkte) — Baseline aus 30-Tage-Fenster (robust gegen Krankheit ~7d = nur 25% des Fensters)
+  const baselineData = hrvBaseline30 ?? data;
+  const hrvBaseline  = baselineData.map(d => d.hrv).filter(Boolean);
+  const hrvToday     = data.map(d => d.hrv).filter(Boolean);
   let hrvPts = 20, hrvDetail = "Keine HRV-Daten", hrvDiffSDs = 0;
-  if (hrvValues.length >= 3) {
-    const mean = _avg(hrvValues);
-    const sd = Math.max(_stdDev(hrvValues), 1);
-    const last = hrvValues[hrvValues.length - 1];
+  if (hrvBaseline.length >= 3 && hrvToday.length) {
+    const mean = _avg(hrvBaseline);
+    const sd = Math.max(_stdDev(hrvBaseline), 1);
+    const last = hrvToday[hrvToday.length - 1];
     const diff = last - mean;
     hrvDiffSDs = diff / sd;
     if (diff > sd)         { hrvPts = 40; hrvDetail = `${last} ms (+${diff.toFixed(1)} > +1SD) – erhöht`; }
@@ -787,9 +789,9 @@ server.tool(
 
     if (!wellnessAll.length) return { content: [{ type: "text", text: "Keine Wellness-Daten gefunden." }] };
 
-    // Heutiger Score: letzten 7 verfügbaren Tage
+    // Heutiger Score: 7-Tage-Fenster für Schlaf/TSB/RHR, 30-Tage-Baseline für HRV
     const window7 = wellnessAll.slice(-7);
-    const { score, ampel, empfehlung, komponenten, _meta } = computeReadiness(window7);
+    const { score, ampel, empfehlung, komponenten, _meta } = computeReadiness(window7, wellnessAll);
     const { muster, hinweis } = detectPattern(_meta);
     const workout_empfehlungen = suggestWorkoutMods(score, plannedEvents);
 

@@ -37,18 +37,20 @@ def _std_dev(values: list) -> float:
     return (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
 
 
-def calc_readiness(wellness_window: list[dict]) -> int:
-    """Port of MCP computeReadiness. Identical formula so Skill and Dashboard show the same score.
-    HRV 40pts (vs. 7d baseline) + Sleep 25pts + TSB 20pts + RHR 15pts = 100pts max.
-    Missing data → neutral fallback (never collapses to 0 due to missing sync).
+def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None = None) -> int:
+    """HRV 40pts (vs. 30d baseline) + Sleep 25pts + TSB 20pts + RHR 15pts = 100pts max.
+    HRV baseline uses 30-day window so illness (~7d) only affects 25% of reference period.
+    Sleep/TSB/RHR use 7-day window (responsive). Missing data → neutral fallback.
     """
-    # HRV (40 pts) — today vs. 7d baseline
-    hrv_vals = [w["hrv"] for w in wellness_window if w.get("hrv")]
+    # HRV (40 pts) — today vs. 30d baseline (illness-robust)
+    baseline = hrv_baseline if hrv_baseline is not None else wellness_window
+    hrv_baseline_vals = [w["hrv"] for w in baseline if w.get("hrv")]
+    hrv_today_vals    = [w["hrv"] for w in wellness_window if w.get("hrv")]
     hrv_pts = 20  # neutral fallback
-    if len(hrv_vals) >= 3:
-        mean = _avg(hrv_vals)
-        sd   = max(_std_dev(hrv_vals), 1)
-        diff = hrv_vals[-1] - mean
+    if len(hrv_baseline_vals) >= 3 and hrv_today_vals:
+        mean = _avg(hrv_baseline_vals)
+        sd   = max(_std_dev(hrv_baseline_vals), 1)
+        diff = hrv_today_vals[-1] - mean
         if   diff >  sd:      hrv_pts = 40
         elif diff >  0:       hrv_pts = 33
         elif diff > -sd:      hrv_pts = 24
@@ -598,7 +600,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
-    r_score = calc_readiness(wellness[-7:])
+    r_score = calc_readiness(wellness[-7:], hrv_baseline=wellness_30)
     r_color = readiness_color(r_score)
     r_label = readiness_label(r_score)
     r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
