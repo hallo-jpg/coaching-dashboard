@@ -26,26 +26,69 @@ def calc_ring_offset(value: float, max_value: float, circumference: float) -> fl
     return round(circumference * (1 - pct), 1)
 
 
-def calc_readiness(hrv: float, hrv_mean: float, hrv_std: float, sleep_secs: float, tsb: float) -> int:
-    """Composite readiness score 0–100. Weights: HRV 40%, Sleep 35%, TSB 25%.
-    HRV scored against 30-day baseline — both directions penalized per Coros/RMSSD science.
-    Normal range = mean ± 1 std dev. Below normal: steep penalty. Above normal: light penalty.
+def _avg(values: list) -> float:
+    return sum(values) / len(values) if values else 0.0
+
+
+def _std_dev(values: list) -> float:
+    if len(values) < 2:
+        return 1.0
+    mean = _avg(values)
+    return (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
+
+
+def calc_readiness(wellness_window: list[dict]) -> int:
+    """Port of MCP computeReadiness. Identical formula so Skill and Dashboard show the same score.
+    HRV 40pts (vs. 7d baseline) + Sleep 25pts + TSB 20pts + RHR 15pts = 100pts max.
+    Missing data → neutral fallback (never collapses to 0 due to missing sync).
     """
-    if hrv_mean > 0 and hrv_std > 0:
-        dev = (hrv - hrv_mean) / hrv_std
-        if -1.0 <= dev <= 1.0:
-            hrv_score = 100
-        elif dev < -1.0:
-            hrv_score = max(0, 100 + (dev + 1) * 40)   # −40 pts per std below normal
-        else:
-            hrv_score = max(60, 100 - (dev - 1) * 20)  # −20 pts per std above normal
-    elif hrv_mean > 0:
-        hrv_score = min(hrv / hrv_mean, 1.25) / 1.25 * 100
-    else:
-        hrv_score = 50
-    sleep_score = min(sleep_secs / (8 * 3600), 1.0) * 100
-    tsb_score = min(max((tsb + 30) / 60, 0), 1) * 100
-    return round(hrv_score * 0.40 + sleep_score * 0.35 + tsb_score * 0.25)
+    # HRV (40 pts) — today vs. 7d baseline
+    hrv_vals = [w["hrv"] for w in wellness_window if w.get("hrv")]
+    hrv_pts = 20  # neutral fallback
+    if len(hrv_vals) >= 3:
+        mean = _avg(hrv_vals)
+        sd   = max(_std_dev(hrv_vals), 1)
+        diff = hrv_vals[-1] - mean
+        if   diff >  sd:      hrv_pts = 40
+        elif diff >  0:       hrv_pts = 33
+        elif diff > -sd:      hrv_pts = 24
+        elif diff > -2 * sd:  hrv_pts = 10
+        else:                 hrv_pts = 0
+
+    # Sleep (25 pts) — prefer quality rating, fall back to duration
+    last3        = wellness_window[-3:]
+    quality_vals = [w["sleepQuality"] for w in last3 if w.get("sleepQuality") is not None]
+    sleep_vals   = [w["sleepSecs"]    for w in last3 if w.get("sleepSecs")]
+    sleep_pts = 13  # neutral fallback
+    if quality_vals:
+        sleep_pts = round(_avg(quality_vals) / 5 * 25)
+    elif sleep_vals:
+        sleep_pts = min(25, round(_avg(sleep_vals) / 3600 / 8 * 25))
+
+    # TSB (20 pts)
+    latest  = wellness_window[-1]
+    ctl, atl = latest.get("ctl") or 0, latest.get("atl") or 0
+    tsb_pts = 10  # neutral fallback
+    if ctl and atl:
+        tsb = ctl - atl
+        if   tsb >  10:  tsb_pts = 20
+        elif tsb >=  0:  tsb_pts = 17
+        elif tsb >= -10: tsb_pts = 13
+        elif tsb >= -20: tsb_pts = 6
+        else:            tsb_pts = 0
+
+    # RHR (15 pts)
+    hr_vals = [w["restingHR"] for w in wellness_window if w.get("restingHR")]
+    hr_pts = 8  # neutral fallback
+    if len(hr_vals) >= 3:
+        diff_hr = hr_vals[-1] - _avg(hr_vals[:-1])
+        if   diff_hr <= -3: hr_pts = 15
+        elif diff_hr <=  0: hr_pts = 12
+        elif diff_hr <=  3: hr_pts = 8
+        elif diff_hr <=  6: hr_pts = 3
+        else:               hr_pts = 0
+
+    return min(100, hrv_pts + sleep_pts + tsb_pts + hr_pts)
 
 
 def hrv_status_label(hrv: float, hrv_mean: float, hrv_std: float) -> tuple[str, str]:
@@ -555,7 +598,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
-    r_score = calc_readiness(hrv=hrv, hrv_mean=hrv_mean, hrv_std=hrv_std, sleep_secs=sleep_s, tsb=tsb)
+    r_score = calc_readiness(wellness[-7:])
     r_color = readiness_color(r_score)
     r_label = readiness_label(r_score)
     r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
