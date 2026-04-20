@@ -657,12 +657,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     sparkline_data = wellness[-7:] if len(wellness) >= 7 else wellness
     sparkline = []
     for w in sparkline_data:
-        w_hrv   = w.get("hrv") or hrv_mean
-        w_sleep = w.get("sleepSecs") or 0
-        w_ctl   = w.get("ctl") or ctl
-        w_atl   = w.get("atl") or atl
-        pct = calc_readiness(hrv=w_hrv, hrv_mean=hrv_mean, hrv_std=hrv_std,
-                             sleep_secs=w_sleep, tsb=w_ctl - w_atl)
+        pct = calc_readiness([w], hrv_baseline=wellness_30)
         sparkline.append({"pct": pct, "color": readiness_color(pct)})
 
     polar_acts = get_activities(
