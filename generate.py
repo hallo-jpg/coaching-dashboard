@@ -90,7 +90,12 @@ def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None 
         elif diff_hr <=  6: hr_pts = 3
         else:               hr_pts = 0
 
-    return min(100, hrv_pts + sleep_pts + tsb_pts + hr_pts)
+    total = min(100, hrv_pts + sleep_pts + tsb_pts + hr_pts)
+    print(f"[readiness] HRV={hrv_pts} Sleep={sleep_pts} TSB={tsb_pts} RHR={hr_pts} → {total} "
+          f"(hrv_vals={len(hrv_today_vals)} baseline={len(hrv_baseline_vals)} "
+          f"sleep_quality={quality_vals} sleep_secs={sleep_vals} "
+          f"hr_vals={hr_vals})", flush=True)
+    return total
 
 
 def hrv_status_label(hrv: float, hrv_mean: float, hrv_std: float) -> tuple[str, str]:
