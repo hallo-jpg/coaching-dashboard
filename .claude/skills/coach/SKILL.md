@@ -575,9 +575,22 @@ Das Dashboard liest `planung/kw[N+1].md` bis `planung/kw[N+3].md` für die 4-Woc
 
 *[Datum von–bis]*
 *Thema: [Kurzbeschreibung der Phase]*
+
+## Wochenplan
+
+| Tag | Workout | TSS ca. | TSS Ist | Status | Notiz |
+|---|---|---|---|---|---|
+| Mo | – | – | – | ⬜ | |
+| Di | – | – | – | ⬜ | |
+| Mi | – | – | – | ⬜ | |
+| Do | – | – | – | ⬜ | |
+| Fr | – | – | – | ⬜ | |
+| Sa | – | – | – | ⬜ | |
+| So | – | – | – | ⬜ | |
+| **Total** | | **~[TSS aus Periodisierungsplan]** | | | |
 ```
 
-Nur Heading + Thema-Zeile nötig – keine Tagdetails. Beim nächsten `/coach`-Aufruf für diese KW wird die Datei mit vollem Plan überschrieben. Existiert die Stub-Datei bereits → nicht überschreiben.
+**Pflicht:** Die `**Total**`-Zeile mit TSS-Schätzwert ist zwingend – ohne sie zeigt das Dashboard 0 TSS in der 4-Wochen-Kachel. TSS-Wert aus `planung/periodisierung.md` entnehmen. Beim nächsten `/coach`-Aufruf für diese KW wird der Stub mit vollem Plan überschrieben. Existiert die Stub-Datei bereits → nicht überschreiben.
 
 **Bei Block-Skizze-Modus** (2–4 Wochen ohne Workout-Erstellung):
 Tabelle mit: KW | Thema | Ziel-TSS | Schlüsseleinheiten (Dateiname) | Fueling-Schwerpunkt
