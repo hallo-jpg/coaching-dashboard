@@ -138,6 +138,18 @@ Bestätigen? (ja / nein / später)
 
 ---
 
+## Schritt 0: Datum & KW verifizieren (immer zuerst)
+
+**Pflicht vor jeder Planung:** Führe als allererstes den folgenden Bash-Befehl aus:
+
+```bash
+date "+%A, %d. %B %Y – KW%V"
+```
+
+Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.md-Datumsangaben (z.B. "KW16 = 14.–20. April") sind Orientierungswerte und können falsch sein – nie daraus auf den heutigen Wochentag schließen.
+
+---
+
 ## Schritt 0: Metriken & Review automatisch abrufen
 
 ### Bei Wochenplanung (neue KW planen):
@@ -640,7 +652,29 @@ Der MCP-Server liest die Datei server-seitig und lädt sie als base64 hoch. Kein
 - Via `create_planned_workout` MCP-Tool mit `workout_steps` (Rad) oder Description-Format (Lauf/Kraft)
 
 **Dateien aktualisieren:**
-1. **`planung/kw[N].md`** – Neue Wochenplanung anlegen
+1. **`planung/kw[N].md`** – Neue Wochenplanung anlegen. **Pflichtformat** (exakt so, sonst bricht der Dashboard-Parser):
+
+```markdown
+# KW[N] – [Titel]
+
+*[Datum von–bis]*
+*Thema: [Kurzbeschreibung]*
+
+## Wochenplan
+
+| Tag | Workout | TSS ca. | TSS Ist | Status | Notiz |
+|---|---|---|---|---|---|
+| Mo | [Workout oder Ruhetag] | [Zahl oder –] | – | ⬜ | [Notiz] |
+| Di | ... | | | | |
+| Mi | ... | | | | |
+| Do | ... | | | | |
+| Fr | ... | | | | |
+| Sa | ... | | | | |
+| So | ... | | | | |
+| **Total** | | **~[TSS]** | | | |
+```
+
+**Wichtig:** Tag-Spalte immer nur `Mo`, `Di`, `Mi`, `Do`, `Fr`, `Sa`, `So` – **kein Datum** (z.B. nicht `Mo 20.4.`). Der Parser matcht auf exakte Tagkürzel.
 2. **`planung/kw[N-1].md`** – wird via **Schritt 0a** automatisch mit Retro-Abschnitt befüllt und nach `planung/archiv/` archiviert. Manuell anfassen nur wenn Schritt 0a übersprungen wurde (Ad-hoc-Modus).
 3. **`COACHING_AKTE.md`** – Änderungs-Log + Coach-Notiz mit Datum aktualisieren
 4. **`athlete/profil.md`** – nur bei FTP-Update
@@ -648,6 +682,13 @@ Der MCP-Server liest die Datei server-seitig und lädt sie als base64 hoch. Kein
 6. **`planung/periodisierung.md`** – nur nach expliziter Zustimmung zu Planänderungen
 7. **`CLAUDE.md`** – `Aktuelle KW` und `Wochen bis Rennen` aktualisieren
 8. **Dashboard** – **nicht manuell anfassen**. Das Dashboard unter `docs/dashboard.html` wird automatisch stündlich via GitHub Actions aus intervals.icu + `planung/kw[N].md` neu generiert. Alle Karten (Wochenplan, Readiness, Polarisation, Ernährung, Power/Lauf-Bestwerte, Ausblick) sind vollautomatisch. Der Skill muss nur die Planungsdateien (`planung/kw[N].md`) korrekt pflegen — der Rest passiert von selbst.
+9. **Git commit + push** – **immer als letzter Schritt**, ohne dass Stefan daran erinnern muss:
+```bash
+git add [geänderte Dateien]
+git commit -m "plan: KW[N] [Kurzbeschreibung]"
+git pull --rebase && git push
+```
+Remote kann Auto-Commits vom Dashboard-Generator enthalten → immer `--rebase` vor push.
 
 ---
 
