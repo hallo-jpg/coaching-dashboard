@@ -25,6 +25,12 @@
 
 ## Coach-Notizen
 
+### 20. April 2026 – KW17 Planung (Wiederanlauf)
+- KW17 als konservative Rückkehrwoche geplant: Mo Ruhe · Di Spaziergang · Mi LIT-1h · Do LIT-1h30 · Fr Ruhe · Sa LIT-2h · So LIT-2h30
+- TSS-Ziel: ~251 (kein Kompensations-TSS)
+- Kein KA, kein SwSp, kein Laufen diese Woche – sauberer Neustart
+- HIT-Aufbaublock KW18 bleibt wie geplant, Entscheidung über SwSp-Einstieg zu Beginn KW18
+
 ### 18. April 2026 – KW16 Krankheit
 
 - KW16 komplett ausgefallen: krank ab Mo 14. April, 0 TSS
