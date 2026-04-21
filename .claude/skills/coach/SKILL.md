@@ -567,6 +567,18 @@ Je eine Zeile pro Woche:
 
 **Wichtig**: Immer 4 Wochen vorausschauen – auch wenn ein Event in Woche 1 oder 2 liegt. Woche 3–4 beschreiben den Post-Event-Block (Recovery → Aufbau), nicht nur "Erholung". Nach KW26 lautet die Antwort nicht "Pause" sondern "Grundlagenblock neu aufbauen".
 
+**Dashboard-Pflicht – Stub-Dateien für KW[N+1] bis KW[N+3] anlegen:**
+Das Dashboard liest `planung/kw[N+1].md` bis `planung/kw[N+3].md` für die 4-Wochen-Ausblick-Kachel. Fehlen diese Dateien, zeigt das Dashboard leere Kacheln. Daher nach jeder Wochenplanung auch Stub-Dateien für die nächsten 3 Wochen schreiben (falls noch nicht vorhanden):
+
+```markdown
+# KW[N+1] – [Thema laut Periodisierungsplan]
+
+*[Datum von–bis]*
+*Thema: [Kurzbeschreibung der Phase]*
+```
+
+Nur Heading + Thema-Zeile nötig – keine Tagdetails. Beim nächsten `/coach`-Aufruf für diese KW wird die Datei mit vollem Plan überschrieben. Existiert die Stub-Datei bereits → nicht überschreiben.
+
 **Bei Block-Skizze-Modus** (2–4 Wochen ohne Workout-Erstellung):
 Tabelle mit: KW | Thema | Ziel-TSS | Schlüsseleinheiten (Dateiname) | Fueling-Schwerpunkt
 - Keine Workouts in intervals.icu anlegen – nur Übersicht ausgeben
