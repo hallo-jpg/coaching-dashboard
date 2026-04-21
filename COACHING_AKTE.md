@@ -25,6 +25,11 @@
 
 ## Coach-Notizen
 
+### 21. April 2026 – KW17 Umplanung (Husten)
+- Di 21.4. noch nicht fit: Husten, Plan um einen Tag verschoben
+- Mi 22.4.: längerer Spaziergang · Do 23.4.: LIT-1h (+1) · Fr 24.4.: LIT-1h30 (+2)
+- Sa/So bleiben unverändert: LIT-2h / LIT-2h30
+
 ### 20. April 2026 – KW17 Planung (Wiederanlauf)
 - KW17 als konservative Rückkehrwoche geplant: Mo Ruhe · Di Spaziergang · Mi LIT-1h · Do LIT-1h30 · Fr Ruhe · Sa LIT-2h · So LIT-2h30
 - TSS-Ziel: ~251 (kein Kompensations-TSS)
