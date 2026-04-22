@@ -551,9 +551,10 @@
 
 </div>
 
-<!-- MAIN GRID -->
-<div class="main-grid">
-  <div class="left-col">
+<!-- WOCHENPLAN + ERNÄHRUNG -->
+<div class="two-col-grid">
+
+  <!-- WOCHENPLAN -->
   <div class="week-card">
     <div class="week-header">
       <span class="card-headline">Wochenplan</span>
@@ -587,147 +588,185 @@
     {% endfor %}
   </div>
 
-  <!-- POLARISATION -->
-  <div class="polar-card">
-    <div class="card-headline" style="margin-bottom:14px">Polarisation · letzte 7 Tage · Rad</div>
-    {% if polar_no_data %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
-    {% else %}
-    <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3{% endif %}</span>
-    <div class="polar-row">
-      <span class="polar-lbl">Z1–Z2</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
-      <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
+  <!-- ERNÄHRUNG -->
+  {% if nutrition %}
+  <div class="nutr-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div class="card-headline">Ernährung · Heute</div>
+      <span class="kw-pill" style="margin-left:auto">{{ nutrition.day_type }}</span>
     </div>
-    <div class="polar-row">
-      <span class="polar-lbl">Z3</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
-      <span class="polar-pct">{{ polar_z3_pct }}%</span>
+
+    <div class="nutr-banner nutr-banner-{{ nutrition.banner_color }}">
+      <div>
+        <div class="nutr-banner-text">{{ nutrition.day_label }}</div>
+        <div class="nutr-banner-sub">{{ nutrition.day_sub }}</div>
+      </div>
     </div>
-    <div class="polar-row">
-      <span class="polar-lbl">Z4–Z7</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
-      <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
+
+    <div class="nutr-protein">
+      <div class="nutr-protein-left">
+        <div>
+          <div class="nutr-protein-lbl">Protein-Ziel heute</div>
+          <div><span class="nutr-protein-val">{{ nutrition.protein_g }}</span><span class="nutr-protein-unit"> g · {{ nutrition.protein_gkg }} g/kg</span></div>
+        </div>
+      </div>
+      <div class="nutr-protein-dist">
+        {% for line in nutrition.protein_dist %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}
+      </div>
     </div>
-    <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
+
+    {% if nutrition.pre %}
+    <div class="nutr-timing">
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">Pre-Workout</div>
+        <div class="nutr-timing-main">{{ nutrition.pre.emoji }} {{ nutrition.pre.title }}</div>
+        <div class="nutr-timing-sub">{{ nutrition.pre.sub }}</div>
+      </div>
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">During</div>
+        <div class="nutr-timing-main">{{ nutrition.during.emoji }} {{ nutrition.during.title }}</div>
+        <div class="nutr-timing-sub">{{ nutrition.during.sub }}</div>
+      </div>
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">Post · 30min</div>
+        <div class="nutr-timing-main">{{ nutrition.post.emoji }} {{ nutrition.post.title }}</div>
+        <div class="nutr-timing-sub">{{ nutrition.post.sub }}</div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if nutrition.tips %}
+    <div>
+      {% for tip in nutrition.tips %}
+      <div class="nutr-tip">
+        <div class="nutr-tip-dot nutr-tip-dot-{{ tip.color }}"></div>
+        <div class="nutr-tip-text">{{ tip.text }}</div>
+      </div>
+      {% endfor %}
+    </div>
     {% endif %}
   </div>
-  </div><!-- /left-col -->
+  {% endif %}
 
-  <div class="right-col">
-    <!-- READINESS -->
-    <div class="readiness-card">
-      <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
+</div>
 
-      <!-- Score + Label -->
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
-        <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
-        <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
+<!-- READINESS + TSS-ÜBERSICHT -->
+<div class="two-col-grid">
+
+  <!-- READINESS -->
+  <div class="readiness-card">
+    <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
+
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+      <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
+      <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent)">
+      <div>
+        <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
       </div>
-
-      <!-- HRV Block (Coros-Style F) -->
-      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent)">
-        <div>
-          <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-          <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
-        </div>
-        <div style="margin-left:auto;text-align:right">
-          <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
-          <div class="rbar-lbl">Normalber. {{ hrv_range }} ms</div>
-        </div>
-      </div>
-
-      <!-- 3 Mini-Tiles -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
-          <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-          <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
-          <div class="rbar-lbl">/ 8h</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
-          <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
-          <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
-          <div class="rbar-lbl">Form</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
-          <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-          <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
-          <div class="rbar-lbl">bpm</div>
-        </div>
-      </div>
-
-      <!-- Sparkline -->
-      <div class="sparkline-wrap">
-        <div class="spark-label">Readiness · 7 Tage</div>
-        <div class="sparkline">
-          {% for bar in sparkline %}
-          <div class="spark-bar {% if loop.last %}spark-today{% endif %}" style="height:{{ bar.pct }}%;background:{{ bar.color }}"></div>
-          {% endfor %}
-        </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
+        <div class="rbar-lbl">Normalber. {{ hrv_range }} ms</div>
       </div>
     </div>
 
-    <!-- ERNÄHRUNG -->
-    {% if nutrition %}
-    <div class="nutr-card">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div class="card-headline">Ernährung · Heute</div>
-        <span class="kw-pill" style="margin-left:auto">{{ nutrition.day_type }}</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+        <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
+        <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
+        <div class="rbar-lbl">/ 8h</div>
       </div>
-
-      <div class="nutr-banner nutr-banner-{{ nutrition.banner_color }}">
-        <div>
-          <div class="nutr-banner-text">{{ nutrition.day_label }}</div>
-          <div class="nutr-banner-sub">{{ nutrition.day_sub }}</div>
-        </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+        <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
+        <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
+        <div class="rbar-lbl">Form</div>
       </div>
-
-      <div class="nutr-protein">
-        <div class="nutr-protein-left">
-          <div>
-            <div class="nutr-protein-lbl">Protein-Ziel heute</div>
-            <div><span class="nutr-protein-val">{{ nutrition.protein_g }}</span><span class="nutr-protein-unit"> g · {{ nutrition.protein_gkg }} g/kg</span></div>
-          </div>
-        </div>
-        <div class="nutr-protein-dist">
-          {% for line in nutrition.protein_dist %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}
-        </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+        <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
+        <div class="rbar-lbl">bpm</div>
       </div>
+    </div>
 
-      {% if nutrition.pre %}
-      <div class="nutr-timing">
-        <div class="nutr-timing-block">
-          <div class="nutr-timing-lbl">Pre-Workout</div>
-          <div class="nutr-timing-main">{{ nutrition.pre.emoji }} {{ nutrition.pre.title }}</div>
-          <div class="nutr-timing-sub">{{ nutrition.pre.sub }}</div>
-        </div>
-        <div class="nutr-timing-block">
-          <div class="nutr-timing-lbl">During</div>
-          <div class="nutr-timing-main">{{ nutrition.during.emoji }} {{ nutrition.during.title }}</div>
-          <div class="nutr-timing-sub">{{ nutrition.during.sub }}</div>
-        </div>
-        <div class="nutr-timing-block">
-          <div class="nutr-timing-lbl">Post · 30min</div>
-          <div class="nutr-timing-main">{{ nutrition.post.emoji }} {{ nutrition.post.title }}</div>
-          <div class="nutr-timing-sub">{{ nutrition.post.sub }}</div>
-        </div>
+    <div class="sparkline-wrap">
+      <div class="spark-label">Readiness · 7 Tage</div>
+      <div class="sparkline">
+        {% for bar in sparkline %}
+        <div class="spark-bar {% if loop.last %}spark-today{% endif %}" style="height:{{ bar.pct }}%;background:{{ bar.color }}"></div>
+        {% endfor %}
       </div>
-      {% endif %}
+    </div>
+  </div>
 
-      {% if nutrition.tips %}
-      <div>
-        {% for tip in nutrition.tips %}
-        <div class="nutr-tip">
-          <div class="nutr-tip-dot nutr-tip-dot-{{ tip.color }}"></div>
-          <div class="nutr-tip-text">{{ tip.text }}</div>
+  <!-- TSS-ÜBERSICHT 8 WOCHEN -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="card-headline">TSS-Übersicht · 8 Wochen</div>
+      <span style="font-size:0.7rem;font-weight:600;color:var(--muted)">Ø {{ tss_summary.avg_tss }} TSS</span>
+    </div>
+
+    <div style="position:relative;height:80px;margin-bottom:18px">
+      <div style="position:absolute;left:0;right:0;bottom:{{ tss_summary.avg_line_pct }}%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:1">
+        <span style="position:absolute;right:0;top:-8px;font-size:0.48rem;color:rgba(148,163,184,0.4)">Ø</span>
+      </div>
+      <div style="display:flex;align-items:flex-end;gap:4px;height:100%">
+        {% for w in tss_weeks %}
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
+          <span style="font-size:0.5rem;color:{{ w.label_color }};margin-bottom:2px;white-space:nowrap">
+            {% if not w.is_future and w.tss_ist > 0 %}{{ w.tss_ist }}{{ w.arrow }}{% elif w.is_current %}▶{% endif %}
+          </span>
+          <div style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;{% if w.is_current %}opacity:0.55{% endif %}"></div>
+          <span style="position:absolute;bottom:-14px;font-size:0.5rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %}">KW{{ w.kw }}</span>
         </div>
         {% endfor %}
       </div>
-      {% endif %}
     </div>
-    {% endif %}
 
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø 8 Wochen</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.avg_tss }}</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Höchste</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">{{ tss_summary.max_tss }}</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Niedrigste</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">{{ tss_summary.min_tss }}</div>
+      </div>
+    </div>
   </div>
+
+</div>
+
+<!-- POLARISATION -->
+<div class="polar-card" style="margin-bottom:12px">
+  <div class="card-headline" style="margin-bottom:14px">Polarisation · letzte 7 Tage · Rad</div>
+  {% if polar_no_data %}
+  <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
+  {% else %}
+  <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3{% endif %}</span>
+  <div class="polar-row">
+    <span class="polar-lbl">Z1–Z2</span>
+    <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
+    <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
+  </div>
+  <div class="polar-row">
+    <span class="polar-lbl">Z3</span>
+    <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
+    <span class="polar-pct">{{ polar_z3_pct }}%</span>
+  </div>
+  <div class="polar-row">
+    <span class="polar-lbl">Z4–Z7</span>
+    <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
+    <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
+  </div>
+  <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
+  {% endif %}
 </div>
 
 <!-- 4-WOCHEN AUSBLICK -->
