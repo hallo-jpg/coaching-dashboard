@@ -799,6 +799,60 @@ def get_ctl_history(weeks: int = 26) -> dict:
     }
 
 
+def get_sleep_history(days: int = 30) -> dict:
+    """30-day sleep duration line for SVG. Returns path strings + today + 30d avg + day labels."""
+    end = date.today()
+    start = end - timedelta(days=days)
+    try:
+        wellness = get_wellness(start.isoformat(), end.isoformat())
+    except Exception:
+        return {"path": "", "fill_path": "", "sleep_today": None, "avg_30d": 0.0, "day_labels": [], "last_y": 40}
+
+    points = []
+    for w in wellness:
+        if w.get("sleepSecs") and w.get("id"):
+            points.append((w["id"][:10], w["sleepSecs"] / 3600))
+
+    if not points:
+        return {"path": "", "fill_path": "", "sleep_today": None, "avg_30d": 0.0, "day_labels": [], "last_y": 40}
+
+    SLEEP_MAX = 10.0  # fixed Y-axis: 0–10h so 8h target line is always at y=16
+    total_days = max((end - start).days, 1)
+    SVG_W, SVG_H = 300, 80
+
+    coords = []
+    for d_str, sleep_h in points:
+        d = date.fromisoformat(d_str)
+        x = round((d - start).days / total_days * SVG_W, 1)
+        y = round(SVG_H - (min(sleep_h, SLEEP_MAX) / SLEEP_MAX) * SVG_H, 1)
+        coords.append((x, y))
+
+    line_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y in coords[1:]]
+    line_path = " ".join(line_parts)
+    fill_path = line_path + f" L{SVG_W},{SVG_H} L0,{SVG_H} Z"
+
+    all_vals = [v for _, v in points]
+    sleep_today = round(points[-1][1], 1) if points else None
+    avg_30d = round(sum(all_vals) / len(all_vals), 1) if all_vals else 0.0
+
+    # 4 labels at weekly intervals
+    day_labels = []
+    for ld in [0, 7, 14, 21, 28]:
+        d = start + timedelta(days=ld)
+        if d <= end:
+            x_pct = round(ld / total_days * 100, 1)
+            day_labels.append({"label": f"{d.day}. {_MONTHS_DE[d.month - 1]}", "x_pct": x_pct})
+
+    return {
+        "path": line_path,
+        "fill_path": fill_path,
+        "sleep_today": sleep_today,
+        "avg_30d": avg_30d,
+        "day_labels": day_labels,
+        "last_y": coords[-1][1] if coords else 40,
+    }
+
+
 def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
     """Last num_weeks weekly TSS overview, colored relative to own average. Returns (weeks_list, summary_dict)."""
     today = date.today()
