@@ -305,7 +305,7 @@ Falls Fieber vorhanden: Fieberfrei + 24h warten, dann Neck-Check-Regel anwenden.
 | Offset ab Rückkehrtag | Aktivität |
 |---|---|
 | +0 | Spaziergang / Mobilität ≤ 30 min |
-| +1 | LIT 45 min, RPE ≤ 12, HF < 130 |
+| +1 | LIT 45 min, RPE ≤ 12, Puls <72% HFmax (= <148 bpm bei HFmax 205) |
 | +2 | LIT 60 min, Z1–Z2 normal |
 | +3–4 | Normales LIT-Programm |
 | +5+ | Volle Last möglich |
@@ -714,6 +714,27 @@ git commit -m "plan: KW[N] [Kurzbeschreibung]"
 git pull --rebase && git push
 ```
 Remote kann Auto-Commits vom Dashboard-Generator enthalten → immer `--rebase` vor push.
+
+---
+
+## Trainingssteuerung: Watt / Pace / Puls
+
+**Grundregel:** Rad-Einheiten werden nach **Watt** gesteuert, Lauf-Einheiten nach **Pace**. HR ist sekundär und dient nur als Kontrollblick.
+
+**Ausnahmen, wo Puls-Limit wissenschaftlich Vorrang hat:**
+| Situation | Begründung |
+|---|---|
+| Post-Illness Rückkehr +1 | Autonomes NS noch dysreguliert → Herz arbeitet für gegebene Watt übermäßig |
+| Extreme Hitze (>30°C) | Thermoregulation erhöht HF unabhängig von Leistung |
+| Höhe (>2000m) | Weniger O₂ → HF steigt bei gleicher Wattleistung |
+
+**Format wenn Puls-Limit gilt:** Das Limit gehört in den **Workout-Namen** (nicht nur in die Notiz-Spalte):
+→ `🚴 LIT-1h – Puls <148 bpm` (nicht: `🚴 LIT-1h | Notiz: HF <148`)
+
+Puls-Zielwert immer aus HFmax ableiten (Stefan: HFmax 205 bpm):
+- Z1-Grenze: 72% HFmax = **148 bpm**
+- Bei Post-Illness +1: <148 bpm
+- Ab Rückkehr +2: wieder Watt-Steuerung (<229W Z1–Z2)
 
 ---
 
