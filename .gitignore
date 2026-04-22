@@ -20,3 +20,4 @@ venv/
 # Temp
 /tmp/
 *.log
+.superpowers/
