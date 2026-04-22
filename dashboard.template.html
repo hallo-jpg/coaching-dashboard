@@ -523,6 +523,7 @@
         <path d="{{ sleep_history.fill_path }}" fill="url(#sleepGradFill)"/>
         <path d="{{ sleep_history.path }}" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="300" cy="{{ sleep_history.last_y }}" r="3" fill="#7986cb"/>
+        <circle cx="300" cy="{{ sleep_history.last_y }}" r="5" fill="#7986cb" opacity="0.2"/>
       </svg>
       <div style="position:absolute;bottom:-14px;left:0;right:0">
         {% for dl in sleep_history.day_labels %}
