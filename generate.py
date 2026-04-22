@@ -690,6 +690,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     nutrition = get_nutrition_context(today_day_plan, bool(sick_notice))
 
     ctl_history = get_ctl_history(weeks=26)
+    sleep_history = get_sleep_history(days=30)
     tss_weeks, tss_summary = get_tss_overview_history(current_kw=kw, num_weeks=8)
 
     return {
@@ -724,6 +725,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "pace_bests": get_pace_bests(),
         "nutrition": nutrition,
         "ctl_history": ctl_history,
+        "sleep_history": sleep_history,
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,
     }
