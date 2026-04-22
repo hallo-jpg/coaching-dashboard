@@ -835,7 +835,7 @@ def get_sleep_history(days: int = 30) -> dict:
     sleep_today = round(points[-1][1], 1) if points else None
     avg_30d = round(sum(all_vals) / len(all_vals), 1) if all_vals else 0.0
 
-    # 4 labels at weekly intervals
+    # 5 labels at weekly intervals (day 0, 7, 14, 21, 28)
     day_labels = []
     for ld in [0, 7, 14, 21, 28]:
         d = start + timedelta(days=ld)
