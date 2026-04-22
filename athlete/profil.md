@@ -52,7 +52,8 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 |---|---|---|
 | VO2max (COROS) | 44 (unzuverlässig – Sentiero: 59) | Erwarteter Lauf-VO2max ~52–54 initial |
 | Schwellenpace | 6:03 /km | Basis für rTSS-Berechnung (IF = 1.0) |
-| HF-Schwelle | 179 bpm | |
+| HF-Schwelle | 179 bpm | LTHR |
+| **HFmax** | **205 bpm** | gemessen |
 | 5km Prognose | ~29:11 (5:50/km) | |
 | 10km Prognose | ~1:01:46 | |
 | Laufeinheiten/Woche | **2–4** (Ziel: 25–33% des Gesamtvolumens) | |
