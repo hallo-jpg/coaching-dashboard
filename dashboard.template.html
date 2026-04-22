@@ -501,8 +501,8 @@
       <div class="card-headline">😴 Schlaf-Verlauf · 30 Tage</div>
     </div>
     {% if sleep_history.path %}
-    <div style="position:relative;width:100%;height:90px;margin-bottom:30px">
-      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
+    <div style="width:100%;margin-bottom:8px">
+      <svg width="100%" height="100" viewBox="0 0 300 100" preserveAspectRatio="none">
         <defs>
           <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#7986cb" stop-opacity="0.4"/>
@@ -516,12 +516,11 @@
         <path d="{{ sleep_history.path }}" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="300" cy="{{ sleep_history.last_y }}" r="3" fill="#7986cb"/>
         <circle cx="300" cy="{{ sleep_history.last_y }}" r="5" fill="#7986cb" opacity="0.2"/>
-      </svg>
-      <div style="position:absolute;bottom:-14px;left:0;right:0">
+        <!-- X-Achsen-Labels innerhalb des SVG -->
         {% for dl in sleep_history.day_labels %}
-        <span style="position:absolute;left:{{ dl.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ dl.label }}</span>
+        <text x="{{ dl.x_pct * 3 }}" y="97" font-size="7" fill="#4a6270" text-anchor="{% if loop.first %}start{% elif loop.last %}end{% else %}middle{% endif %}">{{ dl.label }}</text>
         {% endfor %}
-      </div>
+      </svg>
     </div>
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
