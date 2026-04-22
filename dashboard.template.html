@@ -160,8 +160,6 @@
   .day-sick .day-tss { color: var(--red); }
   .day-sick .day-name { color: var(--subtle); }
 
-  /* ── MAIN GRID ── */
-  .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .week-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 20px; }
   .week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
   .week-title { font-size: 0.9rem; font-weight: 800; }
@@ -186,8 +184,6 @@
   .day-meal { font-size: 0.63rem; color: var(--muted); }
   .day-tss { font-size: 0.68rem; color: var(--muted); padding-top: 3px; white-space: nowrap; }
 
-  .left-col  { display: flex; flex-direction: column; gap: 12px; }
-  .right-col { display: flex; flex-direction: column; gap: 12px; }
   .section-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
   /* section-label kept for legacy; use card-headline for new cards */
 
@@ -298,10 +294,6 @@
 
     /* Rings: single column */
     .rings-section { grid-template-columns: 1fr; gap: 10px; }
-
-    /* Main grid: stack */
-    .main-grid { grid-template-columns: 1fr; }
-    .right-col { flex-direction: column; }
 
     /* Week plan: tighter */
     .day-row { grid-template-columns: 24px 8px 1fr auto; gap: 7px; }
