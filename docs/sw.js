@@ -1,6 +1,5 @@
 const CACHE = 'coaching-v3';
 const ASSETS = [
-  './dashboard.html',
   './manifest.json'
 ];
 
