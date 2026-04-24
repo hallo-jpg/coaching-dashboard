@@ -241,6 +241,79 @@ Sektions-Referenz: 1=Block-Periodisierung · 2=Polarized · 3=HRV · 4=VO2max ·
 
 ---
 
+## Proaktive Checks (nur bei Wochenplanung, nach Schritt 1)
+
+Diese Checks laufen nach dem Kontextladen. Sie erzeugen keinen eigenen Modus — ihre Ergebnisse werden als Zusatz-Abschnitt am Anfang von Schritt 4 (Output) ausgegeben, direkt nach 🎯 Standort.
+
+### Check A: FTP-Test-Ankündigung
+
+**Wann prüfen:** Bei jeder Wochenplanung.
+
+**Logik:**
+1. Lies aus `planung/langfristplan.md` → Abschnitt "FTP-Test-Fenster": extrahiere alle Testfenster-Daten
+2. Für jedes Testfenster: berechne `tage_bis_test = testfenster_datum_donnerstag - heute`
+3. Falls `14 < tage_bis_test ≤ 21` (= 3-Wochen-Fenster, aber nicht schon Testwoche):
+
+**Output (in Schritt 4, nach 🎯 Standort):**
+
+```
+📊 FTP-Test in ~3 Wochen (KW21 · Do, 21. Mai)
+
+Voraussetzungen für validen Test:
+· ≥3 Tage ohne HIT/MIT in der Vorwoche
+· kein Wettkampf-Stress, volle Erholung
+· TSB am Testtag: Ziel > 0 (nicht zu frisch, nicht zu müde)
+
+Soll ich die Testwoche (KW21) jetzt vorplanen?
+→ [ja] → Testwoche wird vollständig ausgeplant
+→ [verschieben auf KW22] → Reminder in 7 Tagen, Testfenster in langfristplan.md verschoben
+```
+
+**Bei "verschieben":**
+- In `planung/langfristplan.md` das entsprechende Testfenster-Datum um +7 Tage verschieben
+- Eintrag in `COACHING_AKTE.md`: `→ FTP-Test KW21 auf KW22 verschoben ([Datum heute])`
+
+**Wenn kein Testfenster im 3-Wochen-Radius:** Check A überspringen, kein Output.
+
+---
+
+### Check B: Power-PR-Erkennung
+
+**Wann prüfen:** Bei jeder Wochenplanung, wenn `get_recent_activities` in Schritt 0 Daten geliefert hat.
+
+**Logik:**
+1. Lade aktuelle Referenzwerte aus `athlete/fortschritt.md` → Abschnitt "Power-PR-Referenz"
+2. Für jede Dauer (5min, 10min, 20min):
+   - `pr_neu` = höchster Wert aus den letzten 4 Wochen (aus `get_recent_activities`)
+   - `pr_ref` = gespeicherter Referenzwert in `fortschritt.md`
+   - Falls `pr_ref == "–"` (noch nicht erfasst): `pr_neu` als ersten Wert eintragen, kein Hinweis ausgeben
+   - Falls `pr_neu > pr_ref × 1.02` (>2% Steigerung): PR-Flag setzen
+
+**Output bei PR-Flag (in Schritt 4, nach 🎯 Standort, nach Check A falls vorhanden):**
+
+```
+💪 Neuer [Xmin]-Power-PR erkannt: [pr_neu]W (vorher: [pr_ref]W, +[delta]%)
+Das deutet auf eine FTP von ~[pr_neu × 0.90 gerundet auf 1W]W hin.
+Aktuell gespeichert: [aktuelle FTP]W.
+
+Soll ich die FTP auf [pr_neu × 0.90]W aktualisieren?
+→ [ja] → FTP + Zonen werden aktualisiert (Ausgabe wie bei Post-Test)
+→ [nein] → PR wird gespeichert, FTP bleibt
+→ [warten] → PR wird gespeichert, kein erneuter Hinweis
+```
+
+**Nach Stefan's Antwort:**
+
+| Antwort | Aktion |
+|---|---|
+| ja | FTP auf `pr_neu × 0.90` setzen. Zonen neu berechnen. `athlete/profil.md` + `athlete/fortschritt.md` aktualisieren (PR-Wert + FTP). COACHING_AKTE-Eintrag. |
+| nein | Nur PR-Wert in `athlete/fortschritt.md` aktualisieren. FTP unverändert. COACHING_AKTE-Eintrag: `→ [Xmin]-PR [W] erfasst, FTP-Update abgelehnt` |
+| warten | Nur PR-Wert in `athlete/fortschritt.md` aktualisieren. FTP unverändert. Kein erneuter Hinweis beim nächsten /coach (Referenzwert ist jetzt auf pr_neu — nächster PR braucht wieder >2% darüber). |
+
+**Wenn kein PR:** Check B erzeugt keinen Output.
+
+---
+
 ## Schritt 2: Modus erkennen
 
 Anhand des Briefings und der Akte entscheiden:
