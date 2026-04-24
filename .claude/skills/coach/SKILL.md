@@ -157,6 +157,7 @@ Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.m
 1. `get_readiness_score` → Score 0–100, Ampel-Empfehlung, Komponenten (HRV, Schlaf, TSB, Ruhepuls)
 2. `get_weekly_review(week_start: Montag der Vorwoche)` → TSS Ist vs. Soll, Zonen, HRV-Verlauf, **Polarisations-Monitor**
 3. `get_current_fitness` → CTL, ATL, TSB Verlauf (wenn mehr Kontext nötig)
+4. `get_recent_activities(days: 28)` → Lade Aktivitäten der letzten 4 Wochen; extrahiere 5min/10min/20min Power-Bests (höchste Werte über alle Aktivitäten); vergleiche mit Referenzwerten in `athlete/fortschritt.md` (Abschnitt "Power-PR-Referenz") → PR-Flag setzen wenn >2% über Referenz
 
 **Readiness-Score Interpretationslogik:**
 | Score | Ampel | Konsequenz |
