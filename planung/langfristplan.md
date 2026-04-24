@@ -124,6 +124,26 @@ Stefan's aktuelles Kraft-A+B-Programm ist auf Erhalt und Verletzungsprävention 
 
 ---
 
+## FTP-Test-Fenster (Saisonal)
+
+Zwei formale Testfenster pro Saison. Kein Test außerhalb dieser Fenster ohne explizite Begründung.
+
+| Testfenster | KW | Datum | Timing-Rationale |
+|---|---|---|---|
+| 🔬 Frühjahrstest 2026 | **KW21** | 18.–24. Mai 2026 | Nach HIT-Block KW18–20 (VO2max-Gains brauchen 2–4 Wo zum FTP-Transfer); vor Taper KW22–23 für RadRace |
+| 🔬 Herbsttest 2026 | **KW39** | 21.–27. Sep 2026 | Nach Sommerpause + Herbstaufbau; Basis für Winterblock-Planung |
+
+**Testprotokoll:** Sentiero 3+10min · outdoor · 4iiii Powermeter · FTP = 10min-Avg × 0,90
+
+**Coach-Verhalten:**
+- 3 Wochen vor Testfenster: automatischer Hinweis im nächsten `/coach`-Aufruf
+- Stefan bestätigt oder verschiebt um 1 Woche
+- Bei Bestätigung: Testwoche wird vollständig ausgeplant
+
+**Verschiebungsregel:** Maximal 1 KW nach vorne oder hinten. Kein Test im Tapering (≤14 Tage vor Event).
+
+---
+
 ## Wann den Plan anpassen?
 
 Der Langfristplan wird **nicht** bei jeder Trainingsanpassung geändert. Er wird aktualisiert wenn:
