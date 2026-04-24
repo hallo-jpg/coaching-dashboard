@@ -251,7 +251,7 @@ Diese Checks laufen nach dem Kontextladen. Sie erzeugen keinen eigenen Modus —
 
 **Logik:**
 1. Lies aus `planung/langfristplan.md` → Abschnitt "FTP-Test-Fenster": extrahiere alle Testfenster-Daten
-2. Für jedes Testfenster: berechne `tage_bis_test = testfenster_datum_donnerstag - heute`
+2. Für jedes Testfenster: berechne `tage_bis_test = testfenster_datum_donnerstag - heute` · Donnerstag = 4. Wochentag des Testfensters (z.B. KW21: 18.–24. Mai → Do = 21. Mai)
 3. Falls `14 < tage_bis_test ≤ 21` (= 3-Wochen-Fenster, aber nicht schon Testwoche):
 
 **Output (in Schritt 4, nach 🎯 Standort):**
@@ -275,6 +275,8 @@ Soll ich die Testwoche (KW21) jetzt vorplanen?
 
 **Wenn kein Testfenster im 3-Wochen-Radius:** Check A überspringen, kein Output.
 
+**Fallback wenn kein "FTP-Test-Fenster" Abschnitt in langfristplan.md:** Check A überspringen, kein Output.
+
 ---
 
 ### Check B: Power-PR-Erkennung
@@ -288,6 +290,9 @@ Soll ich die Testwoche (KW21) jetzt vorplanen?
    - `pr_ref` = gespeicherter Referenzwert in `fortschritt.md`
    - Falls `pr_ref == "–"` (noch nicht erfasst): `pr_neu` als ersten Wert eintragen, kein Hinweis ausgeben
    - Falls `pr_neu > pr_ref × 1.02` (>2% Steigerung): PR-Flag setzen
+   - **Jede Dauer wird unabhängig geprüft** — ein PR für 10min löst einen eigenen Hinweis aus, unabhängig von 5min/20min
+
+**Bei mehreren PR-Flags gleichzeitig:** Nur einen Hinweis ausgeben — Priorität: 10min → 20min → 5min. Alle PR-Werte trotzdem in `athlete/fortschritt.md` eintragen.
 
 **Output bei PR-Flag (in Schritt 4, nach 🎯 Standort, nach Check A falls vorhanden):**
 
@@ -311,6 +316,8 @@ Soll ich die FTP auf [pr_neu × 0.90]W aktualisieren?
 | warten | Nur PR-Wert in `athlete/fortschritt.md` aktualisieren. FTP unverändert. Kein erneuter Hinweis beim nächsten /coach (Referenzwert ist jetzt auf pr_neu — nächster PR braucht wieder >2% darüber). |
 
 **Wenn kein PR:** Check B erzeugt keinen Output.
+
+**Fallback wenn kein "Power-PR-Referenz" Abschnitt in fortschritt.md:** Check B überspringen, kein Output.
 
 ---
 
