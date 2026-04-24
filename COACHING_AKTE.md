@@ -25,6 +25,12 @@
 
 ## Coach-Notizen
 
+### 24. April 2026 – KW17 Krankheitsverlängerung (Do + Fr)
+- Krankheit dauert an – Do 23.4. und Fr 24.4. als ❌ Krank markiert
+- Geplante intervals.icu-Workouts für Do/Fr gelöscht
+- Sa/So bleiben im Plan – Entscheidung bei Rückkehr
+- Dashboard-Logik verbessert: vergangene Tage ohne Aktivität werden automatisch als "Ausgefallen" angezeigt
+
 ### 21. April 2026 – KW17 Umplanung (Husten)
 - Di 21.4. noch nicht fit: Husten, Plan um einen Tag verschoben
 - Mi 22.4.: längerer Spaziergang · Do 23.4.: LIT-1h (+1) · Fr 24.4.: LIT-1h30 (+2)

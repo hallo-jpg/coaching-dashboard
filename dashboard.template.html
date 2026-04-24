@@ -155,6 +155,8 @@
   }
   .sick-notice strong { font-weight: 700; }
   .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
+  .day-missed .day-workout { text-decoration: line-through; color: var(--subtle); }
+  .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--subtle); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
   .day-sick .day-fuel,
   .day-sick .day-meal { display: none; }
   .day-sick .day-tss { color: var(--red); }
@@ -569,8 +571,10 @@
       <span class="day-tss" style="color:var(--subtle)">–</span>
       {% elif day.done %}
       <span class="day-tss" style="color:var(--green)">✅ {{ day.tss_ist }} TSS</span>
+      {% elif day.missed %}
+      <span class="badge-missed">Ausgefallen</span>
       {% else %}
-      <span class="day-tss">{% if day.tss_plan > 0 %}❌ 0 TSS{% else %}–{% endif %}</span>
+      <span class="day-tss">{% if day.tss_plan > 0 %}~{{ day.tss_plan }} TSS{% else %}–{% endif %}</span>
       {% endif %}
     </div>
     {% endfor %}

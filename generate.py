@@ -530,8 +530,9 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
         else:
             dot = "dot-planned"
 
-        if not rest and not done:
-            row_class = "day-missed" if _is_past(tag) else ""
+        missed = not rest and not done and _is_past(tag)
+        if missed:
+            row_class = "day-missed"
         else:
             row_class = ""
 
@@ -542,6 +543,7 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
             "tss_ist":       m["tss_ist"],
             "done":          done,
             "rest":          rest,
+            "missed":        missed,
             "is_run":        day["is_run"],
             "is_kraft":      day.get("is_kraft", False),
             "dot_class":     dot,
