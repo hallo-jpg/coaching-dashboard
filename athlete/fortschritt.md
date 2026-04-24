@@ -32,6 +32,25 @@
 
 ## Nächster FTP-Test
 
-- **Geplant:** nach KW17 (Ende April / Anfang Mai 2026)
-- **Methode:** 3+10min Protokoll, outdoor, 4iiii Referenz
-- **Danach:** Sentiero-Eingabe für aktualisiertes metabolisches Profil
+**Testfenster:** KW21 (18.–24. Mai 2026)
+**Methode:** 3+10min Protokoll, outdoor, 4iiii Referenz
+**Danach:** Sentiero-Eingabe für aktualisiertes metabolisches Profil
+
+---
+
+## Power-PR-Referenz (5/10/20min)
+
+*Referenzwerte für PR-Erkennung im Coach-Skill. Wird automatisch aktualisiert wenn ein neuer PR erkannt und bestätigt wird.*
+
+| Dauer | Bestwert (W) | Datum | FTP-Proxy (×0,90) | Notiz |
+|---|---|---|---|---|
+| 5min | – | – | – | Noch nicht erfasst |
+| 10min | 352W | 04.04.2026 | 317W | Feldtest KW14 (Coggan) |
+| 20min | – | – | – | Noch nicht erfasst |
+
+**Schwellenwert für Ankündigung:** >2% über Referenzwert → Coach meldet PR und fragt ob FTP angepasst werden soll.
+
+**Update-Logik:**
+- Bei "ja" (FTP übernehmen): Bestwert + FTP in `athlete/profil.md` aktualisiert
+- Bei "nein": Bestwert wird trotzdem hier aktualisiert, FTP bleibt
+- Bei "warten": Bestwert wird hier aktualisiert → kein erneuter Hinweis beim nächsten /coach
