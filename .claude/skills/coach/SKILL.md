@@ -590,6 +590,79 @@ Wenn Stefan während Tapering schreibt: "ich fühle mich schlapp", "reicht das",
 - Maximalregel: Nie Tapering und TT-Spezifik kürzen um verlorene Grundlagenwochen nachzuholen – langfristige Fitness hat Mitspracherecht
 - **Nach KW26**: Kein Vakuum. Wenn KW27+ ansteht, sofort einen Post-Season-Aufbaublock (4 Wochen Grundlage + KA-Erhalt) skizzieren – der Plan endet nicht mit dem Rosenheimer
 
+### FTP-Testwoche (wenn Stefan "ja" nach Ankündigung sagt)
+
+**Wann ausführen:** Stefan hat auf die Proaktive-Check-A-Frage mit "ja" geantwortet. Erstelle vollständigen Wochenplan für die Testwoche.
+
+**Testwoche-Struktur (Mini-Taper + Sentiero 3+10min):**
+
+| Tag | Workout | TSS ca. | Notiz |
+|---|---|---|---|
+| Mo | Ruhetag | – | Mini-Taper |
+| Di | LIT-1h30 locker | ~45 | Beine frisch halten, Z1–Z2, <229W |
+| Mi | Aktivierung: 3×5min Z4 (308W) + LIT 30min | ~55 | Neuromuskuläre Aktivierung – kein Ausreißen |
+| Do | **FTP-Test: Sentiero 3+10min** (outdoor, 4iiii) | ~80 | Protokoll unten |
+| Fr | Ruhetag | – | Erholung |
+| Sa | LIT-2h | ~55 | Recovery-Ride, Z1 |
+| So | LIT-2h oder Ruhetag | ~55 | Laut Gefühl |
+
+**Testprotokoll Sentiero 3+10min:**
+1. Aufwärmen: 20min progressiv bis ~80% FTP
+2. 3min All-Out (max. Leistung, nicht überpacen)
+3. 5min aktive Erholung
+4. 10min All-Out (gleichmäßiges Tempo, die letzten 2min etwas geben)
+5. Abwärmen 10min
+→ **FTP = 10min-Avg × 0,90**
+
+**intervals.icu Workouts anlegen:**
+- Di: LIT-Workout aus Bibliothek
+- Mi: `create_planned_workout` Aktivierung (3×5min @ 308W, 5min Pause @ 168W, dann 30min LIT)
+- Do: `create_planned_workout` als "Ride", Name "🔬 FTP-Test – Sentiero 3+10min", keine ERG-Workout-Steps (outdoor)
+- Sa/So: LIT aus Bibliothek
+
+**Post-Test-Berechnung (wenn Stefan das Ergebnis mitteilt: "10min: XXW"):**
+
+```
+📊 FTP-Test Ergebnis
+
+10min-Avg: [X]W → FTP = [X × 0.90 gerundet auf 1W]W
+
+Vergleich:
+  Alt: [alter FTP]W ([alter W/kg] W/kg @ 88kg)
+  Neu: [neuer FTP]W ([neuer W/kg] W/kg @ 88kg) → [+/- delta]%
+
+Neue Zonen (Sentiero-Modell):
+  Z0 Recovery:  0–[FTP × 0.52]W
+  Z1 Base:      [FTP × 0.52]–[FTP × 0.62]W
+  Z2 FatMax:    [FTP × 0.62]–[FTP × 0.70]W
+  Z3 Tempo:     [FTP × 0.70]–[FTP × 0.93]W
+  Z4 FTP:       [FTP × 0.93]–[FTP × 1.03]W
+  Z5 VO2max:    [FTP × 1.03]–[FTP × 1.38]W
+  Z6 Anaerob:   [FTP × 1.38]+W
+
+Neue Workout-Zielwatts:
+  LIT (55%):    [FTP × 0.55]W
+  SwSp (89%):   [FTP × 0.89]W
+  KA (91%):     [FTP × 0.91]W
+  MIT (101%):   [FTP × 1.01]W
+
+Übernehmen? [ja / nein]
+```
+
+**Zone percentages (Sentiero):** Z0: 0–52% · Z1: 52–62% · Z2: 62–70% · Z3: 70–93% · Z4: 93–103% · Z5: 103–138% · Z6: 138%+
+
+**Bei "ja":**
+1. `athlete/profil.md` aktualisieren: FTP, W/kg (÷ 88kg), alle Zonenwatts, alle Workout-Zielwatts
+2. `athlete/fortschritt.md` aktualisieren: Neuer Eintrag in FTP-Verlauf + 10min-PR in Power-PR-Referenz
+3. `COACHING_AKTE.md` Eintrag:
+   ```
+   ## [Datum] FTP-Test KW[N]
+   10min: [X]W → FTP: [alt]W → [neu]W ([+/-%]) · Methode: Sentiero 3+10min outdoor
+   ```
+4. `CLAUDE.md` FTP-Zeile aktualisieren
+
+---
+
 ### FTP-Update
 - Nur nach explizit gemeldeten Testergebnissen (kein "fühlt sich schwerer an")
 - Bei neuem FTP: alle 7 Zonen neu berechnen (Coggan, ×0,90 bei 3+10min Protokoll), alle Workout-Zielwattwerte aktualisieren
