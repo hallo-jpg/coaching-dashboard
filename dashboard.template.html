@@ -217,6 +217,11 @@
   .polar-note { font-size: 0.58rem; color: var(--muted); margin-top: 8px; }
 
   .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .zone-dot { display:inline-block; width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .zone-val-normal { color:var(--text); font-size:0.7rem; font-weight:600; }
+  .zone-val-warm   { color:var(--yellow); font-size:0.7rem; font-weight:600; }
+  .zone-val-hot    { color:var(--red); font-size:0.7rem; font-weight:600; }
+  .zone-val-muted  { color:var(--muted); font-size:0.7rem; }
   .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
   .ausblick-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
@@ -791,6 +796,69 @@
     </tbody>
   </table>
 </div>
+
+<!-- ZONEN -->
+{% if zone_data %}
+<div class="bottom-grid">
+
+<div class="ausblick-card" style="margin-bottom:0">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <div class="card-headline">🚴 Trainingszonen Rad</div>
+    <span class="kw-pill" style="margin-left:auto">FTP {{ zone_data.ftp }}W</span>
+  </div>
+  <table class="ausblick-table">
+    <thead>
+      <tr>
+        <th style="width:16px;padding-left:0"></th>
+        <th>Zone</th>
+        <th style="text-align:right">Watt</th>
+        <th style="text-align:right">% FTP</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for z in zone_data.rad %}
+    <tr>
+      <td style="padding-left:0"><span class="zone-dot" style="background:{{ z.color }}"></span></td>
+      <td style="font-weight:{% if z.text_class == 'muted' %}500{% else %}700{% endif %};font-size:0.7rem;color:{% if z.text_class == 'muted' %}var(--muted){% else %}var(--text){% endif %}">{{ z.label }}</td>
+      <td style="text-align:right" class="zone-val-{{ z.text_class }}">{{ z.range }}</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.65rem">{{ z.pct }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:0.6rem;color:var(--muted)">Sentiero metabolisches Modell · FTP = 10min × 0,90</div>
+</div>
+
+<div class="ausblick-card" style="margin-bottom:0">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <div class="card-headline">🏃 Trainingszonen Lauf</div>
+    <span class="kw-pill" style="margin-left:auto">{{ zone_data.schwelle_pace }}</span>
+  </div>
+  <table class="ausblick-table">
+    <thead>
+      <tr>
+        <th style="width:16px;padding-left:0"></th>
+        <th>Zone</th>
+        <th style="text-align:right">Pace /km</th>
+        <th style="text-align:right">HF%</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for z in zone_data.lauf %}
+    <tr>
+      <td style="padding-left:0"><span class="zone-dot" style="background:{{ z.color }}"></span></td>
+      <td style="font-weight:700;font-size:0.7rem;color:var(--text)">{{ z.label }}</td>
+      <td style="text-align:right" class="zone-val-{{ z.text_class }}">{{ z.pace }}</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.65rem">{{ z.hf_pct }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:0.6rem;color:var(--muted)">Schwelle: {{ zone_data.schwelle_pace }} · LTHR: {{ zone_data.lthr }} bpm · HFmax: 205 bpm</div>
+</div>
+
+</div>
+{% endif %}
 
 <!-- BESTWERTE -->
 <div class="bottom-grid">

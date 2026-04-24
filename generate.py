@@ -252,6 +252,30 @@ def get_power_bests() -> list[dict]:
         return []
 
 
+def get_zone_data() -> dict:
+    """Static training zones for dashboard tiles. Values from athlete/profil.md (Sentiero FTP 305W)."""
+    return {
+        "ftp": 305,
+        "schwelle_pace": "6:03/km",
+        "lthr": 179,
+        "rad": [
+            {"label": "Z0 Recovery", "range": "0–159W",   "pct": "<52%",     "color": "#64748b", "text_class": "muted"},
+            {"label": "Z1 Base",     "range": "160–188W", "pct": "52–62%",   "color": "#38bdf8", "text_class": "normal"},
+            {"label": "Z2 FatMax",   "range": "189–212W", "pct": "62–70%",   "color": "#2dd4bf", "text_class": "normal"},
+            {"label": "Z3 Tempo",    "range": "213–283W", "pct": "70–93%",   "color": "#facc15", "text_class": "warm"},
+            {"label": "Z4 FTP",      "range": "283–314W", "pct": "93–103%",  "color": "#fb923c", "text_class": "warm"},
+            {"label": "Z5 VO2max",   "range": "315–422W", "pct": "103–138%", "color": "#f87171", "text_class": "hot"},
+            {"label": "Z6 Anaerob",  "range": "423W+",    "pct": ">138%",    "color": "#dc2626", "text_class": "hot"},
+        ],
+        "lauf": [
+            {"label": "Z1 Easy",     "pace": "7:00–7:45", "hf_pct": "60–72%", "color": "#38bdf8", "text_class": "normal"},
+            {"label": "Z2 Aerob",    "pace": "6:30–7:00", "hf_pct": "72–82%", "color": "#2dd4bf", "text_class": "normal"},
+            {"label": "Z3 Schwelle", "pace": "5:45–6:15", "hf_pct": "82–92%", "color": "#fb923c", "text_class": "warm"},
+            {"label": "Z4 VO2max",   "pace": "5:00–5:45", "hf_pct": "92–100%","color": "#f87171", "text_class": "hot"},
+        ],
+    }
+
+
 def get_pace_bests() -> list[dict]:
     """Fetch running pace best efforts for target distances. Returns [] on failure."""
     try:
@@ -723,6 +747,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
         "polar_no_data": polar["no_data"],
         "outlook": outlook,
+        "zone_data": get_zone_data(),
         "power_bests": get_power_bests(),
         "pace_bests": get_pace_bests(),
         "nutrition": nutrition,
