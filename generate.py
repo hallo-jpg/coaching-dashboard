@@ -776,7 +776,9 @@ def _calc_polarisation(activities: list) -> dict:
     for r in rides:
         for z in range(1, 8):
             totals[z] += r.get(f"icu_z{z}") or 0
-    total = sum(totals[1:]) or 1
+    total = sum(totals[1:])
+    if total == 0:
+        return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
     z12 = round((totals[1] + totals[2]) / total * 100)
     z3  = round(totals[3] / total * 100)
     z47 = 100 - z12 - z3
