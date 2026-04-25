@@ -321,6 +321,53 @@ Soll ich die FTP auf [pr_neu × 0.90]W aktualisieren?
 
 ---
 
+### Check C: Lauf-Schwellenpace-Erkennung
+
+**Wann prüfen:** Bei jeder Wochenplanung.
+
+**Logik:**
+1. Rufe `get_pace_bests()` Daten aus intervals.icu ab (bereits via `get_recent_activities` vorhanden oder separat falls nötig)
+2. Extrahiere beste Pace für ~10km oder Threshold-Distanz aus den letzten 4 Wochen (`pr_pace_neu` in min:sec/km)
+3. Vergleiche mit gespeicherter `schwelle_pace` in `athlete/profil.md`
+4. Umrechnung für Vergleich: Pace in Sekunden/km · Verbesserung = `pr_pace_neu_secs < schwelle_pace_secs × 0.98` (>2% schneller)
+
+**Output bei verbesserter Pace (in Schritt 4, nach anderen Checks):**
+
+```
+🏃 Neue Schwellenpace erkannt: [pr_pace_neu]/km (vorher: [schwelle_pace]/km, +[delta]%)
+Das deutet auf eine neue Schwellenpace von [pr_pace_neu]/km hin.
+Aktuell gespeichert: [schwelle_pace]/km.
+
+Neue Laufzonen (basierend auf [pr_pace_neu]/km als Schwelle):
+  Z1 Easy:     [+116 bis +155 sek/km]  (Pace: [neue Pace-Range]/km)
+  Z2 Aerob:    [+27 bis +57 sek/km]    (Pace: [neue Pace-Range]/km)
+  Z3 Schwelle: [−18 bis +12 sek/km]    (Pace: [neue Pace-Range]/km)
+  Z4 VO2max:   [−63 bis −18 sek/km]    (Pace: [neue Pace-Range]/km)
+
+Schwellenpace aktualisieren?
+→ [ja] → Schwellenpace + Laufzonen in profil.md + generate.py aktualisiert
+→ [nein] → Keine Änderung
+→ [warten] → Beim nächsten /coach kein erneuter Hinweis
+```
+
+**Laufzonen-Berechnung** (Schwellenpace = S in sek/km):
+- Z1 Easy:     S + 57 bis S + 102 sek/km (7:00–7:45 bei S=363sek=6:03)
+- Z2 Aerob:    S + 27 bis S + 57 sek/km  (6:30–7:00 bei S=363sek)
+- Z3 Schwelle: S − 18 bis S + 12 sek/km  (5:45–6:15 bei S=363sek)
+- Z4 VO2max:   S − 63 bis S − 18 sek/km  (5:00–5:45 bei S=363sek)
+
+**Nach Stefan's Antwort:**
+
+| Antwort | Aktion |
+|---|---|
+| ja | `athlete/profil.md`: schwelle_pace + alle 4 Laufzonen-Pace-Ranges aktualisieren. `generate.py` get_zone_data(): schwelle_pace + lauf-Zonen updaten. `athlete/fortschritt.md`: Eintrag in Lauf-Entwicklung. COACHING_AKTE-Eintrag. |
+| nein | Keine Änderung. COACHING_AKTE: `→ Lauf-Schwellenpace [Pace] erkannt, Update abgelehnt` |
+| warten | Keine Änderung. Pace als neuen Referenzwert in profil.md vermerken (kein erneuter Hinweis). |
+
+**Fallback wenn keine Lauf-Aktivitäten in den letzten 4 Wochen:** Check C überspringen, kein Output.
+
+---
+
 ## Schritt 2: Modus erkennen
 
 Anhand des Briefings und der Akte entscheiden:
@@ -660,6 +707,10 @@ Neue Workout-Zielwatts:
    10min: [X]W → FTP: [alt]W → [neu]W ([+/-%]) · Methode: Sentiero 3+10min outdoor
    ```
 4. `CLAUDE.md` FTP-Zeile aktualisieren
+5. `generate.py` → Funktion `get_zone_data()` aktualisieren: `"ftp"` Wert + alle 7 Rad-Zonen `"range"` Felder neu berechnen (Sentiero-Prozentsätze × neuer FTP, auf 1W runden):
+   - Z0: `0–{round(ftp*0.52)}W`  · Z1: `{round(ftp*0.52)+1}–{round(ftp*0.62)}W`  · Z2: `{round(ftp*0.62)+1}–{round(ftp*0.70)}W`
+   - Z3: `{round(ftp*0.70)+1}–{round(ftp*0.93)}W` · Z4: `{round(ftp*0.93)+1}–{round(ftp*1.03)}W`
+   - Z5: `{round(ftp*1.03)+1}–{round(ftp*1.38)}W` · Z6: `{round(ftp*1.38)+1}W+`
 
 ---
 
@@ -857,11 +908,12 @@ Der MCP-Server liest die Datei server-seitig und lädt sie als base64 hoch. Kein
 2. **`planung/kw[N-1].md`** – wird via **Schritt 0a** automatisch mit Retro-Abschnitt befüllt und nach `planung/archiv/` archiviert. Manuell anfassen nur wenn Schritt 0a übersprungen wurde (Ad-hoc-Modus).
 3. **`COACHING_AKTE.md`** – Änderungs-Log + Coach-Notiz mit Datum aktualisieren
 4. **`athlete/profil.md`** – nur bei FTP-Update
-5. **`athlete/fortschritt.md`** – nur bei FTP-Update oder neuem Körpergewicht
-6. **`planung/periodisierung.md`** – nur nach expliziter Zustimmung zu Planänderungen
-7. **`CLAUDE.md`** – `Aktuelle KW` und `Wochen bis Rennen` aktualisieren
-8. **Dashboard** – **nicht manuell anfassen**. Das Dashboard unter `docs/dashboard.html` wird automatisch stündlich via GitHub Actions aus intervals.icu + `planung/kw[N].md` neu generiert. Alle Karten (Wochenplan, Readiness, Polarisation, Ernährung, Power/Lauf-Bestwerte, Ausblick) sind vollautomatisch. Der Skill muss nur die Planungsdateien (`planung/kw[N].md`) korrekt pflegen — der Rest passiert von selbst.
-9. **Git commit + push** – **immer als letzter Schritt**, ohne dass Stefan daran erinnern muss:
+5. **`athlete/fortschritt.md`** – bei FTP-Update, neuem Körpergewicht, oder Power-PR-Update (Bestwert aktualisieren, ggf. FTP)
+6. **`generate.py`** – bei FTP-Update (Rad-Zonen in `get_zone_data()` neu berechnen) oder Schwellenpace-Update (Lauf-Zonen in `get_zone_data()` aktualisieren)
+7. **`planung/periodisierung.md`** – nur nach expliziter Zustimmung zu Planänderungen
+8. **`CLAUDE.md`** – `Aktuelle KW` und `Wochen bis Rennen` aktualisieren
+9. **Dashboard** – **nicht manuell anfassen**. Das Dashboard unter `docs/dashboard.html` wird automatisch stündlich via GitHub Actions aus intervals.icu + `planung/kw[N].md` neu generiert. Alle Karten (Wochenplan, Readiness, Polarisation, Ernährung, Power/Lauf-Bestwerte, Ausblick) sind vollautomatisch. Der Skill muss nur die Planungsdateien (`planung/kw[N].md`) korrekt pflegen — der Rest passiert von selbst.
+10. **Git commit + push** – **immer als letzter Schritt**, ohne dass Stefan daran erinnern muss:
 ```bash
 git add [geänderte Dateien]
 git commit -m "plan: KW[N] [Kurzbeschreibung]"
