@@ -326,7 +326,7 @@ Soll ich die FTP auf [pr_neu × 0.90]W aktualisieren?
 **Wann prüfen:** Bei jeder Wochenplanung.
 
 **Logik:**
-1. Rufe `get_pace_bests()` Daten aus intervals.icu ab (bereits via `get_recent_activities` vorhanden oder separat falls nötig)
+1. Filtere aus den `get_recent_activities`-Daten (Schritt 0) alle Lauf-Aktivitäten der letzten 4 Wochen; extrahiere die schnellste erfasste Pace über ~10km Distanz als `pr_pace_neu` (in min:sec/km)
 2. Extrahiere beste Pace für ~10km oder Threshold-Distanz aus den letzten 4 Wochen (`pr_pace_neu` in min:sec/km)
 3. Vergleiche mit gespeicherter `schwelle_pace` in `athlete/profil.md`
 4. Umrechnung für Vergleich: Pace in Sekunden/km · Verbesserung = `pr_pace_neu_secs < schwelle_pace_secs × 0.98` (>2% schneller)

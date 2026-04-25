@@ -779,20 +779,22 @@ def _calc_polarisation(activities: list) -> dict:
             continue
         try:
             detail = _api_get(f"/activities/{act_id}")
+            if isinstance(detail, list):
+                detail = detail[0] if detail else {}
+            for zt in (detail.get("icu_zone_times") or []):
+                z_id = zt.get("id", "")
+                if z_id.startswith("Z") and z_id[1:].isdigit():
+                    z_num = int(z_id[1:])
+                    if 1 <= z_num <= 7:
+                        totals[z_num] += zt.get("secs", 0)
         except Exception:
             continue
-        for zt in (detail.get("icu_zone_times") or []):
-            z_id = zt.get("id", "")
-            if z_id.startswith("Z") and z_id[1:].isdigit():
-                z_num = int(z_id[1:])
-                if 1 <= z_num <= 7:
-                    totals[z_num] += zt.get("secs", 0)
     total = sum(totals[1:])
     if total == 0:
         return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
     z12 = round((totals[1] + totals[2]) / total * 100)
     z3  = round(totals[3] / total * 100)
-    z47 = 100 - z12 - z3
+    z47 = max(0, 100 - z12 - z3)
     return {"z12": z12, "z3": z3, "z47": z47, "pi": z12, "ok": z3 < 15, "no_data": False}
 
 def get_ctl_history(weeks: int = 26) -> dict:

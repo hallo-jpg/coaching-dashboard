@@ -746,7 +746,7 @@
   {% if polar_no_data %}
   <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
   {% else %}
-  <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z2{% endif %}</span>
+  <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">LIT: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z2{% endif %}</span>
   <div class="polar-row">
     <span class="polar-lbl">Z0–Z1</span>
     <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
