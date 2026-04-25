@@ -746,23 +746,23 @@
   {% if polar_no_data %}
   <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
   {% else %}
-  <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3{% endif %}</span>
+  <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">PI: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z2{% endif %}</span>
   <div class="polar-row">
-    <span class="polar-lbl">Z1–Z2</span>
+    <span class="polar-lbl">Z0–Z1</span>
     <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
     <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
   </div>
   <div class="polar-row">
-    <span class="polar-lbl">Z3</span>
+    <span class="polar-lbl">Z2</span>
     <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
     <span class="polar-pct">{{ polar_z3_pct }}%</span>
   </div>
   <div class="polar-row">
-    <span class="polar-lbl">Z4–Z7</span>
+    <span class="polar-lbl">Z3–Z6</span>
     <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
     <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
   </div>
-  <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
+  <div class="polar-note">Ziel ≥80% LIT · Z2 &lt;15% · Seiler &amp; Kjerland 2006</div>
   {% endif %}
 </div>
 
