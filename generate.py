@@ -767,15 +767,26 @@ def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> st
     return f"HRV {'über' if hrv > hrv_avg else 'unter'} Schnitt{rhr_note}{trend}"
 
 def _calc_polarisation(activities: list) -> dict:
-    """Estimate zone split from ride activities via icu_z1..icu_z7 fields."""
+    """Zone split from ride activities via detail endpoint icu_zone_times field."""
     rides = [a for a in activities
              if a.get("type") in ("Ride", "VirtualRide", "GravelRide")]
     if not rides:
         return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
     totals = [0] * 8
     for r in rides:
-        for z in range(1, 8):
-            totals[z] += r.get(f"icu_z{z}") or 0
+        act_id = r.get("id", "")
+        if not act_id:
+            continue
+        try:
+            detail = _api_get(f"/activities/{act_id}")
+        except Exception:
+            continue
+        for zt in (detail.get("icu_zone_times") or []):
+            z_id = zt.get("id", "")
+            if z_id.startswith("Z") and z_id[1:].isdigit():
+                z_num = int(z_id[1:])
+                if 1 <= z_num <= 7:
+                    totals[z_num] += zt.get("secs", 0)
     total = sum(totals[1:])
     if total == 0:
         return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
