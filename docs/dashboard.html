@@ -467,16 +467,16 @@
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="var(--yellow)" stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="127.9" transform="rotate(-90 65 65)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="345.4" stroke-dashoffset="345.6" transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--yellow);font-size:1.8rem">63%</span>
+        <span class="ring-num" style="color:var(--accent);font-size:1.8rem">0%</span>
         <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">158 / 251 TSS</div>
+      <div class="pri-main">158 / 0 TSS</div>
       <div class="pri-sub">Wochenziel · KW17</div>
     </div>
   </div>
@@ -578,48 +578,48 @@
     <div class="week-header">
       <span class="card-headline">Wochenplan</span>
       <span class="kw-pill">KW17</span>
-      <span class="tss-pill">158 / ~251 TSS</span>
+      <span class="tss-pill">158 / ~0 TSS</span>
     </div>
 
     
 
     
-    <div class="day-row ">
+    <div class="day-row day-missed">
       <span class="day-name">Mo</span>
-      <span class="day-dot dot-rest"></span>
+      <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
+        <div class="day-workout">🚴 </div>
         
       </div>
       
-      <span class="day-tss" style="color:var(--subtle)">–</span>
+      <span class="badge-missed">Ausgefallen</span>
       
     </div>
     
-    <div class="day-row ">
+    <div class="day-row day-missed">
       <span class="day-name">Di</span>
-      <span class="day-dot dot-rest"></span>
+      <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
+        <div class="day-workout">🚴 </div>
         
       </div>
       
-      <span class="day-tss" style="color:var(--subtle)">–</span>
+      <span class="badge-missed">Ausgefallen</span>
       
     </div>
     
     <div class="day-row ">
       <span class="day-name">Mi</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 Spaziergang 45min</div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
       </div>
       
-      <span class="day-tss" style="color:var(--green)">✅ 0 TSS</span>
+      <span class="day-tss" style="color:var(--subtle)">–</span>
       
     </div>
     
@@ -628,7 +628,7 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 LIT-1h – Puls <148 bpm</div>
+        <div class="day-workout">🚴 </div>
         
       </div>
       
@@ -641,7 +641,7 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 LIT-1h30 (6×6)</div>
+        <div class="day-workout">🚴 </div>
         
       </div>
       
@@ -654,7 +654,7 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 LIT-2h</div>
+        <div class="day-workout">🚴 </div>
         
       </div>
       
@@ -667,7 +667,7 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 LIT-2h30</div>
+        <div class="day-workout">🚴 </div>
         
       </div>
       
@@ -682,13 +682,13 @@
   <div class="nutr-card" style="margin-bottom:0">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
       <div class="card-headline">Ernährung · Heute</div>
-      <span class="kw-pill" style="margin-left:auto">endurance_short</span>
+      <span class="kw-pill" style="margin-left:auto">rest</span>
     </div>
 
-    <div class="nutr-banner nutr-banner-blue">
+    <div class="nutr-banner nutr-banner-muted">
       <div>
-        <div class="nutr-banner-text">LIT-2h30</div>
-        <div class="nutr-banner-sub">Kurzer Ausdauertag → Normal essen</div>
+        <div class="nutr-banner-text">Ruhetag</div>
+        <div class="nutr-banner-sub">Ruhetag → Carbs reduziert, Protein halten</div>
       </div>
     </div>
 
@@ -696,32 +696,14 @@
       <div class="nutr-protein-left">
         <div>
           <div class="nutr-protein-lbl">Protein-Ziel heute</div>
-          <div><span class="nutr-protein-val">160</span><span class="nutr-protein-unit"> g · 1.8 g/kg</span></div>
+          <div><span class="nutr-protein-val">150</span><span class="nutr-protein-unit"> g · 1.7 g/kg</span></div>
         </div>
       </div>
       <div class="nutr-protein-dist">
-        ~40g Frühstück<br>~50g Mittagessen<br>~40g Abendessen<br>~30g Snacks
+        ~40g Frühstück<br>~45g Mittagessen<br>~40g Abendessen<br>~30g Snacks
       </div>
     </div>
 
-    
-    <div class="nutr-timing">
-      <div class="nutr-timing-block">
-        <div class="nutr-timing-lbl">Pre-Workout</div>
-        <div class="nutr-timing-main">🥣 Normal</div>
-        <div class="nutr-timing-sub">Haferbrei, 1–2h vorher</div>
-      </div>
-      <div class="nutr-timing-block">
-        <div class="nutr-timing-lbl">During</div>
-        <div class="nutr-timing-main">💧 Optional</div>
-        <div class="nutr-timing-sub">Wasser reicht bis 90min</div>
-      </div>
-      <div class="nutr-timing-block">
-        <div class="nutr-timing-lbl">Post · 30min</div>
-        <div class="nutr-timing-main">🥛 3:1</div>
-        <div class="nutr-timing-sub">Carbs:Protein in 30min</div>
-      </div>
-    </div>
     
 
     
@@ -729,12 +711,12 @@
       
       <div class="nutr-tip">
         <div class="nutr-tip-dot nutr-tip-dot-green"></div>
-        <div class="nutr-tip-text">Protein-Fokus: Quark, Eier, Hülsenfrüchte nach dem Training</div>
+        <div class="nutr-tip-text">Carbs reduzieren: Mehr Gemüse, weniger Getreide heute</div>
       </div>
       
       <div class="nutr-tip">
-        <div class="nutr-tip-dot nutr-tip-dot-blue"></div>
-        <div class="nutr-tip-text">Leichte Mahlzeiten — kein Volumen-Druck bei kurzen Einheiten</div>
+        <div class="nutr-tip-dot nutr-tip-dot-purple"></div>
+        <div class="nutr-tip-text">Magnesium abends: 300–400mg unterstützt Schlafqualität</div>
       </div>
       
     </div>
@@ -953,41 +935,41 @@
     <tr style="background:rgba(148,163,184,0.04)">
       <td><span class="ausblick-kw" style="color:var(--accent)">KW17</span></td>
       <td>
-        <div>Wiederanlauf nach Krankheit</div>
-        <div class="ausblick-sub">Post-Illness-Rampe – LIT-Only, kein KA/SwSp/Laufen</div>
+        <div>KW17</div>
+        <div class="ausblick-sub"></div>
       </td>
-      <td class="ausblick-tss">158 / ~251</td>
-      <td class="ausblick-key"><div class="ausblick-sub">Spaziergang 45min</div></td>
+      <td class="ausblick-tss">158 / ~0</td>
+      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW18</span></td>
       <td>
-        <div>HIT-Aufbaublock Start</div>
-        <div class="ausblick-sub">HIT_EB 4×4 + SwSp-Einstieg + KA, Laufaufbau Easy Only</div>
+        <div>HIT-Einstieg + Österreich</div>
+        <div class="ausblick-sub">HIT-Aufbaublock Start · SwSp Di (indoor) · Berg-HIT Sa (outdoor AT) · LIT-Serie Fr–So</div>
       </td>
-      <td class="ausblick-tss">~380</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~389</td>
+      <td class="ausblick-key"><div class="ausblick-sub">SwSp 3×10min (2h indoor) · Easy Run 35min · 🏔️ Berg-HIT 4×5min + LIT frei</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW19</span></td>
       <td>
-        <div>HIT-Aufbaublock</div>
-        <div class="ausblick-sub">HIT_EB 4×6 + IE-Einstieg + LC, Lauf Easy + erste Schwelle</div>
+        <div>HIT-Aufbau</div>
+        <div class="ausblick-sub">HIT_EB 4×6min + LC-Einstieg</div>
       </td>
-      <td class="ausblick-tss">~390</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~361</td>
+      <td class="ausblick-key"><div class="ausblick-sub">HIT_EB 4×6min · Easy Run 35min · SwSp oder LC</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW20</span></td>
       <td>
-        <div>HIT Volumen</div>
-        <div class="ausblick-sub">HITdec + HIT_EB Progression, CTL-Aufbau Richtung 50+</div>
+        <div>HIT-Aufbau II</div>
+        <div class="ausblick-sub">HIT_EB + IE kombiniert</div>
       </td>
-      <td class="ausblick-tss">~400</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~412</td>
+      <td class="ausblick-key"><div class="ausblick-sub">HIT_EB + IE · Easy Run 35min · LC</div></td>
     </tr>
     
     </tbody>
