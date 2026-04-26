@@ -811,18 +811,27 @@ intervals.icu (Free Version) verwendet ein 7-Zonen-Modell mit festen Prozentbän
 | Z6 Anaerobic | 121–150% | 369–458W | Z5 + Z6 Anaerob |
 | Z7 Neuromuscular | >150% | >458W | Z6 Spitze |
 
-**Für Polarisationsmonitor-Auswertung:**
-- **LIT** = intervals.icu Z1 + Z2 (bis 229W — enthält Stefans FatMax 202W)
-- **Outdoor-Drift-Zone** = intervals.icu Z3 (232–275W) — auf Terrain unvermeidbar, nicht als Grauzone-Problem werten; bei reinen Indoor-LIT-Einheiten hingegen ein Flag
-- **Grauzone/Schwelle** = intervals.icu Z4 + SS (278–320W) — **Z4 ist NICHT HIT, aber echte Grauzone wenn ungeplant**
-- **HIT** = intervals.icu Z5 + Z6 + Z7 (>323W) — **ausschließlich Z5/Z6/Z7**
+**Zonen-Nummerierung: Sentiero vs. intervals.icu**
 
-> ⚠️ Stefans FatMax liegt bei 202W (Sentiero Z2, 189–212W) = intervals.icu Z2.
-> Z3 in intervals.icu beginnt bei 232W und endet bei 275W — das ist weit oberhalb FatMax.
-> "Z3 = FatMax" ist falsch. Z3 = Tempo (Sentiero Z3), auf Outdoor-Terrain normal, aber kein LIT.
->
-> ⚠️ Z4 (278–320W, 91–105% FTP) = Schwellenarbeit = Grauzone.
-> Z4 niemals als HIT klassifizieren. HIT beginnt erst bei Z5 (>323W, >106% FTP).
+Sentiero und intervals.icu verwenden **identische Zonen**, aber unterschiedliche Startnummern:
+
+| Bedeutung | Sentiero | intervals.icu |
+|---|---|---|
+| Recovery | Z0 | Z1 |
+| Base / Easy | Z1 | Z2 |
+| FatMax | Z2 | Z3 |
+| Tempo / Grauzone | Z3 | Z4 |
+| FTP / Schwelle | Z4 | Z5 |
+| VO2max | Z5 | Z6 |
+| Anaerob | Z6 | Z7 |
+
+**Für Polarisationsmonitor-Auswertung:**
+- **LIT** = Sentiero Z0+Z1+Z2 = intervals.icu **Z1+Z2+Z3**
+- **Grauzone** = Sentiero Z3 = intervals.icu **Z4** (+ SS) — **nicht HIT, aber vermeiden wenn ungeplant**
+- **HIT** = Sentiero Z4+Z5+Z6 = intervals.icu **Z5+Z6+Z7** — ausschließlich diese Zonen
+
+> ⚠️ intervals.icu Z4 niemals als HIT zählen. HIT = nur Z5+Z6+Z7.
+> ⚠️ intervals.icu Z3 (= Sentiero Z2 = FatMax) ist LIT, nicht Grauzone.
 
 ### Laufen: Zonen-Mapping (Stand: intervals.icu Schwelle 6:03/km)
 
