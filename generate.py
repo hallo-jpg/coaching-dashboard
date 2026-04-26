@@ -426,6 +426,8 @@ def parse_kw_plan(kw: int) -> dict:
     """Parse planung/kw{kw}.md → {theme, sub, tss_plan, days: list[dict]}"""
     path = Path(f"planung/kw{kw}.md")
     if not path.exists():
+        path = Path(f"planung/archiv/kw{kw}.md")  # fallback: bereits archiviert aber KW läuft noch
+    if not path.exists():
         return {"theme": f"KW{kw}", "sub": "", "tss_plan": 0, "days": _empty_days()}
 
     text = path.read_text(encoding="utf-8")
