@@ -614,19 +614,14 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     hrv_low     = round(hrv_mean - hrv_std)
     hrv_high    = round(hrv_mean + hrv_std)
 
-    today_w = next((w for w in reversed(wellness) if w.get("id", "") <= today_iso and (w.get("ctl") or w.get("hrv"))), wellness[-1] if wellness else {})
+    today_w            = next((w for w in reversed(wellness) if w.get("id", "") <= today_iso and (w.get("ctl") or w.get("hrv"))), wellness[-1] if wellness else {})
+    biometrics_pending = not bool(today_w.get("hrv"))
     hrv     = today_w.get("hrv") or 0
-    if not hrv:
-        hrv = next((w.get("hrv") for w in reversed(wellness) if w.get("hrv")), 0)
     sleep_s = today_w.get("sleepSecs") or 0
-    if not sleep_s:
-        sleep_s = next((w.get("sleepSecs") for w in reversed(wellness) if w.get("sleepSecs")), 0)
     ctl     = today_w.get("ctl") or 0
     atl     = today_w.get("atl") or 0
     tsb     = round(ctl - atl, 1)
     rhr     = today_w.get("restingHR") or 0
-    if not rhr:
-        rhr = next((w.get("restingHR") for w in reversed(wellness) if w.get("restingHR")), 60)
 
     hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
@@ -634,6 +629,8 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     r_color = readiness_color(r_score)
     r_label = readiness_label(r_score)
     r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
+    if biometrics_pending:
+        r_score = 0  # Ring zeigt leer; Template zeigt "–"
 
     ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
@@ -750,6 +747,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "polar_z12_pct": polar["z12"], "polar_z3_pct": polar["z3"],
         "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
         "polar_no_data": polar["no_data"],
+        "biometrics_pending": biometrics_pending,
         "outlook": outlook,
         "zone_data": get_zone_data(),
         "power_bests": get_power_bests(),
