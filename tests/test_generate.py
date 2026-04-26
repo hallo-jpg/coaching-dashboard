@@ -104,6 +104,32 @@ def test_parse_kw_plan_theme():
     assert "Grundlagen" in plan["theme"]
 
 
+def test_parse_kw_plan_archiv_fallback(tmp_path, monkeypatch):
+    # Simulate: primary planung/kw99.md missing, but planung/archiv/kw99.md exists
+    archiv_dir = tmp_path / "planung" / "archiv"
+    archiv_dir.mkdir(parents=True)
+    (tmp_path / "planung" / "archiv" / "kw99.md").write_text(
+        "# KW99 – Archiviert\n\n*Thema: Test*\n\n"
+        "## Wochenplan\n\n"
+        "| Tag | Workout | TSS ca. | TSS Ist | Status | Notiz |\n"
+        "|---|---|---|---|---|---|\n"
+        "| Mo | LIT-2h | 74 | – | ⬜ | |\n"
+        "| Di | Ruhetag | – | – | ⬜ | |\n"
+        "| Mi | Ruhetag | – | – | ⬜ | |\n"
+        "| Do | Ruhetag | – | – | ⬜ | |\n"
+        "| Fr | Ruhetag | – | – | ⬜ | |\n"
+        "| Sa | LIT-2h | 74 | – | ⬜ | |\n"
+        "| So | LIT-2h | 74 | – | ⬜ | |\n"
+        "| **Total** | | **~222** | | | |\n",
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(tmp_path)
+    plan = parse_kw_plan(99)
+    assert len(plan["days"]) == 7, "Archiv-Fallback muss 7 Tage liefern"
+    assert plan["tss_plan"] > 0, "Archiv-Fallback muss TSS liefern"
+    assert plan["theme"] != "KW99", "Archiv-Fallback muss Theme aus Datei lesen"
+
+
 SAMPLE_ACTIVITIES = [
     {"start_date_local": "2026-04-13T09:00:00", "type": "Ride",
      "icu_training_load": 71, "name": "Morgenfahrt"},
