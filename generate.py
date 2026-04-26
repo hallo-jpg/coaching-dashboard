@@ -631,6 +631,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
     if biometrics_pending:
         r_score = 0  # Ring zeigt leer; Template zeigt "–"
+        r_color = "var(--muted)"
 
     ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
