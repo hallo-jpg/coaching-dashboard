@@ -47,7 +47,7 @@ def test_readiness_high():
         {"id": "2026-04-12", "hrv": 45, "sleepSecs": 28800, "ctl": 46.0, "atl": 33.0, "restingHR": 47},
     ]
     score = calc_readiness(wellness_window=window, hrv_baseline=window)
-    assert score >= 60
+    assert score >= 80
 
 
 def test_readiness_low():
