@@ -402,13 +402,15 @@
           stroke-dasharray="345.4" stroke-dashoffset="{{ readiness_offset }}" transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:{{ readiness_color }}">{{ readiness_score }}</span>
+        <span class="ring-num" style="color:{{ readiness_color }}">{% if biometrics_pending %}–{% else %}{{ readiness_score }}{% endif %}</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
+      {% if not biometrics_pending %}
       <div class="ring-status-tag">{{ readiness_label }}</div>
       <div class="ring-status-sub">{{ readiness_sub }}</div>
+      {% endif %}
     </div>
   </div>
 
