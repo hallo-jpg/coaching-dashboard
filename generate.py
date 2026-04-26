@@ -616,13 +616,17 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     today_w = next((w for w in reversed(wellness) if w.get("id", "") <= today_iso and (w.get("ctl") or w.get("hrv"))), wellness[-1] if wellness else {})
     hrv     = today_w.get("hrv") or 0
+    if not hrv:
+        hrv = next((w.get("hrv") for w in reversed(wellness) if w.get("hrv")), 0)
     sleep_s = today_w.get("sleepSecs") or 0
     if not sleep_s:
         sleep_s = next((w.get("sleepSecs") for w in reversed(wellness) if w.get("sleepSecs")), 0)
     ctl     = today_w.get("ctl") or 0
     atl     = today_w.get("atl") or 0
     tsb     = round(ctl - atl, 1)
-    rhr     = today_w.get("restingHR") or 60
+    rhr     = today_w.get("restingHR") or 0
+    if not rhr:
+        rhr = next((w.get("restingHR") for w in reversed(wellness) if w.get("restingHR")), 60)
 
     hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
