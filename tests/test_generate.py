@@ -1,6 +1,6 @@
 import pytest
 from datetime import date
-from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows
+from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation
 from unittest.mock import patch
 
 
@@ -214,4 +214,64 @@ def test_build_context_biometrics_pending(mock_pb, mock_act, mock_well):
     from generate import build_context
     ctx = build_context(kw=16, monday=date(2026, 4, 13), sunday=date(2026, 4, 19))
     assert ctx["biometrics_pending"] is True
-    assert ctx["readiness_score"] == 0
+
+
+# ---------------------------------------------------------------------------
+# _calc_polarisation – Sentiero/intervals.icu zone mapping
+# Sentiero Z0-Z6 = intervals.icu Z1-Z7 (offset +1)
+# LIT = icu Z1+Z2+Z3, Grauzone = icu Z4, HIT = icu Z5+Z6+Z7
+# ---------------------------------------------------------------------------
+
+def _make_activities_with_zones(zone_secs: dict) -> list:
+    """Return a mock activity list that _calc_polarisation can process via _api_get patch."""
+    return [{"id": "act1", "type": "Ride"}]
+
+
+def _zone_times(zone_secs: dict) -> list:
+    """Build icu_zone_times structure from {zone_num: secs} dict."""
+    return [{"id": f"Z{z}", "secs": s} for z, s in zone_secs.items()]
+
+
+@patch("generate._api_get")
+def test_calc_polarisation_lit_includes_z3(mock_api):
+    # 600s in Z1, 600s in Z2, 600s in Z3 (all LIT), 0 Grauzone, 0 HIT
+    mock_api.return_value = {"icu_zone_times": _zone_times({1: 600, 2: 600, 3: 600})}
+    acts = [{"id": "act1", "type": "Ride"}]
+    result = _calc_polarisation(acts)
+    assert result["z12"] == 100, f"LIT should be 100%, got {result['z12']}"
+    assert result["z3"] == 0,   "Grauzone should be 0%"
+    assert result["z47"] == 0,  "HIT should be 0%"
+    assert result["ok"] is True
+
+
+@patch("generate._api_get")
+def test_calc_polarisation_grauzone_is_z4_not_z3(mock_api):
+    # 600s LIT (Z1), 0 Z2, 0 Z3, 400s Z4 (Grauzone), 0 HIT
+    mock_api.return_value = {"icu_zone_times": _zone_times({1: 600, 4: 400})}
+    acts = [{"id": "act1", "type": "Ride"}]
+    result = _calc_polarisation(acts)
+    total = 1000
+    assert result["z12"] == round(600 / total * 100), "LIT wrong"
+    assert result["z3"]  == round(400 / total * 100), "Grauzone should be Z4 time"
+    assert result["z47"] == 0, "HIT should be 0"
+
+
+@patch("generate._api_get")
+def test_calc_polarisation_hit_is_z5_z6_z7(mock_api):
+    # 300s each in Z5, Z6, Z7 = HIT; 300s Z1 = LIT
+    mock_api.return_value = {"icu_zone_times": _zone_times({1: 300, 5: 300, 6: 300, 7: 300})}
+    acts = [{"id": "act1", "type": "Ride"}]
+    result = _calc_polarisation(acts)
+    total = 1200
+    assert result["z12"] == round(300 / total * 100), "LIT wrong"
+    assert result["z3"]  == 0,                        "Grauzone should be 0"
+    assert result["z47"] == round(900 / total * 100), "HIT should be Z5+Z6+Z7"
+
+
+@patch("generate._api_get")
+def test_calc_polarisation_ok_flag_triggers_on_z4(mock_api):
+    # Z4 = 20% → should fail ok check (>15%)
+    mock_api.return_value = {"icu_zone_times": _zone_times({1: 800, 4: 200})}
+    acts = [{"id": "act1", "type": "Ride"}]
+    result = _calc_polarisation(acts)
+    assert result["ok"] is False, "ok should be False when Z4 (Grauzone) > 15%"

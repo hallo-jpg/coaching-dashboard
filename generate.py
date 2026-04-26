@@ -795,10 +795,10 @@ def _calc_polarisation(activities: list) -> dict:
     total = sum(totals[1:])
     if total == 0:
         return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
-    z12 = round((totals[1] + totals[2]) / total * 100)
-    z3  = round(totals[3] / total * 100)
-    z47 = max(0, 100 - z12 - z3)
-    return {"z12": z12, "z3": z3, "z47": z47, "pi": z12, "ok": z3 < 15, "no_data": False}
+    z123 = round((totals[1] + totals[2] + totals[3]) / total * 100)  # LIT: icu Z1+Z2+Z3 = Sentiero Z0+Z1+Z2
+    z4   = round(totals[4] / total * 100)                             # Grauzone: icu Z4 = Sentiero Z3
+    z567 = max(0, 100 - z123 - z4)                                   # HIT: icu Z5+Z6+Z7 = Sentiero Z4+Z5+Z6
+    return {"z12": z123, "z3": z4, "z47": z567, "pi": z123, "ok": z4 < 15, "no_data": False}
 
 def get_ctl_history(weeks: int = 26) -> dict:
     """6-month CTL line for SVG. Returns path strings + current CTL + month labels."""
