@@ -812,9 +812,12 @@ intervals.icu (Free Version) verwendet ein 7-Zonen-Modell mit festen Prozentbän
 | Z7 Neuromuscular | >150% | >458W | Z6 Spitze |
 
 **Für Polarisationsmonitor-Auswertung:**
-- **LIT (Z1–Z2 Seiler)** = intervals.icu Z1 + Z2 (zusammen)
-- **Sweetspot/Grauzone** = intervals.icu Z3 + unteres Z4
-- **HIT (über Schwelle)** = intervals.icu Z5 + Z6 + Z7
+- **LIT** = intervals.icu Z1 + Z2
+- **Grauzone/Schwelle** = intervals.icu Z3 + Z4 (+ SS falls angezeigt) — **Z4 ist NICHT HIT**
+- **HIT** = intervals.icu Z5 + Z6 + Z7 — **ausschließlich Z5/Z6/Z7**
+
+> ⚠️ Z4 (278–320W, 91–105% FTP) = Schwellenarbeit = Grauzone in Polarisations-Logik.
+> Z4 niemals als HIT klassifizieren. HIT beginnt erst bei Z5 (>323W, >106% FTP).
 
 ### Laufen: Zonen-Mapping (Stand: intervals.icu Schwelle 6:03/km)
 
