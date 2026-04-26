@@ -2,7 +2,7 @@ name: Regenerate Dashboard
 
 on:
   schedule:
-    - cron: "0 * * * *"       # stündlich
+    - cron: "*/30 * * * *"    # alle 30 Minuten
   repository_dispatch:
     types: [activity-uploaded]
   workflow_dispatch:
