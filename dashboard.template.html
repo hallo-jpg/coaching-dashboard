@@ -655,11 +655,21 @@
     <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+      {% if biometrics_pending %}
+      <div class="readiness-score" style="color:var(--muted)">–</div>
+      {% else %}
       <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
       <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
+      {% endif %}
     </div>
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent)">
+    {% if biometrics_pending %}
+    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
+      ⏳ Uhr noch nicht synchronisiert – Werte folgen
+    </div>
+    {% endif %}
+
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent){% if biometrics_pending %};opacity:0.15{% endif %}">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
         <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
@@ -671,7 +681,7 @@
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
         <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
         <div class="rbar-lbl">/ 8h</div>
@@ -681,7 +691,7 @@
         <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
         <div class="rbar-lbl">Form</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
         <div class="rbar-lbl">bpm</div>
