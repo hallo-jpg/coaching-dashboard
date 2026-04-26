@@ -440,10 +440,17 @@ def parse_kw_plan(kw: int) -> dict:
     m_sub = re.search(r"^\*Thema:\s*(.+?)\*$", text, re.MULTILINE)
     sub = m_sub.group(1).strip() if m_sub else ""
 
+    # Nur den ## Wochenplan Abschnitt parsen – Retro/Feedback-Sektionen ignorieren
+    m_section = re.search(r"^##\s+Wochenplan\b", text, re.MULTILINE)
+    section_text = text[m_section.start():] if m_section else text
+    next_section = re.search(r"^##\s+\w", section_text[3:], re.MULTILINE)
+    if next_section:
+        section_text = section_text[: next_section.start() + 3]
+
     # Parse markdown table rows
     table_rows = re.findall(
         r"^\|\s*(Mo|Di|Mi|Do|Fr|Sa|So|\*\*Total\*\*)\s*\|(.+)$",
-        text, re.MULTILINE
+        section_text, re.MULTILINE
     )
 
     days = []
