@@ -25,6 +25,13 @@
 
 ## Coach-Notizen
 
+### 26. April 2026 – KW17 Retro + KW18 Planung
+
+- KW17 Retro: 🟢 Gut · TSS 158/135 (117%) · HRV stabil (45→43) · Polarisation LIT 84% / Grauzone 17% / HIT 2%
+- KW18 geplant: SwSp Di (indoor) · Easy Run Mi · LIT-1h Do · LIT-2h Fr outdoor AT · Berg-HIT 4×5min Sa · LIT-2h So · TSS ~389
+- Austria-Urlaub Fr–So: Freiheit bei Sa-Extension, LIT konsequent <229W
+- Zone-Mapping korrigiert: Sentiero Z0-Z6 = intervals.icu Z1-Z7 · LIT=icu Z1+Z2+Z3 · Grauzone=icu Z4 · HIT=icu Z5+Z6+Z7
+
 ### 24. April 2026 – KW17 Krankheitsverlängerung (Do + Fr)
 - Krankheit dauert an – Do 23.4. und Fr 24.4. als ❌ Krank markiert
 - Geplante intervals.icu-Workouts für Do/Fr gelöscht
