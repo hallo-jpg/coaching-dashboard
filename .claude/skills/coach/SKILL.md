@@ -368,6 +368,84 @@ Schwellenpace aktualisieren?
 
 ---
 
+### Check D: Deload-Trigger + FTP-Test Readiness
+
+**Wann prüfen:** Bei jeder Wochenplanung.
+
+**Datenbedarf:** `get_current_fitness` für CTL/ATL/TSB-Verlauf (letzten 7 Tage). `get_readiness_score` für HRV und 30d-Baseline (bereits in Schritt 0 geladen).
+
+#### Teil 1: Deload-Trigger
+
+**ACWR berechnen:** `ACWR = letzter ATL-Wert / letzter CTL-Wert` (aus `get_current_fitness`)
+
+**TSB-Verlauf prüfen:** Aus den letzten 7 Tagen CTL/ATL-Werte → TSB = CTL − ATL pro Tag. Zähle Tage mit TSB < −30.
+
+**HRV prüfen:** `hrv_abfall_pct = (hrv_baseline_30d − hrv_avg_7d) / hrv_baseline_30d × 100`
+
+**Auslösebedingungen (erste zutreffende gewinnt):**
+
+| Priorität | Bedingung | Schwere |
+|---|---|---|
+| 1 | TSB < −30 für ≥ 3 aufeinanderfolgende Tage | 🔴 Dringend |
+| 2 | HRV >10% unter 30d-Baseline für ≥ 5 Tage | 🟡 Erhöht |
+| 3 | ACWR > 1.5 | 🟡 Erhöht |
+
+**Output (in Schritt 4, direkt nach 🎯 Standort, vor allen anderen Checks):**
+
+```
+⚠️ Deload-Signal erkannt
+
+[🔴/🟡] [Begründung: z.B. "TSB seit 4 Tagen < −30" / "ACWR 1.62"]
+
+Empfehlung: Deload-Woche KW[N]
+→ TSS-Ziel um 40–50% reduzieren (Soll: ~[X] → Deload: ~[X×0.5])
+→ Keine HIT-Einheiten diese Woche
+→ Alle Workouts: LIT oder Ruhetag
+
+Soll ich KW[N] als Deload planen?
+→ [ja] → Wochenplan als Deload ausgeben (nur LIT, TSS-Cap)
+→ [nein] → Hinweis in COACHING_AKTE.md, normaler Plan
+```
+
+**Wenn kein Deload-Signal:** Kein Output für Teil 1. Direkt weiter mit Teil 2.
+
+#### Teil 2: FTP-Test Readiness
+
+**Nur prüfen wenn Teil 1 KEIN Signal ausgelöst hat.**
+
+**Letztes Testdatum bestimmen:** Aus `COACHING_AKTE.md` den letzten Eintrag mit `FTP-Test` suchen → Datum extrahieren. Falls kein Eintrag vorhanden: `tage_seit_test = 999` (immer prüfen).
+
+**Auslösebedingungen (alle müssen gleichzeitig erfüllt sein):**
+
+1. TSB zwischen +5 und +15
+2. HRV 7d-Mittelwert ≥ persönliche 30d-Baseline (= erholt)
+3. Tage seit letztem FTP-Test ≥ 21
+4. `tage_bis_event > 10` (kein Event in Kürze)
+
+**Output (in Schritt 4, nach Deload-Abschnitt falls vorhanden):**
+
+```
+💡 Optimale Testbedingungen
+
+TSB: +[X] | HRV: +[Y]% über Baseline | Letzter Test: vor [N] Tagen
+
+Körper ist frisch und responsiv — die nächsten 3 Tage ideal für FTP-Test.
+
+Soll ich den Test für [nächster geeigneter Tag aus Wochenplan] einplanen?
+→ [ja] → Testwoche wird ausgeplant (wie Check A)
+→ [nicht jetzt] → Kein erneuter Hinweis für 14 Tage
+```
+
+**Bei Antwort "nicht jetzt":** In `COACHING_AKTE.md` eintragen:
+```
+→ FTP-Readiness-Alert unterdrückt bis [heute + 14 Tage]
+```
+Beim nächsten `/coach`: prüfe ob dieses Datum überschritten ist, bevor Check D/Teil 2 ausgelöst wird.
+
+**Wenn keine Bedingungen erfüllt:** Kein Output. Check D vollständig überspringen.
+
+---
+
 ## Schritt 2: Modus erkennen
 
 Anhand des Briefings und der Akte entscheiden:
