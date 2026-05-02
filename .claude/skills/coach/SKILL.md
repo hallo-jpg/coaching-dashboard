@@ -779,6 +779,16 @@ Neue Workout-Zielwatts:
 **Bei "ja":**
 1. `athlete/profil.md` aktualisieren: FTP, W/kg (÷ 88kg), alle Zonenwatts, alle Workout-Zielwatts
 2. `athlete/fortschritt.md` aktualisieren: Neuer Eintrag in FTP-Verlauf + 10min-PR in Power-PR-Referenz
+2b. **CP/W' berechnen und speichern:** Falls 3min-Avg-Watt aus dem Test bekannt (Stefan hat mitgeteilt oder aus intervals.icu-Aktivität lesbar):
+    - `CP = (P₂ × 600 − P₁ × 180) / 420` (P₁ = 3min-Avg, P₂ = 10min-Avg)
+    - `W' = (P₁ − P₂) × 180 × 600 / 420 / 1000` [kJ]
+    - In `athlete/fortschritt.md` → Abschnitt "CP/W'-Verlauf" neuen Eintrag hinzufügen
+    - Im Post-Test-Output nach der Zonen-Tabelle ausgeben:
+      ```
+      CP (geschätzt): [CP]W | W' (geschätzt): [W']kJ
+      → Basis für TT-Pacing Oberjochpass: kurze Steilsektionen mit W' einplanen
+      ```
+    Falls 3min-Avg nicht bekannt: CP/W'-Berechnung überspringen, nur FTP-Update durchführen.
 3. `COACHING_AKTE.md` Eintrag:
    ```
    ## [Datum] FTP-Test KW[N]
