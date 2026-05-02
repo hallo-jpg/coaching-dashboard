@@ -54,3 +54,14 @@
 - Bei "ja" (FTP übernehmen): Bestwert + FTP in `athlete/profil.md` aktualisiert
 - Bei "nein": Bestwert wird trotzdem hier aktualisiert, FTP bleibt
 - Bei "warten": Bestwert wird hier aktualisiert → kein erneuter Hinweis beim nächsten /coach
+
+## CP/W'-Verlauf
+
+*Wird automatisch nach jedem FTP-Test (Sentiero 3+10min) vom /coach-Skill aktualisiert.*
+*Berechnung: CP = (P₂×t₂ − P₁×t₁)/(t₂−t₁), W' = (P₁−P₂)×t₁×t₂/(t₂−t₁)*
+
+| Datum | CP [W] | W' [kJ] | 3min-Avg [W] | 10min-Avg [W] | FTP [W] |
+|---|---|---|---|---|---|
+| – | – | – | – | – | – |
+
+*Erster Eintrag nach nächstem FTP-Test in KW21.*
