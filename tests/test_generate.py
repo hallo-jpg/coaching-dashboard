@@ -366,3 +366,44 @@ def test_match_activities_existing_compatibility():
     assert matched["Do"]["done"] is True
     assert matched["Di"]["done"] is False
     assert matched["Di"]["tss_ist"] == 0
+
+
+def test_build_day_rows_bonus_fields_present():
+    """build_day_rows liefert bonus_activities, tss_primary, tss_bonus."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    rows = build_day_rows(SAMPLE_PLAN_DAYS, matched)
+    mo = rows[0]
+    assert "bonus_activities" in mo
+    assert "tss_primary" in mo
+    assert "tss_bonus" in mo
+    assert mo["bonus_activities"] == []
+    assert mo["tss_primary"] == 71
+    assert mo["tss_bonus"] == 0
+
+
+def test_build_day_rows_bonus_ride_day():
+    """Bei Bonus-Aktivität korrekte Felder im Row-Dict."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES_WITH_BONUS, SAMPLE_PLAN_DAYS, monday)
+    rows = build_day_rows(SAMPLE_PLAN_DAYS, matched)
+    mo = rows[0]  # Mo: Ride primär (88 TSS) + Hike Bonus (32 TSS)
+    assert mo["tss_ist"] == 120
+    assert mo["tss_primary"] == 88
+    assert mo["tss_bonus"] == 32
+    assert len(mo["bonus_activities"]) == 1
+    assert mo["bonus_activities"][0]["name"] == "Morgenwanderung"
+    assert mo["done"] is True
+
+
+def test_build_day_rows_bonus_rest_day():
+    """An Ruhetag mit Aktivität: done=False, bonus_activities gefüllt."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES_WITH_BONUS, SAMPLE_PLAN_DAYS, monday)
+    rows = build_day_rows(SAMPLE_PLAN_DAYS, matched)
+    mi = rows[2]  # Mi ist Ruhetag
+    assert mi["rest"] is True
+    assert mi["done"] is False
+    assert len(mi["bonus_activities"]) == 1
+    assert mi["tss_bonus"] == 25
+    assert mi["tss_primary"] == 0

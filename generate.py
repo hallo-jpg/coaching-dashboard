@@ -573,7 +573,7 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
     rows = []
     for day in plan_days:
         tag = day["tag"]
-        m = matched.get(tag, {"tss_ist": 0, "done": False, "primary": None, "bonus": []})
+        m = matched.get(tag, {"primary": None, "bonus": [], "tss_ist": 0, "done": False})
         done = m["done"]
         rest = day["rest"]
 
@@ -596,19 +596,27 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
         else:
             row_class = ""
 
+        primary = m.get("primary")
+        bonus   = m.get("bonus", [])
+        tss_primary = primary["tss"] if primary else 0
+        tss_bonus   = sum(b["tss"] for b in bonus)
+
         rows.append({
-            "tag":           tag,
-            "workout":       day["workout"],
-            "tss_plan":      day["tss_plan"],
-            "tss_ist":       m["tss_ist"],
-            "done":          done,
-            "rest":          rest,
-            "missed":        missed,
-            "is_run":        day["is_run"],
-            "is_kraft":      day.get("is_kraft", False),
-            "dot_class":     dot,
-            "row_class":     row_class,
-            "activity_name": m["primary"]["name"] if m.get("primary") else "",
+            "tag":              tag,
+            "workout":          day["workout"],
+            "tss_plan":         day["tss_plan"],
+            "tss_ist":          m["tss_ist"],
+            "tss_primary":      tss_primary,
+            "tss_bonus":        tss_bonus,
+            "done":             done,
+            "rest":             rest,
+            "missed":           missed,
+            "is_run":           day["is_run"],
+            "is_kraft":         day.get("is_kraft", False),
+            "dot_class":        dot,
+            "row_class":        row_class,
+            "activity_name":    primary["name"] if primary else "",
+            "bonus_activities": bonus,
         })
     return rows
 
