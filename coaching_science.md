@@ -608,6 +608,36 @@ W' ist der "Akku" für Arbeit oberhalb CP. Sobald er leer ist, muss Intensität 
 | Erholungszeit zwischen kurzen Sätzen | W'-Modell (mind. 50% Arbeitszeit Pause) |
 | Rennpacing Kurzabschnitte | W' taktisch einkalkulieren |
 
+### CP/W' aus Sentiero-Testergebnissen berechnen
+
+**Kein separater Testtermin nötig** – der Sentiero 3+10min-Test liefert zwei Datenpunkte auf der
+Power-Dauer-Kurve und ist ausreichend für eine valide CP/W'-Schätzung (±5% Fehler).
+
+**Formel (linearisiertes Moritani-Modell):**
+
+| Variable | Wert |
+|---|---|
+| P₁ | 3min-Durchschnittsleistung [W] |
+| t₁ | 180 s |
+| P₂ | 10min-Durchschnittsleistung [W] |
+| t₂ | 600 s |
+
+```
+CP  = (P₂ × t₂ − P₁ × t₁) / (t₂ − t₁)    [W]
+W'  = (P₁ − P₂) × t₁ × t₂ / (t₂ − t₁)    [J] → in kJ: ÷ 1000
+```
+
+**Beispiel Stefan (FTP 305W, Sentiero-Daten geschätzt):**
+- Annahme: 3min-Avg ≈ 380W, 10min-Avg ≈ 310W
+- CP = (310 × 600 − 380 × 180) / (600 − 180) = (186000 − 68400) / 420 ≈ **280W**
+- W' = (380 − 310) × 180 × 600 / 420 ≈ **18 000 J = 18 kJ**
+
+**Genauigkeit verbessern:** Ein optionaler 5min-Maximalversuch (separater Tag, frisch) als dritter
+Datenpunkt reduziert den Fehler auf ±2–3% (drei-Punkte-Kurvenanpassung).
+
+**Speicherung nach dem Test:** CP und W' in `athlete/fortschritt.md` → Abschnitt "CP/W'-Verlauf"
+eintragen. Der `/coach`-Skill erledigt das automatisch nach jedem FTP-Test.
+
 ---
 
 ## 13. Zeitfahren-Spezifik: Pacing-Wissenschaft
