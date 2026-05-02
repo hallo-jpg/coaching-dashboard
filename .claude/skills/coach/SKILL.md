@@ -799,6 +799,56 @@ Neue Workout-Zielwatts:
 
 ---
 
+### Check E: Concurrent Training Scheduling-Check
+
+**Wann ausführen:** Am Ende von Schritt 3, nach der Wochenplan-Erstellung, nur bei **Wochenplanung**.
+
+**Intensitäts-Klassifizierung für diesen Check:**
+
+| Klasse | Rad-Einheiten | Lauf-Einheiten |
+|---|---|---|
+| **Hoch** | HIT, MIT, KA, FRT (alle mit Intervallen/Schwellenarbeit) | Qualitätslauf (Schwelle Z3, VO2max Z4) |
+| **Niedrig** | LIT, Easy Spin, Ruhetag | Easy Run (Z1) |
+
+**Prüflogik:** Iteriere über alle Tagespaare im soeben erstellten Wochenplan.
+
+**❌ Konflikt (Plan anpassen — kein extra Nachfragen):**
+- Gleicher Tag: Hoch-Rad + Hoch-Lauf (egal in welcher Reihenfolge)
+- Lösung: Qualitätslauf auf nächsten freien Tag verschieben der ≥24h Abstand hat
+
+**⚠️ Warnung (Plan anpassen + erklären):**
+- Aufeinanderfolgende Tage: Hoch-Rad an Tag X + Hoch-Lauf an Tag X+1 (oder umgekehrt)
+- VO2max-Effekt des zweiten Quality-Workouts reduziert sich um ~30%
+- Lösung: sofern möglich, die Einheiten durch einen LIT- oder Ruhetag trennen
+
+**ℹ️ Hinweis (nur ausgeben, Plan nicht ändern):**
+- Gleicher Tag: Hoch-Rad + Niedrig-Lauf → Empfehlung Reihenfolge: Lauf AM, Rad PM (oder >6h Abstand)
+
+**Output-Block (erscheint in Schritt 4 direkt VOR dem Wochenplan, nur wenn mindestens ein Befund):**
+
+```
+🔄 Trainingsplan optimiert
+
+[❌ Konflikt behoben] [Tag]: [Rad-Workout] + [Lauf-Workout] am selben Tag
+→ Beide Adaptationen würden unterdrückt
+→ [Lauf-Workout] verschoben auf [neuer Tag] (24h Abstand)
+
+[⚠️ Warnung behoben] [Tag X]→[Tag X+1]: [Rad] → [Lauf], ~[X]h Abstand
+→ VO2max-Nutzen des Laufs reduziert um ~30%
+→ Umgestellt: [Lauf] jetzt am [neuer Tag]
+
+[ℹ️ Tipp] [Tag]: [Rad] + [Easy Run] am selben Tag
+→ Reihenfolge empfohlen: Lauf AM, Rad PM (oder >6h Abstand) für maximale Adaptation
+```
+
+**Wichtige Regeln:**
+- Niemals eine Qualitätslauf-Einheit streichen — immer einen anderen Tag suchen
+- Laufziele respektieren: Aus einem Qualitätslauf wird kein Easy Run
+- Falls kein geeigneter Alternativtag existiert (alle Tage voll): Hinweis ausgeben und Entscheidung Stefan überlassen
+- Wenn kein Befund: Check E gibt keinen Output aus (kein "alles gut"-Satz)
+
+---
+
 ## Schritt 4: Output (immer in dieser Reihenfolge)
 
 ### 🎯 Standort
