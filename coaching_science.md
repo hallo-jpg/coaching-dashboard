@@ -673,6 +673,32 @@ Kein TT sondern Ausdauer-Rennen: W' ist bei 5–7h irrelevant (erschöpft und re
 - KM 50–150: **88–95% FTP** (metabolische Ermüdung einplanen)
 - KM 150–197: **Auf Gefühl** – Rest des W' kontrolliert verbrennen
 
+### TT Warm-up Protokoll
+
+**Wissenschaft:** Golich & Andersen (2014, Int J Sports Physiol Perform): Strukturiertes 20–45min
+Warm-up mit kurzen VO₂max-Impulsen vor einem TT → +3–8% Leistung vs. kurzes oder kein Warm-up.
+Mechanismus: VO₂-Kinetik (slow component verkürzt), Muskeltemperatur ↑, neuromuskuläre Aktivierung.
+
+**Optimales Timing:** Letzter intensiver Block endet ≥12–15min vor dem Start (Laktatabbau, aber
+Primer-Effekt bleibt erhalten).
+
+**Protokoll für Stefan (RadRace TT ~10–12min):**
+
+| Phase | Dauer | Intensität | Ziel |
+|---|---|---|---|
+| Locker einfahren | 10 min | 55–65% FTP (168–198W) | Aufwärmen, Durchblutung |
+| Progressive Blöcke | 10 min | Stufenweise bis 85% FTP (~259W) | CV-Drift auslösen |
+| 3×1min VO₂max-Primer | 5 min | 110–120% FTP (336–366W), je 1min Pause | VO₂-Kinetik aktivieren |
+| Locker ausrollen | 5–7 min | 50–60% FTP (153–183W) | Laktat ≥12min vor Start senken |
+| **Gesamt** | **30–32 min** | | Letzter Block ≥12min vor Start |
+
+**Logistik:**
+- Rollentrainer mitbringen wenn Start am Veranstaltungsort — nicht auf der Zufahrtstraße warm fahren
+  (Verkehr, unkontrollierbare Intensität)
+- Alternativ: Zufahrt als lockeres Einfahren nutzen, dann 3×1min-Primer am Startplatz
+- **Ernährung Warm-up-Ende:** 30–40g KH in letzten 15min vor Start (1 Gel)
+- **Koffein:** 3mg/kg ≈ 264mg, 45–60min vor Start (= vor dem Warm-up einnehmen)
+
 ---
 
 ## 14. Neuromuskuläre Kraft / Sprint-Training für Ausdauerradfahrer
