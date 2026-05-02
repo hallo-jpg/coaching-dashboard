@@ -705,7 +705,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     tss_ist = sum(d["tss_ist"] for d in days)
 
     tss_plan_week = plan["tss_plan"]
-    tss_compliance_pct = min(round(tss_ist / tss_plan_week * 100), 100) if tss_plan_week > 0 else 0
+    tss_compliance_pct = round(tss_ist / tss_plan_week * 100) if tss_plan_week > 0 else 0
     tss_compliance_offset = calc_ring_offset(tss_compliance_pct, 100, CIRC_OUTER)
     tss_compliance_color = ("var(--green)" if tss_compliance_pct >= 80
                             else "var(--yellow)" if tss_compliance_pct >= 40
