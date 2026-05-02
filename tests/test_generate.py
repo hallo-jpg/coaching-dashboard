@@ -301,3 +301,68 @@ def test_calc_polarisation_ok_flag_triggers_on_z4(mock_api):
     acts = [{"id": "act1", "type": "Ride"}]
     result = _calc_polarisation(acts)
     assert result["ok"] is False, "ok should be False when Z4 (Grauzone) > 15%"
+
+
+# ── Bonus-Aktivitäten ────────────────────────────────────────────────────────
+
+SAMPLE_ACTIVITIES_WITH_BONUS = [
+    # Wandern früh (Hike = nicht im SPORT_TYPE_MAP → immer Bonus)
+    {"start_date_local": "2026-04-13T07:00:00", "type": "Hike",
+     "icu_training_load": 32, "name": "Morgenwanderung"},
+    # Rad am Nachmittag → primär (passt zu Plan-Typ ride)
+    {"start_date_local": "2026-04-13T15:00:00", "type": "Ride",
+     "icu_training_load": 88, "name": "HIT 4×8min"},
+    # Wandern an Ruhetag (Mi)
+    {"start_date_local": "2026-04-15T10:00:00", "type": "Hike",
+     "icu_training_load": 25, "name": "Wandern Ruhetag"},
+]
+
+
+def test_match_activities_bonus_ride_day():
+    """Hike früh + Ride nachmittags → Ride ist primär, Hike ist Bonus."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES_WITH_BONUS, SAMPLE_PLAN_DAYS, monday)
+    mo = matched["Mo"]
+    assert mo["primary"] is not None
+    assert mo["primary"]["name"] == "HIT 4×8min"
+    assert mo["primary"]["tss"] == 88
+    assert len(mo["bonus"]) == 1
+    assert mo["bonus"][0]["name"] == "Morgenwanderung"
+    assert mo["bonus"][0]["tss"] == 32
+    assert mo["tss_ist"] == 120
+    assert mo["done"] is True
+
+
+def test_match_activities_bonus_rest_day():
+    """Aktivität an Ruhetag → alles Bonus, done bleibt False."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES_WITH_BONUS, SAMPLE_PLAN_DAYS, monday)
+    mi = matched["Mi"]
+    assert mi["primary"] is None
+    assert len(mi["bonus"]) == 1
+    assert mi["bonus"][0]["name"] == "Wandern Ruhetag"
+    assert mi["tss_ist"] == 25
+    assert mi["done"] is False
+
+
+def test_match_activities_primary_structure():
+    """Rückgabe enthält primary/bonus/tss_ist/done für alle Tage."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    for tag in ["Mo", "Di", "Mi", "Do"]:
+        assert "primary" in matched[tag]
+        assert "bonus" in matched[tag]
+        assert "tss_ist" in matched[tag]
+        assert "done" in matched[tag]
+
+
+def test_match_activities_existing_compatibility():
+    """Bestehende Tests-Felder (tss_ist, done) bleiben korrekt."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    assert matched["Mo"]["tss_ist"] == 71
+    assert matched["Mo"]["done"] is True
+    assert matched["Do"]["tss_ist"] == 48
+    assert matched["Do"]["done"] is True
+    assert matched["Di"]["done"] is False
+    assert matched["Di"]["tss_ist"] == 0
