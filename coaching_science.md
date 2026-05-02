@@ -917,3 +917,69 @@ Sentiero und intervals.icu verwenden **identische Zonen**, aber unterschiedliche
 ---
 
 *Stand April 2026 · Wissensbasis bis August 2025 · Kein Ersatz für sportmedizinische Beratung*
+
+---
+
+## 19. Load Management: ACWR + Foster Monotony/Strain
+
+*Referenz für Dashboard-Metriken M1 (Monotony/Strain) und M2 (ATL Ramprate)*
+
+### Foster et al. (2001) – Monotony und Strain
+
+**Foster et al. (2001, J Strength Cond Res):** Session-RPE × Dauer [min] = Training Load (TL) pro
+Einheit. Aus den täglichen TL-Werten einer Woche lassen sich zwei Kennzahlen berechnen:
+
+```
+Monotony = Wochenmittel TSS / Standardabweichung TSS
+Strain   = Wochen-TSS-Summe × Monotony
+```
+
+**Interpretation:**
+
+| Monotony | Status | Bedeutung |
+|---|---|---|
+| < 1.5 | 🟢 Gut variiert | Gesundes Trainingsmuster |
+| 1.5 – 2.0 | 🟡 Erhöht | Zu gleichförmig, Risiko steigt |
+| > 2.0 | 🔴 Kritisch | Übertrainingsrisiko auch bei moderatem Volumen |
+
+| Strain | Bewertung |
+|---|---|
+| < 500 | Niedrig |
+| 500 – 800 | Moderat |
+| > 800 | Hoch |
+
+**Wichtige Erkenntnis:** Hohe Monotony bedeutet Übertrainingsrisiko *unabhängig vom absoluten
+Trainingsvolumen* — ein gleichförmiger Plan ohne Ruhetage ist riskanter als ein variierter Plan
+mit gleichem Gesamtvolumen. **Ruhetage senken Monotony mehr als gedacht** (0 TSS erhöht σ).
+
+### ACWR – Acute:Chronic Workload Ratio
+
+**Gabbett (2016, Br J Sports Med):** Das Verhältnis von kurzfristiger zu langfristiger Trainingslast
+ist der stärkste Prädiktor für Verletzungsrisiko in Ausdauersport.
+
+```
+ACWR = ATL / CTL
+```
+
+**Zielzonen:**
+
+| ACWR | Zone | Konsequenz |
+|---|---|---|
+| < 0.8 | Unterlastet | Trainingsstimulus unzureichend |
+| 0.8 – 1.3 | Optimal | Weiter wie geplant |
+| 1.3 – 1.5 | Erhöhtes Risiko | Vorsicht, HRV täglich beobachten |
+| > 1.5 | Gefährlich | Verletzungsrisiko signifikant erhöht — Belastung reduzieren |
+
+### Stefan-spezifische Richtwerte
+
+- **ACWR-Ziel im HIT-Aufbaublock (KW18–21):** 1.0–1.3 (kontrolliertes Wachstum)
+- **ACWR nach Krankheit oder Trainingspause:** Bewusst ≤ 1.1 halten bis CTL stabilisiert
+- **Regenerationswoche-ACWR:** ergibt typisch 0.6–0.8 → normal und gewünscht
+- **Monotony im HIT-Block:** Kann steigen durch ähnliche Intervall-Sessions → bewusst
+  LIT-Tage variieren (Dauer, Kadenz, Gelände)
+
+### Verbindung zu anderen Sektionen
+
+- **Sektion 9 (CTL/ATL/TSB):** ACWR nutzt dieselben Variablen, fügt aber die Ratio hinzu
+- **Sektion 15 (NFOR/Übertraining):** Monotony > 2.0 + hoher Strain sind Frühwarnindikatoren
+- **Dashboard M1/M2:** Monotony, Strain und ATL-Ramprate werden aus diesen Formeln berechnet

@@ -224,17 +224,17 @@ Lies folgende Dateien – in dieser Reihenfolge, selektiv:
 | Phase | Modus | Sections |
 |---|---|---|
 | Grundlagenblock KW15–17 | Wochenplanung | 1 · 3 · **5** · 9 · **10** · **11** |
-| HIT-Aufbaublock KW18–21 | Wochenplanung | 1 · 2 · 3 · **4** · **7** · 9 · **10** · **11** |
+| HIT-Aufbaublock KW18–21 | Wochenplanung | 1 · 2 · 3 · **4** · **7** · 9 · **10** · **11** · **19** |
 | TT-Spezifik KW22 | Wochenplanung | 1 · 3 · 4 · 9 · **10** · **11** · **13** · **16** |
 | ≤14 Tage bis Event | Tapering-Modus | **6** · 9 · **10** · **11** |
 | 0–6 Tage bis Event | Rennwoche-Modus | **6** · **8** · **10** · **11** · **13** · **16** |
 | 1–14 Tage nach Event | Recovery-Modus | 9 · **10** · **11** |
 | Alle Phasen | FTP-Update | 1 · 9 |
 | Alle Phasen | Polarisation-Warnung vorhanden | + 2 (zusätzlich) |
-| Alle Phasen | Readiness Score < 40 / Krank-Risiko | + **15** (NFOR-Check) |
+| Alle Phasen | Readiness Score < 40 / Krank-Risiko | + **15** · **19** |
 | Alle Phasen | Mid-Week / Ad-hoc | — (nicht laden) |
 
-Sektions-Referenz: 1=Block-Periodisierung · 2=Polarized · 3=HRV · 4=VO2max · 5=KA/Low-Cadence · 6=Tapering · 7=Laktat-Clearance · 8=Ernährungsperiodisierung · 9=CTL/ATL/TSB · 10=Fueling (Stefan-spezifisch) · **11=Concurrent Training Laufen** · 12=Critical Power/W' · **13=TT Pacing Science** · 14=Sprint Training · **15=NFOR/Übertraining** · **16=Hitzeadaptation** · 17=Kadenz · 18=FTP Plateau
+Sektions-Referenz: 1=Block-Periodisierung · 2=Polarized · 3=HRV · 4=VO2max · 5=KA/Low-Cadence · 6=Tapering · 7=Laktat-Clearance · 8=Ernährungsperiodisierung · 9=CTL/ATL/TSB · 10=Fueling (Stefan-spezifisch) · **11=Concurrent Training Laufen** · 12=Critical Power/W' · **13=TT Pacing Science** · 14=Sprint Training · **15=NFOR/Übertraining** · **16=Hitzeadaptation** · 17=Kadenz · 18=FTP Plateau · **19=ACWR/Load Management**
 
 > **Sektion 10 ist immer zu laden** bei jeder Workout-Planung – nie weglassen.
 > `athlete/fortschritt.md` nur lesen bei FTP-Updates oder Fortschrittsanalyse.
