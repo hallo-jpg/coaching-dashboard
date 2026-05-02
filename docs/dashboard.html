@@ -157,6 +157,12 @@
   .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
   .day-missed .day-workout { text-decoration: line-through; color: var(--subtle); }
   .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--subtle); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
+  .bonus-activity { display: flex; align-items: center; gap: 6px; margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
+  .badge-bonus { font-size: 0.58rem; font-weight: 800; color: var(--orange); background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.25); border-radius: 5px; padding: 1px 5px; flex-shrink: 0; }
+  .bonus-name { font-size: 0.75rem; color: var(--muted); }
+  .tss-split { font-size: 0.65rem; color: var(--muted); white-space: nowrap; }
+  .tss-split .split-plan { color: var(--subtle); }
+  .tss-split .split-bonus { color: var(--orange); }
   .day-sick .day-fuel,
   .day-sick .day-meal { display: none; }
   .day-sick .day-tss { color: var(--red); }
@@ -591,6 +597,7 @@
         
         <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
+        
       </div>
       
       <span class="day-tss" style="color:var(--subtle)">–</span>
@@ -604,9 +611,13 @@
         
         <div class="day-workout">🚴 SwSp 3×10min (2h indoor)</div>
         
+        
       </div>
       
-      <span class="day-tss" style="color:var(--green)">✅ 114 TSS</span>
+      <div style="text-align:right;">
+        <div class="day-tss" style="color:var(--green)">✅ 114 TSS</div>
+        
+      </div>
       
     </div>
     
@@ -617,9 +628,13 @@
         
         <div class="day-workout">🏃 Easy Run 35min</div>
         
+        
       </div>
       
-      <span class="day-tss" style="color:var(--green)">✅ 38 TSS</span>
+      <div style="text-align:right;">
+        <div class="day-tss" style="color:var(--green)">✅ 38 TSS</div>
+        
+      </div>
       
     </div>
     
@@ -629,6 +644,7 @@
       <div>
         
         <div class="day-workout">🚴 LIT-1h (vor Arbeit)</div>
+        
         
       </div>
       
@@ -643,9 +659,20 @@
         
         <div class="day-workout">🚴 LIT-2h outdoor Österreich</div>
         
+        
+        <div class="bonus-activity">
+          <span class="badge-bonus">+</span>
+          <span class="bonus-name">Wanderung am Morgen</span>
+        </div>
+        
       </div>
       
-      <span class="day-tss" style="color:var(--green)">✅ 160 TSS</span>
+      <div style="text-align:right;">
+        <div class="day-tss" style="color:var(--green)">✅ 160 TSS</div>
+        
+        <div class="tss-split"><span class="split-plan">82</span> + <span class="split-bonus">78</span></div>
+        
+      </div>
       
     </div>
     
@@ -655,6 +682,7 @@
       <div>
         
         <div class="day-workout">🚴 🏔️ Berg-HIT 4×5min + LIT frei</div>
+        
         
       </div>
       
@@ -668,6 +696,7 @@
       <div>
         
         <div class="day-workout">🚴 LIT-2h outdoor</div>
+        
         
       </div>
       
