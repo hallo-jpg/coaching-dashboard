@@ -515,28 +515,55 @@ SPORT_TYPE_MAP = {
 }
 
 
+def _plan_sport(day: dict) -> str:
+    """Return expected sport type string for a plan day."""
+    if day.get("is_run"):
+        return "run"
+    if day.get("is_kraft"):
+        return "strength"
+    return "ride"
+
+
 def match_activities(activities: list, plan_days: list, monday: date) -> dict:
-    """Match activities to plan days by date. Returns {tag: {tss_ist, done, activity_name}}"""
+    """Match activities to plan days by date and sport type.
+
+    Returns {tag: {primary, bonus, tss_ist, done}} where:
+      primary: {name, tss} of the activity matching the plan sport, or None
+      bonus:   [{name, tss}, ...] for all other activities on that day
+      tss_ist: total TSS (primary + all bonus)
+      done:    True when primary activity was completed
+    """
     date_to_tag = {
         (monday + timedelta(days=i)).isoformat(): DAY_ORDER[i]
         for i in range(7)
     }
+    plan_by_tag = {d["tag"]: d for d in plan_days}
 
     matched = {
-        d["tag"]: {"tss_ist": 0, "done": False, "activity_name": ""}
+        d["tag"]: {"primary": None, "bonus": [], "tss_ist": 0, "done": False}
         for d in plan_days
     }
 
-    for act in activities:
+    for act in sorted(activities, key=lambda a: a.get("start_date_local", "")):
         act_date = act.get("start_date_local", "")[:10]
         tag = date_to_tag.get(act_date)
         if not tag:
             continue
         tss = act.get("icu_training_load") or 0
         matched[tag]["tss_ist"] += tss
-        matched[tag]["done"] = True
-        if not matched[tag]["activity_name"]:
-            matched[tag]["activity_name"] = act.get("name", "")
+
+        plan_day = plan_by_tag[tag]
+        act_sport = SPORT_TYPE_MAP.get(act.get("type", ""))
+
+        if (
+            not plan_day["rest"]
+            and act_sport == _plan_sport(plan_day)
+            and matched[tag]["primary"] is None
+        ):
+            matched[tag]["primary"] = {"name": act.get("name", ""), "tss": tss}
+            matched[tag]["done"] = True
+        else:
+            matched[tag]["bonus"].append({"name": act.get("name", ""), "tss": tss})
 
     return matched
 
@@ -546,7 +573,7 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
     rows = []
     for day in plan_days:
         tag = day["tag"]
-        m = matched.get(tag, {"tss_ist": 0, "done": False, "activity_name": ""})
+        m = matched.get(tag, {"primary": None, "bonus": [], "tss_ist": 0, "done": False})
         done = m["done"]
         rest = day["rest"]
 
@@ -569,19 +596,27 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
         else:
             row_class = ""
 
+        primary = m.get("primary")
+        bonus   = m.get("bonus", [])
+        tss_primary = primary["tss"] if primary else 0
+        tss_bonus   = sum(b["tss"] for b in bonus)
+
         rows.append({
-            "tag":           tag,
-            "workout":       day["workout"],
-            "tss_plan":      day["tss_plan"],
-            "tss_ist":       m["tss_ist"],
-            "done":          done,
-            "rest":          rest,
-            "missed":        missed,
-            "is_run":        day["is_run"],
-            "is_kraft":      day.get("is_kraft", False),
-            "dot_class":     dot,
-            "row_class":     row_class,
-            "activity_name": m["activity_name"],
+            "tag":              tag,
+            "workout":          day["workout"],
+            "tss_plan":         day["tss_plan"],
+            "tss_ist":          m["tss_ist"],
+            "tss_primary":      tss_primary,
+            "tss_bonus":        tss_bonus,
+            "done":             done,
+            "rest":             rest,
+            "missed":           missed,
+            "is_run":           day["is_run"],
+            "is_kraft":         day.get("is_kraft", False),
+            "dot_class":        dot,
+            "row_class":        row_class,
+            "activity_name":    primary["name"] if primary else "",
+            "bonus_activities": bonus,
         })
     return rows
 
