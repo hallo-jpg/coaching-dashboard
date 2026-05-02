@@ -157,6 +157,12 @@
   .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
   .day-missed .day-workout { text-decoration: line-through; color: var(--subtle); }
   .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--subtle); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
+  .bonus-activity { display: flex; align-items: center; gap: 6px; margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
+  .badge-bonus { font-size: 0.58rem; font-weight: 800; color: var(--orange); background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.25); border-radius: 5px; padding: 1px 5px; flex-shrink: 0; }
+  .bonus-name { font-size: 0.75rem; color: var(--subtle); }
+  .tss-split { font-size: 0.65rem; color: #4a5568; white-space: nowrap; }
+  .tss-split .split-plan { color: var(--subtle); }
+  .tss-split .split-bonus { color: var(--orange); }
   .day-sick .day-fuel,
   .day-sick .day-meal { display: none; }
   .day-sick .day-tss { color: var(--red); }
@@ -569,15 +575,28 @@
       <span class="day-dot {{ day.dot_class }}"></span>
       <div>
         {% if day.rest %}
-        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;{% if day.bonus_activities %}text-decoration:line-through;{% endif %}">Ruhetag</div>
         {% else %}
         <div class="day-workout">{% if day.is_run %}🏃{% elif day.is_kraft %}🏋️{% else %}🚴{% endif %} {{ day.workout }}</div>
         {% endif %}
+        {% for bonus in day.bonus_activities %}
+        <div class="bonus-activity">
+          <span class="badge-bonus">+</span>
+          <span class="bonus-name">{{ bonus.name }}</span>
+        </div>
+        {% endfor %}
       </div>
-      {% if day.rest %}
+      {% if day.rest and day.bonus_activities %}
+      <span class="day-tss" style="color:var(--orange)">+{{ day.tss_bonus }} TSS</span>
+      {% elif day.rest %}
       <span class="day-tss" style="color:var(--subtle)">–</span>
       {% elif day.done %}
-      <span class="day-tss" style="color:var(--green)">✅ {{ day.tss_ist }} TSS</span>
+      <div style="text-align:right;">
+        <div class="day-tss" style="color:var(--green)">✅ {{ day.tss_ist }} TSS</div>
+        {% if day.tss_bonus > 0 %}
+        <div class="tss-split"><span class="split-plan">{{ day.tss_primary }}</span> + <span class="split-bonus">{{ day.tss_bonus }}</span></div>
+        {% endif %}
+      </div>
       {% elif day.missed %}
       <span class="badge-missed">Ausgefallen</span>
       {% else %}
