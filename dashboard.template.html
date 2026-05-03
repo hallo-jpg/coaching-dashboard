@@ -510,6 +510,32 @@
     {% endif %}
   </div>
 
+  <!-- M1: LOAD QUALITY -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="margin-bottom:12px">
+      <div class="card-headline">⚖️ Load Quality · 7 Tage</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
+      <span style="font-size:0.92rem;font-weight:800;color:{{ monotony_color }}">{{ "%.2f"|format(monotony_val) }}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:0.72rem;color:var(--muted)">Strain</span>
+      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">{{ monotony_strain }}</span>
+    </div>
+    <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
+    <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
+      {% set max_tss = [tss_7days | max, 1] | max %}
+      {% for tss in tss_7days %}
+      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+                  height:{{ [((tss / max_tss * 100) | round | int), 5] | max }}%;
+                  background:{% if tss > 0 %}var(--green){% else %}var(--subtle){% endif %};
+                  opacity:0.75"
+           title="{{ tss | round | int }} TSS"></div>
+      {% endfor %}
+    </div>
+  </div>
+
   <!-- SCHLAF-VERLAUF 30 TAGE -->
   <div class="ausblick-card" style="margin-bottom:0">
     <div style="margin-bottom:14px">
@@ -551,6 +577,25 @@
     <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Schlafdaten verfügbar</div>
     {% endif %}
   </div>
+
+  <!-- D1: PMC FORWARD VIEW -->
+  {% if pmc_available %}
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="margin-bottom:12px">
+      <div class="card-headline">🏁 Rennprognose KW{{ race_kw }}</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+      <span style="font-size:0.72rem;color:var(--muted)">CTL Renntag</span>
+      <span style="font-size:1.05rem;font-weight:800;color:var(--green)">~{{ pmc_ctl_race }}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+      <span style="font-size:0.72rem;color:var(--muted)">TSB Renntag</span>
+      <span style="font-size:1.05rem;font-weight:800;color:{{ pmc_tsb_color }}">{{ "%+.1f"|format(pmc_tsb_race) }}</span>
+    </div>
+    <div style="font-size:0.7rem;color:{{ pmc_tsb_color }};margin-bottom:4px">{{ pmc_tsb_label }}</div>
+    <div style="font-size:0.62rem;color:var(--muted)">Ziel TSB +5–+25 · Plan wie vorgesehen</div>
+  </div>
+  {% endif %}
 
 </div>
 
@@ -711,6 +756,11 @@
         <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
         <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
         <div class="rbar-lbl">Form</div>
+        {% if ramprate != 0 %}
+        <div style="font-size:0.6rem;font-weight:700;color:{{ ramprate_color }};margin-top:2px">
+          ATL {{ "%+.1f"|format(ramprate) }}{% if ramprate_icon %} {{ ramprate_icon }}{% endif %}
+        </div>
+        {% endif %}
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
