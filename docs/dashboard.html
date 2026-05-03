@@ -420,15 +420,18 @@
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="var(--muted)" stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="345.6" transform="rotate(-90 65 65)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="345.4" stroke-dashoffset="214.3" transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--muted)">–</span>
+        <span class="ring-num" style="color:#ef4444">38</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
+      
+      <div class="ring-status-tag">🔴 Ruhetag empfohlen</div>
+      <div class="ring-status-sub">HRV unter Schnitt · Puls erhöht · Trend: ↓</div>
       
     </div>
   </div>
@@ -863,31 +866,28 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:var(--muted)">–</div>
+      <div class="readiness-score" style="color:#ef4444">38</div>
+      <div class="readiness-tag" style="color:#ef4444">🔴 Ruhetag empfohlen</div>
       
     </div>
 
     
-    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
-      ⏳ Uhr noch nicht synchronisiert – Werte folgen
-    </div>
-    
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--orange);border-color:var(--orange);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--orange) 35%,transparent)">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">38 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
-        <div class="rbar-lbl">Normalber. 39–51 ms</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--orange);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Reduziert</div>
+        <div class="rbar-lbl">Normalber. 39–50 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">0.0h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--green)">8.5h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
@@ -900,9 +900,9 @@
         </div>
         
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">63 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
@@ -923,7 +923,7 @@
         
         <div class="spark-bar " style="height:57%;background:#ef4444"></div>
         
-        <div class="spark-bar spark-today" style="height:41%;background:#ef4444"></div>
+        <div class="spark-bar spark-today" style="height:43%;background:#ef4444"></div>
         
       </div>
     </div>
