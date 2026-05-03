@@ -473,3 +473,58 @@ def test_project_pmc_taper_raises_tsb():
     result = project_pmc(ctl_today=65.0, atl_today=75.0,
                          planned_weekly_tss=[], race_date=race_date)
     assert result["tsb_race"] > 0
+
+
+from generate import _phase_for_kw, calc_compliance
+
+
+def test_phase_for_kw_hit():
+    label, color = _phase_for_kw(18)  # KW18 = HIT-Aufbau
+    assert label == "HIT"
+    assert color == "#f97316"
+
+
+def test_phase_for_kw_taper():
+    label, color = _phase_for_kw(23)  # KW23 = Tapering
+    assert label == "Taper"
+    assert color == "#60a5fa"
+
+
+def test_phase_for_kw_unknown():
+    label, color = _phase_for_kw(99)  # unbekannte KW
+    assert label == "–"
+    assert color == "#94a3b8"
+
+
+def test_calc_compliance_full():
+    weeks = [
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 500},
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 480},
+    ]
+    assert calc_compliance(weeks) == 100
+
+
+def test_calc_compliance_partial():
+    weeks = [
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 500},
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 200},
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 500},
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 200},
+    ]
+    assert calc_compliance(weeks) == 50
+
+
+def test_calc_compliance_ignores_no_plan():
+    weeks = [
+        {"is_current": False, "is_future": False, "tss_plan": 0,   "tss_ist": 0},
+        {"is_current": False, "is_future": False, "tss_plan": 30,  "tss_ist": 20},
+        {"is_current": False, "is_future": False, "tss_plan": 500, "tss_ist": 500},
+    ]
+    # Nur die Woche mit tss_plan > 50 zählt → 1/1 = 100%
+    assert calc_compliance(weeks) == 100
+
+
+def test_calc_compliance_empty():
+    assert calc_compliance([]) == 0
+    weeks = [{"is_current": True, "is_future": False, "tss_plan": 500, "tss_ist": 300}]
+    assert calc_compliance(weeks) == 0  # laufende Woche ignoriert

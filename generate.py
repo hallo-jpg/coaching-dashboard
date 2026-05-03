@@ -708,6 +708,40 @@ SEASON_PHASES = [
     {"name": "Erholung",    "kw": "KW25",    "start_kw": 25, "end_kw": 25},
     {"name": "🗺️ Rosen.",  "kw": "KW26",    "start_kw": 26, "end_kw": 26},
 ]
+
+PHASE_ABBREV: dict[str, tuple[str, str]] = {
+    "Baseline":    ("Base",   "#94a3b8"),
+    "Urlaub":      ("Urlaub", "#94a3b8"),
+    "Grundlage":   ("Base",   "#94a3b8"),
+    "HIT-Aufbau":  ("HIT",    "#f97316"),
+    "TT-Spezifik": ("TT",     "#a78bfa"),
+    "Tapering":    ("Taper",  "#60a5fa"),
+    "🏁 RadRace":  ("Race",   "#60a5fa"),
+    "Erholung":    ("Erhol.", "#94a3b8"),
+    "🗺️ Rosen.":  ("Race",   "#60a5fa"),
+}
+
+
+def _phase_for_kw(kw: int) -> tuple[str, str]:
+    """Return (short_label, css_color) for a given week number."""
+    phase = next((p for p in SEASON_PHASES if p["start_kw"] <= kw <= p["end_kw"]), None)
+    if phase is None:
+        return ("–", "#94a3b8")
+    return PHASE_ABBREV.get(phase["name"], ("–", "#94a3b8"))
+
+
+def calc_compliance(weeks: list[dict]) -> int:
+    """Percentage of completed weeks where tss_ist >= 75% of tss_plan. Ignores weeks with tss_plan <= 50."""
+    completed = [
+        w for w in weeks
+        if not w["is_current"] and not w["is_future"] and w["tss_plan"] > 50
+    ]
+    if not completed:
+        return 0
+    ok = sum(1 for w in completed if w["tss_ist"] >= 0.75 * w["tss_plan"])
+    return round(ok / len(completed) * 100)
+
+
 RACE_KW  = 24
 MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
             "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
