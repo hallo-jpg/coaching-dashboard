@@ -1,6 +1,6 @@
 import pytest
-from datetime import date
-from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation
+from datetime import date, timedelta
+from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation, calc_monotony_strain, calc_ramprate, project_pmc
 from unittest.mock import patch
 
 
@@ -23,6 +23,9 @@ def test_build_context_keys(mock_act, mock_well):
         "tss_ist", "tss_plan", "days", "sparkline", "outlook",
         "phases", "polar_z12_pct", "polar_z3_pct", "polar_z47_pct",
         "biometrics_pending",
+        "monotony_val", "monotony_strain", "monotony_color",
+        "ramprate", "ramprate_color",
+        "pmc_ctl_race", "pmc_tsb_race", "pmc_tsb_label", "pmc_available",
     ]
     for key in required_keys:
         assert key in ctx, f"Missing key: {key}"
@@ -407,3 +410,66 @@ def test_build_day_rows_bonus_rest_day():
     assert len(mi["bonus_activities"]) == 1
     assert mi["tss_bonus"] == 25
     assert mi["tss_primary"] == 0
+
+
+# ── M1: calc_monotony_strain ─────────────────────────────────────────────────
+
+def test_calc_monotony_strain_varied():
+    daily = [100, 0, 80, 0, 90, 120, 60]
+    result = calc_monotony_strain(daily)
+    assert result["monotony"] < 1.5, f"Expected monotony < 1.5 for varied week, got {result['monotony']}"
+    assert result["strain"] == round(sum(daily) * result["monotony"])
+
+
+def test_calc_monotony_strain_uniform():
+    daily = [80, 80, 80, 80, 80, 80, 80]
+    result = calc_monotony_strain(daily)
+    assert result["monotony"] > 2.0, f"Expected high monotony for uniform week, got {result['monotony']}"
+
+
+def test_calc_monotony_strain_rest_lowers_monotony():
+    with_rest = calc_monotony_strain([80, 0, 80, 80, 80, 80, 80])
+    uniform   = calc_monotony_strain([80, 80, 80, 80, 80, 80, 80])
+    assert with_rest["monotony"] < uniform["monotony"]
+
+
+def test_calc_monotony_strain_zero_week():
+    result = calc_monotony_strain([0, 0, 0, 0, 0, 0, 0])
+    assert result["monotony"] == 0.0
+    assert result["strain"] == 0
+
+
+# ── M2: calc_ramprate ────────────────────────────────────────────────────────
+
+def test_calc_ramprate_normal():
+    w = [{"id": f"2026-04-{i:02d}", "atl": 38.0} for i in range(1, 18)]
+    w.append({"id": "2026-04-25", "atl": 45.0})
+    result = calc_ramprate(w)
+    assert result == pytest.approx(7.0, abs=0.5)
+
+
+def test_calc_ramprate_insufficient_data():
+    assert calc_ramprate([{"id": "2026-04-25", "atl": 45.0}]) == 0.0
+
+
+# ── D1: project_pmc ──────────────────────────────────────────────────────────
+
+def test_project_pmc_keys():
+    race_date = date.today() + timedelta(days=42)
+    today = date.today()
+    monday = today - timedelta(days=today.weekday())
+    planned = [(monday + timedelta(weeks=i), 400.0) for i in range(6)]
+    result = project_pmc(ctl_today=65.0, atl_today=70.0,
+                         planned_weekly_tss=planned, race_date=race_date)
+    assert "ctl_race" in result
+    assert "tsb_race" in result
+    assert "tsb_status" in result
+    assert isinstance(result["ctl_race"], float)
+
+
+def test_project_pmc_taper_raises_tsb():
+    # No training after today → ATL falls faster than CTL → TSB rises
+    race_date = date.today() + timedelta(days=14)
+    result = project_pmc(ctl_today=65.0, atl_today=75.0,
+                         planned_weekly_tss=[], race_date=race_date)
+    assert result["tsb_race"] > 0

@@ -37,6 +37,75 @@ def _std_dev(values: list) -> float:
     return (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
 
 
+def calc_monotony_strain(daily_tss: list[float]) -> dict:
+    """Training Monotony + Strain (Foster et al. 2001).
+    Monotony = mean/std; Strain = sum × monotony. High monotony (>2) = overtraining risk."""
+    n = len(daily_tss) or 1
+    mean = sum(daily_tss) / n
+    std = _std_dev(daily_tss) if len(daily_tss) >= 2 else 0.01
+    monotony = round(mean / max(std, 0.01), 2)
+    strain = int(sum(daily_tss) * monotony)
+    if mean == 0:
+        monotony = 0.0
+        strain = 0
+    return {"monotony": monotony, "strain": strain}
+
+
+def calc_ramprate(wellness_history: list[dict]) -> float:
+    """ATL change over last 7 days. >7 = elevated, >10 = too fast (injury risk)."""
+    atl_entries = [(w["id"][:10], w["atl"]) for w in wellness_history if w.get("atl") and w.get("id")]
+    if len(atl_entries) < 8:
+        return 0.0
+    atl_today = atl_entries[-1][1]
+    atl_7d_ago = atl_entries[-8][1]
+    return round(atl_today - atl_7d_ago, 1)
+
+
+def project_pmc(ctl_today: float, atl_today: float,
+                planned_weekly_tss: list[tuple],
+                race_date: date) -> dict:
+    """Project CTL/ATL/TSB forward to race_date using planned weekly TSS.
+    Banister decay: CTL τ=42d, ATL τ=7d. Starts from tomorrow (today already in ctl_today)."""
+    # Build day→daily_tss map (weekly TSS distributed evenly)
+    daily_map: dict[str, float] = {}
+    for week_start, total_tss in planned_weekly_tss:
+        daily_avg = total_tss / 7
+        for d in range(7):
+            day = (week_start + timedelta(days=d)) if isinstance(week_start, date) else date.fromisoformat(week_start) + timedelta(days=d)
+            daily_map[day.isoformat()] = daily_avg
+
+    ctl, atl = ctl_today, atl_today
+    current = date.today() + timedelta(days=1)
+    while current <= race_date:
+        daily_tss = daily_map.get(current.isoformat(), 0.0)
+        ctl = ctl * (1 - 1/42) + daily_tss / 42
+        atl = atl * (1 - 1/7) + daily_tss / 7
+        current += timedelta(days=1)
+
+    tsb_race = round(ctl - atl, 1)
+    if 5 <= tsb_race <= 25:
+        status = "on_track"
+    elif tsb_race > 25:
+        status = "too_fresh"
+    else:
+        status = "too_tired"
+    return {"ctl_race": round(ctl, 1), "atl_race": round(atl, 1),
+            "tsb_race": tsb_race, "tsb_status": status}
+
+
+def parse_planned_tss_from_kw_files(from_kw: int, to_kw: int, year: int) -> list[tuple]:
+    """Read planned weekly TSS from kw-plan files for PMC projection.
+    Returns list of (monday_date, tss_float) for each KW with a parseable tss_plan."""
+    result = []
+    for kw in range(from_kw, to_kw + 1):
+        plan = parse_kw_plan(kw)
+        tss = plan.get("tss_plan", 0)
+        if tss > 0:
+            monday, _ = week_date_range(kw, year)
+            result.append((monday, float(tss)))
+    return result
+
+
 def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None = None) -> int:
     """HRV 40pts (vs. 30d baseline) + Sleep 25pts + TSB 20pts + RHR 15pts = 100pts max.
     HRV baseline uses 30-day window so illness (~7d) only affects 25% of reference period.
@@ -738,6 +807,45 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     )
     polar = _calc_polarisation(polar_acts)
 
+    # M1: Training Monotony + Strain (last 7 days)
+    _daily_tss_map: dict[str, float] = {}
+    for _act in polar_acts:
+        _d = _act.get("start_date_local", "")[:10]
+        _daily_tss_map[_d] = _daily_tss_map.get(_d, 0) + float(_act.get("icu_training_load") or 0)
+    _tss_7days = [
+        _daily_tss_map.get((date.today() - timedelta(days=6 - i)).isoformat(), 0.0)
+        for i in range(7)
+    ]
+    monotony_data = calc_monotony_strain(_tss_7days)
+    monotony_val      = monotony_data["monotony"]
+    monotony_strain   = monotony_data["strain"]
+    monotony_color    = ("var(--green)" if monotony_val < 1.5
+                         else "var(--yellow)" if monotony_val < 2.0
+                         else "var(--accent)")
+
+    # M2: ATL Ramprate (from wellness_30 ATL history)
+    ramprate = calc_ramprate(wellness_30)
+    ramprate_color = ("var(--accent)"  if ramprate > 10
+                      else "var(--yellow)" if ramprate > 7
+                      else "var(--green)"  if ramprate >= 0
+                      else "var(--blue)")
+    ramprate_icon = "⚠️" if ramprate > 7 else ("🔴" if ramprate > 10 else "")
+
+    # D1: PMC Forward View (project to RadRace KW24)
+    _current_year = monday.year
+    _planned_tss = parse_planned_tss_from_kw_files(kw + 1, RACE_KW, _current_year)
+    _race_monday, _ = week_date_range(RACE_KW, _current_year)
+    _race_date = _race_monday + timedelta(days=4)  # Friday of race week (TT day)
+    pmc_forecast = project_pmc(ctl, atl, _planned_tss, _race_date)
+    _tsb_s = pmc_forecast["tsb_race"]
+    pmc_tsb_color = ("var(--green)"  if 5 <= _tsb_s <= 25
+                     else "var(--yellow)" if -5 <= _tsb_s < 5 or 25 < _tsb_s <= 35
+                     else "var(--accent)")
+    pmc_tsb_label = ("✅ auf Kurs" if pmc_forecast["tsb_status"] == "on_track"
+                     else "⚠️ zu wenig getapert" if pmc_forecast["tsb_status"] == "too_tired"
+                     else "⚠️ zu frisch")
+    pmc_available = bool(_planned_tss)
+
     outlook = []
     for i in range(4):
         p = parse_kw_plan(kw + i)
@@ -802,6 +910,19 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "sleep_history": sleep_history,
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,
+        "monotony_val":    monotony_val,
+        "monotony_strain": monotony_strain,
+        "monotony_color":  monotony_color,
+        "tss_7days":       _tss_7days,
+        "ramprate":        ramprate,
+        "ramprate_color":  ramprate_color,
+        "ramprate_icon":   ramprate_icon,
+        "pmc_ctl_race":    pmc_forecast["ctl_race"],
+        "pmc_tsb_race":    pmc_forecast["tsb_race"],
+        "pmc_tsb_color":   pmc_tsb_color,
+        "pmc_tsb_label":   pmc_tsb_label,
+        "pmc_available":   pmc_available,
+        "race_kw":         RACE_KW,
     }
 
 def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:
