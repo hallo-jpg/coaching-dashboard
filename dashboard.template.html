@@ -835,7 +835,7 @@
         <div style="font-size:0.85rem;font-weight:800;color:{% if tss_summary.compliance_pct >= 80 %}var(--green){% elif tss_summary.compliance_pct >= 60 %}var(--yellow){% else %}var(--accent){% endif %}">{{ tss_summary.compliance_pct }}%</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_weeks | selectattr('is_future') | map(attribute='kw') | first | default('?') }} Plan</div>
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_summary.next_kw }} Plan</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">{% if tss_summary.next_kw_plan > 0 %}{{ tss_summary.next_kw_plan }}{% else %}–{% endif %}</div>
       </div>
     </div>

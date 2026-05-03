@@ -1189,7 +1189,8 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         (w for w in weeks_raw if not w["is_current"] and not w["is_future"]),
         key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0}
     )
-    next_kw_plan = next((w["tss_plan"] for w in weeks if w["is_future"]), 0)
+    next_kw = current_kw + 1
+    next_kw_plan = parse_kw_plan(next_kw).get("tss_plan", 0)
     compliance = calc_compliance(weeks)
     summary = {
         "avg_tss": avg_tss,
@@ -1198,6 +1199,7 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         "avg_line_pct": avg_pct,
         "compliance_pct": compliance,
         "next_kw_plan": next_kw_plan,
+        "next_kw": next_kw,
     }
     return weeks, summary
 
