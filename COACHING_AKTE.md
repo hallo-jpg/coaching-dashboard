@@ -1,7 +1,17 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 18. April 2026*
+*Letzte Aktualisierung: 3. Mai 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 03. Mai 2026 – KW18 Retro + KW19 Planung
+
+🟡 Mittel · TSS 543/383 (142%) · HRV ↘ stark fallend (57→38, −19 Pkt) · Österreich-Woche mit Postalm Epic (274min, 231 TSS)
+Grauzone-Problem: Z3 25% (Ziel <15%), PI 51%. Kein einziger echter LIT-Ride möglich im Berggelände.
+→ KW19 als Deload-Woche geplant: ACWR 1.79 (>1.5), TSB −35.3 · nur LIT + Easy Runs · ~208 TSS (54% Soll)
+→ FTP-Test KW21 (Do 21. Mai) in ~18 Tagen – Check A ausgelöst, Hinweis ausgegeben
+→ HIT-Aufbaublock verschiebt sich effektiv auf KW20–21 als Kern-HIT-Wochen
 
 ---
 
