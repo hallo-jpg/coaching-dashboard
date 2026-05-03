@@ -1169,11 +1169,19 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
 
         bar_h = max(round(tss / bar_scale * 100), 3) if tss > 0 else (5 if is_current else 2)
 
+        tss_plan = parse_kw_plan(w["kw"]).get("tss_plan", 0)
+        plan_h = min(round(tss_plan / bar_scale * 100), 100) if tss_plan > 0 else 0
+        phase_short, phase_color = _phase_for_kw(w["kw"])
+
         weeks.append({
             "kw": w["kw"], "tss_ist": tss,
             "bar_color": bar_color, "bar_height_pct": bar_h,
             "label_color": label_color, "arrow": arrow,
             "is_current": is_current, "is_future": is_future,
+            "tss_plan": tss_plan,
+            "plan_bar_height_pct": plan_h,
+            "phase_short": phase_short,
+            "phase_color": phase_color,
         })
 
     max_week = max(weeks_raw, key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0})
@@ -1181,11 +1189,15 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         (w for w in weeks_raw if not w["is_current"] and not w["is_future"]),
         key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0}
     )
+    next_kw_plan = next((w["tss_plan"] for w in weeks if w["is_future"]), 0)
+    compliance = calc_compliance(weeks)
     summary = {
         "avg_tss": avg_tss,
         "max_tss": max_week["tss_ist"], "max_kw": max_week["kw"],
         "min_tss": min_week["tss_ist"], "min_kw": min_week["kw"],
         "avg_line_pct": avg_pct,
+        "compliance_pct": compliance,
+        "next_kw_plan": next_kw_plan,
     }
     return weeks, summary
 

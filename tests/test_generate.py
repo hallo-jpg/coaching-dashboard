@@ -528,3 +528,19 @@ def test_calc_compliance_empty():
     assert calc_compliance([]) == 0
     weeks = [{"is_current": True, "is_future": False, "tss_plan": 500, "tss_ist": 300}]
     assert calc_compliance(weeks) == 0  # laufende Woche ignoriert
+
+
+from generate import get_tss_overview_history
+
+
+def test_tss_weeks_has_plan_fields():
+    """Jede Woche im Rückgabewert hat tss_plan, plan_bar_height_pct, phase_short, phase_color."""
+    with patch("generate.get_activities", return_value=[]):
+        weeks, summary = get_tss_overview_history(current_kw=18, num_weeks=3)
+    for w in weeks:
+        assert "tss_plan" in w, f"tss_plan fehlt in {w}"
+        assert "plan_bar_height_pct" in w, f"plan_bar_height_pct fehlt in {w}"
+        assert "phase_short" in w, f"phase_short fehlt in {w}"
+        assert "phase_color" in w, f"phase_color fehlt in {w}"
+    assert "compliance_pct" in summary
+    assert "next_kw_plan" in summary
