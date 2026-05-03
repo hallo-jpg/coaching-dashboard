@@ -130,7 +130,7 @@ Zwei formale Testfenster pro Saison. Kein Test außerhalb dieser Fenster ohne ex
 
 | Testfenster | KW | Datum | Timing-Rationale |
 |---|---|---|---|
-| 🔬 Frühjahrstest 2026 | **KW21** | 18.–24. Mai 2026 | Nach HIT-Block KW18–20 (VO2max-Gains brauchen 2–4 Wo zum FTP-Transfer); vor Taper KW22–23 für RadRace |
+| ~~🔬 Frühjahrstest 2026~~ | ~~KW21~~ | ~~18.–24. Mai 2026~~ | **Gestrichen (03.05.2026):** Krankheitspause KW16 hat Trainingsgrundlage zu stark reduziert. KW21 bleibt voller HIT-Block. Nächster Test: KW39. |
 | 🔬 Herbsttest 2026 | **KW39** | 21.–27. Sep 2026 | Nach Sommerpause + Herbstaufbau; Basis für Winterblock-Planung |
 
 **Testprotokoll:** Sentiero 3+10min · outdoor · 4iiii Powermeter · FTP = 10min-Avg × 0,90

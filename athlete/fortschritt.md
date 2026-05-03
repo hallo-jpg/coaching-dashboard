@@ -32,9 +32,9 @@
 
 ## Nächster FTP-Test
 
-**Testfenster:** KW21 (18.–24. Mai 2026)
+**Testfenster:** KW39 (21.–27. Sep 2026) – Herbsttest nach Sommerpause + Herbstaufbau
 **Methode:** 3+10min Protokoll, outdoor, 4iiii Referenz
-**Danach:** Sentiero-Eingabe für aktualisiertes metabolisches Profil
+**Hinweis:** KW21-Test gestrichen (03.05.2026) – Krankheit KW16 hat Trainingsgrundlage zu stark reduziert, Fokus auf Aufbau bis KW21
 
 ---
 
