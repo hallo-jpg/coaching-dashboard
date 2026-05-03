@@ -786,24 +786,42 @@
       <span style="font-size:0.7rem;font-weight:600;color:var(--muted)">Ø {{ tss_summary.avg_tss }} TSS</span>
     </div>
 
-    <div style="position:relative;height:80px;margin-bottom:18px">
-      <div style="position:absolute;left:0;right:0;bottom:{{ tss_summary.avg_line_pct }}%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:1">
+    <div style="position:relative;height:95px;margin-bottom:6px">
+      <div style="position:absolute;left:0;right:0;bottom:{{ tss_summary.avg_line_pct }}%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:2">
         <span style="position:absolute;right:0;top:-8px;font-size:0.48rem;color:rgba(148,163,184,0.4)">Ø</span>
       </div>
-      <div style="display:flex;align-items:flex-end;gap:4px;height:100%">
+      <div style="display:flex;gap:3px;height:100%">
         {% for w in tss_weeks %}
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative">
-          <span style="font-size:0.5rem;color:{{ w.label_color }};margin-bottom:2px;white-space:nowrap">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
+          <span style="font-size:0.46rem;color:{{ w.label_color }};height:12px;line-height:12px;white-space:nowrap">
             {% if not w.is_future and w.tss_ist > 0 %}{{ w.tss_ist }}{{ w.arrow }}{% elif w.is_current %}▶{% endif %}
           </span>
-          <div style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;{% if w.is_current %}opacity:0.55{% endif %}"></div>
-          <span style="position:absolute;bottom:-14px;font-size:0.5rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %}">KW{{ w.kw }}</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            {% if w.plan_bar_height_pct > 0 %}
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:{{ w.plan_bar_height_pct }}%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;{% if w.is_future %}border-style:dashed{% endif %}"></div>
+            {% endif %}
+            <div style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;position:relative;z-index:1;{% if w.is_current %}opacity:0.55{% endif %}"></div>
+          </div>
+          <span style="font-size:0.44rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %};height:10px;line-height:10px">KW{{ w.kw }}</span>
+          <span style="font-size:0.38rem;color:{{ w.phase_color }};height:9px;line-height:9px;text-align:center">{{ w.phase_short }}</span>
         </div>
         {% endfor %}
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+    <div style="font-size:0.44rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;margin-top:4px">
+      <span style="display:inline-flex;align-items:center;gap:3px">
+        <span style="display:inline-block;width:10px;height:6px;border:1.5px solid rgba(148,163,184,0.4);border-radius:1px"></span>Plan
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:3px">
+        <span style="display:inline-block;width:10px;height:6px;background:var(--green);border-radius:1px"></span>Ist
+      </span>
+      <span><span style="color:#94a3b8">■</span> Base</span>
+      <span><span style="color:#f97316">■</span> HIT</span>
+      <span><span style="color:#60a5fa">■</span> Taper/Race</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø 8 Wochen</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.avg_tss }}</div>
@@ -813,8 +831,12 @@
         <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">{{ tss_summary.max_tss }}</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Niedrigste</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">{{ tss_summary.min_tss }}</div>
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Compliance</div>
+        <div style="font-size:0.85rem;font-weight:800;color:{% if tss_summary.compliance_pct >= 80 %}var(--green){% elif tss_summary.compliance_pct >= 60 %}var(--yellow){% else %}var(--accent){% endif %}">{{ tss_summary.compliance_pct }}%</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_weeks | selectattr('is_future') | map(attribute='kw') | first | default('?') }} Plan</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">{% if tss_summary.next_kw_plan > 0 %}{{ tss_summary.next_kw_plan }}{% else %}–{% endif %}</div>
       </div>
     </div>
   </div>
