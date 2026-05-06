@@ -427,10 +427,23 @@
   <div class="ring-card">
     <div class="ring-eyebrow">Readiness · Heute</div>
     <div class="ring-wrap">
-      <svg viewBox="0 0 130 130" width="140" height="140">
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="{{ readiness_color }}" stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="{{ readiness_offset }}" transform="rotate(-90 65 65)"/>
+      <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
+        <defs>
+          <linearGradient id="g-gr" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#16a34a"/>
+            <stop offset="100%" stop-color="#86efac"/>
+          </linearGradient>
+          <filter id="glow-gr" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+          </filter>
+        </defs>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#22c55e" stroke-width="9"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ readiness_offset }}"
+                transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-gr)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ readiness_offset }}"
+                transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
         <span class="ring-num" style="color:{{ readiness_color }}">{% if biometrics_pending %}–{% else %}{{ readiness_score }}{% endif %}</span>
@@ -449,13 +462,37 @@
   <div class="ring-card">
     <div class="ring-eyebrow">Trainingsform · CTL / ATL</div>
     <div class="ring-wrap">
-      <svg viewBox="0 0 130 130" width="140" height="140">
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#94a3b8" stroke-width="9" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="{{ ctl_offset }}" transform="rotate(-90 65 65)"/>
-        <circle cx="65" cy="65" r="41" fill="none" stroke="#1c1c1c" stroke-width="9"/>
-        <circle cx="65" cy="65" r="41" fill="none" stroke="#f5a623" stroke-width="9" stroke-linecap="round"
-          stroke-dasharray="257.6" stroke-dashoffset="{{ atl_offset }}" transform="rotate(-90 65 65)"/>
+      <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
+        <defs>
+          <linearGradient id="g-pu" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#5b21b6"/>
+            <stop offset="100%" stop-color="#c4b5fd"/>
+          </linearGradient>
+          <linearGradient id="g-re" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#991b1b"/>
+            <stop offset="100%" stop-color="#fca5a5"/>
+          </linearGradient>
+          <filter id="glow-pu" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+          </filter>
+          <filter id="glow-re" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          </filter>
+        </defs>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#a78bfa" stroke-width="9"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ ctl_offset }}"
+                transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-pu)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ ctl_offset }}"
+                transform="rotate(-90 65 65)"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="#f87171" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="{{ atl_offset }}"
+                transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-re)"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="{{ atl_offset }}"
+                transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
         <span class="ring-num" style="color:{{ tsb_color }};font-size:1.8rem">{{ tsb_display }}</span>
@@ -480,10 +517,23 @@
   <div class="ring-card">
     <div class="ring-eyebrow">Wochenziel · TSS</div>
     <div class="ring-wrap">
-      <svg viewBox="0 0 130 130" width="140" height="140">
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="{{ tss_compliance_color }}" stroke-width="10" stroke-linecap="round"
-          stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}" transform="rotate(-90 65 65)"/>
+      <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
+        <defs>
+          <linearGradient id="g-te" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#0d9488"/>
+            <stop offset="100%" stop-color="#5eead4"/>
+          </linearGradient>
+          <filter id="glow-te" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+          </filter>
+        </defs>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#2dd4bf" stroke-width="9"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}"
+                transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-te)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}"
+                transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
         <span class="ring-num" style="color:{{ tss_compliance_color }};font-size:1.8rem">{{ tss_compliance_pct }}%</span>
