@@ -8,7 +8,7 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#070b11">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -153,7 +153,7 @@
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
   .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; }
+  .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; letter-spacing: -2px; }
   .ring-sub { font-size: 0.45rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 1px; }
   .ring-status { text-align: center; }
   .ring-status-tag { font-size: 0.62rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
@@ -196,8 +196,8 @@
   .week-card { padding: 20px; }
   .week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
   .week-title { font-size: 0.9rem; font-weight: 800; }
-  .kw-pill { background: rgba(148,163,184,0.1); color: var(--accent); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
-  .tss-pill { background: var(--surface2); color: var(--muted); font-size: 0.62rem; padding: 2px 9px; border-radius: 20px; margin-left: auto; }
+  .kw-pill { background: rgba(148,163,184,0.1); color: var(--accent); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
+  .tss-pill { background: var(--surface2); color: var(--muted); font-size: 0.62rem; padding: 2px 9px; border-radius: 99px; margin-left: auto; }
   .day-row { display: grid; grid-template-columns: 28px 9px 1fr auto; align-items: start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .day-row:last-child { border-bottom: none; }
   .day-name { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; padding-top: 3px; }
@@ -217,11 +217,11 @@
   .day-meal { font-size: 0.63rem; color: var(--muted); }
   .day-tss { font-size: 0.68rem; color: var(--muted); padding-top: 3px; white-space: nowrap; }
 
-  .section-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+  .section-label { font-size: 0.54rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
   /* section-label kept for legacy; use card-headline for new cards */
 
   .readiness-card { padding: 18px; }
-  .readiness-score { font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+  .readiness-score { font-size: 3.5rem; font-weight: 900; line-height: 1; letter-spacing: -3px; margin-bottom: 4px; }
   .readiness-tag { font-size: 0.72rem; font-weight: 700; margin-bottom: 2px; }
   .readiness-sub { font-size: 0.62rem; color: var(--muted); margin-bottom: 14px; }
   .rbar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
@@ -236,7 +236,7 @@
   .spark-today { outline: 1px solid rgba(255,255,255,0.2); outline-offset: 1px; }
 
   .polar-card { padding: 18px; }
-  .pi-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+  .pi-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 12px; }
   .pi-ok  { background: rgba(62,207,142,0.1); color: var(--green); }
   .pi-warn { background: rgba(245,166,35,0.1); color: var(--yellow); }
   .pi-bad  { background: rgba(224,82,82,0.1); color: var(--red); }
