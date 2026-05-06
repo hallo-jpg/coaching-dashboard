@@ -135,13 +135,13 @@
 
   /* ── PHASE BAR ── */
   .phase-bar { margin-bottom: 22px; }
-  .phase-bar-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+  .phase-bar-label { font-size: 0.54rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
   .phases { display: flex; gap: 4px; }
-  .phase { flex: 1; border-radius: 8px; padding: 7px 5px; font-size: 0.6rem; font-weight: 700; text-align: center; line-height: 1.3; }
+  .phase { flex: 1; border-radius: 10px; padding: 7px 4px; font-size: 0.57rem; font-weight: 700; text-align: center; line-height: 1.3; }
   .phase .kw { font-size: 0.52rem; opacity: 0.6; margin-top: 2px; }
-  .phase.done { background: rgba(62,207,142,0.08); color: rgba(62,207,142,0.6); }
-  .phase.active { background: linear-gradient(135deg, rgba(148,163,184,0.12), rgba(155,127,232,0.1)); color: #cbd5e1; outline: 1px solid rgba(148,163,184,0.25); outline-offset: -1px; }
-  .phase.upcoming { background: var(--surface); color: var(--subtle); }
+  .phase.done { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.10); color: rgba(34,197,94,0.45); }
+  .phase.active { background: rgba(167,139,250,0.14); border: 1px solid rgba(167,139,250,0.28); color: var(--purple); box-shadow: 0 0 14px rgba(167,139,250,0.12); }
+  .phase.upcoming { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(180,210,240,0.2); }
 
   /* ── RINGS ── */
   .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
