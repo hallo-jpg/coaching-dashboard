@@ -148,6 +148,9 @@
   .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .card-headline { border-left: 3px solid var(--accent); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
+  .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .chard-icon { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+  .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
   .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; }
@@ -422,7 +425,7 @@
 
   <!-- Recovery / Readiness: 86/100 → offset = 345.4*(1-0.86) ≈ 48 -->
   <div class="ring-card">
-    <div class="ring-card-title">Recovery</div>
+    <div class="ring-eyebrow">Readiness · Heute</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
@@ -444,7 +447,7 @@
 
   <!-- CTL/ATL/TSB Dual Ring: CTL ~43/90 → offset≈180; ATL ~15/60 → offset≈193 -->
   <div class="ring-card">
-    <div class="ring-card-title">Trainingsform</div>
+    <div class="ring-eyebrow">Trainingsform · CTL / ATL</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="9"/>
@@ -475,7 +478,7 @@
 
   <!-- Wochen-TSS Compliance -->
   <div class="ring-card">
-    <div class="ring-card-title">Wochenziel</div>
+    <div class="ring-eyebrow">Wochenziel · TSS</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140">
         <circle cx="65" cy="65" r="55" fill="none" stroke="#1c1c1c" stroke-width="10"/>
@@ -627,7 +630,7 @@
   <!-- WOCHENPLAN -->
   <div class="week-card">
     <div class="week-header">
-      <span class="card-headline">Wochenplan</span>
+      <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(148,163,184,0.10)">📅</div>Wochenplan</div>
       <span class="kw-pill">KW{{ kw }}</span>
       <span class="tss-pill">{{ tss_ist }} / ~{{ tss_plan }} TSS</span>
     </div>
@@ -677,7 +680,7 @@
   {% if nutrition %}
   <div class="nutr-card" style="margin-bottom:0">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-      <div class="card-headline">Ernährung · Heute</div>
+      <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(255,107,53,0.14)">⛽</div>Ernährung · Heute</div>
       <span class="kw-pill" style="margin-left:auto">{{ nutrition.day_type }}</span>
     </div>
 
@@ -740,7 +743,7 @@
 
   <!-- READINESS -->
   <div class="readiness-card">
-    <div class="card-headline" style="margin-bottom:14px">Readiness Score</div>
+    <div class="chard"><div class="chard-icon" style="background:rgba(34,197,94,0.12)">💚</div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       {% if biometrics_pending %}
@@ -867,7 +870,7 @@
 
 <!-- POLARISATION -->
 <div class="polar-card" style="margin-bottom:12px">
-  <div class="card-headline" style="margin-bottom:14px">Polarisation · letzte 7 Tage · Rad</div>
+  <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · letzte 7 Tage · Rad</div>
   {% if polar_no_data %}
   <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
   {% else %}
@@ -990,7 +993,7 @@
 {% if power_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="card-headline">🚴 Power Bestwerte</div>
+    <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(245,158,11,0.12)">⚡</div>Power Bestwerte · All-Time</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
@@ -1019,7 +1022,7 @@
 {% if pace_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="card-headline">🏃 Lauf Bestwerte</div>
+    <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(34,197,94,0.10)">🏃</div>Lauf Bestwerte · All-Time</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
