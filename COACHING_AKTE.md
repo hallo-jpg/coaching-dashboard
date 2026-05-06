@@ -5,6 +5,13 @@
 
 ---
 
+## 06. Mai 2026 – Plankorrektur KW20/21
+→ Sperrblock 15.–17.5. eingetragen (Fr–So, unterwegs, kein Rad/Lauf) → KW20 TSS-Vorschau ~412 → ~227
+→ FTP-Test KW21 aus Stub entfernt (war bereits in langfristplan.md als gestrichen markiert 03.05.) → KW21 wird volle HIT-Woche ~329 TSS
+→ KW21-Stub: Di HIT ~90, Do LC ~100, Sa/So LIT
+
+---
+
 ## 03. Mai 2026 – KW18 Retro + KW19 Planung
 
 🟡 Mittel · TSS 543/383 (142%) · HRV ↘ stark fallend (57→38, −19 Pkt) · Österreich-Woche mit Postalm Epic (274min, 231 TSS)
