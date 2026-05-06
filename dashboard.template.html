@@ -16,24 +16,32 @@
 <link rel="apple-touch-icon" href="icon.svg">
 <style>
   :root {
-    --bg: #060a0c;
-    --surface: #131e26;
-    --surface2: #1a2a35;
-    --border: #1c2830;
-    --accent: #94a3b8;
-    --green: #22c55e;
+    --green:  #22c55e;
     --yellow: #f59e0b;
-    --red: #ef4444;
+    --red:    #ef4444;
     --orange: #ff6b35;
-    --purple: #7c6af7;
-    --teal: #00c4b4;
-    --text: #e8f4f8;
-    --muted: #4a6270;
-    --subtle: #2a3840;
+    --purple: #a78bfa;
+    --teal:   #2dd4bf;
+    --blue:   #60a5fa;
+    --text:   #f0f6ff;
+    --muted:  rgba(180,210,240,0.42);
+    --border: rgba(255,255,255,0.08);
+    /* compat: kept for any inline-style references */
+    --bg: #070b11;
+    --surface: rgba(255,255,255,0.04);
+    --surface2: rgba(255,255,255,0.06);
+    --accent: #94a3b8;
+    --subtle: rgba(255,255,255,0.10);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(ellipse 80% 60% at 15%  8%, rgba(99,70,210,0.26)  0%, transparent 55%),
+      radial-gradient(ellipse 55% 45% at 88% 18%, rgba(34,197,94,0.13)  0%, transparent 50%),
+      radial-gradient(ellipse 50% 55% at 50% 85%, rgba(45,212,191,0.11) 0%, transparent 55%),
+      radial-gradient(ellipse 65% 35% at  8% 75%, rgba(96,165,250,0.09) 0%, transparent 50%),
+      #070b11;
+    background-attachment: fixed;
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
     font-size: 14px;
