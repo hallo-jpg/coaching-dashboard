@@ -34,6 +34,22 @@
     --subtle: rgba(255,255,255,0.10);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ── GLASS CARDS ── */
+  .g,
+  .countdown-card-main,
+  .countdown-card-secondary,
+  .ring-card,
+  .week-card,
+  .readiness-card,
+  .polar-card,
+  .ausblick-card,
+  .nutr-card {
+    background: rgba(255,255,255,0.048);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.35);
+  }
   body {
     background:
       radial-gradient(ellipse 80% 60% at 15%  8%, rgba(99,70,210,0.26)  0%, transparent 55%),
@@ -73,8 +89,7 @@
 
   .countdown-card-main {
     flex: 1;
-    background: linear-gradient(135deg, #091410 0%, #080c0e 100%);
-    border-radius: 14px; padding: 16px 20px;
+    padding: 16px 20px;
     display: flex; gap: 16px; align-items: stretch;
   }
   .cd-main-left { flex: 1; }
@@ -108,8 +123,7 @@
 
   .countdown-card-secondary {
     flex: 0 0 200px;
-    background: linear-gradient(135deg, #091410 0%, #0a1210 100%);
-    border-radius: 14px; padding: 16px 18px;
+    padding: 16px 18px;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .cd-sec-flag { font-size: 1.1rem; margin-bottom: 4px; }
@@ -131,7 +145,7 @@
 
   /* ── RINGS ── */
   .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
-  .ring-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .card-headline { border-left: 3px solid var(--accent); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
@@ -176,7 +190,7 @@
   .day-sick .day-tss { color: var(--red); }
   .day-sick .day-name { color: var(--subtle); }
 
-  .week-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 20px; }
+  .week-card { padding: 20px; }
   .week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
   .week-title { font-size: 0.9rem; font-weight: 800; }
   .kw-pill { background: rgba(148,163,184,0.1); color: var(--accent); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
@@ -203,7 +217,7 @@
   .section-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
   /* section-label kept for legacy; use card-headline for new cards */
 
-  .readiness-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 18px; }
+  .readiness-card { padding: 18px; }
   .readiness-score { font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
   .readiness-tag { font-size: 0.72rem; font-weight: 700; margin-bottom: 2px; }
   .readiness-sub { font-size: 0.62rem; color: var(--muted); margin-bottom: 14px; }
@@ -218,7 +232,7 @@
   .spark-bar { flex: 1; border-radius: 2px 2px 0 0; min-height: 3px; }
   .spark-today { outline: 1px solid rgba(255,255,255,0.2); outline-offset: 1px; }
 
-  .polar-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 18px; }
+  .polar-card { padding: 18px; }
   .pi-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
   .pi-ok  { background: rgba(62,207,142,0.1); color: var(--green); }
   .pi-warn { background: rgba(245,166,35,0.1); color: var(--yellow); }
@@ -238,7 +252,7 @@
   .zone-val-muted  { color:var(--muted); font-size:0.7rem; }
   .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
-  .ausblick-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
+  .ausblick-card { padding: 18px; margin-bottom: 12px; }
   .ausblick-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
   .ausblick-table th { text-align: left; padding: 0 8px 8px; font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; border-bottom: 1px solid var(--border); }
   .ausblick-table td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
@@ -249,7 +263,7 @@
   @media (max-width: 480px) { .ausblick-key { display: none; } }
 
   /* ── ERNÄHRUNGS-KARTE ── */
-  .nutr-card { background: linear-gradient(160deg, rgba(30,50,65,0.9) 0%, rgba(12,24,32,0.95) 100%); border: 1px solid rgba(148,163,184,0.12); border-bottom-color: rgba(148,163,184,0.05); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 16px rgba(0,0,0,0.3); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
+  .nutr-card { padding: 18px; margin-bottom: 12px; }
   .nutr-banner {
     border-radius: 10px; padding: 10px 12px; margin-bottom: 14px;
     display: flex; align-items: center; gap: 10px;
