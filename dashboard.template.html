@@ -72,15 +72,15 @@
     margin-bottom: 22px;
   }
   .phase-pill {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: rgba(148,163,184,0.08); color: var(--accent);
-    padding: 3px 11px; border-radius: 20px;
-    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(167,139,250,0.13); border: 1px solid rgba(167,139,250,0.22);
+    color: var(--purple); padding: 4px 12px; border-radius: 99px;
+    font-size: 0.61rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
     margin-bottom: 7px;
   }
-  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-  .header-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px; }
+  .header-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; }
   .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
   .header-date { font-size: 0.72rem; color: var(--muted); }
 
@@ -89,8 +89,8 @@
 
   .countdown-card-main {
     flex: 1;
-    padding: 16px 20px;
-    display: flex; gap: 16px; align-items: stretch;
+    padding: 18px 22px;
+    display: flex; gap: 20px; align-items: center;
   }
   .cd-main-left { flex: 1; }
   .cd-flag { font-size: 1.4rem; margin-bottom: 6px; }
@@ -118,19 +118,19 @@
     border-left: 1px solid rgba(148,163,184,0.12); padding-left: 20px;
   }
   .cd-item { text-align: center; }
-  .cd-num { font-size: 2.2rem; font-weight: 900; line-height: 1; color: var(--accent); }
+  .cd-num { font-size: 2.7rem; font-weight: 900; line-height: 1; color: var(--yellow); letter-spacing: -2px; }
   .cd-label { font-size: 0.52rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
   .countdown-card-secondary {
-    flex: 0 0 200px;
-    padding: 16px 18px;
+    flex: 0 0 188px;
+    padding: 18px;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .cd-sec-flag { font-size: 1.1rem; margin-bottom: 4px; }
   .cd-sec-name { font-size: 0.78rem; font-weight: 700; color: var(--teal); margin-bottom: 2px; }
   .cd-sec-detail { font-size: 0.62rem; color: var(--muted); }
   .cd-sec-bottom { display: flex; gap: 14px; }
-  .cd-sec-num { font-size: 1.8rem; font-weight: 900; color: var(--teal); line-height: 1; }
+  .cd-sec-num { font-size: 2.1rem; font-weight: 900; color: var(--purple); letter-spacing: -1px; line-height: 1; }
   .cd-sec-lbl { font-size: 0.5rem; color: var(--muted); text-transform: uppercase; }
 
   /* ── PHASE BAR ── */
