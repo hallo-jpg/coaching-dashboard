@@ -5,6 +5,11 @@
 
 ---
 
+## 07. Mai 2026 – Ad-hoc KW19
+→ LIT-1h30 von Do auf Fr verschoben (war in intervals.icu bereits korrekt auf Fr, kw19.md angepasst)
+
+---
+
 ## 06. Mai 2026 – Plankorrektur KW20/21
 → Sperrblock 15.–17.5. eingetragen (Fr–So, unterwegs, kein Rad/Lauf) → KW20 TSS-Vorschau ~412 → ~227
 → FTP-Test KW21 aus Stub entfernt (war bereits in langfristplan.md als gestrichen markiert 03.05.) → KW21 wird volle HIT-Woche ~329 TSS
