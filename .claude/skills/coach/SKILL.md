@@ -1016,8 +1016,12 @@ create_planned_workout(
 ```
 Der MCP-Server liest die Datei server-seitig und lädt sie als base64 hoch. Kein curl, kein API-Key im Skill.
 
-**Rad (neue / modifizierte Einheit) / Lauf / Kraft:**
-- Via `create_planned_workout` MCP-Tool mit `workout_steps` (Rad) oder Description-Format (Lauf/Kraft)
+**Rad (neue / modifizierte Einheit) / Lauf:**
+- Via `create_planned_workout` MCP-Tool mit `workout_steps` — Rad: `power_pct`, Lauf: `pace_pct_low`/`pace_pct_high`
+- **NIEMALS** Lauf-Workouts nur mit `description`-Text anlegen — `workout_doc` bleibt dann leer `{}`, keine Stufen, kein COROS
+
+**Kraft:**
+- Via `create_planned_workout` (type: "WeightTraining") mit Übungsliste in `description`
 
 **Dateien aktualisieren:**
 1. **`planung/kw[N].md`** – Neue Wochenplanung anlegen. **Pflichtformat** (exakt so, sonst bricht der Dashboard-Parser):
