@@ -5,6 +5,14 @@
 
 ---
 
+## 10. Mai 2026 – KW19 Retro + KW20 Planung
+🟡 Mittel · TSS 243/176 (138%, Überbelastung trotz Deload) · HRV ↘ stark fallend (51→35, −16 Pkt) · Polarisation PI 92% ✅
+Läufe mit deutlich erhöhtem rTSS (46+53 statt 25+25): bei supprimierter HRV nach Österreich steigt Puls bei gleicher Pace → rTSS-Algorithmus rechnet das ein. LIT-Radeinheiten sauber gehalten.
+→ KW20 als konservativer HIT-Einstieg: nur 4 Tage (Mo–Do), keine Läufe, Fr–So Ruhetag
+→ KW20 Plan: Mo LIT-1h / Di HIT_EB 6×3 (88 TSS) / Mi LIT-2h / Do HIT_IE 3x10×30-30+SwSp (105 TSS) · ~304 TSS gesamt
+
+---
+
 ## 07. Mai 2026 – Ad-hoc KW19
 → LIT-1h30 von Do auf Fr verschoben (war in intervals.icu bereits korrekt auf Fr, kw19.md angepasst)
 

@@ -12,10 +12,10 @@
 | **VO2max** | 59 ml/min/kg (Sentiero) |
 | **Hauptrennen** | RadRace 120 · 12.–14. Juni 2026 · **KW24** |
 | **Nebenrennen** | Rosenheimer Radmarathon Tour V · 28. Juni 2026 · **KW26** · 197km / 3.550hm |
-| **Aktuelle KW** | KW19 (5. Mai – 11. Mai 2026) |
-| **Aktuelle Phase** | Deload-Woche (nach Österreich-Überbelastung) |
-| **Nächste Phase** | HIT-Aufbau progressiv KW20–21 |
-| **Wochen bis Rennen** | 5 |
+| **Aktuelle KW** | KW20 (11. Mai – 17. Mai 2026) |
+| **Aktuelle Phase** | HIT-Aufbaublock (Kern-HIT-Wochen KW20–21) |
+| **Nächste Phase** | TT-Spezifik KW22 |
+| **Wochen bis Rennen** | 4 |
 
 ## Coaching-Skill
 
