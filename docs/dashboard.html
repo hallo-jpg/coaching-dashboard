@@ -497,17 +497,17 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#a78bfa" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="192.0"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="191.9"
                 transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-pu)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="192.0"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="191.9"
                 transform="rotate(-90 65 65)"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="#f87171" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="65.2"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="64.6"
                 transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-re)"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="65.2"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="64.6"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
@@ -524,7 +524,7 @@
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:#f87171"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:#f87171">44.8</span>
+        <span class="dl-val" style="color:#f87171">45.0</span>
       </div>
     </div>
   </div>
@@ -545,19 +545,19 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#2dd4bf" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="311.0"
                 transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-te)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="311.0"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--accent);font-size:1.8rem">0%</span>
+        <span class="ring-num" style="color:var(--accent);font-size:1.8rem">10%</span>
         <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">0 / 304 TSS</div>
+      <div class="pri-main">31 / 304 TSS</div>
       <div class="pri-sub">Wochenziel · KW20</div>
     </div>
   </div>
@@ -616,11 +616,11 @@
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
-      <span style="font-size:0.92rem;font-weight:800;color:var(--yellow)">1.52</span>
+      <span style="font-size:0.92rem;font-weight:800;color:var(--accent)">2.14</span>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
       <span style="font-size:0.72rem;color:var(--muted)">Strain</span>
-      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">369</span>
+      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">586</span>
     </div>
     <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
     <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
@@ -663,10 +663,10 @@
            title="53 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
-                  height:5%;
-                  background:var(--subtle);
+                  height:53%;
+                  background:var(--green);
                   opacity:0.75"
-           title="0 TSS"></div>
+           title="31 TSS"></div>
       
     </div>
   </div>
@@ -740,7 +740,7 @@
     <div class="week-header">
       <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(148,163,184,0.10)">📅</div>Wochenplan</div>
       <span class="kw-pill">KW20</span>
-      <span class="tss-pill">0 / ~304 TSS</span>
+      <span class="tss-pill">31 / ~304 TSS</span>
     </div>
 
     
@@ -756,7 +756,10 @@
         
       </div>
       
-      <span class="day-tss">–</span>
+      <div style="text-align:right;">
+        <div class="day-tss" style="color:var(--green)">✅ 31 TSS</div>
+        
+      </div>
       
     </div>
     
@@ -952,7 +955,7 @@
         <div class="rbar-lbl">Form</div>
         
         <div style="font-size:0.6rem;font-weight:700;color:var(--blue);margin-top:2px">
-          ATL -8.3
+          ATL -8.1
         </div>
         
       </div>
@@ -1094,13 +1097,13 @@
         
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
           <span style="font-size:0.46rem;color:var(--muted);height:12px;line-height:12px;white-space:nowrap">
-            ▶
+            31
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:41%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:5%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
+            <div style="width:100%;height:4%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px">KW20</span>
           <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">HIT</span>
@@ -1147,21 +1150,21 @@
 <div class="polar-card" style="margin-bottom:12px">
   <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · letzte 7 Tage · Rad</div>
   
-  <span class="pi-badge pi-ok">LIT: 92% · ✅ Grüner Bereich</span>
+  <span class="pi-badge pi-ok">LIT: 94% · ✅ Grüner Bereich</span>
   <div class="polar-row">
     <span class="polar-lbl">Z0–Z2</span>
-    <div class="polar-track"><div class="polar-fill" style="width:92%;background:#3a7a4a"></div></div>
-    <span class="polar-pct" style="color:var(--green)">92%</span>
+    <div class="polar-track"><div class="polar-fill" style="width:94%;background:#3a7a4a"></div></div>
+    <span class="polar-pct" style="color:var(--green)">94%</span>
   </div>
   <div class="polar-row">
     <span class="polar-lbl">Z3</span>
-    <div class="polar-track"><div class="polar-fill" style="width:5%;background:#7a6a2a"></div></div>
-    <span class="polar-pct">5%</span>
+    <div class="polar-track"><div class="polar-fill" style="width:4%;background:#7a6a2a"></div></div>
+    <span class="polar-pct">4%</span>
   </div>
   <div class="polar-row">
     <span class="polar-lbl">Z4–Z6</span>
-    <div class="polar-track"><div class="polar-fill" style="width:3%;background:#7040a0"></div></div>
-    <span class="polar-pct" style="color:var(--subtle)">3%</span>
+    <div class="polar-track"><div class="polar-fill" style="width:2%;background:#7040a0"></div></div>
+    <span class="polar-pct" style="color:var(--subtle)">2%</span>
   </div>
   <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
   
@@ -1190,7 +1193,7 @@
         <div>HIT-Einstieg nach Deload</div>
         <div class="ausblick-sub">Erste echte HIT-Woche · 4 Tage (Mo–Do) · Fr–So Ruhetag · keine Läufe</div>
       </td>
-      <td class="ausblick-tss">0 / ~304</td>
+      <td class="ausblick-tss">31 / ~304</td>
       <td class="ausblick-key"><div class="ausblick-sub">HIT_EB 6×3 (1:30h) · HIT_IE 3x10×30-30 + 20min SwSp (2h, Rolle)</div></td>
     </tr>
     
