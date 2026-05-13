@@ -764,6 +764,9 @@ MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
 def build_context(kw: int, monday: date, sunday: date) -> dict:
     wellness   = get_wellness((monday - timedelta(7)).isoformat(), sunday.isoformat())
     activities = get_activities(monday.isoformat(), sunday.isoformat())
+    print(f"DEBUG activities {monday}–{sunday}:", flush=True)
+    for _a in activities:
+        print(f"  {_a.get('start_date_local','')[:10]} | type={_a.get('type')} | tss={_a.get('icu_training_load')} | {_a.get('name','')[:50]}", flush=True)
 
     # 30-day HRV baseline for accurate normal range (Coros/RMSSD science)
     today_iso   = date.today().isoformat()
