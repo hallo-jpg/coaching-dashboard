@@ -624,21 +624,29 @@ def match_activities(activities: list, plan_days: list, monday: date) -> dict:
         plan_day = plan_by_tag[tag]
         act_sport = SPORT_TYPE_MAP.get(act.get("type", ""))
 
+        act_name = act.get("name") or ""
+        act_type = act.get("type")
+
         if (
             not plan_day["rest"]
             and act_sport == _plan_sport(plan_day)
             and matched[tag]["primary"] is None
         ):
-            matched[tag]["primary"] = {"name": act.get("name", ""), "tss": tss}
+            matched[tag]["primary"] = {"name": act_name, "tss": tss}
             matched[tag]["done"] = True
-        elif act.get("type"):
-            # Has a sport type → real activity (e.g. TP Virtual with type "Workout").
-            # Add to bonus even if TSS=0; entries without a type are calendar notes.
-            matched[tag]["bonus"].append({"name": act.get("name", ""), "tss": tss})
+        elif not act_type and not act_name and not plan_day["rest"] and matched[tag]["primary"] is None:
+            # Ghost entry: intervals.icu returns a date-only placeholder (type=None,
+            # name="") for activities that synced via TP Virtual or similar platforms.
+            # The actual data exists in intervals.icu but not in this API field.
+            # Mark day as done and use tss_plan as displayed TSS.
+            plan_tss = plan_day.get("tss_plan", 0)
+            matched[tag]["primary"] = {"name": plan_day["workout"], "tss": plan_tss}
+            matched[tag]["tss_ist"] = plan_tss
+            matched[tag]["done"] = True
+        elif act_type:
+            matched[tag]["bonus"].append({"name": act_name, "tss": tss})
 
-    # Fallback: if a training day has no primary match but has bonus activities
-    # (e.g. TP Virtual recorded as "Workout" type instead of "Ride"), promote
-    # the highest-TSS bonus to primary so the day shows as done.
+    # Fallback: promote highest-TSS bonus to primary on non-rest days with no match
     for tag, m in matched.items():
         plan_day = plan_by_tag[tag]
         if not plan_day["rest"] and m["primary"] is None and m["bonus"]:
@@ -764,9 +772,6 @@ MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
 def build_context(kw: int, monday: date, sunday: date) -> dict:
     wellness   = get_wellness((monday - timedelta(7)).isoformat(), sunday.isoformat())
     activities = get_activities(monday.isoformat(), sunday.isoformat())
-    print(f"DEBUG activities {monday}–{sunday}:", flush=True)
-    for _a in activities:
-        print(f"  {_a.get('start_date_local','')[:10]} | type={_a.get('type')} | tss={_a.get('icu_training_load')} | {_a.get('name','')[:50]}", flush=True)
 
     # 30-day HRV baseline for accurate normal range (Coros/RMSSD science)
     today_iso   = date.today().isoformat()
