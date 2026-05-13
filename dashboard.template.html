@@ -718,7 +718,12 @@
         {% endif %}
       </div>
       {% elif day.missed %}
-      <span class="badge-missed">Ausgefallen</span>
+      <div style="text-align:right;">
+        <span class="badge-missed">Ausgefallen</span>
+        {% if day.tss_ist > 0 %}
+        <div class="day-tss" style="color:var(--subtle)">{{ day.tss_ist }} TSS</div>
+        {% endif %}
+      </div>
       {% else %}
       <span class="day-tss">{% if day.tss_plan > 0 %}~{{ day.tss_plan }} TSS{% else %}–{% endif %}</span>
       {% endif %}

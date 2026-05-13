@@ -631,8 +631,22 @@ def match_activities(activities: list, plan_days: list, monday: date) -> dict:
         ):
             matched[tag]["primary"] = {"name": act.get("name", ""), "tss": tss}
             matched[tag]["done"] = True
-        else:
+        elif tss > 0:
+            # Only add activities with actual TSS to bonus (prevents calendar notes
+            # and zero-load entries like fueling reminders from showing as bonus)
             matched[tag]["bonus"].append({"name": act.get("name", ""), "tss": tss})
+
+    # Fallback: if a training day has no primary match but has bonus activities
+    # with real TSS (e.g. activity recorded via TP Virtual with type "Workout"),
+    # promote the highest-TSS bonus to primary so the day shows as done.
+    for tag, m in matched.items():
+        plan_day = plan_by_tag[tag]
+        if not plan_day["rest"] and m["primary"] is None and m["bonus"]:
+            best = max(m["bonus"], key=lambda b: b["tss"])
+            if best["tss"] > 0:
+                m["primary"] = best
+                m["bonus"] = [b for b in m["bonus"] if b is not best]
+                m["done"] = True
 
     return matched
 
