@@ -197,9 +197,9 @@ Wenn Score < 80: Empfehlungen aus dem Tool direkt in den Wochenplan einfließen 
 
 **WICHTIG – intervals.icu Zonen ≠ Stefan's Coaching-Zonen:**
 intervals.icu nutzt ein 7-Zonen-Modell; Stefan's Coaching-Modell hat 7 (Rad) bzw. 4 (Lauf) Zonen mit anderen Grenzen. Beim Lesen von Weekly-Review-Daten folgendes Mapping anwenden (Details: coaching_science.md, Abschnitt Zonen-Referenz):
-- **Rad LIT** = intervals.icu Z1 + Z2 (zusammen, <229W)
-- **Rad Grauzone** = intervals.icu Z3 + unteres Z4 (232–290W) → bei Polarisations-Check als "Medium" werten
-- **Rad HIT** = intervals.icu Z5 + Z6 + Z7 (>323W)
+- **Rad LIT** = intervals.icu Z1 + Z2 + Z3 (zusammen, <213W · Sentiero Z0–Z2)
+- **Rad Grauzone** = intervals.icu Z4 (213–283W · Sentiero Z3) → bei Polarisations-Check als "Medium" werten
+- **Rad HIT** = intervals.icu Z5 + Z6 + Z7 (>283W · Sentiero Z4–Z6)
 - **Lauf Easy** = intervals.icu Z1 + Z2 (>6:54/km, wenn Schwelle 6:03 gesetzt)
 - **Lauf Qualität** = intervals.icu Z4–Z7 (<6:25/km)
 - **Lauf Grauzone** = intervals.icu Z3 (6:26–6:53/km) → minimal halten
@@ -724,7 +724,7 @@ Wenn Stefan während Tapering schreibt: "ich fühle mich schlapp", "reicht das",
 | Tag | Workout | TSS ca. | Notiz |
 |---|---|---|---|
 | Mo | Ruhetag | – | Mini-Taper |
-| Di | LIT-1h30 locker | ~45 | Beine frisch halten, Z1–Z2, <229W |
+| Di | LIT-1h30 locker | ~45 | Beine frisch halten, Z0–Z2, <213W |
 | Mi | Aktivierung: 3×5min Z4 (308W) + LIT 30min | ~55 | Neuromuskuläre Aktivierung – kein Ausreißen |
 | Do | **FTP-Test: Sentiero 3+10min** (outdoor, 4iiii) | ~80 | Protokoll unten |
 | Fr | Ruhetag | – | Erholung |
@@ -1082,7 +1082,7 @@ Remote kann Auto-Commits vom Dashboard-Generator enthalten → immer `--rebase` 
 Puls-Zielwert immer aus HFmax ableiten (Stefan: HFmax 205 bpm):
 - Z1-Grenze: 72% HFmax = **148 bpm**
 - Bei Post-Illness +1: <148 bpm
-- Ab Rückkehr +2: wieder Watt-Steuerung (<229W Z1–Z2)
+- Ab Rückkehr +2: wieder Watt-Steuerung (<213W · Sentiero Z0–Z2)
 
 ---
 
