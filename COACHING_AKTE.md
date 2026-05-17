@@ -1,7 +1,15 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 3. Mai 2026*
+*Letzte Aktualisierung: 17. Mai 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 17. Mai 2026 – KW20 Retro + KW21 Planung
+🟢 Gut (geschätzt) · TSS ~304/304 (~100%) · intervals.icu MCP nicht verfügbar – Schätzung basiert auf Kontext (kein Hinweis auf ausgefallene Einheiten Mo–Do) · HRV-Suppression durch JGA (Alkohol Fr–So) — kein Trainings-Signal
+→ KW21 geplant: Di HIT_EB_8x1 Glykolyse-Akt. (85 TSS, morgens) / Mi Easy Run 45min / Do HITdec_5x3 (105 TSS) / Sa LIT-3h outdoor (111 TSS) / So Easy Run optional · ~329 TSS
+→ Dienstag-Constraint: nur morgens verfügbar → HIT_EB_8x1 (1:45h) passt ideal
+→ Wochenende verlängert wegen schönem Wetter: Sa LIT-3h statt LIT-2h
 
 ---
 
