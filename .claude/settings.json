@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // \"\"' | grep -q 'dashboard.html' && (lsof -ti:8080 >/dev/null 2>&1 || (cd \"/Users/stefan/Documents/Claude Code/Coaching\" && python3 -m http.server 8080 &>/tmp/coaching-server.log &)) || true"
+            "command": "jq -r '.tool_input.file_path // \"\"' | grep -q 'dashboard.html' && (lsof -ti:8080 >/dev/null 2>&1 || (cd \"/Users/stefan/Library/Mobile Documents/com~apple~CloudDocs/Documents/Claude Code/Coaching\" && python3 -m http.server 8080 &>/tmp/coaching-server.log &)) || true"
           }
         ]
       }
