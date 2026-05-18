@@ -656,8 +656,10 @@ function computeReadiness(data, hrvBaseline30 = null) {
   const sleepSecsVals = last3.map(d => d.sleepSecs).filter(Boolean);
   if (qualityVals.length) {
     const avgQ = _avg(qualityVals);
-    sleepPts = Math.round((avgQ / 5) * 25);
-    sleepDetail = `Schlafqualität Ø ${avgQ.toFixed(1)}/5 (letzte 3 Nächte)`;
+    // intervals.icu sleep quality: 1=Sehr gut, 2=Gut, 3=Durchschnitt, 4=Schlecht (lower = better)
+    sleepPts = Math.round(((5 - avgQ) / 4) * 25);
+    const qualLabel = avgQ <= 1.5 ? "Sehr gut" : avgQ <= 2.5 ? "Gut" : avgQ <= 3.5 ? "Durchschnitt" : "Schlecht";
+    sleepDetail = `Schlafqualität Ø ${avgQ.toFixed(1)}/4 – ${qualLabel} (letzte 3 Nächte)`;
   } else if (sleepSecsVals.length) {
     const avgH = _avg(sleepSecsVals) / 3600;
     sleepPts = Math.min(25, Math.round((avgH / 8) * 25));
