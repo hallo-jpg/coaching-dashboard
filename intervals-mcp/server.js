@@ -867,7 +867,8 @@ server.tool(
 
     // Heutiger Score: 7-Tage-Fenster für Schlaf/TSB/RHR, 30-Tage-Baseline für HRV
     const window7 = wellnessAll.slice(-7);
-    const { score, ampel, empfehlung, komponenten, _meta } = computeReadiness(window7, wellnessAll);
+    const { score, score_obj, score_sub, ampel, empfehlung, verletzung_flag,
+        komponenten, komponenten_subjektiv, _meta } = computeReadiness(window7, wellnessAll);
     const { muster, hinweis } = detectPattern(_meta);
     const workout_empfehlungen = suggestWorkoutMods(score, plannedEvents);
 
@@ -898,12 +899,16 @@ server.tool(
         text: JSON.stringify({
           datum: checkDate,
           score,
+          score_obj,
+          score_sub,
           ampel,
           empfehlung,
+          verletzung_flag,
           muster,
           muster_hinweis: hinweis,
           workout_empfehlungen,
           komponenten,
+          komponenten_subjektiv,
           trend: {
             richtung_7d: trendRichtung,
             verlauf_7d:  verlauf7,
@@ -933,6 +938,11 @@ server.tool(
       hrv: d.hrv,
       ruhepuls: d.restingHR,
       schlaf_h: d.sleepSecs ? (d.sleepSecs / 3600).toFixed(1) : null,
+      schlaf_qualitaet: d.sleepQuality ?? null,
+      ermuedung:   d.fatigue  ?? null,
+      muskelkater: d.soreness ?? null,
+      stress:      d.stress   ?? null,
+      verletzung:  d.injury   ?? null,
       schritte: d.steps,
     }));
     return {
