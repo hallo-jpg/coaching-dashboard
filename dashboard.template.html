@@ -547,6 +547,238 @@
   </div>
 </div>
 
+<!-- READINESS + TSS-ÜBERSICHT + POLARISATION -->
+<div class="two-col-grid" style="align-items:stretch">
+
+  <!-- READINESS -->
+  <div class="readiness-card">
+    <div class="chard"><div class="chard-icon" style="background:rgba(34,197,94,0.12)">💚</div>Readiness Score</div>
+
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
+      {% if biometrics_pending %}
+      <div class="readiness-score" style="color:var(--muted)">–</div>
+      {% else %}
+      <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
+      <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
+      {% endif %}
+    </div>
+
+    {% if biometrics_pending %}
+    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
+      ⏳ Uhr noch nicht synchronisiert – Werte folgen
+    </div>
+    {% endif %}
+
+    {% if has_subjektiv %}
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">{{ score_obj }}</div>
+        <div style="font-size:0.55rem;color:var(--muted)">HRV · Schlaf · TSB · Puls</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">{{ score_sub }}</div>
+        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent){% if biometrics_pending %};opacity:0.15{% endif %}">
+      <div>
+        <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
+        <div class="rbar-lbl">Normalber. {{ hrv_range }} ms</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
+        <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
+        <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
+        <div class="rbar-lbl">/ 8h</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+        <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
+        <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
+        <div class="rbar-lbl">Form</div>
+        {% if ramprate != 0 %}
+        <div style="font-size:0.6rem;font-weight:700;color:{{ ramprate_color }};margin-top:2px">
+          ATL {{ "%+.1f"|format(ramprate) }}{% if ramprate_icon %} {{ ramprate_icon }}{% endif %}
+        </div>
+        {% endif %}
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
+        <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
+        <div class="rbar-lbl">bpm</div>
+      </div>
+    </div>
+
+    {% if has_subjektiv %}
+    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+
+      {% if subjektiv_bars.ermuedung %}
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
+          <span style="font-size:0.62rem;color:{{ subjektiv_bars.ermuedung.color }}">{{ subjektiv_bars.ermuedung.detail }}</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:{{ subjektiv_bars.ermuedung.color }};width:{{ subjektiv_bars.ermuedung.pct }}%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if subjektiv_bars.muskelkater %}
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
+          <span style="font-size:0.62rem;color:{{ subjektiv_bars.muskelkater.color }}">{{ subjektiv_bars.muskelkater.detail }}</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:{{ subjektiv_bars.muskelkater.color }};width:{{ subjektiv_bars.muskelkater.pct }}%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if subjektiv_bars.stress %}
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
+          <span style="font-size:0.62rem;color:{{ subjektiv_bars.stress.color }}">{{ subjektiv_bars.stress.detail }}</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:{{ subjektiv_bars.stress.color }};width:{{ subjektiv_bars.stress.pct }}%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if subjektiv_bars.verletzung %}
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
+          <span style="font-size:0.62rem;color:{{ subjektiv_bars.verletzung.color }}">
+            {{ subjektiv_bars.verletzung.detail }}
+            {% if verletzung_flag %} {{ verletzung_flag }}{% endif %}
+          </span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:{{ subjektiv_bars.verletzung.color }};width:{{ subjektiv_bars.verletzung.pct }}%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+    {% endif %}
+
+    <div class="sparkline-wrap">
+      <div class="spark-label">Readiness · 7 Tage</div>
+      <div class="sparkline">
+        {% for bar in sparkline %}
+        <div class="spark-bar {% if loop.last %}spark-today{% endif %}" style="height:{{ bar.pct }}%;background:{{ bar.color }}"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- RECHTE SPALTE: TSS-ÜBERSICHT + POLARISATION -->
+  <div style="display:flex;flex-direction:column;gap:12px;height:100%">
+  <div class="ausblick-card" style="margin-bottom:0;flex:1">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="card-headline">TSS-Übersicht · 8 Wochen</div>
+      <span style="font-size:0.7rem;font-weight:600;color:var(--muted)">Ø {{ tss_summary.avg_tss }} TSS</span>
+    </div>
+
+    <div style="position:relative;height:95px;margin-bottom:6px">
+      <div style="position:absolute;left:0;right:0;bottom:{{ tss_summary.avg_line_pct }}%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:2">
+        <span style="position:absolute;right:0;top:-8px;font-size:0.48rem;color:rgba(148,163,184,0.4)">Ø</span>
+      </div>
+      <div style="display:flex;gap:3px;height:100%">
+        {% for w in tss_weeks %}
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
+          <span style="font-size:0.46rem;color:{{ w.label_color }};height:12px;line-height:12px;white-space:nowrap">
+            {% if not w.is_future and w.tss_ist > 0 %}{{ w.tss_ist }}{{ w.arrow }}{% elif w.is_current %}▶{% endif %}
+          </span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            {% if w.plan_bar_height_pct > 0 %}
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:{{ w.plan_bar_height_pct }}%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;{% if w.is_future %}border-style:dashed{% endif %}"></div>
+            {% endif %}
+            <div style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;position:relative;z-index:1;{% if w.is_current %}opacity:0.55{% endif %}"></div>
+          </div>
+          <span style="font-size:0.44rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %};height:10px;line-height:10px">KW{{ w.kw }}</span>
+          <span style="font-size:0.38rem;color:{{ w.phase_color }};height:9px;line-height:9px;text-align:center">{{ w.phase_short }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div style="font-size:0.44rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;margin-top:4px">
+      <span style="display:inline-flex;align-items:center;gap:3px">
+        <span style="display:inline-block;width:10px;height:6px;border:1.5px solid rgba(148,163,184,0.4);border-radius:1px"></span>Plan
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:3px">
+        <span style="display:inline-block;width:10px;height:6px;background:var(--green);border-radius:1px"></span>Ist
+      </span>
+      <span><span style="color:#94a3b8">■</span> Base</span>
+      <span><span style="color:#f97316">■</span> HIT</span>
+      <span><span style="color:#60a5fa">■</span> Taper/Race</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø 8 Wochen</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.avg_tss }}</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Höchste</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">{{ tss_summary.max_tss }}</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Compliance</div>
+        <div style="font-size:0.85rem;font-weight:800;color:{% if tss_summary.compliance_pct >= 80 %}var(--green){% elif tss_summary.compliance_pct >= 60 %}var(--yellow){% else %}var(--accent){% endif %}">{{ tss_summary.compliance_pct }}%</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_summary.next_kw }} Plan</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">{% if tss_summary.next_kw_plan > 0 %}{{ tss_summary.next_kw_plan }}{% else %}–{% endif %}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLARISATION (in rechter Spalte) -->
+  <div class="polar-card" style="margin-bottom:0;flex:1">
+    <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · letzte 7 Tage · Rad</div>
+    {% if polar_no_data %}
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
+    {% else %}
+    <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">LIT: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3 (Grauzone){% endif %}</span>
+    <div class="polar-row">
+      <span class="polar-lbl">Z0–Z2</span>
+      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
+      <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
+    </div>
+    <div class="polar-row">
+      <span class="polar-lbl">Z3</span>
+      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
+      <span class="polar-pct">{{ polar_z3_pct }}%</span>
+    </div>
+    <div class="polar-row">
+      <span class="polar-lbl">Z4–Z6</span>
+      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
+      <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
+    </div>
+    <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
+    {% endif %}
+  </div>
+
+  </div><!-- end rechte Spalte -->
+
+</div><!-- end two-col-grid -->
+
 <!-- CTL + SCHLAF -->
 <div class="two-col-grid">
 
@@ -792,238 +1024,6 @@
   {% endif %}
 
 </div>
-
-<!-- READINESS + TSS-ÜBERSICHT + POLARISATION -->
-<div class="two-col-grid" style="align-items:stretch">
-
-  <!-- READINESS -->
-  <div class="readiness-card">
-    <div class="chard"><div class="chard-icon" style="background:rgba(34,197,94,0.12)">💚</div>Readiness Score</div>
-
-    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
-      {% if biometrics_pending %}
-      <div class="readiness-score" style="color:var(--muted)">–</div>
-      {% else %}
-      <div class="readiness-score" style="color:{{ readiness_color }}">{{ readiness_score }}</div>
-      <div class="readiness-tag" style="color:{{ readiness_color }}">{{ readiness_label }}</div>
-      {% endif %}
-    </div>
-
-    {% if biometrics_pending %}
-    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
-      ⏳ Uhr noch nicht synchronisiert – Werte folgen
-    </div>
-    {% endif %}
-
-    {% if has_subjektiv %}
-    <div style="display:flex;gap:8px;margin-bottom:12px">
-      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">{{ score_obj }}</div>
-        <div style="font-size:0.55rem;color:var(--muted)">HRV · Schlaf · TSB · Puls</div>
-      </div>
-      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">{{ score_sub }}</div>
-        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
-      </div>
-    </div>
-    {% endif %}
-
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent){% if biometrics_pending %};opacity:0.15{% endif %}">
-      <div>
-        <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
-      </div>
-      <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
-        <div class="rbar-lbl">Normalber. {{ hrv_range }} ms</div>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
-        <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
-        <div class="rbar-lbl">/ 8h</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
-        <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
-        <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
-        <div class="rbar-lbl">Form</div>
-        {% if ramprate != 0 %}
-        <div style="font-size:0.6rem;font-weight:700;color:{{ ramprate_color }};margin-top:2px">
-          ATL {{ "%+.1f"|format(ramprate) }}{% if ramprate_icon %} {{ ramprate_icon }}{% endif %}
-        </div>
-        {% endif %}
-      </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
-        <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
-        <div class="rbar-lbl">bpm</div>
-      </div>
-    </div>
-
-    {% if has_subjektiv %}
-    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
-
-      {% if subjektiv_bars.ermuedung %}
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.ermuedung.color }}">{{ subjektiv_bars.ermuedung.detail }}</span>
-        </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:{{ subjektiv_bars.ermuedung.color }};width:{{ subjektiv_bars.ermuedung.pct }}%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      {% endif %}
-
-      {% if subjektiv_bars.muskelkater %}
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.muskelkater.color }}">{{ subjektiv_bars.muskelkater.detail }}</span>
-        </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:{{ subjektiv_bars.muskelkater.color }};width:{{ subjektiv_bars.muskelkater.pct }}%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      {% endif %}
-
-      {% if subjektiv_bars.stress %}
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.stress.color }}">{{ subjektiv_bars.stress.detail }}</span>
-        </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:{{ subjektiv_bars.stress.color }};width:{{ subjektiv_bars.stress.pct }}%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      {% endif %}
-
-      {% if subjektiv_bars.verletzung %}
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.verletzung.color }}">
-            {{ subjektiv_bars.verletzung.detail }}
-            {% if verletzung_flag %} {{ verletzung_flag }}{% endif %}
-          </span>
-        </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:{{ subjektiv_bars.verletzung.color }};width:{{ subjektiv_bars.verletzung.pct }}%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      {% endif %}
-
-    </div>
-    {% endif %}
-
-    <div class="sparkline-wrap">
-      <div class="spark-label">Readiness · 7 Tage</div>
-      <div class="sparkline">
-        {% for bar in sparkline %}
-        <div class="spark-bar {% if loop.last %}spark-today{% endif %}" style="height:{{ bar.pct }}%;background:{{ bar.color }}"></div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-
-  <!-- RECHTE SPALTE: TSS-ÜBERSICHT + POLARISATION -->
-  <div style="display:flex;flex-direction:column;gap:12px;height:100%">
-  <div class="ausblick-card" style="margin-bottom:0;flex:1">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <div class="card-headline">TSS-Übersicht · 8 Wochen</div>
-      <span style="font-size:0.7rem;font-weight:600;color:var(--muted)">Ø {{ tss_summary.avg_tss }} TSS</span>
-    </div>
-
-    <div style="position:relative;height:95px;margin-bottom:6px">
-      <div style="position:absolute;left:0;right:0;bottom:{{ tss_summary.avg_line_pct }}%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:2">
-        <span style="position:absolute;right:0;top:-8px;font-size:0.48rem;color:rgba(148,163,184,0.4)">Ø</span>
-      </div>
-      <div style="display:flex;gap:3px;height:100%">
-        {% for w in tss_weeks %}
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
-          <span style="font-size:0.46rem;color:{{ w.label_color }};height:12px;line-height:12px;white-space:nowrap">
-            {% if not w.is_future and w.tss_ist > 0 %}{{ w.tss_ist }}{{ w.arrow }}{% elif w.is_current %}▶{% endif %}
-          </span>
-          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
-            {% if w.plan_bar_height_pct > 0 %}
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:{{ w.plan_bar_height_pct }}%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;{% if w.is_future %}border-style:dashed{% endif %}"></div>
-            {% endif %}
-            <div style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;position:relative;z-index:1;{% if w.is_current %}opacity:0.55{% endif %}"></div>
-          </div>
-          <span style="font-size:0.44rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %};height:10px;line-height:10px">KW{{ w.kw }}</span>
-          <span style="font-size:0.38rem;color:{{ w.phase_color }};height:9px;line-height:9px;text-align:center">{{ w.phase_short }}</span>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div style="font-size:0.44rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;margin-top:4px">
-      <span style="display:inline-flex;align-items:center;gap:3px">
-        <span style="display:inline-block;width:10px;height:6px;border:1.5px solid rgba(148,163,184,0.4);border-radius:1px"></span>Plan
-      </span>
-      <span style="display:inline-flex;align-items:center;gap:3px">
-        <span style="display:inline-block;width:10px;height:6px;background:var(--green);border-radius:1px"></span>Ist
-      </span>
-      <span><span style="color:#94a3b8">■</span> Base</span>
-      <span><span style="color:#f97316">■</span> HIT</span>
-      <span><span style="color:#60a5fa">■</span> Taper/Race</span>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø 8 Wochen</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.avg_tss }}</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Höchste</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">{{ tss_summary.max_tss }}</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Compliance</div>
-        <div style="font-size:0.85rem;font-weight:800;color:{% if tss_summary.compliance_pct >= 80 %}var(--green){% elif tss_summary.compliance_pct >= 60 %}var(--yellow){% else %}var(--accent){% endif %}">{{ tss_summary.compliance_pct }}%</div>
-      </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_summary.next_kw }} Plan</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">{% if tss_summary.next_kw_plan > 0 %}{{ tss_summary.next_kw_plan }}{% else %}–{% endif %}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POLARISATION (in rechter Spalte) -->
-  <div class="polar-card" style="margin-bottom:0;flex:1">
-    <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · letzte 7 Tage · Rad</div>
-    {% if polar_no_data %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
-    {% else %}
-    <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">LIT: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3 (Grauzone){% endif %}</span>
-    <div class="polar-row">
-      <span class="polar-lbl">Z0–Z2</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
-      <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
-    </div>
-    <div class="polar-row">
-      <span class="polar-lbl">Z3</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
-      <span class="polar-pct">{{ polar_z3_pct }}%</span>
-    </div>
-    <div class="polar-row">
-      <span class="polar-lbl">Z4–Z6</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
-      <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
-    </div>
-    <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
-    {% endif %}
-  </div>
-
-  </div><!-- end rechte Spalte -->
-
-</div><!-- end two-col-grid -->
 
 <!-- 4-WOCHEN AUSBLICK -->
 <div class="ausblick-card">
