@@ -713,6 +713,58 @@ function computeReadiness(data, hrvBaseline30 = null) {
   };
 }
 
+function computeSubjective(data) {
+  const latest = data[data.length - 1];
+  const fatigue  = latest.fatigue  ?? null;
+  const soreness = latest.soreness ?? null;
+  const stress   = latest.stress   ?? null;
+  const injury   = latest.injury   ?? null;
+
+  if (fatigue == null && soreness == null && stress == null && injury == null) return null;
+
+  const subPts = (value, maxPts) =>
+    value != null ? Math.round(((5 - value) / 4) * maxPts) : null;
+
+  const FATIGUE_LABELS  = ["Niedrig", "Durchschn.", "Hoch", "Extrem"];
+  const MUSCLE_LABELS   = ["Niedrig", "Durchschn.", "Hoch", "Extrem"];
+  const STRESS_LABELS   = ["Niedrig", "Durchschn.", "Hoch", "Extrem"];
+  const INJURY_LABELS   = ["Keine ✅", "Niggle", "Schlecht", "Verletzt"];
+
+  let verletzungFlag = null;
+  if (injury === 4) verletzungFlag = "🚨 Verletzt";
+  else if (injury === 3) verletzungFlag = "⚠️ Schlecht";
+  else if (injury === 2) verletzungFlag = "Niggle";
+
+  let fatiguePts  = subPts(fatigue,  35);
+  let musclePts   = subPts(soreness, 25);
+  let stressPts   = subPts(stress,   25);
+  let injuryPts   = subPts(injury,   15);
+  if (injury === 3) injuryPts = Math.round(injuryPts / 2);
+  if (injury === 4) injuryPts = 0;
+
+  const fields = [
+    { pts: fatiguePts, max: 35 },
+    { pts: musclePts,  max: 25 },
+    { pts: stressPts,  max: 25 },
+    { pts: injuryPts,  max: 15 },
+  ].filter(f => f.pts != null);
+
+  const totalPts = fields.reduce((s, f) => s + f.pts, 0);
+  const totalMax = fields.reduce((s, f) => s + f.max, 0);
+  const score = injury === 4 ? 0 : (totalMax > 0 ? Math.round(totalPts / totalMax * 100) : null);
+
+  return {
+    score,
+    verletzung_flag: verletzungFlag,
+    komponenten: {
+      ermuedung:   fatiguePts != null ? { punkte: fatiguePts, max: 35, detail: `${FATIGUE_LABELS[fatigue - 1]} (${fatigue}/4)` }   : null,
+      muskelkater: musclePts  != null ? { punkte: musclePts,  max: 25, detail: `${MUSCLE_LABELS[soreness - 1]} (${soreness}/4)` } : null,
+      stress:      stressPts  != null ? { punkte: stressPts,  max: 25, detail: `${STRESS_LABELS[stress - 1]} (${stress}/4)` }     : null,
+      verletzung:  injuryPts  != null ? { punkte: injuryPts,  max: 15, detail: `${INJURY_LABELS[injury - 1]}` }                   : null,
+    },
+  };
+}
+
 // Erkennt Muster: Normal / Trainings-Ermüdung / Krank-Risiko
 function detectPattern(meta) {
   const { hrvDiffSDs, hrDiff, tsbVal } = meta;
