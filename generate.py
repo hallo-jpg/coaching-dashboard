@@ -106,6 +106,75 @@ def parse_planned_tss_from_kw_files(from_kw: int, to_kw: int, year: int) -> list
     return result
 
 
+def calc_subjective(wellness_window: list) -> dict | None:
+    """Subjektiver Sub-Score aus Ermüdung/Muskelkater/Stress/Verletzung.
+    Felder: fatigue, soreness, stress, injury — 1–4-Skala, 1=best.
+    Gibt None zurück wenn keine subjektiven Daten vorhanden.
+    """
+    if not wellness_window:
+        return None
+    latest = wellness_window[-1]
+    fatigue  = latest.get("fatigue")
+    soreness = latest.get("soreness")
+    stress   = latest.get("stress")
+    injury   = latest.get("injury")
+
+    if all(v is None for v in [fatigue, soreness, stress, injury]):
+        return None
+
+    FATIGUE_LABELS = ["Niedrig", "Durchschn.", "Hoch", "Extrem"]
+    MUSCLE_LABELS  = ["Niedrig", "Durchschn.", "Hoch", "Extrem"]
+    STRESS_LABELS  = ["Niedrig", "Durchschn.", "Hoch", "Extrem"]
+    INJURY_LABELS  = ["Keine ✅", "Niggle", "Schlecht", "Verletzt"]
+
+    def sub_pts(value, max_pts):
+        if value is None:
+            return None
+        return round(((5 - value) / 4) * max_pts)
+
+    verletzung_flag = None
+    if injury == 4:
+        verletzung_flag = "🚨 Verletzt"
+    elif injury == 3:
+        verletzung_flag = "⚠️ Schlecht"
+    elif injury == 2:
+        verletzung_flag = "Niggle"
+
+    fatigue_pts  = sub_pts(fatigue,  35)
+    soreness_pts = sub_pts(soreness, 25)
+    stress_pts   = sub_pts(stress,   25)
+    injury_pts   = sub_pts(injury,   15)
+    if injury == 3 and injury_pts is not None:
+        injury_pts = round(injury_pts / 2)
+    if injury == 4:
+        injury_pts = 0
+
+    fields = [
+        (fatigue_pts, 35), (soreness_pts, 25), (stress_pts, 25), (injury_pts, 15)
+    ]
+    available = [(p, m) for p, m in fields if p is not None]
+    total_pts = sum(p for p, _ in available)
+    total_max = sum(m for _, m in available)
+
+    score = 0 if injury == 4 else (round(total_pts / total_max * 100) if total_max else None)
+
+    def comp(value, max_pts, labels, pts):
+        if value is None:
+            return None
+        return {"punkte": pts, "max": max_pts, "detail": f"{labels[value-1]} ({value}/4)"}
+
+    return {
+        "score": score,
+        "verletzung_flag": verletzung_flag,
+        "komponenten": {
+            "ermuedung":   comp(fatigue,  35, FATIGUE_LABELS, fatigue_pts),
+            "muskelkater": comp(soreness, 25, MUSCLE_LABELS,  soreness_pts),
+            "stress":      comp(stress,   25, STRESS_LABELS,  stress_pts),
+            "verletzung":  comp(injury,   15, INJURY_LABELS,  injury_pts),
+        },
+    }
+
+
 def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None = None) -> int:
     """HRV 40pts (vs. 30d baseline) + Sleep 25pts + TSB 20pts + RHR 15pts = 100pts max.
     HRV baseline uses 30-day window so illness (~7d) only affects 25% of reference period.
@@ -132,7 +201,8 @@ def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None 
     sleep_vals   = [w["sleepSecs"]    for w in last3 if w.get("sleepSecs")]
     sleep_pts = 13  # neutral fallback
     if quality_vals:
-        sleep_pts = round(_avg(quality_vals) / 5 * 25)
+        avg_q = _avg(quality_vals)
+        sleep_pts = round(((5 - avg_q) / 4) * 25)
     elif sleep_vals:
         sleep_pts = min(25, round(_avg(sleep_vals) / 3600 / 8 * 25))
 

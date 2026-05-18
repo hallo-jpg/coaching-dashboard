@@ -1,6 +1,6 @@
 import pytest
 from datetime import date, timedelta
-from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation, calc_monotony_strain, calc_ramprate, project_pmc
+from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation, calc_monotony_strain, calc_ramprate, project_pmc, calc_subjective
 from unittest.mock import patch
 
 
@@ -544,3 +544,36 @@ def test_tss_weeks_has_plan_fields():
         assert "phase_color" in w, f"phase_color fehlt in {w}"
     assert "compliance_pct" in summary
     assert "next_kw_plan" in summary
+
+
+# ── calc_subjective ──────────────────────────────────────────────────────────
+
+def test_calc_subjective_typical():
+    """fatigue=1, soreness=1, stress=2, injury=1 → score=94"""
+    result = calc_subjective([{"fatigue": 1, "soreness": 1, "stress": 2, "injury": 1}])
+    assert result is not None
+    assert result["score"] == 94
+    assert result["verletzung_flag"] is None
+    assert result["komponenten"]["ermuedung"]["punkte"] == 35
+    assert result["komponenten"]["stress"]["punkte"] == 19
+
+
+def test_calc_subjective_no_data():
+    """Keine subjektiven Felder → None"""
+    result = calc_subjective([{"hrv": 50, "ctl": 40.0}])
+    assert result is None
+
+
+def test_calc_subjective_verletzt():
+    """injury=4 → score=0, verletzung_flag gesetzt"""
+    result = calc_subjective([{"fatigue": 1, "soreness": 1, "stress": 1, "injury": 4}])
+    assert result["score"] == 0
+    assert result["verletzung_flag"] == "🚨 Verletzt"
+
+
+def test_calc_subjective_partial():
+    """Nur fatigue vorhanden → score aus 35/35 Punkten"""
+    result = calc_subjective([{"fatigue": 1}])
+    assert result is not None
+    assert result["score"] == 100
+    assert result["komponenten"]["muskelkater"] is None
