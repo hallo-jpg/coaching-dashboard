@@ -714,6 +714,7 @@ function computeReadiness(data, hrvBaseline30 = null) {
 }
 
 function computeSubjective(data) {
+  if (!data?.length) return null;
   const latest = data[data.length - 1];
   const fatigue  = latest.fatigue  ?? null;
   const soreness = latest.soreness ?? null;
