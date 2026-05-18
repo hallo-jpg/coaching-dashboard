@@ -867,13 +867,49 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     r_color = readiness_color(r_score)
     r_label = readiness_label(r_score)
     r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
+
+    # Subjective sub-score
+    sub_result    = calc_subjective(wellness_30[-7:])
+    score_obj     = r_score
+    score_sub     = sub_result["score"] if sub_result else None
+    verletzung_flag = sub_result["verletzung_flag"] if sub_result else None
+
+    # Combined: 60% objective + 40% subjective; fallback to objective when no subjective data
+    if score_sub is not None:
+        r_score_combined = round(score_obj * 0.6 + score_sub * 0.4)
+        if verletzung_flag == "🚨 Verletzt":
+            r_score_combined = 0
+    else:
+        r_score_combined = score_obj
+
+    r_color = readiness_color(r_score_combined)
+    r_label = readiness_label(r_score_combined)
+
+    # Build subjective bar data for template
+    def _bar(komp):
+        if komp is None:
+            return None
+        pct = round(komp["punkte"] / komp["max"] * 100) if komp["max"] else 0
+        color = "#22c55e" if pct >= 75 else "#eab308" if pct >= 50 else "#ef4444"
+        return {"detail": komp["detail"], "pct": pct, "color": color}
+
+    subjektiv_bars = None
+    if sub_result:
+        k = sub_result["komponenten"]
+        subjektiv_bars = {
+            "ermuedung":   _bar(k.get("ermuedung")),
+            "muskelkater": _bar(k.get("muskelkater")),
+            "stress":      _bar(k.get("stress")),
+            "verletzung":  _bar(k.get("verletzung")),
+        }
+
     if biometrics_pending:
-        r_score = 0  # Ring zeigt leer; Template zeigt "–"
+        r_score_combined = 0  # Ring zeigt leer; Template zeigt "–"
         r_color = "var(--muted)"
 
     ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
-    r_offset      = calc_ring_offset(r_score, 100, CIRC_OUTER)
+    r_offset      = calc_ring_offset(r_score_combined, 100, CIRC_OUTER)
     season_pos    = kw - 14
     season_total  = RACE_KW - 14 + 1
     season_offset = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
@@ -1007,8 +1043,13 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "tss_compliance_pct": tss_compliance_pct,
         "tss_compliance_offset": tss_compliance_offset,
         "tss_compliance_color": tss_compliance_color,
-        "readiness_score": r_score, "readiness_offset": r_offset,
+        "readiness_score": r_score_combined, "readiness_offset": r_offset,
         "readiness_color": r_color, "readiness_label": r_label, "readiness_sub": r_sub,
+        "score_obj": score_obj,
+        "score_sub": score_sub,
+        "verletzung_flag": verletzung_flag,
+        "subjektiv_bars": subjektiv_bars,
+        "has_subjektiv": subjektiv_bars is not None,
         "ctl": round(ctl, 1), "atl": round(atl, 1),
         "tsb_display": f"+{round(tsb):.0f}" if tsb >= 0 else f"{round(tsb):.0f}",
         "tsb_color": fmt_tsb_color(tsb),

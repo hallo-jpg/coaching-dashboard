@@ -245,6 +245,45 @@ def test_build_context_biometrics_pending(mock_pb, mock_act, mock_well):
     assert ctx["biometrics_pending"] is True
 
 
+MOCK_WELLNESS_WITH_SUBJEKTIV = [
+    {"id": "2026-04-12", "hrv": 40, "sleepSecs": 25200, "sleepQuality": 2, "ctl": 42.0, "atl": 38.0, "restingHR": 50,
+     "fatigue": 1, "soreness": 1, "stress": 2, "injury": 1},
+    {"id": "2026-04-13", "hrv": 43, "sleepSecs": 27000, "sleepQuality": 2, "ctl": 42.5, "atl": 37.0, "restingHR": 49,
+     "fatigue": 1, "soreness": 1, "stress": 2, "injury": 1},
+    {"id": "2026-04-14", "hrv": 45, "sleepSecs": 28800, "sleepQuality": 2, "ctl": 43.0, "atl": 36.0, "restingHR": 48,
+     "fatigue": 1, "soreness": 1, "stress": 2, "injury": 1},
+]
+
+
+@patch("generate.get_wellness", return_value=MOCK_WELLNESS_WITH_SUBJEKTIV * 10)
+@patch("generate.get_activities", return_value=[])
+def test_build_context_subjektiv_keys(mock_act, mock_well):
+    from generate import build_context
+    ctx = build_context(kw=16, monday=date(2026, 4, 13), sunday=date(2026, 4, 19))
+    assert "score_obj" in ctx
+    assert "score_sub" in ctx
+    assert "subjektiv_bars" in ctx
+    assert "has_subjektiv" in ctx
+    assert "verletzung_flag" in ctx
+    assert ctx["has_subjektiv"] is True
+    assert ctx["score_sub"] is not None
+
+
+@patch("generate.get_wellness", return_value=[
+    {"id": "2026-04-12", "hrv": 40, "sleepSecs": 25200, "sleepQuality": 2, "ctl": 42.0, "atl": 38.0, "restingHR": 50},
+    {"id": "2026-04-13", "hrv": 43, "sleepSecs": 27000, "sleepQuality": 2, "ctl": 42.5, "atl": 37.0, "restingHR": 49},
+    {"id": "2026-04-14", "hrv": 45, "sleepSecs": 28800, "sleepQuality": 2, "ctl": 43.0, "atl": 36.0, "restingHR": 48},
+] * 10)
+@patch("generate.get_activities", return_value=[])
+def test_build_context_no_subjektiv_fallback(mock_act, mock_well):
+    from generate import build_context
+    ctx = build_context(kw=16, monday=date(2026, 4, 13), sunday=date(2026, 4, 19))
+    assert ctx["has_subjektiv"] is False
+    assert ctx["score_sub"] is None
+    assert ctx["subjektiv_bars"] is None
+    assert ctx["readiness_score"] == ctx["score_obj"]
+
+
 # ---------------------------------------------------------------------------
 # _calc_polarisation – Sentiero/intervals.icu zone mapping
 # Sentiero Z0-Z6 = intervals.icu Z1-Z7 (offset +1)
