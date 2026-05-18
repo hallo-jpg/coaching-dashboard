@@ -692,23 +692,44 @@ function computeReadiness(data, hrvBaseline30 = null) {
     else                  { hrPts = 0;  hrDetail = `${lastHR} bpm (+${hrDiff.toFixed(1)} vs. Ø) – deutlich erhöht`; }
   }
 
-  const score = hrvPts + sleepPts + tsbPts + hrPts;
+  const score_obj = hrvPts + sleepPts + tsbPts + hrPts;
+  const subResult = computeSubjective(data);
+  const score_sub = subResult?.score ?? null;
+
+  // Combined: 60% objective + 40% subjective; fallback to objective if no subjective data
+  const score = score_sub != null
+    ? Math.round(score_obj * 0.6 + score_sub * 0.4)
+    : score_obj;
+
+  // Verletzung-Override: always 🔴 if Verletzt (injury=4)
   let ampel, empfehlung;
-  if (score >= 80)      { ampel = "🟢"; empfehlung = "Voll trainieren – alle Einheiten wie geplant."; }
-  else if (score >= 60) { ampel = "🟡"; empfehlung = "Planmäßig trainieren, gut beobachten."; }
-  else if (score >= 40) { ampel = "🟡"; empfehlung = "Intensität −20% reduzieren, Volumen optional kürzen."; }
-  else                  { ampel = "🔴"; empfehlung = "Nur LIT oder Ruhetag – Erholung priorisieren."; }
+  if (subResult?.verletzung_flag === "🚨 Verletzt") {
+    ampel = "🔴";
+    empfehlung = "🚨 Verletzt – Training pausieren bis zur Erholung.";
+  } else if (score >= 80) {
+    ampel = "🟢"; empfehlung = "Voll trainieren – alle Einheiten wie geplant.";
+  } else if (score >= 60) {
+    ampel = "🟡"; empfehlung = "Planmäßig trainieren, gut beobachten.";
+  } else if (score >= 40) {
+    ampel = "🟡"; empfehlung = "Intensität −20% reduzieren, Volumen optional kürzen.";
+  } else {
+    ampel = "🔴"; empfehlung = "Nur LIT oder Ruhetag – Erholung priorisieren.";
+  }
 
   return {
     score,
+    score_obj,
+    score_sub,
     ampel,
     empfehlung,
+    verletzung_flag: subResult?.verletzung_flag ?? null,
     komponenten: {
       hrv:      { punkte: hrvPts,   max: 40, detail: hrvDetail },
       schlaf:   { punkte: sleepPts, max: 25, detail: sleepDetail },
       tsb:      { punkte: tsbPts,   max: 20, detail: tsbDetail },
       ruhepuls: { punkte: hrPts,    max: 15, detail: hrDetail },
     },
+    komponenten_subjektiv: subResult?.komponenten ?? null,
     _meta: { hrvDiffSDs, hrDiff, tsbVal: tsb, sleepPts },
   };
 }
