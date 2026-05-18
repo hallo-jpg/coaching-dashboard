@@ -170,6 +170,9 @@ Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.m
 Der Score ersetzt die manuelle Ampel-Bewertung. Im Output unter **🎯 Standort** ausgeben:
 ```
 Readiness: XX/100 🟢/🟡/🔴 – [Empfehlung]
+  Körper:  XX 🟢/🟡/🔴  (HRV: [detail] · Schlaf: [detail] · TSB: [detail] · Puls: [detail])
+  Gefühl:  XX 🟢/🟡/🔴  (Ermüdung: [detail] · Kater: [detail] · Stress: [detail] · Verletzung: [detail])
+  ← Gefühl-Zeile weglassen wenn score_sub == null (kein Eintrag heute)
 Muster: [🟢 Normal / 🟡 Trainings-Ermüdung / 🔴 Krank-Risiko]
 Trend (7d): steigend ↑ / stabil / fallend ↓
 ```
@@ -180,6 +183,14 @@ Trend (7d): steigend ↑ / stabil / fallend ↓
 | 🔴 Krank-Risiko | Komplette Pause – kein LIT, kein "leichtes Training". Hinweis ausgeben. |
 | 🟡 Trainings-Ermüdung | Score-Empfehlung befolgen, 1–2 Regenerationstage einplanen |
 | 🟢 Normal | Score-Empfehlung befolgen |
+
+**Verletzungs-Sonderregel (aus `verletzung_flag`):**
+
+| Flag | Konsequenz |
+|---|---|
+| `🚨 Verletzt` | 🚨 Ampel immer 🔴 · kein Training empfehlen · Hinweis: Pause bis zur Erholung |
+| `⚠️ Schlecht` | ⚠️ Warnung ausgeben · kein HIT · nur LIT oder Ruhetag |
+| `Niggle` | 📌 Hinweis ausgeben · Training möglich · bei HIT: erste Sätze beobachten |
 
 **Workout-Empfehlungen (aus `workout_empfehlungen`):**
 Wenn Score < 80: Empfehlungen aus dem Tool direkt in den Wochenplan einfließen lassen – konkrete Anpassungen pro Workout ausgeben, nicht nur generische Prozent-Angabe.
