@@ -779,133 +779,6 @@
 
 </div><!-- end two-col-grid -->
 
-<!-- CTL + SCHLAF -->
-<div class="two-col-grid">
-
-  <!-- CTL-VERLAUF 6 MONATE -->
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:14px">
-      <div class="card-headline">CTL-Verlauf · 6 Monate</div>
-    </div>
-    {% if ctl_history.path %}
-    <div style="position:relative;width:100%;height:90px;margin-bottom:30px">
-      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
-          </linearGradient>
-        </defs>
-        <line x1="0" y1="26" x2="300" y2="26" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="53" x2="300" y2="53" stroke="var(--border)" stroke-width="0.5"/>
-        <path d="{{ ctl_history.fill_path }}" fill="url(#ctlGradFill)"/>
-        <path d="{{ ctl_history.path }}" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="{{ ctl_history.last_y }}" r="3" fill="var(--green)"/>
-        <circle cx="300" cy="{{ ctl_history.last_y }}" r="5" fill="var(--green)" opacity="0.2"/>
-      </svg>
-      <div style="position:absolute;bottom:-14px;left:0;right:0">
-        {% for ml in ctl_history.month_labels %}
-        <span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>
-        {% endfor %}
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
-      Aktuell: <span style="color:var(--green);font-weight:700">CTL {{ ctl_history.ctl_now }}</span>
-    </div>
-    {% else %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine CTL-Daten verfügbar</div>
-    {% endif %}
-  </div>
-
-  <!-- M1: LOAD QUALITY -->
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:12px">
-      <div class="card-headline">⚖️ Load Quality · 7 Tage</div>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
-      <span style="font-size:0.92rem;font-weight:800;color:{{ monotony_color }}">{{ "%.2f"|format(monotony_val) }}</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <span style="font-size:0.72rem;color:var(--muted)">Strain</span>
-      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">{{ monotony_strain }}</span>
-    </div>
-    <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
-    <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
-      {% set max_tss = [tss_7days | max, 1] | max %}
-      {% for tss in tss_7days %}
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
-                  height:{{ [((tss / max_tss * 100) | round | int), 5] | max }}%;
-                  background:{% if tss > 0 %}var(--green){% else %}var(--subtle){% endif %};
-                  opacity:0.75"
-           title="{{ tss | round | int }} TSS"></div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <!-- SCHLAF-VERLAUF 30 TAGE -->
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:14px">
-      <div class="card-headline">😴 Schlaf-Verlauf · 30 Tage</div>
-    </div>
-    {% if sleep_history.path %}
-    <div style="width:100%;margin-bottom:8px">
-      <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7986cb" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#7986cb" stop-opacity="0.0"/>
-          </linearGradient>
-        </defs>
-        <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
-        <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="{{ sleep_history.fill_path }}" fill="url(#sleepGradFill)"/>
-        <path d="{{ sleep_history.path }}" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="{{ sleep_history.last_y }}" r="3" fill="#7986cb"/>
-        <circle cx="300" cy="{{ sleep_history.last_y }}" r="5" fill="#7986cb" opacity="0.2"/>
-        <!-- 8h label nach den Pfaden → immer sichtbar -->
-        <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
-      </svg>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
-      <div>
-        <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
-          {% if sleep_history.sleep_today %}{{ sleep_history.sleep_today }}h{% else %}–{% endif %}
-        </div>
-        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
-      </div>
-      <div style="flex:1;height:1px;background:rgba(255,255,255,0.06)"></div>
-      <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:{% if sleep_history.avg_30d >= 7 %}var(--green){% else %}var(--red){% endif %}">Ø {{ sleep_history.avg_30d }}h</div>
-        <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
-      </div>
-    </div>
-    {% else %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Schlafdaten verfügbar</div>
-    {% endif %}
-  </div>
-
-  <!-- D1: PMC FORWARD VIEW -->
-  {% if pmc_available %}
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:12px">
-      <div class="card-headline">🏁 Rennprognose KW{{ race_kw }}</div>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-      <span style="font-size:0.72rem;color:var(--muted)">CTL Renntag</span>
-      <span style="font-size:1.05rem;font-weight:800;color:var(--green)">~{{ pmc_ctl_race }}</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-      <span style="font-size:0.72rem;color:var(--muted)">TSB Renntag</span>
-      <span style="font-size:1.05rem;font-weight:800;color:{{ pmc_tsb_color }}">{{ "%+.1f"|format(pmc_tsb_race) }}</span>
-    </div>
-    <div style="font-size:0.7rem;color:{{ pmc_tsb_color }};margin-bottom:4px">{{ pmc_tsb_label }}</div>
-    <div style="font-size:0.62rem;color:var(--muted)">Ziel TSB +5–+25 · Plan wie vorgesehen</div>
-  </div>
-  {% endif %}
-
-</div>
-
 <!-- WOCHENPLAN + ERNÄHRUNG -->
 <div class="two-col-grid">
 
@@ -1054,6 +927,133 @@
     {% endfor %}
     </tbody>
   </table>
+</div>
+
+<!-- CTL + SCHLAF -->
+<div class="two-col-grid">
+
+  <!-- CTL-VERLAUF 6 MONATE -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="margin-bottom:14px">
+      <div class="card-headline">CTL-Verlauf · 6 Monate</div>
+    </div>
+    {% if ctl_history.path %}
+    <div style="position:relative;width:100%;height:90px;margin-bottom:30px">
+      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="26" x2="300" y2="26" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="53" x2="300" y2="53" stroke="var(--border)" stroke-width="0.5"/>
+        <path d="{{ ctl_history.fill_path }}" fill="url(#ctlGradFill)"/>
+        <path d="{{ ctl_history.path }}" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="{{ ctl_history.last_y }}" r="3" fill="var(--green)"/>
+        <circle cx="300" cy="{{ ctl_history.last_y }}" r="5" fill="var(--green)" opacity="0.2"/>
+      </svg>
+      <div style="position:absolute;bottom:-14px;left:0;right:0">
+        {% for ml in ctl_history.month_labels %}
+        <span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
+      Aktuell: <span style="color:var(--green);font-weight:700">CTL {{ ctl_history.ctl_now }}</span>
+    </div>
+    {% else %}
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine CTL-Daten verfügbar</div>
+    {% endif %}
+  </div>
+
+  <!-- M1: LOAD QUALITY -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="margin-bottom:12px">
+      <div class="card-headline">⚖️ Load Quality · 7 Tage</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
+      <span style="font-size:0.92rem;font-weight:800;color:{{ monotony_color }}">{{ "%.2f"|format(monotony_val) }}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:0.72rem;color:var(--muted)">Strain</span>
+      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">{{ monotony_strain }}</span>
+    </div>
+    <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
+    <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
+      {% set max_tss = [tss_7days | max, 1] | max %}
+      {% for tss in tss_7days %}
+      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+                  height:{{ [((tss / max_tss * 100) | round | int), 5] | max }}%;
+                  background:{% if tss > 0 %}var(--green){% else %}var(--subtle){% endif %};
+                  opacity:0.75"
+           title="{{ tss | round | int }} TSS"></div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- SCHLAF-VERLAUF 30 TAGE -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="margin-bottom:14px">
+      <div class="card-headline">😴 Schlaf-Verlauf · 30 Tage</div>
+    </div>
+    {% if sleep_history.path %}
+    <div style="width:100%;margin-bottom:8px">
+      <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7986cb" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#7986cb" stop-opacity="0.0"/>
+          </linearGradient>
+        </defs>
+        <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
+        <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
+        <path d="{{ sleep_history.fill_path }}" fill="url(#sleepGradFill)"/>
+        <path d="{{ sleep_history.path }}" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="{{ sleep_history.last_y }}" r="3" fill="#7986cb"/>
+        <circle cx="300" cy="{{ sleep_history.last_y }}" r="5" fill="#7986cb" opacity="0.2"/>
+        <!-- 8h label nach den Pfaden → immer sichtbar -->
+        <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
+      </svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+      <div>
+        <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
+          {% if sleep_history.sleep_today %}{{ sleep_history.sleep_today }}h{% else %}–{% endif %}
+        </div>
+        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
+      </div>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,0.06)"></div>
+      <div style="text-align:right">
+        <div style="font-size:0.85rem;font-weight:700;color:{% if sleep_history.avg_30d >= 7 %}var(--green){% else %}var(--red){% endif %}">Ø {{ sleep_history.avg_30d }}h</div>
+        <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
+      </div>
+    </div>
+    {% else %}
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Schlafdaten verfügbar</div>
+    {% endif %}
+  </div>
+
+  <!-- D1: PMC FORWARD VIEW -->
+  {% if pmc_available %}
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="margin-bottom:12px">
+      <div class="card-headline">🏁 Rennprognose KW{{ race_kw }}</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+      <span style="font-size:0.72rem;color:var(--muted)">CTL Renntag</span>
+      <span style="font-size:1.05rem;font-weight:800;color:var(--green)">~{{ pmc_ctl_race }}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+      <span style="font-size:0.72rem;color:var(--muted)">TSB Renntag</span>
+      <span style="font-size:1.05rem;font-weight:800;color:{{ pmc_tsb_color }}">{{ "%+.1f"|format(pmc_tsb_race) }}</span>
+    </div>
+    <div style="font-size:0.7rem;color:{{ pmc_tsb_color }};margin-bottom:4px">{{ pmc_tsb_label }}</div>
+    <div style="font-size:0.62rem;color:var(--muted)">Ziel TSB +5–+25 · Plan wie vorgesehen</div>
+  </div>
+  {% endif %}
+
 </div>
 
 <!-- ZONEN -->
