@@ -123,6 +123,7 @@ server.tool(
       max_hf: a.max_heartrate,
       ctl_danach: a.icu_ctl?.toFixed(1),
       atl_danach: a.icu_atl?.toFixed(1),
+      rpe: a.perceived_exertion ?? null,
     }));
 
     return {
@@ -472,6 +473,7 @@ server.tool(
         tss_soll: a.icu_planned_training_load ?? null,
         avg_watt: a.icu_weighted_avg_watts,
         avg_hf: a.average_heartrate,
+        rpe: a.perceived_exertion ?? null,
         power_zones: powerZones,
         hr_zones: hrZones,
       };
