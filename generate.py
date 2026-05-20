@@ -604,8 +604,12 @@ def parse_kw_plan(kw: int) -> dict:
 
         cols = [c.strip() for c in rest.split("|")]
         workout = cols[0] if len(cols) > 0 else ""
-        tss_soll_raw = cols[2] if len(cols) > 2 else "–"
-        status = cols[4] if len(cols) > 4 else "–"
+        # Detect column layout: new format has TSS at cols[1] ("~37", "85", "–"),
+        # old format had an extra Datei column (e.g. "LIT-2h.zwo") at cols[1].
+        _c1 = cols[1] if len(cols) > 1 else "–"
+        _new_fmt = bool(re.match(r'^~?\d+$|^[–-]$', _c1))
+        tss_soll_raw = _c1 if _new_fmt else (cols[2] if len(cols) > 2 else "–")
+        status = (cols[3] if len(cols) > 3 else "–") if _new_fmt else (cols[4] if len(cols) > 4 else "–")
 
         tss_plan = 0
         m = re.search(r"(\d+)", tss_soll_raw)
