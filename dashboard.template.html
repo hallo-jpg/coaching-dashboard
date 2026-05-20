@@ -828,6 +828,16 @@
             <span style="font-size:0.6rem;color:var(--muted)">{{ day.tss_plan }}</span>
           </div>
           {% endif %}
+          {% if day.rpe %}
+          {% set rpe_color = "#60b8f5" if day.rpe <= 3 else ("#f5c842" if day.rpe <= 7 else "#f56060") %}
+          <div style="display:flex;align-items:center;gap:3px;margin-top:1px">
+            <span style="font-size:0.58rem;color:var(--muted)">RPE</span>
+            <span style="font-size:0.6rem;font-weight:600;color:{{ rpe_color }}">{{ day.rpe }}</span>
+            <div style="width:32px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+              <div style="width:{{ (day.rpe * 10)|int }}%;height:100%;border-radius:2px;background:{{ rpe_color }}"></div>
+            </div>
+          </div>
+          {% endif %}
         </div>
         {% if day.tss_bonus > 0 %}
         <div class="tss-split"><span class="split-plan">{{ day.tss_primary }}</span> + <span class="split-bonus">{{ day.tss_bonus }}</span></div>

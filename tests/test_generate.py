@@ -680,3 +680,46 @@ def test_missed_day_no_plan_hides_soll():
     out = tpl.render(day={"tss_plan": 0})
     assert "Ausgefallen" in out
     assert "Soll" not in out
+
+
+# ── Template Tests: RPE Mini-Bar ──────────────────────────────────────────────
+
+_RPE_TPL = """\
+{% if day.rpe %}
+{% set rpe_color = "#60b8f5" if day.rpe <= 3 else ("#f5c842" if day.rpe <= 7 else "#f56060") %}
+<div style="display:flex;align-items:center;gap:3px;margin-top:1px">
+  <span style="font-size:0.58rem;color:var(--muted)">RPE</span>
+  <span style="font-size:0.6rem;font-weight:600;color:{{ rpe_color }}">{{ day.rpe }}</span>
+  <div style="width:32px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+    <div style="width:{{ (day.rpe * 10)|int }}%;height:100%;border-radius:2px;background:{{ rpe_color }}"></div>
+  </div>
+</div>
+{% endif %}"""
+
+
+def test_rpe_shows_value_and_bar():
+    tpl = _JinjaEnv().from_string(_RPE_TPL)
+    out = tpl.render(day={"rpe": 7})
+    assert "RPE" in out
+    assert "7" in out
+    assert "70%" in out
+    assert "#f5c842" in out  # yellow for 4-7
+
+
+def test_rpe_color_easy():
+    tpl = _JinjaEnv().from_string(_RPE_TPL)
+    out = tpl.render(day={"rpe": 2})
+    assert "#60b8f5" in out  # blue for 1-3
+
+
+def test_rpe_color_hard():
+    tpl = _JinjaEnv().from_string(_RPE_TPL)
+    out = tpl.render(day={"rpe": 9})
+    assert "#f56060" in out  # red for 8-10
+    assert "90%" in out
+
+
+def test_rpe_hidden_when_none():
+    tpl = _JinjaEnv().from_string(_RPE_TPL)
+    out = tpl.render(day={"rpe": None})
+    assert "RPE" not in out

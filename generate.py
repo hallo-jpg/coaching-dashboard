@@ -706,7 +706,7 @@ def match_activities(activities: list, plan_days: list, monday: date) -> dict:
             and act_sport == _plan_sport(plan_day)
             and matched[tag]["primary"] is None
         ):
-            matched[tag]["primary"] = {"name": act_name, "tss": tss}
+            matched[tag]["primary"] = {"name": act_name, "tss": tss, "rpe": act.get("perceived_exertion")}
             matched[tag]["done"] = True
         elif not act_type and not act_name and not plan_day["rest"] and matched[tag]["primary"] is None:
             # Ghost entry: intervals.icu returns a date-only placeholder (type=None,
@@ -714,7 +714,7 @@ def match_activities(activities: list, plan_days: list, monday: date) -> dict:
             # The actual data exists in intervals.icu but not in this API field.
             # Mark day as done and use tss_plan as displayed TSS.
             plan_tss = plan_day.get("tss_plan", 0)
-            matched[tag]["primary"] = {"name": plan_day["workout"], "tss": plan_tss}
+            matched[tag]["primary"] = {"name": plan_day["workout"], "tss": plan_tss, "rpe": None}
             matched[tag]["tss_ist"] = plan_tss
             matched[tag]["done"] = True
         elif act_type:
@@ -781,6 +781,7 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
             "row_class":        row_class,
             "activity_name":    primary["name"] if primary else "",
             "bonus_activities": bonus,
+            "rpe":              primary.get("rpe") if primary else None,
         })
     return rows
 
