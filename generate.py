@@ -706,7 +706,7 @@ def match_activities(activities: list, plan_days: list, monday: date) -> dict:
             and act_sport == _plan_sport(plan_day)
             and matched[tag]["primary"] is None
         ):
-            matched[tag]["primary"] = {"name": act_name, "tss": tss, "rpe": act.get("perceived_exertion")}
+            matched[tag]["primary"] = {"name": act_name, "tss": tss, "rpe": act.get("icu_rpe")}
             matched[tag]["done"] = True
         elif not act_type and not act_name and not plan_day["rest"] and matched[tag]["primary"] is None:
             # Ghost entry: intervals.icu returns a date-only placeholder (type=None,
