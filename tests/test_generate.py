@@ -616,3 +616,41 @@ def test_calc_subjective_partial():
     assert result is not None
     assert result["score"] == 100
     assert result["komponenten"]["muskelkater"] is None
+
+
+# ── Template Tests: day.done Ist/Soll Display ────────────────────────────────
+
+from jinja2 import Environment as _JinjaEnv
+
+_DONE_TPL = """\
+<div style="text-align:right;">
+  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
+    <div style="display:flex;align-items:center;gap:3px">
+      <span style="font-size:0.58rem;color:var(--muted)">Ist</span>
+      <span style="font-size:0.72rem;font-weight:700;color:var(--green)">{{ day.tss_ist }}</span>
+    </div>
+    {% if day.tss_plan > 0 %}
+    <div style="display:flex;align-items:center;gap:3px">
+      <span style="font-size:0.58rem;color:var(--muted)">Soll</span>
+      <span style="font-size:0.6rem;color:var(--muted)">{{ day.tss_plan }}</span>
+    </div>
+    {% endif %}
+  </div>
+</div>"""
+
+
+def test_done_day_shows_ist_and_soll():
+    tpl = _JinjaEnv().from_string(_DONE_TPL)
+    out = tpl.render(day={"tss_ist": 92, "tss_plan": 85})
+    assert "Ist" in out
+    assert "92" in out
+    assert "Soll" in out
+    assert "85" in out
+
+
+def test_done_day_no_plan_hides_soll():
+    tpl = _JinjaEnv().from_string(_DONE_TPL)
+    out = tpl.render(day={"tss_ist": 50, "tss_plan": 0})
+    assert "Ist" in out
+    assert "50" in out
+    assert "Soll" not in out

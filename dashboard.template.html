@@ -817,7 +817,18 @@
       <span class="day-tss" style="color:var(--subtle)">–</span>
       {% elif day.done %}
       <div style="text-align:right;">
-        <div class="day-tss" style="color:var(--green)">✅ {{ day.tss_ist }} TSS</div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="font-size:0.58rem;color:var(--muted)">Ist</span>
+            <span style="font-size:0.72rem;font-weight:700;color:var(--green)">{{ day.tss_ist }}</span>
+          </div>
+          {% if day.tss_plan > 0 %}
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="font-size:0.58rem;color:var(--muted)">Soll</span>
+            <span style="font-size:0.6rem;color:var(--muted)">{{ day.tss_plan }}</span>
+          </div>
+          {% endif %}
+        </div>
         {% if day.tss_bonus > 0 %}
         <div class="tss-split"><span class="split-plan">{{ day.tss_primary }}</span> + <span class="split-bonus">{{ day.tss_bonus }}</span></div>
         {% endif %}
