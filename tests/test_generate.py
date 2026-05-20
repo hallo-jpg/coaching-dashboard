@@ -654,3 +654,29 @@ def test_done_day_no_plan_hides_soll():
     assert "Ist" in out
     assert "50" in out
     assert "Soll" not in out
+
+
+# ── Template Tests: day.missed Soll-TSS Display ────────────────────────────────
+
+_MISSED_TPL = """\
+<div style="text-align:right;">
+  <span class="badge-missed">Ausgefallen</span>
+  {% if day.tss_plan > 0 %}
+  <div style="font-size:0.6rem;color:var(--muted);margin-top:2px">Soll {{ day.tss_plan }} TSS</div>
+  {% endif %}
+</div>"""
+
+
+def test_missed_day_shows_soll():
+    tpl = _JinjaEnv().from_string(_MISSED_TPL)
+    out = tpl.render(day={"tss_plan": 95})
+    assert "Ausgefallen" in out
+    assert "Soll" in out
+    assert "95" in out
+
+
+def test_missed_day_no_plan_hides_soll():
+    tpl = _JinjaEnv().from_string(_MISSED_TPL)
+    out = tpl.render(day={"tss_plan": 0})
+    assert "Ausgefallen" in out
+    assert "Soll" not in out

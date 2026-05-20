@@ -836,8 +836,8 @@
       {% elif day.missed %}
       <div style="text-align:right;">
         <span class="badge-missed">Ausgefallen</span>
-        {% if day.tss_ist > 0 %}
-        <div class="day-tss" style="color:var(--subtle)">{{ day.tss_ist }} TSS</div>
+        {% if day.tss_plan > 0 %}
+        <div style="font-size:0.6rem;color:var(--muted);margin-top:2px">Soll {{ day.tss_plan }} TSS</div>
         {% endif %}
       </div>
       {% else %}
