@@ -1,20 +1,23 @@
 <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="curve" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#a78bfa" stop-opacity="0.35"/>
-      <stop offset="45%"  stop-color="#a78bfa"/>
-      <stop offset="100%" stop-color="#22c55e"/>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.35"/>
     </linearGradient>
-    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#a78bfa" stop-opacity="0.13"/>
-      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.25"/>
     </linearGradient>
-    <filter id="glow" x="-18%" y="-18%" width="136%" height="136%">
-      <feGaussianBlur stdDeviation="11" result="b"/>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="glow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="dot-glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="16" result="b"/>
+    <filter id="edge-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
@@ -22,21 +25,34 @@
   <!-- Background -->
   <rect width="512" height="512" rx="115" fill="#070b11"/>
 
-  <!-- Fill area under curve -->
-  <path d="M 68,408 C 130,402 200,348 258,282 C 314,218 378,150 448,102 L 448,430 L 68,430 Z"
-    fill="url(#fill)"/>
+  <!-- Facetten-Füllung -->
+  <polygon points="256,58 80,160 256,262" fill="url(#g1)" opacity="0.85"/>
+  <polygon points="256,58 432,160 256,262" fill="url(#g2)" opacity="0.75"/>
+  <polygon points="80,160 432,160 256,262" fill="#a78bfa" fill-opacity="0.07"/>
+  <polygon points="80,354 432,354 256,262" fill="#22c55e" fill-opacity="0.05"/>
+  <polygon points="256,454 80,354 256,262" fill="url(#g1)" opacity="0.5"/>
+  <polygon points="256,454 432,354 256,262" fill="url(#g3)" opacity="0.45"/>
 
-  <!-- Glow layer -->
-  <path d="M 68,408 C 130,402 200,348 258,282 C 314,218 378,150 448,102"
-    fill="none" stroke="url(#curve)" stroke-width="40" stroke-linecap="round"
-    filter="url(#glow)" opacity="0.6"/>
+  <!-- Innere Schliffkanten -->
+  <line x1="256" y1="58"  x2="256" y2="262" stroke="#ffffff" stroke-width="1.5" opacity="0.14"/>
+  <line x1="80"  y1="160" x2="256" y2="262" stroke="#ffffff" stroke-width="1.5" opacity="0.14"/>
+  <line x1="432" y1="160" x2="256" y2="262" stroke="#ffffff" stroke-width="1.5" opacity="0.14"/>
+  <line x1="80"  y1="354" x2="256" y2="262" stroke="#ffffff" stroke-width="1.5" opacity="0.10"/>
+  <line x1="432" y1="354" x2="256" y2="262" stroke="#ffffff" stroke-width="1.5" opacity="0.10"/>
+  <line x1="256" y1="454" x2="256" y2="262" stroke="#ffffff" stroke-width="1.5" opacity="0.10"/>
+  <line x1="80"  y1="160" x2="432" y2="160" stroke="#ffffff" stroke-width="1.5" opacity="0.09"/>
+  <line x1="80"  y1="354" x2="432" y2="354" stroke="#ffffff" stroke-width="1.5" opacity="0.07"/>
 
-  <!-- Main curve -->
-  <path d="M 68,408 C 130,402 200,348 258,282 C 314,218 378,150 448,102"
-    fill="none" stroke="url(#curve)" stroke-width="24" stroke-linecap="round"/>
+  <!-- Äußere Kontur Glow -->
+  <polygon points="256,58 432,160 432,354 256,454 80,354 80,160"
+    fill="none" stroke="#a78bfa" stroke-width="10" opacity="0.55"
+    filter="url(#edge-glow)"/>
 
-  <!-- Endpoint dot with glow -->
-  <circle cx="448" cy="102" r="32" fill="#22c55e" filter="url(#dot-glow)" opacity="0.7"/>
-  <circle cx="448" cy="102" r="22" fill="#22c55e"/>
-  <circle cx="448" cy="102" r="10" fill="#f0fff4"/>
+  <!-- Äußere Kontur scharf -->
+  <polygon points="256,58 432,160 432,354 256,454 80,354 80,160"
+    fill="none" stroke="#a78bfa" stroke-width="4" opacity="0.45"/>
+
+  <!-- Glanzpunkt oben (Highlight) -->
+  <ellipse cx="256" cy="95" rx="38" ry="16" fill="#ffffff" opacity="0.10"/>
+  <ellipse cx="248" cy="88" rx="14" ry="7"  fill="#ffffff" opacity="0.18"/>
 </svg>
