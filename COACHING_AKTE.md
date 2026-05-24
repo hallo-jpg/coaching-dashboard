@@ -1,7 +1,15 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 17. Mai 2026*
+*Letzte Aktualisierung: 25. Mai 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 25. Mai 2026 – KW21 Retro + KW22 Planung
+🟡 Mittel · TSS 361/381 (94.8%) · HRV ↘ fallend (50→44ms, −6 Pkt) · Sa-Fahrt zu intensiv (Z3: 20% statt <15% für LIT)
+→ KW22 TT-Spezifik geplant: Mo LIT-3h Outdoor (Feiertag, 90 TSS) / Di 6x4-4 Over-Under (90) / Mi Easy Run 35min / Do MIT_4x16 (95) / Fr MIT TT-Sim 1x22 (82) / Sa LIT-1h / So Easy Run 35min · ~437 TSS
+→ 3 Qualitätseinheiten: Over-Under (Di), Schwellenausdauer (Do), TT-Rennsimulation (Fr als letzte Intensität vor Taper T-14)
+→ Pfingstmontag = langer Outdoor-LIT, wichtig: <213W konsequent
 
 ---
 
