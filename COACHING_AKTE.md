@@ -1,7 +1,12 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 25. Mai 2026*
+*Letzte Aktualisierung: 26. Mai 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 26. Mai 2026 – Ad-hoc KW22
+→ Mi 27.5. Easy Run 35min gestrichen → Ruhetag/Spaziergang · TSS ~437 → ~412
 
 ---
 
