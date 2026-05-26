@@ -54,7 +54,7 @@ Pacing-Strategie: negative Split — erste 10min @99% FTP, letzte 12min auf 102�
 ## Rennevent KW24
 
 - Mi: leichtes LIT
-- Do: Aktivierun.zwo (Tag vor Tag 1)
-- Fr: 🏁 Zeitfahren Tag 1
-- Sa: 🏁 Rennen Tag 2
-- So: Erholung
+- Do: LIT oder Pause (Anreise-Vorbereitung)
+- Fr: Aktivierun.zwo (Tag vor Zeitfahren) + Anreise
+- Sa: 🏁 Zeitfahren
+- So: 🏁 Rennen
