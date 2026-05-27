@@ -750,29 +750,34 @@
     </div>
   </div>
 
-  <!-- POLARISATION (in rechter Spalte) -->
+  <!-- POLARISATION (in rechter Spalte) — 8-Wochen Donut -->
   <div class="polar-card" style="margin-bottom:0;flex:1">
-    <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · letzte 7 Tage · Rad</div>
-    {% if polar_no_data %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 7 Tagen</div>
+    <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · 8 Wochen · Rad</div>
+    {% if polar_8w.no_data %}
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 8 Wochen</div>
     {% else %}
-    <span class="pi-badge {% if polar_ok %}pi-ok{% else %}pi-warn{% endif %}">LIT: {{ polar_pi }}% · {% if polar_ok %}✅ Grüner Bereich{% else %}⚠️ Zu viel Z3 (Grauzone){% endif %}</span>
-    <div class="polar-row">
-      <span class="polar-lbl">Z0–Z2</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z12_pct }}%;background:#3a7a4a"></div></div>
-      <span class="polar-pct" style="color:var(--green)">{{ polar_z12_pct }}%</span>
+    <span class="pi-badge {% if polar_8w.ok %}pi-ok{% else %}pi-warn{% endif %}">LIT: {{ polar_8w.z12 }}% · {% if polar_8w.ok %}✅ Gut polarisiert{% else %}⚠️ Zu viel Grauzone (Z3){% endif %}</span>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
+      {{ polar_donut_svg|safe }}
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:0.68rem;color:var(--muted)">LIT</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">{{ polar_8w.z12 }}%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:0.68rem;color:var(--muted)">Grauzone</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--yellow);margin-left:auto">{{ polar_8w.z3 }}%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#a855f7;display:inline-block;flex-shrink:0"></span>
+          <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">{{ polar_8w.z47 }}%</span>
+        </div>
+        <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
+      </div>
     </div>
-    <div class="polar-row">
-      <span class="polar-lbl">Z3</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z3_pct }}%;background:#7a6a2a"></div></div>
-      <span class="polar-pct">{{ polar_z3_pct }}%</span>
-    </div>
-    <div class="polar-row">
-      <span class="polar-lbl">Z4–Z6</span>
-      <div class="polar-track"><div class="polar-fill" style="width:{{ polar_z47_pct }}%;background:#7040a0"></div></div>
-      <span class="polar-pct" style="color:var(--subtle)">{{ polar_z47_pct }}%</span>
-    </div>
-    <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15% · Seiler &amp; Kjerland 2006</div>
     {% endif %}
   </div>
 
@@ -1077,6 +1082,33 @@
   {% endif %}
 
 </div>
+
+<!-- FTP-ENTWICKLUNG -->
+{% if ftp_history.available %}
+<div class="ausblick-card" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+    <div class="card-headline">📈 FTP-Entwicklung</div>
+    <span class="kw-pill" style="margin-left:auto">{{ ftp_history.current_ftp }}W aktuell</span>
+  </div>
+  <div style="position:relative;overflow:hidden">
+    <svg width="100%" viewBox="0 0 {{ ftp_history.svg_w }} {{ ftp_history.svg_h }}" preserveAspectRatio="none" style="display:block;height:80px">
+      <defs>
+        <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="{{ ftp_history.fill_path }}" fill="url(#ftp-grad)"/>
+      <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
+      {% for pt in ftp_history.points %}
+      <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3.5" fill="#3b82f6"/>
+      <text x="{{ pt.x }}" y="{{ pt.y - 7 }}" text-anchor="middle" font-size="7.5" fill="#3b82f6" font-family="system-ui,sans-serif" font-weight="600">{{ pt.ftp }}W</text>
+      {% endfor %}
+    </svg>
+  </div>
+  <div style="font-size:0.6rem;color:var(--muted);margin-top:6px">Quelle: fortschritt.md · Punkte = gemessene FTP-Tests · Nächster Test: KW39 Sep 2026</div>
+</div>
+{% endif %}
 
 <!-- ZONEN -->
 {% if zone_data %}

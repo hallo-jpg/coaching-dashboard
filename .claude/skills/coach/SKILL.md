@@ -60,6 +60,26 @@ Falls `tss_soll` nicht vorhanden oder 0: TSS-Compliance überspringen, Gesamtnot
 | 3 | TSS < 65% ODER HRV stark fallend (>10 Punkte) | 🔴 Schwach |
 | 4 | Alle übrigen Fälle | 🟡 Mittel |
 
+### Workout Quality Score
+
+Für jede **Schlüsseleinheit** (HIT, MIT, Long Ride) aus der Vorwoche: Qualitätsbewertung für die Retro-Tabelle.
+
+**Datenbasis:** `get_recent_activities` (bereits in Schritt 0 geladen) · Felder: `icu_intensity` (IF), `perceived_exertion` (RPE 1–10)
+
+| Workout-Typ | ✅ Gut | ⚠️ Grenzwertig | ❌ Verfehlt |
+|---|---|---|---|
+| LIT / Grundlage | IF < 0.73, RPE ≤ 5 | IF 0.73–0.77 oder RPE 6 | IF ≥ 0.78 (Sweetspot-Drift) |
+| HIT / VO2max | IF ≥ 0.90, RPE ≥ 7 | IF 0.85–0.89 oder RPE 6–7 | IF < 0.85 (nicht ausbelastet) |
+| TT / Schwelle | IF 0.93–1.03, RPE 7–8 | Abweichung ±0.05 | IF < 0.90 oder > 1.05 |
+| Lauf Easy | Pace > Schwelle+60sek, RPE ≤ 4 | +30–60sek / RPE 5 | Pace < +30sek über Schwelle |
+| Lauf Qualität | Pace nahe Schwelle ±15sek, RPE 7–8 | >15sek Abweichung | deutlich verfehlt |
+
+**Ausgabe:** `✅ IF 0.71 · RPE 4` / `⚠️ IF 0.87` / `❌ IF 0.82 (LIT zu hart)` · Ruhetage: `–`
+
+**Fallback:** Kein IF verfügbar (Lauf ohne Powermeter) → nur RPE-Bewertung. Kein RPE → Spalte leer lassen (⬜).
+
+---
+
 ### Retro-Abschnitt ausgeben (im Chat) und in Datei schreiben
 
 **Format — exakt so an `planung/kw[N-1].md` anhängen:**
@@ -72,9 +92,9 @@ Falls `tss_soll` nicht vorhanden oder 0: TSS-Compliance überspringen, Gesamtnot
 **HRV-Trend:** [↗ steigend / → stabil / ↘ fallend] ([erster_wert] → [letzter_wert])
 
 ### Einheiten
-| Tag | Workout | TSS Ist | Status | Notiz |
-|---|---|---|---|---|
-[Tabelle aus der Planung — Status ✅/❌/⬜ und TSS Ist aus intervals.icu-Aktivitäten befüllen]
+| Tag | Workout | TSS Ist | Qualität | Status | Notiz |
+|---|---|---|---|---|---|
+[Tabelle aus der Planung — Status ✅/❌/⬜, TSS Ist und Qualität (IF + RPE) aus intervals.icu befüllen · Ruhetage: Qualität = –]
 
 ### Bewertung
 **Was lief gut:** [konkret aus den Aktivitätsdaten und Kontext ableiten]
@@ -185,6 +205,27 @@ Trend (7d): steigend ↑ / stabil / fallend ↓
 | 🔴 Krank-Risiko | Komplette Pause – kein LIT, kein "leichtes Training". Hinweis ausgeben. |
 | 🟡 Trainings-Ermüdung | Score-Empfehlung befolgen, 1–2 Regenerationstage einplanen |
 | 🟢 Normal | Score-Empfehlung befolgen |
+
+**HRV Pattern Recognition — Mehrtages-Frühwarner:**
+
+Zusätzlicher Check nach der Muster-Auswertung. Nutzt `hrv_avg_7d` und `hrv_baseline_30d` aus `get_readiness_score`.
+
+`hrv_deficit_pct = (hrv_baseline_30d − hrv_avg_7d) / hrv_baseline_30d × 100`
+
+**Frühwarnung ausgeben wenn** beide Bedingungen erfüllt sind:
+1. `hrv_deficit_pct > 10` — 7d-Schnitt >10% unter 30d-Basis
+2. HRV heute ≤ HRV vor 3 Tagen — kein Erholungstrend sichtbar
+
+**Output — direkt nach der Muster-Zeile:**
+```
+⚠ HRV-Muster: 7d-Schnitt [hrv_avg_7d]ms ist [hrv_deficit_pct]% unter Baseline ([hrv_baseline_30d]ms)
+→ Anhaltend unter Basis ohne Erholung — möglicher Infekt-Frühwarner (2–3 Tage vor Symptomen).
+→ Heute: kein HIT. Bei ersten Symptomen: komplette Pause.
+```
+
+Unterschied zur Standard-Erkennung: Muster-Feld vergleicht Tageswert. Pattern Recognition erkennt mehrtägige Trends — sensitiver bei beginnendem Infekt.
+
+**Fallback:** Wenn `hrv_avg_7d` oder `hrv_baseline_30d` nicht im Score-Objekt → Pattern Recognition überspringen.
 
 **Verletzungs-Sonderregel (aus `verletzung_flag`):**
 

@@ -973,6 +973,14 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     )
     polar = _calc_polarisation(polar_acts)
 
+    # 8-week polarisation for donut chart
+    polar_8w_acts = get_activities(
+        (date.today() - timedelta(56)).isoformat(),
+        date.today().isoformat()
+    )
+    polar_8w = _calc_polarisation(polar_8w_acts)
+    polar_donut_svg = _polar_donut_svg(polar_8w)
+
     # M1: Training Monotony + Strain (last 7 days)
     _daily_tss_map: dict[str, float] = {}
     for _act in polar_acts:
@@ -1038,6 +1046,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     ctl_history = get_ctl_history(weeks=26)
     sleep_history = get_sleep_history(days=30)
     tss_weeks, tss_summary = get_tss_overview_history(current_kw=kw, num_weeks=8)
+    ftp_history = get_ftp_history()
 
     return {
         "kw": kw, "kw_dates": kw_dates,
@@ -1081,6 +1090,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "sleep_history": sleep_history,
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,
+        "polar_8w": polar_8w,
+        "polar_donut_svg": polar_donut_svg,
+        "ftp_history": ftp_history,
         "monotony_val":    monotony_val,
         "monotony_strain": monotony_strain,
         "monotony_color":  monotony_color,
@@ -1104,6 +1116,120 @@ def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> st
         trend = " · Trend: ↑" if diff > 2 else " · Trend: ↓" if diff < -2 else ""
     rhr_note = " · Puls erhöht" if rhr > 55 else ""
     return f"HRV {'über' if hrv > hrv_avg else 'unter'} Schnitt{rhr_note}{trend}"
+
+def _polar_donut_svg(polar: dict, size: int = 120) -> str:
+    """Generate inline SVG donut for 8-week polarisation card."""
+    if polar.get("no_data"):
+        return ""
+    cx = cy = size // 2
+    r = size // 2 - 14
+    circ = 2 * math.pi * r
+    start = -circ * 0.25  # begin at 12 o'clock
+
+    lit_arc  = polar["z12"] / 100 * circ
+    grau_arc = polar["z3"]  / 100 * circ
+    hit_arc  = polar["z47"] / 100 * circ
+    grau_off = -(circ * 0.25 + lit_arc)
+    hit_off  = -(circ * 0.25 + lit_arc + grau_arc)
+
+    def arc(color: str, arc_len: float, offset: float) -> str:
+        return (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{color}" '
+                f'stroke-width="20" stroke-dasharray="{arc_len:.1f} {circ:.1f}" '
+                f'stroke-dashoffset="{offset:.1f}" opacity="0.75"/>')
+
+    badge_color = "#22c55e" if polar["ok"] else "#f59e0b"
+    badge_text  = "✓ Gut" if polar["ok"] else "⚠ Grauzone"
+
+    return "\n".join([
+        f'<svg viewBox="0 0 {size} {size}" width="{size}" height="{size}" style="flex-shrink:0">',
+        f'  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#1a1a1a" stroke-width="20"/>',
+        arc("#22c55e", lit_arc,  start),
+        arc("#f59e0b", grau_arc, grau_off),
+        arc("#a855f7", hit_arc,  hit_off),
+        f'  <text x="{cx}" y="{cy - 5}" text-anchor="middle" font-size="16" font-weight="700" '
+        f'fill="#e2e8f0" font-family="system-ui">{polar["z12"]}%</text>',
+        f'  <text x="{cx}" y="{cy + 9}" text-anchor="middle" font-size="8" fill="#64748b" '
+        f'font-family="system-ui">LIT 8W</text>',
+        '</svg>',
+    ])
+
+
+def get_ftp_history() -> dict:
+    """Parse FTP-Verlauf table from athlete/fortschritt.md → chart data for SVG."""
+    try:
+        text = Path("athlete/fortschritt.md").read_text(encoding="utf-8")
+    except Exception:
+        return {"available": False}
+
+    points: list[dict] = []
+    in_ftp = False
+    for line in text.split("\n"):
+        if "## FTP-Verlauf" in line:
+            in_ftp = True
+            continue
+        if in_ftp and line.startswith("## ") and "FTP-Verlauf" not in line:
+            break
+        if not in_ftp or not line.startswith("|"):
+            continue
+        if "Datum" in line or "---" in line:
+            continue
+        parts = [c.strip().strip("*") for c in line.split("|")[1:-1]]
+        if len(parts) < 2:
+            continue
+        datum, ftp_raw = parts[0].strip(), parts[1].strip()
+        m_date = re.match(r"(\d{2})\.(\d{2})\.(\d{4})", datum)
+        if not m_date:
+            continue
+        # Skip Schätzungen
+        method = parts[4].strip() if len(parts) > 4 else ""
+        if "schätzung" in method.lower() or "geschätzt" in ftp_raw.lower():
+            continue
+        m_ftp = re.match(r"(\d+)", ftp_raw)
+        if not m_ftp:
+            continue
+        d = date(int(m_date.group(3)), int(m_date.group(2)), int(m_date.group(1)))
+        points.append({"date": d, "ftp": int(m_ftp.group(1)), "label": datum})
+
+    if not points:
+        return {"available": False}
+    points.sort(key=lambda x: x["date"])
+    # Keep last entry per date (active reference wins)
+    seen: dict = {}
+    for p in points:
+        seen[p["date"]] = p
+    points = sorted(seen.values(), key=lambda x: x["date"])
+
+    ftp_vals = [p["ftp"] for p in points]
+    ftp_min = min(ftp_vals) - 12
+    ftp_max = max(ftp_vals) + 22
+    ftp_range = max(ftp_max - ftp_min, 1)
+
+    start_d  = points[0]["date"]
+    # Include 5 months future padding for next-test marker
+    future_d = date.today() + timedelta(days=155)
+    total_days = max((future_d - start_d).days, 1)
+
+    SVG_W, SVG_H = 260, 62
+    coords = []
+    for p in points:
+        x = round((p["date"] - start_d).days / total_days * SVG_W, 1)
+        y = round(SVG_H - ((p["ftp"] - ftp_min) / ftp_range) * SVG_H, 1)
+        coords.append((x, y, p))
+
+    path_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y, _ in coords[1:]]
+    line_path  = " ".join(path_parts)
+    fill_path  = line_path + f" L{coords[-1][0]},{SVG_H} L0,{SVG_H} Z"
+
+    return {
+        "available":   True,
+        "path":        line_path,
+        "fill_path":   fill_path,
+        "points":      [{"x": x, "y": y, "ftp": p["ftp"], "label": p["label"]} for x, y, p in coords],
+        "current_ftp": ftp_vals[-1],
+        "svg_w":       SVG_W,
+        "svg_h":       SVG_H,
+    }
+
 
 def _calc_polarisation(activities: list) -> dict:
     """Zone split from ride activities via detail endpoint icu_zone_times field."""
