@@ -157,7 +157,7 @@ Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.m
 1. `get_readiness_score` → Score 0–100, Ampel-Empfehlung, Komponenten (HRV, Schlaf, TSB, Ruhepuls)
 2. `get_weekly_review(week_start: Montag der Vorwoche)` → TSS Ist vs. Soll, Zonen, HRV-Verlauf, **Polarisations-Monitor**
 3. `get_current_fitness` → CTL, ATL, TSB Verlauf (wenn mehr Kontext nötig)
-4. `get_recent_activities(days: 28)` → Lade Aktivitäten der letzten 4 Wochen; extrahiere 5min/10min/20min Power-Bests (höchste Werte über alle Aktivitäten); vergleiche mit Referenzwerten in `athlete/fortschritt.md` (Abschnitt "Power-PR-Referenz") → PR-Flag setzen wenn >2% über Referenz. **RPE auswerten:** `rpe` (1–10 Skala aus intervals.icu `perceived_exertion`) pro Aktivität auslesen → bei HIT-Einheiten: RPE ≥ 8 bei <90% Zielwatt = Warnsignal; RPE ≤ 4 bei LIT = gut; RPE-Trend über die Woche beachten (steigend = akkumulierte Ermüdung)
+4. `get_recent_activities(days: 28)` → Lade Aktivitäten der letzten 4 Wochen; extrahiere 3min/10min/20min Power-Bests (höchste Werte über alle Aktivitäten); vergleiche mit Referenzwerten in `athlete/fortschritt.md` (Abschnitt "Power-PR-Referenz") → PR-Flag setzen wenn >2% über Referenz. **RPE auswerten:** `rpe` (1–10 Skala aus intervals.icu `perceived_exertion`) pro Aktivität auslesen → bei HIT-Einheiten: RPE ≥ 8 bei <90% Zielwatt = Warnsignal; RPE ≤ 4 bei LIT = gut; RPE-Trend über die Woche beachten (steigend = akkumulierte Ermüdung)
 
 **Readiness-Score Interpretationslogik:**
 | Score | Ampel | Konsequenz |
@@ -296,19 +296,25 @@ Soll ich die Testwoche (KW21) jetzt vorplanen?
 
 **Logik:**
 1. Lade aktuelle Referenzwerte aus `athlete/fortschritt.md` → Abschnitt "Power-PR-Referenz"
-2. Für jede Dauer (5min, 10min, 20min):
+2. Für jede Dauer (3min, 10min, 20min):
    - `pr_neu` = höchster Wert aus den letzten 4 Wochen (aus `get_recent_activities`)
    - `pr_ref` = gespeicherter Referenzwert in `fortschritt.md`
    - Falls `pr_ref == "–"` (noch nicht erfasst): `pr_neu` als ersten Wert eintragen, kein Hinweis ausgeben
    - Falls `pr_neu > pr_ref × 1.02` (>2% Steigerung): PR-Flag setzen
-   - **Jede Dauer wird unabhängig geprüft** — ein PR für 10min löst einen eigenen Hinweis aus, unabhängig von 5min/20min
+   - **Jede Dauer wird unabhängig geprüft** — ein PR für 10min löst einen eigenen Hinweis aus, unabhängig von 3min/20min
 
-**Bei mehreren PR-Flags gleichzeitig:** Nur einen Hinweis ausgeben — Priorität: 10min → 20min → 5min. Alle PR-Werte trotzdem in `athlete/fortschritt.md` eintragen.
+**Bei mehreren PR-Flags gleichzeitig:** Nur einen Hinweis ausgeben — Priorität: 10min → 20min → 3min. Alle PR-Werte trotzdem in `athlete/fortschritt.md` eintragen.
+
+**FTP-Proxy je Dauer (unterschiedliche Formeln!):**
+- **3min-PR**: Kein FTP-Proxy — 3min liegt im anaeroben Bereich. Nur W'-Signal: Anaerobe Kapazität verbessert.
+- **10min-PR**: `FTP ≈ pr_neu × 0.90` (Sentiero 3+10min Protokoll)
+- **20min-PR**: `FTP ≈ pr_neu × 0.95` (Coggan 20min Standard)
 
 **Output bei PR-Flag (in Schritt 4, nach 🎯 Standort, nach Check A falls vorhanden):**
 
+Für 10min-PR:
 ```
-💪 Neuer [Xmin]-Power-PR erkannt: [pr_neu]W (vorher: [pr_ref]W, +[delta]%)
+💪 Neuer 10min-Power-PR erkannt: [pr_neu]W (vorher: [pr_ref]W, +[delta]%)
 Das deutet auf eine FTP von ~[pr_neu × 0.90 gerundet auf 1W]W hin.
 Aktuell gespeichert: [aktuelle FTP]W.
 
@@ -318,11 +324,30 @@ Soll ich die FTP auf [pr_neu × 0.90]W aktualisieren?
 → [warten] → PR wird gespeichert, kein erneuter Hinweis
 ```
 
-**Nach Stefan's Antwort:**
+Für 20min-PR:
+```
+💪 Neuer 20min-Power-PR erkannt: [pr_neu]W (vorher: [pr_ref]W, +[delta]%)
+Das deutet auf eine FTP von ~[pr_neu × 0.95 gerundet auf 1W]W hin.
+Aktuell gespeichert: [aktuelle FTP]W.
+
+Soll ich die FTP auf [pr_neu × 0.95]W aktualisieren?
+→ [ja] → FTP + Zonen werden aktualisiert (Ausgabe wie bei Post-Test)
+→ [nein] → PR wird gespeichert, FTP bleibt
+→ [warten] → PR wird gespeichert, kein erneuter Hinweis
+```
+
+Für 3min-PR:
+```
+💪 Neuer 3min-Power-PR erkannt: [pr_neu]W (vorher: [pr_ref]W, +[delta]%)
+3min liegt im anaeroben Bereich — kein direkter FTP-Proxy, aber Signal für verbesserte W'.
+PR wird gespeichert. Kein FTP-Update-Vorschlag.
+```
+
+**Nach Stefan's Antwort (nur für 10min und 20min):**
 
 | Antwort | Aktion |
 |---|---|
-| ja | FTP auf `pr_neu × 0.90` setzen. Zonen neu berechnen. `athlete/profil.md` + `athlete/fortschritt.md` aktualisieren (PR-Wert + FTP). COACHING_AKTE-Eintrag. |
+| ja | FTP auf `pr_neu × 0.90` (10min) bzw. `pr_neu × 0.95` (20min) setzen. Zonen neu berechnen. `athlete/profil.md` + `athlete/fortschritt.md` aktualisieren (PR-Wert + FTP). COACHING_AKTE-Eintrag. |
 | nein | Nur PR-Wert in `athlete/fortschritt.md` aktualisieren. FTP unverändert. COACHING_AKTE-Eintrag: `→ [Xmin]-PR [W] erfasst, FTP-Update abgelehnt` |
 | warten | Nur PR-Wert in `athlete/fortschritt.md` aktualisieren. FTP unverändert. Kein erneuter Hinweis beim nächsten /coach (Referenzwert ist jetzt auf pr_neu — nächster PR braucht wieder >2% darüber). |
 

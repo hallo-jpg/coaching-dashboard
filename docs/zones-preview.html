@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zonen-Kacheln Vorschau</title>
+<style>
+  :root {
+    --bg: #060a0c;
+    --surface: #131e26;
+    --surface2: #1a2a35;
+    --border: #1c2830;
+    --accent: #94a3b8;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --purple: #7c6af7;
+    --teal: #00c4b4;
+    --text: #e8f4f8;
+    --muted: #4a6270;
+    --subtle: #2a3840;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  h2 {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .ausblick-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .card-headline {
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+    font-size: 0.72rem;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+  .kw-pill {
+    background: rgba(148,163,184,0.1);
+    color: var(--accent);
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 20px;
+  }
+  .ausblick-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.72rem;
+  }
+  .ausblick-table th {
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 0 8px 0;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .ausblick-table td {
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(28,40,48,0.5);
+    vertical-align: middle;
+  }
+  .ausblick-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Zone dot colors */
+  .z-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 2px;
+  }
+  .z0 { background: #64748b; }
+  .z1 { background: #38bdf8; }
+  .z2 { background: #2dd4bf; }
+  .z3 { background: #facc15; }
+  .z4 { background: #fb923c; }
+  .z5 { background: #f87171; }
+  .z6 { background: #dc2626; }
+
+  /* For Lauf: only 4 zones */
+  .lz1 { background: #38bdf8; }
+  .lz2 { background: #2dd4bf; }
+  .lz3 { background: #fb923c; }
+  .lz4 { background: #f87171; }
+
+  .zone-label {
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--text);
+  }
+  .zone-label-muted {
+    font-weight: 600;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .val-normal { color: var(--text); font-size: 0.7rem; font-weight: 600; }
+  .val-warm   { color: var(--yellow); font-size: 0.7rem; font-weight: 600; }
+  .val-hot    { color: var(--red); font-size: 0.7rem; font-weight: 600; }
+  .val-muted  { color: var(--muted); font-size: 0.65rem; }
+
+  .card-footer {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 0.6rem;
+    color: var(--muted);
+  }
+
+  /* Context label */
+  .context-note {
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+
+  @media (max-width: 600px) {
+    .bottom-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h2>Vorschau – Neue Zonen-Kacheln</h2>
+<div class="context-note">
+  Diese zwei Kacheln kommen <strong>vor</strong> den bestehenden Bestwerte-Kacheln. Alle Werte sind statisch aus <code>athlete/profil.md</code> — kein API-Abruf nötig.
+</div>
+
+<div class="bottom-grid">
+
+  <!-- Kachel 1: Rad Zonen Sentiero -->
+  <div class="ausblick-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <div class="card-headline">🚴 Trainingszonen Rad</div>
+      <span class="kw-pill" style="margin-left:auto">FTP 305W</span>
+    </div>
+    <table class="ausblick-table">
+      <thead>
+        <tr>
+          <th style="width:18px"></th>
+          <th>Zone</th>
+          <th style="text-align:right">Watt</th>
+          <th style="text-align:right">% FTP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="z-dot z0"></span></td>
+          <td><span class="zone-label-muted">Z0 Recovery</span></td>
+          <td style="text-align:right" class="val-muted">0–159W</td>
+          <td style="text-align:right" class="val-muted">&lt;52%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot z1"></span></td>
+          <td><span class="zone-label">Z1 Base</span></td>
+          <td style="text-align:right" class="val-normal">160–188W</td>
+          <td style="text-align:right" class="val-muted">52–62%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot z2"></span></td>
+          <td><span class="zone-label">Z2 FatMax</span></td>
+          <td style="text-align:right" class="val-normal">189–212W</td>
+          <td style="text-align:right" class="val-muted">62–70%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot z3"></span></td>
+          <td><span class="zone-label">Z3 Tempo</span></td>
+          <td style="text-align:right" class="val-warm">213–283W</td>
+          <td style="text-align:right" class="val-muted">70–93%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot z4"></span></td>
+          <td><span class="zone-label">Z4 FTP</span></td>
+          <td style="text-align:right" class="val-warm">283–314W</td>
+          <td style="text-align:right" class="val-muted">93–103%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot z5"></span></td>
+          <td><span class="zone-label">Z5 VO2max</span></td>
+          <td style="text-align:right" class="val-hot">315–422W</td>
+          <td style="text-align:right" class="val-muted">103–138%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot z6"></span></td>
+          <td><span class="zone-label">Z6 Anaerob</span></td>
+          <td style="text-align:right" class="val-hot">423W+</td>
+          <td style="text-align:right" class="val-muted">&gt;138%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">Sentiero metabolisches Modell · FTP = 10min × 0,90</div>
+  </div>
+
+  <!-- Kachel 2: Lauf Zonen -->
+  <div class="ausblick-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <div class="card-headline">🏃 Trainingszonen Lauf</div>
+      <span class="kw-pill" style="margin-left:auto">6:03/km</span>
+    </div>
+    <table class="ausblick-table">
+      <thead>
+        <tr>
+          <th style="width:18px"></th>
+          <th>Zone</th>
+          <th style="text-align:right">Pace</th>
+          <th style="text-align:right">HF%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="z-dot lz1"></span></td>
+          <td><span class="zone-label">Z1 Easy</span></td>
+          <td style="text-align:right" class="val-normal">7:00–7:45</td>
+          <td style="text-align:right" class="val-muted">60–72%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot lz2"></span></td>
+          <td><span class="zone-label">Z2 Aerob</span></td>
+          <td style="text-align:right" class="val-normal">6:30–7:00</td>
+          <td style="text-align:right" class="val-muted">72–82%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot lz3"></span></td>
+          <td><span class="zone-label">Z3 Schwelle</span></td>
+          <td style="text-align:right" class="val-warm">5:45–6:15</td>
+          <td style="text-align:right" class="val-muted">82–92%</td>
+        </tr>
+        <tr>
+          <td><span class="z-dot lz4"></span></td>
+          <td><span class="zone-label">Z4 VO2max</span></td>
+          <td style="text-align:right" class="val-hot">5:00–5:45</td>
+          <td style="text-align:right" class="val-muted">92–100%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">Schwelle: 6:03/km · LTHR: 179 bpm · HFmax: 205 bpm</div>
+  </div>
+
+</div>
+
+<!-- Hinweis: darunter folgen die bestehenden Bestwerte-Kacheln -->
+<div style="text-align:center;font-size:0.65rem;color:var(--muted);margin-top:4px;padding:10px;border:1px dashed var(--border);border-radius:8px;">
+  ↓ bestehende Kacheln: 🚴 Power Bestwerte · 🏃 Lauf Bestwerte ↓
+</div>
+
+</body>
+</html>

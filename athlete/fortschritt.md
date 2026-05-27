@@ -42,11 +42,11 @@
 
 *Referenzwerte für PR-Erkennung im Coach-Skill. Wird automatisch aktualisiert wenn ein neuer PR erkannt und bestätigt wird.*
 
-| Dauer | Bestwert (W) | Datum | FTP-Proxy (×0,90) | Notiz |
+| Dauer | Bestwert (W) | Datum | FTP-Proxy | Notiz |
 |---|---|---|---|---|
-| 5min | – | – | – | Nicht in Power-Curve (Dashboard trackt 5s, nicht 5min) |
-| 10min | 352W | 04.04.2026 | 317W | Feldtest KW14 (Coggan) |
-| 20min | 341W | 21.04.2025 | 307W | All-Time aus intervals.icu Power-Kurve · Saison 2025 |
+| 3min | 461W | 04.04.2026 | – (anaerob, kein FTP-Proxy) | Feldtest KW14 · W'-Signal |
+| 10min | 352W | 04.04.2026 | ×0,90 → 317W | Feldtest KW14 (Sentiero-Protokoll) |
+| 20min | 341W | 21.04.2025 | ×0,95 → 324W | All-Time aus intervals.icu Power-Kurve · Saison 2025 |
 
 **Schwellenwert für Ankündigung:** >2% über Referenzwert → Coach meldet PR und fragt ob FTP angepasst werden soll.
 
@@ -62,6 +62,7 @@
 
 | Datum | CP [W] | W' [kJ] | 3min-Avg [W] | 10min-Avg [W] | FTP [W] |
 |---|---|---|---|---|---|
-| – | – | – | – | – | – |
+| 04.04.2026 | **305W** | **28,1 kJ** | 461W | 352W | 305W (Sentiero) |
 
-*Erster Eintrag nach nächstem FTP-Test in KW21.*
+*CP = (352×600 − 461×180) / 420 = 305W · W' = (461−305) × 180 = 28.080 J*
+*Nächster Eintrag nach KW39 Herbst-Test.*
