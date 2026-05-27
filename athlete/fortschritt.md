@@ -44,9 +44,9 @@
 
 | Dauer | Bestwert (W) | Datum | FTP-Proxy (×0,90) | Notiz |
 |---|---|---|---|---|
-| 5min | – | – | – | Noch nicht erfasst |
+| 5min | – | – | – | Nicht in Power-Curve (Dashboard trackt 5s, nicht 5min) |
 | 10min | 352W | 04.04.2026 | 317W | Feldtest KW14 (Coggan) |
-| 20min | – | – | – | Noch nicht erfasst |
+| 20min | 341W | 21.04.2025 | 307W | All-Time aus intervals.icu Power-Kurve · Saison 2025 |
 
 **Schwellenwert für Ankündigung:** >2% über Referenzwert → Coach meldet PR und fragt ob FTP angepasst werden soll.
 
