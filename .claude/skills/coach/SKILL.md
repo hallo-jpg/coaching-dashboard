@@ -158,6 +158,8 @@ Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.m
 2. `get_weekly_review(week_start: Montag der Vorwoche)` → TSS Ist vs. Soll, Zonen, HRV-Verlauf, **Polarisations-Monitor**
 3. `get_current_fitness` → CTL, ATL, TSB Verlauf (wenn mehr Kontext nötig)
 4. `get_recent_activities(days: 28)` → Lade Aktivitäten der letzten 4 Wochen; extrahiere 3min/10min/20min Power-Bests (höchste Werte über alle Aktivitäten); vergleiche mit Referenzwerten in `athlete/fortschritt.md` (Abschnitt "Power-PR-Referenz") → PR-Flag setzen wenn >2% über Referenz. **RPE auswerten:** `rpe` (1–10 Skala aus intervals.icu `perceived_exertion`) pro Aktivität auslesen → bei HIT-Einheiten: RPE ≥ 8 bei <90% Zielwatt = Warnsignal; RPE ≤ 4 bei LIT = gut; RPE-Trend über die Woche beachten (steigend = akkumulierte Ermüdung)
+5. `get_power_curve` → All-Time Rad-Bestwerte (3min/10min/20min) für Check B Vergleich gegen all-time Referenz in `fortschritt.md`
+6. `get_pace_curve` → All-Time Lauf-Bestwerte (1,5km/5km/10km) für Check C Teil 2 Vergleich gegen `fortschritt.md` Lauf-PR-Referenz
 
 **Readiness-Score Interpretationslogik:**
 | Score | Ampel | Konsequenz |
@@ -357,9 +359,13 @@ PR wird gespeichert. Kein FTP-Update-Vorschlag.
 
 ---
 
-### Check C: Lauf-Schwellenpace-Erkennung
+### Check C: Lauf-PR-Erkennung (Schwellenpace + Distanz)
 
 **Wann prüfen:** Bei jeder Wochenplanung.
+
+---
+
+#### Teil 1: Schwellenpace-Erkennung
 
 **Logik:**
 1. Filtere aus den `get_recent_activities`-Daten (Schritt 0) alle Lauf-Aktivitäten der letzten 4 Wochen; extrahiere die schnellste erfasste Pace über ~10km Distanz als `pr_pace_neu` (in min:sec/km)
@@ -392,7 +398,7 @@ Schwellenpace aktualisieren?
 - Z3 Schwelle: S − 18 bis S + 12 sek/km  (5:45–6:15 bei S=363sek)
 - Z4 VO2max:   S − 63 bis S − 18 sek/km  (5:00–5:45 bei S=363sek)
 
-**Nach Stefan's Antwort:**
+**Nach Stefan's Antwort (Schwellenpace):**
 
 | Antwort | Aktion |
 |---|---|
@@ -400,7 +406,37 @@ Schwellenpace aktualisieren?
 | nein | Keine Änderung. COACHING_AKTE: `→ Lauf-Schwellenpace [Pace] erkannt, Update abgelehnt` |
 | warten | Keine Änderung. Pace als neuen Referenzwert in profil.md vermerken (kein erneuter Hinweis). |
 
-**Fallback wenn keine Lauf-Aktivitäten in den letzten 4 Wochen:** Check C überspringen, kein Output.
+---
+
+#### Teil 2: Distanz-PR-Erkennung
+
+**Logik:**
+1. Rufe `get_pace_curve` auf → liefert all-time Bestwerte für 1,5km / 5km / 10km
+2. Lade Referenzwerte aus `athlete/fortschritt.md` → Abschnitt "Lauf-PR-Referenz"
+3. Für jede Distanz: Vergleiche `pr_neu_secs` (aus get_pace_curve) mit `pr_ref_secs` (aus fortschritt.md)
+   - Verbesserung = `pr_neu_secs < pr_ref_secs × 0.98` (>2% schneller)
+   - PR-Flag setzen wenn verbessert
+4. Jede Distanz wird unabhängig geprüft. Priorität bei mehreren: 5km → 10km → 1,5km
+
+**Output bei PR-Flag (nach Schwellenpace-Output, falls vorhanden):**
+
+```
+🏃 Neuer [X]km-Lauf-PR erkannt: [neue Zeit] / [neue Pace]/km (vorher: [alte Zeit], +[delta]%)
+
+PR speichern?
+→ [ja] → Wert in athlete/fortschritt.md Lauf-PR-Referenz aktualisiert
+→ [nein] → Keine Änderung
+```
+
+**Nach Stefan's Antwort (Distanz-PR):**
+
+| Antwort | Aktion |
+|---|---|
+| ja | Distanz-Zeile in `athlete/fortschritt.md` Lauf-PR-Referenz aktualisieren. COACHING_AKTE-Eintrag: `→ [X]km-PR: [Zeit] ([Datum])` |
+| nein | Keine Änderung. |
+
+**Fallback wenn keine Lauf-Aktivitäten in den letzten 4 Wochen:** Check C vollständig überspringen, kein Output.
+**Fallback wenn get_pace_curve fehlschlägt:** Nur Teil 1 ausführen, Teil 2 überspringen.
 
 ---
 

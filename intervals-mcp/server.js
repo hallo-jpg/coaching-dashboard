@@ -953,6 +953,97 @@ server.tool(
   }
 );
 
+// ── Tool: Power-Kurve All-Time Bestwerte ─────────────────────
+server.tool(
+  "get_power_curve",
+  "All-Time Power-Bestwerte für Rad: 3min, 10min, 20min. Für PR-Erkennung im Coach-Skill (Check B). Liefert Watt + Datum je Dauer.",
+  {},
+  async () => {
+    const data = await apiFetch("/power-curves?type=Ride&curves=all");
+    const entries = data.list ?? data;
+    const curve =
+      entries.find(c => c.id === "all") ??
+      entries.find(c => c.id === "1y") ??
+      entries[0];
+    if (!curve) return { content: [{ type: "text", text: "[]" }] };
+
+    const secs  = curve.secs  ?? [];
+    const watts = curve.watts ?? [];
+    const wkg   = curve.watts_per_kg ?? [];
+    const dates = curve.date ?? [];
+
+    const targets = [
+      { s: 180,  label: "3min"  },
+      { s: 600,  label: "10min" },
+      { s: 1200, label: "20min" },
+    ];
+
+    const result = targets.map(({ s, label }) => {
+      const idx = secs.indexOf(s);
+      if (idx === -1) return { label, watts: null, wkg: null, datum: null };
+      return {
+        label,
+        watts: watts[idx] ?? null,
+        wkg:   wkg[idx] != null ? Math.round(wkg[idx] * 100) / 100 : null,
+        datum: dates[idx] ?? null,
+      };
+    });
+
+    return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+  }
+);
+
+// ── Tool: Pace-Kurve All-Time Lauf-Bestwerte ─────────────────
+server.tool(
+  "get_pace_curve",
+  "All-Time Lauf-Bestwerte für 1,5km, 5km und 10km. Für Distanz-PR-Erkennung im Coach-Skill (Check C). Liefert Bestzeit in Sekunden + Pace je Distanz.",
+  {},
+  async () => {
+    const DISTANCES = [1500, 5000, 10000];
+    const distParam = DISTANCES.join(",");
+    const data = await apiFetch(`/pace-curves?type=Run&curves=all&distances=${distParam}`);
+    const curves = data.list ?? (Array.isArray(data) ? data : []);
+    const curve =
+      curves.find(c => c.id === "all") ??
+      curves.find(c => c.id === "1y") ??
+      curves[0];
+    if (!curve) return { content: [{ type: "text", text: "[]" }] };
+
+    const distList = curve.distance ?? curve.distances ?? curve.m ?? [];
+    const secsList = curve.values   ?? curve.secs ?? [];
+    const dates    = curve.date ?? [];
+
+    const targets = [
+      { m: 1500,  label: "1,5km" },
+      { m: 5000,  label: "5km"   },
+      { m: 10000, label: "10km"  },
+    ];
+
+    const result = targets.map(({ m, label }) => {
+      const idx = distList.indexOf(m);
+      if (idx === -1) return { label, zeit_secs: null, pace_min_km: null, datum: null };
+      const s = secsList[idx];
+      if (s == null) return { label, zeit_secs: null, pace_min_km: null, datum: null };
+      const paceSecs = s / (m / 1000);
+      const pm = Math.floor(paceSecs / 60);
+      const ps = String(Math.round(paceSecs % 60)).padStart(2, "0");
+      const hh = Math.floor(s / 3600);
+      const mm = String(Math.floor((s % 3600) / 60)).padStart(2, "0");
+      const ss = String(s % 60).padStart(2, "0");
+      const zeit = hh > 0 ? `${hh}:${mm}:${ss}` : `${Math.floor(s / 60)}:${ss}`;
+      return {
+        label,
+        zeit_secs:   s,
+        zeit:        zeit,
+        pace_min_km: `${pm}:${ps}/km`,
+        datum:       dates[idx] ?? null,
+      };
+    });
+
+    return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+  }
+);
+
 // ── Start ────────────────────────────────────────────────────
 const transport = new StdioServerTransport();
 await server.connect(transport);

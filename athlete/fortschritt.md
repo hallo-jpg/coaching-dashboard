@@ -38,7 +38,7 @@
 
 ---
 
-## Power-PR-Referenz (5/10/20min)
+## Power-PR-Referenz (3/10/20min)
 
 *Referenzwerte für PR-Erkennung im Coach-Skill. Wird automatisch aktualisiert wenn ein neuer PR erkannt und bestätigt wird.*
 
@@ -54,6 +54,23 @@
 - Bei "ja" (FTP übernehmen): Bestwert + FTP in `athlete/profil.md` aktualisiert
 - Bei "nein": Bestwert wird trotzdem hier aktualisiert, FTP bleibt
 - Bei "warten": Bestwert wird hier aktualisiert → kein erneuter Hinweis beim nächsten /coach
+
+---
+
+## Lauf-PR-Referenz (1,5km / 5km / 10km)
+
+*Referenzwerte für Distanz-PR-Erkennung im Coach-Skill (Check C). Quelle: intervals.icu Pace-Kurve (All-Time).*
+*Schwellenwert: >2% schneller → Coach meldet PR.*
+
+| Distanz | Bestzeit | Pace | Datum | Notiz |
+|---|---|---|---|---|
+| 1,5 km | 8:10 | 5:27/km | 22.02.2026 | All-Time aus intervals.icu |
+| 5 km | 30:46 | 6:09/km | 22.02.2026 | All-Time aus intervals.icu |
+| 10 km | 1:11:28 | 7:09/km | 18.03.2026 | All-Time aus intervals.icu |
+
+**Kontext:** 5km-Pace 6:09/km liegt über der Schwellenpace (6:03/km) — typisch für Trainingsläufe ohne Wettkampf-Effort. Echtes 5km-Rennen würde deutlich schneller sein.
+
+---
 
 ## CP/W'-Verlauf
 
