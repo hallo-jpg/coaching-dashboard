@@ -40,10 +40,10 @@
 
 | Datei | Dauer | TSS ca. | Einsatz-Phase |
 |---|---|---|---|
-| MIT_4x16.zwo | 2:00h | 95 | KW22 – TT-Spezifik Haupteinheit |
-| MIT_TT-Sim_1x22.zwo 🤖 | 1:13h | 82 | KW22 – Rennsimulation Oberjochpass |
-| 6x4-4_Over-Under.zwo | 1:35h | 90 | KW22 – Laktattoleranz + TT |
-| 3x30s_SIT_3x8min_SwSp_2xKA.zwo | 1:02h | 65 | KW18+ – Sprint+Schwelle+Kraft |
+| MIT_4x16.zwo | 2:00h | 155 | KW22 – TT-Spezifik Haupteinheit |
+| MIT_TT-Sim_1x22.zwo 🤖 | 1:13h | 75 | KW22 – Rennsimulation Oberjochpass |
+| 6x4-4_Over-Under.zwo | 1:35h | 120 | KW22 – Laktattoleranz + TT |
+| 3x30s_SIT_3x8min_SwSp_2xKA.zwo | 1:02h | 76 | KW18+ – Sprint+Schwelle+Kraft |
 
 ---
 
@@ -68,13 +68,13 @@
 
 | Datei | Dauer | TSS ca. | Einsatz-Phase |
 |---|---|---|---|
-| HIT-HIT_EB_4x4.zwo | 1:30h | 88 | KW18 – HIT Einstieg |
-| HIT-HIT_EB_4x6.zwo | 1:30h | 92 | KW18–19 – Volumen aufbauen |
-| HIT-HIT_EB_5x3.zwo | 2:00h | 90 | KW19 – kurze intensive Blöcke |
-| HIT-HIT_EB_6x3.zwo | 1:30h | 88 | KW19–20 – Dichte erhöhen |
-| HIT-HIT_EB_7x2.zwo | 1:45h | 95 | KW20–21 – glykolytische Kapazität |
-| HIT-HIT_EB_4x6_3x3.zwo | 2:00h | 105 | KW20–21 – fortgeschrittenes HIT |
-| HIT_EB_8x1_Glykolyse_Aktivierung.zwo | 1:45h | 85 | KW21 – Glykolyse-Aktivierung |
+| HIT-HIT_EB_4x4.zwo | 1:30h | 93 | KW18 – HIT Einstieg |
+| HIT-HIT_EB_4x6.zwo | 1:30h | 104 | KW18–19 – Volumen aufbauen |
+| HIT-HIT_EB_5x3.zwo | 2:00h | 121 | KW19 – kurze intensive Blöcke |
+| HIT-HIT_EB_6x3.zwo | 1:30h | 104 | KW19–20 – Dichte erhöhen |
+| HIT-HIT_EB_7x2.zwo | 1:45h | 111 | KW20–21 – glykolytische Kapazität |
+| HIT-HIT_EB_4x6_3x3.zwo | 2:00h | 147 | KW20–21 – fortgeschrittenes HIT |
+| HIT_EB_8x1_Glykolyse_Aktivierung.zwo | 1:45h | 96 | KW21 – Glykolyse-Aktivierung |
 
 ---
 
@@ -82,9 +82,9 @@
 
 | Datei | Dauer | TSS ca. | Einsatz-Phase |
 |---|---|---|---|
-| HIT-HITdec_2x3x5.zwo | 2:00h | 120 | KW21 – langer HITdec-Block |
+| HIT-HITdec_2x3x5.zwo | 2:00h | 131 | KW21 – langer HITdec-Block |
 | HIT-HITdec_4x4.zwo | 1:30h | 100 | KW20+ – Laktatshuttle schulen |
-| HIT-HITdec_5x3.zwo | 1:30h | 105 | KW21 – HITdec Progression |
+| HIT-HITdec_5x3.zwo | 1:30h | 95 | KW21 – HITdec Progression |
 
 ---
 
@@ -196,6 +196,8 @@ Nicht in intervals.icu, sondern als Notiz / Reminder:
 | KW26 Rennwoche Rosenheimer | Mo-Mi: 1× Easy 25min; Do-So: kein Laufen |
 
 ---
+
+> **Hinweis:** TSS-Werte sind Indoor-Trainer-Schätzungen (NP-Formel). Outdoor-Ausführung liegt typischerweise 10–20% höher. Werte sind FTP-unabhängig (`.zwo` nutzt %FTP).
 
 ## TSS-Richtwerte pro Phase
 
