@@ -1116,7 +1116,8 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "pulse_pct": pulse_pct, "pulse_val": f"{round(rhr)} bpm", "pulse_color": bar_color(pulse_pct),
         "sparkline": sparkline,
         "polar_z12_pct": polar["z12"], "polar_z3_pct": polar["z3"],
-        "polar_z47_pct": polar["z47"], "polar_pi": polar["pi"], "polar_ok": polar["ok"],
+        "polar_z5_pct": polar["z5"], "polar_z67_pct": polar["z67"],
+        "polar_pi": polar["pi"], "polar_ok": polar["ok"],
         "polar_no_data": polar["no_data"],
         "biometrics_pending": biometrics_pending,
         "outlook": outlook,
@@ -1166,23 +1167,23 @@ def _polar_donut_svg(polar: dict, size: int = 120) -> str:
 
     lit_arc  = polar["z12"] / 100 * circ
     grau_arc = polar["z3"]  / 100 * circ
-    hit_arc  = polar["z47"] / 100 * circ
+    mit_arc  = polar["z5"]  / 100 * circ
+    hit_arc  = polar["z67"] / 100 * circ
     grau_off = -(circ * 0.25 + lit_arc)
-    hit_off  = -(circ * 0.25 + lit_arc + grau_arc)
+    mit_off  = -(circ * 0.25 + lit_arc + grau_arc)
+    hit_off  = -(circ * 0.25 + lit_arc + grau_arc + mit_arc)
 
     def arc(color: str, arc_len: float, offset: float) -> str:
         return (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{color}" '
                 f'stroke-width="20" stroke-dasharray="{arc_len:.1f} {circ:.1f}" '
                 f'stroke-dashoffset="{offset:.1f}" opacity="0.75"/>')
 
-    badge_color = "#22c55e" if polar["ok"] else "#f59e0b"
-    badge_text  = "✓ Gut" if polar["ok"] else "⚠ Grauzone"
-
     return "\n".join([
         f'<svg viewBox="0 0 {size} {size}" width="{size}" height="{size}" style="flex-shrink:0">',
         f'  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#1a1a1a" stroke-width="20"/>',
         arc("#22c55e", lit_arc,  start),
         arc("#f59e0b", grau_arc, grau_off),
+        arc("#3b82f6", mit_arc,  mit_off),
         arc("#a855f7", hit_arc,  hit_off),
         f'  <text x="{cx}" y="{cy - 5}" text-anchor="middle" font-size="16" font-weight="700" '
         f'fill="#e2e8f0" font-family="system-ui">{polar["z12"]}%</text>',
@@ -1274,7 +1275,7 @@ def _calc_polarisation(activities: list) -> dict:
     rides = [a for a in activities
              if a.get("type") in ("Ride", "VirtualRide", "GravelRide")]
     if not rides:
-        return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
+        return {"z12": 0, "z3": 0, "z5": 0, "z67": 0, "pi": 0, "ok": True, "no_data": True}
     totals = [0] * 8
     for r in rides:
         act_id = r.get("id", "")
@@ -1294,11 +1295,12 @@ def _calc_polarisation(activities: list) -> dict:
             continue
     total = sum(totals[1:])
     if total == 0:
-        return {"z12": 0, "z3": 0, "z47": 0, "pi": 0, "ok": True, "no_data": True}
-    z123 = round((totals[1] + totals[2] + totals[3]) / total * 100)  # LIT: icu Z1+Z2+Z3 = Sentiero Z0+Z1+Z2
-    z4   = round(totals[4] / total * 100)                             # Grauzone: icu Z4 = Sentiero Z3
-    z567 = max(0, 100 - z123 - z4)                                   # HIT: icu Z5+Z6+Z7 = Sentiero Z4+Z5+Z6
-    return {"z12": z123, "z3": z4, "z47": z567, "pi": z123, "ok": z4 < 15, "no_data": False}
+        return {"z12": 0, "z3": 0, "z5": 0, "z67": 0, "pi": 0, "ok": True, "no_data": True}
+    z123 = round((totals[1] + totals[2] + totals[3]) / total * 100)  # LIT:      icu Z1+Z2+Z3 = Sentiero Z0–Z2
+    z4   = round(totals[4] / total * 100)                             # Grauzone: icu Z4       = Sentiero Z3
+    z5   = round(totals[5] / total * 100)                             # MIT:      icu Z5       = Sentiero Z4 (Schwelle)
+    z67  = max(0, 100 - z123 - z4 - z5)                              # HIT:      icu Z6+Z7    = Sentiero Z5+Z6 (VO2max+)
+    return {"z12": z123, "z3": z4, "z5": z5, "z67": z67, "pi": z123, "ok": z4 < 15, "no_data": False}
 
 def get_ctl_history(weeks: int = 26) -> dict:
     """6-month CTL line for SVG. Returns path strings + current CTL + month labels."""
