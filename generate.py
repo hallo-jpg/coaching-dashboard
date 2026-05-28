@@ -305,6 +305,32 @@ def get_activities(oldest: str, newest: str) -> list[dict]:
     return _api_get(f"/activities?oldest={oldest}&newest={newest}")
 
 
+def get_planned_tss_from_icu(week_start: str, week_end: str) -> dict:
+    """Fetch planned TSS per day from intervals.icu planned events.
+
+    Uses intervals.icu /events endpoint (category=WORKOUT) and reads load_target
+    (the planned TSS calculated by ICU from the .zwo file structure, NP-based).
+
+    Returns {"total": int, "by_day": {"2026-05-25": 90, ...}}
+    Falls back to {"total": 0, "by_day": {}} on error or no planned events.
+    """
+    try:
+        events = _api_get(f"/events?oldest={week_start}&newest={week_end}&category=WORKOUT")
+        if not isinstance(events, list):
+            return {"total": 0, "by_day": {}}
+        by_day: dict[str, int] = {}
+        for ev in events:
+            day = (ev.get("start_date_local") or "")[:10]
+            if not day:
+                continue
+            tss = int(ev.get("load_target") or 0)
+            if tss > 0:
+                by_day[day] = by_day.get(day, 0) + tss
+        return {"total": sum(by_day.values()), "by_day": by_day}
+    except Exception:
+        return {"total": 0, "by_day": {}}
+
+
 POWER_TARGETS = [
     (1, "1s"), (3, "3s"), (5, "5s"), (15, "15s"), (30, "30s"), (60, "1 min"), (180, "3 min"),
     (360, "6 min"), (480, "8 min"), (600, "10 min"),
@@ -935,11 +961,23 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     ]
 
     plan    = parse_kw_plan(kw)
+
+    # Pull planned TSS from intervals.icu (NP-based, accurate).
+    # Fallback to kw*.md values when ICU has no events (older weeks, fallback).
+    icu_plan = get_planned_tss_from_icu(monday.isoformat(), sunday.isoformat())
+    if icu_plan["total"] > 0:
+        for d in plan["days"]:
+            day_idx  = DAY_ORDER.index(d["tag"])
+            day_date = (monday + timedelta(days=day_idx)).isoformat()
+            icu_tss  = icu_plan["by_day"].get(day_date, 0)
+            if icu_tss > 0:
+                d["tss_plan"] = icu_tss
+
     matched = match_activities(activities, plan["days"], monday)
     days    = build_day_rows(plan["days"], matched)
     tss_ist = sum(d["tss_ist"] for d in days)
 
-    tss_plan_week = plan["tss_plan"]
+    tss_plan_week = icu_plan["total"] if icu_plan["total"] > 0 else plan["tss_plan"]
     tss_compliance_pct = round(tss_ist / tss_plan_week * 100) if tss_plan_week > 0 else 0
     tss_compliance_offset = calc_ring_offset(tss_compliance_pct, 100, CIRC_OUTER)
     tss_compliance_color = ("var(--green)" if tss_compliance_pct >= 80
