@@ -747,15 +747,16 @@ def match_activities(activities: list, plan_days: list, monday: date) -> dict:
             matched[tag]["bonus"].append({"name": act_name, "tss": tss, "sport": act_sport})
 
     # Fallback: promote highest-TSS bonus to primary on non-rest days with no match.
-    # Only mark done=True when the promoted activity's sport matches the plan sport
-    # (e.g. bike ride on a planned run day → shown as bonus, not done).
+    # Only promote when sports match — sport mismatch stays in bonus so the
+    # template renders it as an orange "+" entry below the (missed) plan workout.
     for tag, m in matched.items():
         plan_day = plan_by_tag[tag]
         if not plan_day["rest"] and m["primary"] is None and m["bonus"]:
             best = max(m["bonus"], key=lambda b: b["tss"])
-            m["primary"] = best
-            m["bonus"] = [b for b in m["bonus"] if b is not best]
-            m["done"] = (best.get("sport") == _plan_sport(plan_day))
+            if best.get("sport") == _plan_sport(plan_day):
+                m["primary"] = best
+                m["bonus"] = [b for b in m["bonus"] if b is not best]
+                m["done"] = True
 
     return matched
 
