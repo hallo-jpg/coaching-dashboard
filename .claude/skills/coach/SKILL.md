@@ -42,9 +42,16 @@ Rufe auf: `get_weekly_review(week_start: Montag der Vorwoche)`
 
 Falls `tss_soll` nicht vorhanden oder 0: TSS-Compliance überspringen, Gesamtnote basiert nur auf HRV-Trend.
 
-**Polarisation:** Aus Zonen-Daten (intervals.icu Mapping anwenden — siehe Schritt 0):
-- LIT = Z1+Z2, Grauzone = Z3+unteres Z4, HIT = Z5+Z6+Z7
-- Bewertung: `Z3+Z4 < 15% Gesamtvolumen` → gut polarisiert
+**Polarisation:** ⚠️ NIEMALS aus `weekly_review.polarisation` Buckets übernehmen — immer aus Rohdaten berechnen!
+
+Aus `absolviert_pro_tag[*].power_zones` alle **Rad**-Aktivitäten der Woche summieren:
+- **LIT** = Σ(Z1.min + Z2.min + Z3.min) — alles <213W, Sentiero Z1–Z3 inklusive FatMax
+- **Grauzone** = Σ(Z4.min) — 214–283W, Sentiero Z4 Tempo
+- **MIT/HIT** = Σ(Z5.min + Z6.min + Z7.min) — >283W, Sentiero Z5–Z7
+- Total = LIT + Grauzone + MIT/HIT
+- `LIT_pct = LIT/Total×100` | `Grauzone_pct = Grauzone/Total×100` | `PI = LIT/(LIT+MIT_HIT)×100`
+- Warnung: `Grauzone_pct > 15%` → Sweetspot-Drift | `PI < 80%` → zu wenig echte Grundlage
+- **Sentiero Z3 (FatMax, 190–213W) ist LIT!** Nie als Grauzone werten.
 
 **HRV-Trend:** Vergleich erster und letzter HRV-Wert der Woche:
 - `↗ steigend` = letzter > erster + 3 Punkte
@@ -88,7 +95,7 @@ Für jede **Schlüsseleinheit** (HIT, MIT, Long Ride) aus der Vorwoche: Qualitä
 ## Wochen-Retro
 
 **TSS:** Ist [tss_ist] / Soll [tss_soll] → [tss_pct]% ([✅ 85–120% / ⚠️ <85% / 🔥 >120%])
-**Polarisation:** Z1 [X]% · Z2 [Y]% · Z3 [Z]% → [gut polarisiert / zu viel Grauzone / etc.]
+**Polarisation (Sentiero):** LIT (<213W): [X]% · Grauzone Z4 (214–283W): [Y]% · MIT/HIT (>283W): [Z]% → PI: [P]%
 **HRV-Trend:** [↗ steigend / → stabil / ↘ fallend] ([erster_wert] → [letzter_wert])
 
 ### Einheiten
@@ -246,7 +253,7 @@ Wenn Score < 80: Empfehlungen aus dem Tool direkt in den Wochenplan einfließen 
 | Z2-Anteil bei LIT-Einheit < 70% | LIT war zu intensiv → Pace/Watt-Disziplin ansprechen |
 | Z4/Z5-Anteil bei HIT < Sollzeit | Intervalle nicht vollständig gefahren → Begründung suchen |
 | Aktivitäten fehlen komplett | Im Feedback ausweisen, nicht ignorieren |
-| Z3 > 15% Gesamtvolumen | Sweetspot-Drift → LIT-Disziplin ansprechen (Seiler & Kjerland 2006) |
+| Grauzone Z4 (214–283W) > 15% Gesamtvolumen | Sweetspot-Drift → LIT-Disziplin ansprechen (Seiler & Kjerland 2006). ACHTUNG: Sentiero Z3 (FatMax bis 213W) ist LIT — kein Drift-Signal! |
 | Polarisations-Index < 80% | Zu wenig echte Grundlage → nächste Woche Z2 strikter halten |
 
 **WICHTIG – intervals.icu Zonen ≠ Stefan's Coaching-Zonen:**
@@ -986,10 +993,18 @@ Tabelle mit: Tag | Geplant | Absolviert | TSS Soll→Ist | Zonenqualität
 - Darunter: 2–3 Sätze Coach-Feedback (was lief gut, was verbessern, konkret und direkt – kein Watterwärmern)
 - Zonenqualität basiert auf `get_weekly_review` Daten (TSS, Z-Verteilung, avg Watt/HR)
 
-**Polarisations-Zeile** (immer ausgeben, aus `get_weekly_review.polarisation`):
+**Polarisations-Zeile** (immer ausgeben — Berechnung aus Rohdaten, NICHT aus `weekly_review.polarisation` Buckets):
+
+Aus `absolviert_pro_tag[*].power_zones` aller Rad-Aktivitäten summieren:
+`LIT = ΣZ1+Z2+Z3 | Grauzone = ΣZ4 | MIT_HIT = ΣZ5+Z6+Z7 | Total = Σaller`
+`PI = LIT/(LIT+MIT_HIT)×100`
+
 ```
-📊 Polarisation: Z1–2: XX% | Z3: XX% [⚠️ wenn >15%] | Z4–7: XX%  →  PI: XX% [⚠️ wenn <80%]
+📊 Polarisation (Sentiero): LIT (<213W): XX% | Grauzone Z4: XX% [⚠️ wenn >15%] | MIT/HIT (>283W): XX%  →  PI: XX% [⚠️ wenn <80%]
 ```
+
+⛔ Das vorberechnete `weekly_review.polarisation`-Feld mit Buckets „Z1-Z2 / Z3 (Moderate) / Z4-Z7" NICHT direkt verwenden — MCP behandelt Z3 als Moderate, aber Sentiero Z3 (FatMax, 190–213W) ist LIT!
+
 Warnung als eigener Satz im Coach-Feedback einarbeiten wenn vorhanden.
 
 ### 📋 Wochenplan
