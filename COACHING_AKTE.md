@@ -1,9 +1,17 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 26. Mai 2026*
+*Letzte Aktualisierung: 31. Mai 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
 
 ---
+
+## 31. Mai 2026 – KW22 Retro + KW23 Planung
+🟡 Mittel · TSS 602/499 (120,6%) · HRV → stabil (47→50ms) · Polarisation PI 57% ⚠️ Outdoor-LIT Mo zu intensiv
+→ 3 starke Qualitätseinheiten (Over-Under 124 TSS, MIT_4x16 168 TSS, TT-Sim 1×25min 113 TSS)
+→ Sa LIT ❌ ausgefallen · So Rad statt Lauf · TSB bei Taper-Start: −22.0
+→ KW23 Tapering geplant: ~210 TSS · Do Taper-Aktivierung 3×4min@355W · 2× Easy Run Mo+Sa · TSB-Prognose Zeitfahren Sa 13.6.: ~0 bis +2
+→ TSS-Ziel bewusst konservativ: Aus −22 sind +10 bis +20 in 13 Tagen unrealistisch ohne Fitness-Verlust. Subjektivwert 100/100 ist positives Signal.
+→ kw22.md archiviert → planung/archiv/kw22.md
 
 ## 26. Mai 2026 – Ad-hoc KW22
 → Mi 27.5. Easy Run 35min gestrichen → Ruhetag/Spaziergang · TSS ~437 → ~412
