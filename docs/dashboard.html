@@ -456,18 +456,21 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#22c55e" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="76.0"
                 transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-gr)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="76.0"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--muted)">–</span>
+        <span class="ring-num" style="color:#f5a623">78</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
+      
+      <div class="ring-status-tag">🟡 Normal trainieren</div>
+      <div class="ring-status-sub">HRV über Schnitt · Puls erhöht</div>
       
     </div>
   </div>
@@ -522,7 +525,7 @@
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:#f87171"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:#f87171">71.7</span>
+        <span class="dl-val" style="color:#f87171">71.6</span>
       </div>
     </div>
   </div>
@@ -550,12 +553,12 @@
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--green);font-size:1.8rem">112%</span>
+        <span class="ring-num" style="color:var(--green);font-size:1.8rem">122%</span>
         <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">555 / 495 TSS</div>
+      <div class="pri-main">602 / 495 TSS</div>
       <div class="pri-sub">Wochenziel · KW22</div>
     </div>
   </div>
@@ -570,33 +573,43 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:var(--muted)">–</div>
+      <div class="readiness-score" style="color:#f5a623">78</div>
+      <div class="readiness-tag" style="color:#f5a623">🟡 Normal trainieren</div>
       
     </div>
 
     
-    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
-      ⏳ Uhr noch nicht synchronisiert – Werte folgen
+
+    
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">64</div>
+        <div style="font-size:0.55rem;color:var(--muted)">HRV · Schlaf · TSB · Puls</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">100</div>
+        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
+      </div>
     </div>
     
 
-    
-
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">50 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--green);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Normal</div>
         <div class="rbar-lbl">Normalber. 38–52 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">0.0h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--green)">7.2h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
@@ -605,17 +618,73 @@
         <div class="rbar-lbl">Form</div>
         
         <div style="font-size:0.6rem;font-weight:700;color:var(--accent);margin-top:2px">
-          ATL +25.5 ⚠️
+          ATL +25.4 ⚠️
         </div>
         
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">57 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
 
+    
+    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
+          <span style="font-size:0.62rem;color:#22c55e">Niedrig (1/4)</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:#22c55e;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
+          <span style="font-size:0.62rem;color:#22c55e">Niedrig (1/4)</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:#22c55e;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
+          <span style="font-size:0.62rem;color:#22c55e">Niedrig (1/4)</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:#22c55e;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
+          <span style="font-size:0.62rem;color:#22c55e">
+            Keine ✅ (1/4)
+            
+          </span>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+          <div style="background:#22c55e;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+    </div>
     
 
     <div class="sparkline-wrap">
@@ -634,7 +703,7 @@
         
         <div class="spark-bar " style="height:63%;background:#f5a623"></div>
         
-        <div class="spark-bar spark-today" style="height:41%;background:#ef4444"></div>
+        <div class="spark-bar spark-today" style="height:60%;background:#f5a623"></div>
         
       </div>
     </div>
@@ -649,7 +718,7 @@
     </div>
 
     <div style="position:relative;height:95px;margin-bottom:6px">
-      <div style="position:absolute;left:0;right:0;bottom:57%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:2">
+      <div style="position:absolute;left:0;right:0;bottom:51%;border-top:1px dashed rgba(148,163,184,0.25);pointer-events:none;z-index:2">
         <span style="position:absolute;right:0;top:-8px;font-size:0.48rem;color:rgba(148,163,184,0.4)">Ø</span>
       </div>
       <div style="display:flex;gap:3px;height:100%">
@@ -660,9 +729,9 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:35%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:32%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:16%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div style="width:100%;height:15%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW15</span>
           <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Urlaub</span>
@@ -674,7 +743,7 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:86%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:78%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
             <div style="width:100%;height:2%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
@@ -688,9 +757,9 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:44%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:40%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:28%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div style="width:100%;height:25%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW17</span>
           <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Base</span>
@@ -702,9 +771,9 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:68%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:62%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:95%;background:var(--yellow);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div style="width:100%;height:86%;background:var(--yellow);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW18</span>
           <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">HIT</span>
@@ -716,9 +785,9 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:36%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:33%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:43%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div style="width:100%;height:38%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW19</span>
           <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">HIT</span>
@@ -730,9 +799,9 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:53%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:48%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:55%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div style="width:100%;height:50%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW20</span>
           <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">HIT</span>
@@ -744,9 +813,9 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:69%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:62%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:63%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div style="width:100%;height:57%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW21</span>
           <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">HIT</span>
@@ -754,13 +823,13 @@
         
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
           <span style="font-size:0.46rem;color:var(--muted);height:12px;line-height:12px;white-space:nowrap">
-            530
+            602
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
-            <div style="position:absolute;bottom:0;left:0;width:100%;height:87%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:78%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div style="width:100%;height:93%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
+            <div style="width:100%;height:95%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px">KW22</span>
           <span style="font-size:0.38rem;color:#a78bfa;height:9px;line-height:9px;text-align:center">TT</span>
@@ -788,7 +857,7 @@
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Höchste</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">543</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">602</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Compliance</div>
@@ -805,22 +874,22 @@
   <div class="polar-card" style="margin-bottom:0;flex:1">
     <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · 8 Wochen · Rad</div>
     
-    <span class="pi-badge pi-ok">LIT: 75% · ✅ Gut polarisiert</span>
+    <span class="pi-badge pi-ok">LIT: 76% · ✅ Gut polarisiert</span>
     <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
       <svg viewBox="0 0 120 120" width="120" height="120" style="flex-shrink:0">
   <circle cx="60" cy="60" r="46" fill="none" stroke="#1a1a1a" stroke-width="20"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#22c55e" stroke-width="20" stroke-dasharray="216.8 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="40.5 289.0" stroke-dashoffset="-289.0" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="11.6 289.0" stroke-dashoffset="-329.5" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#a855f7" stroke-width="20" stroke-dasharray="20.2 289.0" stroke-dashoffset="-341.1" opacity="0.75"/>
-  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0" font-family="system-ui">75%</text>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#22c55e" stroke-width="20" stroke-dasharray="219.7 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="40.5 289.0" stroke-dashoffset="-291.9" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="11.6 289.0" stroke-dashoffset="-332.4" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#a855f7" stroke-width="20" stroke-dasharray="17.3 289.0" stroke-dashoffset="-343.9" opacity="0.75"/>
+  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0" font-family="system-ui">76%</text>
   <text x="60" y="69" text-anchor="middle" font-size="8" fill="#64748b" font-family="system-ui">LIT 8W</text>
 </svg>
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">LIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">75%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">76%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0"></span>
@@ -835,7 +904,7 @@
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
           <span style="width:8px;height:8px;border-radius:50%;background:#a855f7;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">7%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">6%</span>
         </div>
         <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
       </div>
@@ -855,7 +924,7 @@
     <div class="week-header">
       <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(148,163,184,0.10)">📅</div>Wochenplan</div>
       <span class="kw-pill">KW22</span>
-      <span class="tss-pill">555 / ~495 TSS</span>
+      <span class="tss-pill">602 / ~495 TSS</span>
     </div>
 
     
@@ -1054,7 +1123,7 @@
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
           <div style="display:flex;align-items:center;gap:3px">
             <span style="font-size:0.58rem;color:var(--muted)">Ist</span>
-            <span style="font-size:0.72rem;font-weight:700;color:var(--green)">25</span>
+            <span style="font-size:0.72rem;font-weight:700;color:var(--green)">72</span>
           </div>
           
           <div style="display:flex;align-items:center;gap:3px">
@@ -1161,7 +1230,7 @@
         <div>TT-Spezifik</div>
         <div class="ausblick-sub">Over-Under · MIT · Oberjochpass-Vorbereitung · Letzte Qualitätswoche vor Taper</div>
       </td>
-      <td class="ausblick-tss">555 / ~495</td>
+      <td class="ausblick-tss">602 / ~495</td>
       <td class="ausblick-key"><div class="ausblick-sub">6x4-4 Over-Under – TT-Laktattoleranz · 🚶 Ruhetag / Spaziergang · MIT_4x16 – Schwellenausdauer Haupteinheit</div></td>
     </tr>
     
@@ -1250,11 +1319,11 @@
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
-      <span style="font-size:0.92rem;font-weight:800;color:var(--green)">1.12</span>
+      <span style="font-size:0.92rem;font-weight:800;color:var(--green)">1.43</span>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
       <span style="font-size:0.72rem;color:var(--muted)">Strain</span>
-      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">593</span>
+      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">860</span>
     </div>
     <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
     <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
@@ -1297,10 +1366,10 @@
            title="0 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
-                  height:5%;
-                  background:var(--subtle);
+                  height:43%;
+                  background:var(--green);
                   opacity:0.75"
-           title="0 TSS"></div>
+           title="72 TSS"></div>
       
     </div>
   </div>
@@ -1321,10 +1390,10 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,13.7 L10.0,11.6 L20.0,11.7 L30.0,24.7 L40.0,25.7 L50.0,13.6 L60.0,25.9 L70.0,1.2 L80.0,12.9 L90.0,14.8 L100.0,28.8 L110.0,8.0 L120.0,11.7 L130.0,21.3 L140.0,11.9 L150.0,31.6 L160.0,41.1 L170.0,11.1 L180.0,22.0 L190.0,7.9 L200.0,14.7 L210.0,17.3 L220.0,14.9 L230.0,0.0 L240.0,33.3 L250.0,11.1 L260.0,15.6 L270.0,31.9 L280.0,6.7 L290.0,39.6 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,13.7 L10.0,11.6 L20.0,11.7 L30.0,24.7 L40.0,25.7 L50.0,13.6 L60.0,25.9 L70.0,1.2 L80.0,12.9 L90.0,14.8 L100.0,28.8 L110.0,8.0 L120.0,11.7 L130.0,21.3 L140.0,11.9 L150.0,31.6 L160.0,41.1 L170.0,11.1 L180.0,22.0 L190.0,7.9 L200.0,14.7 L210.0,17.3 L220.0,14.9 L230.0,0.0 L240.0,33.3 L250.0,11.1 L260.0,15.6 L270.0,31.9 L280.0,6.7 L290.0,39.6" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="39.6" r="3" fill="#7986cb"/>
-        <circle cx="300" cy="39.6" r="5" fill="#7986cb" opacity="0.2"/>
+        <path d="M0.0,13.7 L10.0,11.6 L20.0,11.7 L30.0,24.7 L40.0,25.7 L50.0,13.6 L60.0,25.9 L70.0,1.2 L80.0,12.9 L90.0,14.8 L100.0,28.8 L110.0,8.0 L120.0,11.7 L130.0,21.3 L140.0,11.9 L150.0,31.6 L160.0,41.1 L170.0,11.1 L180.0,22.0 L190.0,7.9 L200.0,14.7 L210.0,17.3 L220.0,14.9 L230.0,0.0 L240.0,33.3 L250.0,11.1 L260.0,15.6 L270.0,31.9 L280.0,6.7 L290.0,39.6 L300.0,22.4 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,13.7 L10.0,11.6 L20.0,11.7 L30.0,24.7 L40.0,25.7 L50.0,13.6 L60.0,25.9 L70.0,1.2 L80.0,12.9 L90.0,14.8 L100.0,28.8 L110.0,8.0 L120.0,11.7 L130.0,21.3 L140.0,11.9 L150.0,31.6 L160.0,41.1 L170.0,11.1 L180.0,22.0 L190.0,7.9 L200.0,14.7 L210.0,17.3 L220.0,14.9 L230.0,0.0 L240.0,33.3 L250.0,11.1 L260.0,15.6 L270.0,31.9 L280.0,6.7 L290.0,39.6 L300.0,22.4" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="22.4" r="3" fill="#7986cb"/>
+        <circle cx="300" cy="22.4" r="5" fill="#7986cb" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
         <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
       </svg>
@@ -1332,7 +1401,7 @@
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
         <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
-          5.0h
+          7.2h
         </div>
         <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
       </div>
