@@ -68,6 +68,13 @@ _SEGMENT_PARAMS: dict[str, dict] = {
     "gran_fondo": {"min_dist_m": 2000, "grad_threshold": 2.0, "max_segments": 12},
 }
 
+# max speed cap for physics (accounts for cornering/braking on technical descents)
+_MAX_SPEED_MS: dict[str, float] = {
+    "tt":         99.0,          # no cap
+    "climb":      99.0,
+    "gran_fondo": 40.0 / 3.6,   # 40 km/h — alpine race with corners
+}
+
 
 def _smooth_gradients(pts: list[dict], window_m: float = 500.0) -> list[float]:
     """Per-point smoothed gradient: average over a ±window_m neighbourhood."""
@@ -306,7 +313,8 @@ def compute_route(
         if type_factor_override is not None:
             base_factor = _TYPE_FACTOR.get(route_type, 1.0)
             power = round(power * type_factor_override / base_factor)
-        v_ms  = velocity_from_power(power, seg["gradient_pct"], route_type)
+        v_ms  = min(velocity_from_power(power, seg["gradient_pct"], route_type),
+                    _MAX_SPEED_MS.get(route_type, 99.0))
         time_s = seg["dist_m"] / max(v_ms, 0.1)
 
         pct_cp = power / cp
@@ -486,15 +494,28 @@ def build_route_context(gpx_path: str) -> dict:
     segments = compute_route(segs_raw, athlete, route_type=meta["type"],
                              type_factor_override=meta.get("type_factor_override"))
 
-    total_time_s  = sum(s["time_s"] for s in segments)
+    # For gran_fondo: compute time/power on fine-grained segments (no display cap)
+    # to avoid errors from merged climbs. Display uses coarse segments.
+    if meta["type"] == "gran_fondo":
+        fine_raw = group_segments(pts, min_dist_m=seg_params["min_dist_m"],
+                                  grad_threshold=seg_params["grad_threshold"],
+                                  max_segments=9999)
+        fine_segs = compute_route(fine_raw, athlete, route_type=meta["type"],
+                                  type_factor_override=meta.get("type_factor_override"))
+        total_time_s = sum(s["time_s"] for s in fine_segs)
+        avg_power    = sum(s["target_w"] * s["time_s"] for s in fine_segs) / max(total_time_s, 1)
+        w_spent_kj   = (athlete["w_prime_j"] - fine_segs[-1]["w_prime_balance_j"]) / 1000
+        w_remain_kj  = fine_segs[-1]["w_prime_balance_j"] / 1000
+    else:
+        total_time_s  = sum(s["time_s"] for s in segments)
+        avg_power     = sum(s["target_w"] * s["time_s"] for s in segments) / max(total_time_s, 1)
+        w_spent_kj    = (athlete["w_prime_j"] - segments[-1]["w_prime_balance_j"]) / 1000 if segments else 0
+        w_remain_kj   = segments[-1]["w_prime_balance_j"] / 1000 if segments else athlete["w_prime_j"] / 1000
+
     total_dist_m  = sum(s["dist_m"] for s in segments)
     total_ele     = meta.get("ele_override_m") or sum(
                         max(pts[i]["ele"] - pts[i-1]["ele"], 0) for i in range(1, len(pts))
                     )
-    avg_power     = (sum(s["target_w"] * s["time_s"] for s in segments)
-                     / max(total_time_s, 1))
-    w_spent_kj    = (athlete["w_prime_j"] - segments[-1]["w_prime_balance_j"]) / 1000 if segments else 0
-    w_remain_kj   = segments[-1]["w_prime_balance_j"] / 1000 if segments else athlete["w_prime_j"] / 1000
 
     def fmt_time(secs: float) -> str:
         m, s = divmod(int(secs), 60)
