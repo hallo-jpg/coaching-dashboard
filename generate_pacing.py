@@ -62,49 +62,94 @@ def parse_gpx(path: str) -> list[dict]:
     return resampled
 
 
-def group_segments(pts: list[dict], min_dist_m: float = 300.0, grad_threshold: float = 1.5) -> list[dict]:
-    """Group resampled points into meaningful segments.
+_SEGMENT_PARAMS: dict[str, dict] = {
+    "tt":         {"min_dist_m": 800,  "grad_threshold": 2.5, "max_segments": 8},
+    "climb":      {"min_dist_m": 800,  "grad_threshold": 2.5, "max_segments": 8},
+    "gran_fondo": {"min_dist_m": 2000, "grad_threshold": 2.0, "max_segments": 12},
+}
 
-    A new segment starts when gradient changes by >grad_threshold % OR
-    after min_dist_m metres, whichever gives better readability (4-8 segs per route).
+
+def _smooth_gradients(pts: list[dict], window_m: float = 500.0) -> list[float]:
+    """Per-point smoothed gradient: average over a ±window_m neighbourhood."""
+    half = window_m / 2
+    result = []
+    for i, p in enumerate(pts):
+        lo, hi = p["dist"] - half, p["dist"] + half
+        neighbours = [
+            (pts[j]["ele"] - pts[j - 1]["ele"]) / 50 * 100
+            for j in range(1, len(pts))
+            if lo <= pts[j]["dist"] <= hi
+        ]
+        result.append(sum(neighbours) / len(neighbours) if neighbours else 0.0)
+    return result
+
+
+def group_segments(pts: list[dict], min_dist_m: float = 800.0,
+                   grad_threshold: float = 2.5, max_segments: int = 8) -> list[dict]:
+    """Group GPX points into meaningful segments (target: max_segments rows).
+
+    Uses smoothed gradients to detect terrain character (climb/descent/flat),
+    so short up/down noise doesn't prevent detection of real ascents.
     """
     if len(pts) < 2:
         return []
 
+    smooth = _smooth_gradients(pts, window_m=min_dist_m * 0.6)
+
     segments: list[dict] = []
-    start = pts[0]
+    start_idx = 0
 
     for i in range(1, len(pts)):
-        dist_m = pts[i]["dist"] - start["dist"]
+        dist_m = pts[i]["dist"] - pts[start_idx]["dist"]
         if dist_m < min_dist_m:
             continue
 
-        grad = (pts[i]["ele"] - start["ele"]) / dist_m * 100
-
-        # Check if gradient changed significantly vs previous segment
-        prev_grad = segments[-1]["gradient_pct"] if segments else None
-        new_seg = prev_grad is None or abs(grad - prev_grad) >= grad_threshold or dist_m >= 1200
-
-        if new_seg:
+        prev_smooth = segments[-1]["gradient_pct"] if segments else smooth[start_idx]
+        if abs(smooth[i] - prev_smooth) >= grad_threshold:
+            grad = (pts[i]["ele"] - pts[start_idx]["ele"]) / dist_m * 100
             segments.append({
                 "dist_m": round(dist_m, 1),
-                "elev_start": round(start["ele"], 1),
+                "elev_start": round(pts[start_idx]["ele"], 1),
                 "elev_end": round(pts[i]["ele"], 1),
                 "gradient_pct": round(grad, 2),
             })
-            start = pts[i]
+            start_idx = i
 
-    # Last partial segment
-    if pts[-1]["dist"] > start["dist"]:
-        dist_m = pts[-1]["dist"] - start["dist"]
+    if pts[-1]["dist"] > pts[start_idx]["dist"]:
+        dist_m = pts[-1]["dist"] - pts[start_idx]["dist"]
         if dist_m > 50:
-            grad = (pts[-1]["ele"] - start["ele"]) / dist_m * 100
+            grad = (pts[-1]["ele"] - pts[start_idx]["ele"]) / dist_m * 100
             segments.append({
                 "dist_m": round(dist_m, 1),
-                "elev_start": round(start["ele"], 1),
+                "elev_start": round(pts[start_idx]["ele"], 1),
                 "elev_end": round(pts[-1]["ele"], 1),
                 "gradient_pct": round(grad, 2),
             })
+
+    # Merge adjacent segments until within max_segments cap.
+    # Priority: same-sign pairs first; then smallest shortest segment.
+    while len(segments) > max_segments:
+        same_sign = [
+            j for j in range(len(segments) - 1)
+            if (segments[j]["gradient_pct"] >= 0) == (segments[j+1]["gradient_pct"] >= 0)
+        ]
+        if same_sign:
+            best = min(same_sign,
+                       key=lambda j: abs(segments[j]["gradient_pct"] - segments[j+1]["gradient_pct"]))
+        else:
+            # fallback: merge the pair where the shorter segment is smallest
+            best = min(range(len(segments) - 1),
+                       key=lambda j: min(segments[j]["dist_m"], segments[j+1]["dist_m"]))
+        a, b = segments[best], segments[best + 1]
+        merged_dist = a["dist_m"] + b["dist_m"]
+        merged_grad = (b["elev_end"] - a["elev_start"]) / merged_dist * 100
+        segments[best] = {
+            "dist_m": round(merged_dist, 1),
+            "elev_start": a["elev_start"],
+            "elev_end": b["elev_end"],
+            "gradient_pct": round(merged_grad, 2),
+        }
+        segments.pop(best + 1)
 
     return segments
 
@@ -436,7 +481,8 @@ def build_route_context(gpx_path: str) -> dict:
     meta    = load_route_meta(gpx_path)
     athlete = read_athlete_params()
     pts     = parse_gpx(gpx_path)
-    segs_raw = group_segments(pts)
+    seg_params = _SEGMENT_PARAMS.get(meta["type"], _SEGMENT_PARAMS["climb"])
+    segs_raw = group_segments(pts, **seg_params)
     segments = compute_route(segs_raw, athlete, route_type=meta["type"],
                              type_factor_override=meta.get("type_factor_override"))
 
