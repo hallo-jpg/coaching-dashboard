@@ -101,3 +101,30 @@ def test_compute_route_produces_segments():
     assert "w_prime_balance_j" in result[0]
     assert "km_start" in result[0]
     assert "km_end" in result[0]
+
+from generate_pacing import generate_intuition, build_route_context
+
+def test_generate_intuition_returns_list_of_strings():
+    from generate_pacing import parse_gpx, group_segments
+    pts = parse_gpx(FIXTURE)
+    segs = group_segments(pts)
+    params = read_athlete_params()
+    computed = compute_route(segs, params, "climb")
+    tips = generate_intuition(computed, params)
+    assert isinstance(tips, list)
+    assert len(tips) >= 2
+    for t in tips:
+        assert isinstance(t, str)
+        assert len(t) > 10
+
+def test_build_route_context_keys():
+    ctx = build_route_context(FIXTURE)
+    assert "name" in ctx
+    assert "segments" in ctx
+    assert "total_time_s" in ctx
+    assert "total_dist_km" in ctx
+    assert "avg_power_w" in ctx
+    assert "w_prime_spent_kj" in ctx
+    assert "w_prime_remaining_kj" in ctx
+    assert "intuition" in ctx
+    assert "svg_profile" in ctx

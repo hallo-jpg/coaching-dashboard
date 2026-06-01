@@ -288,3 +288,197 @@ def compute_route(
         })
 
     return compute_w_prime_balance(enriched, cp, w_prime)
+
+
+# ── Intuition Text ────────────────────────────────────────────────────────────
+
+def generate_intuition(segments: list[dict], athlete: dict) -> list[str]:
+    """Generate 3-4 coaching sentences explaining what the numbers feel like."""
+    cp = athlete["cp_w"]
+    w_total_kj = athlete["w_prime_j"] / 1000
+    tips: list[str] = []
+
+    if not segments:
+        return ["Keine Segmentdaten verfügbar."]
+
+    first = segments[0]
+    tips.append(
+        f"Start ({first['km_label']}): {first['target_w']}W fühlt sich zu leicht an — das ist korrekt. "
+        f"Bei richtigem Pacing setzt das Belastungsgefühl erst nach 3–5 Min ein. Wenn es schon am "
+        f"Start schwer wirkt, bist du zu schnell."
+    )
+
+    hard_segs = [s for s in segments if s["gradient_pct"] > 4]
+    if hard_segs:
+        steepest = max(hard_segs, key=lambda s: s["gradient_pct"])
+        min_dur  = int(steepest["time_s"] / 60)
+        tips.append(
+            f"Steilstück {steepest['km_label']} ({steepest['gradient_pct']:.1f}%): "
+            f"{steepest['target_w']}W für ~{min_dur} Min — das entspricht von der Intensität "
+            f"deiner MIT-Schwellenarbeit vom Training. Dieses Gefühl kennst du. Hier ist es wichtig, "
+            f"nicht zu überziehen: über {steepest['target_w'] + 15}W kosten unverhältnismäßig viel W'."
+        )
+
+    w_spent  = (athlete["w_prime_j"] - segments[-1]["w_prime_balance_j"]) / 1000
+    w_remain = segments[-1]["w_prime_balance_j"] / 1000
+    if w_remain < 5:
+        budget_comment = "sehr knapp — kein Spielraum. Pacing exakt einhalten."
+    elif w_remain < 10:
+        budget_comment = "ausreichend für kleinere Tempoanpassungen."
+    else:
+        budget_comment = "komfortabel — du kannst auf unerwartete Steilpassagen reagieren."
+    tips.append(
+        f"W'-Budget: {w_spent:.1f} von {w_total_kj:.1f} kJ verplant, "
+        f"{w_remain:.1f} kJ Reserve — {budget_comment}"
+    )
+
+    tips.append(
+        "Herzrate ignorieren: Bei dieser Belastungsdauer steigt die HR kontinuierlich bis zum Ziel. "
+        "Watt ist der Anker — HR ist nur Kontrollgröße, kein Steuerungsinstrument."
+    )
+    return tips
+
+
+# ── SVG Profile Generator ─────────────────────────────────────────────────────
+
+def _build_svg_profile(segments: list[dict], width: int = 800, height: int = 160) -> str:
+    """Build SVG elevation profile. Text outside scaled SVG area (no distortion)."""
+    if not segments:
+        return ""
+
+    total_dist = sum(s["dist_m"] for s in segments)
+    all_eles   = [s["elev_start"] for s in segments] + [segments[-1]["elev_end"]]
+    ele_min    = min(all_eles)
+    ele_max    = max(all_eles)
+    ele_range  = max(ele_max - ele_min, 1)
+
+    PAD_TOP, PAD_BOT = 30, 20
+    chart_h = height - PAD_TOP - PAD_BOT
+
+    def x(dist_m: float) -> float:
+        return dist_m / total_dist * width
+
+    def y(ele: float) -> float:
+        return PAD_TOP + chart_h * (1 - (ele - ele_min) / ele_range)
+
+    pts_coords: list[tuple] = []
+    cum = 0.0
+    for seg in segments:
+        pts_coords.append((x(cum), y(seg["elev_start"])))
+        cum += seg["dist_m"]
+    pts_coords.append((x(cum), y(segments[-1]["elev_end"])))
+
+    poly_pts = " ".join(f"{px:.1f},{py:.1f}" for px, py in pts_coords)
+    fill_pts = poly_pts + f" {width:.1f},{height} 0,{height}"
+
+    lines: list[str] = [
+        f'<svg width="100%" height="{height}" viewBox="0 0 {width} {height}" '
+        f'style="display:block;border-radius:8px;overflow:visible">',
+    ]
+
+    cum = 0.0
+    for seg in segments:
+        color = seg["zone_color"]
+        x1 = x(cum)
+        x2 = x(cum + seg["dist_m"])
+        lines.append(
+            f'<rect x="{x1:.1f}" y="{PAD_TOP}" width="{x2-x1:.1f}" height="{chart_h}" '
+            f'fill="{color}" fill-opacity="0.18"/>'
+        )
+        cum += seg["dist_m"]
+
+    lines.append(f'<polygon points="{fill_pts}" fill="rgba(255,255,255,0.04)"/>')
+    lines.append(
+        f'<polyline points="{poly_pts}" fill="none" stroke="#e2e8f0" '
+        f'stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'
+    )
+
+    cum = 0.0
+    for seg in segments:
+        cx = x(cum + seg["dist_m"] / 2)
+        color = seg["zone_color"]
+        lines.append(
+            f'<text x="{cx:.1f}" y="{PAD_TOP - 12}" text-anchor="middle" '
+            f'fill="{color}" font-size="12" font-weight="700" font-family="sans-serif">'
+            f'{seg["gradient_pct"]:.1f}%</text>'
+        )
+        lines.append(
+            f'<text x="{cx:.1f}" y="{PAD_TOP}" text-anchor="middle" '
+            f'fill="{color}" font-size="11" font-family="sans-serif">'
+            f'{seg["target_w"]}W</text>'
+        )
+        x_start = x(cum)
+        lines.append(
+            f'<text x="{x_start:.1f}" y="{height}" text-anchor="middle" '
+            f'fill="#475569" font-size="10" font-family="sans-serif">'
+            f'{seg["km_start"]:.1f}</text>'
+        )
+        cum += seg["dist_m"]
+
+    lines.append(
+        f'<text x="{width}" y="{height}" text-anchor="end" '
+        f'fill="#475569" font-size="10" font-family="sans-serif">'
+        f'{segments[-1]["km_end"]:.1f} km</text>'
+    )
+    lines.append("</svg>")
+    return "\n".join(lines)
+
+
+# ── Route Context Builder ─────────────────────────────────────────────────────
+
+def build_route_context(gpx_path: str) -> dict:
+    """Full context dict for Jinja2 template from a GPX file."""
+    meta    = load_route_meta(gpx_path)
+    athlete = read_athlete_params()
+    pts     = parse_gpx(gpx_path)
+    segs_raw = group_segments(pts)
+    segments = compute_route(segs_raw, athlete, route_type=meta["type"])
+
+    total_time_s  = sum(s["time_s"] for s in segments)
+    total_dist_m  = sum(s["dist_m"] for s in segments)
+    total_ele     = sum(max(s["elev_end"] - s["elev_start"], 0) for s in segments)
+    avg_power     = (sum(s["target_w"] * s["time_s"] for s in segments)
+                     / max(total_time_s, 1))
+    w_spent_kj    = (athlete["w_prime_j"] - segments[-1]["w_prime_balance_j"]) / 1000 if segments else 0
+    w_remain_kj   = segments[-1]["w_prime_balance_j"] / 1000 if segments else athlete["w_prime_j"] / 1000
+
+    def fmt_time(secs: float) -> str:
+        m, s = divmod(int(secs), 60)
+        return f"{m}:{s:02d}"
+
+    t_low  = fmt_time(total_time_s * 0.97)
+    t_high = fmt_time(total_time_s * 1.05)
+
+    event_date_str = ""
+    if meta.get("event_date"):
+        try:
+            d = date.fromisoformat(meta["event_date"])
+            event_date_str = d.strftime("%-d. %B %Y")
+        except ValueError:
+            event_date_str = meta["event_date"]
+
+    for seg in segments:
+        m_t, s_t = divmod(int(seg["time_s"]), 60)
+        seg["time_fmt"] = f"{m_t}:{s_t:02d}"
+
+    return {
+        "name":               meta["name"],
+        "route_type":         meta["type"],
+        "event_date":         event_date_str,
+        "notes":              meta.get("notes", ""),
+        "segments":           segments,
+        "total_time_s":       round(total_time_s),
+        "total_time_fmt":     fmt_time(total_time_s),
+        "total_time_range":   f"{t_low}–{t_high}",
+        "total_dist_km":      round(total_dist_m / 1000, 2),
+        "total_ele_m":        round(total_ele),
+        "avg_power_w":        round(avg_power),
+        "avg_if":             round(avg_power / max(athlete["ftp_w"], 1), 2),
+        "w_prime_spent_kj":   round(w_spent_kj, 1),
+        "w_prime_remaining_kj": round(w_remain_kj, 1),
+        "w_prime_total_kj":   round(athlete["w_prime_j"] / 1000, 1),
+        "w_prime_pct_used":   round(w_spent_kj / max(athlete["w_prime_j"] / 1000, 1) * 100),
+        "intuition":          generate_intuition(segments, athlete),
+        "svg_profile":        _build_svg_profile(segments),
+        "athlete":            athlete,
+    }
