@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Race Pacing</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1117; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 0; }
+  .tab-bar { display: flex; gap: 0; background: #0d1117; border-bottom: 1px solid #1e293b; padding: 0 24px; overflow-x: auto; }
+  .tab { padding: 12px 18px; font-size: 0.75rem; font-weight: 700; color: #64748b; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .tab.active { color: #60a5fa; border-bottom-color: #60a5fa; }
+  .tab-content { display: none; padding: 24px; }
+  .tab-content.active { display: block; }
+  .route-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .route-header h1 { font-size: 1.3rem; font-weight: 800; }
+  .pill { background: rgba(96,165,250,0.15); color: #60a5fa; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: #161d2a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; }
+  .kpi-label { font-size: 0.62rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .kpi-value { font-size: 1.5rem; font-weight: 800; line-height: 1; }
+  .kpi-sub { font-size: 0.65rem; color: #64748b; margin-top: 4px; }
+  .card { background: #161d2a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .card-title { font-size: 0.72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+  .w-bar-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .w-bar-track { flex: 1; height: 10px; background: #1e293b; border-radius: 5px; overflow: hidden; }
+  .w-bar-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg, #4ade80 0%, #facc15 60%, #f97316 85%, #ef4444 100%); }
+  .seg-table { width: 100%; border-collapse: collapse; }
+  .seg-table th { font-size: 0.65rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 12px; text-align: left; border-bottom: 1px solid #1e293b; }
+  .seg-table th:not(:first-child) { text-align: right; }
+  .seg-table td { padding: 10px 12px; font-size: 0.8rem; border-bottom: 1px solid #0d1117; vertical-align: top; }
+  .seg-table td:not(:first-child) { text-align: right; }
+  .seg-table tr:last-child td { border-bottom: none; background: rgba(96,165,250,0.06); font-weight: 700; color: #60a5fa; }
+  .seg-name { font-weight: 600; }
+  .seg-sub { font-size: 0.62rem; color: #64748b; margin-top: 2px; }
+  .badge { display: inline-block; font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 99px; }
+  .tips { display: flex; flex-direction: column; gap: 10px; }
+  .tip { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; background: #0d1117; border-radius: 8px; }
+  .tip-icon { font-size: 1rem; flex-shrink: 0; line-height: 1.4; }
+  .tip-text { font-size: 0.78rem; color: #94a3b8; line-height: 1.6; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+  .note { font-size: 0.62rem; color: #334155; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+{% for route in routes %}
+  <div class="tab {% if loop.first %}active{% endif %}" onclick="showTab('{{ loop.index0 }}')">
+    {{ route.name }}{% if route.event_date %} · {{ route.event_date }}{% endif %}
+  </div>
+{% endfor %}
+</div>
+
+{% for route in routes %}
+<div class="tab-content {% if loop.first %}active{% endif %}" id="tab-{{ loop.index0 }}">
+
+  <div class="route-header">
+    <h1>⚡ {{ route.name }}</h1>
+    {% if route.event_date %}<span class="pill">{{ route.event_date }}</span>{% endif %}
+    <span class="pill">{{ route.total_dist_km }} km · {{ route.total_ele_m }} Hm</span>
+    <span class="pill">FTP {{ route.athlete.ftp_w }}W · CP {{ route.athlete.cp_w }}W</span>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">Zielzeit</div>
+      <div class="kpi-value" style="color:#60a5fa">{{ route.total_time_fmt }}</div>
+      <div class="kpi-sub">Range {{ route.total_time_range }}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ziel-Ø Watt</div>
+      <div class="kpi-value" style="color:#4ade80">{{ route.avg_power_w }}W</div>
+      <div class="kpi-sub">IF {{ route.avg_if }} · ~{{ (route.avg_if * 100)|int }}% FTP</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">W' verbraucht</div>
+      <div class="kpi-value" style="color:#facc15">{{ route.w_prime_spent_kj }} kJ</div>
+      <div class="kpi-sub">von {{ route.w_prime_total_kj }} kJ</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">W' Reserve</div>
+      <div class="kpi-value" style="color:{% if route.w_prime_remaining_kj < 5 %}#ef4444{% elif route.w_prime_remaining_kj < 10 %}#f97316{% else %}#4ade80{% endif %}">
+        {{ route.w_prime_remaining_kj }} kJ
+      </div>
+      <div class="kpi-sub">{{ route.w_prime_pct_used }}% verplant</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Höhenprofil · Leistungsverteilung</div>
+    <div class="w-bar-wrap">
+      <span style="font-size:0.7rem;color:#94a3b8;width:80px;flex-shrink:0">W' Balance</span>
+      <div class="w-bar-track">
+        <div class="w-bar-fill" style="width:{{ route.w_prime_pct_used }}%"></div>
+      </div>
+      <span style="font-size:0.7rem;font-weight:700;color:#4ade80;width:110px;flex-shrink:0;text-align:right">
+        {{ route.w_prime_spent_kj }} / {{ route.w_prime_total_kj }} kJ
+      </span>
+    </div>
+    {{ route.svg_profile | safe }}
+    <div class="note">* Farben: Grün = aerob · Gelb = MIT/Schwelle · Orange = MIT+ · Rot = HIT/W'-Einsatz. Werte aus GPX + Physikmodell.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Segmentplan</div>
+      <table class="seg-table">
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>Zone</th>
+            <th>Watt</th>
+            <th>km/h</th>
+            <th>Split</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for seg in route.segments %}
+          <tr>
+            <td>
+              <div class="seg-name">{{ seg.km_label }}</div>
+              <div class="seg-sub">{{ seg.gradient_pct|round(1) }}% Gradient</div>
+            </td>
+            <td>
+              <span class="badge" style="background:{{ seg.zone_color }}22;color:{{ seg.zone_color }}">
+                {{ seg.zone_label }}
+              </span>
+            </td>
+            <td style="font-weight:700;color:{{ seg.zone_color }}">{{ seg.target_w }}W</td>
+            <td style="color:#94a3b8">{{ seg.speed_kmh }}</td>
+            <td style="font-variant-numeric:tabular-nums;color:#94a3b8">{{ seg.time_fmt }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="2"><strong>Gesamt · {{ route.total_dist_km }} km</strong></td>
+            <td>Ø {{ route.avg_power_w }}W</td>
+            <td>—</td>
+            <td>{{ route.total_time_fmt }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Taktik & Intuition</div>
+      <div class="tips">
+        {% set icons = ["🚦", "⚠️", "🔋", "🌡️"] %}
+        {% for tip in route.intuition %}
+        <div class="tip">
+          <div class="tip-icon">{{ icons[loop.index0 % 4] }}</div>
+          <div class="tip-text">{{ tip }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% if route.notes %}
+  <div style="font-size:0.72rem;color:#64748b;margin-top:8px">📝 {{ route.notes }}</div>
+  {% endif %}
+
+</div>
+{% endfor %}
+
+<script>
+function showTab(idx) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.tab-content').forEach((c,i) => c.classList.toggle('active', i===idx));
+}
+</script>
+</body>
+</html>
