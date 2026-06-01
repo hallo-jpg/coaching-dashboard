@@ -482,3 +482,43 @@ def build_route_context(gpx_path: str) -> dict:
         "svg_profile":        _build_svg_profile(segments),
         "athlete":            athlete,
     }
+
+
+# ── Renderer + Entry Point ────────────────────────────────────────────────────
+
+def render_pacing(
+    routes_dir: str = "athlete/routes",
+    template_path: str = "pacing.template.html",
+    output_path: str = "docs/pacing.html",
+) -> None:
+    """Render all active GPX routes to docs/pacing.html."""
+    gpx_files = sorted(Path(routes_dir).glob("*.gpx"))
+    if not gpx_files:
+        print(f"[pacing] Keine GPX-Dateien in {routes_dir} gefunden — übersprungen.")
+        return
+
+    routes = []
+    for gpx_path in gpx_files:
+        try:
+            ctx = build_route_context(str(gpx_path))
+            routes.append(ctx)
+            print(f"[pacing] {ctx['name']}: {ctx['total_time_fmt']} · {ctx['avg_power_w']}W")
+        except Exception as e:
+            print(f"[pacing] Fehler bei {gpx_path.name}: {e}")
+
+    if not routes:
+        return
+
+    routes.sort(key=lambda r: (r["event_date"] == "", r["event_date"] or "9999"))
+
+    env = Environment(loader=FileSystemLoader("."), autoescape=False)
+    template = env.get_template(template_path)
+    html = template.render(routes=routes, generated_at=datetime.now().strftime("%d.%m.%Y %H:%M"))
+
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(output_path).write_text(html, encoding="utf-8")
+    print(f"[pacing] -> {output_path} ({len(routes)} Route(n))")
+
+
+if __name__ == "__main__":
+    render_pacing()

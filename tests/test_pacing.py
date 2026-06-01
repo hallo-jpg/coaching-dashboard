@@ -102,7 +102,7 @@ def test_compute_route_produces_segments():
     assert "km_start" in result[0]
     assert "km_end" in result[0]
 
-from generate_pacing import generate_intuition, build_route_context
+from generate_pacing import generate_intuition, build_route_context, render_pacing
 
 def test_generate_intuition_returns_list_of_strings():
     from generate_pacing import parse_gpx, group_segments
@@ -128,3 +128,23 @@ def test_build_route_context_keys():
     assert "w_prime_remaining_kj" in ctx
     assert "intuition" in ctx
     assert "svg_profile" in ctx
+
+import tempfile, os
+
+def test_render_pacing_creates_html():
+    """End-to-End: mini.gpx -> HTML file with correct content."""
+    with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as f:
+        out_path = f.name
+    try:
+        render_pacing(
+            routes_dir="tests/fixtures",
+            template_path="pacing.template.html",
+            output_path=out_path,
+        )
+        html = open(out_path).read()
+        assert "Race Pacing" in html
+        assert "Zielzeit" in html
+        assert "W' Balance" in html or "W&apos; Balance" in html
+        assert "km" in html
+    finally:
+        os.unlink(out_path)
