@@ -488,7 +488,9 @@ def build_route_context(gpx_path: str) -> dict:
 
     total_time_s  = sum(s["time_s"] for s in segments)
     total_dist_m  = sum(s["dist_m"] for s in segments)
-    total_ele     = sum(max(s["elev_end"] - s["elev_start"], 0) for s in segments)
+    total_ele     = meta.get("ele_override_m") or sum(
+                        max(pts[i]["ele"] - pts[i-1]["ele"], 0) for i in range(1, len(pts))
+                    )
     avg_power     = (sum(s["target_w"] * s["time_s"] for s in segments)
                      / max(total_time_s, 1))
     w_spent_kj    = (athlete["w_prime_j"] - segments[-1]["w_prime_balance_j"]) / 1000 if segments else 0
