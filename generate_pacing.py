@@ -112,7 +112,7 @@ def group_segments(pts: list[dict], min_dist_m: float = 300.0, grad_threshold: f
 # ── Physics Model ─────────────────────────────────────────────────────────────
 
 _PHYSICS = {
-    "mass_kg":   96.0,   # Fahrer (88kg) + Rad (8kg)
+    "mass_kg":   99.0,   # Fahrer (91kg) + Rad (8kg)
     "g":          9.81,
     "Cr":         0.004,  # Rollwiderstand Asphalt
     "rho":        1.20,   # Luftdichte Meereshöhe

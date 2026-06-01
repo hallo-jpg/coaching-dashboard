@@ -8,7 +8,7 @@
 |---|---|
 | **Athlet** | Stefan |
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
-| **FTP** | 305W (Sentiero) · 3,47 W/kg · 88kg |
+| **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg |
 | **VO2max** | 59 ml/min/kg (Sentiero) |
 | **Hauptrennen** | RadRace 120 · 12.–14. Juni 2026 · **KW24** |
 | **Nebenrennen** | Rosenheimer Radmarathon Tour V · 28. Juni 2026 · **KW26** · 197km / 3.550hm |

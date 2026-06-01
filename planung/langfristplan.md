@@ -17,10 +17,10 @@ Keine spekulativen Anpassungen – nur nach echten Testresultaten.
 
 | Zeitpunkt | FTP-Ziel | W/kg | Anmerkung |
 |---|---|---|---|
-| Frühjahr 2026 | **305W** (aktuell) | 3,47 | Basis nach Winteraufbau |
+| Frühjahr 2026 | **305W** (aktuell) | 3,35 | Basis nach Winteraufbau (91kg) |
 | Herbst 2026 | **315–322W** | ~3,55–3,65 | nach zweitem HIT-Block |
 | Frühjahr 2027 | **320–330W** | ~3,65–3,75 | nach zweitem Winteraufbau |
-| Herbst 2027 | **330–342W** | ~3,75–3,90 | realistisches Niveau bei 88kg |
+| Herbst 2027 | **330–342W** | ~3,65–3,76 | realistisches Niveau bei 91kg |
 | Langfristig | **355–365W** | ~4,0 | Plateau für Stefan's Profil (~5–7 Jahre) |
 
 **Wachstumserwartung**: +3–5% FTP pro Saison bei konsistenter Ausführung.

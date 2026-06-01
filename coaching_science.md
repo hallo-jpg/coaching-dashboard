@@ -1,7 +1,7 @@
 # Coaching Science Reference
 
 **Referenzdokument für den Claude Code Coaching-Skill**
-Stand: April 2026 | Athlet: Stefan, FTP 305W, 3,47 W/kg, VO2max 59 ml/min/kg
+Stand: April 2026 | Athlet: Stefan, FTP 305W, 3,35 W/kg, VO2max 59 ml/min/kg
 
 ---
 
@@ -158,7 +158,7 @@ Bosquet et al. (2007, Meta-Analyse n=27, Med Sci Sports Exerc): Optimales Taperi
 
 Wissenschaftliche Basis: Bergström et al. (1967) – Glykogensupercompensation. Burke et al. (2011, IJSNEM): 10g KH/kg/Tag für 24–48h vor Event maximiert Glykogenspeicher auf ~750mmol/kg DM. Jeukendrup (2017): Bei gut trainierten Athleten reichen 24–36h Carb-Loading.
 
-**Stefan-spezifisch (88kg):**
+**Stefan-spezifisch (91kg):**
 
 | Zeitraum | KH-Ziel | Beispielquellen | Hinweise |
 |---|---|---|---|
@@ -374,7 +374,7 @@ Stefan hat trainierten Darm (110g/h ohne GI-Probleme, Sommer 2025) → Vollkapaz
 
 ### 10.6 Koffein-Empfehlung
 
-**Ergogene Dosis**: 3–6 mg/kg KG → bei 88kg = **264–528mg Koffein**  
+**Ergogene Dosis**: 3–6 mg/kg KG → bei 91kg = **273–546mg Koffein**  
 **Timing**: Einnahme **45–60min vor Belastung** (maximaler Plasma-Peak nach 45–60min)  
 **Quelle**: Goldstein et al. (2010) ISSN Position Stand; Doherty & Smith (2005) JSEP meta-analysis (+11% Ausdauerleistung)
 

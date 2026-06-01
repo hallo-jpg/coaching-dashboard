@@ -7,9 +7,9 @@
 | Parameter | Wert | Anmerkung |
 |---|---|---|
 | **FTP** | **305W** | Sentiero-Modell (3+10min Protokoll, 4iiii Referenz) |
-| **Gewicht** | 88 kg | Stand 4. April 2026 |
+| **Gewicht** | 91 kg | Stand 1. Juni 2026 |
 | **Größe** | 190 cm | |
-| **W/kg** | 3,47 | bei 305W / 88kg |
+| **W/kg** | 3,35 | bei 305W / 91kg |
 | **VO2max** | 59 ml/min/kg | Sentiero metabolisches Profil |
 | **FatMax** | 202W | Sentiero |
 | **Erfahrung** | ~3 Jahre | strukturiertes Ausdauertraining · Ötztaler Radmarathon 2025 ✅ |

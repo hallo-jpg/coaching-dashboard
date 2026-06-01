@@ -14,8 +14,8 @@
 | | Früher | Jetzt | Δ |
 |---|---|---|---|
 | FTP absolut | 324W | 305W | −19W (−5,9%) |
-| Gewicht | 97 kg | 88 kg | −9 kg (−9,3%) |
-| W/kg | 3,34 | 3,47 | +0,13 (+3,9%) |
+| Gewicht | 97 kg | 91 kg | −6 kg (−6,2%) |
+| W/kg | 3,34 | 3,35 | +0,01 (+0,3%) |
 
 ## VO2max-Verlauf
 

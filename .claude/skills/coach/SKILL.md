@@ -919,8 +919,8 @@ TT-Faktor: ×1.03 · Gran-Fondo-Faktor: ×0.95
 10min-Avg: [X]W → FTP = [X × 0.90 gerundet auf 1W]W
 
 Vergleich:
-  Alt: [alter FTP]W ([alter W/kg] W/kg @ 88kg)
-  Neu: [neuer FTP]W ([neuer W/kg] W/kg @ 88kg) → [+/- delta]%
+  Alt: [alter FTP]W ([alter W/kg] W/kg @ 91kg)
+  Neu: [neuer FTP]W ([neuer W/kg] W/kg @ 91kg) → [+/- delta]%
 
 Neue Zonen (Sentiero-Modell):
   Z0 Recovery:  0–[FTP × 0.52]W
@@ -1128,7 +1128,7 @@ Immer wenn `tage_bis_event ≤ 7`, diese Tag-für-Tag-Liste ausgeben:
 | T-1 | Pause / 20min Easy Spin | Leichtes Frühstück + KH-reich Mittag | Früh ins Bett | ☐ |
 | T-0 | 🏁 Renntag | Renntag-Frühstück 3h vorher (150g KH) | — | ☐ |
 
-KH-Mengen für Stefan (88kg): 7g/kg = 616g · 8g/kg = 704g · 10g/kg = 880g
+KH-Mengen für Stefan (91kg): 7g/kg = 637g · 8g/kg = 728g · 10g/kg = 910g
 
 ---
 
