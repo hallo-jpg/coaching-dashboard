@@ -871,6 +871,51 @@ RACE_KW  = 24
 MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
             "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
 
+def build_pacing_card(tage_bis_event: int) -> dict | None:
+    """Compact pacing card for dashboard. Only active T-14 to T-0 with GPX present."""
+    if tage_bis_event is None or tage_bis_event > 14 or tage_bis_event < 0:
+        return None
+
+    gpx_files = sorted(Path("athlete/routes").glob("*.gpx"))
+    if not gpx_files:
+        return None
+
+    from generate_pacing import load_route_meta, build_route_context
+    today = date.today().isoformat()
+    best_path = None
+    best_date = "9999-12-31"
+    for gpx_path in gpx_files:
+        meta = load_route_meta(str(gpx_path))
+        ed = meta.get("event_date") or "9999-12-31"
+        if ed >= today and ed < best_date:
+            best_date = ed
+            best_path = gpx_path
+
+    if best_path is None:
+        best_path = gpx_files[0]
+
+    try:
+        ctx = build_route_context(str(best_path))
+    except Exception:
+        return None
+
+    if not ctx["segments"]:
+        return None
+    steepest = max(ctx["segments"], key=lambda s: s["gradient_pct"])
+    first    = ctx["segments"][0]
+
+    return {
+        "name":          ctx["name"],
+        "event_date":    ctx["event_date"],
+        "total_time":    ctx["total_time_fmt"],
+        "avg_power":     ctx["avg_power_w"],
+        "start_power":   first["target_w"],
+        "peak_power":    steepest["target_w"],
+        "peak_gradient": round(steepest["gradient_pct"], 1),
+        "w_prime_pct":   ctx["w_prime_pct_used"],
+    }
+
+
 # ── Context builder ───────────────────────────────────────────────────────────
 
 def build_context(kw: int, monday: date, sunday: date) -> dict:
@@ -1148,6 +1193,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "pmc_tsb_label":   pmc_tsb_label,
         "pmc_available":   pmc_available,
         "race_kw":         RACE_KW,
+        "pacing_card":     build_pacing_card((_race_date - date.today()).days),
     }
 
 def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:
