@@ -17,10 +17,10 @@
   .pill { background: rgba(96,165,250,0.15); color: #60a5fa; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
   .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
   @media (max-width: 600px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
-  .kpi { background: #161d2a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; }
-  .kpi-label { font-size: 0.62rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-  .kpi-value { font-size: 1.5rem; font-weight: 800; line-height: 1; }
-  .kpi-sub { font-size: 0.65rem; color: #64748b; margin-top: 4px; }
+  .kpi { background: #161d2a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; min-width: 0; overflow: hidden; }
+  .kpi-label { font-size: 0.62rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .kpi-value { font-size: 1.5rem; font-weight: 800; line-height: 1; white-space: nowrap; overflow: hidden; }
+  .kpi-sub { font-size: 0.65rem; color: #64748b; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .card { background: #161d2a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
   .card-title { font-size: 0.72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
   .w-bar-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
@@ -67,14 +67,26 @@
   <div class="kpi-row">
     <div class="kpi">
       <div class="kpi-label">Zielzeit</div>
-      <div class="kpi-value" style="color:#60a5fa">{{ route.total_time_fmt }}</div>
-      <div class="kpi-sub">Range {{ route.total_time_range }}</div>
+      <div class="kpi-value" style="color:#60a5fa">{{ route.total_time_fmt_h }}</div>
+      <div class="kpi-sub">{{ route.total_time_range_min }}</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Ziel-Ø Watt</div>
       <div class="kpi-value" style="color:#4ade80">{{ route.avg_power_w }}W</div>
       <div class="kpi-sub">IF {{ route.avg_if }} · ~{{ (route.avg_if * 100)|int }}% FTP</div>
     </div>
+    {% if route.climbs_only %}
+    <div class="kpi">
+      <div class="kpi-label">Energie</div>
+      <div class="kpi-value" style="color:#fb923c">~{{ route.energy_kcal }}</div>
+      <div class="kpi-sub">kcal · {{ route.kh_g_per_hour }}g KH/h</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Top-Anstieg</div>
+      <div class="kpi-value" style="color:#ef4444">{{ route.steepest_seg.gradient_pct|round(1) }}%</div>
+      <div class="kpi-sub">km {{ route.steepest_seg.km_start|round(0)|int }}+ · {{ route.steepest_seg.target_w }}W</div>
+    </div>
+    {% else %}
     <div class="kpi">
       <div class="kpi-label">W' verbraucht</div>
       <div class="kpi-value" style="color:#facc15">{{ route.w_prime_spent_kj }} kJ</div>
@@ -82,11 +94,10 @@
     </div>
     <div class="kpi">
       <div class="kpi-label">W' Reserve</div>
-      <div class="kpi-value" style="color:{% if route.w_prime_remaining_kj < 5 %}#ef4444{% elif route.w_prime_remaining_kj < 10 %}#f97316{% else %}#4ade80{% endif %}">
-        {{ route.w_prime_remaining_kj }} kJ
-      </div>
+      <div class="kpi-value" style="color:{% if route.w_prime_remaining_kj < 5 %}#ef4444{% elif route.w_prime_remaining_kj < 10 %}#f97316{% else %}#4ade80{% endif %}">{{ route.w_prime_remaining_kj }} kJ</div>
       <div class="kpi-sub">{{ route.w_prime_pct_used }}% verplant</div>
     </div>
+    {% endif %}
   </div>
 
   <div class="card">

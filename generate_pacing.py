@@ -498,6 +498,13 @@ def build_route_context(gpx_path: str) -> dict:
         m, s = divmod(int(secs), 60)
         return f"{m}:{s:02d}"
 
+    def fmt_time_h(secs: float) -> str:
+        h, rem = divmod(int(secs), 3600)
+        m = rem // 60
+        return f"{h}h {m:02d}min" if h else f"{m}min"
+
+    t_low_m  = int(total_time_s * 0.97 / 60)
+    t_high_m = math.ceil(total_time_s * 1.05 / 60)
     t_low  = fmt_time(total_time_s * 0.97)
     t_high = fmt_time(total_time_s * 1.05)
 
@@ -518,6 +525,10 @@ def build_route_context(gpx_path: str) -> dict:
         [s for s in segments if s["gradient_pct"] > 0.5] if climbs_only else segments
     )
 
+    steepest = max(segments, key=lambda s: s["gradient_pct"]) if segments else None
+    energy_kcal = round(avg_power * total_time_s / 0.23 / 4184 / 100) * 100
+    kh_g_per_hour = 90 if total_time_s > 4 * 3600 else 80
+
     return {
         "name":               meta["name"],
         "route_type":         meta["type"],
@@ -528,7 +539,12 @@ def build_route_context(gpx_path: str) -> dict:
         "climbs_only":        climbs_only,
         "total_time_s":       round(total_time_s),
         "total_time_fmt":     fmt_time(total_time_s),
+        "total_time_fmt_h":   fmt_time_h(total_time_s),
         "total_time_range":   f"{t_low}–{t_high}",
+        "total_time_range_min": f"{t_low_m}–{t_high_m} min",
+        "energy_kcal":        energy_kcal,
+        "kh_g_per_hour":      kh_g_per_hour,
+        "steepest_seg":       steepest,
         "total_dist_km":      round(total_dist_m / 1000, 2),
         "total_ele_m":        round(total_ele),
         "avg_power_w":        round(avg_power),
