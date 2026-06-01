@@ -71,3 +71,33 @@ def test_w_prime_never_exceeds_total():
     segs = [{"target_w": 100, "time_s": 600}]  # far below CP → recovery
     result = compute_w_prime_balance(segs, cp_w=300, w_prime_total_j=20000)
     assert result[0]["w_prime_balance_j"] <= 20000
+
+from generate_pacing import read_athlete_params, load_route_meta, compute_route
+
+def test_read_athlete_params_returns_required_keys():
+    params = read_athlete_params()
+    assert "ftp_w" in params
+    assert "cp_w" in params
+    assert "w_prime_j" in params
+    assert params["ftp_w"] > 100
+    assert params["cp_w"] > 100
+    assert params["w_prime_j"] > 1000
+
+def test_load_route_meta_defaults():
+    meta = load_route_meta("nonexistent_route")
+    assert meta["type"] == "climb"
+    assert meta["target_if"] == 0.95
+
+def test_compute_route_produces_segments():
+    from generate_pacing import parse_gpx, group_segments
+    pts = parse_gpx(FIXTURE)
+    segs = group_segments(pts)
+    params = read_athlete_params()
+    result = compute_route(segs, params, route_type="climb")
+    assert len(result) >= 1
+    assert "target_w" in result[0]
+    assert "time_s" in result[0]
+    assert "speed_kmh" in result[0]
+    assert "w_prime_balance_j" in result[0]
+    assert "km_start" in result[0]
+    assert "km_end" in result[0]
