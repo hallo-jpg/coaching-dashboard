@@ -231,6 +231,7 @@ def load_route_meta(gpx_path: str) -> dict:
         "type": "climb",
         "event_date": None,
         "target_if": 0.95,
+        "type_factor_override": None,
         "notes": "",
     }
     meta_path = Path(gpx_path).with_suffix(".json")
@@ -247,6 +248,7 @@ def compute_route(
     segments: list[dict],
     athlete: dict,
     route_type: str = "climb",
+    type_factor_override: float | None = None,
 ) -> list[dict]:
     """Combine all engine steps into full segment dicts with power, speed, time, W'."""
     cp = athlete["cp_w"]
@@ -256,6 +258,9 @@ def compute_route(
     enriched = []
     for seg in segments:
         power = assign_power(seg["gradient_pct"], route_type, cp)
+        if type_factor_override is not None:
+            base_factor = _TYPE_FACTOR.get(route_type, 1.0)
+            power = round(power * type_factor_override / base_factor)
         v_ms  = velocity_from_power(power, seg["gradient_pct"], route_type)
         time_s = seg["dist_m"] / max(v_ms, 0.1)
 
@@ -432,7 +437,8 @@ def build_route_context(gpx_path: str) -> dict:
     athlete = read_athlete_params()
     pts     = parse_gpx(gpx_path)
     segs_raw = group_segments(pts)
-    segments = compute_route(segs_raw, athlete, route_type=meta["type"])
+    segments = compute_route(segs_raw, athlete, route_type=meta["type"],
+                             type_factor_override=meta.get("type_factor_override"))
 
     total_time_s  = sum(s["time_s"] for s in segments)
     total_dist_m  = sum(s["dist_m"] for s in segments)
