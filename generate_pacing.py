@@ -130,7 +130,7 @@ _POWER_TABLE = [
 ]
 
 _TYPE_FACTOR = {
-    "tt":          1.03,
+    "tt":          1.08,
     "climb":       1.00,
     "gran_fondo":  0.95,
 }

@@ -2,5 +2,6 @@
   "name": "Oberjochpass TT",
   "type": "tt",
   "event_date": "2026-06-13",
-  "notes": "RadRace 120 Zeitfahren · Sa 13.6. · negativer Split: erste 20% konservativ, Finale leer fahren"
+  "target_if": 1.08,
+  "notes": "RadRace 120 Zeitfahren · Sa 13.6. · Basis: 318W@25min bei TSB −27.7 (29.5., nach MIT_4x16 168 TSS), kein Allout · TSB-Projektion Renntag: +11 (+38.7 Pkt Swing = +3.9% Leistung) · Ziel Ø 330–335W · negativer Split: erste 20% ~320–325W, Hauptteil 330–335W, Finish 340W+"
 }
