@@ -804,6 +804,52 @@ Wenn Stefan während Tapering schreibt: "ich fühle mich schlapp", "reicht das",
 3. Kein Extra-Training — jede zusätzliche Einheit kostet mehr als sie bringt
 4. Letztes Training war ausreichend — Fitness verliert man in 14 Tagen nicht
 
+### Pacing-Block (Rennwoche-Modus und manueller Trigger)
+
+**Wann ausgeben:**
+- Automatisch: wenn `tage_bis_event ≤ 7` und eine GPX-Route mit passendem `event_date` in `athlete/routes/` liegt
+- Manuell: wenn Stefan schreibt „pacing für [Route]", „wie pace ich [Strecke]", „gib mir Watt-Ziele für [Event]", oder „was kann ich auf [Strecke] leisten"
+
+**Datenbasis:** Lies GPX aus `athlete/routes/`, FTP/CP aus `athlete/profil.md`, W' aus `athlete/fortschritt.md`. Nutze die Logik aus `generate_pacing.py` (Gradient-Tabelle × CP × Typ-Faktor → Zielwatt; Newton-Solver → Geschwindigkeit → Segmentzeit).
+
+**Format im Coach-Output (nach 🎯 Standort, vor Wochenplan):**
+
+```
+🏁 Pacing · [Route-Name] · [Datum wenn vorhanden]
+
+Zielzeit: [MM:SS] (Range [MM:SS]–[MM:SS]) · Ø [X]W · IF [Y]
+W' Budget: [X] von [Y] kJ verplant · [Z] kJ Reserve [✅ wenn >10kJ / ⚠️ wenn <10kJ]
+
+Anker-Wattziele:
+  [km X–Y] ([grad]%) → [W]W  — [ein Satz Taktik]
+  [km X–Y] ([grad]%) → [W]W  ⚠ Steilstück, max. W'-Einsatz
+  ...
+
+Intuition: „[ein konkreter Satz was sich die Belastung körperlich anfühlt]"
+
+→ Vollanalyse: https://hallo-jpg.github.io/coaching-dashboard/pacing.html
+```
+
+**Für Gran-Fondo / Rennen (>60km, type: gran_fondo):** Zusätzlich:
+```
+Energie-Budget: ~[kcal] über [Dauer] · [X]g KH/h empfohlen ab Stunde 1
+```
+
+**Wenn keine GPX vorhanden:** Pacing aus Strecken-Eckdaten schätzen (Distanz, Hm, Ø Gradient). Hinweis ausgeben: „Pacing basiert auf Strecken-Eckdaten — nach GPX-Ablage in athlete/routes/ wird es segmentgenau."
+
+**Segment-Power-Tabelle (für manuelle Berechnung ohne GPX):**
+| Gradient | Zielwatt |
+|---|---|
+| Abfahrt (<0%) | 60% CP |
+| 0–2% | 92% CP |
+| 2–4% | 97% CP |
+| 4–6% | 100% CP |
+| 6–8% | 105% CP |
+| >8% | 108% CP |
+TT-Faktor: ×1.03 · Gran-Fondo-Faktor: ×0.95
+
+---
+
 ### Rennwoche-Modus (0–6 Tage bis Event)
 
 **Allgemeines Rennwoche-Schema (T-6 bis T-0):**
