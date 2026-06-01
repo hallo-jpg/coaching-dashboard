@@ -106,7 +106,8 @@
 
   <div class="two-col">
     <div class="card">
-      <div class="card-title">Segmentplan</div>
+      <div class="card-title">{% if route.climbs_only %}Anstiege{% else %}Segmentplan{% endif %}</div>
+      {% if route.climbs_only %}<div style="font-size:0.7rem;color:#64748b;margin-bottom:10px">Nur Anstiege · Abfahrten &amp; Flachabschnitte ausgeblendet</div>{% endif %}
       <table class="seg-table">
         <thead>
           <tr>
@@ -118,7 +119,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for seg in route.segments %}
+          {% for seg in route.segments_display %}
           <tr>
             <td>
               <div class="seg-name">{{ seg.km_label }}</div>

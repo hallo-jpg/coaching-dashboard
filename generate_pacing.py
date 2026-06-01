@@ -513,12 +513,19 @@ def build_route_context(gpx_path: str) -> dict:
         m_t, s_t = divmod(int(seg["time_s"]), 60)
         seg["time_fmt"] = f"{m_t}:{s_t:02d}"
 
+    climbs_only = meta["type"] == "gran_fondo"
+    segments_display = (
+        [s for s in segments if s["gradient_pct"] > 0.5] if climbs_only else segments
+    )
+
     return {
         "name":               meta["name"],
         "route_type":         meta["type"],
         "event_date":         event_date_str,
         "notes":              meta.get("notes", ""),
         "segments":           segments,
+        "segments_display":   segments_display,
+        "climbs_only":        climbs_only,
         "total_time_s":       round(total_time_s),
         "total_time_fmt":     fmt_time(total_time_s),
         "total_time_range":   f"{t_low}–{t_high}",
