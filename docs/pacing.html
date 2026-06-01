@@ -48,11 +48,11 @@
 
 <div class="tab-bar">
 
-  <div class="tab active" onclick="showTab('0')">
+  <div class="tab active" onclick="showTab(0)">
     Oberjochpass TT · 13. June 2026
   </div>
 
-  <div class="tab " onclick="showTab('1')">
+  <div class="tab " onclick="showTab(1)">
     RadRace 120 Rennen · 14. June 2026
   </div>
 
@@ -4866,8 +4866,7 @@
 
 
 <script>
-function showTab(idx) {
-  const n = +idx;
+function showTab(n) {
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===n));
   document.querySelectorAll('.tab-content').forEach((c,i) => c.classList.toggle('active', i===n));
 }

@@ -48,7 +48,7 @@
 
 <div class="tab-bar">
 {% for route in routes %}
-  <div class="tab {% if loop.first %}active{% endif %}" onclick="showTab('{{ loop.index0 }}')">
+  <div class="tab {% if loop.first %}active{% endif %}" onclick="showTab({{ loop.index0 }})">
     {{ route.name }}{% if route.event_date %} · {{ route.event_date }}{% endif %}
   </div>
 {% endfor %}
@@ -166,8 +166,7 @@
 {% endfor %}
 
 <script>
-function showTab(idx) {
-  const n = +idx;
+function showTab(n) {
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===n));
   document.querySelectorAll('.tab-content').forEach((c,i) => c.classList.toggle('active', i===n));
 }
