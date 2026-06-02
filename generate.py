@@ -1193,7 +1193,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "pmc_tsb_label":   pmc_tsb_label,
         "pmc_available":   pmc_available,
         "race_kw":         RACE_KW,
-        "pacing_card":     build_pacing_card((_race_date - date.today()).days),
+
     }
 
 def _readiness_sub(rhr: float, hrv: float, hrv_avg: float, wellness: list) -> str:

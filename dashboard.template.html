@@ -940,38 +940,6 @@
   </div>
   {% endif %}
 
-  <!-- PACING (nur T-14 bis T-0) -->
-  {% if pacing_card %}
-  <div class="nutr-card" style="margin-bottom:0">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-      <div class="chard" style="margin-bottom:0">
-        <div class="chard-icon" style="background:rgba(96,165,250,0.14)">⚡</div>
-        Pacing · {{ pacing_card.name }}
-      </div>
-      {% if pacing_card.event_date %}
-      <span class="kw-pill" style="margin-left:auto">{{ pacing_card.event_date }}</span>
-      {% endif %}
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
-      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px">
-        <div style="font-size:0.6rem;color:var(--muted);margin-bottom:3px">ZIELZEIT</div>
-        <div style="font-size:1.2rem;font-weight:800;color:#60a5fa">{{ pacing_card.total_time }}</div>
-      </div>
-      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px">
-        <div style="font-size:0.6rem;color:var(--muted);margin-bottom:3px">Ø ZIELWATT</div>
-        <div style="font-size:1.2rem;font-weight:800;color:#4ade80">{{ pacing_card.avg_power }}W</div>
-      </div>
-    </div>
-    <div style="font-size:0.75rem;color:var(--muted);line-height:1.8">
-      🚦 Start: <strong style="color:#4ade80">{{ pacing_card.start_power }}W</strong> — locker beginnen<br>
-      ⚠️ Steilstück ({{ pacing_card.peak_gradient }}%): <strong style="color:#f97316">{{ pacing_card.peak_power }}W</strong> max.<br>
-      🔋 W' Budget: <strong>{{ pacing_card.w_prime_pct }}%</strong> verplant
-    </div>
-    <a href="pacing.html" style="display:block;margin-top:12px;text-align:center;font-size:0.7rem;color:#60a5fa;text-decoration:none;padding:6px;background:rgba(96,165,250,0.08);border-radius:6px">
-      → Vollanalyse öffnen
-    </a>
-  </div>
-  {% endif %}
 
 </div>
 
