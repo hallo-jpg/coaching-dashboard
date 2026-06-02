@@ -5,6 +5,13 @@
 
 ---
 
+## 02. Juni 2026 – Neues Event: Karlsfelder Seelauf
+→ Karlsfelder Seelauf 2026 eingetragen: 20.09.2026 (KW38) · 10km · Ziel: max. Pace / sub-60min
+→ athlete/profil.md: Event-Kalender + Saisonziele aktualisiert (Taper-Start T-14 = 06.09.)
+→ planung/langfristplan.md: Laufen-Abschnitt + Dual-Focus-Block Herbst beschrieben
+→ FTP-Herbsttest verschoben: KW39 → KW40 (28. Sep–4. Okt) — KW39-Do wäre nur 4 Tage nach Rennen
+→ Fokuspriorität bis Rosenheimer (28.6.): Rad bleibt Hauptfokus, Lauf wie bisher 2–4×/Woche
+
 ## 31. Mai 2026 – KW22 Retro + KW23 Planung
 🟡 Mittel · TSS 602/499 (120,6%) · HRV → stabil (47→50ms) · Polarisation PI 57% ⚠️ Outdoor-LIT Mo zu intensiv
 → 3 starke Qualitätseinheiten (Over-Under 124 TSS, MIT_4x16 168 TSS, TT-Sim 1×25min 113 TSS)

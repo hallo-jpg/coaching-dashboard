@@ -66,11 +66,19 @@ Dieses Modell ist unabhängig von konkreten Rennterminen. Rennen werden in diese
 
 | Zeitpunkt | Ziel | Volume |
 |---|---|---|
-| 2026 | Running Economy etablieren · 5km < 28:30 | 25–33% Trainingszeit |
-| 2027 | Erste Laufwettkämpfe optional · 5km < 27:00 | 30–35% Trainingszeit |
+| 2026 | Running Economy etablieren · **Karlsfelder Seelauf 10km (20.9.) – max. Pace** · Prognose jetzt: ~1:01:46, Ziel: sub-60min | 25–33% Trainingszeit |
+| 2027 | 10km < 58:00 · 5km < 27:00 · weitere Laufrennen | 30–35% Trainingszeit |
 | Langfristig | Triathlon-Option (Olympic) oder eigenständige Laufrennen | 33–40% Trainingszeit |
 
 **Prinzip**: Laufvolumen wächst langsamer als Radvolumen. Nie mehr als +10% Laufdauer pro Monat. Verletzungsprävention hat Vorrang vor Tempo-Entwicklung.
+
+**Herbstaufbau 2026 (Aug–Sep): Dual-Focus-Block**
+Bis Rosenheimer Radmarathon (28.6.) Fokus Rad. Danach:
+- Juli: Sommererholung (Post-Season-Protokoll) — Rad und Lauf unstrukturiert
+- August: Herbstaufbau beginnt mit gleichwertiger Rad- und Laufarbeit. 2-3 Laufeinheiten/Woche, darunter ab Woche 3 auch Qualitätsläufe (Schwelle, VO2max)
+- September 1–6 (T-20 bis T-14): letzter Lauf-Qualitätsreiz, dann Lauf-Taper (Volumen −40%, Intensität halten)
+- September 20: Karlsfelder Seelauf
+- Ab September 21: Erholung + FTP-Test KW40 (Rad-Herbsttest)
 
 ---
 
@@ -130,8 +138,8 @@ Zwei formale Testfenster pro Saison. Kein Test außerhalb dieser Fenster ohne ex
 
 | Testfenster | KW | Datum | Timing-Rationale |
 |---|---|---|---|
-| ~~🔬 Frühjahrstest 2026~~ | ~~KW21~~ | ~~18.–24. Mai 2026~~ | **Gestrichen (03.05.2026):** Krankheitspause KW16 hat Trainingsgrundlage zu stark reduziert. KW21 bleibt voller HIT-Block. Nächster Test: KW39. |
-| 🔬 Herbsttest 2026 | **KW39** | 21.–27. Sep 2026 | Nach Sommerpause + Herbstaufbau; Basis für Winterblock-Planung |
+| ~~🔬 Frühjahrstest 2026~~ | ~~KW21~~ | ~~18.–24. Mai 2026~~ | **Gestrichen (03.05.2026):** Krankheitspause KW16 hat Trainingsgrundlage zu stark reduziert. KW21 bleibt voller HIT-Block. Nächster Test: KW40. |
+| 🔬 Herbsttest 2026 | **KW40** | 28. Sep–4. Okt 2026 | **Verschoben von KW39 auf KW40 (02.06.2026):** Karlsfelder Seelauf am 20.9. (KW38) — Donnerstag KW39 wäre nur 4 Tage nach dem Rennen, zu wenig Erholung für validen Test. KW40 = ~11 Tage Recovery. Basis für Winterblock-Planung. |
 
 **Testprotokoll:** Sentiero 3+10min · outdoor · 4iiii Powermeter · FTP = 10min-Avg × 0,90
 

@@ -39,12 +39,14 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 | Event | Datum | Tage bis Event (auto) | Charakter | Taper-Start |
 |---|---|---|---|---|
 | RadRace 120 – Zeitfahren | 2026-06-13 | — | TT + Rennen | 2026-05-30 (T-14) |
-| Rosenheimer Radmarathon | 2026-06-28 | — | 197km / 3.550hm | 2026-06-14 (T-14) |
+| Rosenheimer Radmarathon | 2026-06-28 | — | 197km / 3.550hm Gran Fondo | 2026-06-14 (T-14) |
+| Karlsfelder Seelauf | 2026-09-20 | — | 10km Lauf – max. Pace | 2026-09-06 (T-14) |
 
 *"Tage bis Event" wird vom Coach-Skill beim Aufruf berechnet (heute − Event-Datum). Neue Events hier eintragen.*
 
 ### Weitere Ziele
-- Laufleistung verbessern (kein Rennen-Ziel)
+- **Karlsfelder Seelauf 20.9.2026 (KW38):** 10km – maximale Pace (Ziel: sub-60min, Stretch: sub-58min auf Basis aktueller Prognose 1:01:46)
+- Laufleistung 2026 gezielt aufbauen: Running Economy + 10km-Tempo (Schwerpunkt Herbstaufbau)
 - Kein Profi-Fokus: bestmöglich performen, nicht um jeden Preis
 
 ## Laufprofil (COROS)
