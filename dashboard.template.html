@@ -409,6 +409,21 @@
     </div>
   </div>
 
+  <!-- Karlsfelder Seelauf -->
+  <div class="countdown-card-secondary">
+    <div>
+      <div class="cd-sec-flag">🏃</div>
+      <div class="cd-sec-name" style="color:#4ade80">Karlsfelder Seelauf</div>
+      <div class="cd-sec-detail">20. Sep · 10 km · KW38 · max. Pace</div>
+    </div>
+    <div class="cd-sec-bottom">
+      <div class="cd-item">
+        <div class="cd-sec-num" id="sl-days">–</div>
+        <div class="cd-sec-lbl">Tage <span id="sl-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- PHASE BAR -->
@@ -1275,6 +1290,9 @@
     document.getElementById('rr-weeks').textContent = '(' + Math.floor(rrDays / 7) + ' Wo.)';
     document.getElementById('ro-days').textContent = roDays;
     document.getElementById('ro-weeks').textContent = '(' + Math.floor(roDays / 7) + ' Wo.)';
+    var slDays = daysBetween('2026-09-20');
+    document.getElementById('sl-days').textContent = slDays;
+    document.getElementById('sl-weeks').textContent = '(' + Math.floor(slDays / 7) + ' Wo.)';
   })();
 </script>
 
