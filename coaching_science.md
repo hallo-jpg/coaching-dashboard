@@ -25,6 +25,37 @@ Rønnestad et al. (2012, Scand J Med Sci Sports): 12 Wochen Block-Periodisierung
 | Rønnestad 2012 (SJMSS) | 12W Block vs. Trad., Elite | +4,6% VO2max, +2,1% Wmax Block-Gruppe |
 | Rønnestad 2014 (SJMSS) | 3-Wochen-Block, Elite | +8,7W Wmax, signifikant vs. Kontrolle |
 | Rønnestad 2016 (EJAP) | Block mit 2× tägl. HIT | Hämatologische Anpassungen nach 7 Tagen |
+| Rønnestad et al. 2025 (EJSS) | 1-Wochen MIT vs. HIT, Crossover | Beide verbessern PO15min; MIT > Laktatschwelle, HIT > Sprint-Trend |
+
+### 1-Wochen-Block: MIT vs. HIT – Intensitätsspezifische Adaptationen
+
+**Rønnestad et al. (2025, Eur J Sport Sci, DOI: 10.1002/ejsc.70067):** Crossover-Studie, 22 gut trainierte Radfahrer (VO2max 69,5 ml/min/kg). Jeder Athlet absolvierte beide Blöcke (2 Monate Abstand). Test nach 6 Tagen aktiver Erholung.
+
+- **MIT-Block:** 6 Einheiten / 7 Tage · 5–7 × 10–14 min Arbeitsintervalle · RPE 14,5 (Borg 6–20 = "schwer")
+- **HIT-Block:** 5 Einheiten / 6 Tage · 5 × 8,75 min Kurzintervalle · RPE 17,1 ("sehr schwer")
+
+**Ergebnisse:**
+
+| Outcome | MIT-Block | HIT-Block | Befund |
+|---|---|---|---|
+| PO15min (FTP-Proxy) | +4,9% | +2,8% | p=0,44 — **kein Unterschied** |
+| PO4mmol (Laktatschwelle) | **+4,5%** | +2,1% | p=0,03, moderate ES — **MIT besser** |
+| %VO2max bei PO4mmol | **+1,2 Pkt** | −0,9 Pkt | p=0,02, moderate ES — **MIT besser** |
+| PO10sec (Sprint) | −1,5% | +1,5% | p=0,08 — Trend HIT, nicht signifikant |
+| VO2max | vergleichbar | vergleichbar | p=0,43 |
+| Wirkungsgrad | vergleichbar | vergleichbar | kein Unterschied |
+
+**Kernaussage:** Beide 1-Wochen-Blöcke verbessern die 15-Minuten-Leistung vergleichbar. Der Unterschied liegt in der **Zieladaptation**: MIT stärkt aerobe Kapazität bei Schwellenintensitäten (PO4mmol, aerobes Fundament), HIT tendiert zu neuromuskulären/anaeroben Vorteilen. VO2max wird durch beide gleichermaßen stimuliert.
+
+**Wann MIT, wann HIT (Stefan):**
+
+| Ziel | → Block-Wahl |
+|---|---|
+| Laktatschwelle / Endurance-Event (Rosenheimer, Gran Fondo) | **MIT-Block** (Over-Under, MIT_4×16, Schwelle) |
+| TT-Spezifik / kurzer Effort (RadRace Zeitfahren, FTP-Test) | **HIT-Block** (4×4min, 30/15s, HIT_EB) |
+| Volle Aufbauphase (4–6 Wochen) | MIT-Fokus Woche 1–3, dann HIT-Block Woche 4–5 → trifft beide Systeme |
+
+**Hinweis RPE:** MIT-Block RPE ~14,5 ≈ 6/10 — subjektiv leichter als HIT, aber metabolisch für PO15min gleich wirksam. Geeignet wenn HRV gedrückt oder Trainingsermüdung erhöht ist.
 
 ---
 
