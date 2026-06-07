@@ -5,6 +5,15 @@
 
 ---
 
+## 07. Juni 2026 – KW23 Retro + KW24 Rennwoche Planung
+🔴 Schwach (Regelwerk) · TSS 214/207 (103%) · HRV ↘ stark fallend (61→28ms am letzten Tag) · Polarisation PI 95% ✅
+→ Taper-Woche war perfekt: 6/6 Einheiten, LIT-Zonen exakt (IF 0.54–0.55), Aktivierung Do ideal dosiert (RPE 7)
+→ 🚨 HRV-Alarm: 28ms (>2SD supprimiert) + Ruhepuls 66bpm (+11 über Basis) am letzten Tag → Krank-Risiko-Muster
+→ KW24 geplant: Mo FULL REST (HRV-Alarm), Di HRV-abhängig LIT-1h, Mi LIT-1h, Do Pause/Packen, Fr Aktivierun.zwo+Anreise, Sa Zeitfahren, So Rennen
+→ TSB-Prognose Zeitfahren Sa 13.6.: ~+5 (unter Idealziel +10–20) · Swing vs. TT-Sim 29.5.: +32.7 Pkt → ~+3.3% Leistungsbonus
+→ Pacing TT: Ø 326–332W · Negativer Split 320→332→340W+ · W' 28.1kJ für Steilsektionen + Finish
+→ kw23.md archiviert → planung/archiv/kw23.md
+
 ## 02. Juni 2026 – Neues Event: Karlsfelder Seelauf
 → Karlsfelder Seelauf 2026 eingetragen: 20.09.2026 (KW38) · 10km · Ziel: max. Pace / sub-60min
 → athlete/profil.md: Event-Kalender + Saisonziele aktualisiert (Taper-Start T-14 = 06.09.)
