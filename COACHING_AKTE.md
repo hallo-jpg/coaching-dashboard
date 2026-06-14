@@ -1,9 +1,18 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 31. Mai 2026*
+*Letzte Aktualisierung: 14. Juni 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
 
 ---
+
+## 14. Juni 2026 – KW24 Retro + KW25 Planung (Sonderfall)
+
+🟢 Gut (Rennwoche) · TSS 521 (Race-Vergleich n.a.) · HRV ↘ post-race (43→38ms) · TSB Peak +11.8 Do – Taper-Timing perfekt
+→ 🏁 RR120 Prolog (Sa): Ø337W · ~342W NP · 20min · IF 1.12 · HF 192bpm (Max) · near All-Time 20min PR (341W, Apr 2025)
+→ 🏁 Rad Race 120 (So): Ø248W · 272min · 129.2km · TSS 300 · RPE 9 · MaxHF 190bpm · vollständig finishiert
+→ 💡 FTP-Signal: intervals.icu schätzt +17W → 322W (Basis: Prolog ~342W NP × 0.95 = 325W, konsistent). Kein formeller Sentiero-Test → kein Update. LTHR 192→188bpm angepasst.
+→ Sonderfall aktiv: Rosenheimer (28.6.) ist 14 Tage weg → Mo–Di Pause · Mi–Sa LIT · So Easy Run · ~214 TSS geplant
+→ kw24.md archiviert → planung/archiv/kw24.md
 
 ## 07. Juni 2026 – KW23 Retro + KW24 Rennwoche Planung
 🔴 Schwach (Regelwerk) · TSS 214/207 (103%) · HRV ↘ stark fallend (61→28ms am letzten Tag) · Polarisation PI 95% ✅

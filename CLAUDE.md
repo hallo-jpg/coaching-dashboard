@@ -10,13 +10,13 @@
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
 | **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg |
 | **VO2max** | 59 ml/min/kg (Sentiero) |
-| **Hauptrennen** | RadRace 120 · 12.–14. Juni 2026 · **KW24** |
+| **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | Rosenheimer Radmarathon Tour V · 28. Juni 2026 · **KW26** · 197km / 3.550hm |
 | **Herbstevent** | Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
-| **Aktuelle KW** | KW24 (8. Juni – 14. Juni 2026) |
-| **Aktuelle Phase** | Rennwoche |
-| **Nächste Phase** | Recovery KW25 |
-| **Wochen bis Rennen** | 0 |
+| **Aktuelle KW** | KW25 (15. Juni – 21. Juni 2026) |
+| **Aktuelle Phase** | Sonderfall-Recovery (Rosenheimer T-13 bis T-7) |
+| **Nächste Phase** | Rosenheimer Rennwoche KW26 |
+| **Wochen bis Rennen** | 2 (Rosenheimer 28.6.) |
 
 ## Coaching-Skill
 
