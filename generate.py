@@ -867,6 +867,53 @@ def calc_compliance(weeks: list[dict]) -> int:
     return round(ok / len(completed) * 100)
 
 
+RACE_EVENTS = [
+    {
+        "id":     "radrace",
+        "name":   "RadRace 120",
+        "flag":   "🏁",
+        "date":   date(2026, 6, 13),
+        "detail": "13.–14. Juni · KW24 · Zeitfahren + 127 km · 2.300 Hm",
+        "kw":     24,
+        "color":  None,
+    },
+    {
+        "id":     "rosenheimer",
+        "name":   "Rosenheimer Radmarathon",
+        "flag":   "🗺️",
+        "date":   date(2026, 6, 28),
+        "detail": "28. Juni · Tour V · 197 km · 3.550 Hm · KW26",
+        "kw":     26,
+        "color":  None,
+    },
+    {
+        "id":     "seelauf",
+        "name":   "Karlsfelder Seelauf",
+        "flag":   "🏃",
+        "date":   date(2026, 9, 20),
+        "detail": "20. Sep · 10 km · KW38 · max. Pace",
+        "kw":     38,
+        "color":  "#4ade80",
+    },
+]
+
+
+def _build_countdown(today: date) -> dict:
+    """Return {main, secondary[]} with only future events (date >= today), sorted by date."""
+    future = []
+    for ev in RACE_EVENTS:
+        if ev["date"] >= today:
+            e = dict(ev)
+            e["days_until"] = (ev["date"] - today).days
+            e["weeks_until"] = e["days_until"] // 7
+            e["date_iso"]    = ev["date"].isoformat()
+            future.append(e)
+    future.sort(key=lambda e: e["date"])
+    if not future:
+        return {"main": None, "secondary": []}
+    return {"main": future[0], "secondary": future[1:]}
+
+
 RACE_KW  = 24
 MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
             "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
