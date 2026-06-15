@@ -1078,19 +1078,28 @@
         <div class="card-headline">📈 FTP-Entwicklung</div>
         <span class="kw-pill" style="margin-left:auto">{{ ftp_history.current_ftp }}W aktuell</span>
       </div>
-      <svg width="100%" viewBox="0 0 {{ ftp_history.svg_w }} {{ ftp_history.svg_h }}" preserveAspectRatio="none" style="display:block;height:80px">
-        <defs>
-          <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
-          </linearGradient>
-        </defs>
-        <path d="{{ ftp_history.fill_path }}" fill="url(#ftp-grad)"/>
-        <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
+      <div style="position:relative">
+        <svg width="100%" viewBox="0 0 {{ ftp_history.svg_w }} {{ ftp_history.svg_h }}" preserveAspectRatio="none" style="display:block;height:80px">
+          <defs>
+            <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+            </linearGradient>
+          </defs>
+          <path d="{{ ftp_history.fill_path }}" fill="url(#ftp-grad)"/>
+          <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
+          {% for pt in ftp_history.points %}
+          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3.5" fill="#3b82f6" style="cursor:pointer">
+            <title>{{ pt.ftp }}W · {{ pt.label }}</title>
+          </circle>
+          {% endfor %}
+        </svg>
         {% for pt in ftp_history.points %}
-        <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3" fill="#3b82f6"/>
+        <span style="position:absolute;left:{{ pt.x_pct }}%;top:{{ pt.y_pct }}%;
+          {% if pt.anchor == 'start' %}transform:translate(2px,-130%){% elif pt.anchor == 'end' %}transform:translate(calc(-100% - 2px),-130%){% else %}transform:translate(-50%,-130%){% endif %};
+          font-size:0.58rem;color:#60a5fa;font-weight:700;white-space:nowrap;pointer-events:none;line-height:1">{{ pt.ftp }}W</span>
         {% endfor %}
-      </svg>
+      </div>
       <div style="position:relative;height:14px;margin-top:3px">
         {% for yl in ftp_history.year_labels %}
         <span style="position:absolute;{% if yl.x_pct < 8 %}left:0{% else %}left:{{ yl.x_pct }}%;transform:translateX(-50%){% endif %};font-size:0.55rem;color:#475569;white-space:nowrap">{{ yl.year }}</span>

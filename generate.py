@@ -1343,8 +1343,8 @@ def get_ftp_history() -> dict:
     end_d      = points[-1]["date"] + timedelta(days=30)
     total_days = max((end_d - start_d).days, 1)
 
-    SVG_W, SVG_H = 300, 80
-    PAD_T, PAD_B = 8, 4
+    SVG_W, SVG_H = 430, 80
+    PAD_T, PAD_B = 10, 4
     usable_h   = SVG_H - PAD_T - PAD_B
     coords = []
     for p in points:
@@ -1364,11 +1364,24 @@ def get_ftp_history() -> dict:
             seen_years.add(yr)
             year_labels.append({"year": yr, "x_pct": round(x / SVG_W * 100, 1)})
 
+    n = len(coords)
+    pt_list = []
+    for i, (x, y, p) in enumerate(coords):
+        x_pct = round(x / SVG_W * 100, 1)
+        y_pct = round(y / SVG_H * 100, 1)
+        anchor = "start" if i == 0 else ("end" if i == n - 1 else "mid")
+        pt_list.append({
+            "x": x, "y": y,
+            "ftp": p["ftp"], "label": p["label"],
+            "x_pct": x_pct, "y_pct": y_pct,
+            "anchor": anchor,
+        })
+
     return {
         "available":   True,
         "path":        line_path,
         "fill_path":   fill_path,
-        "points":      [{"x": x, "y": y, "ftp": p["ftp"], "label": p["label"]} for x, y, p in coords],
+        "points":      pt_list,
         "current_ftp": ftp_vals[-1],
         "year_labels": year_labels,
         "svg_w":       SVG_W,
