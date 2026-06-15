@@ -366,69 +366,45 @@
 </div>
 
 <!-- COUNTDOWN -->
+{% if countdown_main %}
 <div class="countdown-row">
 
-  <!-- RadRace: zwei Tage -->
   <div class="countdown-card-main">
     <div class="cd-main-left">
-      <div class="cd-flag">🏁</div>
-      <div class="cd-race-name">RadRace 120 · 13.–14. Juni 2026</div>
-      <div class="cd-days">
-        <div class="cd-day-row">
-          <span class="cd-day-badge badge-primary">Sa 13. Jun</span>
-          <span class="cd-day-detail">Zeitfahren · Oberjochpass · 6,81 km · 335 Hm · Ø 5%</span>
-          <span class="cd-day-focus focus-primary">Primärfokus</span>
-        </div>
-        <div class="cd-day-row">
-          <span class="cd-day-badge badge-secondary">So 14. Jun</span>
-          <span class="cd-day-detail">Rennen · 127 km · 2.300 Hm</span>
-          <span class="cd-day-focus focus-secondary">Sekundärfokus</span>
-        </div>
-      </div>
+      <div class="cd-flag">{{ countdown_main.flag }}</div>
+      <div class="cd-race-name">{{ countdown_main.name }}</div>
+      <div style="font-size:0.72rem;color:#64748b;margin-top:6px">{{ countdown_main.detail }}</div>
     </div>
     <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-num" id="rr-days">–</div>
-        <div class="cd-label">Tage <span id="rr-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
+        <div class="cd-num" id="cd-main-days">{{ countdown_main.days_until }}</div>
+        <div class="cd-label">Tage <span id="cd-main-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
 
-  <!-- Rosenheimer -->
+  {% for ev in countdown_secondary %}
   <div class="countdown-card-secondary">
     <div>
-      <div class="cd-sec-flag">🗺️</div>
-      <div class="cd-sec-name">Rosenheimer Radmarathon</div>
-      <div class="cd-sec-detail">28. Juni · Tour V · 197 km · 3.550 Hm · KW26</div>
+      <div class="cd-sec-flag">{{ ev.flag }}</div>
+      <div class="cd-sec-name"{% if ev.color %} style="color:{{ ev.color }}"{% endif %}>{{ ev.name }}</div>
+      <div class="cd-sec-detail">{{ ev.detail }}</div>
     </div>
     <div class="cd-sec-bottom">
       <div class="cd-item">
-        <div class="cd-sec-num" id="ro-days">–</div>
-        <div class="cd-sec-lbl">Tage <span id="ro-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
+        <div class="cd-sec-num" id="cd-{{ ev.id }}-days">{{ ev.days_until }}</div>
+        <div class="cd-sec-lbl">Tage <span id="cd-{{ ev.id }}-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
-
-  <!-- Karlsfelder Seelauf -->
-  <div class="countdown-card-secondary">
-    <div>
-      <div class="cd-sec-flag">🏃</div>
-      <div class="cd-sec-name" style="color:#4ade80">Karlsfelder Seelauf</div>
-      <div class="cd-sec-detail">20. Sep · 10 km · KW38 · max. Pace</div>
-    </div>
-    <div class="cd-sec-bottom">
-      <div class="cd-item">
-        <div class="cd-sec-num" id="sl-days">–</div>
-        <div class="cd-sec-lbl">Tage <span id="sl-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 
 </div>
+{% endif %}
 
 <!-- PHASE BAR -->
 <div class="phase-bar">
-  <div class="phase-bar-label">Saisonverlauf bis RadRace</div>
+  <div class="phase-bar-label">Saisonverlauf{% if countdown_main %} bis {{ countdown_main.name }}{% endif %}</div>
   <div class="phases">
     {% for phase in phases %}
     <div class="phase {{ phase.state }}">{% if phase.state == 'done' %}✓ {% elif phase.state == 'active' %}◉ {% endif %}{{ phase.name }}<div class="kw">{{ phase.kw }}</div></div>
