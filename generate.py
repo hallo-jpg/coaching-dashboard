@@ -1479,7 +1479,7 @@ def get_sleep_history(days: int = 30) -> dict:
     try:
         wellness = get_wellness(start.isoformat(), end.isoformat())
     except Exception:
-        return {"path": "", "fill_path": "", "sleep_today": None, "avg_30d": 0.0, "day_labels": [], "last_y": 40}
+        return {"path": "", "fill_path": "", "sleep_today": None, "avg_30d": 0.0, "day_labels": [], "last_y": 40, "pts": []}
 
     points = []
     for w in wellness:
@@ -1487,18 +1487,22 @@ def get_sleep_history(days: int = 30) -> dict:
             points.append((w["id"][:10], w["sleepSecs"] / 3600))
 
     if not points:
-        return {"path": "", "fill_path": "", "sleep_today": None, "avg_30d": 0.0, "day_labels": [], "last_y": 40}
+        return {"path": "", "fill_path": "", "sleep_today": None, "avg_30d": 0.0, "day_labels": [], "last_y": 40, "pts": []}
 
     SLEEP_MAX = 10.0  # fixed Y-axis: 0–10h so 8h target line is always at y=16
     total_days = max((end - start).days, 1)
     SVG_W, SVG_H = 300, 80
 
     coords = []
+    pts = []
     for d_str, sleep_h in points:
         d = date.fromisoformat(d_str)
         x = round((d - start).days / total_days * SVG_W, 1)
         y = round(SVG_H - (min(sleep_h, SLEEP_MAX) / SLEEP_MAX) * SVG_H, 1)
         coords.append((x, y))
+        x_pct = round((d - start).days / total_days * 100, 1)
+        d_fmt = f"{d.day:02d}.{d.month:02d}.{str(d.year)[2:]}"
+        pts.append({"x": x_pct, "d": d_fmt, "v": round(sleep_h, 1)})
 
     line_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y in coords[1:]]
     line_path = " ".join(line_parts)
@@ -1523,6 +1527,7 @@ def get_sleep_history(days: int = 30) -> dict:
         "avg_30d": avg_30d,
         "day_labels": day_labels,
         "last_y": coords[-1][1] if coords else 40,
+        "pts": pts,
     }
 
 
