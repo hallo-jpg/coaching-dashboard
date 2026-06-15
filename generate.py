@@ -1428,11 +1428,11 @@ def get_ctl_history(weeks: int = 26) -> dict:
     try:
         wellness = get_wellness(start.isoformat(), end.isoformat())
     except Exception:
-        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": []}
+        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": [], "pts": []}
 
     points = [(w["id"][:10], w["ctl"]) for w in wellness if w.get("ctl") and w.get("id")]
     if not points:
-        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": []}
+        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": [], "pts": []}
 
     ctl_values = [v for _, v in points]
     ctl_max = max(ctl_values) * 1.1
@@ -1441,11 +1441,15 @@ def get_ctl_history(weeks: int = 26) -> dict:
     SVG_W, SVG_H = 300, 80
 
     coords = []
+    pts = []
     for d_str, ctl in points:
         d = date.fromisoformat(d_str)
         x = round((d - start).days / total_days * SVG_W, 1)
         y = round(SVG_H - (ctl / ctl_max) * SVG_H, 1)
         coords.append((x, y))
+        x_pct = round((d - start).days / total_days * 100, 1)
+        d_fmt = f"{d.day:02d}.{d.month:02d}.{str(d.year)[2:]}"
+        pts.append({"x": x_pct, "d": d_fmt, "v": round(ctl, 1)})
 
     line_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y in coords[1:]]
     line_path = " ".join(line_parts)
@@ -1464,6 +1468,7 @@ def get_ctl_history(weeks: int = 26) -> dict:
         "ctl_now": round(ctl_now, 1),
         "last_y": coords[-1][1],
         "month_labels": month_labels,
+        "pts": pts,
     }
 
 
