@@ -1294,5 +1294,53 @@
 })();
 </script>
 
+<script>
+(function() {
+  function nearestPt(pts, xPct) {
+    var best = pts[0], bd = 999;
+    for (var i = 0; i < pts.length; i++) {
+      var d = Math.abs(pts[i].x - xPct);
+      if (d < bd) { bd = d; best = pts[i]; }
+    }
+    return best;
+  }
+
+  function bindChartHover(wrId, chId, ttId, pts, color, fmtVal) {
+    var wr = document.getElementById(wrId);
+    if (!wr || !pts.length) return;
+    wr.addEventListener('mousemove', function(e) {
+      var r = wr.getBoundingClientRect();
+      var xp = (e.clientX - r.left) / r.width * 100;
+      var pt = nearestPt(pts, xp);
+      var ch = document.getElementById(chId);
+      var tt = document.getElementById(ttId);
+      ch.style.display = 'block';
+      ch.style.left = pt.x + '%';
+      tt.innerHTML = '<div style="font-weight:700;color:' + color + '">' + fmtVal(pt) + '</div>'
+                   + '<div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">' + pt.d + '</div>';
+      tt.style.display = 'block';
+      if (pt.x < 70) { tt.style.left = 'calc(' + pt.x + '% + 8px)'; tt.style.right = ''; }
+      else            { tt.style.right = 'calc(' + (100 - pt.x) + '% + 8px)'; tt.style.left = ''; }
+    });
+    wr.addEventListener('mouseleave', function() {
+      document.getElementById(chId).style.display = 'none';
+      document.getElementById(ttId).style.display = 'none';
+    });
+  }
+
+  {% if ctl_history.pts %}
+  var ctlPts = [{% for p in ctl_history.pts %}{"x":{{p.x}},"d":"{{p.d}}","v":{{p.v}}}{% if not loop.last %},{% endif %}{% endfor %}];
+  bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#22c55e', function(p){ return 'CTL ' + p.v; });
+  {% endif %}
+
+  {% if sleep_history.pts %}
+  var slPts = [{% for p in sleep_history.pts %}{"x":{{p.x}},"d":"{{p.d}}","v":{{p.v}}}{% if not loop.last %},{% endif %}{% endfor %}];
+  bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#7986cb', function(p){
+    return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
+  });
+  {% endif %}
+})();
+</script>
+
 </body>
 </html>
