@@ -1238,7 +1238,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ramprate_icon":   ramprate_icon,
         "pmc_tsb_color":       pmc_tsb_color,
         "pmc_tsb_label":       pmc_tsb_label,
-        "pmc_available":       False,   # removed in Task 6
         "countdown_main":      _countdown["main"],
         "countdown_secondary": _countdown["secondary"],
 
