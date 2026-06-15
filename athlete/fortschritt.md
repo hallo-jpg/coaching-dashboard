@@ -4,6 +4,11 @@
 
 | Datum | FTP | W/kg | Gewicht | Methode | Notiz |
 |---|---|---|---|---|---|
+| 01.11.2023 | 271W | – | – | intervals.icu/Strava | Historischer Wert |
+| 19.02.2024 | 300W | – | – | intervals.icu/Strava | Historischer Wert |
+| 18.09.2024 | 286W | – | – | intervals.icu/Strava | Historischer Wert |
+| 18.12.2024 | 301W | – | – | intervals.icu/Strava | Historischer Wert |
+| 04.05.2025 | 324W | – | – | intervals.icu/Strava | Historischer Wert |
 | vor Projektstart | 324W | 3,34 | 97 kg | – | Historischer Wert |
 | 29.03.2026 | 310W (geschätzt) | 3,48 | 89 kg | Schätzung | Projektstart |
 | 04.04.2026 | 317W | 3,60 | 88 kg | 3+10min outdoor (Coggan 90%) | Feldtest, 10min Avg 352W |
