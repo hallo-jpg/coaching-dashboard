@@ -692,7 +692,9 @@
       </div>
       <div style="display:flex;gap:3px;height:100%">
         {% for w in tss_weeks %}
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1';var f=this.querySelector('.tf');if(f)f.style.filter='brightness(1.4)'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0';var f=this.querySelector('.tf');if(f)f.style.filter=''">
           <span style="font-size:0.46rem;color:{{ w.label_color }};height:12px;line-height:12px;white-space:nowrap">
             {% if not w.is_future and w.tss_ist > 0 %}{{ w.tss_ist }}{{ w.arrow }}{% elif w.is_current %}▶{% endif %}
           </span>
@@ -700,10 +702,15 @@
             {% if w.plan_bar_height_pct > 0 %}
             <div style="position:absolute;bottom:0;left:0;width:100%;height:{{ w.plan_bar_height_pct }}%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;{% if w.is_future %}border-style:dashed{% endif %}"></div>
             {% endif %}
-            <div style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;position:relative;z-index:1;{% if w.is_current %}opacity:0.55{% endif %}"></div>
+            <div class="tf" style="width:100%;height:{{ w.bar_height_pct }}%;background:{{ w.bar_color }};border-radius:3px 3px 0 0;position:relative;z-index:1;{% if w.is_current %}opacity:0.55{% endif %}"></div>
           </div>
           <span style="font-size:0.44rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %};height:10px;line-height:10px">KW{{ w.kw }}</span>
           <span style="font-size:0.38rem;color:{{ w.phase_color }};height:9px;line-height:9px;text-align:center">{{ w.phase_short }}</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;{% if loop.first %}left:0{% elif loop.last %}right:0{% else %}left:50%;transform:translateX(-50%){% endif %};margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
+            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW{{ w.kw }}</div>
+            {% if not w.is_future and w.tss_ist > 0 %}<div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: {{ w.tss_ist }} TSS</div>{% endif %}
+            {% if w.tss_plan > 0 %}<div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: {{ w.tss_plan }} TSS</div>{% endif %}
+          </div>
         </div>
         {% endfor %}
       </div>
