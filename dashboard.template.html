@@ -1037,7 +1037,7 @@
       <div class="card-headline">😴 Schlaf-Verlauf · 30 Tage</div>
     </div>
     {% if sleep_history.path %}
-    <div style="width:100%;margin-bottom:8px">
+    <div id="sl-wrap" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -1054,6 +1054,8 @@
         <!-- 8h label nach den Pfaden → immer sichtbar -->
         <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
       </svg>
+      <div id="sl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
+      <div id="sl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(121,134,203,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
