@@ -1339,21 +1339,30 @@ def get_ftp_history() -> dict:
     ftp_max = max(ftp_vals) + 22
     ftp_range = max(ftp_max - ftp_min, 1)
 
-    start_d  = points[0]["date"]
-    # Include 5 months future padding for next-test marker
-    future_d = date.today() + timedelta(days=155)
-    total_days = max((future_d - start_d).days, 1)
+    start_d    = points[0]["date"]
+    end_d      = points[-1]["date"] + timedelta(days=30)
+    total_days = max((end_d - start_d).days, 1)
 
-    SVG_W, SVG_H = 260, 62
+    SVG_W, SVG_H = 300, 80
+    PAD_T, PAD_B = 8, 4
+    usable_h   = SVG_H - PAD_T - PAD_B
     coords = []
     for p in points:
         x = round((p["date"] - start_d).days / total_days * SVG_W, 1)
-        y = round(SVG_H - ((p["ftp"] - ftp_min) / ftp_range) * SVG_H, 1)
+        y = round(SVG_H - PAD_B - ((p["ftp"] - ftp_min) / ftp_range) * usable_h, 1)
         coords.append((x, y, p))
 
     path_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y, _ in coords[1:]]
     line_path  = " ".join(path_parts)
     fill_path  = line_path + f" L{coords[-1][0]},{SVG_H} L0,{SVG_H} Z"
+
+    seen_years: set = set()
+    year_labels = []
+    for x, y, p in coords:
+        yr = p["date"].year
+        if yr not in seen_years:
+            seen_years.add(yr)
+            year_labels.append({"year": yr, "x_pct": round(x / SVG_W * 100, 1)})
 
     return {
         "available":   True,
@@ -1361,6 +1370,7 @@ def get_ftp_history() -> dict:
         "fill_path":   fill_path,
         "points":      [{"x": x, "y": y, "ftp": p["ftp"], "label": p["label"]} for x, y, p in coords],
         "current_ftp": ftp_vals[-1],
+        "year_labels": year_labels,
         "svg_w":       SVG_W,
         "svg_h":       SVG_H,
     }

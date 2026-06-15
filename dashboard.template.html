@@ -1089,10 +1089,13 @@
         <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
         {% for pt in ftp_history.points %}
         <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3" fill="#3b82f6"/>
-        <text x="{{ pt.x }}" y="{{ pt.y - 7 }}" text-anchor="middle" font-size="7.5" fill="#3b82f6" font-family="system-ui,sans-serif" font-weight="600">{{ pt.ftp }}W</text>
         {% endfor %}
       </svg>
-      <div style="font-size:0.6rem;color:var(--muted);margin-top:6px">Quelle: fortschritt.md · Nächster Test: KW39 Sep 2026</div>
+      <div style="position:relative;height:14px;margin-top:3px">
+        {% for yl in ftp_history.year_labels %}
+        <span style="position:absolute;{% if yl.x_pct < 8 %}left:0{% else %}left:{{ yl.x_pct }}%;transform:translateX(-50%){% endif %};font-size:0.55rem;color:#475569;white-space:nowrap">{{ yl.year }}</span>
+        {% endfor %}
+      </div>
     </div>
     {% endif %}
 
