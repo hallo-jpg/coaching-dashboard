@@ -1260,15 +1260,19 @@
       var to = new Date(toStr + 'T00:00:00');
       return Math.max(0, Math.ceil((to - now) / 86400000));
     }
-    var rrDays = daysBetween('2026-06-13');
-    var roDays = daysBetween('2026-06-28');
-    document.getElementById('rr-days').textContent = rrDays;
-    document.getElementById('rr-weeks').textContent = '(' + Math.floor(rrDays / 7) + ' Wo.)';
-    document.getElementById('ro-days').textContent = roDays;
-    document.getElementById('ro-weeks').textContent = '(' + Math.floor(roDays / 7) + ' Wo.)';
-    var slDays = daysBetween('2026-09-20');
-    document.getElementById('sl-days').textContent = slDays;
-    document.getElementById('sl-weeks').textContent = '(' + Math.floor(slDays / 7) + ' Wo.)';
+    function setCountdown(daysId, weeksId, isoDate) {
+      var d = daysBetween(isoDate);
+      var el = document.getElementById(daysId);
+      var wk = document.getElementById(weeksId);
+      if (el) el.textContent = d;
+      if (wk) wk.textContent = d > 6 ? '(' + Math.floor(d / 7) + ' Wo.)' : '';
+    }
+    {% if countdown_main %}
+    setCountdown('cd-main-days', 'cd-main-weeks', '{{ countdown_main.date_iso }}');
+    {% for ev in countdown_secondary %}
+    setCountdown('cd-{{ ev.id }}-days', 'cd-{{ ev.id }}-weeks', '{{ ev.date_iso }}');
+    {% endfor %}
+    {% endif %}
   })();
 </script>
 
