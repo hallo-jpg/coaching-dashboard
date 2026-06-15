@@ -1036,9 +1036,11 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
     r_offset      = calc_ring_offset(r_score_combined, 100, CIRC_OUTER)
-    season_pos    = kw - 14
-    season_total  = RACE_KW - 14 + 1
-    season_offset = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
+    _countdown     = _build_countdown(date.today())
+    _next_race_kw  = _countdown["main"]["kw"] if _countdown["main"] else RACE_KW
+    season_pos     = kw - 14
+    season_total   = _next_race_kw - 14 + 1
+    season_offset  = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
 
     current_phase = next(
         (p for p in SEASON_PHASES if p["start_kw"] <= kw <= p["end_kw"]),
@@ -1234,12 +1236,11 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ramprate":        ramprate,
         "ramprate_color":  ramprate_color,
         "ramprate_icon":   ramprate_icon,
-        "pmc_ctl_race":    pmc_forecast["ctl_race"],
-        "pmc_tsb_race":    pmc_forecast["tsb_race"],
-        "pmc_tsb_color":   pmc_tsb_color,
-        "pmc_tsb_label":   pmc_tsb_label,
-        "pmc_available":   pmc_available,
-        "race_kw":         RACE_KW,
+        "pmc_tsb_color":       pmc_tsb_color,
+        "pmc_tsb_label":       pmc_tsb_label,
+        "pmc_available":       False,   # removed in Task 6
+        "countdown_main":      _countdown["main"],
+        "countdown_secondary": _countdown["secondary"],
 
     }
 
