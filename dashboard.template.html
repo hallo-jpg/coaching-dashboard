@@ -1071,53 +1071,33 @@
     {% endif %}
   </div>
 
-  <!-- D1: PMC FORWARD VIEW -->
-  {% if pmc_available %}
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:12px">
-      <div class="card-headline">🏁 Rennprognose KW{{ race_kw }}</div>
+    <!-- FTP-ENTWICKLUNG (aus Standalone-Position hierher verschoben) -->
+    {% if ftp_history.available %}
+    <div class="ausblick-card" style="margin-bottom:0">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div class="card-headline">📈 FTP-Entwicklung</div>
+        <span class="kw-pill" style="margin-left:auto">{{ ftp_history.current_ftp }}W aktuell</span>
+      </div>
+      <svg width="100%" viewBox="0 0 {{ ftp_history.svg_w }} {{ ftp_history.svg_h }}" preserveAspectRatio="none" style="display:block;height:80px">
+        <defs>
+          <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <path d="{{ ftp_history.fill_path }}" fill="url(#ftp-grad)"/>
+        <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
+        {% for pt in ftp_history.points %}
+        <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3" fill="#3b82f6"/>
+        <text x="{{ pt.x }}" y="{{ pt.y - 7 }}" text-anchor="middle" font-size="7.5" fill="#3b82f6" font-family="system-ui,sans-serif" font-weight="600">{{ pt.ftp }}W</text>
+        {% endfor %}
+      </svg>
+      <div style="font-size:0.6rem;color:var(--muted);margin-top:6px">Quelle: fortschritt.md · Nächster Test: KW39 Sep 2026</div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-      <span style="font-size:0.72rem;color:var(--muted)">CTL Renntag</span>
-      <span style="font-size:1.05rem;font-weight:800;color:var(--green)">~{{ pmc_ctl_race }}</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-      <span style="font-size:0.72rem;color:var(--muted)">TSB Renntag</span>
-      <span style="font-size:1.05rem;font-weight:800;color:{{ pmc_tsb_color }}">{{ "%+.1f"|format(pmc_tsb_race) }}</span>
-    </div>
-    <div style="font-size:0.7rem;color:{{ pmc_tsb_color }};margin-bottom:4px">{{ pmc_tsb_label }}</div>
-    <div style="font-size:0.62rem;color:var(--muted)">Ziel TSB +5–+25 · Plan wie vorgesehen</div>
-  </div>
-  {% endif %}
+    {% endif %}
 
 </div>
 
-<!-- FTP-ENTWICKLUNG -->
-{% if ftp_history.available %}
-<div class="ausblick-card" style="margin-bottom:16px">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-    <div class="card-headline">📈 FTP-Entwicklung</div>
-    <span class="kw-pill" style="margin-left:auto">{{ ftp_history.current_ftp }}W aktuell</span>
-  </div>
-  <div style="position:relative;overflow:hidden">
-    <svg width="100%" viewBox="0 0 {{ ftp_history.svg_w }} {{ ftp_history.svg_h }}" preserveAspectRatio="none" style="display:block;height:80px">
-      <defs>
-        <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <path d="{{ ftp_history.fill_path }}" fill="url(#ftp-grad)"/>
-      <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
-      {% for pt in ftp_history.points %}
-      <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3.5" fill="#3b82f6"/>
-      <text x="{{ pt.x }}" y="{{ pt.y - 7 }}" text-anchor="middle" font-size="7.5" fill="#3b82f6" font-family="system-ui,sans-serif" font-weight="600">{{ pt.ftp }}W</text>
-      {% endfor %}
-    </svg>
-  </div>
-  <div style="font-size:0.6rem;color:var(--muted);margin-top:6px">Quelle: fortschritt.md · Punkte = gemessene FTP-Tests · Nächster Test: KW39 Sep 2026</div>
-</div>
-{% endif %}
 
 <!-- ZONEN -->
 {% if zone_data %}
