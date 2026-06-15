@@ -974,7 +974,7 @@
       <div class="card-headline">CTL-Verlauf · 6 Monate</div>
     </div>
     {% if ctl_history.path %}
-    <div style="position:relative;width:100%;height:90px;margin-bottom:30px">
+    <div id="ctl-wrap" style="position:relative;width:100%;height:90px;margin-bottom:30px;cursor:crosshair">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -989,6 +989,8 @@
         <circle cx="300" cy="{{ ctl_history.last_y }}" r="3" fill="var(--green)"/>
         <circle cx="300" cy="{{ ctl_history.last_y }}" r="5" fill="var(--green)" opacity="0.2"/>
       </svg>
+      <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
+      <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(34,197,94,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
       <div style="position:absolute;bottom:-14px;left:0;right:0">
         {% for ml in ctl_history.month_labels %}
         <span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>
