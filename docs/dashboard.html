@@ -134,6 +134,25 @@
   .cd-sec-num { font-size: 2.1rem; font-weight: 900; color: var(--purple); letter-spacing: -1px; line-height: 1; }
   .cd-sec-lbl { font-size: 0.5rem; color: var(--muted); text-transform: uppercase; }
 
+  .cd-raceplan-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 10px; padding: 5px 12px;
+    background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.3);
+    border-radius: 6px; color: #60a5fa;
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    text-decoration: none; cursor: pointer; transition: background 0.15s, border-color 0.15s;
+  }
+  .cd-raceplan-btn:hover { background: rgba(96,165,250,0.22); border-color: rgba(96,165,250,0.5); }
+  .cd-raceplan-btn-sec {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 8px; padding: 4px 10px;
+    background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25);
+    border-radius: 5px; color: #60a5fa;
+    font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+    text-decoration: none; cursor: pointer; transition: background 0.15s;
+  }
+  .cd-raceplan-btn-sec:hover { background: rgba(96,165,250,0.2); }
+
   /* ── PHASE BAR ── */
   .phase-bar { margin-bottom: 22px; }
   .phase-bar-label { font-size: 0.54rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
@@ -374,6 +393,9 @@
       <div class="cd-flag">🗺️</div>
       <div class="cd-race-name">Rosenheimer Radmarathon</div>
       <div style="font-size:0.72rem;color:#64748b;margin-top:6px">28. Juni · Tour V · 197 km · 3.550 Hm · KW26</div>
+      
+      <a class="cd-raceplan-btn" href="rosenheimer_raceplan.html">📋 Race Plan</a>
+      
     </div>
     <div class="cd-main-right">
       <div class="cd-item">
@@ -389,6 +411,7 @@
       <div class="cd-sec-flag">🏃</div>
       <div class="cd-sec-name" style="color:#4ade80">Karlsfelder Seelauf</div>
       <div class="cd-sec-detail">20. Sep · 10 km · KW38 · max. Pace</div>
+      
     </div>
     <div class="cd-sec-bottom">
       <div class="cd-item">
