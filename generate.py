@@ -885,6 +885,7 @@ RACE_EVENTS = [
         "detail": "28. Juni · Tour V · 197 km · 3.550 Hm · KW26",
         "kw":     26,
         "color":  None,
+        "raceplan": "rosenheimer_raceplan.html",
     },
     {
         "id":     "seelauf",
@@ -904,6 +905,7 @@ def _build_countdown(today: date) -> dict:
     for ev in RACE_EVENTS:
         if ev["date"] >= today:
             e = dict(ev)
+            e.setdefault("raceplan", None)
             e["days_until"] = (ev["date"] - today).days
             e["weeks_until"] = e["days_until"] // 7
             e["date_iso"]    = ev["date"].isoformat()

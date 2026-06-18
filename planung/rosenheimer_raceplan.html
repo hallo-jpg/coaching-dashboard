@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Race Plan — Rosenheimer Radmarathon Tour V</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card-border: #2a2d3a;
+    --accent: #4f8cff;
+    --accent2: #34d399;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+    --text: #e2e4ea;
+    --text-dim: #8b8fa3;
+    --crux: #ff6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #1a1d27 0%, #1e2a3a 100%);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+  }
+  .header h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .header .subtitle {
+    color: var(--accent);
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+  .header .stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .header .stat {
+    text-align: center;
+  }
+  .header .stat .val {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .header .stat .lbl {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin: 32px 0 12px 4px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* Elevation profile */
+  .profile-svg { width: 100%; height: auto; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--card-border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 6px;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+  }
+  .tl-item.crux {
+    border-color: var(--crux);
+    background: linear-gradient(135deg, #1a1d27 0%, #2a1520 100%);
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 18px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .tl-item.crux::before { background: var(--crux); }
+  .tl-item.finish::before { background: var(--accent2); }
+
+  .tl-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .tl-time {
+    font-size: 0.8em;
+    color: var(--accent);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .tl-name {
+    font-weight: 600;
+    font-size: 1.05em;
+  }
+  .tl-badge {
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .tl-badge.time-badge {
+    background: rgba(79, 140, 255, 0.15);
+    color: var(--accent);
+  }
+  .tl-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+    font-size: 0.85em;
+    color: var(--text-dim);
+    flex-wrap: wrap;
+  }
+  .tl-meta span { white-space: nowrap; }
+  .tl-note {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: var(--warn);
+    font-weight: 500;
+  }
+  .tl-note.crux-note { color: var(--crux); }
+
+  /* Segment connector */
+  .tl-segment {
+    position: relative;
+    margin: 0 0 6px 0;
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px dashed var(--card-border);
+    border-radius: 8px;
+    font-size: 0.82em;
+    color: var(--text-dim);
+  }
+  .tl-segment::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--card-border);
+    transform: translateY(-50%);
+  }
+  .tl-segment .seg-watts {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Pacing card */
+  .pacing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .pace-item {
+    padding: 12px;
+    background: rgba(79, 140, 255, 0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+  }
+  .pace-item .label {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pace-item .watts {
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .pace-item .pct {
+    font-size: 0.8em;
+    color: var(--text-dim);
+  }
+  .pace-item.limit {
+    border-color: var(--danger);
+    background: rgba(239, 68, 68, 0.08);
+  }
+  .pace-item.limit .watts { color: var(--danger); }
+
+  /* Fueling */
+  .fuel-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .fuel-row:last-child { border-bottom: none; }
+  .fuel-seg {
+    width: 140px;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 0.9em;
+  }
+  .fuel-dur {
+    width: 55px;
+    flex-shrink: 0;
+    font-size: 0.85em;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  .fuel-bar-wrap {
+    flex: 1;
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    height: 28px;
+  }
+  .fuel-bar {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    min-width: 30px;
+  }
+  .fuel-bar.bottles { background: var(--accent); }
+  .fuel-bar.bar { background: #f59e0b; }
+  .fuel-bar.gel { background: var(--accent2); }
+  .fuel-bar.labe { background: #a78bfa; }
+
+  .fuel-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .fuel-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8em;
+    color: var(--text-dim);
+  }
+  .fuel-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+
+  /* Packliste */
+  .pack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .pack-slot {
+    padding: 14px;
+    background: rgba(79, 140, 255, 0.06);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .pack-slot .slot-label {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .pack-slot .slot-items {
+    font-size: 0.95em;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .pack-extra {
+    margin-top: 10px;
+    grid-column: 1 / -1;
+  }
+
+  /* Labe Routine */
+  .routine-steps {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .routine-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: rgba(79, 140, 255, 0.08);
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+  }
+  .routine-step .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Reminders */
+  .reminder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .reminder {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .reminder.warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); color: var(--warn); }
+  .reminder.info { background: rgba(79, 140, 255, 0.08); border: 1px solid rgba(79, 140, 255, 0.2); color: var(--accent); }
+  .reminder.danger { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2); color: var(--crux); }
+  .reminder.success { background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.2); color: var(--accent2); }
+  .reminder .icon { font-size: 1.1em; flex-shrink: 0; }
+
+  /* Summary bar */
+  .summary-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(79, 140, 255, 0.1), rgba(52, 211, 153, 0.1));
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    margin-top: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .summary-item { text-align: center; }
+  .summary-item .s-val { font-size: 1.3em; font-weight: 700; }
+  .summary-item .s-lbl { font-size: 0.7em; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .pacing-grid { grid-template-columns: 1fr; }
+    .pack-grid { grid-template-columns: 1fr; }
+    .reminder-grid { grid-template-columns: 1fr; }
+    .fuel-seg { width: 100px; font-size: 0.8em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Rosenheimer Radmarathon</h1>
+  <div class="subtitle">Tour V — 28. Juni 2026</div>
+  <div class="stats">
+    <div class="stat"><div class="val">195</div><div class="lbl">Kilometer</div></div>
+    <div class="stat"><div class="val">3.665</div><div class="lbl">Hohenmeter</div></div>
+    <div class="stat"><div class="val">~8h</div><div class="lbl">Fahrzeit</div></div>
+    <div class="stat"><div class="val">305W</div><div class="lbl">FTP</div></div>
+  </div>
+</div>
+
+<!-- PACING -->
+<div class="section-title">Pacing — Watt-Targets</div>
+<div class="card">
+  <div class="pacing-grid">
+    <div class="pace-item">
+      <div class="label">Anstiege</div>
+      <div class="watts">230–245W</div>
+      <div class="pct">75–80% FTP</div>
+    </div>
+    <div class="pace-item">
+      <div class="label">Flach</div>
+      <div class="watts">200–210W</div>
+      <div class="pct">65–69% FTP</div>
+    </div>
+    <div class="pace-item">
+      <div class="label">Abfahrten</div>
+      <div class="watts">100–150W</div>
+      <div class="pct">Weitertreten + Essen</div>
+    </div>
+    <div class="pace-item limit">
+      <div class="label">Absolutes Limit</div>
+      <div class="watts">250W</div>
+      <div class="pct">Niemals uberschreiten</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="section-title">Rennverlauf</div>
+<div class="timeline">
+
+  <!-- START -->
+  <div class="tl-item">
+    <div class="tl-head">
+      <span class="tl-name">START Rosenheim</span>
+      <span class="tl-time">07:00</span>
+    </div>
+    <div class="tl-meta"><span>458m</span></div>
+  </div>
+
+  <div class="tl-segment">
+    42km · <span class="seg-watts">&#8960; 213W</span> · 752m &#8593; · 387m &#8595;
+  </div>
+
+  <!-- LABE 1 -->
+  <div class="tl-item">
+    <div class="tl-head">
+      <span class="tl-name">Labe 1</span>
+      <span class="tl-time">~08:45</span>
+      <span class="tl-badge time-badge">1h46</span>
+    </div>
+    <div class="tl-meta">
+      <span>823m Hohe</span>
+      <span>km 42</span>
+    </div>
+    <div class="tl-note">!! Erste 42km ZURUCKHALTEN — max 240W bergauf</div>
+  </div>
+
+  <div class="tl-segment">
+    38km · <span class="seg-watts">&#8960; 209W</span> · 789m &#8593; · 803m &#8595; · wellig
+  </div>
+
+  <!-- LABE 2 -->
+  <div class="tl-item">
+    <div class="tl-head">
+      <span class="tl-name">Labe 2 — Bayerischzell</span>
+      <span class="tl-time">~10:23</span>
+      <span class="tl-badge time-badge">1h37</span>
+    </div>
+    <div class="tl-meta">
+      <span>809m Hohe</span>
+      <span>km 80</span>
+    </div>
+  </div>
+
+  <div class="tl-segment">
+    38km · <span class="seg-watts">&#8960; 197W</span> · 534m &#8593; · 867m &#8595; · netto bergab, schnellstes Segment
+  </div>
+
+  <!-- LABE 3 -->
+  <div class="tl-item">
+    <div class="tl-head">
+      <span class="tl-name">Labe 3 — Niederndorf</span>
+      <span class="tl-time">~11:46</span>
+      <span class="tl-badge time-badge">1h24</span>
+    </div>
+    <div class="tl-meta">
+      <span>476m Hohe</span>
+      <span>km 118</span>
+    </div>
+    <div class="tl-note crux-note">Vorbereitung CRUX: Flaschen RANDVOLL, Gel in Obertasche, kurz stehen</div>
+  </div>
+
+  <div class="tl-segment" style="border-color: var(--crux); color: var(--crux);">
+    <strong>CRUX</strong> — 49km · <span class="seg-watts" style="color: var(--crux);">&#8960; 213W</span> · 1.253m &#8593; · 1.132m &#8595; · 2h15 ohne Nachfull!
+  </div>
+
+  <!-- LABE 5 -->
+  <div class="tl-item">
+    <div class="tl-head">
+      <span class="tl-name">Labe 5 — Frasdorf</span>
+      <span class="tl-time">~14:01</span>
+      <span class="tl-badge time-badge">2h15</span>
+    </div>
+    <div class="tl-meta">
+      <span>597m Hohe</span>
+      <span>km 167</span>
+    </div>
+  </div>
+
+  <div class="tl-segment">
+    28km · <span class="seg-watts">&#8960; 202W</span> · 337m &#8593; · 477m &#8595; · vorwiegend bergab, ausrollen
+  </div>
+
+  <!-- ZIEL -->
+  <div class="tl-item finish">
+    <div class="tl-head">
+      <span class="tl-name">ZIEL Rosenheim</span>
+      <span class="tl-time">~15:02</span>
+      <span class="tl-badge time-badge">1h01</span>
+    </div>
+    <div class="tl-meta">
+      <span>457m Hohe</span>
+      <span>km 195</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- FUELING -->
+<div class="section-title">Fueling — System</div>
+<div class="card">
+
+  <!-- Das System -->
+  <div style="text-align: center; margin-bottom: 24px;">
+    <div style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: 12px;">Jedes Segment gleich</div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+      <div style="background: rgba(79,140,255,0.12); border: 2px solid var(--accent); border-radius: 12px; padding: 16px 20px; text-align: center;">
+        <div style="font-size: 0.7em; color: var(--text-dim);">FLASCHE 1</div>
+        <div style="font-size: 1.8em; font-weight: 800; color: var(--accent);">80g</div>
+        <div style="font-size: 0.75em; color: var(--text-dim);">750ml</div>
+      </div>
+      <div style="font-size: 1.4em; color: var(--text-dim);">+</div>
+      <div style="background: rgba(79,140,255,0.12); border: 2px solid var(--accent); border-radius: 12px; padding: 16px 20px; text-align: center;">
+        <div style="font-size: 0.7em; color: var(--text-dim);">FLASCHE 2</div>
+        <div style="font-size: 1.8em; font-weight: 800; color: var(--accent);">80g</div>
+        <div style="font-size: 0.75em; color: var(--text-dim);">750ml</div>
+      </div>
+      <div style="font-size: 1.4em; color: var(--text-dim);">+</div>
+      <div style="background: rgba(245,158,11,0.12); border: 2px solid #f59e0b; border-radius: 12px; padding: 16px 20px; text-align: center;">
+        <div style="font-size: 0.7em; color: var(--text-dim);">MSTRY</div>
+        <div style="font-size: 1.8em; font-weight: 800; color: #f59e0b;">40g</div>
+        <div style="font-size: 0.75em; color: var(--text-dim);">Bar oder Gel</div>
+      </div>
+      <div style="font-size: 1.4em; color: var(--text-dim);">=</div>
+      <div style="background: rgba(52,211,153,0.12); border: 2px solid var(--accent2); border-radius: 12px; padding: 16px 20px; text-align: center;">
+        <div style="font-size: 0.7em; color: var(--text-dim);">PRO SEGMENT</div>
+        <div style="font-size: 1.8em; font-weight: 800; color: var(--accent2);">200g</div>
+        <div style="font-size: 0.75em; color: var(--text-dim);">+ Labe-Food</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rezept -->
+  <div style="background: rgba(79,140,255,0.06); border: 1px solid var(--card-border); border-radius: 10px; padding: 14px 16px; margin-bottom: 20px;">
+    <div style="font-weight: 600; font-size: 0.85em; margin-bottom: 6px; color: var(--text-dim);">FLASCHENMIX — alle Beutel identisch</div>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9em;">
+      <span><strong>80g</strong> Carbs / 750ml</span>
+      <span><strong>2:1</strong> Glucose:Fructose</span>
+      <span><strong>+ Salz</strong> (~0,5g Na)</span>
+      <span style="color: var(--text-dim);">11% Losung</span>
+    </div>
+  </div>
+
+  <!-- Ziel pro Segment -->
+  <div style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 8px;">Ziel: beide Flaschen leer bei jeder Labe</div>
+
+  <div class="fuel-row">
+    <div class="fuel-seg">Start &#8594; L1</div>
+    <div class="fuel-dur">1h46</div>
+    <div class="fuel-bar-wrap">
+      <div class="fuel-bar bottles" style="flex: 80;">Fl. 1</div>
+      <div class="fuel-bar bottles" style="flex: 80; opacity: 0.75;">Fl. 2</div>
+      <div class="fuel-bar bar" style="flex: 40;">Bar</div>
+      <div class="fuel-bar labe" style="flex: 25;">Labe</div>
+    </div>
+  </div>
+  <div class="fuel-row">
+    <div class="fuel-seg">L1 &#8594; L2</div>
+    <div class="fuel-dur">1h37</div>
+    <div class="fuel-bar-wrap">
+      <div class="fuel-bar bottles" style="flex: 80;">Fl. 1</div>
+      <div class="fuel-bar bottles" style="flex: 80; opacity: 0.75;">Fl. 2</div>
+      <div class="fuel-bar bar" style="flex: 40;">Bar</div>
+      <div class="fuel-bar labe" style="flex: 25;">Labe</div>
+    </div>
+  </div>
+  <div class="fuel-row">
+    <div class="fuel-seg">L2 &#8594; L3</div>
+    <div class="fuel-dur">1h24</div>
+    <div class="fuel-bar-wrap">
+      <div class="fuel-bar bottles" style="flex: 80;">Fl. 1</div>
+      <div class="fuel-bar bottles" style="flex: 80; opacity: 0.75;">Fl. 2</div>
+      <div class="fuel-bar gel" style="flex: 40;">Gel</div>
+      <div class="fuel-bar labe" style="flex: 25;">Labe</div>
+    </div>
+  </div>
+  <div class="fuel-row" style="background: rgba(255,107,107,0.05); border-radius: 8px; padding: 12px;">
+    <div class="fuel-seg" style="color: var(--crux);">L3 &#8594; Frasdorf</div>
+    <div class="fuel-dur" style="color: var(--crux);">2h15</div>
+    <div class="fuel-bar-wrap">
+      <div class="fuel-bar bottles" style="flex: 80;">Fl. 1</div>
+      <div class="fuel-bar bottles" style="flex: 80; opacity: 0.75;">Fl. 2</div>
+      <div class="fuel-bar gel" style="flex: 40;">Gel</div>
+      <div class="fuel-bar labe" style="flex: 20;">Cola</div>
+    </div>
+  </div>
+  <div class="fuel-row">
+    <div class="fuel-seg">Frasdorf &#8594; Ziel</div>
+    <div class="fuel-dur">1h01</div>
+    <div class="fuel-bar-wrap">
+      <div class="fuel-bar bottles" style="flex: 80;">Fl. 1</div>
+      <div class="fuel-bar bottles" style="flex: 50; opacity: 0.4;">Rest</div>
+      <div class="fuel-bar gel" style="flex: 40; opacity: 0.4;">Reserve</div>
+    </div>
+  </div>
+
+  <!-- g/h pro Segment -->
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 16px;">
+    <div style="text-align: center; padding: 8px; background: rgba(79,140,255,0.06); border-radius: 8px;">
+      <div style="font-size: 0.65em; color: var(--text-dim);">S&#8594;L1</div>
+      <div style="font-size: 1.1em; font-weight: 700;">~113</div>
+      <div style="font-size: 0.65em; color: var(--text-dim);">g/h</div>
+    </div>
+    <div style="text-align: center; padding: 8px; background: rgba(79,140,255,0.06); border-radius: 8px;">
+      <div style="font-size: 0.65em; color: var(--text-dim);">L1&#8594;L2</div>
+      <div style="font-size: 1.1em; font-weight: 700;">~124</div>
+      <div style="font-size: 0.65em; color: var(--text-dim);">g/h</div>
+    </div>
+    <div style="text-align: center; padding: 8px; background: rgba(79,140,255,0.06); border-radius: 8px;">
+      <div style="font-size: 0.65em; color: var(--text-dim);">L2&#8594;L3</div>
+      <div style="font-size: 1.1em; font-weight: 700;">~143</div>
+      <div style="font-size: 0.65em; color: var(--text-dim);">g/h</div>
+    </div>
+    <div style="text-align: center; padding: 8px; background: rgba(255,107,107,0.08); border-radius: 8px; border: 1px solid rgba(255,107,107,0.2);">
+      <div style="font-size: 0.65em; color: var(--crux);">L3&#8594;FR</div>
+      <div style="font-size: 1.1em; font-weight: 700;">~89</div>
+      <div style="font-size: 0.65em; color: var(--text-dim);">g/h</div>
+    </div>
+    <div style="text-align: center; padding: 8px; background: rgba(79,140,255,0.06); border-radius: 8px;">
+      <div style="font-size: 0.65em; color: var(--text-dim);">FR&#8594;Z</div>
+      <div style="font-size: 1.1em; font-weight: 700;">~131</div>
+      <div style="font-size: 0.65em; color: var(--text-dim);">g/h</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 12px; padding: 10px 14px; background: rgba(255,107,107,0.06); border: 1px solid rgba(255,107,107,0.15); border-radius: 8px; font-size: 0.82em; color: var(--crux);">
+    CRUX-Segment hat die niedrigste g/h-Rate — laengster Abschnitt, gleiche 2 Flaschen. Tempo beim Trinken beibehalten!
+  </div>
+
+  <div class="summary-bar">
+    <div class="summary-item"><div class="s-val">5&#215;160g</div><div class="s-lbl">Flaschen</div></div>
+    <div class="summary-item"><div class="s-val">4&#215;40g</div><div class="s-lbl">MSTRY</div></div>
+    <div class="summary-item"><div class="s-val">~100g</div><div class="s-lbl">Labe-Food</div></div>
+    <div class="summary-item"><div class="s-val" style="color: var(--accent2);">~1.060g</div><div class="s-lbl">Carbs Total</div></div>
+  </div>
+</div>
+
+<!-- PACKLISTE -->
+<div class="section-title">Packliste</div>
+<div class="card">
+  <div style="background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); border-radius: 10px; padding: 16px; margin-bottom: 16px; text-align: center;">
+    <div style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: var(--accent2); margin-bottom: 8px;">Alle Beutel identisch — beliebig tauschbar</div>
+    <div style="font-size: 1.6em; font-weight: 800;">8 &#215; 80g Pulverbeutel</div>
+    <div style="font-size: 0.85em; color: var(--text-dim);">2 im Start-Flaschen &#183; 4 zum Nachfullen &#183; 2 Reserve</div>
+  </div>
+  <div class="pack-grid">
+    <div class="pack-slot">
+      <div class="slot-label">Trikot Links</div>
+      <div class="slot-items">
+        <div>2x MSTRY</div>
+        <div style="font-size:0.8em; color: var(--text-dim);">Bar oder Gel</div>
+      </div>
+    </div>
+    <div class="pack-slot">
+      <div class="slot-label">Trikot Mitte</div>
+      <div class="slot-items">
+        <div>2x MSTRY</div>
+        <div style="font-size:0.8em; color: var(--text-dim);">Bar oder Gel</div>
+      </div>
+    </div>
+    <div class="pack-slot">
+      <div class="slot-label">Trikot Rechts</div>
+      <div class="slot-items">
+        <div>4x Pulverbeutel</div>
+        <div style="font-size:0.8em; color: var(--text-dim);">je 80g</div>
+      </div>
+    </div>
+    <div class="pack-slot pack-extra">
+      <div class="slot-label">Satteltasche</div>
+      <div class="slot-items">2x Pulverbeutel (Reserve) + Werkzeug</div>
+    </div>
+  </div>
+</div>
+
+<!-- LABE ROUTINE -->
+<div class="section-title">Labe-Routine (jeder Stopp identisch)</div>
+<div class="card">
+  <div class="routine-steps">
+    <div class="routine-step"><div class="step-num">1</div> Restflaschen leeren</div>
+    <div class="routine-step"><div class="step-num">2</div> Je 1 Beutel pro Flasche</div>
+    <div class="routine-step"><div class="step-num">3</div> Wasser drauf, schutteln</div>
+    <div class="routine-step"><div class="step-num">4</div> Essen mitnehmen</div>
+    <div class="routine-step"><div class="step-num">5</div> Weiter! Max 5 min</div>
+  </div>
+</div>
+
+<!-- REMINDERS -->
+<div class="section-title">Merksatze</div>
+<div class="card">
+  <div class="reminder-grid">
+    <div class="reminder warn">
+      <span class="icon">&#9201;</span>
+      <span>Alle 20 min trinken — Timer am Garmin</span>
+    </div>
+    <div class="reminder success">
+      <span class="icon">&#9660;</span>
+      <span>Abfahrt = Ess-Fenster — jede Abfahrt Carbs rein</span>
+    </div>
+    <div class="reminder danger">
+      <span class="icon">&#9888;</span>
+      <span>Segment 1: bewusst 5–10W unter Wohlfuhlwatt</span>
+    </div>
+    <div class="reminder info">
+      <span class="icon">&#9749;</span>
+      <span>Vor CRUX (Labe 3): Flaschen randvoll, Gel griffbereit</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
