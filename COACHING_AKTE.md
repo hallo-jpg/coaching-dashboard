@@ -12,7 +12,7 @@
 → kw25.md archiviert → planung/archiv/kw25.md
 
 ## 21. Juni 2026 – KW26 Rennwoche Rosenheimer
-→ Rennwoche geplant: Mo Ruhe / Di LIT-1h / Mi Ruhe / Do LIT-1h (1h-Slot) / Fr Aktivierung 40min (morgens) / Sa Ruhe / So 🏁 Rosenheimer · ~99 TSS
+→ Rennwoche geplant: Mo Ruhe / Di LIT-1h / Mi Ruhe / Do LIT-1h (1h-Slot) / Fr Ruhe / Sa Aktivierun.zwo 1:30h / So 🏁 Rosenheimer · ~134 TSS
 → TSB-Prognose Renntag So 28.6.: ~+17 (Ziel: +10 bis +20) ✅
 → Carb-Loading: Mi 7g/kg (637g) → Do 8g/kg (728g) → Fr+Sa 10g/kg (910g)
 → Race Plan: Ø220W NP · IF 0.72 · 90–107g KH/h · Crux km118–167 (49km ohne Labe)
