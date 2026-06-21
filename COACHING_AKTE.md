@@ -1,9 +1,21 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 14. Juni 2026*
+*Letzte Aktualisierung: 21. Juni 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
 
 ---
+
+## 21. Juni 2026 KW25 Retro
+🟡 Mittel · TSS 179/95 (188% – ungeplante Sa-Fahrt) · HRV ↘ fallend (47→40ms) · Polarisation PI 97% ✅
+→ Recovery-Woche: Mi LIT-1h perfekt (100% Z2), Fr LIT+Opener sauber (IF 0.63)
+→ Sa ungeplante Fahrt 75 TSS (IF 0.76, 4min Z6/Z7) — Recovery-Plan gebrochen
+→ kw25.md archiviert → planung/archiv/kw25.md
+
+## 21. Juni 2026 – KW26 Rennwoche Rosenheimer
+→ Rennwoche geplant: Mo Ruhe / Di LIT-1h / Mi Ruhe / Do LIT-1h (1h-Slot) / Fr Aktivierung 40min (morgens) / Sa Ruhe / So 🏁 Rosenheimer · ~99 TSS
+→ TSB-Prognose Renntag So 28.6.: ~+17 (Ziel: +10 bis +20) ✅
+→ Carb-Loading: Mi 7g/kg (637g) → Do 8g/kg (728g) → Fr+Sa 10g/kg (910g)
+→ Race Plan: Ø220W NP · IF 0.72 · 90–107g KH/h · Crux km118–167 (49km ohne Labe)
 
 ## 14. Juni 2026 – KW24 Retro + KW25 Planung (Sonderfall)
 

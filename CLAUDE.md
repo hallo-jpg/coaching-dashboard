@@ -13,10 +13,10 @@
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | Rosenheimer Radmarathon Tour V · 28. Juni 2026 · **KW26** · 197km / 3.550hm |
 | **Herbstevent** | Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
-| **Aktuelle KW** | KW25 (15. Juni – 21. Juni 2026) |
-| **Aktuelle Phase** | Sonderfall-Recovery (Rosenheimer T-13 bis T-7) |
-| **Nächste Phase** | Rosenheimer Rennwoche KW26 |
-| **Wochen bis Rennen** | 2 (Rosenheimer 28.6.) |
+| **Aktuelle KW** | KW26 (22. Juni – 28. Juni 2026) |
+| **Aktuelle Phase** | Rennwoche Rosenheimer Radmarathon |
+| **Nächste Phase** | Post-Season Aufbau KW27+ |
+| **Wochen bis Rennen** | 1 (Rosenheimer 28.6.) |
 
 ## Coaching-Skill
 
