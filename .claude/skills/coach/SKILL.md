@@ -774,13 +774,13 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 
 ### Tapering-Modus (≤14 Tage vor Event)
 
-**Grundregel:** Volumen runter, Intensität halten. Kein neues Reiz-Setzen ab T-10.
+**Grundregel (Mujika & Padilla 2003):** Volumen runter, **Intensität halten**. Nie >4 Tage ohne supra-threshold Arbeit. Kein neues Reiz-Setzen ab T-10 — aber kurze Intensitäts-Touches (Openers, Sharpening) sind Pflicht bis zum Renntag.
 
 | Zeitraum | Volumen | Training |
 |---|---|---|
 | T-14 bis T-9 (Woche 2 vor Rennen) | −40% ggü. Vorwoche | 1× kurze HIT-Aktivierung (3×4min @ ~355W), Rest LIT |
 | T-8 bis T-7 | −55% | 1× kurze Aktivierung (20×30s @ 400W oder 3×5min @ 295W), Rest LIT |
-| T-1 (Vortag) | minimal | Aktivierun.zwo: 20–30min + kurze Intensität |
+| T-6 bis T-0 (Rennwoche) | −55–60% | → **Rennwoche-Modus** mit 3 Intensity-Touches (siehe unten) |
 
 **TSB-Ziel am Renntag:** +10 bis +20
 **TSB-Prognose berechnen** (immer im Tapering-Output ausgeben):
@@ -796,6 +796,7 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 
 **Sonderfall: Zwei Events nahe beieinander (≤14 Tage Abstand):**
 Wenn nach Event A das nächste Event B bereits ≤14 Tage entfernt ist, gibt es keine formelle Recovery-Phase. Stattdessen: Tage 1–4 nach Event A laufen als passive Erholung innerhalb des Tapering-Modus für Event B. HRV und Readiness entscheiden, ob T-8/T-7 Aktivierung stattfindet.
+**Kritisch (Mujika):** Ab T+5 nach Event A mindestens 1 Sharpening-Session einbauen (3–4 × 2min @ 105% FTP in LIT). Nicht die gesamte Zwischenphase als "Recovery ohne Intensität" planen — sonst 2–3 Wochen neuromuskuläre Stille bis Event B.
 
 **Taper-Anxiety erkennen und behandeln:**
 Wenn Stefan während Tapering schreibt: "ich fühle mich schlapp", "reicht das", "sollte ich mehr trainieren", "fühle mich faul", "bin ich fit genug" — dies ist Taper-Anxiety. Standardantwort:
@@ -852,12 +853,21 @@ TT-Faktor: ×1.03 · Gran-Fondo-Faktor: ×0.95
 
 ### Rennwoche-Modus (0–6 Tage bis Event)
 
-**Allgemeines Rennwoche-Schema (T-6 bis T-0):**
-- T-6 bis T-4: LIT oder Pause, viel Schlaf, Carb-Loading starten (siehe coaching_science.md Abschnitt 6 → Carb-Loading-Protokoll)
-- T-3: LIT-1h locker
-- T-2: Aktivierun.zwo (Aktivierung)
-- T-1: Pause oder 20min Easy Spin
-- T-0: Renntag — Warm-up-Protokoll (siehe coaching_science.md Abschnitt 6 → Renntag Warm-up)
+**Allgemeines Rennwoche-Schema (T-6 bis T-0) — Mujika-Protokoll:**
+
+Intensität nie >4 Tage am Stück aussetzen. Mindestens 2 Intensity-Touches vor der T-1 Aktivierung einbauen. Volumen dramatisch reduziert, aber neuromuskuläre Schärfe über 3 Touches progressiv aufgebaut.
+
+- T-6: LIT 60min easy (Beine durchspülen)
+- T-5: **LIT 45min + Sharpening: 3–4 × 2min @ 105% FTP, 3min locker** (neuromuskuläres Priming, +5 TSS)
+- T-4: Ruhetag oder Easy Run 25min
+- T-3: **LIT 45min + Openers: 4–5 × 30s @ >120% FTP, 2min locker** (Typ-II-Faser-Aufwecken, +3 TSS)
+- T-2: Ruhetag · Carb-Loading voll (10g/kg)
+- T-1: **Aktivierun.zwo** (1–1:30h, finales Priming) · Carb-Loading · früh schlafen
+- T-0: 🏁 Renntag — Warm-up-Protokoll (siehe coaching_science.md Abschnitt 6)
+
+Drei Touches (T-5 → T-3 → T-1) wecken die Beine progressiv auf. TSS-Aufpreis gesamt: <10 — vernachlässigbar für Ermüdung, entscheidend für neuromuskuläre Aktivierung.
+
+**Neuromuskuläre Stille erkennen:** Wenn Stefan berichtet "Beine flach", "keine Spannung", "Aktivierung bringt nichts" → klassisches Zeichen für zu langen Intensitätsentzug (Mujika & Padilla 2004). Sofort-Gegenmaßnahme: 4–6 × 30s @ >120% FTP, auch bei T-3 oder T-2 noch wirksam.
 
 **RadRace spezifisch (Zeitfahren T-1, Rennen T-0):**
 **KW24 – RadRace:**
@@ -1121,11 +1131,11 @@ Immer wenn `tage_bis_event ≤ 7`, diese Tag-für-Tag-Liste ausgeben:
 | Tag | Training | Ernährung | Schlaf | Check |
 |---|---|---|---|---|
 | T-6 | LIT 60min easy | Normal + leicht mehr KH | Ziel 8h | ☐ |
-| T-5 | LIT 45min oder Pause | Normal + mehr KH (7g/kg) | Ziel 8h | ☐ |
-| T-4 | Aktivierung 30min | Carb-Loading Start (8g KH/kg) | Ziel 8–9h | ☐ |
-| T-3 | Pause oder 20min Easy | Carb-Loading voll (10g KH/kg) | Ziel 9h | ☐ |
-| T-2 | Aktivierun.zwo | Carb-Loading (10g KH/kg) | Ziel 9h | ☐ |
-| T-1 | Pause / 20min Easy Spin | Leichtes Frühstück + KH-reich Mittag | Früh ins Bett | ☐ |
+| T-5 | **LIT 45min + Sharpening** (3–4×2min @ 105% FTP) | Normal + mehr KH (7g/kg) | Ziel 8h | ☐ |
+| T-4 | Ruhetag oder Easy Run 25min | Carb-Loading Start (8g KH/kg) | Ziel 8–9h | ☐ |
+| T-3 | **LIT 45min + Openers** (4–5×30s @ >120% FTP) | Carb-Loading (8g KH/kg) | Ziel 9h | ☐ |
+| T-2 | Ruhetag | Carb-Loading voll (10g KH/kg) | Ziel 9h | ☐ |
+| T-1 | **Aktivierun.zwo** (1–1:30h) | Carb-Loading (10g KH/kg) | Früh ins Bett | ☐ |
 | T-0 | 🏁 Renntag | Renntag-Frühstück 3h vorher (150g KH) | — | ☐ |
 
 KH-Mengen für Stefan (91kg): 7g/kg = 637g · 8g/kg = 728g · 10g/kg = 910g

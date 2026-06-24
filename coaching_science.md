@@ -171,19 +171,68 @@ Rønnestad et al. (2010, 2014): Niedertouriges Bergfahren (50–60 rpm) bei 65�
 
 ### Kernaussage der Forschung
 
-Bosquet et al. (2007, Meta-Analyse n=27, Med Sci Sports Exerc): Optimales Tapering reduziert Volumen um 41–60%, hält Intensität konstant (≥90% der HIT-Einheiten), dauert 8–14 Tage. Progressive Taper > Step-Taper. Leistungsgewinn: Ø +2–3% im Zeitfahren. Pyne et al. (2009): >21 Tage = Detraining, <5 Tage = insuffizient. Intensitätserhalt ist der kritischste Einzelfaktor.
+**Mujika & Padilla (2003, Med Sci Sports Exerc):** Systematischer Review der Taper-Strategien. Zentrales Ergebnis: Optimales Tapering hat drei Stellschrauben — Volumen, Intensität und Frequenz — und die **Intensitätserhaltung ist der kritischste Einzelfaktor**. Taper ohne Intensität führt zu neuromuskulärer Abflachung trotz positiver Ermüdungsbilanz (TSB).
 
-### 14-Tage-Taper vor Zeitfahren (Stefan)
+**Mujika, Padilla, Pyne & Busso (2004, Sports Med):** Review der physiologischen Veränderungen während des Tapers:
+- Typ-II-Faserquerschnitt nimmt zu (neuromuskuläre Schärfe)
+- Neurale Ansteuerung verbessert sich (Kraft pro Pedaltritt steigt)
+- Testosteron/Cortisol-Ratio verbessert sich (hormonelle Erholung)
+- Muskelglykogenspeicher füllen sich
+- **Alle positiven Adaptationen erfordern fortgesetzte Intensitätsreize** — ohne sie geht die neuromuskuläre Bereitschaft verloren, auch wenn die Ermüdung sinkt
 
-| Tage vor Rennen | Volumen | Training |
+**Bosquet et al. (2007, Med Sci Sports Exerc, Meta-Analyse n=27):** Optimales Tapering reduziert Volumen um 41–60%, hält Intensität konstant (≥90% der HIT-Einheiten), dauert 8–14 Tage. Progressive Taper > Step-Taper. Leistungsgewinn: Ø +2–3%. Pyne et al. (2009): >21 Tage = Detraining, <5 Tage = insuffizient.
+
+### Die drei Taper-Regeln (nach Mujika)
+
+| Stellschraube | Empfehlung | Begründung |
 |---|---|---|
-| 14–10 (5 Tage) | −40% | 1× 4×4min @ 355W, Rest LIT |
-| 9–7 (3 Tage) | −50% | 1× 3×4min @ 360W oder 20×30s @ 400W |
-| 6–4 (3 Tage) | −55% | 1× 3×5min @ 295W (Aktivierung), Rest LIT |
-| 3–2 | −60% | 45–60min @ 180–210W, locker |
-| 1 (Vortag) | minimal | Aktivierun.zwo: 20–30min + kurze Intensität |
+| **Volumen** | −41–60% | Ermüdung abbauen, Glykogen auffüllen |
+| **Intensität** | **Beibehalten** (kurze Touches in jeder Taper-Woche) | Neuromuskuläre Schärfe, Typ-II-Faser-Aktivierung |
+| **Frequenz** | Max. −20% Reduktion | Trainingsgewohnheit, kardiovaskuläre Readiness |
 
-**TSB-Ziel**: +10 bis +20 am Renntag. Keine neuen Belastungsreize in letzten 10 Tagen.
+**Kritische Regel: Nie >4 Tage ohne supra-threshold Arbeit.** Auch kurze Touches (4–6 × 30s @ >120% FTP) reichen, um die neuromuskuläre Ansteuerung wachzuhalten. TSS-Kosten: <5 Punkte. Wirkung: unverhältnismäßig groß.
+
+### 14-Tage-Taper vor Events (Stefan)
+
+| Tage vor Rennen | Volumen | Training | Intensitäts-Touch |
+|---|---|---|---|
+| 14–10 (5 Tage) | −40% | 1× 4×4min @ 355W, Rest LIT | ✅ Voll |
+| 9–7 (3 Tage) | −50% | 1× 3×4min @ 360W oder 20×30s @ 400W | ✅ Reduziert |
+| 6–4 (3 Tage) | −55% | Rennwoche-Template (siehe unten) | ✅ Sharpening + Openers |
+| 3–2 | −60% | 45–60min @ 180–210W + Openers | ✅ Minimal |
+| 1 (Vortag) | minimal | Aktivierun.zwo: 1–1:30h + kurze Intensität | ✅ Priming |
+
+**TSB-Ziel**: +10 bis +20 am Renntag.
+
+### Rennwoche-Template (T-6 bis T-0) — Mujika-Protokoll
+
+**Grundprinzip:** Volumen dramatisch reduzieren, aber **3 kurze Intensitäts-Touches** über die Woche verteilen. Jeder Touch ist zu kurz für Ermüdungsakkumulation (<5 TSS Aufpreis), aber lang genug für neuromuskuläre Aktivierung.
+
+| Tag | Training | Intensitäts-Touch | TSS ca. | Zweck |
+|---|---|---|---|---|
+| T-6 | LIT 60min easy | – | ~35 | Beine durchspülen |
+| T-5 | **LIT 45min + Sharpening** | **3–4 × 2min @ 105% FTP**, 3min locker | ~42 | Neuromuskuläres Priming |
+| T-4 | Ruhetag oder Easy Run 25min | – | – | Erholung |
+| T-3 | **LIT 45min + Openers** | **4–5 × 30s @ >120% FTP**, 2min locker | ~40 | Typ-II-Faser-Aufwecken |
+| T-2 | Ruhetag | – | – | Carb-Loading voll |
+| T-1 | **Aktivierun.zwo** (1–1:30h) | Eingebettete Aktivierung | ~50–60 | Finales Priming |
+| T-0 | 🏁 Renntag | – | – | Warm-up → Start |
+
+**Drei Touches** (T-5 → T-3 → T-1) wecken die Beine progressiv auf, statt erst am Vortag aus dem Kaltstart zu aktivieren.
+
+### Sonderfall: Sequenzielle Events (≤14 Tage Abstand)
+
+Wenn nach Event A das nächste Event B ≤14 Tage entfernt ist (z.B. RadRace KW24 → Rosenheimer KW26):
+- Recovery-Phase (T+1 bis T+4 nach Event A) = passive Erholung
+- **Ab T+5: mindestens 1 Sharpening-Session** (3–4 × 2min @ 105% FTP in LIT eingebettet)
+- Rennwoche Event B: Standard-Template oben, aber Readiness-Score stärker gewichten
+- **Fehler vermeiden**: Nicht die gesamte Zwischenphase als "Recovery ohne Intensität" planen — sonst 2–3 Wochen neuromuskuläre Stille
+
+### Neuromuskuläre Stille erkennen
+
+Wenn der Athlet vor einem Event berichtet: "Beine fühlen sich flach an", "keine Spannung", "Aktivierung bringt nichts" — klassisches Zeichen für zu langen Intensitätsentzug (Mujika & Padilla 2004). TSB kann positiv sein, aber die neuromuskuläre Schärfe fehlt.
+
+**Sofort-Gegenmaßnahme (auch bei T-3 oder T-2 noch wirksam):** 4–6 × 30s @ >120% FTP mit voller Erholung. Wirkt innerhalb von 24h auf die neuromuskuläre Ansteuerung.
 
 ### Carb-Loading-Protokoll (vor Ausdauerevents >2h)
 
