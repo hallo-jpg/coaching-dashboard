@@ -399,7 +399,7 @@
     </div>
     <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-num" id="cd-main-days">1</div>
+        <div class="cd-num" id="cd-main-days">0</div>
         <div class="cd-label">Tage <span id="cd-main-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
@@ -415,7 +415,7 @@
     </div>
     <div class="cd-sec-bottom">
       <div class="cd-item">
-        <div class="cd-sec-num" id="cd-seelauf-days">85</div>
+        <div class="cd-sec-num" id="cd-seelauf-days">84</div>
         <div class="cd-sec-lbl">Tage <span id="cd-seelauf-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
@@ -470,21 +470,18 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#22c55e" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="138.2"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
                 transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-gr)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="138.2"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#f5a623">60</span>
+        <span class="ring-num" style="color:var(--muted)">–</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
-      
-      <div class="ring-status-tag">🟡 Normal trainieren</div>
-      <div class="ring-status-sub">HRV unter Schnitt · Puls erhöht</div>
       
     </div>
   </div>
@@ -512,21 +509,21 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#a78bfa" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="174.8"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="178.9"
                 transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-pu)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="174.8"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="178.9"
                 transform="rotate(-90 65 65)"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="#f87171" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="98.6"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="119.8"
                 transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-re)"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="98.6"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="119.8"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#3ecf8e;font-size:1.8rem">+7</span>
+        <span class="ring-num" style="color:#3ecf8e;font-size:1.8rem">+11</span>
         <span class="ring-sub">TSB</span>
       </div>
     </div>
@@ -534,12 +531,12 @@
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:var(--purple)"></div>
         <span class="dl-name">CTL · Fitness</span>
-        <span class="dl-val" style="color:var(--purple)">44.5 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
+        <span class="dl-val" style="color:var(--purple)">43.4 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
       </div>
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:#f87171"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:#f87171">37.0</span>
+        <span class="dl-val" style="color:#f87171">32.1</span>
       </div>
     </div>
   </div>
@@ -587,45 +584,48 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:#f5a623">60</div>
-      <div class="readiness-tag" style="color:#f5a623">🟡 Normal trainieren</div>
+      <div class="readiness-score" style="color:var(--muted)">–</div>
       
     </div>
 
     
+    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
+      ⏳ Uhr noch nicht synchronisiert – Werte folgen
+    </div>
+    
 
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--orange);border-color:var(--orange);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--orange) 35%,transparent)">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">40 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--orange);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Reduziert</div>
-        <div class="rbar-lbl">Normalber. 41–53 ms</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
+        <div class="rbar-lbl">Normalber. 41–54 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--green)">7.3h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">0.0h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">+7</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">+11</div>
         <div class="rbar-lbl">Form</div>
         
         <div style="font-size:0.6rem;font-weight:700;color:var(--blue);margin-top:2px">
-          ATL -17.2
+          ATL -14.9
         </div>
         
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">57 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
@@ -635,8 +635,6 @@
     <div class="sparkline-wrap">
       <div class="spark-label">Readiness · 7 Tage</div>
       <div class="sparkline">
-        
-        <div class="spark-bar " style="height:60%;background:#f5a623"></div>
         
         <div class="spark-bar " style="height:74%;background:#f5a623"></div>
         
@@ -648,7 +646,9 @@
         
         <div class="spark-bar " style="height:76%;background:#f5a623"></div>
         
-        <div class="spark-bar spark-today" style="height:58%;background:#ef4444"></div>
+        <div class="spark-bar " style="height:58%;background:#ef4444"></div>
+        
+        <div class="spark-bar spark-today" style="height:61%;background:#f5a623"></div>
         
       </div>
     </div>
@@ -873,27 +873,27 @@
   <div class="polar-card" style="margin-bottom:0;flex:1">
     <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · 8 Wochen · Rad</div>
     
-    <span class="pi-badge pi-ok">LIT: 76% · ✅ Gut polarisiert</span>
+    <span class="pi-badge pi-ok">LIT: 78% · ✅ Gut polarisiert</span>
     <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
       <svg viewBox="0 0 120 120" width="120" height="120" style="flex-shrink:0">
   <circle cx="60" cy="60" r="46" fill="none" stroke="#1a1a1a" stroke-width="20"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#22c55e" stroke-width="20" stroke-dasharray="219.7 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="34.7 289.0" stroke-dashoffset="-291.9" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="14.5 289.0" stroke-dashoffset="-326.6" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#a855f7" stroke-width="20" stroke-dasharray="20.2 289.0" stroke-dashoffset="-341.1" opacity="0.75"/>
-  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0" font-family="system-ui">76%</text>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#22c55e" stroke-width="20" stroke-dasharray="225.4 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="31.8 289.0" stroke-dashoffset="-297.7" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="14.5 289.0" stroke-dashoffset="-329.5" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#a855f7" stroke-width="20" stroke-dasharray="17.3 289.0" stroke-dashoffset="-343.9" opacity="0.75"/>
+  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0" font-family="system-ui">78%</text>
   <text x="60" y="69" text-anchor="middle" font-size="8" fill="#64748b" font-family="system-ui">LIT 8W</text>
 </svg>
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">LIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">76%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">78%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">Grauzone</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--yellow);margin-left:auto">12%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--yellow);margin-left:auto">11%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:#3b82f6;display:inline-block;flex-shrink:0"></span>
@@ -903,7 +903,7 @@
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
           <span style="width:8px;height:8px;border-radius:50%;background:#a855f7;display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">7%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">6%</span>
         </div>
         <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
       </div>
