@@ -66,6 +66,44 @@ KW31 Reanimation (HF-Anker + Strides) · KW32 Tempo-Kalibrierung (2km-Check) · 
 
 **Dateien:** kw30.md + kw31.md (voll) + kw32–34.md (Stubs) angelegt · kw26–29 archiviert (kw26 mit Unfall-Retro, kw27–29 ❌ Verletzungspause) · periodisierung.md **noch nicht ersetzt – Zustimmung ausstehend**
 
+### 🐞 Workout-Anlage: zwei Fehler, beide von Stefan entdeckt (26.7.)
+
+**Fehler 1 – Strides verschwanden lautlos.** `6×(20s @ 120% + 100s @ 55%)` als `workout_steps` gesendet. Der MCP-Server rendert Dauern nur in ganzen Minuten → `20s` wurde `0m` → intervals.icu verwarf die Schritte. Übrig blieben nur die auf 2min aufgerundeten Gehpausen bei 55% Pace = **11:00/km**. Ergebnis in der App: lauter identische langsame 2-Minuten-Stufen, null Intensität. Die MCP-Erfolgsmeldung „✅ Struktur: 15 Schritte" zählte die *gesendeten*, nicht die *gespeicherten* Schritte — deshalb unbemerkt geblieben.
+
+**Fehler 2 – Name ≠ Dauer.** Ein-/Auslaufen (je 5min) wurde *zusätzlich* zur genannten Dauer angelegt: „Easy 28min" hatte 33min Gesamtzeit.
+
+**Behoben:** Alle 5 Einheiten neu angelegt. Struktur jetzt 3 Schritte (Einlaufen / Easy / Auslaufen), Gesamtdauer = genannte Dauer. Strides als Klartext in der `description`. Pace-Bänder: Einlaufen 65–73% (9:18–8:17/km), Hauptteil 70–80% (8:38–7:33/km), Auslaufen 62–70% (9:45–8:38/km). Gegen `get_planned_events` verifiziert.
+
+**Regeln in `planung/workout_index.md` dokumentiert:** Pace-Konvention (höherer % = schneller, `Pace = 363s / pct`), 1-Minuten-Mindestdauer, Pflicht zur Nachkontrolle via `get_planned_events`.
+
+### Planänderung 26.7. – Intensität eine Woche vorgezogen (Stefans Einwand, angenommen)
+
+Stefan: „So viele Easy Runs bringen mir gar nichts, wieso keine Intervalle?" — **berechtigt, Plan geändert.**
+
+Begründung für die Änderung:
+- 8 Wochen Vorlauf: zwei reine Easy-Wochen = 25% der verfügbaren Zeit
+- Nielsen et al. 2014: Risikotreiber ist der **Volumensprung** (>30% über 2 Wochen), nicht die Intensität
+- Die „erste 4 Wochen nur Easy"-Regel im Regelwerk gilt für **Laufeinstieg**, nicht für Rückkehr nach 4 Wochen Pause bei vorhandener Basis. Stefan lief 27.2. Schwellenintervalle (54min) und 1.4. 2×8min Schwelle (60min)
+- Seine Lauf-HF-Antwort ist nahezu normal → aerob belastbar
+
+**Geändert:** KW31 Do von „Easy 32min + Strides" auf **Tempo 3×6min** (HF 172–180, RPE 7, 18min Z3). Gesamter Block eine Woche nach vorn:
+
+| KW | Qualität | Inhalt |
+|---|---|---|
+| 31 | 1× | Tempo 3×6min |
+| 32 | 2× | Tempo 4×6min · 2km-Check (Kalibrierung) |
+| 33 | 2× | Schwelle 2×10min · Hügel 6×90s |
+| 34 | 2× | Schwelle 2×12min · Hügel 8×90s |
+| 35 | 2× | 5km-TT · Qualität |
+| 36 | 2× | 3×2km Renntempo · Qualität |
+| 37–38 | Taper + Rennwoche | |
+
+**Der Deal, explizit vereinbart:** Intensität ja — Volumen dafür streng nach Ramp (längster Lauf max. +10%/Woche, Gesamt max. +15%). Beides gleichzeitig zu steigern ist die Kombination, die zuverlässig verletzt.
+
+**Warnstrukturen bei Tempoarbeit mit 91kg nach Impact-Pause:** Achillessehne, Schienbeinkante, Fußgewölbe. Stechender Schmerz → abbrechen, melden.
+
+**Steuerung bis KW32-Check:** alle Qualitätseinheiten nach **HF (Z3 = 172–180 bpm) und RPE 7**, nicht nach Pace — die 6:03/km im Profil ist ein All-Time-Wert und aktuell nicht gültig.
+
 ---
 
 ## 21. Juni 2026 KW25 Retro

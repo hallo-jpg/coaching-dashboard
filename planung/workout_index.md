@@ -142,6 +142,38 @@ Lauf-Workouts werden via `create_planned_workout` (type: "Run") direkt in interv
 - Intensität in %Schwellenpace (Basis: **6:03/km = 100%**)
 - .zwo funktioniert NUR für Rad; Laufeinheiten via MCP-Text-Parser-Format
 
+### ⚠️ Pace-Konvention (verifiziert 26.7.2026)
+
+`pace_pct` = **% der Schwellen-Geschwindigkeit**, nicht der Pace-Zahl. Umrechnung:
+
+```
+Pace = 363 sek / (pace_pct / 100)        # 363 sek = 6:03/km
+```
+
+**Höherer Prozentwert = schneller.** Belegte Werte:
+
+| pace_pct | Pace | Verwendung |
+|---|---|---|
+| 55% | 11:00/km | **Gehen** – nie als Laufschritt verwenden |
+| 62–70% | 9:45–8:38/km | Auslaufen |
+| 65–73% | 9:18–8:17/km | Einlaufen |
+| 70–80% | 8:38–7:33/km | **Easy Run** (Stefans Standardband) |
+| 95–103% | 6:22–5:52/km | Z3 Schwelle |
+| 108–120% | 5:36–5:02/km | Z4 VO2max / Strides |
+
+### 🐞 Bekannte Limitierung: keine Schritte unter 1 Minute
+
+Der MCP-Server rendert Dauern **nur in ganzen Minuten** (`- 5m 70-80% Pace`). Folgen:
+
+- **`duration_secs` < 60 → wird zu `0m` → intervals.icu verwirft den Schritt komplett.** Er verschwindet lautlos aus `workout_doc.steps`, ohne Fehlermeldung.
+- Werte wie 100s werden auf 2m aufgerundet.
+
+**Am 26.7.2026 real passiert:** 5 Lauf-Workouts mit `6×(20s @ 120% + 100s @ 55%)` angelegt. Alle 20s-Strides wurden verworfen, die 100s-Gehpausen blieben als 2min-Blöcke @ 11:00/km stehen. Ergebnis: identische langsame 2-Minuten-Stufen ohne jede Intensität.
+
+**Regel:** Strides, Antritte und alle Intervalle < 60s **nie** in `workout_steps` legen. Stattdessen den Hauptlauf strukturieren (Einlaufen / Hauptteil / Auslaufen) und die kurzen Reize als Klartext in die `description` schreiben. Kein Verlust – Strides werden nach Gefühl gelaufen, ohne Uhrenführung.
+
+**Nach jedem Anlegen prüfen:** `get_planned_events` aufrufen und `workout_doc.steps` gegen die Absicht abgleichen. Die Erfolgsmeldung „✅ Struktur: N Schritte" zählt die *gesendeten*, nicht die *gespeicherten* Schritte.
+
 **Ziel-Volumen: 25–33% der Gesamttrainingszeit**
 **Intensitätsverteilung: 80% Z1 (Easy), max. 20% Z3/Z4 (Schwelle/VO2max)**
 
