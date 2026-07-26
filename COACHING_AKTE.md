@@ -12,8 +12,29 @@
 **Datenlage beim Wiedereinstieg:**
 - CTL 45,7 (28.6.) → **24,1** (26.7.) = −21,6 Punkte / −47%
 - Readiness 77 🟡 · TSB +20,4 · HRV 45ms · Ruhepuls 57 (+1,3) · Trend 7d fallend
-- Referenzlauf Fr 24.7.: 29min / 3,7km / 7:50/km bei **Ø166 bpm, max 181** (LTHR 179) → ca. 18 bpm über Zonen-Soll für diese Pace
-- → **Aerobe Basis ist NICHT intakt.** Stefans Annahme "Grundlagenausdauer solide" gilt für den 28.6., nicht für heute.
+- Referenzlauf Fr 24.7.: 29min / 3,7km / 7:50/km bei Ø166 bpm, max 181
+
+### ⚠️ Korrektur am 26.7. (Einwand Stefan) – Laufzonen-HF war falsch
+
+Erste Einschätzung war: „HF 166 bei 7:50/km = Detraining, Zonen-Soll wäre ~130 bpm, Cap 150." **Das war falsch.** Stefan hat widersprochen (HF <150 sei beim Laufen unerreichbar), die Aktivitätshistorie bestätigt ihn:
+
+| Datum | Dauer | Pace | Ø HF | CTL |
+|---|---|---|---|---|
+| 05.03. | 64min | 7:32/km | 162 | 45,7 |
+| 18.03. | 73min | 7:10/km | 156 | 46,1 |
+| 29.04. | 35min | 7:27/km | 157 | 35,4 |
+| 06.05. | 42min | 7:30/km | 163 | 40,2 |
+| 20.05. | 45min | 7:30/km | 161 | 41,7 |
+| 06.06. | 25min | 7:09/km | 155 | 46,5 |
+| **24.07.** | **29min** | **7:50/km** | **166** | **25,3** |
+
+Stefans Easy-Run-HF liegt saisonübergreifend bei **155–163 bpm** – auch bei voller Fitness (CTL 40–48). Der Lauf vom 24.7. liegt damit nur **3–5 bpm** über der Norm, bei 20 sek/km langsamerer Pace, in Julihitze, zweiter Lauf nach 4 Wochen Pause. **Kein Detraining-Signal.**
+
+**Fehlerursache:** Die HF%-Spalte der Laufzonen in `profil.md` war von der **Rad**-HFmax (205) abgeleitet (Z1 = 60–72% = 123–148 bpm). Beim Laufen liegt Stefans HF systematisch 25–30 bpm höher als auf dem Rad bei gleicher Belastungsstufe. Derselbe Fehler wurde bereits in KW18 gemacht („HF 157 → leicht über Easy-Zone") und KW19 („Puls <148 bpm") – zweimal unkorrigiert geblieben.
+
+**Behoben:** `profil.md` Laufzonen-Tabelle auf gemessene HF-Werte umgestellt + Warnhinweis + Belegtabelle hinterlegt. Regel: **nie einen Easy-Run-Cap unter 160 bpm vorgeben** – das erzwingt Gehen. Kein Detraining aus erhöhter Lauf-HF ableiten, ohne gegen die Belegtabelle zu prüfen.
+
+**Was die Korrektur NICHT ändert:** CTL-Verlust 45,7 → 24,1 ist real (Volumen-/Gewebefrage). Blockdesign bleibt unverändert – es folgte aus der Riegel-Lücke (s.u.) und aus der Impact-Toleranz, nicht aus der HF-Zahl. Neuer Easy-Cap: **165 bpm**, Fortschrittsmesser „Pace bei HF 160" (Referenz 06.05.: 7:30/km @ 163).
 
 **Pace-Kurven-Analyse (all-time, entscheidend für Blockdesign):**
 | Distanz | Bestzeit | Pace |
@@ -31,12 +52,13 @@ Riegel-Prognose 5km → 10km: **64:10**. Ist: 71:28. **Lücke 7:18.**
 |---|---|
 | "Viele Intervalle, schnell schneller werden" | ✅ Berechtigt (8 Wochen Vorlauf) – aber als Schwelle statt VO2max, weil das seine echte Lücke trifft. Strides ab Tag 1. |
 | "Langsame Läufe orthopädisch teuer wegen geringer Pace" | ❌ Sachlich invers: Peak-Impact pro Schritt ist bei langsamem Tempo *niedriger*. Bei 91kg ist schnelles Laufen der teure Teil. Nielsen 2014: Risikotreiber ist Volumensprung, nicht Intensität. |
-| "Grundlagenausdauer solide" | ❌ Durch HF-Daten widerlegt (s.o.) |
+| "Grundlagenausdauer solide" | ⚠️ Teilweise: CTL-Verlust real (−47%), aber die HF-Antwort beim Laufen ist nahezu normal → aerob deutlich besser erhalten als zunächst angenommen |
+| "Ersten Lauf nicht überinterpretieren" | ✅ **Richtig.** n=1, erste ungewohnte Belastung, Julihitze. Erst 3–4 Läufe abwarten, dann bewerten. |
 
 **Blockstruktur (8 Wochen bis Karlsfelder Seelauf 20.9.):**
 KW31 Reanimation (HF-Anker + Strides) · KW32 Tempo-Kalibrierung (2km-Check) · KW33–34 Schwellen-Block + Hügel · KW35 5km-TT + Peak 1 · KW36 Renntempo-Spezifik (3×2km) · KW37 Taper 1 (Volumen −40%, Intensität halten) · KW38 Rennwoche (Mujika 3 Touches)
 
-**Steuerungsregel KW31–32:** HF regiert, nicht Pace. Cap 150 bpm (73% HFmax), Gehpausen erlaubt. Begründung: Post-Layoff-Ausnahme laut Trainingssteuerungs-Regelwerk (autonomes NS + Detraining). Fortschrittsmesser: Pace bei HF 150.
+**Steuerungsregel KW31–32:** Easy-Cap **165 bpm** (korrigiert, s.o.), Pace ergibt sich (erwartbar 7:45–8:15/km). Fortschrittsmesser: Pace bei HF 160. Die limitierende Größe in KW31 ist die Impact-Toleranz des Gewebes nach 4 Wochen ohne Laufbelastung, nicht die Herzfrequenz.
 
 **Zielzeit:** sub-60min realistisch, sub-58 Stretch – **Neubewertung nach dem 2km-Tempo-Check in KW32**, vorher keine belastbare Prognose.
 

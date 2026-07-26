@@ -11,8 +11,8 @@
 | **Rad** | ❌ **Defekt – nicht fahrbar.** Kein Rad-Training bis Ersatz/Reparatur |
 | **Trainingsfokus** | 100% Laufen bis auf Weiteres |
 | **CTL** | 24,1 (war 45,7 am 28.6. → −47% durch 4 Wochen Pause) |
-| **Aerobe Basis** | ⚠️ Nicht intakt: 7:50/km bei Ø166 bpm (24.7.) statt Zonen-Soll ~130 bpm |
-| **Steuerung KW31–32** | **HF statt Pace** · Cap 150 bpm (73% HFmax) · Gehpausen erlaubt |
+| **Aerobe Basis** | Lauf 24.7.: 7:50/km @ Ø166 bpm — nur ~3–5 bpm über seiner belegten Easy-HF (s.u.) → **kein Detraining-Alarm**, CTL-Verlust ist reine Volumensache |
+| **Steuerung KW31–32** | Easy-Cap **165 bpm** · Pace ergibt sich (erwartbar 7:45–8:15/km) |
 | **Nächstes Ziel** | Karlsfelder Seelauf 10km · 20.9.2026 · 8 Wochen Vorlauf |
 | **Abbruchkriterien** | Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in Arme → Einheit beenden |
 
@@ -80,14 +80,34 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 | Qualitätslauf | 1×/Woche (Schwelle oder VO2max) | |
 | Fokus | Aufbau Running Economy + VO2max | |
 
-**Laufzonen (Schwellenpace 6:03/km):**
+**Laufzonen (Schwellenpace 6:03/km) – HF-Spalte am 26.7.2026 an Messdaten korrigiert:**
 
-| Zone | Pace | HF% | Beschreibung |
+| Zone | Pace | HF (gemessen) | Beschreibung |
 |---|---|---|---|
-| Z1 Easy | 7:00–7:45/km | 60–72% | Volle Unterhaltung, Faustregel |
-| Z2 Aerob | 6:30–7:00/km | 72–82% | Leicht sprechen |
-| Z3 Schwelle | 5:45–6:15/km | 82–92% | Kurze Sätze |
-| Z4 VO2max | 5:00–5:45/km | 92–100% | Sprechen unmöglich |
+| Z1 Easy | 7:00–8:15/km | **150–165 bpm** | Volle Unterhaltung, Faustregel |
+| Z2 Aerob | 6:30–7:00/km | 165–172 bpm | Leicht sprechen |
+| Z3 Schwelle | 5:45–6:15/km | 172–182 bpm | Kurze Sätze |
+| Z4 VO2max | 5:00–5:45/km | 182–195 bpm | Sprechen unmöglich |
+
+> ⚠️ **Wichtig für den Coach: Stefans Lauf-HF liegt systematisch ~25–30 bpm über dem Rad-Äquivalent bei gleicher Belastungsstufe. Easy-Läufe liegen bei 155–165 bpm, nicht bei 130–148.**
+>
+> Die frühere HF%-Spalte (60–72% HFmax = 123–148 bpm für Z1) war von der **Rad**-HFmax 205 abgeleitet und ist für das Laufen falsch. Sie wurde in KW18/KW19 zweimal fälschlich als „Easy Run zu intensiv" ausgelegt.
+>
+> **Belegte Easy-Run-Historie (Ø HF bei Easy-Pace):**
+>
+> | Datum | Dauer | Pace | Ø HF | CTL |
+> |---|---|---|---|---|
+> | 05.03. | 64min | 7:32/km | 162 | 45,7 |
+> | 18.03. | 73min | 7:10/km | 156 | 46,1 |
+> | 06.04. | 44min | 6:59/km | 161 | 48,0 |
+> | 29.04. | 35min | 7:27/km | 157 | 35,4 |
+> | 06.05. | 42min | 7:30/km | 163 | 40,2 |
+> | 20.05. | 45min | 7:30/km | 161 | 41,7 |
+> | 01.06. | 25min | 7:35/km | 151 | 48,4 |
+> | 06.06. | 25min | 7:09/km | 155 | 46,5 |
+> | 24.07. | 29min | 7:50/km | 166 | 25,3 |
+>
+> **Konsequenz:** Rad-HFmax 205 ist für Laufzonen nicht verwendbar (Rad-Max beobachtet: 201 im RR120-Prolog). Die Lauf-HFmax liegt vermutlich 5–10 bpm höher. Nie einen Easy-Run-HF-Cap unter 160 bpm vorgeben — das erzwingt Gehen. Kein Detraining aus erhöhter Lauf-HF ableiten, ohne gegen diese Tabelle zu prüfen.
 
 ## Stärken & Schwächen
 

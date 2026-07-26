@@ -18,7 +18,7 @@
 | **Aktuelle Phase** | Lauf-Block KW31–38 · Woche 1: Reanimation (HF-Anker + Strides) |
 | **Nächste Phase** | KW33–36 Schwellen-/Renntempo-Block · KW37–38 Taper + Rennwoche |
 | **Wochen bis Rennen** | 8 (Karlsfelder Seelauf 20.9.) |
-| **Steuerung** | KW31–32: **HF statt Pace** · Cap 150 bpm · Gehpausen erlaubt |
+| **Steuerung** | KW31–32: Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
 ## Coaching-Skill
 
