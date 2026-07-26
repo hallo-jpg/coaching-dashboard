@@ -1,7 +1,48 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 21. Juni 2026*
+*Letzte Aktualisierung: 26. Juli 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 26. Juli 2026 – Wiedereinstieg nach Halswirbelfraktur · Lauf-Block KW31–38 gestartet
+
+**Ausgangslage:** Radunfall 28.6.2026 beim Rosenheimer (nach 45,8km). Angebrochener Halswirbel. 4 Wochen komplette Pause (KW27–30). Ärztliche Freigabe für Laufen und Radfahren liegt vor. **Rad defekt → Trainingsfokus 100% Laufen.**
+
+**Datenlage beim Wiedereinstieg:**
+- CTL 45,7 (28.6.) → **24,1** (26.7.) = −21,6 Punkte / −47%
+- Readiness 77 🟡 · TSB +20,4 · HRV 45ms · Ruhepuls 57 (+1,3) · Trend 7d fallend
+- Referenzlauf Fr 24.7.: 29min / 3,7km / 7:50/km bei **Ø166 bpm, max 181** (LTHR 179) → ca. 18 bpm über Zonen-Soll für diese Pace
+- → **Aerobe Basis ist NICHT intakt.** Stefans Annahme "Grundlagenausdauer solide" gilt für den 28.6., nicht für heute.
+
+**Pace-Kurven-Analyse (all-time, entscheidend für Blockdesign):**
+| Distanz | Bestzeit | Pace |
+|---|---|---|
+| 1,5km | 8:10 | 5:27/km |
+| 5km | 30:46 | 6:09/km |
+| 10km | 1:11:28 | 7:09/km |
+
+Riegel-Prognose 5km → 10km: **64:10**. Ist: 71:28. **Lücke 7:18.**
+→ Limiter ist **aerobe Durability auf Renntempo**, nicht VO2max und nicht Grundschnelligkeit (1,5km→5km ist konsistent).
+→ **Konsequenz für den Block:** Schwerpunkt Schwellen-/Renntempo-Volumen, nicht flache VO2max-Intervalle. Hügelläufe als VO2max-Ersatz (niedrigere Impact-Last bei 91kg, Gehpause bergab).
+
+**Stefans Wünsche + Coach-Antwort:**
+| Wunsch | Bewertung |
+|---|---|
+| "Viele Intervalle, schnell schneller werden" | ✅ Berechtigt (8 Wochen Vorlauf) – aber als Schwelle statt VO2max, weil das seine echte Lücke trifft. Strides ab Tag 1. |
+| "Langsame Läufe orthopädisch teuer wegen geringer Pace" | ❌ Sachlich invers: Peak-Impact pro Schritt ist bei langsamem Tempo *niedriger*. Bei 91kg ist schnelles Laufen der teure Teil. Nielsen 2014: Risikotreiber ist Volumensprung, nicht Intensität. |
+| "Grundlagenausdauer solide" | ❌ Durch HF-Daten widerlegt (s.o.) |
+
+**Blockstruktur (8 Wochen bis Karlsfelder Seelauf 20.9.):**
+KW31 Reanimation (HF-Anker + Strides) · KW32 Tempo-Kalibrierung (2km-Check) · KW33–34 Schwellen-Block + Hügel · KW35 5km-TT + Peak 1 · KW36 Renntempo-Spezifik (3×2km) · KW37 Taper 1 (Volumen −40%, Intensität halten) · KW38 Rennwoche (Mujika 3 Touches)
+
+**Steuerungsregel KW31–32:** HF regiert, nicht Pace. Cap 150 bpm (73% HFmax), Gehpausen erlaubt. Begründung: Post-Layoff-Ausnahme laut Trainingssteuerungs-Regelwerk (autonomes NS + Detraining). Fortschrittsmesser: Pace bei HF 150.
+
+**Zielzeit:** sub-60min realistisch, sub-58 Stretch – **Neubewertung nach dem 2km-Tempo-Check in KW32**, vorher keine belastbare Prognose.
+
+**Empfohlener Zusatzhebel:** 1–2×/Woche Cross-Training (Spinning-Bike / Crosstrainer / Aqua-Jogging, Z1–Z2). Baut CTL ohne Impact – der einzige Weg, Stefans Orthopädie-Bedenken und den Grundlagenbedarf gleichzeitig zu bedienen, solange das Rad defekt ist.
+
+**Dateien:** kw30.md + kw31.md (voll) + kw32–34.md (Stubs) angelegt · kw26–29 archiviert (kw26 mit Unfall-Retro, kw27–29 ❌ Verletzungspause) · periodisierung.md **noch nicht ersetzt – Zustimmung ausstehend**
 
 ---
 

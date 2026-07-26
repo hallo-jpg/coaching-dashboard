@@ -1,6 +1,22 @@
 # Athletenprofil – Stefan
 
-*Stand: 7. April 2026*
+*Stand: 26. Juli 2026*
+
+## ⚠️ Aktueller Status (26. Juli 2026)
+
+| | |
+|---|---|
+| **Verletzung** | Angebrochener Halswirbel (Radunfall 28.6.2026, Rosenheimer) |
+| **Freigabe** | Laufen ✅ · Radfahren ✅ (ärztlich, 26.7.) |
+| **Rad** | ❌ **Defekt – nicht fahrbar.** Kein Rad-Training bis Ersatz/Reparatur |
+| **Trainingsfokus** | 100% Laufen bis auf Weiteres |
+| **CTL** | 24,1 (war 45,7 am 28.6. → −47% durch 4 Wochen Pause) |
+| **Aerobe Basis** | ⚠️ Nicht intakt: 7:50/km bei Ø166 bpm (24.7.) statt Zonen-Soll ~130 bpm |
+| **Steuerung KW31–32** | **HF statt Pace** · Cap 150 bpm (73% HFmax) · Gehpausen erlaubt |
+| **Nächstes Ziel** | Karlsfelder Seelauf 10km · 20.9.2026 · 8 Wochen Vorlauf |
+| **Abbruchkriterien** | Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in Arme → Einheit beenden |
+
+FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026), sind aber bis zum nächsten Test und funktionsfähigen Rad nicht trainingsleitend.
 
 ## Basisdaten
 
