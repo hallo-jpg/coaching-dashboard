@@ -543,19 +543,19 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#2dd4bf" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="0.0"
                 transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-te)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="0.0"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--accent);font-size:1.8rem">0%</span>
+        <span class="ring-num" style="color:var(--green);font-size:1.8rem">112%</span>
         <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">29 / 0 TSS</div>
+      <div class="pri-main">29 / 26 TSS</div>
       <div class="pri-sub">Wochenziel · KW30</div>
     </div>
   </div>
@@ -804,6 +804,8 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:5%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            
             <div class="tf" style="width:100%;height:5%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px">KW30</span>
@@ -811,7 +813,7 @@
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;right:0;margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW30</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 29 TSS</div>
-            
+            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 26 TSS</div>
           </div>
         </div>
         
@@ -845,7 +847,7 @@
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW31 Plan</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">–</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">111</div>
       </div>
     </div>
   </div>
@@ -904,47 +906,37 @@
     <div class="week-header">
       <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(148,163,184,0.10)">📅</div>Wochenplan</div>
       <span class="kw-pill">KW30</span>
-      <span class="tss-pill">29 / ~0 TSS</span>
+      <span class="tss-pill">29 / ~26 TSS</span>
     </div>
 
     
-    <div class="sick-notice">🤒 <div><strong>Krank – alle Einheiten ausgefallen (Details in kw30.md)</strong></div></div>
-    
 
     
-    <div class="day-row day-missed">
+    <div class="day-row ">
       <span class="day-name">Mo</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
         
       </div>
       
-      <div style="text-align:right;">
-        <span class="badge-missed">Ausgefallen</span>
-        
-        
-      </div>
+      <span class="day-tss" style="color:var(--subtle)">–</span>
       
     </div>
     
-    <div class="day-row day-missed">
+    <div class="day-row ">
       <span class="day-name">Di</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
         
       </div>
       
-      <div style="text-align:right;">
-        <span class="badge-missed">Ausgefallen</span>
-        
-        
-      </div>
+      <span class="day-tss" style="color:var(--subtle)">–</span>
       
     </div>
     
@@ -962,79 +954,70 @@
       
     </div>
     
-    <div class="day-row day-missed">
+    <div class="day-row ">
       <span class="day-name">Do</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
         
       </div>
       
-      <div style="text-align:right;">
-        <span class="badge-missed">Ausgefallen</span>
-        
-        
-      </div>
+      <span class="day-tss" style="color:var(--subtle)">–</span>
       
     </div>
     
-    <div class="day-row day-missed">
+    <div class="day-row ">
       <span class="day-name">Fr</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-run"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout">🏃 Erster Lauf zurück – 29min / 3,7km</div>
         
         
-        <div class="bonus-activity">
-          <span class="badge-bonus">+</span>
-          <span class="bonus-name">Zarte Lauf-/Geh-/Stehversuche</span>
+      </div>
+      
+      <div style="text-align:right;">
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="font-size:0.58rem;color:var(--muted)">Ist</span>
+            <span style="font-size:0.72rem;font-weight:700;color:var(--green)">29</span>
+          </div>
+          
+          
         </div>
-        
-      </div>
-      
-      <div style="text-align:right;">
-        <span class="badge-missed">Ausgefallen</span>
-        
-        <div style="font-size:0.72rem;color:var(--orange);font-weight:700;margin-top:2px">+29</div>
-        
-        
-      </div>
-      
-    </div>
-    
-    <div class="day-row day-missed">
-      <span class="day-name">Sa</span>
-      <span class="day-dot dot-planned"></span>
-      <div>
-        
-        <div class="day-workout">🚴 </div>
-        
-        
-      </div>
-      
-      <div style="text-align:right;">
-        <span class="badge-missed">Ausgefallen</span>
-        
         
       </div>
       
     </div>
     
     <div class="day-row ">
-      <span class="day-name">So</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-name">Sa</span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
+        
+        
+      </div>
+      
+      <span class="day-tss" style="color:var(--subtle)">–</span>
+      
+    </div>
+    
+    <div class="day-row ">
+      <span class="day-name">So</span>
+      <span class="day-dot dot-run"></span>
+      <div>
+        
+        <div class="day-workout">🏃 Easy 28min – Puls <165 bpm + 4×20s Strides</div>
         
         
       </div>
       
       
-      <span class="day-tss">–</span>
+      <span class="day-tss">~26 TSS</span>
       
       
     </div>
@@ -1046,13 +1029,13 @@
   <div class="nutr-card" style="margin-bottom:0">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
       <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(255,107,53,0.14)">⛽</div>Ernährung · Heute</div>
-      <span class="kw-pill" style="margin-left:auto">sick</span>
+      <span class="kw-pill" style="margin-left:auto">endurance_short</span>
     </div>
 
-    <div class="nutr-banner nutr-banner-red">
+    <div class="nutr-banner nutr-banner-blue">
       <div>
-        <div class="nutr-banner-text">Ruhetag</div>
-        <div class="nutr-banner-sub">Krank → Leicht essen, viel trinken</div>
+        <div class="nutr-banner-text">Easy 28min – Puls <165 bpm + 4×20s Strides</div>
+        <div class="nutr-banner-sub">Kurzer Ausdauertag → Normal essen</div>
       </div>
     </div>
 
@@ -1069,18 +1052,36 @@
     </div>
 
     
+    <div class="nutr-timing">
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">Pre-Workout</div>
+        <div class="nutr-timing-main">🥣 Normal</div>
+        <div class="nutr-timing-sub">Haferbrei, 1–2h vorher</div>
+      </div>
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">During</div>
+        <div class="nutr-timing-main">💧 Optional</div>
+        <div class="nutr-timing-sub">Wasser reicht bis 90min</div>
+      </div>
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">Post · 30min</div>
+        <div class="nutr-timing-main">🥛 3:1</div>
+        <div class="nutr-timing-sub">Carbs:Protein in 30min</div>
+      </div>
+    </div>
+    
 
     
     <div>
       
       <div class="nutr-tip">
-        <div class="nutr-tip-dot nutr-tip-dot-blue"></div>
-        <div class="nutr-tip-text">Leicht essen — kein Druck, Appetit bestimmt die Menge</div>
+        <div class="nutr-tip-dot nutr-tip-dot-green"></div>
+        <div class="nutr-tip-text">Protein-Fokus: Quark, Eier, Hülsenfrüchte nach dem Training</div>
       </div>
       
       <div class="nutr-tip">
-        <div class="nutr-tip-dot nutr-tip-dot-green"></div>
-        <div class="nutr-tip-text">Viel trinken: Wasser, Tee, Brühe — Immunsystem unterstützen</div>
+        <div class="nutr-tip-dot nutr-tip-dot-blue"></div>
+        <div class="nutr-tip-text">Leichte Mahlzeiten — kein Volumen-Druck bei kurzen Einheiten</div>
       </div>
       
     </div>
@@ -1111,41 +1112,41 @@
     <tr style="background:rgba(148,163,184,0.04)">
       <td><span class="ausblick-kw" style="color:var(--accent)">KW30</span></td>
       <td>
-        <div>KW30</div>
-        <div class="ausblick-sub"></div>
+        <div>Wiedereinstieg nach Halswirbel-Fraktur</div>
+        <div class="ausblick-sub">Erste Läufe nach 4 Wochen Verletzungspause · HF-Anker setzen · Rad entfällt (Rad defekt)</div>
       </td>
-      <td class="ausblick-tss">29 / ~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">29 / ~26</td>
+      <td class="ausblick-key"><div class="ausblick-sub">Erster Lauf zurück – 29min / 3,7km · Easy 28min – Puls <165 bpm + 4×20s Strides</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW31</span></td>
       <td>
-        <div>KW31</div>
-        <div class="ausblick-sub"></div>
+        <div>Lauf-Block Woche 1: Reanimation</div>
+        <div class="ausblick-sub">Aerober Anker wiederherstellen · Strides als erster Intensitätsreiz · Gewebe an Impact gewöhnen</div>
       </td>
-      <td class="ausblick-tss">~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~111</td>
+      <td class="ausblick-key"><div class="ausblick-sub">Easy 30min – Puls <165 bpm + 6×20s Strides · Easy 32min – Puls <165 bpm + 6×20s Strides · Easy 40min – Puls <165 bpm</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW32</span></td>
       <td>
-        <div>KW32</div>
-        <div class="ausblick-sub"></div>
+        <div>Lauf-Block Woche 2: Tempo-Kalibrierung</div>
+        <div class="ausblick-sub">Volumen leicht rauf · erster Fahrtspiel-Reiz · Tempo-Check zur Zonen-Kalibrierung</div>
       </td>
-      <td class="ausblick-tss">~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~141</td>
+      <td class="ausblick-key"><div class="ausblick-sub">Easy 35min + 6×20s Strides · Fahrtspiel 8×1min flott / 2min locker · Tempo-Check 2km all-out + Easy</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW33</span></td>
       <td>
-        <div>KW33</div>
-        <div class="ausblick-sub"></div>
+        <div>Lauf-Block Woche 3: Schwellen-Einstieg</div>
+        <div class="ausblick-sub">Cruise-Intervalle an der Schwelle – der Haupthebel für 10km</div>
       </td>
-      <td class="ausblick-tss">~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~181</td>
+      <td class="ausblick-key"><div class="ausblick-sub">Schwelle 4×6min @ Renntempo / 2min Trab · Easy 35min · Hügel 6×90s bergauf / gehen runter</div></td>
     </tr>
     
     </tbody>
