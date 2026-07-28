@@ -190,7 +190,16 @@ Kleinste darstellbare Einheit: **exakt 60 Sekunden.** Alles wird auf volle Minut
 1. `create_planned_workout` **ohne** `workout_steps` aufrufen
 2. Die vollständige Schrittliste als Klartext ans Ende der `description` schreiben (Prosa davor ist erlaubt und stört nicht)
 3. Reps ausschreiben — kein `6x`-Block, jede Wiederholung als eigene Zeile
-4. **Stefan muss das Workout einmal in intervals.icu öffnen und OK klicken.** Der Editor parst die Zeilen erst beim Speichern; über die API bleibt `workout_doc` leer `{}`. Erst nach dem Klick erscheinen Balken und der COROS-Sync greift.
+4. **Stefan muss das Workout einmal in intervals.icu öffnen und OK klicken.** Der Editor parst die Zeilen erst beim Speichern; über die API bleibt `workout_doc` leer `{}`. Erst nach dem Klick erscheinen Balken und der COROS-Sync greift. ✅ Von Stefan am 28.7.2026 bestätigt.
+
+**Pflicht:** Bei jeder Einheit auf dieser Route den Hinweis `⚠️ EINMAL ÖFFNEN UND OK KLICKEN` als zweite Zeile in die Beschreibung setzen — sonst landet das Workout nicht auf der Uhr, ohne dass es auffällt.
+
+**Standardbaustein Strides im Einlaufen** (vor Schwellen- und VO2max-Einheiten):
+```
+- 20s 120% Pace
+- 60s 62% Pace
+```
+3× wiederholt, danach 1min locker, dann das erste Intervall. Verhindert den Kaltstart ins erste Intervall.
 
 **Trade-off gegenüber `workout_steps`:**
 
