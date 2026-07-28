@@ -170,7 +170,25 @@ Der MCP-Server rendert Dauern **nur in ganzen Minuten** (`- 5m 70-80% Pace`). Fo
 
 **Am 26.7.2026 real passiert:** 5 Lauf-Workouts mit `6×(20s @ 120% + 100s @ 55%)` angelegt. Alle 20s-Strides wurden verworfen, die 100s-Gehpausen blieben als 2min-Blöcke @ 11:00/km stehen. Ergebnis: identische langsame 2-Minuten-Stufen ohne jede Intensität.
 
-**Regel:** Strides, Antritte und alle Intervalle < 60s **nie** in `workout_steps` legen. Stattdessen den Hauptlauf strukturieren (Einlaufen / Hauptteil / Auslaufen) und die kurzen Reize als Klartext in die `description` schreiben. Kein Verlust – Strides werden nach Gefühl gelaufen, ohne Uhrenführung.
+**Verifiziertes Rundungsverhalten** (Testworkouts 28.7.2026):
+
+| `duration_secs` gesendet | gespeichert |
+|---|---|
+| 20s | **verworfen** (`0m`) |
+| 30s | 60s |
+| 45s | 60s |
+| 90s | 120s |
+| 100s | 120s |
+
+Kleinste darstellbare Einheit: **exakt 60 Sekunden.** Alles wird auf volle Minuten gerundet.
+
+**Ebenfalls getestet und widerlegt:** Schritt-Zeilen (`- 20s 120% Pace`) direkt in die `description` schreiben und `workout_steps` weglassen → `workout_doc` bleibt leer `{}`. intervals.icu parst den Beschreibungstext auf diesem API-Weg **nicht**. Die Struktur entsteht ausschließlich aus `workout_steps`.
+
+**Regel:** Strides, Antritte und alle Intervalle < 60s **nie** in `workout_steps` legen. Stattdessen den Hauptlauf strukturieren (Einlaufen / Hauptteil / Auslaufen) und die kurzen Reize als Klartext-Protokoll in die `description` schreiben.
+
+**Nicht auf 1min strecken.** Ein Stride auf 60s aufgeblasen ist kein Stride mehr, sondern ein anaerober Reiz mit echter Ermüdung — besonders schädlich am Tag vor einer Qualitätseinheit. Der Reiz (neuromuskulär, ermüdungsfrei) kippt ab ca. 40s.
+
+**Uhrenführung für Stefan:** COROS-Intervalltimer einmalig anlegen (20s Arbeit / 100s Pause / 6 Wdh.), bleibt gespeichert. Alternativ nach Landmarken — 20s ≈ 80–100m.
 
 **Nach jedem Anlegen prüfen:** `get_planned_events` aufrufen und `workout_doc.steps` gegen die Absicht abgleichen. Die Erfolgsmeldung „✅ Struktur: N Schritte" zählt die *gesendeten*, nicht die *gespeicherten* Schritte.
 
