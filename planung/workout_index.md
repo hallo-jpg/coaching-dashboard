@@ -182,13 +182,30 @@ Der MCP-Server rendert Dauern **nur in ganzen Minuten** (`- 5m 70-80% Pace`). Fo
 
 Kleinste darstellbare Einheit: **exakt 60 Sekunden.** Alles wird auf volle Minuten gerundet.
 
-**Ebenfalls getestet und widerlegt:** Schritt-Zeilen (`- 20s 120% Pace`) direkt in die `description` schreiben und `workout_steps` weglassen → `workout_doc` bleibt leer `{}`. intervals.icu parst den Beschreibungstext auf diesem API-Weg **nicht**. Die Struktur entsteht ausschließlich aus `workout_steps`.
+### ✅ Lösung für Schritte < 60s: Description-Route (von Stefan gefunden, 28.7.2026)
 
-**Regel:** Strides, Antritte und alle Intervalle < 60s **nie** in `workout_steps` legen. Stattdessen den Hauptlauf strukturieren (Einlaufen / Hauptteil / Auslaufen) und die kurzen Reize als Klartext-Protokoll in die `description` schreiben.
+**Das Textformat von intervals.icu versteht Sekunden** — `- 20s 120% Pace` ist gültig und erzeugt einen echten Schritt. Die Minutengrenze liegt ausschließlich im MCP-Renderer, nicht in intervals.icu.
 
-**Nicht auf 1min strecken.** Ein Stride auf 60s aufgeblasen ist kein Stride mehr, sondern ein anaerober Reiz mit echter Ermüdung — besonders schädlich am Tag vor einer Qualitätseinheit. Der Reiz (neuromuskulär, ermüdungsfrei) kippt ab ca. 40s.
+**Verfahren:**
+1. `create_planned_workout` **ohne** `workout_steps` aufrufen
+2. Die vollständige Schrittliste als Klartext ans Ende der `description` schreiben (Prosa davor ist erlaubt und stört nicht)
+3. Reps ausschreiben — kein `6x`-Block, jede Wiederholung als eigene Zeile
+4. **Stefan muss das Workout einmal in intervals.icu öffnen und OK klicken.** Der Editor parst die Zeilen erst beim Speichern; über die API bleibt `workout_doc` leer `{}`. Erst nach dem Klick erscheinen Balken und der COROS-Sync greift.
 
-**Uhrenführung für Stefan:** COROS-Intervalltimer einmalig anlegen (20s Arbeit / 100s Pause / 6 Wdh.), bleibt gespeichert. Alternativ nach Landmarken — 20s ≈ 80–100m.
+**Trade-off gegenüber `workout_steps`:**
+
+| | `workout_steps` | Description-Route |
+|---|---|---|
+| Schritte < 60s | ❌ verworfen | ✅ exakt |
+| Balken sofort da | ✅ | ❌ erst nach OK-Klick |
+| COROS-Sync sofort | ✅ | ❌ erst nach OK-Klick |
+
+→ **Einheiten ohne kurze Intervalle:** `workout_steps` (kein Klick nötig).
+→ **Einheiten mit Strides/Antritten:** Description-Route, Hinweis auf den OK-Klick oben in die Beschreibung schreiben.
+
+**Nicht auf 1min strecken.** Ein Stride auf 60s aufgeblasen ist kein Stride mehr, sondern ein anaerober Reiz mit echter Ermüdung — besonders schädlich am Tag vor einer Qualitätseinheit. Der Reiz kippt ab ca. 40s. Die Description-Route macht diesen Kompromiss überflüssig.
+
+**Alternative ohne Klick:** COROS-Intervalltimer einmalig anlegen (20s Arbeit / 100s Pause / 6 Wdh.). Oder nach Landmarken — 20s ≈ 80–100m.
 
 **Nach jedem Anlegen prüfen:** `get_planned_events` aufrufen und `workout_doc.steps` gegen die Absicht abgleichen. Die Erfolgsmeldung „✅ Struktur: N Schritte" zählt die *gesendeten*, nicht die *gespeicherten* Schritte.
 
