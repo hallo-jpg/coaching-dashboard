@@ -13,7 +13,13 @@
 
 **Was gut lief:** Erste Qualitätseinheit (Fr, Tempo 3×6min, von Stefan von Do verschoben) mit **RPE 7 gut kontrolliert** — exakt die Zieldosierung. Der vorgezogene Intensitätseinstieg war richtig. Mi Easy-Cap 165 eingehalten (Ø164).
 
-**Readiness-Sonderfall 2.8.:** Score 43, Muster-Flag 🔴 „Krank-Risiko" (HRV 34 = −1SD, Ruhepuls 63 = +7, Schlaf 5,6h). **Als Fehlalarm eingestuft** — der Algorithmus kennt den Radtag nicht; das ist die klassische akute autonome Antwort auf einen sehr harten ungewohnten Belastungstag plus kurze Nacht. Kein Infekt-Verdacht ohne Symptome. Differenzierung über den Verlauf → **HRV-Gate für Mo/Di in KW32 eingebaut** (Schwellen: HRV ≥45 & RP ≤58 = grün · 38–44 = gekürzt · <38 oder RP >60 = Ruhetag).
+**Readiness-Sonderfall 2.8.:** Score 43, Muster-Flag 🔴 „Krank-Risiko" (HRV 34 = −1SD, Ruhepuls 63 = +7, Schlaf 5,6h). **Als Fehlalarm eingestuft.**
+
+→ **Ursache von Stefan nachgereicht: Alkohol** nach der Radausfahrt. Das ist die dominante Erklärung, nicht die Trainingslast. Präzedenzfall 17. Mai 2026 (JGA) — identisches Muster, damals ebenfalls korrekt als „kein Trainings-Signal" eingeordnet.
+
+→ **Konsequenz für das Gate:** Alkoholsuppression klärt in 24–48h. Damit wird eine *anhaltend* niedrige HRV am Montag zu einem **stärkeren** Warnsignal als bei reiner Trainingsermüdung. Schwellen unverändert (HRV ≥45 & RP ≤58 = grün · 38–44 = gekürzt · <38 oder RP >60 = Ruhetag), aber die Lesart bei Rot ist schärfer: dann nicht mehr mit Alkohol erklärbar.
+
+→ Sachlicher Hinweis an Stefan weitergegeben: Alkohol am Abend des größten Belastungstages seit fünf Wochen bremst Glykogen-Resynthese und Muskelproteinsynthese im Anpassungsfenster. Relevant vor allem rund um Qualitätseinheiten (Do/Sa), nicht als Generalverbot.
 
 **Rad-Status geklärt (Stefan, 2.8.):** Ausfahrt war einmalig, kein Rad in Sicht → KW32 bleibt reiner Lauf-Block. Cross-Training-Empfehlung bleibt bestehen, aber ohne Zugang nicht planbar.
 
