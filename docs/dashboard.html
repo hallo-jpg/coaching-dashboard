@@ -453,18 +453,21 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#22c55e" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="197.0"
                 transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-gr)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="197.0"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--muted)">–</span>
+        <span class="ring-num" style="color:#ef4444">43</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
+      
+      <div class="ring-status-tag">🟠 Reduziert trainieren</div>
+      <div class="ring-status-sub">HRV unter Schnitt · Puls erhöht</div>
       
     </div>
   </div>
@@ -567,33 +570,30 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:var(--muted)">–</div>
+      <div class="readiness-score" style="color:#ef4444">43</div>
+      <div class="readiness-tag" style="color:#ef4444">🟠 Reduziert trainieren</div>
       
     </div>
 
     
-    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
-      ⏳ Uhr noch nicht synchronisiert – Werte folgen
-    </div>
-    
 
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--orange);border-color:var(--orange);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--orange) 35%,transparent)">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">34 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
-        <div class="rbar-lbl">Normalber. 40–56 ms</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--orange);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Reduziert</div>
+        <div class="rbar-lbl">Normalber. 39–56 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">0.0h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">5.6h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
@@ -606,9 +606,9 @@
         </div>
         
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">63 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
@@ -631,7 +631,7 @@
         
         <div class="spark-bar " style="height:54%;background:#ef4444"></div>
         
-        <div class="spark-bar spark-today" style="height:54%;background:#ef4444"></div>
+        <div class="spark-bar spark-today" style="height:49%;background:#ef4444"></div>
         
       </div>
     </div>
@@ -1305,10 +1305,10 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,16.4 L10.0,14.0 L20.0,17.7 L30.0,13.1 L40.0,14.3 L50.0,20.9 L60.0,15.6 L70.0,6.9 L80.0,9.3 L90.0,18.5 L100.0,4.3 L110.0,36.8 L120.0,16.3 L130.0,22.0 L140.0,4.4 L150.0,8.1 L160.0,0.0 L170.0,25.2 L180.0,10.3 L210.0,14.1 L220.0,20.7 L230.0,4.0 L240.0,18.4 L250.0,9.9 L260.0,17.1 L270.0,25.9 L280.0,20.4 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,16.4 L10.0,14.0 L20.0,17.7 L30.0,13.1 L40.0,14.3 L50.0,20.9 L60.0,15.6 L70.0,6.9 L80.0,9.3 L90.0,18.5 L100.0,4.3 L110.0,36.8 L120.0,16.3 L130.0,22.0 L140.0,4.4 L150.0,8.1 L160.0,0.0 L170.0,25.2 L180.0,10.3 L210.0,14.1 L220.0,20.7 L230.0,4.0 L240.0,18.4 L250.0,9.9 L260.0,17.1 L270.0,25.9 L280.0,20.4" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="20.4" r="3" fill="#7986cb"/>
-        <circle cx="300" cy="20.4" r="5" fill="#7986cb" opacity="0.2"/>
+        <path d="M0.0,16.4 L10.0,14.0 L20.0,17.7 L30.0,13.1 L40.0,14.3 L50.0,20.9 L60.0,15.6 L70.0,6.9 L80.0,9.3 L90.0,18.5 L100.0,4.3 L110.0,36.8 L120.0,16.3 L130.0,22.0 L140.0,4.4 L150.0,8.1 L160.0,0.0 L170.0,25.2 L180.0,10.3 L210.0,14.1 L220.0,20.7 L230.0,4.0 L240.0,18.4 L250.0,9.9 L260.0,17.1 L270.0,25.9 L280.0,20.4 L300.0,35.2 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,16.4 L10.0,14.0 L20.0,17.7 L30.0,13.1 L40.0,14.3 L50.0,20.9 L60.0,15.6 L70.0,6.9 L80.0,9.3 L90.0,18.5 L100.0,4.3 L110.0,36.8 L120.0,16.3 L130.0,22.0 L140.0,4.4 L150.0,8.1 L160.0,0.0 L170.0,25.2 L180.0,10.3 L210.0,14.1 L220.0,20.7 L230.0,4.0 L240.0,18.4 L250.0,9.9 L260.0,17.1 L270.0,25.9 L280.0,20.4 L300.0,35.2" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="35.2" r="3" fill="#7986cb"/>
+        <circle cx="300" cy="35.2" r="5" fill="#7986cb" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
         <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
       </svg>
@@ -1318,7 +1318,7 @@
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
         <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
-          7.5h
+          5.6h
         </div>
         <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
       </div>
@@ -1858,7 +1858,7 @@
   
 
   
-  var slPts = [{"x":0.0,"d":"03.07.26","v":8.0},{"x":3.3,"d":"04.07.26","v":8.2},{"x":6.7,"d":"05.07.26","v":7.8},{"x":10.0,"d":"06.07.26","v":8.4},{"x":13.3,"d":"07.07.26","v":8.2},{"x":16.7,"d":"08.07.26","v":7.4},{"x":20.0,"d":"09.07.26","v":8.1},{"x":23.3,"d":"10.07.26","v":9.1},{"x":26.7,"d":"11.07.26","v":8.8},{"x":30.0,"d":"12.07.26","v":7.7},{"x":33.3,"d":"13.07.26","v":9.5},{"x":36.7,"d":"14.07.26","v":5.4},{"x":40.0,"d":"15.07.26","v":8.0},{"x":43.3,"d":"16.07.26","v":7.2},{"x":46.7,"d":"17.07.26","v":9.4},{"x":50.0,"d":"18.07.26","v":9.0},{"x":53.3,"d":"19.07.26","v":10.6},{"x":56.7,"d":"20.07.26","v":6.8},{"x":60.0,"d":"21.07.26","v":8.7},{"x":70.0,"d":"24.07.26","v":8.2},{"x":73.3,"d":"25.07.26","v":7.4},{"x":76.7,"d":"26.07.26","v":9.5},{"x":80.0,"d":"27.07.26","v":7.7},{"x":83.3,"d":"28.07.26","v":8.8},{"x":86.7,"d":"29.07.26","v":7.9},{"x":90.0,"d":"30.07.26","v":6.8},{"x":93.3,"d":"31.07.26","v":7.5}];
+  var slPts = [{"x":0.0,"d":"03.07.26","v":8.0},{"x":3.3,"d":"04.07.26","v":8.2},{"x":6.7,"d":"05.07.26","v":7.8},{"x":10.0,"d":"06.07.26","v":8.4},{"x":13.3,"d":"07.07.26","v":8.2},{"x":16.7,"d":"08.07.26","v":7.4},{"x":20.0,"d":"09.07.26","v":8.1},{"x":23.3,"d":"10.07.26","v":9.1},{"x":26.7,"d":"11.07.26","v":8.8},{"x":30.0,"d":"12.07.26","v":7.7},{"x":33.3,"d":"13.07.26","v":9.5},{"x":36.7,"d":"14.07.26","v":5.4},{"x":40.0,"d":"15.07.26","v":8.0},{"x":43.3,"d":"16.07.26","v":7.2},{"x":46.7,"d":"17.07.26","v":9.4},{"x":50.0,"d":"18.07.26","v":9.0},{"x":53.3,"d":"19.07.26","v":10.6},{"x":56.7,"d":"20.07.26","v":6.8},{"x":60.0,"d":"21.07.26","v":8.7},{"x":70.0,"d":"24.07.26","v":8.2},{"x":73.3,"d":"25.07.26","v":7.4},{"x":76.7,"d":"26.07.26","v":9.5},{"x":80.0,"d":"27.07.26","v":7.7},{"x":83.3,"d":"28.07.26","v":8.8},{"x":86.7,"d":"29.07.26","v":7.9},{"x":90.0,"d":"30.07.26","v":6.8},{"x":93.3,"d":"31.07.26","v":7.5},{"x":100.0,"d":"02.08.26","v":5.6}];
   bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#7986cb', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
