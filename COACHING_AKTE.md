@@ -5,6 +5,28 @@
 
 ---
 
+## 02. August 2026 – KW31 Retro + KW32 Planung
+
+🟡 **Mittel** · TSS ~195/136 (**143%**, Überbelastung) · HRV ↘ 44→34 (−10) · Ruhepuls 57→63
+
+**Was die Woche gekippt hat:** Ungeplante Rennrad-Ausfahrt am Sa 1.8. (geliehenes Rad, Gruppe, viele Sprints, erste Radfahrt seit dem Unfall am 28.6.). Nur die halbe Tour hochgeladen, trotzdem ATL-Sprung 14,8 → 28,0 = **~107 TSS**; real eher 150–200. Sie ersetzte den längsten Lauf und kostete zusätzlich den Sonntagslauf (Readiness 43).
+
+**Was gut lief:** Erste Qualitätseinheit (Fr, Tempo 3×6min, von Stefan von Do verschoben) mit **RPE 7 gut kontrolliert** — exakt die Zieldosierung. Der vorgezogene Intensitätseinstieg war richtig. Mi Easy-Cap 165 eingehalten (Ø164).
+
+**Readiness-Sonderfall 2.8.:** Score 43, Muster-Flag 🔴 „Krank-Risiko" (HRV 34 = −1SD, Ruhepuls 63 = +7, Schlaf 5,6h). **Als Fehlalarm eingestuft** — der Algorithmus kennt den Radtag nicht; das ist die klassische akute autonome Antwort auf einen sehr harten ungewohnten Belastungstag plus kurze Nacht. Kein Infekt-Verdacht ohne Symptome. Differenzierung über den Verlauf → **HRV-Gate für Mo/Di in KW32 eingebaut** (Schwellen: HRV ≥45 & RP ≤58 = grün · 38–44 = gekürzt · <38 oder RP >60 = Ruhetag).
+
+**Rad-Status geklärt (Stefan, 2.8.):** Ausfahrt war einmalig, kein Rad in Sicht → KW32 bleibt reiner Lauf-Block. Cross-Training-Empfehlung bleibt bestehen, aber ohne Zugang nicht planbar.
+
+**KW32 geplant** (~160 TSS, 166 Laufminuten, 4 Läufe): Di Easy+6 Strides (HRV-gated) · Do **Tempo 4×6min** (+1 Intervall) · Sa **🔬 2km Tempo-Check** (kalibriert Renntempo für KW33–36) · So Easy 40min.
+
+**Volumen-Entscheidung:** Laufvolumen verdoppelt sich ggü. KW31 (81→166min), aber nur weil KW31 durch die Radausfahrt auf zwei Läufe schrumpfte — ggü. dem *geplanten* Wert sind es +26%. Der eigentliche Nielsen-Risikofaktor, der längste **Easy**-Lauf, bleibt bewusst bei 40min (±0), weil die Laufanzahl von 2 auf 4 steigt. Ab KW33 wächst er wieder.
+
+**Lernpunkt kommuniziert:** Spontane Gruppenausfahrten sind nicht das Problem, ihre Platzierung ist es. Künftig vorher Bescheid geben → Laufqualität wird weggelegt, statt den Longrun zu opfern.
+
+→ kw30.md + kw31.md archiviert · kw32.md voll geplant · kw35.md Stub ergänzt
+
+---
+
 ## 26. Juli 2026 – Wiedereinstieg nach Halswirbelfraktur · Lauf-Block KW31–38 gestartet
 
 **Ausgangslage:** Radunfall 28.6.2026 beim Rosenheimer (nach 45,8km). Angebrochener Halswirbel. 4 Wochen komplette Pause (KW27–30). Ärztliche Freigabe für Laufen und Radfahren liegt vor. **Rad defekt → Trainingsfokus 100% Laufen.**

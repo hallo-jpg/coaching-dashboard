@@ -10,14 +10,14 @@
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
 | **⚠️ Verletzung** | Angebrochener Halswirbel (Unfall 28.6.) · Laufen + Rad freigegeben · **Rad defekt → nur Laufen** |
 | **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg · *Referenz, aktuell nicht trainingsleitend* |
-| **CTL** | 24,1 (26.7.) – nach 4 Wochen Verletzungspause |
+| **CTL** | 26,3 (2.8.) · TSB −1,4 |
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | ~~Rosenheimer Radmarathon~~ ⚠️ · 28. Juni 2026 · **KW26** · nach 45,8km Unfall, abgebrochen |
 | **Zielevent** | 🎯 Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
-| **Aktuelle KW** | KW30 (20. Juli – 26. Juli 2026) |
-| **Aktuelle Phase** | Lauf-Block KW31–38 · Woche 1: Reanimation (HF-Anker + Strides) |
+| **Aktuelle KW** | KW32 (3. August – 9. August 2026) |
+| **Aktuelle Phase** | Lauf-Block Woche 2 · 2 Qualitätseinheiten + 2km-Kalibrierung (Sa 8.8.) |
 | **Nächste Phase** | KW33–36 Schwellen-/Renntempo-Block · KW37–38 Taper + Rennwoche |
-| **Wochen bis Rennen** | 8 (Karlsfelder Seelauf 20.9.) |
+| **Wochen bis Rennen** | 7 (Karlsfelder Seelauf 20.9.) |
 | **Steuerung** | KW31–32: Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
 ## Coaching-Skill
