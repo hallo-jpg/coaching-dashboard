@@ -14,11 +14,13 @@
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | ~~Rosenheimer Radmarathon~~ ⚠️ · 28. Juni 2026 · **KW26** · nach 45,8km Unfall, abgebrochen |
 | **Zielevent** | 🎯 Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
-| **Aktuelle KW** | KW32 (3. August – 9. August 2026) |
-| **Aktuelle Phase** | Lauf-Block Woche 2 · 2 Qualitätseinheiten + 2km-Kalibrierung (Sa 8.8.) |
-| **Nächste Phase** | KW33–36 Schwellen-/Renntempo-Block · KW37–38 Taper + Rennwoche |
-| **Wochen bis Rennen** | 7 (Karlsfelder Seelauf 20.9.) |
-| **Steuerung** | KW31–32: Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
+| **Aktuelle KW** | KW33 (10. August – 16. August 2026) |
+| **Aktuelle Phase** | Lauf-Block Woche 3 · Kadenz-Fix + 2km-Kalibrierung (Mi 12.8.) |
+| **Nächste Phase** | KW34–36 Schwellen-/Renntempo-Block · KW37–38 Taper + Rennwoche |
+| **Wochen bis Rennen** | 6 (Karlsfelder Seelauf 20.9.) |
+| **⚠️ Wade** | MTSS-Verdacht Soleus/Tibia · **Kadenz-Ziel 170–175 spm**, Easy am brisken Ende (7:30–7:50/km) · Waden-Protokoll 3×/Wo |
+| **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
+| **Steuerung** | Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
 ## Coaching-Skill
 

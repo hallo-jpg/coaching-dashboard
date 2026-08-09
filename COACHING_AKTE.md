@@ -5,6 +5,38 @@
 
 ---
 
+## 09. August 2026 – KW32 Retro + KW33 Planung
+
+🟡 **Mittel** · TSS 98/160 (**61%**) · HRV ↗ 34→50 · Ruhepuls 63→56 · 2 von 4 Läufen
+
+**Qualität war exzellent, Umfang halbiert.** Mi Easy 7:41/km @ Ø159 bpm bei RPE 4 — **besser als die Mai-Referenz** (7:30 @ 163) und das bei CTL 24 statt 40. Do Tempo 4×6min mit Ø174 exakt im Zielfenster 172–180. Sa + So komplett ausgefallen (Hitze + privat).
+
+**Muster erkannt und Struktur geändert:** KW31 und KW32 sind **beide am Wochenende gescheitert**. Werktags früh funktioniert zuverlässig. → Ab KW33 liegen die drei Kerneinheiten **Mo/Mi/Fr morgens**, Wochenende ist Bonus. Das kehrt die bisherige Regel um (`Ruhetag unter der Woche, Wochenende beide Tage Training`) — die stammt aus der Radsaison und passt nicht zum Sommer-Lauf-Block. Stefan informiert, Widerspruch möglich.
+
+**2km-Check zum zweiten Mal ausgefallen** — größte offene Baustelle. Der Schwellenblock KW34–36 läuft ohne kalibrierte Renntempo-Pace. Dritter Anlauf: KW33 Mi, früh morgens.
+
+### 🦵 Verletzungssignal: Wadenschmerz (neu)
+
+**Symptom:** Schmerz unterhalb des Muskelbauchs, **teils direkt am Knochen**. Nur beim **langsamen** Laufen, nicht beim schnellen. 2 Tage spürbar, dann weg.
+
+**Einordnung:** Schienbeinkantensyndrom (MTSS) am Soleus-Tibia-Übergang. Gegen Knochenstressreaktion spricht: klingt nach 2 Ruhetagen ab **und** wird bei höherem Impact besser statt schlechter. Selbsttests (Drucktest Schienbeinkante, einbeiniger Hüpftest) an Stefan gegeben, mit klarer Ansage zur ärztlichen Abklärung bei punktuellem Befund.
+
+**Mechanische Ursache (Arbeitshypothese):** Zu niedrige Schrittfrequenz bei langsamem Tempo → Fuß setzt vor dem Körperschwerpunkt auf → höhere Bremskräfte und Biegemomente auf die Tibia. Bei schnellerem Laufen steigt die Kadenz automatisch — **das erklärt, warum schnell nicht wehtut.**
+
+**Maßnahmen ab KW33:**
+1. **Kadenz-Ziel 170–175 spm auch im langsamen Tempo** (aktuell vermutlich 155–165). +5–10% senkt die Tibia-Last messbar. Wichtigster Einzelhebel.
+2. Easy-Läufe am **brisken Ende** des Bandes (7:30–7:50/km statt 8:15+) — langsames Trotten ist der Problemreiz.
+3. **Längster Easy-Lauf zurück auf 35min** (von 40) bis die Kadenz sitzt.
+4. **Waden-Protokoll 3×/Woche**, Kern: **Wadenheben mit gebeugtem Knie** (sitzend, 3×12, 3s/3s) — schaltet den Gastrocnemius aus und trifft gezielt den Soleus.
+
+**Eingeräumt:** Stefans ursprüngliche Aussage („langsames Laufen ist für mich orthopädisch teuer") war richtig, meine Gegenargumentation (Spitzenkraft pro Schritt ist bei langsamem Tempo niedriger) zu grob. Spitzenkraft ist nicht die einzige Lastdimension — Bodenkontaktzeit und Soleus-Zeit-unter-Spannung steigen bei langsamem Tempo, bei 91kg relevant.
+
+**KW33 geplant** (~154 TSS, Kern 124min): Mo Easy 30min Kadenz-Test · Mi 🔬 2km-Check · Fr Tempo 4×6min @ kalibrierter Pace · Sa Easy 35min Bonus.
+
+→ kw32.md archiviert · kw33.md voll geplant
+
+---
+
 ## 02. August 2026 – KW31 Retro + KW32 Planung
 
 🟡 **Mittel** · TSS ~195/136 (**143%**, Überbelastung) · HRV ↘ 44→34 (−10) · Ruhepuls 57→63
