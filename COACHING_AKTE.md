@@ -5,6 +5,44 @@
 
 ---
 
+## 06. September 2026 – Rückkehr nach Krankheit + Urlaub · Rennvorbereitung T-14
+
+**Lücke:** Zwischen 10.8. und 4.9. **kein einziger Lauf** (25 Tage). Ursache: Krankheit, danach Urlaub. Ersatzweise Rad (23.8. 80min/245W · 28.8. 49min) und zwei Tabata-Einheiten (29.8., 3.9.).
+
+**Stand:** CTL **15,8** (2.8.: 26,3 · vor Unfall 45,7) · TSB +4,7 · HRV 47 · Ruhepuls 57. Erholt, aber ohne Substanz.
+
+**Einziger belastbarer Datenpunkt:** Lauf 4.9. — 4,4km in 30min = **6:49/km bei Ø178 bpm** (LTHR 179). Also 30min an der Schwelle für dieses Tempo.
+
+### Zielzeit neu bewertet — sub-60 gestrichen
+
+Das Ziel sub-60min stammt aus einer Zeit mit CTL 45 und regelmäßigem Lauftraining. Nicht mehr erreichbar. Daran festzuhalten würde nur zu zu schnellem Anlaufen und Einbruch bei km 6 führen.
+
+| | Zeit | Pace |
+|---|---|---|
+| 10km-Bestzeit (alt) | 1:11:28 | 7:09/km |
+| **Realistisch 20.9.** | **68–72min** | 6:50–7:12/km |
+| Gut gelaufen | 66–68min | 6:36–6:48/km |
+
+PR ist möglich — über **Pacing**, nicht über Form. Stefan gegenüber klar so kommuniziert.
+
+### Strategie für die verbleibenden 14 Tage
+
+Kein Fitnessaufbau mehr möglich (bräuchte 6–8 Wochen). Stattdessen vier Hebel:
+1. **Renntempo-Gefühl** — größter Hebel. Schlüsseleinheit Mi 9.9.: 3×1km @ Renntempo als *Probe*, nicht als Test. Legt die Renntaktik fest.
+2. Neuromuskuläre Schärfe (reagiert in Tagen)
+3. **Pacing-Disziplin** — die Riegel-Lücke (5km→10km: 7:18) ist ein Taktik-, kein Fitnessproblem und in zwei Wochen lösbar
+4. Renntag-Ausführung
+
+**Gewebeschutz nach 25 Tagen Laufpause:** Einheiten bewusst kurz und eher zügig. Langes langsames Trotten (August-Auslöser der Schienbeinkante) kommt nicht mehr vor. Kadenz-Vorgabe 170–175 bleibt.
+
+**Schweiz-Radwochenende 12./13.9. (T-8/T-7):** Als gesetzt akzeptiert. Null Impact = wadenfreundlich, aber ungünstig platziert. Vorgabe: Grundlagenbereich statt Vollgas, kein großer Alkoholabend (Referenzfall 1.8.: HRV −20). Bei >4h oder >1500hm melden → Rennwoche wird angepasst.
+
+**Rennwoche KW38 nach Mujika:** T-5 Sharpening 4×2min · T-3 Openers 5×30s · T-1 Aktivierung 20min + 3 Strides. Gesamt <15min Belastung, hält die neuromuskuläre Schärfe ohne Ermüdungskosten. Renntaktik-Vorgabe: km 1–2 bewusst 10–15 sek/km zu langsam, negativer Split.
+
+→ kw36.md, kw37.md, kw38.md angelegt · 7 Workouts in intervals.icu bis zum Renntag
+
+---
+
 ## 09. August 2026 – KW32 Retro + KW33 Planung
 
 🟡 **Mittel** · TSS 98/160 (**61%**) · HRV ↗ 34→50 · Ruhepuls 63→56 · 2 von 4 Läufen
