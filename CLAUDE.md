@@ -19,7 +19,8 @@
 | **Nächste Phase** | KW38 Rennwoche (Mujika, 3 Touches) · danach Neuaufbau |
 | **Tage bis Rennen** | **14** (Karlsfelder Seelauf 20.9.) |
 | **CTL** | 15,8 (6.9.) · TSB +4,7 · nach Krankheit + Urlaub, nur 2 Läufe in 4 Wochen |
-| **Zielzeit 10km** | **68–72min realistisch** (gut: 66–68) · ~~sub-60~~ nicht mehr erreichbar |
+| **Zielzeit 10km** | offen bis Mi 9.9. · grob 66–72min · ~~sub-60~~ nicht mehr erreichbar |
+| **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
 | **⚠️ Wade** | MTSS-Verdacht Soleus/Tibia · **Kadenz-Ziel 170–175 spm**, Easy am brisken Ende (7:30–7:50/km) · Waden-Protokoll 3×/Wo |
 | **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
 | **Steuerung** | Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
