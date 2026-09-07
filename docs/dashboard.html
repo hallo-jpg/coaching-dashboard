@@ -543,19 +543,19 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#2dd4bf" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="252.3"
                 transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-te)"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="252.3"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--accent);font-size:1.8rem">0%</span>
+        <span class="ring-num" style="color:var(--accent);font-size:1.8rem">27%</span>
         <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">27 / 0 TSS</div>
+      <div class="pri-main">27 / 100 TSS</div>
       <div class="pri-sub">Wochenziel · KW37</div>
     </div>
   </div>
@@ -854,6 +854,8 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:19%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            
             <div class="tf" style="width:100%;height:53%;background:var(--yellow);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW36</span>
@@ -861,7 +863,7 @@
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW36</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 106 TSS</div>
-            
+            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 38 TSS</div>
           </div>
         </div>
         
@@ -873,6 +875,8 @@
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:50%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
+            
             <div class="tf" style="width:100%;height:13%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px">KW37</span>
@@ -880,7 +884,7 @@
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;right:0;margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW37</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 27 TSS</div>
-            
+            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 100 TSS</div>
           </div>
         </div>
         
@@ -973,7 +977,7 @@
     <div class="week-header">
       <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(148,163,184,0.10)">📅</div>Wochenplan</div>
       <span class="kw-pill">KW37</span>
-      <span class="tss-pill">27 / ~0 TSS</span>
+      <span class="tss-pill">27 / ~100 TSS</span>
     </div>
 
     
@@ -981,41 +985,44 @@
     
     <div class="day-row ">
       <span class="day-name">Mo</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-run"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout">🏃 Easy 25min – Metronom 158–162</div>
         
         
-        <div class="bonus-activity">
-          <span class="badge-bonus">+</span>
-          <span class="bonus-name">🏃 Easy 25min – Metronom 158–162</span>
+      </div>
+      
+      <div style="text-align:right;">
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="font-size:0.58rem;color:var(--muted)">Ist</span>
+            <span style="font-size:0.72rem;font-weight:700;color:var(--green)">27</span>
+          </div>
+          
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="font-size:0.58rem;color:var(--muted)">Soll</span>
+            <span style="font-size:0.6rem;color:var(--muted)">22</span>
+          </div>
+          
+          
         </div>
         
       </div>
-      
-      
-      <div style="text-align:right;">
-        <span style="font-size:0.72rem;color:var(--orange);font-weight:700">+27</span>
-        
-      </div>
-      
       
     </div>
     
     <div class="day-row ">
       <span class="day-name">Di</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
         
       </div>
       
-      
-      <span class="day-tss">–</span>
-      
+      <span class="day-tss" style="color:var(--subtle)">–</span>
       
     </div>
     
@@ -1024,45 +1031,43 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout">🚴 🔬 3×1km – Renntempo finden</div>
         
         
       </div>
       
       
-      <span class="day-tss">–</span>
+      <span class="day-tss">~48 TSS</span>
       
       
     </div>
     
     <div class="day-row ">
       <span class="day-name">Do</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-rest"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
         
         
       </div>
       
-      
-      <span class="day-tss">–</span>
-      
+      <span class="day-tss" style="color:var(--subtle)">–</span>
       
     </div>
     
     <div class="day-row ">
       <span class="day-name">Fr</span>
-      <span class="day-dot dot-planned"></span>
+      <span class="day-dot dot-run"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout">🏃 Easy 30min Metronom 160 + 6×20s Strides</div>
         
         
       </div>
       
       
-      <span class="day-tss">–</span>
+      <span class="day-tss">~30 TSS</span>
       
       
     </div>
@@ -1072,7 +1077,7 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout">🚴 Radfahren Schweiz</div>
         
         
       </div>
@@ -1088,7 +1093,7 @@
       <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout">🚴 </div>
+        <div class="day-workout">🚴 Radfahren Schweiz</div>
         
         
       </div>
@@ -1106,13 +1111,13 @@
   <div class="nutr-card" style="margin-bottom:0">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
       <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(255,107,53,0.14)">⛽</div>Ernährung · Heute</div>
-      <span class="kw-pill" style="margin-left:auto">rest</span>
+      <span class="kw-pill" style="margin-left:auto">endurance_short</span>
     </div>
 
-    <div class="nutr-banner nutr-banner-muted">
+    <div class="nutr-banner nutr-banner-blue">
       <div>
-        <div class="nutr-banner-text">Ruhetag</div>
-        <div class="nutr-banner-sub">Ruhetag → Carbs reduziert, Protein halten</div>
+        <div class="nutr-banner-text">Easy 25min – Metronom 158–162</div>
+        <div class="nutr-banner-sub">Kurzer Ausdauertag → Normal essen</div>
       </div>
     </div>
 
@@ -1120,14 +1125,32 @@
       <div class="nutr-protein-left">
         <div>
           <div class="nutr-protein-lbl">Protein-Ziel heute</div>
-          <div><span class="nutr-protein-val">150</span><span class="nutr-protein-unit"> g · 1.7 g/kg</span></div>
+          <div><span class="nutr-protein-val">160</span><span class="nutr-protein-unit"> g · 1.8 g/kg</span></div>
         </div>
       </div>
       <div class="nutr-protein-dist">
-        ~40g Frühstück<br>~45g Mittagessen<br>~40g Abendessen<br>~30g Snacks
+        ~40g Frühstück<br>~50g Mittagessen<br>~40g Abendessen<br>~30g Snacks
       </div>
     </div>
 
+    
+    <div class="nutr-timing">
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">Pre-Workout</div>
+        <div class="nutr-timing-main">🥣 Normal</div>
+        <div class="nutr-timing-sub">Haferbrei, 1–2h vorher</div>
+      </div>
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">During</div>
+        <div class="nutr-timing-main">💧 Optional</div>
+        <div class="nutr-timing-sub">Wasser reicht bis 90min</div>
+      </div>
+      <div class="nutr-timing-block">
+        <div class="nutr-timing-lbl">Post · 30min</div>
+        <div class="nutr-timing-main">🥛 3:1</div>
+        <div class="nutr-timing-sub">Carbs:Protein in 30min</div>
+      </div>
+    </div>
     
 
     
@@ -1135,12 +1158,12 @@
       
       <div class="nutr-tip">
         <div class="nutr-tip-dot nutr-tip-dot-green"></div>
-        <div class="nutr-tip-text">Carbs reduzieren: Mehr Gemüse, weniger Getreide heute</div>
+        <div class="nutr-tip-text">Protein-Fokus: Quark, Eier, Hülsenfrüchte nach dem Training</div>
       </div>
       
       <div class="nutr-tip">
-        <div class="nutr-tip-dot nutr-tip-dot-purple"></div>
-        <div class="nutr-tip-text">Magnesium abends: 300–400mg unterstützt Schlafqualität</div>
+        <div class="nutr-tip-dot nutr-tip-dot-blue"></div>
+        <div class="nutr-tip-text">Leichte Mahlzeiten — kein Volumen-Druck bei kurzen Einheiten</div>
       </div>
       
     </div>
@@ -1171,11 +1194,11 @@
     <tr style="background:rgba(148,163,184,0.04)">
       <td><span class="ausblick-kw" style="color:var(--accent)">KW37</span></td>
       <td>
-        <div>Taper-Woche 1</div>
-        <div class="ausblick-sub">Renntempo einprägen · Schweiz-Wochenende einbetten</div>
+        <div>Renntempo finden</div>
+        <div class="ausblick-sub">Renntempo ermitteln · Kadenz-Umstellung anstoßen · Schweiz-Wochenende einbetten</div>
       </td>
-      <td class="ausblick-tss">27 / ~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">27 / ~100</td>
+      <td class="ausblick-key"><div class="ausblick-sub">Easy 25min – Metronom 158–162 · 🔬 3×1km – Renntempo finden · Easy 30min Metronom 160 + 6×20s Strides</div></td>
     </tr>
     
     <tr >
@@ -1185,17 +1208,17 @@
         <div class="ausblick-sub">Mujika-Protokoll – drei Intensitäts-Touches, Volumen minimal</div>
       </td>
       <td class="ausblick-tss">~80</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-key"><div class="ausblick-sub">Sharpening 4×2min @ Renntempo – 38min · Ruhetag oder 20min ganz locker · Openers 5×30s – 32min</div></td>
     </tr>
     
     <tr >
       <td><span class="ausblick-kw" style="color:var(--muted)">KW39</span></td>
       <td>
-        <div>KW39</div>
-        <div class="ausblick-sub"></div>
+        <div>Erholung nach dem Seelauf</div>
+        <div class="ausblick-sub">Regeneration · danach Start des Kadenz-Projekts</div>
       </td>
-      <td class="ausblick-tss">~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      <td class="ausblick-tss">~75</td>
+      <td class="ausblick-key"><div class="ausblick-sub">Ruhetag oder Spaziergang · Easy 25min ganz locker · Easy 30min – Metronom 160</div></td>
     </tr>
     
     <tr >
