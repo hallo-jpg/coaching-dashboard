@@ -10,7 +10,6 @@
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
 | **⚠️ Verletzung** | Angebrochener Halswirbel (Unfall 28.6.) · Laufen + Rad freigegeben · **Rad defekt → nur Laufen** |
 | **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg · *Referenz, aktuell nicht trainingsleitend* |
-| **CTL** | 26,3 (2.8.) · TSB −1,4 |
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | ~~Rosenheimer Radmarathon~~ ⚠️ · 28. Juni 2026 · **KW26** · nach 45,8km Unfall, abgebrochen |
 | **Zielevent** | 🎯 Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
@@ -21,7 +20,7 @@
 | **CTL** | 15,8 (6.9.) · TSB +4,7 · nach Krankheit + Urlaub, nur 2 Läufe in 4 Wochen |
 | **Zielzeit 10km** | offen bis Mi 9.9. · grob 66–72min · ~~sub-60~~ nicht mehr erreichbar |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
-| **⚠️ Wade** | MTSS-Verdacht Soleus/Tibia · **Kadenz-Ziel 170–175 spm**, Easy am brisken Ende (7:30–7:50/km) · Waden-Protokoll 3×/Wo |
+| **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · **Gewohnte Kadenz ~140 spm** (auch bei Tempo) = Hauptursache · Arbeitsziel **155–165** (Metronom 160), nach dem Rennen 165–170 |
 | **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
 | **Steuerung** | Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
@@ -81,6 +80,8 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - Lauf Bestwerte All-Time (Tempokurven, 7 Distanzen)
 
 ## Wichtige Regeln
+
+- **Vor jedem Commit an `planung/kw*.md`: `python3 validate_plans.py` ausführen.** Prüft alle Wochenpläne gegen den echten Dashboard-Parser. Tag-Spalte muss exakt `Mo`/`Di`/… sein – **kein Datum** (`Mo 7.9.` bricht den Parser lautlos, das Dashboard bleibt dann leer). Pflichtformat: 6 Spalten + `**Total**`-Zeile.
 
 - Alle Workouts laufen auf **%FTP** → .zwo Dateien skalieren automatisch
 - **FTP-Update** nur nach formalem Test (3+10min Protokoll, outdoor, 4iiii)
