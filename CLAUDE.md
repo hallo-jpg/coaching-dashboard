@@ -18,7 +18,8 @@
 | **Nächste Phase** | KW38 Rennwoche (Mujika, 3 Touches) · danach Neuaufbau |
 | **Tage bis Rennen** | **14** (Karlsfelder Seelauf 20.9.) |
 | **CTL** | 15,8 (6.9.) · TSB +4,7 · nach Krankheit + Urlaub, nur 2 Läufe in 4 Wochen |
-| **Zielzeit 10km** | offen bis Mi 9.9. · grob 66–72min · ~~sub-60~~ nicht mehr erreichbar |
+| **🎯 Renntempo** | **6:50/km → 68:20** · ermittelt 9.9. (3×7min: 6:34/6:43/6:47 @ HF 172) · PR 71:28 → ~3min schneller |
+| **Renntaktik** | km 1–2 **7:00/km** (HF 165–170) · km 3–7 6:50 · km 8–10 6:45+ · zu schneller Start ist der einzige echte Fehler |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
 | **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · **Gewohnte Kadenz ~140 spm** (auch bei Tempo) = Hauptursache · Arbeitsziel **155–165** (Metronom 160), nach dem Rennen 165–170 |
 | **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
