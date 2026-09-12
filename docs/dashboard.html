@@ -1297,39 +1297,7 @@
       <div class="card-headline">😴 Schlaf-Verlauf · 30 Tage</div>
     </div>
     
-    <div id="sl-wrap" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
-      <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7986cb" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#7986cb" stop-opacity="0.0"/>
-          </linearGradient>
-        </defs>
-        <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
-        <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,0.0 L10.0,10.8 L20.0,10.4 L30.0,27.7 L40.0,6.5 L50.0,11.9 L60.0,2.1 L70.0,13.5 L80.0,11.2 L90.0,3.3 L100.0,10.3 L120.0,12.4 L130.0,14.5 L140.0,8.1 L150.0,7.9 L160.0,17.2 L170.0,26.1 L180.0,7.6 L190.0,42.3 L200.0,10.4 L210.0,27.7 L220.0,26.1 L230.0,21.2 L240.0,21.9 L250.0,4.5 L260.0,11.2 L270.0,5.7 L280.0,7.5 L290.0,15.3 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,0.0 L10.0,10.8 L20.0,10.4 L30.0,27.7 L40.0,6.5 L50.0,11.9 L60.0,2.1 L70.0,13.5 L80.0,11.2 L90.0,3.3 L100.0,10.3 L120.0,12.4 L130.0,14.5 L140.0,8.1 L150.0,7.9 L160.0,17.2 L170.0,26.1 L180.0,7.6 L190.0,42.3 L200.0,10.4 L210.0,27.7 L220.0,26.1 L230.0,21.2 L240.0,21.9 L250.0,4.5 L260.0,11.2 L270.0,5.7 L280.0,7.5 L290.0,15.3" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="15.3" r="3" fill="#7986cb"/>
-        <circle cx="300" cy="15.3" r="5" fill="#7986cb" opacity="0.2"/>
-        <!-- 8h label nach den Pfaden → immer sichtbar -->
-        <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
-      </svg>
-      <div id="sl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
-      <div id="sl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(121,134,203,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
-      <div>
-        <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
-          8.1h
-        </div>
-        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
-      </div>
-      <div style="flex:1;height:1px;background:rgba(255,255,255,0.06)"></div>
-      <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.3h</div>
-        <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
-      </div>
-    </div>
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Schlafdaten verfügbar</div>
     
   </div>
 
@@ -1610,14 +1578,14 @@
       <td style="font-weight:600;color:var(--text)">1s</td>
       <td style="text-align:right;font-weight:700;color:var(--green)">1322W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">15.02</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">6. Sep 25</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem"></td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">3s</td>
       <td style="text-align:right;font-weight:700;color:var(--green)">1279W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">14.53</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">6. Sep 25</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem"></td>
     </tr>
     
     <tr>
@@ -1631,7 +1599,7 @@
       <td style="font-weight:600;color:var(--text)">15s</td>
       <td style="text-align:right;font-weight:700;color:var(--green)">1004W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">11.41</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">6. Sep 25</td>
+      <td style="text-align:right;color:var(--muted);font-size:0.7rem"></td>
     </tr>
     
     <tr>
@@ -1859,11 +1827,6 @@
   bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#22c55e', function(p){ return 'CTL ' + p.v; });
   
 
-  
-  var slPts = [{"x":0.0,"d":"13.08.26","v":11.2},{"x":3.3,"d":"14.08.26","v":8.7},{"x":6.7,"d":"15.08.26","v":8.7},{"x":10.0,"d":"16.08.26","v":6.5},{"x":13.3,"d":"17.08.26","v":9.2},{"x":16.7,"d":"18.08.26","v":8.5},{"x":20.0,"d":"19.08.26","v":9.7},{"x":23.3,"d":"20.08.26","v":8.3},{"x":26.7,"d":"21.08.26","v":8.6},{"x":30.0,"d":"22.08.26","v":9.6},{"x":33.3,"d":"23.08.26","v":8.7},{"x":40.0,"d":"25.08.26","v":8.4},{"x":43.3,"d":"26.08.26","v":8.2},{"x":46.7,"d":"27.08.26","v":9.0},{"x":50.0,"d":"28.08.26","v":9.0},{"x":53.3,"d":"29.08.26","v":7.8},{"x":56.7,"d":"30.08.26","v":6.7},{"x":60.0,"d":"31.08.26","v":9.1},{"x":63.3,"d":"01.09.26","v":4.7},{"x":66.7,"d":"02.09.26","v":8.7},{"x":70.0,"d":"03.09.26","v":6.5},{"x":73.3,"d":"04.09.26","v":6.7},{"x":76.7,"d":"05.09.26","v":7.3},{"x":80.0,"d":"06.09.26","v":7.3},{"x":83.3,"d":"07.09.26","v":9.4},{"x":86.7,"d":"08.09.26","v":8.6},{"x":90.0,"d":"09.09.26","v":9.3},{"x":93.3,"d":"10.09.26","v":9.1},{"x":96.7,"d":"11.09.26","v":8.1}];
-  bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#7986cb', function(p){
-    return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
-  });
   
 })();
 </script>
