@@ -1,9 +1,21 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 26. Juli 2026*
+*Letzte Aktualisierung: 14. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
 
 ---
+
+## 14. September 2026 – Realitätscheck auf Stefans Wunsch (T-6)
+
+**Anlass:** Sharpening-Lauf Mo 14.9. subjektiv ernüchternd, HF "wieder hoch". Stefan zweifelt an jeglichem Fortschritt der letzten Jahre und vergleicht sich mit seinem Umfeld. Aktivitätsdaten des Laufs waren zum Zeitpunkt der Analyse noch nicht in intervals.icu verarbeitet (0 min) → Einordnung ohne heutige HF/Pace.
+
+**Objektiver Befund 2 Jahre (Rad):** FTP 271W (11/2023, 97kg, 2,8 W/kg) → 300 → 286 → 301 → 324W (5/2025) → 317W Coggan / 305W Sentiero (4/2026) bei 88–91kg = **3,35–3,6 W/kg, +20–29% relativ**. CTL-Peaks 82 (6/2025) und 78 (9/2025, Ötztaler). VO2max 59 (Sentiero). Seit Mai 2025 W/kg-Plateau, 2026 durch Krankheit KW16 + Unfall 28.6. nie zusammenhängend trainiert (CTL 48 → 16).
+
+**Objektiver Befund Laufen:** schwacher Bereich, aber nie 8+ Wochen am Stück konsistent trainiert. Easy-Referenz 7:30/km @ 161–163 bpm (CTL 40) · 7:41 @ 159 (CTL 24, Aug) · 5km 30:46 · 10km 71:28 (Trainingsläufe). Kadenz ~140 + 91kg = Ökonomie-, kein Motorproblem.
+
+**Kernaussagen an Stefan:** (1) Absolute HF ist hoch, weil HFmax hoch ist (Rad 202 beobachtet, Lauf vermutlich 210+) — Vergleich absoluter HF mit anderen ist bedeutungslos. (2) Rad: klarer Fortschritt, aktuell Plateau wegen Unterbrechungen. (3) Laufen: Fortschritt nicht messbar, weil kein einziger vergleichbarer Datenpunkt seit August — jede Einheit hatte Confounder (Kreta nüchtern, nach 25 Tagen Pause, 2 Tage nach 5,5h Rad). (4) Heutiger Lauf: Hauptconfounder ist die 328min/210-TSS-Ausfahrt vom 12.9. (ACWR 1,7, TSB −15), nicht das Frühstück; Ernährung ist ein Nebenfaktor von wenigen bpm.
+
+**Konsequenz nach dem Rennen:** Fortschritt nur noch über standardisierten Monats-Check messen (gleiche Strecke, morgens, gefrühstückt, ≥48h nach harter Einheit, 30min @ HF 160 → Pace). Erst 3–4 vergleichbare Punkte bewerten. Rennplan KW38 unverändert.
 
 ## 06. September 2026 – Rückkehr nach Krankheit + Urlaub · Rennvorbereitung T-14
 
