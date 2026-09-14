@@ -8,18 +8,18 @@
 |---|---|
 | **Athlet** | Stefan |
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
-| **⚠️ Verletzung** | Angebrochener Halswirbel (Unfall 28.6.) · Laufen + Rad freigegeben · **Rad defekt → nur Laufen** |
+| **⚠️ Verletzung** | Angebrochener Halswirbel (Unfall 28.6.) · Laufen + Rad freigegeben · Rad seit Sept. wieder verfügbar (147km am 12.9.) |
 | **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg · *Referenz, aktuell nicht trainingsleitend* |
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | ~~Rosenheimer Radmarathon~~ ⚠️ · 28. Juni 2026 · **KW26** · nach 45,8km Unfall, abgebrochen |
 | **Zielevent** | 🎯 Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
-| **Aktuelle KW** | KW36/37 (ab 6. September 2026) · **T-14** |
+| **Aktuelle KW** | KW38 (14.–20. September 2026) · **Rennwoche** |
 | **Aktuelle Phase** | Rennvorbereitung · Renntempo einprägen, kein Aufbau mehr möglich |
 | **Nächste Phase** | KW38 Rennwoche (Mujika, 3 Touches) · danach Neuaufbau |
-| **Tage bis Rennen** | **14** (Karlsfelder Seelauf 20.9.) |
+| **Tage bis Rennen** | **6** (Karlsfelder Seelauf So 20.9.) |
 | **CTL** | 15,8 (6.9.) · TSB +4,7 · nach Krankheit + Urlaub, nur 2 Läufe in 4 Wochen |
-| **🎯 Renntempo** | **6:50/km → 68:20** · ermittelt 9.9. (3×7min: 6:34/6:43/6:47 @ HF 172) · PR 71:28 → ~3min schneller |
-| **Renntaktik** | km 1–2 **7:00/km** (HF 165–170) · km 3–7 6:50 · km 8–10 6:45+ · zu schneller Start ist der einzige echte Fehler |
+| **🎯 Renntempo** | **6:30–6:40/km → ~66:00** — Stefans Entscheidung 14.9. (Coach-Ableitung war 6:50 aus 3×7min: 6:34/6:43/6:47 @ HF 172) · PR 71:28 |
+| **Renntaktik** | km 1–2 **6:45** (HF <175) · km 3–7 6:35 · **km 5 HF-Entscheidung** (≤177 drücken · 178–181 halten · >182 auf 6:45 zurück) · km 8–10 6:30+ |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
 | **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · **Gewohnte Kadenz ~140 spm** (auch bei Tempo) = Hauptursache · Arbeitsziel **155–165** (Metronom 160), nach dem Rennen 165–170 |
 | **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
