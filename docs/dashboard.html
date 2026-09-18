@@ -43,8 +43,7 @@
   .week-card,
   .readiness-card,
   .polar-card,
-  .ausblick-card,
-  .nutr-card {
+  .ausblick-card {
     background: rgba(255,255,255,0.048);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.10);
@@ -285,50 +284,6 @@
   .ausblick-tss { text-align: right; font-weight: 700; white-space: nowrap; }
   @media (max-width: 480px) { .ausblick-key { display: none; } }
 
-  /* ── ERNÄHRUNGS-KARTE ── */
-  .nutr-card { padding: 18px; margin-bottom: 12px; }
-  .nutr-banner {
-    border-radius: 10px; padding: 10px 12px; margin-bottom: 14px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .nutr-banner-orange { background: linear-gradient(135deg,rgba(249,115,22,0.12),rgba(249,115,22,0.04)); border: 1px solid rgba(249,115,22,0.18); }
-  .nutr-banner-blue   { background: linear-gradient(135deg,rgba(148,163,184,0.08),rgba(148,163,184,0.02)); border: 1px solid rgba(148,163,184,0.15); }
-  .nutr-banner-red    { background: linear-gradient(135deg,rgba(239,68,68,0.12),rgba(239,68,68,0.04)); border: 1px solid rgba(239,68,68,0.18); }
-  .nutr-banner-muted  { background: var(--surface2); border: 1px solid var(--border); }
-  .nutr-banner-text  { font-size: 0.76rem; font-weight: 700; }
-  .nutr-banner-sub   { font-size: 0.6rem; color: var(--muted); margin-top: 1px; }
-  .nutr-banner-orange .nutr-banner-text { color: var(--orange); }
-  .nutr-banner-blue   .nutr-banner-text { color: var(--accent); }
-  .nutr-banner-red    .nutr-banner-text { color: var(--red, #ef4444); }
-  .nutr-banner-muted  .nutr-banner-text { color: var(--muted); }
-
-  .nutr-protein {
-    background: linear-gradient(135deg,rgba(62,207,142,0.1),rgba(62,207,142,0.04));
-    border: 1px solid rgba(62,207,142,0.2);
-    border-radius: 10px; padding: 10px 12px; margin-bottom: 14px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nutr-protein-left { display: flex; align-items: center; gap: 8px; }
-  .nutr-protein-icon { font-size: 1.1rem; }
-  .nutr-protein-lbl  { font-size: 0.62rem; color: var(--muted); }
-  .nutr-protein-val  { font-size: 1.1rem; font-weight: 900; color: var(--green); }
-  .nutr-protein-unit { font-size: 0.6rem; color: var(--muted); font-weight: 400; }
-  .nutr-protein-dist { font-size: 0.56rem; color: var(--muted); text-align: right; line-height: 1.6; }
-
-  .nutr-timing { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-  .nutr-timing-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 9px 8px; text-align: center; }
-  .nutr-timing-lbl  { font-size: 0.5rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
-  .nutr-timing-main { font-size: 0.7rem; font-weight: 700; margin-bottom: 3px; }
-  .nutr-timing-sub  { font-size: 0.56rem; color: var(--muted); line-height: 1.3; }
-
-  .nutr-tip { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--border); }
-  .nutr-tip:last-child { border-bottom: none; }
-  .nutr-tip-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-  .nutr-tip-dot-green  { background: var(--green); }
-  .nutr-tip-dot-orange { background: var(--orange); }
-  .nutr-tip-dot-blue   { background: var(--accent); }
-  .nutr-tip-dot-purple { background: var(--purple); }
-  .nutr-tip-text { font-size: 0.66rem; color: var(--muted); line-height: 1.4; }
 
   footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.62rem; text-align: center; }
 
@@ -361,9 +316,6 @@
 
     .bottom-grid { grid-template-columns: 1fr; }
     .two-col-grid { grid-template-columns: 1fr; }
-
-    /* Nutrition timing: stack */
-    .nutr-timing { grid-template-columns: 1fr; gap: 6px; }
 
     /* Rings: smaller SVG */
     .ring-wrap svg { width: 120px; height: 120px; }
@@ -969,7 +921,7 @@
 
 </div><!-- end two-col-grid -->
 
-<!-- WOCHENPLAN + ERNÄHRUNG -->
+<!-- WOCHENPLAN + 4-WOCHEN AUSBLICK -->
 <div class="two-col-grid">
 
   <!-- WOCHENPLAN -->
@@ -1086,15 +1038,25 @@
     
     <div class="day-row ">
       <span class="day-name">Fr</span>
-      <span class="day-dot dot-rest"></span>
+      <span class="day-dot dot-planned"></span>
       <div>
         
-        <div class="day-workout" style="color:var(--subtle);font-weight:400;">Ruhetag</div>
+        <div class="day-workout">🚴 Ruhetag (Ist: kurz Indoor-Rad locker)</div>
         
         
       </div>
       
-      <span class="day-tss" style="color:var(--subtle)">–</span>
+      <div style="text-align:right;">
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px">
+          <div style="display:flex;align-items:center;gap:3px">
+            <span style="font-size:0.58rem;color:var(--muted)">Ist</span>
+            <span style="font-size:0.72rem;font-weight:700;color:var(--green)">0</span>
+          </div>
+          
+          
+        </div>
+        
+      </div>
       
     </div>
     
@@ -1103,13 +1065,13 @@
       <span class="day-dot dot-run"></span>
       <div>
         
-        <div class="day-workout">🏃 Aktivierung 20min + 3×20s @ 6:35</div>
+        <div class="day-workout">🏃 Aktivierung 20min locker + **4×30s @ 6:30** (2min Gehpause)</div>
         
         
       </div>
       
       
-      <span class="day-tss">~18 TSS</span>
+      <span class="day-tss">~20 TSS</span>
       
       
     </div>
@@ -1132,115 +1094,67 @@
     
   </div>
 
-  <!-- ERNÄHRUNG -->
-  
-  <div class="nutr-card" style="margin-bottom:0">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-      <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(255,107,53,0.14)">⛽</div>Ernährung · Heute</div>
-      <span class="kw-pill" style="margin-left:auto">rest</span>
+  <!-- 4-WOCHEN AUSBLICK -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <div class="card-headline">Nächste 4 Wochen</div>
+      <span class="kw-pill" style="margin-left:auto">Ausblick</span>
     </div>
-
-    <div class="nutr-banner nutr-banner-muted">
-      <div>
-        <div class="nutr-banner-text">Ruhetag</div>
-        <div class="nutr-banner-sub">Ruhetag → Carbs reduziert, Protein halten</div>
-      </div>
-    </div>
-
-    <div class="nutr-protein">
-      <div class="nutr-protein-left">
-        <div>
-          <div class="nutr-protein-lbl">Protein-Ziel heute</div>
-          <div><span class="nutr-protein-val">150</span><span class="nutr-protein-unit"> g · 1.7 g/kg</span></div>
-        </div>
-      </div>
-      <div class="nutr-protein-dist">
-        ~40g Frühstück<br>~45g Mittagessen<br>~40g Abendessen<br>~30g Snacks
-      </div>
-    </div>
-
-    
-
-    
-    <div>
+    <table class="ausblick-table">
+      <thead>
+        <tr>
+          <th style="width:48px">KW</th>
+          <th>Thema</th>
+          <th style="text-align:right;width:70px">TSS</th>
+          <th class="ausblick-key">Schlüsseleinheiten</th>
+        </tr>
+      </thead>
+      <tbody>
       
-      <div class="nutr-tip">
-        <div class="nutr-tip-dot nutr-tip-dot-green"></div>
-        <div class="nutr-tip-text">Carbs reduzieren: Mehr Gemüse, weniger Getreide heute</div>
-      </div>
-      
-      <div class="nutr-tip">
-        <div class="nutr-tip-dot nutr-tip-dot-purple"></div>
-        <div class="nutr-tip-text">Magnesium abends: 300–400mg unterstützt Schlafqualität</div>
-      </div>
-      
-    </div>
-    
-  </div>
-  
-
-
-</div>
-
-<!-- 4-WOCHEN AUSBLICK -->
-<div class="ausblick-card">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="card-headline">Nächste 4 Wochen</div>
-    <span class="kw-pill" style="margin-left:auto">Ausblick</span>
-  </div>
-  <table class="ausblick-table">
-    <thead>
-      <tr>
-        <th style="width:48px">KW</th>
-        <th>Thema</th>
-        <th style="text-align:right;width:70px">TSS</th>
-        <th class="ausblick-key">Schlüsseleinheiten</th>
+      <tr style="background:rgba(148,163,184,0.04)">
+        <td><span class="ausblick-kw" style="color:var(--accent)">KW38</span></td>
+        <td>
+          <div>🏁 Rennwoche Karlsfelder Seelauf</div>
+          <div class="ausblick-sub">Mujika-Protokoll – drei Intensitäts-Touches, Volumen minimal</div>
+        </td>
+        <td class="ausblick-tss">123 / ~117</td>
+        <td class="ausblick-key"><div class="ausblick-sub">Sharpening 4×2min @ **6:35/km** – 36min · Openers 5×30s – 32min · Ruhetag (Ist: kurz Indoor-Rad locker)</div></td>
       </tr>
-    </thead>
-    <tbody>
-    
-    <tr style="background:rgba(148,163,184,0.04)">
-      <td><span class="ausblick-kw" style="color:var(--accent)">KW38</span></td>
-      <td>
-        <div>🏁 Rennwoche Karlsfelder Seelauf</div>
-        <div class="ausblick-sub">Mujika-Protokoll – drei Intensitäts-Touches, Volumen minimal</div>
-      </td>
-      <td class="ausblick-tss">123 / ~117</td>
-      <td class="ausblick-key"><div class="ausblick-sub">Sharpening 4×2min @ **6:35/km** – 36min · Openers 5×30s – 32min · Aktivierung 20min + 3×20s @ 6:35</div></td>
-    </tr>
-    
-    <tr >
-      <td><span class="ausblick-kw" style="color:var(--muted)">KW39</span></td>
-      <td>
-        <div>Erholung nach dem Seelauf</div>
-        <div class="ausblick-sub">Regeneration · danach Start des Kadenz-Projekts</div>
-      </td>
-      <td class="ausblick-tss">~75</td>
-      <td class="ausblick-key"><div class="ausblick-sub">Ruhetag oder Spaziergang · Easy 25min ganz locker · Easy 30min – Metronom 160</div></td>
-    </tr>
-    
-    <tr >
-      <td><span class="ausblick-kw" style="color:var(--muted)">KW40</span></td>
-      <td>
-        <div>KW40</div>
-        <div class="ausblick-sub"></div>
-      </td>
-      <td class="ausblick-tss">~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
-    </tr>
-    
-    <tr >
-      <td><span class="ausblick-kw" style="color:var(--muted)">KW41</span></td>
-      <td>
-        <div>KW41</div>
-        <div class="ausblick-sub"></div>
-      </td>
-      <td class="ausblick-tss">~0</td>
-      <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
-    </tr>
-    
-    </tbody>
-  </table>
+      
+      <tr >
+        <td><span class="ausblick-kw" style="color:var(--muted)">KW39</span></td>
+        <td>
+          <div>Erholung nach dem Seelauf</div>
+          <div class="ausblick-sub">Regeneration · danach Start des Kadenz-Projekts</div>
+        </td>
+        <td class="ausblick-tss">~75</td>
+        <td class="ausblick-key"><div class="ausblick-sub">Ruhetag oder Spaziergang · Easy 25min ganz locker · Easy 30min – Metronom 160</div></td>
+      </tr>
+      
+      <tr >
+        <td><span class="ausblick-kw" style="color:var(--muted)">KW40</span></td>
+        <td>
+          <div>KW40</div>
+          <div class="ausblick-sub"></div>
+        </td>
+        <td class="ausblick-tss">~0</td>
+        <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      </tr>
+      
+      <tr >
+        <td><span class="ausblick-kw" style="color:var(--muted)">KW41</span></td>
+        <td>
+          <div>KW41</div>
+          <div class="ausblick-sub"></div>
+        </td>
+        <td class="ausblick-tss">~0</td>
+        <td class="ausblick-key"><div class="ausblick-sub">–</div></td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 <!-- CTL + SCHLAF -->
@@ -1676,13 +1590,6 @@
     </tr>
     
     <tr>
-      <td style="font-weight:600;color:var(--text)">3s</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">1279W</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">14.53</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">6. Sep 25</td>
-    </tr>
-    
-    <tr>
       <td style="font-weight:600;color:var(--text)">5s</td>
       <td style="text-align:right;font-weight:700;color:var(--green)">1231W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">13.99</td>
@@ -1722,13 +1629,6 @@
       <td style="text-align:right;font-weight:700;color:var(--green)">388W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">4.41</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">21. Dez 24</td>
-    </tr>
-    
-    <tr>
-      <td style="font-weight:600;color:var(--text)">8 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">359W</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">4.05</td>
-      <td style="text-align:right;color:var(--muted);font-size:0.7rem">13. Jun 26</td>
     </tr>
     
     <tr>
