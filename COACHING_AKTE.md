@@ -1,7 +1,16 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 14. September 2026*
+*Letzte Aktualisierung: 18. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 18. September 2026 – Rennwoche Check-In (T-2)
+
+- Mo Sharpening ✅ (38 TSS) · Di LIT-Rad ✅ aber 2:16h/85 TSS statt 1h/37 · Mi Ruhe ✅ · **Do Openers ❌ ausgefallen** · Fr kurz Indoor-Rad locker (Plan: Ruhe)
+- Readiness 82 🟢 · HRV 55ms (+4,8) · Ruhepuls 53 · subjektiv 100/100 · TSB −10,6 (nach der langen Di-Fahrt; bei CTL 22 wenig aussagekräftig)
+- Letzter Laufreiz: Mo 14.9. → bis Sa 5 Tage ohne Lauf-Intensität → **Aktivierung Sa (T-1) bleibt, leicht aufgestockt: 4×30s @ 6:30 statt 3×20s.** Kein Nachholen der Openers am Fr-Abend – T-1-Regel.
+- Neues Rad-Setup dokumentiert (Tarmac SL8/XCadey outdoor, Aeroad auf Tacx indoor) → FTP-Test nach dem Rennen im Neuaufbau einplanen
 
 ---
 
@@ -24,13 +33,6 @@
 **Stand:** CTL **15,8** (2.8.: 26,3 · vor Unfall 45,7) · TSB +4,7 · HRV 47 · Ruhepuls 57. Erholt, aber ohne Substanz.
 
 **Einziger belastbarer Datenpunkt:** Lauf 4.9. — 4,4km in 30min = **6:49/km bei Ø178 bpm** (LTHR 179). Also 30min an der Schwelle für dieses Tempo.
-
-### 18. September 2026 – Rennwoche Check-In (T-2)
-
-- Mo Sharpening ✅ (38 TSS) · Di LIT-Rad ✅ aber 2:16h/85 TSS statt 1h/37 · Mi Ruhe ✅ · **Do Openers ❌ ausgefallen** · Fr kurz Indoor-Rad locker (Plan: Ruhe)
-- Readiness 82 🟢 · HRV 55ms (+4,8) · Ruhepuls 53 · subjektiv 100/100 · TSB −10,6 (nach der langen Di-Fahrt; bei CTL 22 wenig aussagekräftig)
-- Letzter Laufreiz: Mo 14.9. → bis Sa 5 Tage ohne Lauf-Intensität → **Aktivierung Sa (T-1) bleibt, leicht aufgestockt: 4×30s @ 6:30 statt 3×20s.** Kein Nachholen der Openers am Fr-Abend – T-1-Regel.
-- Neues Rad-Setup dokumentiert (Tarmac SL8/XCadey outdoor, Aeroad auf Tacx indoor) → FTP-Test nach dem Rennen im Neuaufbau einplanen
 
 ### Zielzeit neu bewertet — sub-60 gestrichen
 
