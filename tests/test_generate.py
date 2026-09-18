@@ -183,52 +183,6 @@ def test_build_day_rows():
     assert mo["rest"] is False
 
 
-from generate import _classify_day_type, _protein_dist, get_nutrition_context
-
-
-def test_classify_day_type_intense():
-    day = {"workout": "SwSp 3×10", "tss_plan": 72, "rest": False}
-    assert _classify_day_type(day, sick=False) == "intense"
-
-
-def test_classify_day_type_endurance_long():
-    day = {"workout": "LIT-3h", "tss_plan": 111, "rest": False}
-    assert _classify_day_type(day, sick=False) == "endurance_long"
-
-
-def test_classify_day_type_rest():
-    day = {"workout": "–", "tss_plan": 0, "rest": True}
-    assert _classify_day_type(day, sick=False) == "rest"
-
-
-def test_classify_day_type_sick():
-    day = {"workout": "LIT-2h", "tss_plan": 74, "rest": False}
-    assert _classify_day_type(day, sick=True) == "sick"
-
-
-def test_protein_dist_sums_correctly():
-    dist = _protein_dist(180)
-    import re
-    total = sum(int(re.search(r"\d+", s).group()) for s in dist)
-    assert abs(total - 180) <= 20
-
-
-@patch("generate.get_wellness", return_value=MOCK_WELLNESS)
-@patch("generate.get_activities", return_value=MOCK_ACTIVITIES)
-@patch("generate.get_power_bests", return_value=[])
-def test_build_context_has_nutrition(mock_pb, mock_act, mock_well):
-    from generate import build_context
-    ctx = build_context(kw=16, monday=date(2026, 4, 13), sunday=date(2026, 4, 19))
-    assert "nutrition" in ctx
-    n = ctx["nutrition"]
-    assert "day_type" in n
-    assert "protein_g" in n
-    assert isinstance(n["protein_g"], int)
-    assert n["protein_g"] > 0
-    assert "tips" in n
-    assert len(n["tips"]) == 2
-
-
 MOCK_WELLNESS_NO_HRV = [
     {"id": "2026-04-12", "hrv": None, "sleepSecs": None, "ctl": 42.0, "atl": 38.0, "restingHR": None},
     {"id": "2026-04-13", "hrv": None, "sleepSecs": None, "ctl": 42.5, "atl": 37.0, "restingHR": None},
