@@ -21,11 +21,11 @@ def test_build_context_keys(mock_act, mock_well):
         "kw", "kw_dates", "phase_name", "readiness_score", "readiness_color",
         "ctl", "atl", "tsb_display", "ctl_offset", "atl_offset",
         "tss_ist", "tss_plan", "days", "sparkline", "outlook",
-        "phases", "polar_z12_pct", "polar_z3_pct", "polar_z47_pct",
+        "phases", "polar_z12_pct", "polar_z3_pct", "polar_z5_pct", "polar_z67_pct",
         "biometrics_pending",
         "monotony_val", "monotony_strain", "monotony_color",
         "ramprate", "ramprate_color",
-        "pmc_ctl_race", "pmc_tsb_race", "pmc_tsb_label", "pmc_available",
+        "countdown_main", "countdown_secondary",
     ]
     for key in required_keys:
         assert key in ctx, f"Missing key: {key}"
@@ -262,7 +262,8 @@ def test_calc_polarisation_lit_includes_z3(mock_api):
     result = _calc_polarisation(acts)
     assert result["z12"] == 100, f"LIT should be 100%, got {result['z12']}"
     assert result["z3"] == 0,   "Grauzone should be 0%"
-    assert result["z47"] == 0,  "HIT should be 0%"
+    assert result["z5"] == 0,   "MIT should be 0%"
+    assert result["z67"] == 0,  "HIT should be 0%"
     assert result["ok"] is True
 
 
@@ -275,19 +276,21 @@ def test_calc_polarisation_grauzone_is_z4_not_z3(mock_api):
     total = 1000
     assert result["z12"] == round(600 / total * 100), "LIT wrong"
     assert result["z3"]  == round(400 / total * 100), "Grauzone should be Z4 time"
-    assert result["z47"] == 0, "HIT should be 0"
+    assert result["z5"] == 0,  "MIT should be 0"
+    assert result["z67"] == 0, "HIT should be 0"
 
 
 @patch("generate._api_get")
-def test_calc_polarisation_hit_is_z5_z6_z7(mock_api):
-    # 300s each in Z5, Z6, Z7 = HIT; 300s Z1 = LIT
+def test_calc_polarisation_mit_is_z5_hit_is_z6_z7(mock_api):
+    # 300s Z5 = MIT (Schwelle); 300s each Z6, Z7 = HIT; 300s Z1 = LIT
     mock_api.return_value = {"icu_zone_times": _zone_times({1: 300, 5: 300, 6: 300, 7: 300})}
     acts = [{"id": "act1", "type": "Ride"}]
     result = _calc_polarisation(acts)
     total = 1200
     assert result["z12"] == round(300 / total * 100), "LIT wrong"
     assert result["z3"]  == 0,                        "Grauzone should be 0"
-    assert result["z47"] == round(900 / total * 100), "HIT should be Z5+Z6+Z7"
+    assert result["z5"]  == round(300 / total * 100), "MIT should be Z5"
+    assert result["z67"] == round(600 / total * 100), "HIT should be Z6+Z7"
 
 
 @patch("generate._api_get")
