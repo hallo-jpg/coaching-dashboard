@@ -84,7 +84,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - **Vor jedem Commit an `planung/kw*.md`: `python3 validate_plans.py` ausführen.** Prüft alle Wochenpläne gegen den echten Dashboard-Parser. Tag-Spalte muss exakt `Mo`/`Di`/… sein – **kein Datum** (`Mo 7.9.` bricht den Parser lautlos, das Dashboard bleibt dann leer). Pflichtformat: 6 Spalten + `**Total**`-Zeile.
 
 - Alle Workouts laufen auf **%FTP** → .zwo Dateien skalieren automatisch
-- **FTP-Update** nur nach formalem Test (3+10min Protokoll, outdoor, 4iiii)
+- **FTP-Update** nur nach formalem Test (3+10min Protokoll, outdoor, XCadey-Powermeter am Tarmac). ⚠️ FTP 305W stammt vom alten 4iiii-Setup → **neuer Test nötig, bevor Zonen wieder trainingsleitend sind.** Indoor = Tacx-Leistung (Aeroad ohne PM), nicht 1:1 mit Outdoor vergleichbar.
 - **Periodisierungsplan** nur mit Stefans Zustimmung ändern
 - Lauf-Workouts: kein .zwo möglich → Beschreibung im Output, manuell in TP einpflegen
 - HIT/VO2max ist **kein Neuland** – Stefan hat Ötztaler 2025 absolviert

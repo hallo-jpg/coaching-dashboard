@@ -16,13 +16,13 @@
 | **Nächstes Ziel** | Karlsfelder Seelauf 10km · 20.9.2026 · 8 Wochen Vorlauf |
 | **Abbruchkriterien** | Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in Arme → Einheit beenden |
 
-FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026), sind aber bis zum nächsten Test und funktionsfähigen Rad nicht trainingsleitend.
+FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026, gemessen mit 4iiii). Seit dem Setup-Wechsel (Sept. 2026, siehe Geräte) ist die Leistungsquelle eine andere → **Zonen erst nach neuem FTP-Test auf dem Tarmac/XCadey wieder trainingsleitend.** Indoor- und Outdoor-Werte stammen aus verschiedenen Messgeräten und sind nicht 1:1 vergleichbar.
 
 ## Basisdaten
 
 | Parameter | Wert | Anmerkung |
 |---|---|---|
-| **FTP** | **305W** | Sentiero-Modell (3+10min Protokoll, 4iiii Referenz) |
+| **FTP** | **305W** | Sentiero-Modell (3+10min Protokoll, 4iiii Referenz – altes Setup) |
 | **Gewicht** | 91 kg | Stand 1. Juni 2026 |
 | **Größe** | 190 cm | |
 | **W/kg** | 3,35 | bei 305W / 91kg |
@@ -32,8 +32,9 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 | **Trainingstage/Woche** | 6 | Vollzeit berufstätig · Ruhetag immer unter der Woche · Wochenende beide Tage Training |
 | **Einheitsdauer Wochentags** | max. 2h | |
 | **Einheitsdauer Wochenende** | 2,5–4h | |
-| **Indoor/Outdoor** | wetterabhängig | Tacx Flux S Indoor |
-| **Powermeter** | 4iiii Precision (Kurbel) | Referenz für alle Zonen – Rolle-Messung irrelevant |
+| **Indoor/Outdoor** | wetterabhängig | Indoor: Canyon Aeroad auf Tacx Flux S |
+| **Powermeter Outdoor** | XCadey Spindle (Cybrei-Kurbel, S-Works Tarmac SL8) | ab Sept. 2026 – Referenz für Outdoor-Zonen nach neuem FTP-Test |
+| **Powermeter Indoor** | Tacx Flux S (Rolle) | Aeroad ohne Powermeter → Rollenleistung ist die Indoor-Quelle |
 
 ## Ziele
 
@@ -172,8 +173,10 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 
 | Gerät | Funktion | Verbindung |
 |---|---|---|
-| 4iiii Precision (Kurbel) | Powermeter – Referenz für alle Zonen | ANT+ → Wahoo |
-| Tacx Flux S | Smart Trainer Indoor | ANT+ FE-C → Wahoo (ERG) |
+| S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter | Outdoor-Rad, Powermeter-Referenz Outdoor (ab Sept. 2026) | ANT+ → Wahoo |
+| Canyon Aeroad (alt, ohne Powermeter) | Indoor-Rad auf der Rolle | – |
+| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung | ANT+ FE-C → Wahoo (ERG) |
+| ~~4iiii Precision (Kurbel)~~ | Altes Setup – Basis von FTP 305W (Test 4.4.2026) | – |
 | Wahoo ELEMNT ROAM | Aufzeichnung + ERG-Steuerung | TrainingPeaks sync automatisch |
 | COROS Uhr | Laufen + Schlaf + HRV | COROS → Strava → TP |
 | TrainingPeaks | Planung + PMC (CTL/ATL/TSB) | – |
