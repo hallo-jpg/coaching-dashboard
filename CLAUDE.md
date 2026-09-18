@@ -75,9 +75,8 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - Wochenplan (aus `planung/kw[N].md` + intervals.icu Aktivitäten)
 - Polarisations-Monitor (letzte Woche Rad-Zonen)
 - Readiness-Card mit HRV/Schlaf/TSB/Puls-Balken + Sparkline
-- Ernährungs-Karte (Tagestyp, Protein-Ziel, Pre/During/Post, Tipps)
-- Ausblick 4 Wochen (aus `planung/kw[N].md` bis kw[N+3].md)
-- Power Bestwerte All-Time (Rad, 13 Dauern)
+- Ausblick 4 Wochen (aus `planung/kw[N].md` bis kw[N+3].md) – rechts neben dem Wochenplan
+- Power Bestwerte All-Time (Rad, 11 Dauern)
 - Lauf Bestwerte All-Time (Tempokurven, 7 Distanzen)
 
 ## Wichtige Regeln
