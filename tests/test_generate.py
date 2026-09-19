@@ -474,16 +474,28 @@ def test_project_pmc_taper_raises_tsb():
 from generate import _phase_for_kw, calc_compliance
 
 
-def test_phase_for_kw_hit():
-    label, color = _phase_for_kw(18)  # KW18 = HIT-Aufbau
-    assert label == "HIT"
+def test_phase_for_kw_laufblock():
+    label, color = _phase_for_kw(32)  # KW31–33 = Lauf-Block
+    assert label == "Lauf"
     assert color == "#f97316"
 
 
-def test_phase_for_kw_taper():
-    label, color = _phase_for_kw(23)  # KW23 = Tapering
-    assert label == "Taper"
+def test_phase_for_kw_radsaison():
+    label, color = _phase_for_kw(18)  # KW14–26 = Radsaison (abgeschlossen)
+    assert label == "Rad"
     assert color == "#60a5fa"
+
+
+def test_phase_for_kw_race():
+    label, color = _phase_for_kw(38)  # KW38 = Karlsfelder Seelauf
+    assert label == "Race"
+    assert color == "#60a5fa"
+
+
+def test_phase_for_kw_open_planning():
+    label, color = _phase_for_kw(42)  # ab KW40: Zielsetzung offen
+    assert label == "offen"
+    assert color == "#fbbf24"
 
 
 def test_phase_for_kw_unknown():

@@ -161,6 +161,8 @@
   .phase.done { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.10); color: rgba(34,197,94,0.45); }
   .phase.active { background: rgba(167,139,250,0.14); border: 1px solid rgba(167,139,250,0.28); color: var(--purple); box-shadow: 0 0 14px rgba(167,139,250,0.12); }
   .phase.upcoming { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(180,210,240,0.2); }
+  .phase.open { background: rgba(251,191,36,0.06); border: 1px dashed rgba(251,191,36,0.35); color: rgba(251,191,36,0.75); }
+  .phase-bar-note { font-size: 0.6rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
 
   /* ── RINGS ── */
   .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
@@ -327,7 +329,7 @@
 <!-- HEADER -->
 <div class="header">
   <div>
-    <div class="phase-pill"><span class="dot"></span> Baseline</div>
+    <div class="phase-pill"><span class="dot"></span> 🏁 Seelauf</div>
     <div class="header-title">Stefan</div>
     <div class="header-sub">Coaching Dashboard · KW38</div>
   </div>
@@ -365,25 +367,28 @@
   <div class="phase-bar-label">Saisonverlauf bis Karlsfelder Seelauf</div>
   <div class="phases">
     
-    <div class="phase done">✓ Baseline<div class="kw">KW14</div></div>
+    <div class="phase done">✓ 🚴 Radsaison<div class="kw">KW14–26</div></div>
     
-    <div class="phase done">✓ Urlaub<div class="kw">KW15</div></div>
+    <div class="phase done">✓ Verletzung<div class="kw">KW27–29</div></div>
     
-    <div class="phase done">✓ Grundlage<div class="kw">KW16–17</div></div>
+    <div class="phase done">✓ Wiedereinstieg<div class="kw">KW30</div></div>
     
-    <div class="phase done">✓ HIT-Aufbau<div class="kw">KW18–21</div></div>
+    <div class="phase done">✓ Lauf-Block<div class="kw">KW31–33</div></div>
     
-    <div class="phase done">✓ TT-Spezifik<div class="kw">KW22</div></div>
+    <div class="phase done">✓ Zwangspause<div class="kw">KW34–35</div></div>
     
-    <div class="phase done">✓ Tapering<div class="kw">KW23</div></div>
+    <div class="phase done">✓ Wiederaufbau<div class="kw">KW36</div></div>
     
-    <div class="phase done">✓ 🏁 RadRace<div class="kw">KW24</div></div>
+    <div class="phase done">✓ Renntempo<div class="kw">KW37</div></div>
     
-    <div class="phase done">✓ Erholung<div class="kw">KW25</div></div>
+    <div class="phase active">◉ 🏁 Seelauf<div class="kw">KW38</div></div>
     
-    <div class="phase done">✓ 🗺️ Rosen.<div class="kw">KW26</div></div>
+    <div class="phase upcoming">Erholung<div class="kw">KW39</div></div>
+    
+    <div class="phase open">❓ Neue Zielsetzung<div class="kw">ab KW40</div></div>
     
   </div>
+  <div class="phase-bar-note">⚠️ Langfristplanung ab KW40 steht aus – neues Zielevent und Zielsetzung folgen in den kommenden Wochen.</div>
 </div>
 
 <!-- 3 RINGS -->
@@ -616,7 +621,7 @@
             <div class="tf" style="width:100%;height:54%;background:var(--yellow);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW31</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Lauf</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:0;margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW31</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 168 TSS</div>
@@ -637,7 +642,7 @@
             <div class="tf" style="width:100%;height:32%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW32</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Lauf</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW32</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 98 TSS</div>
@@ -658,7 +663,7 @@
             <div class="tf" style="width:100%;height:14%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW33</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Lauf</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW33</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 44 TSS</div>
@@ -679,7 +684,7 @@
             <div class="tf" style="width:100%;height:28%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW34</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Pause</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW34</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 86 TSS</div>
@@ -700,7 +705,7 @@
             <div class="tf" style="width:100%;height:24%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW35</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Pause</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW35</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 76 TSS</div>
@@ -721,7 +726,7 @@
             <div class="tf" style="width:100%;height:34%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW36</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Aufbau</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW36</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 106 TSS</div>
@@ -742,7 +747,7 @@
             <div class="tf" style="width:100%;height:95%;background:var(--yellow);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW37</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#a78bfa;height:9px;line-height:9px;text-align:center">Tempo</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW37</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 296 TSS</div>
@@ -763,7 +768,7 @@
             <div class="tf" style="width:100%;height:49%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px">KW38</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">–</span>
+          <span style="font-size:0.38rem;color:#60a5fa;height:9px;line-height:9px;text-align:center">Race</span>
           <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;right:0;margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
             <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW38</div>
             <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 153 TSS</div>

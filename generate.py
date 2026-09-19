@@ -715,27 +715,38 @@ def _is_past(tag: str) -> bool:
 # ── Season config ─────────────────────────────────────────────────────────────
 
 SEASON_PHASES = [
-    {"name": "Baseline",    "kw": "KW14",    "start_kw": 14, "end_kw": 14},
-    {"name": "Urlaub",      "kw": "KW15",    "start_kw": 15, "end_kw": 15},
-    {"name": "Grundlage",   "kw": "KW16–17", "start_kw": 16, "end_kw": 17},
-    {"name": "HIT-Aufbau",  "kw": "KW18–21", "start_kw": 18, "end_kw": 21},
-    {"name": "TT-Spezifik", "kw": "KW22",    "start_kw": 22, "end_kw": 22},
-    {"name": "Tapering",    "kw": "KW23",    "start_kw": 23, "end_kw": 23},
-    {"name": "🏁 RadRace",  "kw": "KW24",    "start_kw": 24, "end_kw": 24},
-    {"name": "Erholung",    "kw": "KW25",    "start_kw": 25, "end_kw": 25},
-    {"name": "🗺️ Rosen.",  "kw": "KW26",    "start_kw": 26, "end_kw": 26},
+    {"name": "🚴 Radsaison",   "kw": "KW14–26", "start_kw": 14, "end_kw": 26},
+    {"name": "Verletzung",     "kw": "KW27–29", "start_kw": 27, "end_kw": 29},
+    {"name": "Wiedereinstieg", "kw": "KW30",    "start_kw": 30, "end_kw": 30},
+    {"name": "Lauf-Block",     "kw": "KW31–33", "start_kw": 31, "end_kw": 33},
+    {"name": "Zwangspause",    "kw": "KW34–35", "start_kw": 34, "end_kw": 35},
+    {"name": "Wiederaufbau",   "kw": "KW36",    "start_kw": 36, "end_kw": 36},
+    {"name": "Renntempo",      "kw": "KW37",    "start_kw": 37, "end_kw": 37},
+    {"name": "🏁 Seelauf",     "kw": "KW38",    "start_kw": 38, "end_kw": 38},
+    {"name": "Erholung",       "kw": "KW39",    "start_kw": 39, "end_kw": 39},
+    {"name": "❓ Neue Zielsetzung", "kw": "ab KW40", "start_kw": 40, "end_kw": 52,
+     "fixed_state": "open"},
 ]
 
+# Letzte KW des aktuellen Saisonbogens (Zielrennen). Fallback für die
+# Saison-Fortschrittsrechnung, sobald kein Rennen mehr in der Zukunft liegt.
+SEASON_END_KW = 38
+
+# Hinweis unter der Saisonleiste, solange die Langfristplanung offen ist.
+PHASE_BAR_NOTE = ("Langfristplanung ab KW40 steht aus – "
+                  "neues Zielevent und Zielsetzung folgen in den kommenden Wochen.")
+
 PHASE_ABBREV: dict[str, tuple[str, str]] = {
-    "Baseline":    ("Base",   "#94a3b8"),
-    "Urlaub":      ("Urlaub", "#94a3b8"),
-    "Grundlage":   ("Base",   "#94a3b8"),
-    "HIT-Aufbau":  ("HIT",    "#f97316"),
-    "TT-Spezifik": ("TT",     "#a78bfa"),
-    "Tapering":    ("Taper",  "#60a5fa"),
-    "🏁 RadRace":  ("Race",   "#60a5fa"),
-    "Erholung":    ("Erhol.", "#94a3b8"),
-    "🗺️ Rosen.":  ("Race",   "#60a5fa"),
+    "🚴 Radsaison":        ("Rad",    "#60a5fa"),
+    "Verletzung":          ("Pause",  "#94a3b8"),
+    "Wiedereinstieg":      ("Reha",   "#94a3b8"),
+    "Lauf-Block":          ("Lauf",   "#f97316"),
+    "Zwangspause":         ("Pause",  "#94a3b8"),
+    "Wiederaufbau":        ("Aufbau", "#f97316"),
+    "Renntempo":           ("Tempo",  "#a78bfa"),
+    "🏁 Seelauf":          ("Race",   "#60a5fa"),
+    "Erholung":            ("Erhol.", "#94a3b8"),
+    "❓ Neue Zielsetzung":  ("offen",  "#fbbf24"),
 }
 
 
@@ -931,7 +942,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
     r_offset      = calc_ring_offset(r_score_combined, 100, CIRC_OUTER)
     _countdown     = _build_countdown(date.today())
-    _next_race_kw  = _countdown["main"]["kw"] if _countdown["main"] else RACE_KW
+    _next_race_kw  = _countdown["main"]["kw"] if _countdown["main"] else SEASON_END_KW
     season_pos     = kw - 14
     season_total   = _next_race_kw - 14 + 1
     season_offset  = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
@@ -945,11 +956,21 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                   if next_phase_obj else "")
 
     phases = [
-        {**p, "state": ("done"   if p["end_kw"] < kw else
-                         "active" if p["start_kw"] <= kw <= p["end_kw"] else
-                         "upcoming")}
+        {**p, "state": p.get("fixed_state") or
+                       ("done"   if p["end_kw"] < kw else
+                        "active" if p["start_kw"] <= kw <= p["end_kw"] else
+                        "upcoming")}
         for p in SEASON_PHASES
     ]
+
+    # Label der Saisonleiste: bis zum nächsten Rennen, danach bis zum
+    # Saisonziel (Seelauf), solange keine neue Zielsetzung steht.
+    _bar_race = (_countdown["main"]["name"] if _countdown["main"]
+                 else next((p["name"].split(" ", 1)[-1]
+                            for p in SEASON_PHASES if p["end_kw"] == SEASON_END_KW),
+                           None))
+    phase_bar_label = (f"Saisonverlauf bis {_bar_race}" if _bar_race
+                       else "Saisonverlauf")
 
     plan    = parse_kw_plan(kw)
 
@@ -1076,6 +1097,8 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "kw": kw, "kw_dates": kw_dates,
         "phase_name": current_phase["name"], "next_phase": next_phase,
         "phases": phases,
+        "phase_bar_label": phase_bar_label,
+        "phase_bar_note": PHASE_BAR_NOTE,
         "season_kw_current": season_pos, "season_kw_total": season_total,
         "season_offset": season_offset,
         "tss_compliance_pct": tss_compliance_pct,
