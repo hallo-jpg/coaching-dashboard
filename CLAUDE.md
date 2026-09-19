@@ -58,6 +58,7 @@ plane mir die nächste Woche
 | `planung/workout_index.md` | Kompakter Workout-Index (55 Workouts) | Manuell |
 | `coaching_science.md` | Wissenschaftliche Referenz (Rønnestad et al.) | Manuell |
 | `COACHING_AKTE.md` | Änderungs-Log, Coach-Notizen, Fehlen-Log | Skill |
+| `COACH_MEMORY.md` | **Gelernte Regeln & Korrekturen des Coaches** – gilt lokal und in der Claude-App | Skill (bei jeder neuen Erkenntnis) |
 
 ## Live Dashboard
 
@@ -80,6 +81,8 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - Lauf Bestwerte All-Time (Tempokurven, 7 Distanzen)
 
 ## Wichtige Regeln
+
+- **`COACH_MEMORY.md` vor jeder Coaching-Antwort lesen und befolgen.** Neue Korrekturen oder Erkenntnisse aus einer Session dort ergänzen (nicht nur im Chat bestätigen) – das ist die einzige Quelle, die alle Sessions teilen.
 
 - **Vor jedem Commit an `planung/kw*.md`: `python3 validate_plans.py` ausführen.** Prüft alle Wochenpläne gegen den echten Dashboard-Parser. Tag-Spalte muss exakt `Mo`/`Di`/… sein – **kein Datum** (`Mo 7.9.` bricht den Parser lautlos, das Dashboard bleibt dann leer). Pflichtformat: 6 Spalten + `**Total**`-Zeile.
 

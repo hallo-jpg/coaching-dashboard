@@ -2,10 +2,15 @@
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "startup|resume",
         "hooks": [
           {
             "type": "command",
             "command": "cd \"$CLAUDE_PROJECT_DIR\" && { [ -d intervals-mcp/node_modules ] || npm ci --prefix intervals-mcp --silent >/dev/null 2>&1 || npm install --prefix intervals-mcp --silent >/dev/null 2>&1; }; exit 0"
+          },
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && { [ \"${CLAUDE_CODE_REMOTE:-}\" = \"true\" ] || git pull --rebase --autostash -q origin main >/dev/null 2>&1; }; exit 0"
           }
         ]
       }
