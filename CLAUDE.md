@@ -16,8 +16,8 @@
 | **Aktuelle KW** | KW38 (14.–20. September 2026) · **Rennwoche** |
 | **Aktuelle Phase** | Rennvorbereitung · Renntempo einprägen, kein Aufbau mehr möglich |
 | **Nächste Phase** | KW38 Rennwoche (Mujika, 3 Touches) · danach Neuaufbau |
-| **Tage bis Rennen** | **6** (Karlsfelder Seelauf So 20.9.) |
-| **CTL** | 15,8 (6.9.) · TSB +4,7 · nach Krankheit + Urlaub, nur 2 Läufe in 4 Wochen |
+| **Tage bis Rennen** | **1** – morgen, T-1 (Karlsfelder Seelauf So 20.9.) |
+| **CTL** | 22,2 (19.9.) · ATL 32,3 · TSB −10,1 · bei dieser CTL-Höhe kein Steuerungssignal |
 | **🎯 Renntempo** | **6:30–6:40/km → ~66:00** — Stefans Entscheidung 14.9. (Coach-Ableitung war 6:50 aus 3×7min: 6:34/6:43/6:47 @ HF 172) · PR 71:28 |
 | **Renntaktik** | km 1–2 **6:45** (HF <175) · km 3–7 6:35 · **km 5 HF-Entscheidung** (≤177 drücken · 178–181 halten · >182 auf 6:45 zurück) · km 8–10 6:30+ |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
