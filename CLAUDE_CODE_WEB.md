@@ -6,12 +6,22 @@ kann er dort auch – mit zwei Einschränkungen (siehe unten).
 ## Einmalige Einrichtung (ca. 5 Minuten)
 
 1. **Repo verbinden** – <https://claude.ai/code> → GitHub verbinden → `hallo-jpg/coaching-dashboard` freigeben.
-2. **Umgebungsvariablen setzen** – in den Environment-Einstellungen der Sandbox (nicht im Repo!):
-   ```
-   INTERVALS_API_KEY=<Key aus intervals.icu → Settings → Developer>
-   INTERVALS_ATHLETE_ID=i554154
-   ```
-3. **Erste Session starten** – Claude fragt einmal, ob der MCP-Server aus `.mcp.json` erlaubt werden soll → **Ja**.
+2. **Cloud-Umgebung konfigurieren** – auf claude.ai/code (oder in der App beim Session-Start) das
+   **Wolken-Symbol / den Environment-Selector** öffnen → Umgebung „Default" bearbeiten (oder eine neue
+   „Coaching" anlegen). Im Dialog drei Dinge:
+   - **Network access → Custom**, Domain `intervals.icu` eintragen und
+     **„Also include default list of common package managers" anhaken** (sonst kein `npm install`).
+     Ohne diese Freigabe startet der MCP-Server, aber jeder Abruf scheitert.
+   - **Environment variables** (nicht im Repo!):
+     ```
+     INTERVALS_API_KEY=<Key aus intervals.icu → Settings → Developer>
+     INTERVALS_ATHLETE_ID=i554154
+     ```
+     Hinweis der Doku: Werte sind für jeden lesbar, der diese Umgebung nutzt – das bist nur du.
+   - **Setup script** leer lassen; der SessionStart-Hook im Repo übernimmt `npm ci`.
+   Speichern.
+3. **Erste Session starten** – Repo auswählen, diese Umgebung auswählen. Claude fragt einmal, ob der
+   MCP-Server aus `.mcp.json` erlaubt werden soll → **Ja**.
    Der SessionStart-Hook installiert die Node-Abhängigkeiten automatisch (~10 s beim ersten Mal).
 
 ## Funktionstest
