@@ -21,7 +21,13 @@ kann er dort auch – mit zwei Einschränkungen (siehe unten).
      lokal in `intervals-mcp/.env`). **Ohne Klammern, Anführungszeichen oder Leerzeichen eintragen** –
      ein `<…>` drumherum ergibt „401 Auth failed".
      Hinweis der Doku: Werte sind für jeden lesbar, der diese Umgebung nutzt – das bist nur du.
-   - **Setup script** leer lassen; der SessionStart-Hook im Repo übernimmt `npm ci`.
+   - **Setup script** – genau diese Zeile eintragen:
+     ```
+     npm ci --prefix intervals-mcp || true
+     ```
+     Grund: MCP-Server und SessionStart-Hook starten gleichzeitig. Ohne Setup script fehlen dem
+     Server beim ersten Start die Node-Module („failed to connect at session start"), obwohl er
+     manuell danach läuft. Das Setup script läuft **vor** Claude Code und wird gecacht.
    Speichern.
 3. **Erste Session starten** – Repo auswählen, diese Umgebung auswählen. Claude fragt einmal, ob der
    MCP-Server aus `.mcp.json` erlaubt werden soll → **Ja**.
