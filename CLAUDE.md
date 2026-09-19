@@ -91,4 +91,6 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - **Periodisierungsplan** nur mit Stefans Zustimmung ändern
 - **Git: immer direkt auf `main` committen und pushen** – auch in Cloud-/Web-Sessions (Claude-App). Keine Session-Branches, keine PRs: das Dashboard baut aus `main`, alles andere ist für Stefan unsichtbar. Vor dem Push `git pull --rebase`.
 - Lauf-Workouts: kein .zwo möglich → Beschreibung im Output, manuell in TP einpflegen
+
+- **Distanz-Intervalle (400er, 1000er) immer über `distance_m` anlegen**, nie in Minuten umrechnen — sonst misst die Uhr Zeit statt Meter. In intervals.icu heißt `m` **Minuten**: `- 400m` wird still zu 400 Minuten, Distanzen müssen als `0.4km` geschrieben werden. Freitext in der Description nie mit `- ` beginnen (wird als Schritt geparst) — `·` benutzen. Details + Gegenprobe: Coach-Skill, Abschnitt Lauf-Workouts.
 - HIT/VO2max ist **kein Neuland** – Stefan hat Ötztaler 2025 absolviert

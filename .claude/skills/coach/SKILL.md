@@ -744,6 +744,29 @@ Nie auf Verdacht erstellen – immer begründen. Bibliotheks-Workout bleibt die 
 - Intensität in % Schwellenpace (Basis: 6:03/km = 100%)
 - Reps werden geflattened: 2×(8min+3min) = 4 separate Zeilen
 
+**Distanz-Intervalle (400er, 1000er, Tempo über Strecke) — `distance_m` benutzen:**
+
+Ein 400er ist eine **Distanz, keine Dauer**. Nie in Minuten umrechnen — sonst misst
+die Uhr Zeit statt Meter und die Wiederholung ist bei wechselndem Tempo zu kurz oder zu lang.
+
+- `workout_steps` mit `distance_m: 400` statt `duration_secs`. Die Dauer rechnet
+  intervals.icu selbst aus der Zielpace aus (400m @ 100% = 145s).
+- Der Server schreibt daraus `- 0.4km 100% Pace`.
+- Pausen dazwischen bleiben zeitbasiert (`duration_secs: 90`) — oder ebenfalls
+  als Distanz, wenn Trabstrecke gewollt ist (`distance_m: 200`).
+
+⚠️ **Drei Fallen im intervals.icu-Textformat** (alle verifiziert, nicht vermutet):
+
+| Falle | Folge | Richtig |
+|---|---|---|
+| `m` heißt **Minuten**, nicht Meter | `- 400m 100% Pace` wird still zu **400 Minuten** (24000s) | Distanz immer in **km**: `0.4km` |
+| Jede Zeile der Description, die mit `- ` beginnt, wird als **Schritt geparst** | Prosa-Aufzählungen landen als Geister-Schritte im `workout_doc` | In Freitext `·` statt `- ` als Aufzählungszeichen |
+| `moving_time` überschreibt die gerechnete Dauer | Bei Distanz-Schritten stünde eine geschätzte Gesamtzeit drin | `duration_secs` (Gesamtdauer) bei Distanz-Workouts **weglassen** |
+
+**Gegenprobe nach dem Anlegen:** mit `get_planned_events` zurücklesen und prüfen,
+dass die Intervall-Schritte ein `distance`-Feld haben und `moving_time` plausibel ist.
+Ein Schritt mit `duration: 24000` ist die Minuten/Meter-Falle.
+
 **Lauf-Intensitätszonen (immer auf diese Parabänder referenzieren):**
 - Z1 Easy: 65–80% Pace (7:00–7:45/km) → Standardformat aller Easy Runs
 - Z3 Schwelle: 95–103% Pace (5:50–6:20/km)
