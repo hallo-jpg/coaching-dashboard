@@ -884,11 +884,13 @@ server.tool(
     const workout_empfehlungen = suggestWorkoutMods(score, plannedEvents);
 
     // ── Verlauf: Score für jeden der letzten 30 Tage berechnen ──
-    // Pro Tag: nutze die bis dahin verfügbaren letzten 7 Einträge als Fenster
+    // Pro Tag: nutze die bis dahin verfügbaren letzten 7 Einträge als Fenster,
+    // HRV-Baseline wie beim Tages-Score aus den bis dahin verfügbaren 30 Tagen
+    // (sonst weicht der Verlaufswert vom Tages-Score desselben Tages ab)
     const verlauf = wellnessAll.map((_, i) => {
       if (i < 2) return null; // Mindestens 3 Datenpunkte nötig
       const slice = wellnessAll.slice(Math.max(0, i - 6), i + 1);
-      const r = computeReadiness(slice);
+      const r = computeReadiness(slice, wellnessAll.slice(0, i + 1));
       return { datum: wellnessAll[i].id, score: r.score, ampel: r.ampel };
     }).filter(Boolean);
 
