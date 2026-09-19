@@ -157,6 +157,19 @@ server.tool(
   }
 );
 
+// ── Hilfsfunktion: Freitext gegen den Struktur-Parser absichern ──
+// intervals.icu liest in der Description JEDE Zeile, die mit "- " beginnt,
+// als Workout-Schritt und jede "N×"/"Nx"-Zeile als Wiederholungsblock.
+// Prosa-Aufzählungen landen dadurch als Geister-Schritte im workout_doc
+// (aus "- 8× 400m ..." wurde ein 8×-Block über 24000s).
+// Deshalb: führende Bindestriche in Prosa durch "·" ersetzen.
+function sanitizeProse(text) {
+  return text
+    .split("\n")
+    .map(line => line.replace(/^(\s*)[-*]\s+/, "$1\u00b7 "))
+    .join("\n");
+}
+
 // ── Hilfsfunktion: .zwo XML generieren ──────────────────────
 function buildZwo(name, description, steps) {
   const xmlSteps = steps.map(s => {
@@ -292,22 +305,24 @@ server.tool(
     // Lauf: workout_steps → "- NUMm LOW-HIGH% Pace" Format
     // intervals.icu parsed diesen Text automatisch zu workout_doc Steps → visuelle Balken + COROS ✅
     if (type === "Run" && workout_steps?.length) {
+      // Dauer nur dann in Minuten schreiben, wenn sie glatt aufgeht.
+      // Sonst Sekunden - intervals.icu versteht beides ("- 148s 113% Pace").
+      // Vorher wurde auf ganze Minuten gerundet: 148s -> "2m" (= 325m statt 400m).
+      const dur = secs => (secs % 60 === 0 ? `${secs / 60}m` : `${secs}s`);
       const lines = workout_steps.flatMap(s => {
-        const mins = Math.round(s.duration_secs / 60);
         if (s.reps && s.steps) {
           const inner = s.steps.map(sub => {
-            const m = Math.round(sub.duration_secs / 60);
             const pct = sub.pace_pct_high
               ? `${sub.pace_pct_low ?? sub.pace_pct}-${sub.pace_pct_high}% Pace`
               : `${sub.pace_pct ?? sub.pace_pct_low ?? 100}% Pace`;
-            return `- ${m}m ${pct}`;
+            return `- ${dur(sub.duration_secs)} ${pct}`;
           });
           return Array(s.reps).fill(inner).flat();
         }
         const pct = s.pace_pct_high
           ? `${s.pace_pct_low ?? s.pace_pct}-${s.pace_pct_high}% Pace`
           : `${s.pace_pct ?? s.pace_pct_low ?? 75}% Pace`;
-        return [`- ${mins}m ${pct}`];
+        return [`- ${dur(s.duration_secs)} ${pct}`];
       });
 
       const autoDesc = lines.join("\n");
@@ -321,7 +336,7 @@ server.tool(
         type: "Run",
         category: "WORKOUT",
         name,
-        description: description ? `${description}\n\n${autoDesc}` : autoDesc,
+        description: description ? `${sanitizeProse(description)}\n\n${autoDesc}` : autoDesc,
         moving_time: duration_secs ?? totalDuration,
       };
       if (tss) payload.icu_training_load = tss;
