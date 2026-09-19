@@ -47,6 +47,10 @@ Umgebungsvariablen prüfen (Schritt 2) und ob die MCP-Freigabe (Schritt 3) ertei
 Dann ein Push-Test: eine Notiz in `COACHING_AKTE.md` ergänzen lassen und pushen. Nach ~2 Minuten
 muss der Actions-Lauf „regenerate dashboard" durch sein und das Dashboard die Änderung zeigen.
 
+## Status
+
+✅ Eingerichtet und getestet am 19.9.2026: MCP verbindet, `get_readiness_score` liefert Live-Daten, Push auf `main` läuft, Dashboard-Rebuild wird durch den Push ausgelöst.
+
 ## Was in der Web-Session anders ist
 
 | | lokal (Mac) | Web / App |

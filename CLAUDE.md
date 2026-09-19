@@ -86,5 +86,6 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - Alle Workouts laufen auf **%FTP** → .zwo Dateien skalieren automatisch
 - **FTP-Update** nur nach formalem Test (3+10min Protokoll, outdoor, XCadey-Powermeter am Tarmac). ⚠️ FTP 305W stammt vom alten 4iiii-Setup → **neuer Test nötig, bevor Zonen wieder trainingsleitend sind.** Indoor = Tacx-Leistung (Aeroad ohne PM), nicht 1:1 mit Outdoor vergleichbar.
 - **Periodisierungsplan** nur mit Stefans Zustimmung ändern
+- **Git: immer direkt auf `main` committen und pushen** – auch in Cloud-/Web-Sessions (Claude-App). Keine Session-Branches, keine PRs: das Dashboard baut aus `main`, alles andere ist für Stefan unsichtbar. Vor dem Push `git pull --rebase`.
 - Lauf-Workouts: kein .zwo möglich → Beschreibung im Output, manuell in TP einpflegen
 - HIT/VO2max ist **kein Neuland** – Stefan hat Ötztaler 2025 absolviert
