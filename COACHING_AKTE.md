@@ -13,6 +13,7 @@
 - Neues Rad-Setup dokumentiert (Tarmac SL8/XCadey outdoor, Aeroad auf Tacx indoor) → FTP-Test nach dem Rennen im Neuaufbau einplanen
 - **Sa 19.9. Aktivierung ✅** 30min / 3,8km / Ø HF 158, max 173 · alle drei Touches gesetzt (Mo, Fr-Rad zählt nicht, Sa) → Mujika erfüllt · TSB Renntag ≈ −10 (CTL 22, ATL 32) – bei dieser CTL-Höhe kein Steuerungssignal
 - Erste Web-Session (Claude-App) getestet: Skill + Repo laufen, Blocker: intervals.icu nicht auf Egress-Allowlist, GitHub-App ohne Repo-Zugriff → Anleitung `CLAUDE_CODE_WEB.md`
+- Web-Session Push-Test OK
 - **KW39: Stefan in Kroatien** · Mo/Di Arbeit, Mi–Fr Urlaub · Planung auf Stefans Wunsch erst im Laufe der Woche → bis dahin Recovery-Modus (Tage 1–4 nach dem Rennen locker/Pause)
 
 ---
