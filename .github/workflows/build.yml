@@ -6,6 +6,13 @@ on:
   repository_dispatch:
     types: [activity-uploaded]
   workflow_dispatch:
+  push:                        # Planänderung (auch aus Claude Code Web) → sofort neu bauen
+    branches: [main]
+    paths:
+      - "planung/**"
+      - "athlete/**"
+      - "generate.py"
+      - "dashboard.template.html"
 
 permissions:
   contents: write

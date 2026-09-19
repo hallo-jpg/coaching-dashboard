@@ -1,5 +1,15 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && { [ -d intervals-mcp/node_modules ] || npm ci --prefix intervals-mcp --silent >/dev/null 2>&1 || npm install --prefix intervals-mcp --silent >/dev/null 2>&1; }; exit 0"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",

@@ -5,13 +5,22 @@ import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-// Load .env manually (no dotenv ESM issues)
+// Load .env manually (no dotenv ESM issues).
+// Optional: in Claude Code Web / CI kommen die Keys als Umgebungsvariablen –
+// dort gibt es keine .env, und bereits gesetzte Variablen werden nicht überschrieben.
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const envPath = join(__dirname, ".env");
-const envContent = readFileSync(envPath, "utf8");
-for (const line of envContent.split("\n")) {
-  const [key, val] = line.split("=");
-  if (key && val) process.env[key.trim()] = val.trim();
+try {
+  const envContent = readFileSync(envPath, "utf8");
+  for (const line of envContent.split("\n")) {
+    const [key, val] = line.split("=");
+    if (key && val && !process.env[key.trim()]) process.env[key.trim()] = val.trim();
+  }
+} catch {
+  // keine .env – Umgebungsvariablen müssen gesetzt sein
+}
+if (!process.env.INTERVALS_API_KEY || !process.env.INTERVALS_ATHLETE_ID) {
+  console.error("intervals-mcp: INTERVALS_API_KEY / INTERVALS_ATHLETE_ID fehlen (.env oder Umgebungsvariablen)");
 }
 
 const API_KEY = process.env.INTERVALS_API_KEY;
