@@ -11,6 +11,8 @@
 - Readiness 82 🟢 · HRV 55ms (+4,8) · Ruhepuls 53 · subjektiv 100/100 · TSB −10,6 (nach der langen Di-Fahrt; bei CTL 22 wenig aussagekräftig)
 - Letzter Laufreiz: Mo 14.9. → bis Sa 5 Tage ohne Lauf-Intensität → **Aktivierung Sa (T-1) bleibt, leicht aufgestockt: 4×30s @ 6:30 statt 3×20s.** Kein Nachholen der Openers am Fr-Abend – T-1-Regel.
 - Neues Rad-Setup dokumentiert (Tarmac SL8/XCadey outdoor, Aeroad auf Tacx indoor) → FTP-Test nach dem Rennen im Neuaufbau einplanen
+- **Sa 19.9. Aktivierung ✅** 30min / 3,8km / Ø HF 158, max 173 · alle drei Touches gesetzt (Mo, Fr-Rad zählt nicht, Sa) → Mujika erfüllt · TSB Renntag ≈ −10 (CTL 22, ATL 32) – bei dieser CTL-Höhe kein Steuerungssignal
+- Erste Web-Session (Claude-App) getestet: Skill + Repo laufen, Blocker: intervals.icu nicht auf Egress-Allowlist, GitHub-App ohne Repo-Zugriff → Anleitung `CLAUDE_CODE_WEB.md`
 - **KW39: Stefan in Kroatien** · Mo/Di Arbeit, Mi–Fr Urlaub · Planung auf Stefans Wunsch erst im Laufe der Woche → bis dahin Recovery-Modus (Tage 1–4 nach dem Rennen locker/Pause)
 
 ---
