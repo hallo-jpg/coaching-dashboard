@@ -211,7 +211,8 @@ server.tool(
     tss: z.number().optional().describe("Geplanter TSS"),
     zwo_file_path: z.string().optional().describe("Absoluter Pfad zur .zwo-Datei aus der Workout-Library, z.B. '/Users/stefan/Documents/Claude Code/Coaching/Workout-Library/LIT-2h.zwo'. Wird server-seitig gelesen und als base64 hochgeladen – kein curl, kein API-Key im Skill nötig."),
     workout_steps: z.array(z.object({
-      duration_secs: z.number().describe("Dauer in Sekunden"),
+      duration_secs: z.number().optional().describe("Dauer in Sekunden. Entfaellt, wenn distance_m gesetzt ist."),
+      distance_m: z.number().optional().describe("Streckenlaenge in Metern statt Dauer (nur Lauf), z.B. 400 fuer einen 400er. intervals.icu rechnet die Zeit aus der Zielpace selbst aus."),
       power_pct: z.number().optional().describe("Zielwatt % FTP (Rad), z.B. 55"),
       power_pct_low: z.number().optional().describe("% FTP untere Grenze für Warmup/Cooldown"),
       power_pct_high: z.number().optional().describe("% FTP obere Grenze für Warmup/Cooldown"),
@@ -222,8 +223,12 @@ server.tool(
       cooldown: z.boolean().optional(),
       reps: z.number().optional().describe("Wiederholungen für Intervallblock"),
       steps: z.array(z.object({
-        duration_secs: z.number(),
+        duration_secs: z.number().optional(),
+        distance_m: z.number().optional(),
         power_pct: z.number().optional(),
+        pace_pct: z.number().optional(),
+        pace_pct_low: z.number().optional(),
+        pace_pct_high: z.number().optional(),
       })).optional().describe("Schritte innerhalb Intervallblock"),
       text: z.string().optional(),
     })).optional(),
@@ -305,30 +310,37 @@ server.tool(
     // Lauf: workout_steps → "- NUMm LOW-HIGH% Pace" Format
     // intervals.icu parsed diesen Text automatisch zu workout_doc Steps → visuelle Balken + COROS ✅
     if (type === "Run" && workout_steps?.length) {
-      // Dauer nur dann in Minuten schreiben, wenn sie glatt aufgeht.
-      // Sonst Sekunden - intervals.icu versteht beides ("- 148s 113% Pace").
-      // Vorher wurde auf ganze Minuten gerundet: 148s -> "2m" (= 325m statt 400m).
-      const dur = secs => (secs % 60 === 0 ? `${secs / 60}m` : `${secs}s`);
+      // Schrittlaenge. Zwei Fallen im Textformat von intervals.icu:
+      //  - "m" heisst MINUTEN, nicht Meter: "- 400m" wird zu 400min (24000s).
+      //    Distanzen muessen deshalb in km geschrieben werden: 400m -> "0.4km".
+      //  - Dauern wurden vorher auf ganze Minuten gerundet (Math.round(s/60)),
+      //    90s Trabpause wurde so zu 120s. Jetzt: glatte Minuten als "Nm",
+      //    alles andere als "Ns".
+      const amount = st => (st.distance_m != null
+        ? `${+(st.distance_m / 1000).toFixed(3)}km`
+        : (st.duration_secs % 60 === 0 ? `${st.duration_secs / 60}m` : `${st.duration_secs}s`));
       const lines = workout_steps.flatMap(s => {
         if (s.reps && s.steps) {
           const inner = s.steps.map(sub => {
             const pct = sub.pace_pct_high
               ? `${sub.pace_pct_low ?? sub.pace_pct}-${sub.pace_pct_high}% Pace`
               : `${sub.pace_pct ?? sub.pace_pct_low ?? 100}% Pace`;
-            return `- ${dur(sub.duration_secs)} ${pct}`;
+            return `- ${amount(sub)} ${pct}`;
           });
           return Array(s.reps).fill(inner).flat();
         }
         const pct = s.pace_pct_high
           ? `${s.pace_pct_low ?? s.pace_pct}-${s.pace_pct_high}% Pace`
           : `${s.pace_pct ?? s.pace_pct_low ?? 75}% Pace`;
-        return [`- ${dur(s.duration_secs)} ${pct}`];
+        return [`- ${amount(s)} ${pct}`];
       });
 
       const autoDesc = lines.join("\n");
+      const hasDistanceStep = workout_steps.some(s =>
+        s.distance_m != null || (s.steps ?? []).some(sub => sub.distance_m != null));
       const totalDuration = workout_steps.reduce((acc, s) => {
-        if (s.reps && s.steps) return acc + s.steps.reduce((a, sub) => a + sub.duration_secs, 0) * s.reps;
-        return acc + s.duration_secs;
+        if (s.reps && s.steps) return acc + s.steps.reduce((a, sub) => a + (sub.duration_secs ?? 0), 0) * s.reps;
+        return acc + (s.duration_secs ?? 0);
       }, 0);
 
       const payload = {
@@ -337,8 +349,11 @@ server.tool(
         category: "WORKOUT",
         name,
         description: description ? `${sanitizeProse(description)}\n\n${autoDesc}` : autoDesc,
-        moving_time: duration_secs ?? totalDuration,
       };
+      // Bei Distanz-Schritten kennen wir die Dauer nicht - intervals.icu
+      // leitet sie aus der Zielpace ab. Dann nichts vorgeben.
+      const mt = duration_secs ?? (hasDistanceStep ? null : totalDuration);
+      if (mt) payload.moving_time = mt;
       if (tss) payload.icu_training_load = tss;
 
       const result = await apiFetch("/events", { method: "POST", body: JSON.stringify(payload) });
