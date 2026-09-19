@@ -38,6 +38,17 @@ Nie eigenmächtig auf T-2 oder früher verschieben, auch wenn Stefan an T-1 kein
 Stefans gewohnte Laufkadenz liegt bei **~140 spm, auch bei Tempo** (bestätigt 6.9.: 140 bei 7:47/km *und* bei ~6:15/km – ein Stilmerkmal, kein Artefakt). Bei 91 kg heißt das lange Bodenkontaktzeit, Fußaufsatz vor dem Schwerpunkt, hohes Biegemoment auf die Tibia → mit hoher Wahrscheinlichkeit **die** Ursache des Wadenschmerzes am Soleus-Tibia-Übergang (MTSS-Verdacht ab 9.8.2026; tat nur beim *langsamen* Laufen weh). Mit Konzentration erreichte er am 6.9. Ø 161 / max 179, Wade beschwerdefrei.
 **Anwenden:** Arbeitsziel **155–165** (Metronom 160), nach dem Seelauf konsolidieren auf 165–170. Nicht höher ansetzen – der Zielwert wurde zweimal falsch kalibriert (170–175 auf Schätzung; 165–170 mit den 161 als vermeintlicher Basis). Bei jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Wenn 160 nach 10min unnatürlich bleibt → 155, lieber konsequent 155 als verkrampft 165. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere Schritte, Fuß unter den Körper") – dort ist Kadenz Verletzungsschutz. Die Umstellung 140 → stabile 165–170 braucht 6–8 Wochen und ist das **wichtigste Laufprojekt nach dem Zielrennen**.
 
+### Stefan läuft ohne Auto-Lap – Rennpläne nicht auf km-Piepser bauen
+Auto-Lap ist auf der COROS **aus**. Ohne Lap-Druck läuft eine einzige Runde über die
+gesamte Einheit, dadurch gilt: **Rundenzeit = Gesamtzeit**, Ø Pace der Runde = Ø Pace
+gesamt. Ein Zeitfeld extra braucht es also nicht.
+**Anwenden:** Checkpoints in Rennplänen nie an einen automatischen km-Piepser hängen,
+sondern an die **km-Schilder der Strecke** – dort Rundenzeit gegen die Soll-Splittabelle
+prüfen. Das ist ohnehin genauer: die Uhr misst auf dem Kurs typisch **1–2 % zu lang**
+(keine Ideallinie, GPS-Rauschen), auf 10 km also 100–200 m. Folge: Uhr-Distanz läuft dem
+Schild voraus und die angezeigte Ø Pace liegt über der offiziellen. Zielkontrolle
+deshalb immer über Zeit am Schild, nie über Ø Pace oder Uhr-Distanz.
+
 ---
 
 ## 3. Wochenstruktur & Verfügbarkeit
