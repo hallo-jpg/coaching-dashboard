@@ -14,9 +14,12 @@ kann er dort auch – mit zwei Einschränkungen (siehe unten).
      Ohne diese Freigabe startet der MCP-Server, aber jeder Abruf scheitert.
    - **Environment variables** (nicht im Repo!):
      ```
-     INTERVALS_API_KEY=<Key aus intervals.icu → Settings → Developer>
+     INTERVALS_API_KEY=5gxxxxxxxxxxxxxxxxxxxxxxx
      INTERVALS_ATHLETE_ID=i554154
      ```
+     Der Key ist 25 Zeichen, nur Kleinbuchstaben/Ziffern (intervals.icu → Settings → Developer Settings,
+     lokal in `intervals-mcp/.env`). **Ohne Klammern, Anführungszeichen oder Leerzeichen eintragen** –
+     ein `<…>` drumherum ergibt „401 Auth failed".
      Hinweis der Doku: Werte sind für jeden lesbar, der diese Umgebung nutzt – das bist nur du.
    - **Setup script** leer lassen; der SessionStart-Hook im Repo übernimmt `npm ci`.
    Speichern.
