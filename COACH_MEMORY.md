@@ -15,7 +15,8 @@ Belegte Easy-Run-Werte über die ganze Saison 2026: **155–163 bpm bei 7:10–7
 
 ### 🏁 Wettkampf-Referenz Laufen (20.9.2026): 10km in 1:05:08 @ Ø HF 183
 Karlsfelder Seelauf, erster echter 10-km-Wettkampf: **6:31/km über 66min**, Ø HF **183**, max **196**, RPE 8 — 48% der Zeit in 164–184 bpm, **41% über 184 bpm**. Vorheriger 10-km-Bestwert 1:11:28 (Trainingslauf).
-**Anwenden:** Das ist ab jetzt der Ankerpunkt für jede Lauf-Leistungsaussage — kein Trainingslauf mit Confoundern kann ihn überstimmen. Lauf-LTHR liegt real bei **183–185** (gespeichert: 179), Lauf-HFmax deutlich über 196. HF-Obergrenzen in Rennplänen nie unter 185 ansetzen. Die gespeicherte Schwellenpace 6:03/km ist ein Schätzwert vom Projektstart und zu schnell; realistisch ≈ **6:28/km** (Update steht aus, braucht Stefans OK — ändert Zonen, `generate.py` und alle rTSS-Werte rückwirkend in der Bewertung).
+**Anwenden:** Das ist ab jetzt der Ankerpunkt für jede Lauf-Leistungsaussage — kein Trainingslauf mit Confoundern kann ihn überstimmen. Lauf-LTHR liegt real bei **183–185** (gespeichert: 179), Lauf-HFmax deutlich über 196. HF-Obergrenzen in Rennplänen nie unter 185 ansetzen. **Umgesetzt am 20.09.2026:** Schwellenpace **6:03 → 6:28/km**, LTHR **179 → 185** (Quelle LTHR: TrainingPeaks-Auto-Erkennung nach dem Seelauf, von Stefan freigegeben). Laufzonen in `athlete/profil.md`, `generate.py` und die Pacebänder im Coach-Skill sind darauf umgestellt.
+**Offen — nur Stefan kann das:** dieselben Werte in **intervals.icu** hinterlegen (Settings → Sport Settings → Run: Threshold Pace 6:28/km, LTHR 185). Bis dahin rechnet intervals.icu rTSS, Zonenverteilung und die `pace_pct`-Ziele geplanter Workouts weiter gegen 6:03/km — geplante Läufe wären dann ~25 sek/km zu schnell. **Vor dem nächsten Anlegen von Lauf-Workouts prüfen und ggf. nachfragen.**
 
 ### Rennpace nie aus einem Intervalllauf mit Confoundern ableiten
 Vor dem Seelauf leitete der Coach aus 3×7min vom 9.9. eine Rennpace von 6:50/km ab (Prognose 68:20). Stefan entschied sich gegen diese Ableitung für 6:30–6:40 und lief **6:31** — der Coach lag 20 sek/km daneben. Der Ableitungs-Datenpunkt war ein Intervalllauf **mit Trabpausen**, bei ACWR 1,7 und TSB −15, zwei Tage nach 5,5h Rad.
@@ -91,7 +92,7 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
 - **`workout_steps`** rundet auf ganze Minuten: 20s → verworfen, 30s/45s → 60s. Nur für Einheiten ohne Schritte <1min.
 - **Description-Route** (Schrittliste als Text am Ende der `description`, `- 20s 120% Pace` gültig) für Strides/Antritte. `workout_doc` bleibt dabei leer – **Stefan muss das Workout einmal öffnen und OK klicken**, Hinweis oben in die Beschreibung.
 - Strides nie auf 60s strecken, um Weg A zu erzwingen (ab ~40s kippt der Reiz von neuromuskulär zu anaerob).
-- `pace_pct` = % der Schwellen*geschwindigkeit* (363s/km = 100%): 55% = 11:00 (Gehen), 70–80% = 8:38–7:33 (Easy), 93% = 6:30, 120% = 5:02.
+- `pace_pct` = % der Schwellen*geschwindigkeit* — **seit 20.09.2026: 388s/km (6:28) = 100%** (vorher 363s/km): 55% = 11:45 (Gehen), 75–87% = 8:40–7:25 (Easy), 100% = 6:28, 105% = 6:10, 119% = 5:25. Gilt nur, wenn die Schwellenpace **in intervals.icu** ebenfalls auf 6:28 steht.
 - Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.
 - Rad-Bibliothek: `.zwo` nur für `type: "Ride"`; Dateinamen exakt aus `planung/workout_index.md`.
 

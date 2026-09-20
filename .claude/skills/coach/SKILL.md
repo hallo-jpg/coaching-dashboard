@@ -767,10 +767,12 @@ die Uhr Zeit statt Meter und die Wiederholung ist bei wechselndem Tempo zu kurz 
 dass die Intervall-Schritte ein `distance`-Feld haben und `moving_time` plausibel ist.
 Ein Schritt mit `duration: 24000` ist die Minuten/Meter-Falle.
 
-**Lauf-Intensitätszonen (immer auf diese Parabänder referenzieren):**
-- Z1 Easy: 65–80% Pace (7:00–7:45/km) → Standardformat aller Easy Runs
-- Z3 Schwelle: 95–103% Pace (5:50–6:20/km)
-- Z4 VO2max: 108–120% Pace (~5:00–5:35/km)
+**Lauf-Intensitätszonen (immer auf diese Parabänder referenzieren) — Stand 20.09.2026, Schwellenpace 6:28/km:**
+- Z1 Easy: 75–87% Pace (7:25–8:40/km) → Standardformat aller Easy Runs · HF-Cap 165 bpm ist bindend
+- Z3 Schwelle: 97–105% Pace (6:10–6:40/km)
+- Z4 VO2max: 105–119% Pace (5:25–6:10/km)
+
+⚠️ `pace_pct` rechnet gegen die **in intervals.icu hinterlegte** Schwellenpace. Die muss dort auf 6:28/km stehen, sonst zielen die Prozentwerte auf die alte Schwelle 6:03/km (≈25 sek/km zu schnell).
 
 **Lauf-Wochenvolumen-Ziel: 25–33% des Gesamttrainings**
 - Wochentags max. 1 Laufeinheit (45–60min); Wochenende 1 optionaler Easy Run (45–70min)

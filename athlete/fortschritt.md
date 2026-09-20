@@ -34,7 +34,7 @@
 | Datum | Schwellenpace | 5km Prognose | Notiz |
 |---|---|---|---|
 | 29.03.2026 | 6:03/km | 29:11 | Projektstart – Schätzwert, nie durch einen Wettkampf belegt |
-| 20.09.2026 | *Vorschlag 6:28/km* | ~31:10 | 🏁 10km-Wettkampf 6:31/km @ Ø HF 183 (66min) → Schwellenpace real ≈ 6:28, LTHR eher 183 statt 179. **Update steht aus, Stefans OK nötig** (ändert Zonen + `generate.py` + alle rTSS) |
+| 20.09.2026 | **6:28/km** | ~31:15 | 🏁 10km-Wettkampf 6:31/km @ Ø HF 183 (66min) → Schwellenpace 6:03 → **6:28**, LTHR 179 → **185** (TrainingPeaks-Erkennung, von Stefan freigegeben). Zonen in `profil.md`, `generate.py` und Coach-Skill umgestellt. Offen: gleiche Werte in intervals.icu hinterlegen |
 
 ## Nächster FTP-Test
 

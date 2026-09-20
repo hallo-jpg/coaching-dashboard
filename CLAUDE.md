@@ -19,7 +19,7 @@
 | **Tage bis Rennen** | – · nächster Fixpunkt: FTP-Test KW40 (Do 1.10.) |
 | **CTL** | 23,9 (20.9.) · ATL 40,6 · TSB −16,7 · Readiness 78 🟡 (HRV 52, Schlaf 8,6h, RP 53) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
-| **⚠️ Lauf-Schwellenwerte** | Wettkampf-Ø HF 183 über 66min, 41% über 184, max 196 → **LTHR real 183–185** (gespeichert 179), **Schwellenpace real ≈6:28** (gespeichert 6:03) · **Update steht aus, braucht Stefans OK** (ändert Zonen + `generate.py` + alle rTSS) |
+| **Lauf-Schwellenwerte** | **Schwellenpace 6:28/km · LTHR 185** (aktualisiert 20.9. aus dem Wettkampf; LTHR-Quelle TrainingPeaks) · Zonen: Z1 7:25–8:40 · Z2 6:55–7:25 · Z3 6:10–6:40 · Z4 5:25–6:10 · ⚠️ **in intervals.icu noch nachtragen**, sonst rechnen rTSS und geplante Lauf-Workouts weiter gegen 6:03 |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
 | **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · **Gewohnte Kadenz ~140 spm** (auch bei Tempo) = Hauptursache · Arbeitsziel jetzt **165–170** (Metronom 160→165) · **wichtigstes Laufprojekt der nächsten 6–8 Wochen** |
 | **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |

@@ -21,6 +21,12 @@
 - **Rahmenplanung KW40–42 angelegt** (Dashboard-Ausblick): KW40 = 🔬 FTP-Herbsttest Sentiero 3+10min, erster Test am Tarmac/XCadey · KW41–42 = Neuaufbau + Kadenz-Projekt (140 → 155–165). Testfenster in `athlete/fortschritt.md` von KW39 auf KW40 korrigiert.
 - **Offen von Stefan:** offizielle Zeit · Wade/Nacken nach 66min Belastung · Kadenz-Gefühl im Rennen · ob der Verlauf dem Splitplan folgte (km 1–2 kontrolliert?).
 
+**Nachtrag 20.9., Stefans Freigabe:** Schwellenpace **6:03 → 6:28/km** übernommen; LTHR auf **185** gesetzt — Quelle ist die TrainingPeaks-Auto-Erkennung nach dem Seelauf (Stefans Vorgabe), sie liegt 2 bpm über meiner Ableitung aus der Renn-Ø 183 und ist damit die konservativere, gut belegte Variante.
+- Neue Laufzonen: Z1 Easy 7:25–8:40 (150–165 bpm) · Z2 6:55–7:25 (165–176) · Z3 Schwelle 6:10–6:40 (176–189) · Z4 VO2max 5:25–6:10 (189–200+)
+- Geändert: `athlete/profil.md` (Zonen, Easy-Tempo, 5km-Prognose 29:11 → 31:15), `athlete/fortschritt.md`, `generate.py` (`get_zone_data`), `dashboard.template.html` (HF-Spalte jetzt bpm statt %HFmax), Coach-Skill (Pacebänder + `pace_pct`-Warnung), `COACH_MEMORY.md`, `CLAUDE.md`
+- **Gegenprobe Easy-Runs:** belegte 7:10–7:35/km @ 155–163 bpm fallen jetzt an den schnellen Rand von Z1 bzw. in Z2 — passt zur alten Beobachtung, dass 7:00/km für Stefan kein Easy-Tempo ist. HF-Regel bleibt führend (≤165, nie unter 160 cappen).
+- ⚠️ **Offen, nur Stefan kann es:** dieselben Werte in intervals.icu hinterlegen (Sport Settings → Run: Threshold Pace 6:28/km, LTHR 185). Bis dahin rechnet intervals.icu rTSS, Zonen und die `pace_pct`-Ziele geplanter Lauf-Workouts weiter gegen 6:03/km.
+
 ---
 
 ## 18. September 2026 – Rennwoche Check-In (T-2)

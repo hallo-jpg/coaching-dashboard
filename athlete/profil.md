@@ -71,24 +71,28 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 | Parameter | Wert | Anmerkung |
 |---|---|---|
 | VO2max (COROS) | 44 (unzuverlässig – Sentiero: 59) | Erwarteter Lauf-VO2max ~52–54 initial |
-| Schwellenpace | 6:03 /km | Basis für rTSS-Berechnung (IF = 1.0) · ⚠️ **Schätzwert vom Projektstart, nie belegt.** 10km-Wettkampf 20.9. (6:31/km @ Ø HF 183 über 66min) deutet auf real ≈ **6:28/km** → Update inkl. Zonen + `generate.py` steht aus, braucht Stefans OK |
-| HF-Schwelle | 179 bpm | LTHR · ⚠️ aus Trainingsläufen abgeleitet; Wettkampf-Ø 183 über 66min, 41% der Zeit über 184 → real eher **183–185** |
+| Schwellenpace | **6:28 /km** | Basis für rTSS-Berechnung (IF = 1.0) · **aktualisiert 20.09.2026** aus dem 10km-Wettkampf (6:31/km @ Ø HF 183 über 66min) · vorher 6:03/km = Schätzwert vom Projektstart, nie belegt |
+| HF-Schwelle | **185 bpm** | LTHR · **aktualisiert 20.09.2026**, Quelle: TrainingPeaks-Auto-Erkennung nach dem Seelauf · deckt sich mit Wettkampf-Ø 183 über 66min (41% der Zeit über 184) · vorher 179 aus Trainingsläufen |
 | **HFmax** | **205 bpm** | gemessen |
-| 5km Prognose | ~29:11 (5:50/km) | ⚠️ aus der zu schnellen Schwellenpace gerechnet – unrealistisch, realistisch ~31:00 |
+| 5km Prognose | ~31:15 (6:15/km) | Neu aus Schwellenpace 6:28/km · alter Wert 29:11 stammte aus der zu schnellen Schwelle 6:03 |
 | 10km **Ist** | **1:05:08** (6:31/km) | 🏁 Karlsfelder Seelauf 20.09.2026 – erster echter Wettkampf, ersetzt jede Prognose |
 | Laufeinheiten/Woche | **2–4** (Ziel: 25–33% des Gesamtvolumens) | |
-| Easy-Run-Tempo | 7:00–7:45/km | Konsequent unter aerober Schwelle |
+| Easy-Run-Tempo | **7:25–8:10/km** | Konsequent unter aerober Schwelle · **bindend ist die HF (≤165 bpm)**, nicht die Pace |
 | Qualitätslauf | 1×/Woche (Schwelle oder VO2max) | |
 | Fokus | Aufbau Running Economy + VO2max | |
 
-**Laufzonen (Schwellenpace 6:03/km) – HF-Spalte am 26.7.2026 an Messdaten korrigiert:**
+**Laufzonen (Schwellenpace 6:28/km · LTHR 185) – aktualisiert 20.09.2026 nach dem ersten 10km-Wettkampf:**
 
-| Zone | Pace | HF (gemessen) | Beschreibung |
+| Zone | Pace | HF | Beschreibung |
 |---|---|---|---|
-| Z1 Easy | 7:00–8:15/km | **150–165 bpm** | Volle Unterhaltung, Faustregel |
-| Z2 Aerob | 6:30–7:00/km | 165–172 bpm | Leicht sprechen |
-| Z3 Schwelle | 5:45–6:15/km | 172–182 bpm | Kurze Sätze |
-| Z4 VO2max | 5:00–5:45/km | 182–195 bpm | Sprechen unmöglich |
+| Z1 Easy | 7:25–8:40/km | **150–165 bpm** | Volle Unterhaltung · HF-Cap 165 ist bindend |
+| Z2 Aerob | 6:55–7:25/km | 165–176 bpm | Leicht sprechen |
+| Z3 Schwelle | 6:10–6:40/km | 176–189 bpm | Kurze Sätze · LTHR 185 liegt hier |
+| Z4 VO2max | 5:25–6:10/km | 189–200+ bpm | Sprechen unmöglich · Wettkampf-max 196 beobachtet |
+
+> **Herkunft:** Pace-Bänder gerechnet aus Schwellenpace 388 s/km (Z1 +57…+132 · Z2 +27…+57 · Z3 −18…+12 · Z4 −63…−18), HF-Bänder aus LTHR 185. Die vorherige Fassung stand auf 6:03/km und LTHR 179 — beides Schätzwerte ohne Wettkampfbeleg.
+>
+> ⚠️ **Gegenprobe Easy-Runs:** Die belegten Easy-Läufe (7:10–7:35/km @ 155–163 bpm) fallen jetzt an den schnellen Rand von Z1 bzw. in Z2 — das passt zu der seit KW18 bekannten Beobachtung, dass 7:00/km für Stefan **kein** Easy-Tempo ist. Die HF-Regel bleibt führend: Easy nie über 165 bpm, nie unter 160 cappen.
 
 > ⚠️ **Wichtig für den Coach: Stefans Lauf-HF liegt systematisch ~25–30 bpm über dem Rad-Äquivalent bei gleicher Belastungsstufe. Easy-Läufe liegen bei 155–165 bpm, nicht bei 130–148.**
 >

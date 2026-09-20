@@ -418,11 +418,11 @@ def get_power_bests() -> list[dict]:
 
 
 def get_zone_data() -> dict:
-    """Static training zones for dashboard tiles. Values from athlete/profil.md (Sentiero FTP 305W)."""
+    """Static training zones for dashboard tiles. Values from athlete/profil.md (Sentiero FTP 305W · Lauf: Schwellenpace 6:28/km, LTHR 185 seit 20.09.2026)."""
     return {
         "ftp": 305,
-        "schwelle_pace": "6:03/km",
-        "lthr": 179,
+        "schwelle_pace": "6:28/km",
+        "lthr": 185,
         "rad": [
             {"label": "Z0 Recovery", "range": "0–159W",   "pct": "<52%",     "color": "#64748b", "text_class": "muted"},
             {"label": "Z1 Base",     "range": "160–188W", "pct": "52–62%",   "color": "#38bdf8", "text_class": "normal"},
@@ -433,10 +433,10 @@ def get_zone_data() -> dict:
             {"label": "Z6 Anaerob",  "range": "423W+",    "pct": ">138%",    "color": "#dc2626", "text_class": "hot"},
         ],
         "lauf": [
-            {"label": "Z1 Easy",     "pace": "7:00–7:45", "hf_pct": "60–72%", "color": "#38bdf8", "text_class": "normal"},
-            {"label": "Z2 Aerob",    "pace": "6:30–7:00", "hf_pct": "72–82%", "color": "#2dd4bf", "text_class": "normal"},
-            {"label": "Z3 Schwelle", "pace": "5:45–6:15", "hf_pct": "82–92%", "color": "#fb923c", "text_class": "warm"},
-            {"label": "Z4 VO2max",   "pace": "5:00–5:45", "hf_pct": "92–100%","color": "#f87171", "text_class": "hot"},
+            {"label": "Z1 Easy",     "pace": "7:25–8:40", "hf_pct": "150–165", "color": "#38bdf8", "text_class": "normal"},
+            {"label": "Z2 Aerob",    "pace": "6:55–7:25", "hf_pct": "165–176", "color": "#2dd4bf", "text_class": "normal"},
+            {"label": "Z3 Schwelle", "pace": "6:10–6:40", "hf_pct": "176–189", "color": "#fb923c", "text_class": "warm"},
+            {"label": "Z4 VO2max",   "pace": "5:25–6:10", "hf_pct": "189–200", "color": "#f87171", "text_class": "hot"},
         ],
     }
 
