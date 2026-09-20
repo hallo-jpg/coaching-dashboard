@@ -35,6 +35,30 @@
 
 ---
 
+## 20. September 2026 – Analyse: Warum sich der Radmotor nicht aufs Laufen überträgt
+
+**Stefans Frage:** „Vom Radfahren müsste ich einen guten Motor haben, kriege das aber nicht aufs Laufen übertragen. Kann meine Laufökonomie so schlecht sein?"
+
+**Kurzantwort:** Die Lücke ist real, aber Ökonomie ist nur der dritte von drei Gründen — und der kleinste.
+
+**Transfer-Rechnung (Schätzwerte, klar als solche kennzeichnen):**
+- Rad-VO2max aus FTP 305W / 91kg (ACSM: 10,8 × W/kg + 7 → 43,2 ml/kg/min bei FTP, FTP ≈ 87% VO2max) → **≈ 48–50 ml/kg/min**. Der Sentiero-Wert 59 ist optimistischer; das Argument gilt mit beiden.
+- Renn-VO2 beim Seelauf: 9,21 km/h × Laufkosten 200–230 ml O2/kg/km → **≈ 31–35 ml/kg/min** = nur **62–73%** der Rad-VO2max — bei Ø HF 183 und 27min über der Schwelle, also maximaler Ausbelastung.
+- „Wenn der Motor voll durchschlüge": 88% von 48 ml/kg/min bei normaler Ökonomie → 12,7 km/h = 4:43/km = **47 min auf 10km**. Bei schlechter Ökonomie (230 ml/kg/km) → 5:27/km = 54:30. Beides ist keine Prognose, sondern zeigt die Größe der Lücke.
+
+**Die drei Ursachen, nach Gewicht:**
+1. **Lauf-spezifisches Volumen (mit Abstand der größte Faktor).** 2026: **40 Läufe, ~250 km in 9 Monaten = 6,5 km/Woche**, 30h Laufen gegen 152h Rad (16% der Trainingszeit). Der längste Lauf seit März war 6,9 km — das Rennen war 46% länger als alles, was er seit einem halben Jahr gelaufen ist. Auf 6,5 km/Woche baut niemand Laufleistung auf, egal wie gut der Motor ist.
+2. **Körpergewicht 91 kg.** Beim Laufen wird jedes Kilo bei jedem Schritt getragen (Kosten ~200 ml O2/kg/km, weitgehend unabhängig vom Tempo); auf dem flachen Rad zählen absolute Watt, da ist Masse kein reiner Nachteil. Deshalb fühlt sich der Transfer schlechter an, als er ist. −6 kg ≈ 4–5% schneller (66:00 → ~63:00) — Stefans Entscheidung, nicht vom Coach vorzugeben.
+3. **Ökonomie / Mechanik.** 154 spm bei 1,00 m Schrittlänge und 91 kg = lange Bodenkontaktzeit, Bremskräfte. Real, aber über 6–8 Wochen Kadenzarbeit eher 3–6% wert — das ist das Kadenz-Projekt.
+
+**Nicht vergessen:** Der „Radmotor" ist aktuell selbst nicht auf Stand — CTL 24, nur 7,7h Rad im September, 3,6h im August; FTP 305W stammt aus April vom alten 4iiii. Verglichen wird also mit einem Motor von Anfang 2026.
+
+**Realistischer Zielkorridor:** Bei konsequent 25–40 km/Woche über 6–12 Monate sind **5:45–6:05/km = 57:30–61:00** erreichbar. Sub-60 ist kein Fantasieziel — es war nur auf 6,5 km/Woche nie erreichbar.
+
+**Zur Kommunikation:** Stefan hört „schlechte Laufökonomie" als Selbstdiagnose Schwäche. Richtige Rahmung: er hat nie *gelaufen*, nur gelegentlich Läufe gemacht. Das Rennen zeigt, was mit fast keiner Laufbasis geht — nicht die Obergrenze.
+
+---
+
 ## 18. September 2026 – Rennwoche Check-In (T-2)
 
 - Mo Sharpening ✅ (38 TSS) · Di LIT-Rad ✅ aber 2:16h/85 TSS statt 1h/37 · Mi Ruhe ✅ · **Do Openers ❌ ausgefallen** · Fr kurz Indoor-Rad locker (Plan: Ruhe)

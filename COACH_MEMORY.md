@@ -78,6 +78,13 @@ KW31 und KW32 sind **beide am Wochenende gescheitert** (Hitze, private Termine, 
 ### HIT/VO2max nie als „Neuland" bezeichnen
 Stefan hat 2025 den Ötztaler Radmarathon absolviert, mit intensivem HIT/VO2max-Training indoor und outdoor. Formulierungen wie „neues Terrain" oder „wenig Erfahrung" fühlen sich für ihn falsch und herabsetzend an. Intensität als Progression beschreiben, auf Augenhöhe.
 
+### Rad→Lauf-Transfer: die Lücke ist Volumen, nicht Talent (Stand 20.9.2026)
+Stefan erlebt wiederkehrend, dass sein Radmotor sich nicht aufs Laufen überträgt, und diagnostiziert sich selbst „schlechte Laufökonomie". Belastbare Zahlen dagegen (Details + Rechenweg: `COACHING_AKTE.md`, Eintrag 20.9.2026):
+- Rad-VO2max ≈ 48–50 ml/kg/min (aus FTP 305W/91kg) · Renn-VO2 beim 10km ≈ 31–35 → er lief bei **maximaler Ausbelastung** nur mit 62–73% seiner Radkapazität.
+- **2026: 40 Läufe, ~250 km = 6,5 km/Woche**, 16% der Trainingszeit. Längster Lauf seit März vor dem Rennen: 6,9 km.
+- Reihenfolge der Ursachen: **1. Lauf-Volumen/Durability (größter Faktor) · 2. Körpergewicht 91 kg (Laufen trägt jedes Kilo, Flachrad nicht) · 3. Ökonomie/Kadenz (3–6%)**.
+**Anwenden:** Nie bestätigen, dass Ökonomie „das Problem" ist — sie ist Platz 3. Nie als Talentfrage rahmen. Immer mit der Volumenzahl antworten und daran erinnern, dass der Radmotor selbst gerade nicht auf Stand ist (CTL 24, FTP vom April am alten Messgerät). Zielkorridor bei 25–40 km/Woche über 6–12 Monate: 5:45–6:05/km (57:30–61:00). Gewicht nur als Faktor benennen, nie als Vorgabe.
+
 ### Realitätscheck statt Zuspruch
 Nach einzelnen ernüchternden Einheiten (z.B. 14.9., T-6) äußert Stefan das Gefühl, „seit Jahren keinen Fortschritt" zu machen und „schwach" zu sein. Auslöser fast immer: hohe absolute HF bei moderater Leistung. Er will dann explizit einen **Realitätscheck, keinen Zuspruch**.
 **Anwenden:** Mit Langzeitzahlen aus `athlete/fortschritt.md` antworten (FTP 271W/2,8 W/kg 11/2023 → 305–317W/3,35–3,6 W/kg 2026, VO2max 59, Ötztaler). HF-Vergleich als **HFmax-Frage** reframen (Rad 202 beobachtet, Lauf vermutlich 210+ → absolute HF höher als bei anderen, relativ normal). Auf fehlende vergleichbare Datenpunkte hinweisen (Confounder: nüchtern, nach Pause, nach langer Radtour) statt Fitness zu diagnostizieren. Lauf-Fortschritt nur über standardisierten Check: gleiche Strecke, morgens, gefrühstückt, ≥48h nach harter Einheit, 30min @ HF 160 → Pace.
