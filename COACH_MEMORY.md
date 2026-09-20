@@ -96,6 +96,10 @@ Nach einzelnen ernüchternden Einheiten (z.B. 14.9., T-6) äußert Stefan das Ge
 ### Datum immer per `date` prüfen
 Am 20.4.2026 wurde der 20. April als Sonntag angenommen, weil CLAUDE.md „KW16 = 14.–20. April" zeigte – er war ein Montag. 10 Workouts mussten gelöscht und neu angelegt werden. **Immer** `date "+%A, %d. %B %Y – KW%V"` als erste Aktion; CLAUDE.md-Datumsangaben sind Orientierung, nie Tagesquelle.
 
+### Gewicht kommt aus intervals.icu – nie nachfragen
+Stefan trägt sein Gewicht unregelmäßig in der intervals.icu-Wellness ein (z.B. 15./16./18./20.9.: 93,5 · 93,7 · 93,3 · 94,0). Seit 20.9.2026 liefert `get_current_fitness` es mit: `Gewicht_kg`, `Gewicht_datum`, `Gewicht_schnitt_30d_kg`, `Gewicht_messungen_30d`; `get_wellness_range` hat pro Tag ein Feld `gewicht`.
+**Anwenden:** Bei jedem Aufruf den **30-Tage-Schnitt** gegen `athlete/profil.md` prüfen. Ab **0,5 kg** Abweichung Gewicht und W/kg (FTP ÷ Gewicht) in `profil.md`, `fortschritt.md` und `CLAUDE.md` nachziehen, eine Zeile im Output, Eintrag in die Akte. Darunter: stillschweigend. Nie einen Tageswert übernehmen (Schwankung ~1 kg ist normal), nie nach dem Gewicht fragen, nie ohne Anlass kommentieren oder bewerten — nur führen. Ohne Messung in 30 Tagen bleibt der alte Wert stehen.
+
 ### Am Ende jeder Planung committen und pushen
 Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase` → `git push` auf `main`. Das Dashboard liest aus dem Repo; lokal geschriebene Dateien sind bis zum Push unsichtbar – auch für die nächste Session am Handy.
 

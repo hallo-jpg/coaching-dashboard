@@ -67,7 +67,7 @@ const server = new McpServer({
 // ── Tool 1: Aktuelle Fitness (CTL/ATL/TSB + HRV) ────────────
 server.tool(
   "get_current_fitness",
-  "Aktuelle Fitness-Metriken: CTL, ATL, TSB (Form), HRV, Ruhepuls, Schlaf. Liefert die letzten 7 Tage.",
+  "Aktuelle Fitness-Metriken: CTL, ATL, TSB (Form), HRV, Ruhepuls, Schlaf, Körpergewicht. Liefert die letzten 7 Tage.",
   {},
   async () => {
     const oldest = daysAgo(7);
@@ -80,6 +80,20 @@ server.tool(
     const latest = data[data.length - 1];
     const tsb = latest.ctl && latest.atl ? (latest.ctl - latest.atl).toFixed(1) : "n/a";
 
+    // Gewicht: Stefan traegt es unregelmaessig ein -> letzten Wert im 7-Tage-
+    // Fenster suchen, sonst 120 Tage zurueckschauen. Zusaetzlich der Schnitt der
+    // letzten bis zu 7 Messungen, damit Tagesschwankungen nicht durchschlagen.
+    const weightWindow = await apiFetch(`/wellness?oldest=${daysAgo(120)}&newest=${newest}`);
+    const weightRows   = weightWindow.filter(d => d.weight);
+    const cutoff30     = daysAgo(30);
+    const recent30     = weightRows.filter(d => d.id >= cutoff30).map(d => d.weight);
+    // Schnitt nur ueber die letzten 30 Tage – aeltere Messungen wuerden einen
+    // Gewichtssprung verwaessern. Ohne Messung in 30 Tagen: nur letzter Einzelwert.
+    const weightAvg = recent30.length
+      ? (recent30.reduce((a, b) => a + b, 0) / recent30.length).toFixed(1)
+      : null;
+    const weightLatest = weightRows.length ? weightRows[weightRows.length - 1] : null;
+
     const summary = {
       datum: latest.id,
       CTL: latest.ctl?.toFixed(1) ?? "n/a",
@@ -88,6 +102,10 @@ server.tool(
       HRV: latest.hrv ?? "n/a",
       Ruhepuls: latest.restingHR ?? "n/a",
       Schlaf_h: latest.sleepSecs ? (latest.sleepSecs / 3600).toFixed(1) : "n/a",
+      Gewicht_kg: weightLatest ? weightLatest.weight : "n/a",
+      Gewicht_datum: weightLatest ? weightLatest.id : null,
+      Gewicht_schnitt_30d_kg: weightAvg,
+      Gewicht_messungen_30d: recent30.length,
       Verlauf_7Tage: data.map(d => ({
         datum: d.id,
         ctl: d.ctl?.toFixed(1),
@@ -95,6 +113,7 @@ server.tool(
         tsb: d.ctl && d.atl ? (d.ctl - d.atl).toFixed(1) : null,
         hrv: d.hrv,
         schlaf_h: d.sleepSecs ? (d.sleepSecs / 3600).toFixed(1) : null,
+        gewicht: d.weight ?? null,
       }))
     };
 
@@ -966,7 +985,7 @@ server.tool(
 // ── Tool 6 (Wellness): Zeitraum ──────────────────────────────
 server.tool(
   "get_wellness_range",
-  "Wellness-Daten (HRV, CTL, ATL, Schlaf) für einen bestimmten Zeitraum – für Trend-Analyse.",
+  "Wellness-Daten (HRV, CTL, ATL, Schlaf, Gewicht) für einen bestimmten Zeitraum – für Trend-Analyse.",
   {
     oldest: z.string().describe("Startdatum YYYY-MM-DD"),
     newest: z.string().describe("Enddatum YYYY-MM-DD"),
@@ -982,6 +1001,7 @@ server.tool(
       ruhepuls: d.restingHR,
       schlaf_h: d.sleepSecs ? (d.sleepSecs / 3600).toFixed(1) : null,
       schlaf_qualitaet: d.sleepQuality ?? null,
+      gewicht: d.weight ?? null,
       ermuedung:   d.fatigue  ?? null,
       muskelkater: d.soreness ?? null,
       stress:      d.stress   ?? null,

@@ -23,9 +23,9 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 | Parameter | Wert | Anmerkung |
 |---|---|---|
 | **FTP** | **305W** | Sentiero-Modell (3+10min Protokoll, 4iiii Referenz – altes Setup) |
-| **Gewicht** | **93–94 kg** | Stand 20. September 2026 (Stefans Angabe) · vorher 91 kg (1. Juni 2026) |
+| **Gewicht** | **93,6 kg** | Ø der Messungen der letzten 30 Tage aus intervals.icu (letzte: 94,0 am 20.09.2026) · wird vom Coach automatisch gepflegt · vorher 91 kg (1. Juni 2026) |
 | **Größe** | 190 cm | |
-| **W/kg** | 3,26 | bei 305W / 93,5kg · (3,35 bei 91kg im Juni) |
+| **W/kg** | 3,26 | bei 305W / 93,6kg · (3,35 bei 91kg im Juni) |
 | **VO2max** | 59 ml/min/kg | Sentiero metabolisches Profil |
 | **FatMax** | 202W | Sentiero |
 | **Erfahrung** | ~3 Jahre | strukturiertes Ausdauertraining · Ötztaler Radmarathon 2025 ✅ |

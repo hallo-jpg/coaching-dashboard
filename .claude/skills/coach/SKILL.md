@@ -188,6 +188,18 @@ Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.m
 5. `get_power_curve` → All-Time Rad-Bestwerte (3min/10min/20min) für Check B Vergleich gegen all-time Referenz in `fortschritt.md`
 6. `get_pace_curve` → All-Time Lauf-Bestwerte (1,5km/5km/10km) für Check C Teil 2 Vergleich gegen `fortschritt.md` Lauf-PR-Referenz
 
+**Gewichts-Check (bei jedem Aufruf, automatisch):**
+
+`get_current_fitness` liefert `Gewicht_kg` (letzte Messung), `Gewicht_datum`, `Gewicht_schnitt_30d_kg` und `Gewicht_messungen_30d`. Stefan trägt sein Gewicht unregelmäßig in intervals.icu ein — er muss es nie im Chat nennen.
+
+| Situation | Aktion |
+|---|---|
+| `Gewicht_schnitt_30d_kg` weicht **≥ 0,5 kg** vom Wert in `athlete/profil.md` ab | Gewicht + W/kg (FTP ÷ Gewicht) in `athlete/profil.md`, `athlete/fortschritt.md` (Historischer Vergleich + Gewichtsverlauf) und `CLAUDE.md` aktualisieren · eine Zeile im Output: „Gewicht aus intervals.icu übernommen: X,X kg (Ø 30d, vorher Y,Y)" · Eintrag in `COACHING_AKTE.md` |
+| Abweichung **< 0,5 kg** | nichts tun, nicht erwähnen |
+| Keine Messung in 30 Tagen (`Gewicht_messungen_30d` = 0) | Wert in den Dateien stehen lassen, **nicht** auf einen alten Einzelwert zurücksetzen · bei Bedarf einmal erwähnen, dass länger nichts eingetragen wurde |
+
+Immer den **30-Tage-Schnitt** verwenden, nie einen Tageswert — Tagesschwankungen von 1 kg sind normal (Wasser, Glykogen, Tageszeit). Gewicht nie kommentieren oder bewerten, nur führen; Gewichtsziele nur, wenn Stefan sie anspricht.
+
 **Readiness-Score Interpretationslogik:**
 | Score | Ampel | Konsequenz |
 |---|---|---|

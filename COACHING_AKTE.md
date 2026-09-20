@@ -35,6 +35,17 @@
 
 ---
 
+## 20. September 2026 – Gewicht kommt ab jetzt automatisch aus intervals.icu
+
+Stefans Wunsch: er trägt das Gewicht gelegentlich in intervals.icu ein, der Coach soll es von dort übernehmen statt nachzufragen.
+
+- **MCP erweitert** (`intervals-mcp/server.js`): `get_current_fitness` liefert jetzt `Gewicht_kg`, `Gewicht_datum`, `Gewicht_schnitt_30d_kg`, `Gewicht_messungen_30d` (Suchfenster 120 Tage, Schnitt nur über 30 Tage); `get_wellness_range` hat pro Tag ein Feld `gewicht`. ⚠️ **MCP-Server muss einmal neu gestartet werden**, damit die Felder ankommen.
+- **Skill-Schritt ergänzt** (Schritt 0, vor der Readiness-Logik): ab 0,5 kg Abweichung vom Wert in `profil.md` werden Gewicht + W/kg in `profil.md`, `fortschritt.md` und `CLAUDE.md` nachgezogen, mit einer Zeile im Output und einem Akte-Eintrag. Darunter stillschweigend. Immer 30-Tage-Schnitt, nie ein Tageswert. Ohne Messung in 30 Tagen bleibt der alte Wert stehen.
+- **Erster automatischer Abgleich:** Messungen der letzten 30 Tage 93,5 · 93,7 · 93,3 · 94,0 → **Ø 93,6 kg** (vorher in den Dateien: 91 kg vom 1.6.). W/kg bei FTP 305: 3,35 → **3,26**.
+- Regel in `COACH_MEMORY.md` hinterlegt: nie nach dem Gewicht fragen, nie unaufgefordert kommentieren oder bewerten — nur führen.
+
+---
+
 ## 20. September 2026 – Analyse: Warum sich der Radmotor nicht aufs Laufen überträgt
 
 **Stefans Frage:** „Vom Radfahren müsste ich einen guten Motor haben, kriege das aber nicht aufs Laufen übertragen. Kann meine Laufökonomie so schlecht sein?"

@@ -19,10 +19,10 @@
 | | Früher | Jetzt | Δ |
 |---|---|---|---|
 | FTP absolut | 324W | 305W | −19W (−5,9%) |
-| Gewicht | 97 kg | 93–94 kg | −3,5 kg (−3,6%) |
+| Gewicht | 97 kg | 93,6 kg | −3,4 kg (−3,5%) |
 | W/kg | 3,34 | 3,26 | −0,08 (−2,4%) |
 
-*Gewichtsverlauf: 97 kg (2023) → 91 kg (1.6.2026, Tiefstwert) → **93–94 kg (20.9.2026)**. Die Pause nach dem Unfall am 28.6. und das reduzierte Volumen im Sommer erklären den Wiederanstieg. Relevanz: beim Laufen wird jedes Kilo bei jedem Schritt getragen (~200 ml O₂/kg/km), auf dem flachen Rad zählen absolute Watt — Gewicht wirkt sich beim Laufen deutlich stärker aus.*
+*Gewichtsverlauf: 97 kg (2023) → 91 kg (1.6.2026, Tiefstwert) → **93,6 kg (Ø 30 Tage, Stand 20.9.2026)**. Quelle ab jetzt: intervals.icu-Wellness, der Coach liest den Wert bei jedem Aufruf aus. Die Pause nach dem Unfall am 28.6. und das reduzierte Volumen im Sommer erklären den Wiederanstieg. Relevanz: beim Laufen wird jedes Kilo bei jedem Schritt getragen (~200 ml O₂/kg/km), auf dem flachen Rad zählen absolute Watt — Gewicht wirkt sich beim Laufen deutlich stärker aus.*
 
 ## VO2max-Verlauf
 
