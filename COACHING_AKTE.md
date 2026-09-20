@@ -1,7 +1,25 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 18. September 2026*
+*Letzte Aktualisierung: 20. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 20. September 2026 – 🏁 Karlsfelder Seelauf: Zielrennen abgeschlossen
+
+**Ergebnis:** 10-km-Split der Uhr **1:05:08 (6:31/km)** · gesamt 66:00 über 10,1 km Uhr-Distanz · Ø HF 183, max 196 · RPE 8 · 95 TSS. Offizielle Chip-Zeit noch nachzutragen.
+**PR:** alte 10-km-Bestzeit 1:11:28 (18.3., Trainingslauf) → **−6:20 / 8,9% schneller**. Erster echter 10-km-Wettkampf.
+**Ziel getroffen:** Korridor 6:30–6:40/km → ~66:00, gelaufen 6:31/km.
+
+- **Stefans Zielzeit war richtig, meine Ableitung zu konservativ** (6:50/km aus dem 9.9.-Intervall = 20 sek/km daneben). Der Ableitungs-Datenpunkt war ein Intervalllauf mit Trabpausen bei ACWR 1,7 / TSB −15, zwei Tage nach 5,5h Rad — kein Renn-Setup. → in `COACH_MEMORY.md` übernommen.
+- **HF-Gate war zu eng:** Regel "km 5 >182 bpm → auf 6:45 zurück" hätte das Rennen gebremst. Renn-Ø 183 über 66min, 41% der Zeit über 184 bpm, max 196 → Lauf-LTHR real eher **183–185** (gespeichert: 179), Lauf-HFmax deutlich über 196.
+- **Schwellenpace 6:03/km ist zu schnell angesetzt** (Schätzwert vom Projektstart, nie durch Wettkampf belegt). Ein 10-km-Maximalwettkampf läuft ≈ auf Schwellenniveau → real ≈ **6:28/km**. Folgen: rTSS aller Läufe zu niedrig (Rennen 95 statt ~110), Lauf-CTL systematisch untertrieben, Laufzonen Z1–Z4 zu schnell. → **Vorschlag an Stefan: Schwellenpace 6:28, LTHR 183.** Ändert `athlete/profil.md`, `generate.py`, alle künftigen rTSS. Zustimmung steht aus.
+- **KW38 Retro:** TSS 248 / Soll ~117 (212% — Artefakt: Renntag ohne TSS-Soll geplant + Di-Ausfahrt 2:16h statt 1h) · Polarisation 1 Rad-Einheit: LIT 80% / Grauzone 16% ⚠️ / HIT 4%, PI 96% · HRV 62 → 52 ↘ · Note 🟢. Do-Openers ausgefallen, T-1-Touch hat den Taper trotzdem getragen.
+- **KW38 archiviert** → `planung/archiv/kw38.md` inkl. Renn-Analyse.
+- **Status nach dem Rennen:** CTL 23,9 · ATL 40,6 · TSB −16,7 · Readiness 78 🟡 (Muster: Trainings-Ermüdung, keine Krank-Indikatoren) · subjektiv 100/100.
+- **KW39 (Kroatien):** bleibt Recovery wie geplant — Mo/Di Pause, Mi erste lockere 25min, Fr/So Kadenz-Einheiten mit Metronom 160. Detailplanung auf Stefans Wunsch im Laufe der Woche.
+- **Rahmenplanung KW40–42 angelegt** (Dashboard-Ausblick): KW40 = 🔬 FTP-Herbsttest Sentiero 3+10min, erster Test am Tarmac/XCadey · KW41–42 = Neuaufbau + Kadenz-Projekt (140 → 155–165). Testfenster in `athlete/fortschritt.md` von KW39 auf KW40 korrigiert.
+- **Offen von Stefan:** offizielle Zeit · Wade/Nacken nach 66min Belastung · Kadenz-Gefühl im Rennen · ob der Verlauf dem Splitplan folgte (km 1–2 kontrolliert?).
 
 ---
 

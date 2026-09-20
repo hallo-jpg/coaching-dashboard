@@ -33,11 +33,12 @@
 
 | Datum | Schwellenpace | 5km Prognose | Notiz |
 |---|---|---|---|
-| 29.03.2026 | 6:03/km | 29:11 | Projektstart |
+| 29.03.2026 | 6:03/km | 29:11 | Projektstart – Schätzwert, nie durch einen Wettkampf belegt |
+| 20.09.2026 | *Vorschlag 6:28/km* | ~31:10 | 🏁 10km-Wettkampf 6:31/km @ Ø HF 183 (66min) → Schwellenpace real ≈ 6:28, LTHR eher 183 statt 179. **Update steht aus, Stefans OK nötig** (ändert Zonen + `generate.py` + alle rTSS) |
 
 ## Nächster FTP-Test
 
-**Testfenster:** KW39 (21.–27. Sep 2026) – Herbsttest nach Sommerpause + Herbstaufbau
+**Testfenster:** KW40 (28. Sep – 4. Okt 2026) – Herbsttest, von KW39 verschoben (≥11 Tage Abstand zum Seelauf). **Erster Test am neuen Setup** (Tarmac SL8 / XCadey) – FTP 305W stammt noch vom 4iiii.
 **Methode:** 3+10min Protokoll, outdoor, 4iiii Referenz
 **Hinweis:** KW21-Test gestrichen (03.05.2026) – Krankheit KW16 hat Trainingsgrundlage zu stark reduziert, Fokus auf Aufbau bis KW21
 
@@ -71,9 +72,9 @@
 |---|---|---|---|---|
 | 1,5 km | 8:10 | 5:27/km | 22.02.2026 | All-Time aus intervals.icu |
 | 5 km | 30:46 | 6:09/km | 22.02.2026 | All-Time aus intervals.icu |
-| 10 km | 1:11:28 | 7:09/km | 18.03.2026 | All-Time aus intervals.icu |
+| 10 km | **1:05:08** | **6:31/km** | **20.09.2026** | 🏁 Karlsfelder Seelauf – erster echter 10km-Wettkampf · Uhr-Split (offizielle Zeit nachtragen) · vorher 1:11:28 (18.03., Trainingslauf) |
 
-**Kontext:** 5km-Pace 6:09/km liegt über der Schwellenpace (6:03/km) — typisch für Trainingsläufe ohne Wettkampf-Effort. Echtes 5km-Rennen würde deutlich schneller sein.
+**Kontext:** 5km-Pace 6:09/km stammt aus einem Trainingslauf (22.02.) und blieb im Seelauf unerreicht — die ersten 5 km liefen planmäßig bei ~6:40. Der 10km-Wert ist jetzt der einzige Wettkampf-Datenpunkt und damit die belastbarste Referenz der Lauf-Leistungsfähigkeit.
 
 ---
 

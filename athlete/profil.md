@@ -57,12 +57,12 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 |---|---|---|---|---|
 | RadRace 120 – Zeitfahren | 2026-06-13 | — | TT + Rennen | 2026-05-30 (T-14) |
 | Rosenheimer Radmarathon | 2026-06-28 | — | 197km / 3.550hm Gran Fondo | 2026-06-14 (T-14) |
-| Karlsfelder Seelauf | 2026-09-20 | — | 10km Lauf – max. Pace | 2026-09-06 (T-14) |
+| ~~Karlsfelder Seelauf~~ ✅ | 2026-09-20 | abgeschlossen | 10km Lauf – max. Pace | — · **Ergebnis 1:05:08 / 6:31 pro km** |
 
 *"Tage bis Event" wird vom Coach-Skill beim Aufruf berechnet (heute − Event-Datum). Neue Events hier eintragen.*
 
 ### Weitere Ziele
-- **Karlsfelder Seelauf 20.9.2026 (KW38):** 10km – maximale Pace (Ziel: sub-60min, Stretch: sub-58min auf Basis aktueller Prognose 1:01:46)
+- ~~**Karlsfelder Seelauf 20.9.2026 (KW38):** 10km – maximale Pace~~ ✅ **1:05:08 (6:31/km)**, Ø HF 183 · gelaufenes Ziel war 6:30–6:40/km (~66:00), getroffen · alter Bestwert 1:11:28. Die früheren Prognosen (sub-60, 1:01:46) stammten aus der zu schnell angesetzten Schwellenpace 6:03/km und waren nie realistisch.
 - Laufleistung 2026 gezielt aufbauen: Running Economy + 10km-Tempo (Schwerpunkt Herbstaufbau)
 - Kein Profi-Fokus: bestmöglich performen, nicht um jeden Preis
 
@@ -71,11 +71,11 @@ FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Renner
 | Parameter | Wert | Anmerkung |
 |---|---|---|
 | VO2max (COROS) | 44 (unzuverlässig – Sentiero: 59) | Erwarteter Lauf-VO2max ~52–54 initial |
-| Schwellenpace | 6:03 /km | Basis für rTSS-Berechnung (IF = 1.0) |
-| HF-Schwelle | 179 bpm | LTHR |
+| Schwellenpace | 6:03 /km | Basis für rTSS-Berechnung (IF = 1.0) · ⚠️ **Schätzwert vom Projektstart, nie belegt.** 10km-Wettkampf 20.9. (6:31/km @ Ø HF 183 über 66min) deutet auf real ≈ **6:28/km** → Update inkl. Zonen + `generate.py` steht aus, braucht Stefans OK |
+| HF-Schwelle | 179 bpm | LTHR · ⚠️ aus Trainingsläufen abgeleitet; Wettkampf-Ø 183 über 66min, 41% der Zeit über 184 → real eher **183–185** |
 | **HFmax** | **205 bpm** | gemessen |
-| 5km Prognose | ~29:11 (5:50/km) | |
-| 10km Prognose | ~1:01:46 | |
+| 5km Prognose | ~29:11 (5:50/km) | ⚠️ aus der zu schnellen Schwellenpace gerechnet – unrealistisch, realistisch ~31:00 |
+| 10km **Ist** | **1:05:08** (6:31/km) | 🏁 Karlsfelder Seelauf 20.09.2026 – erster echter Wettkampf, ersetzt jede Prognose |
 | Laufeinheiten/Woche | **2–4** (Ziel: 25–33% des Gesamtvolumens) | |
 | Easy-Run-Tempo | 7:00–7:45/km | Konsequent unter aerober Schwelle |
 | Qualitätslauf | 1×/Woche (Schwelle oder VO2max) | |

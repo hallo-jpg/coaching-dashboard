@@ -2,7 +2,7 @@
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
 *Gilt in jeder Session – lokal wie in der Claude-App. Bei neuen Erkenntnissen oder Korrekturen hier ergänzen, nicht nur im Chat bestätigen.*
-*Stand: 19. September 2026*
+*Stand: 20. September 2026*
 
 ---
 
@@ -12,6 +12,14 @@
 Belegte Easy-Run-Werte über die ganze Saison 2026: **155–163 bpm bei 7:10–7:35/km**, auch bei voller Fitness (CTL 40–48). Beispiele: 6.5. 42min @ 7:30 → 163 · 20.5. 45min @ 7:30 → 161 · 18.3. 73min @ 7:10 → 156.
 **Warum:** Die Laufzonen in `athlete/profil.md` waren ursprünglich von der Rad-HFmax (205) abgeleitet (Z1 = 123–148) – dafür müsste Stefan gehen. Der Fehler wurde dreimal gemacht (KW18, KW19, 26.7.), Stefan hat jedes Mal widersprochen, die Daten geben ihm recht.
 **Anwenden:** Easy-Run-Cap Standard **165**, nie unter 160. Fortschrittsmesser: „Pace bei HF 160" (Referenz 7:30/km @ 163 bei CTL 40). Erhöhte Lauf-HF **nie** als Detraining oder Krankheit deuten, ohne die Belegtabelle im Profil zu prüfen. Aus **einem** Datenpunkt nach ungewohnter Belastung keine Fitnessdiagnose – erst ab 3–4 vergleichbaren Einheiten.
+
+### 🏁 Wettkampf-Referenz Laufen (20.9.2026): 10km in 1:05:08 @ Ø HF 183
+Karlsfelder Seelauf, erster echter 10-km-Wettkampf: **6:31/km über 66min**, Ø HF **183**, max **196**, RPE 8 — 48% der Zeit in 164–184 bpm, **41% über 184 bpm**. Vorheriger 10-km-Bestwert 1:11:28 (Trainingslauf).
+**Anwenden:** Das ist ab jetzt der Ankerpunkt für jede Lauf-Leistungsaussage — kein Trainingslauf mit Confoundern kann ihn überstimmen. Lauf-LTHR liegt real bei **183–185** (gespeichert: 179), Lauf-HFmax deutlich über 196. HF-Obergrenzen in Rennplänen nie unter 185 ansetzen. Die gespeicherte Schwellenpace 6:03/km ist ein Schätzwert vom Projektstart und zu schnell; realistisch ≈ **6:28/km** (Update steht aus, braucht Stefans OK — ändert Zonen, `generate.py` und alle rTSS-Werte rückwirkend in der Bewertung).
+
+### Rennpace nie aus einem Intervalllauf mit Confoundern ableiten
+Vor dem Seelauf leitete der Coach aus 3×7min vom 9.9. eine Rennpace von 6:50/km ab (Prognose 68:20). Stefan entschied sich gegen diese Ableitung für 6:30–6:40 und lief **6:31** — der Coach lag 20 sek/km daneben. Der Ableitungs-Datenpunkt war ein Intervalllauf **mit Trabpausen**, bei ACWR 1,7 und TSB −15, zwei Tage nach 5,5h Rad.
+**Anwenden:** Aus Intervallen mit Pausen, unter Ermüdung oder nach Fremdbelastung wird **keine** Wettkampfpace abgeleitet. Wenn Stefan eine eigene Zielzeit nennt, die über der Coach-Schätzung liegt: nicht kleinrechnen, sondern **mit einem Entscheidungspunkt im Rennen absichern** (Split- und HF-Check bei Halbdistanz) — das hat hier funktioniert. Gate-Schwellen dabei aus Wettkampf-HF ableiten, nicht aus Trainings-LTHR: das km-5-Gate ">182 → langsamer" war zu eng und hätte das Rennen gebremst.
 
 ### HRV-Einbruch + Krank-Risiko-Flag → erst nach Alkohol fragen
 Stefans HRV-Einbrüche gingen wiederholt auf Alkohol zurück, nicht auf Training oder Infekt (17.5. JGA · 2.8. HRV 54→34, Ruhepuls 54→63 nach Gruppenausfahrt mit Bier). Beide Male meldete intervals.icu fälschlich 🔴 Krank-Risiko.
@@ -96,5 +104,6 @@ Aktivitäten, die nur über Strava in intervals.icu ankommen, liefern über die 
 
 - **Halswirbelfraktur 28.6.2026** (Rosenheimer, km 45,8) → 4 Wochen Pause, seit 26.7. Wiedereinstieg mit ärztlicher Freigabe für Laufen und Rad. Nacken-Abbruchkriterien bei jeder Einheit: Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme.
 - **Rad-Setup neu seit Sept. 2026:** Outdoor S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter. Indoor altes Canyon Aeroad ohne PM auf Tacx Flux S → Rollenleistung ist Indoor-Quelle. **FTP 305W stammt vom alten 4iiii-Setup** → Rad-Zonen erst nach neuem 3+10min-Test am Tarmac wieder trainingsleitend; bis dahin Rad nach HF/RPE. Indoor- und Outdoor-Watt nie gleichsetzen.
-- **Zielevent:** Karlsfelder Seelauf 10km, 20.9.2026, Ziel 6:30–6:40/km (~66:00), PR 71:28.
-- **KW39:** Stefan in Kroatien, Mo/Di Arbeit, Mi–Fr Urlaub, Planung im Laufe der Woche.
+- **Zielevent erreicht:** Karlsfelder Seelauf 10km am 20.9.2026 — **1:05:08 / 6:31/km**, Ziel (6:30–6:40) getroffen, PR von 1:11:28 um 6:20 verbessert. Saison-Zielrennen abgeschlossen.
+- **KW39:** Stefan in Kroatien, Mo/Di Arbeit, Mi–Fr Urlaub, Planung im Laufe der Woche. Recovery nach dem Rennen: Mo/Di Pause, erste lockere Einheit frühestens Mi.
+- **Danach:** KW40 FTP-Herbsttest (Sentiero 3+10min, **erster Test am Tarmac/XCadey**) → danach Neuaufbau mit dem Kadenz-Projekt als wichtigstem Laufthema. Kein neues Zielrennen gesetzt — bei der nächsten Planung nach Events für Herbst/Winter fragen.

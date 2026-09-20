@@ -12,16 +12,16 @@
 | **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg · *Referenz, aktuell nicht trainingsleitend* |
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | ~~Rosenheimer Radmarathon~~ ⚠️ · 28. Juni 2026 · **KW26** · nach 45,8km Unfall, abgebrochen |
-| **Zielevent** | 🎯 Karlsfelder Seelauf · 20. September 2026 · **KW38** · 10km Lauf – max. Pace |
-| **Aktuelle KW** | KW38 (14.–20. September 2026) · **Rennwoche** |
-| **Aktuelle Phase** | Rennvorbereitung · Renntempo einprägen, kein Aufbau mehr möglich |
-| **Nächste Phase** | KW38 Rennwoche (Mujika, 3 Touches) · danach Neuaufbau |
-| **Tage bis Rennen** | **1** (Karlsfelder Seelauf So 20.9.) |
-| **CTL** | 22,2 (19.9.) · ATL 32,3 · TSB −10 · Readiness 70 🟡 (HRV 57, Schlaf 8,5h, RP 53) · TSB bei dieser CTL kein Steuerungssignal |
-| **🎯 Renntempo** | **6:30–6:40/km → ~66:00** — Stefans Entscheidung 14.9. (Coach-Ableitung war 6:50 aus 3×7min: 6:34/6:43/6:47 @ HF 172) · PR 71:28 |
-| **Renntaktik** | km 1–2 **6:45** (HF <175) · km 3–7 6:35 · **km 5 HF-Entscheidung** (≤177 drücken · 178–181 halten · >182 auf 6:45 zurück) · km 8–10 6:30+ |
+| **Zielevent** | ~~Karlsfelder Seelauf~~ ✅ · 20. September 2026 · **KW38** · **1:05:08 / 6:31 pro km** · Ziel getroffen, PR −6:20 · **kein neues Zielrennen gesetzt** |
+| **Aktuelle KW** | KW39 (21.–27. September 2026) · Erholung · **Stefan in Kroatien** (Mo/Di Arbeit, Mi–Fr Urlaub) |
+| **Aktuelle Phase** | Recovery nach Zielrennen · Mo/Di Pause, erste lockere Einheit frühestens Mi |
+| **Nächste Phase** | KW40 🔬 **FTP-Herbsttest** (Sentiero 3+10min, erster Test am Tarmac/XCadey) · danach Neuaufbau + Kadenz-Projekt |
+| **Tage bis Rennen** | – · nächster Fixpunkt: FTP-Test KW40 (Do 1.10.) |
+| **CTL** | 23,9 (20.9.) · ATL 40,6 · TSB −16,7 · Readiness 78 🟡 (HRV 52, Schlaf 8,6h, RP 53) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
+| **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
+| **⚠️ Lauf-Schwellenwerte** | Wettkampf-Ø HF 183 über 66min, 41% über 184, max 196 → **LTHR real 183–185** (gespeichert 179), **Schwellenpace real ≈6:28** (gespeichert 6:03) · **Update steht aus, braucht Stefans OK** (ändert Zonen + `generate.py` + alle rTSS) |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
-| **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · **Gewohnte Kadenz ~140 spm** (auch bei Tempo) = Hauptursache · Arbeitsziel **155–165** (Metronom 160), nach dem Rennen 165–170 |
+| **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · **Gewohnte Kadenz ~140 spm** (auch bei Tempo) = Hauptursache · Arbeitsziel jetzt **165–170** (Metronom 160→165) · **wichtigstes Laufprojekt der nächsten 6–8 Wochen** |
 | **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
 | **Steuerung** | Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
