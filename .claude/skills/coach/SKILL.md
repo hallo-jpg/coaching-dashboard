@@ -261,9 +261,10 @@ intervals.icu nutzt ein 7-Zonen-Modell; Stefan's Coaching-Modell hat 7 (Rad) bzw
 - **Rad LIT** = intervals.icu Z1 + Z2 + Z3 (zusammen, <213W · Sentiero Z0–Z2)
 - **Rad Grauzone** = intervals.icu Z4 (213–283W · Sentiero Z3) → bei Polarisations-Check als "Medium" werten
 - **Rad HIT** = intervals.icu Z5 + Z6 + Z7 (>283W · Sentiero Z4–Z6)
-- **Lauf Easy** = intervals.icu Z1 + Z2 (>6:54/km, wenn Schwelle 6:03 gesetzt)
-- **Lauf Qualität** = intervals.icu Z4–Z7 (<6:25/km)
-- **Lauf Grauzone** = intervals.icu Z3 (6:26–6:53/km) → minimal halten
+- **Lauf Easy** = intervals.icu Z1 + Z2 (>7:22/km bei Schwelle 6:28, Stand 20.09.2026)
+- **Lauf Qualität** = intervals.icu Z4–Z7 (<6:51/km)
+- **Lauf Grauzone** = intervals.icu Z3 (6:51–7:21/km) → minimal halten
+- Die Zonennummern skalieren mit der Schwelle — das Mapping bleibt gültig, nur die Pace-Angaben in Klammern ändern sich bei jedem Schwellen-Update.
 
 **Bei Ad-hoc-Anfragen** (Einheit ausgefallen, Terminverschiebung) → Metriken optional, direkt zur Lösung.
 

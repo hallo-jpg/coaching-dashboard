@@ -25,7 +25,13 @@
 - Neue Laufzonen: Z1 Easy 7:25–8:40 (150–165 bpm) · Z2 6:55–7:25 (165–176) · Z3 Schwelle 6:10–6:40 (176–189) · Z4 VO2max 5:25–6:10 (189–200+)
 - Geändert: `athlete/profil.md` (Zonen, Easy-Tempo, 5km-Prognose 29:11 → 31:15), `athlete/fortschritt.md`, `generate.py` (`get_zone_data`), `dashboard.template.html` (HF-Spalte jetzt bpm statt %HFmax), Coach-Skill (Pacebänder + `pace_pct`-Warnung), `COACH_MEMORY.md`, `CLAUDE.md`
 - **Gegenprobe Easy-Runs:** belegte 7:10–7:35/km @ 155–163 bpm fallen jetzt an den schnellen Rand von Z1 bzw. in Z2 — passt zur alten Beobachtung, dass 7:00/km für Stefan kein Easy-Tempo ist. HF-Regel bleibt führend (≤165, nie unter 160 cappen).
-- ⚠️ **Offen, nur Stefan kann es:** dieselben Werte in intervals.icu hinterlegen (Sport Settings → Run: Threshold Pace 6:28/km, LTHR 185). Bis dahin rechnet intervals.icu rTSS, Zonen und die `pace_pct`-Ziele geplanter Lauf-Workouts weiter gegen 6:03/km.
+- ✅ **In intervals.icu übernommen** (Stefan, 20.9.): Schwellentempo 6:28/km, Schwellen-HF 185, HFmax 205 → Repo und intervals.icu rechnen ab jetzt auf derselben Basis. Zonen-Mapping in `COACH_MEMORY.md` hinterlegt.
+
+**Nachtrag Renn-Details (20.9., Stefans Rückmeldung + Aktivitätsdaten):**
+- **Nacken beschwerdefrei** — erste Belastung über 60min seit der Halswirbelfraktur ohne Symptome. Keine Wadenbeschwerden gemeldet.
+- **Kadenz im Rennen: Ø 154 spm** (77,0 rpm ×2), Schrittlänge **1,00 m**, über 66min bei 6:31/km. Vergleich: 4.9. ohne Fokus 141 spm · 6.9. 160 · 7.9. 163 · 9.9. 160 · 14.9. 159 · 19.9. 162.
+  → **+13 spm gegenüber dem Gewohnheitswert**, aber ~6 spm unter den Metronom-Einheiten. Unter Wettkampfstress und über die doppelte gewohnte Dauer driftet die Kadenz zurück. Konsequenz fürs Kadenz-Projekt: Trainingsziel bewusst ~5 spm über dem Wettkampf-Sollwert ansetzen (Training 165–170 → Wettkampf ~160).
+- **HF-Zeit im Rennen (neue Zonen, LTHR 185):** 32min in 175–184 (SubThreshold) · 18min in 185–189 · 9min in 190–195 · 0 über 195. **27min = 41% der Renndauer auf oder über der Schwelle** — bestätigt LTHR 185 als realistisch und den Renneinsatz als maximal.
 
 ---
 
