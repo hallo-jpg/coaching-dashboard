@@ -42,7 +42,8 @@ Stefans Wunsch: er trägt das Gewicht gelegentlich in intervals.icu ein, der Coa
 - **MCP erweitert** (`intervals-mcp/server.js`): `get_current_fitness` liefert jetzt `Gewicht_kg`, `Gewicht_datum`, `Gewicht_schnitt_30d_kg`, `Gewicht_messungen_30d` (Suchfenster 120 Tage, Schnitt nur über 30 Tage); `get_wellness_range` hat pro Tag ein Feld `gewicht`. ⚠️ **MCP-Server muss einmal neu gestartet werden**, damit die Felder ankommen.
 - **Skill-Schritt ergänzt** (Schritt 0, vor der Readiness-Logik): ab 0,5 kg Abweichung vom Wert in `profil.md` werden Gewicht + W/kg in `profil.md`, `fortschritt.md` und `CLAUDE.md` nachgezogen, mit einer Zeile im Output und einem Akte-Eintrag. Darunter stillschweigend. Immer 30-Tage-Schnitt, nie ein Tageswert. Ohne Messung in 30 Tagen bleibt der alte Wert stehen.
 - **Erster automatischer Abgleich:** Messungen der letzten 30 Tage 93,5 · 93,7 · 93,3 · 94,0 → **Ø 93,6 kg** (vorher in den Dateien: 91 kg vom 1.6.). W/kg bei FTP 305: 3,35 → **3,26**.
-- Regel in `COACH_MEMORY.md` hinterlegt: nie nach dem Gewicht fragen, nie unaufgefordert kommentieren oder bewerten — nur führen.
+- Regel in `COACH_MEMORY.md` hinterlegt: nie nach dem Gewicht fragen, nie einen Tageswert übernehmen.
+- **Kommunikationsregel, von Stefan entschieden (Nachfrage am 20.9.):** Gewicht wird **sachlich erwähnt, wenn es für die Sache zählt** — Leistungsanalysen, Renn- und Pace-Prognosen, W/kg, deutlicher Trend über Wochen; als eine Variable unter mehreren, Größenordnung statt Wertung. Kein Bewerten, keine Ernährungstipps ohne Frage, kein Zielgewicht, keine Wiederholung in jeder Wochenplanung. Meine ursprüngliche Fassung („nur auf Nachfrage") hatte ich eigenmächtig gesetzt — sie hätte trainingsrelevante Information zurückgehalten.
 
 ---
 

@@ -98,7 +98,13 @@ Am 20.4.2026 wurde der 20. April als Sonntag angenommen, weil CLAUDE.md „KW16 
 
 ### Gewicht kommt aus intervals.icu – nie nachfragen
 Stefan trägt sein Gewicht unregelmäßig in der intervals.icu-Wellness ein (z.B. 15./16./18./20.9.: 93,5 · 93,7 · 93,3 · 94,0). Seit 20.9.2026 liefert `get_current_fitness` es mit: `Gewicht_kg`, `Gewicht_datum`, `Gewicht_schnitt_30d_kg`, `Gewicht_messungen_30d`; `get_wellness_range` hat pro Tag ein Feld `gewicht`.
-**Anwenden:** Bei jedem Aufruf den **30-Tage-Schnitt** gegen `athlete/profil.md` prüfen. Ab **0,5 kg** Abweichung Gewicht und W/kg (FTP ÷ Gewicht) in `profil.md`, `fortschritt.md` und `CLAUDE.md` nachziehen, eine Zeile im Output, Eintrag in die Akte. Darunter: stillschweigend. Nie einen Tageswert übernehmen (Schwankung ~1 kg ist normal), nie nach dem Gewicht fragen, nie ohne Anlass kommentieren oder bewerten — nur führen. Ohne Messung in 30 Tagen bleibt der alte Wert stehen.
+**Anwenden:** Bei jedem Aufruf den **30-Tage-Schnitt** gegen `athlete/profil.md` prüfen. Ab **0,5 kg** Abweichung Gewicht und W/kg (FTP ÷ Gewicht) in `profil.md`, `fortschritt.md` und `CLAUDE.md` nachziehen, eine Zeile im Output, Eintrag in die Akte. Nie einen Tageswert übernehmen (Schwankung ~1 kg ist normal), nie nach dem Gewicht fragen. Ohne Messung in 30 Tagen bleibt der alte Wert stehen.
+
+**Kommunikationsregel (Stefans Entscheidung, 20.9.2026): sachlich erwähnen, wenn es für die Sache zählt.**
+- **Erwähnen:** in Leistungsanalysen, Renn- und Pace-Prognosen, W/kg-Betrachtungen und bei einem deutlichen Trend über mehrere Wochen — rein faktisch, als **eine Variable unter mehreren**, mit Größenordnung statt Wertung (z.B. „−5 kg wären grob 3–4% schneller auf 10km").
+- **Nicht:** bewerten, kommentieren („zugenommen"), Ernährungstipps ohne Frage, Zielgewicht vorgeben, das Thema ohne sachlichen Anlass aufmachen, es in jeder Wochenplanung wiederholen.
+- Ein Hinweis pro Anlass reicht; wenn Stefan nicht darauf eingeht, nicht nachfassen.
+- Vorherige Fassung war „nur auf Nachfrage" — bewusst gelockert, weil Gewicht beim Laufen ein echter Leistungsfaktor ist und Zurückhalten relevanter Information kein Coaching ist.
 
 ### Am Ende jeder Planung committen und pushen
 Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase` → `git push` auf `main`. Das Dashboard liest aus dem Repo; lokal geschriebene Dateien sind bis zum Push unsichtbar – auch für die nächste Session am Handy.

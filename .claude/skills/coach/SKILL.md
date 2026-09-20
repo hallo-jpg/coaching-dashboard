@@ -198,7 +198,9 @@ Leite Wochentag und KW-Nummer **ausschließlich** aus diesem Output ab. CLAUDE.m
 | Abweichung **< 0,5 kg** | nichts tun, nicht erwähnen |
 | Keine Messung in 30 Tagen (`Gewicht_messungen_30d` = 0) | Wert in den Dateien stehen lassen, **nicht** auf einen alten Einzelwert zurücksetzen · bei Bedarf einmal erwähnen, dass länger nichts eingetragen wurde |
 
-Immer den **30-Tage-Schnitt** verwenden, nie einen Tageswert — Tagesschwankungen von 1 kg sind normal (Wasser, Glykogen, Tageszeit). Gewicht nie kommentieren oder bewerten, nur führen; Gewichtsziele nur, wenn Stefan sie anspricht.
+Immer den **30-Tage-Schnitt** verwenden, nie einen Tageswert — Tagesschwankungen von 1 kg sind normal (Wasser, Glykogen, Tageszeit).
+
+**Wie darüber gesprochen wird** (Stefans Entscheidung 20.9.2026): sachlich erwähnen, wenn es für die Sache zählt — Leistungsanalysen, Renn-/Pace-Prognosen, W/kg, deutlicher Trend über Wochen. Als eine Variable unter mehreren, mit Größenordnung statt Wertung. **Nicht:** bewerten, Ernährungstipps ohne Frage, Zielgewicht vorgeben, in jeder Wochenplanung wiederholen. Ein Hinweis pro Anlass; kein Nachfassen, wenn Stefan nicht darauf eingeht.
 
 **Readiness-Score Interpretationslogik:**
 | Score | Ampel | Konsequenz |
