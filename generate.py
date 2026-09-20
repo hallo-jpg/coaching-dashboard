@@ -724,7 +724,9 @@ SEASON_PHASES = [
     {"name": "Renntempo",      "kw": "KW37",    "start_kw": 37, "end_kw": 37},
     {"name": "🏁 Seelauf",     "kw": "KW38",    "start_kw": 38, "end_kw": 38},
     {"name": "Erholung",       "kw": "KW39",    "start_kw": 39, "end_kw": 39},
-    {"name": "❓ Neue Zielsetzung", "kw": "ab KW40", "start_kw": 40, "end_kw": 52,
+    {"name": "🔬 FTP-Test",    "kw": "KW40",    "start_kw": 40, "end_kw": 40},
+    {"name": "Neuaufbau",      "kw": "KW41–42", "start_kw": 41, "end_kw": 42},
+    {"name": "❓ Neue Zielsetzung", "kw": "ab KW43", "start_kw": 43, "end_kw": 52,
      "fixed_state": "open"},
 ]
 
@@ -733,7 +735,7 @@ SEASON_PHASES = [
 SEASON_END_KW = 38
 
 # Hinweis unter der Saisonleiste, solange die Langfristplanung offen ist.
-PHASE_BAR_NOTE = ("Langfristplanung ab KW40 steht aus – "
+PHASE_BAR_NOTE = ("Langfristplanung ab KW43 steht aus – "
                   "neues Zielevent und Zielsetzung folgen in den kommenden Wochen.")
 
 PHASE_ABBREV: dict[str, tuple[str, str]] = {
@@ -745,9 +747,34 @@ PHASE_ABBREV: dict[str, tuple[str, str]] = {
     "Wiederaufbau":        ("Aufbau", "#f97316"),
     "Renntempo":           ("Tempo",  "#a78bfa"),
     "🏁 Seelauf":          ("Race",   "#60a5fa"),
+    "🔬 FTP-Test":         ("Test",   "#a78bfa"),
+    "Neuaufbau":           ("Aufbau", "#f97316"),
     "Erholung":            ("Erhol.", "#94a3b8"),
     "❓ Neue Zielsetzung":  ("offen",  "#fbbf24"),
 }
+
+
+def build_phase_weeks(monday: date, span: int = 2) -> list[dict]:
+    """Saisonverlauf-Kacheln: aktuelle KW ± span (Default 2 → 5 Kacheln).
+
+    Zeigt bewusst nur das nahe Umfeld statt des ganzen Saisonbogens – der Bogen
+    ist nach dem Zielrennen offen, bis Stefan neue Events nennt.
+    """
+    tiles = []
+    for offset in range(-span, span + 1):
+        wk_monday = monday + timedelta(weeks=offset)
+        wk        = wk_monday.isocalendar()[1]
+        label, _  = _phase_for_kw(wk)
+        phase     = next((p for p in SEASON_PHASES
+                          if p["start_kw"] <= wk <= p["end_kw"]), None)
+        if offset == 0:
+            state = "active"
+        elif offset < 0:
+            state = "done"
+        else:
+            state = "open" if (phase or {}).get("fixed_state") == "open" else "upcoming"
+        tiles.append({"name": label, "kw": f"KW{wk}", "state": state})
+    return tiles
 
 
 def _phase_for_kw(kw: int) -> tuple[str, str]:
@@ -770,9 +797,13 @@ def calc_compliance(weeks: list[dict]) -> int:
     return round(ok / len(completed) * 100)
 
 
+# Event-Kacheln oben im Dashboard. Ein Event mit "done": True ist abgehakt und
+# wird nicht mehr angezeigt. Sobald Stefan ein neues Ziel nennt: Eintrag hier
+# ergänzen (ohne "done") – die Kachel erscheint dann automatisch wieder.
 RACE_EVENTS = [
     {
         "id":     "radrace",
+        "done":   True,
         "name":   "RadRace 120",
         "flag":   "🏁",
         "date":   date(2026, 6, 13),
@@ -782,6 +813,7 @@ RACE_EVENTS = [
     },
     {
         "id":     "rosenheimer",
+        "done":   True,
         "name":   "Rosenheimer Radmarathon",
         "flag":   "🗺️",
         "date":   date(2026, 6, 28),
@@ -792,6 +824,7 @@ RACE_EVENTS = [
     },
     {
         "id":     "seelauf",
+        "done":   True,
         "name":   "Karlsfelder Seelauf",
         "flag":   "🏃",
         "date":   date(2026, 9, 20),
@@ -806,6 +839,8 @@ def _build_countdown(today: date) -> dict:
     """Return {main, secondary[]} with only future events (date >= today), sorted by date."""
     future = []
     for ev in RACE_EVENTS:
+        if ev.get("done"):
+            continue
         if ev["date"] >= today:
             e = dict(ev)
             e.setdefault("raceplan", None)
@@ -955,22 +990,8 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     next_phase = (f"{next_phase_obj['name']} ab KW{next_phase_obj['start_kw']}"
                   if next_phase_obj else "")
 
-    phases = [
-        {**p, "state": p.get("fixed_state") or
-                       ("done"   if p["end_kw"] < kw else
-                        "active" if p["start_kw"] <= kw <= p["end_kw"] else
-                        "upcoming")}
-        for p in SEASON_PHASES
-    ]
-
-    # Label der Saisonleiste: bis zum nächsten Rennen, danach bis zum
-    # Saisonziel (Seelauf), solange keine neue Zielsetzung steht.
-    _bar_race = (_countdown["main"]["name"] if _countdown["main"]
-                 else next((p["name"].split(" ", 1)[-1]
-                            for p in SEASON_PHASES if p["end_kw"] == SEASON_END_KW),
-                           None))
-    phase_bar_label = (f"Saisonverlauf bis {_bar_race}" if _bar_race
-                       else "Saisonverlauf")
+    phases = build_phase_weeks(monday)
+    phase_bar_label = f"Saisonverlauf · {phases[0]['kw']}–{phases[-1]['kw']}"
 
     plan    = parse_kw_plan(kw)
 

@@ -340,55 +340,24 @@
 
 <!-- COUNTDOWN -->
 
-<div class="countdown-row">
-
-  <div class="countdown-card-main">
-    <div class="cd-main-left">
-      <div class="cd-flag">🏃</div>
-      <div class="cd-race-name">Karlsfelder Seelauf</div>
-      <div style="font-size:0.72rem;color:#64748b;margin-top:6px">20. Sep · 10 km · KW38 · max. Pace</div>
-      
-    </div>
-    <div class="cd-main-right">
-      <div class="cd-item">
-        <div class="cd-num" id="cd-main-days">0</div>
-        <div class="cd-label">Tage <span id="cd-main-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
-      </div>
-    </div>
-  </div>
-
-  
-
-</div>
-
 
 <!-- PHASE BAR -->
 <div class="phase-bar">
-  <div class="phase-bar-label">Saisonverlauf bis Karlsfelder Seelauf</div>
+  <div class="phase-bar-label">Saisonverlauf · KW36–KW40</div>
   <div class="phases">
     
-    <div class="phase done">✓ 🚴 Radsaison<div class="kw">KW14–26</div></div>
+    <div class="phase done">✓ Aufbau<div class="kw">KW36</div></div>
     
-    <div class="phase done">✓ Verletzung<div class="kw">KW27–29</div></div>
+    <div class="phase done">✓ Tempo<div class="kw">KW37</div></div>
     
-    <div class="phase done">✓ Wiedereinstieg<div class="kw">KW30</div></div>
+    <div class="phase active">◉ Race<div class="kw">KW38</div></div>
     
-    <div class="phase done">✓ Lauf-Block<div class="kw">KW31–33</div></div>
+    <div class="phase upcoming">Erhol.<div class="kw">KW39</div></div>
     
-    <div class="phase done">✓ Zwangspause<div class="kw">KW34–35</div></div>
-    
-    <div class="phase done">✓ Wiederaufbau<div class="kw">KW36</div></div>
-    
-    <div class="phase done">✓ Renntempo<div class="kw">KW37</div></div>
-    
-    <div class="phase active">◉ 🏁 Seelauf<div class="kw">KW38</div></div>
-    
-    <div class="phase upcoming">Erholung<div class="kw">KW39</div></div>
-    
-    <div class="phase open">❓ Neue Zielsetzung<div class="kw">ab KW40</div></div>
+    <div class="phase upcoming">Test<div class="kw">KW40</div></div>
     
   </div>
-  <div class="phase-bar-note">⚠️ Langfristplanung ab KW40 steht aus – neues Zielevent und Zielsetzung folgen in den kommenden Wochen.</div>
+  <div class="phase-bar-note">⚠️ Langfristplanung ab KW43 steht aus – neues Zielevent und Zielsetzung folgen in den kommenden Wochen.</div>
 </div>
 
 <!-- 3 RINGS -->
@@ -1795,9 +1764,6 @@
       if (el) el.textContent = d;
       if (wk) wk.textContent = d > 6 ? '(' + Math.floor(d / 7) + ' Wo.)' : '';
     }
-    
-    setCountdown('cd-main-days', 'cd-main-weeks', '2026-09-20');
-    
     
   })();
 </script>

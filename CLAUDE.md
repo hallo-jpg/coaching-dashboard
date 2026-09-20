@@ -9,7 +9,7 @@
 | **Athlet** | Stefan |
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
 | **⚠️ Verletzung** | Angebrochener Halswirbel (Unfall 28.6.) · Laufen + Rad freigegeben · Rad seit Sept. wieder verfügbar (147km am 12.9.) |
-| **FTP** | 305W (Sentiero) · 3,35 W/kg · 91kg · *Referenz, aktuell nicht trainingsleitend* |
+| **FTP** | 305W (Sentiero) · 3,26 W/kg · **93–94 kg** (Stand 20.9.; 91 kg im Juni) · *Referenz, aktuell nicht trainingsleitend* |
 | **Hauptrennen** | ~~RadRace 120~~ ✅ · 12.–14. Juni 2026 · **KW24** · abgeschlossen |
 | **Nebenrennen** | ~~Rosenheimer Radmarathon~~ ⚠️ · 28. Juni 2026 · **KW26** · nach 45,8km Unfall, abgebrochen |
 | **Zielevent** | ~~Karlsfelder Seelauf~~ ✅ · 20. September 2026 · **KW38** · **1:05:08 / 6:31 pro km** · Ziel getroffen, PR −6:20 · **kein neues Zielrennen gesetzt** |

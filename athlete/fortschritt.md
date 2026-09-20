@@ -19,8 +19,10 @@
 | | Früher | Jetzt | Δ |
 |---|---|---|---|
 | FTP absolut | 324W | 305W | −19W (−5,9%) |
-| Gewicht | 97 kg | 91 kg | −6 kg (−6,2%) |
-| W/kg | 3,34 | 3,35 | +0,01 (+0,3%) |
+| Gewicht | 97 kg | 93–94 kg | −3,5 kg (−3,6%) |
+| W/kg | 3,34 | 3,26 | −0,08 (−2,4%) |
+
+*Gewichtsverlauf: 97 kg (2023) → 91 kg (1.6.2026, Tiefstwert) → **93–94 kg (20.9.2026)**. Die Pause nach dem Unfall am 28.6. und das reduzierte Volumen im Sommer erklären den Wiederanstieg. Relevanz: beim Laufen wird jedes Kilo bei jedem Schritt getragen (~200 ml O₂/kg/km), auf dem flachen Rad zählen absolute Watt — Gewicht wirkt sich beim Laufen deutlich stärker aus.*
 
 ## VO2max-Verlauf
 
