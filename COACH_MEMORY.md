@@ -247,7 +247,14 @@ Der Weg **intervals.icu → Garmin Connect → Tacx-App (Handy)** funktioniert, 
 2. **Nur die erste Zeile der Description kommt in der Tacx-App an** (als „Trainingsnotizen"). Die
    entscheidende Anweisung gehört deshalb in **Zeile 1** – nicht ein Datumskontext, sondern das, wonach
    gesteuert wird (z.B. „RPE 7 führt – Watt nur Orientierung").
-3. **⚠️ In Garmin Connect / der Tacx-App steht FTP 325** (vermutlich der alte Coggan-Wert 324W von
+3. **Absolute Wattkorridore gehören in Zeile 1** — nicht nur Prozentziele. Prozente rendern auf jedem
+   Gerät gegen dessen eigene FTP (intervals.icu 305, Garmin 325, COROS unbekannt) und sind bis zum
+   FTP-Abgleich wertlos. **Solange keine gültige FTP existiert, kommen Wattkorridore aus Stefans eigenen
+   Fahrten, nicht aus der alten FTP:** Stand 21.9.2026 ist Easy am XCadey belegt mit **Ø 187W bei HF 155,
+   RPE 3** (15.9., 2h16) → LIT-Korridor **165–200W, Deckel 210W**. Nie eine Einheit ohne Wattvorgabe
+   anlegen, nur weil die FTP fehlt — Stefan hat einen Powermeter und gemessene Werte. (Von ihm zu Recht
+   moniert: die ersten LIT-Einheiten der KW39 kamen ganz ohne Wattangabe.)
+4. **⚠️ In Garmin Connect / der Tacx-App steht FTP 325** (vermutlich der alte Coggan-Wert 324W von
    5/2025), in intervals.icu stehen 305W. **Die Zielwatt eines ERG-Workouts rechnen gegen 325, nicht
    gegen 305** – bei 88% sind das 286W statt 268W, also ~18W zu hoch. Nach dem KW40-Test muss die neue
    FTP an **allen** Stellen gesetzt werden: intervals.icu, Garmin Connect, COROS, MyWhoosh. Bis dahin
