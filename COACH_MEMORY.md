@@ -157,8 +157,11 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
   zu einem **festen Wert** zusammengefaltet (verifiziert 21.9.2026: 56–68% → `55%` = 167W). Feste
   Zielwerte lassen die Uhr outdoor dauernd piepen, Stefan will das nicht. **Für Korridore die
   Description-Route nutzen** (`- 70m 52-69%`) — dann bleibt `workout_doc` leer, bis Stefan das Workout
-  **einmal in intervals.icu öffnet**; danach synct es normal. Bei Outdoor-Einheiten immer Korridor,
-  indoor in ERG ist ein fester Wert in Ordnung.
+  **einmal in intervals.icu öffnet**; danach synct es normal. **Standard ist der Korridor — überall, auch indoor** (Stefans Vorschlag 21.9.2026: eine Regel statt
+  Sonderfällen). **Offen und in KW40 zu prüfen:** ob die Rolle im ERG-Modus bei einem Bereich den
+  Mittelwert hält oder über das Intervall von unten nach oben rampt. Stefan schaut bei der ersten
+  ERG-Einheit aufs Display. Rampt sie → Indoor-Einheiten auf feste Werte umstellen, outdoor bleibt
+  Korridor. Hält sie den Mittelwert → Korridor bleibt überall Standard.
 - **`workout_steps`** rundet auf ganze Minuten: 20s → verworfen, 30s/45s → 60s. Nur für Einheiten ohne Schritte <1min.
 - **Description-Route** (Schrittliste als Text am Ende der `description`, `- 20s 120% Pace` gültig) für Strides/Antritte. `workout_doc` bleibt dabei leer – **Stefan muss das Workout einmal öffnen und OK klicken**, Hinweis oben in die Beschreibung.
 - Strides nie auf 60s strecken, um Weg A zu erzwingen (ab ~40s kippt der Reiz von neuromuskulär zu anaerob).
