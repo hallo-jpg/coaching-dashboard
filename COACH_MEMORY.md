@@ -119,6 +119,17 @@ Nach einzelnen ernüchternden Einheiten (z.B. 14.9., T-6) äußert Stefan das Ge
 
 ## 5. Arbeitsweise des Coaches
 
+### ⛔ Nicht entscheiden, wenn die Fakten fehlen — fragen (Stefans Ansage, 21.9.2026)
+Der Coach hat aus einer Annahme über den ERG-Modus eine Planregel gemacht und sie in vier Dateien
+geschrieben, ohne zu fragen. Stefan fährt 30/30er seit Jahren auf der Rolle — die Regel war frei erfunden.
+**Anwenden:** Bei allem, was Stefans Ausstattung, Gewohnheiten oder Praxis betrifft (was funktioniert,
+was er fährt, wie er etwas aufzeichnet), wird **gefragt, nicht beschlossen** — auch dann, wenn es
+plausibel klingt. Entscheidungen trifft der Coach nur, wenn er alle Fakten hat oder Stefan ihn ausdrücklich
+entscheiden lässt. Richtungsweisende Punkte (Zielsetzung, Struktur, Ausrüstungsannahmen) gehen **vor**
+dem Schreiben in die Dateien als Frage raus. Fachliche Einschätzungen bleiben erlaubt — als Vorschlag
+mit Begründung, nicht als eingetragene Regel.
+
+
 ### Datum immer per `date` prüfen
 Am 20.4.2026 wurde der 20. April als Sonntag angenommen, weil CLAUDE.md „KW16 = 14.–20. April" zeigte – er war ein Montag. 10 Workouts mussten gelöscht und neu angelegt werden. **Immer** `date "+%A, %d. %B %Y – KW%V"` als erste Aktion; CLAUDE.md-Datumsangaben sind Orientierung, nie Tagesquelle.
 
@@ -159,6 +170,17 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
   Die Rolle läuft über die **Tacx-App** (MyWhoosh alternativ); ob sie strukturierte
   Workouts sauber abspielt, ist ungeprüft (in KW41/42 an einer einfachen Einheit testen). Fallback:
   Workout manuell nach Wattvorgabe fahren — bei 3×10min reicht das. Kein Laufband.
+- **Radcomputer ist die COROS DURA** (kein Wahoo mehr). Aufzeichnungs-Setup laut Stefan: **XCadey → COROS
+  DURA**, **Rolle → Tacx-App**. Die DURA-Datei ist die maßgebliche (XCadey = Referenzmessgerät), die
+  Tacx-Aufzeichnung dient nur dem Offset-Faktor. **Doppelzählung vermeiden:** laden beide hoch, liegt die
+  Fahrt zweimal in intervals.icu und CTL/ATL zählen doppelt — Tacx-Datei löschen oder von der
+  Belastungsrechnung ausnehmen.
+- **Indoor-Canyon hat keine Schaltung mehr** (ausgebaut, Stand 21.9.2026) → auf der Rolle läuft alles in
+  **ERG**. **Das ist kein Problem und schränkt die Workout-Formate nicht ein:** Stefan fährt seit Jahren
+  strukturierte Intervalle auf der Rolle, **30/30er inklusive**. Der Coach hatte am 21.9. aus eigener
+  Annahme eine Regel daraus gebastelt („indoor nur 2–6-Minuten-Formate") — falsch, zurückgenommen.
+- **FTP-Test-Modus ist offen**, nicht vom Coach zu setzen: entweder S-Works aufspannen (Level, Schaltung,
+  XCadey-Gegenprobe) oder Canyon in ERG mit manuell nachgeregelter Vorgabe. Stefan entscheidet.
 - **Radcomputer ist die COROS DURA** (kein Wahoo mehr). Aufzeichnungs-Setup laut Stefan: **XCadey → COROS
   DURA**, **Rolle → Tacx-App**. Die DURA-Datei ist die maßgebliche (XCadey = Referenzmessgerät), die
   Tacx-Aufzeichnung dient nur dem Offset-Faktor. **Doppelzählung vermeiden:** laden beide hoch, liegt die
