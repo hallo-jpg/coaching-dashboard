@@ -59,7 +59,8 @@ damit eine verlorene Woche den Block nicht kippt.
 | Wade | zieht am 21.9. leicht nach dem Rennen | Unterscheidungsregel in `kw39.md`: diffuser Muskelkater = Lauf ok · punktueller Schienbeinkantenschmerz = kein Lauf, erst Fr, melden |
 | Gewicht | „ggf. Richtung 90 kg, weniger nicht" | als **seine** Untergrenze notiert, kein Coach-Ziel, kein Ernährungsthema · Größenordnung einmal genannt (≈1–1,5 min auf 10 km) |
 | Events | vorerst keine, auch kein Volkslauf | KW09-Benchmark läuft als eigener Zeitlauf auf Standardstrecke |
-| Indoor | MyWhoosh + Tacx-App vorhanden, kein Laufband | Primärweg bleibt ELEMNT ROAM → Tacx per ANT+ FE-C im ERG-Modus (erprobt, keine App nötig) · MyWhoosh-`.zwo`-Import einmal testen, Ergebnis notieren |
+| Indoor | MyWhoosh + Tacx-App vorhanden, kein Laufband · **Nachtrag: ROAM ist abgegeben, ERG darüber lief schlecht — kommt nicht in Frage** | Steuerung/Aufzeichnung über MyWhoosh oder Tacx-App · welcher Weg strukturierte Workouts sauber abspielt, wird in KW41/42 getestet · Fallback: manuell nach Wattvorgabe |
+| Aufzeichnung Radleistung | kein Head-Unit mehr | **COROS-Uhr** koppelt den XCadey als zweite Aufzeichnung — Voraussetzung für die Gegenprobe im KW40-Test · Kopplung vorher prüfen · **Test läuft nicht im ERG-Modus** (deckelt die Leistung) |
 
 → `langfristplan.md` (Kraft, Prävention, Gewicht), `periodisierung.md` (Rahmenbedingungen, Benchmark),
 `profil.md` (Krafttraining, Gewichtsnotiz), `kw39.md` (Waden-Regel), `COACH_MEMORY.md` aktualisiert.

@@ -120,6 +120,13 @@ aufgespannt, der XCadey zeichnet parallel zur Tacx-Leistung auf. Ergebnis aus ei
 
 **Ein FTP-Wert, ein Korrekturfaktor.** Keine zwei parallel gepflegten FTPs — dafür ist der Ertrag zu klein.
 
+**Aufzeichnung am Testtag (wichtig, weil kein Head-Unit mehr vorhanden ist):**
+Die Tacx-Leistung zeichnet **MyWhoosh oder die Tacx-App** auf, die XCadey-Leistung parallel die
+**COROS-Uhr** (als Radaktivität, XCadey über BLE/ANT+ koppeln — Kopplung einmal **vor** dem Testtag
+prüfen). Zwei Aufzeichnungen derselben Fahrt, daraus der Vergleich der 10min-Mittelwerte.
+**Der Test läuft nicht im ERG-Modus** — ERG deckelt die Leistung und macht jeden Maximaltest wertlos.
+Level-/Sim-Modus oder freie Fahrt, Intensität kommt von den Beinen.
+
 **Testbedingungen konstant halten** (sonst ist die nächste Messung nicht vergleichbar): immer indoor
 auf der Rolle mit dem S-Works, Ventilator an, 20min Warmfahren, XCadey vor dem Start nullen, Tacx-Spindown
 nach 10min Warmfahren. Ein Indoor-Test fällt typisch etwas niedriger aus als outdoor (Hitze, Motivation) —

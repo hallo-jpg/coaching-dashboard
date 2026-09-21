@@ -154,9 +154,14 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
   500–700 km pro Paar.
 - **Kein erkennbares Infekt-Muster.** Nicht weiter nach einer Einzelquelle suchen — es wirken nur die
   strukturellen Maßnahmen (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol).
-- **Indoor:** ELEMNT ROAM steuert die Tacx per ANT+ FE-C im ERG-Modus, Workout aus intervals.icu/TP —
-  erprobter Weg, keine App nötig. MyWhoosh und Tacx-App vorhanden; ob MyWhoosh `.zwo` direkt importiert,
-  ist ungeprüft (Tacx-App zieht Workouts eher aus Garmin Connect). Kein Laufband.
+- **Indoor (korrigiert 21.9.2026): Der ELEMNT ROAM ist weg** und ERG-Steuerung darüber lief schlecht —
+  Stefan will diesen Weg ausdrücklich nicht mehr. **Nie wieder den ROAM als Lösung vorschlagen.**
+  Steuerung und Aufzeichnung laufen über **MyWhoosh** oder die **Tacx-App**; welcher Weg strukturierte
+  Workouts sauber abspielt, ist ungeprüft (in KW41/42 an einer einfachen Einheit testen). Fallback:
+  Workout manuell nach Wattvorgabe fahren — bei 3×10min reicht das. Kein Laufband.
+- **Zweite Radaufzeichnung läuft über die COROS-Uhr** (XCadey als Leistungsmesser koppeln). Das ist ohne
+  Head-Unit der einzige Weg, XCadey und Tacx in derselben Fahrt zu vergleichen. Kopplung vor dem Testtag prüfen.
+- **FTP-Tests nie im ERG-Modus** — ERG deckelt die Leistung und macht jeden Maximaltest wertlos.
 
 ### Gewicht: Stefans eigene Zielvorstellung (21.9.2026)
 „Ich sehe mich eigentlich ganz gut beim aktuellen Gewicht, ggf. so Richtung 90 kg, weniger nicht.
