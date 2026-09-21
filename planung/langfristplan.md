@@ -120,10 +120,13 @@ aufgespannt, der XCadey zeichnet parallel zur Tacx-Leistung auf. Ergebnis aus ei
 
 **Ein FTP-Wert, ein Korrekturfaktor.** Keine zwei parallel gepflegten FTPs — dafür ist der Ertrag zu klein.
 
-**Aufzeichnung am Testtag (wichtig, weil kein Head-Unit mehr vorhanden ist):**
-Die Tacx-Leistung zeichnet **MyWhoosh oder die Tacx-App** auf, die XCadey-Leistung parallel die
-**COROS-Uhr** (als Radaktivität, XCadey über BLE/ANT+ koppeln — Kopplung einmal **vor** dem Testtag
-prüfen). Zwei Aufzeichnungen derselben Fahrt, daraus der Vergleich der 10min-Mittelwerte.
+**Aufzeichnung am Testtag (Stefans Setup, 21.9.2026):**
+**XCadey → COROS DURA** · **Rolle → Tacx-App**. Zwei Aufzeichnungen derselben Fahrt, daraus der
+Vergleich der 10min-Mittelwerte. Die DURA ist die maßgebliche Datei (XCadey = Referenzmessgerät),
+die Tacx-Aufzeichnung dient nur dem Faktor.
+⚠️ **Doppelzählung vermeiden:** Laden beide Quellen hoch, liegt dieselbe Fahrt zweimal in intervals.icu
+und CTL/ATL zählen doppelt. Eine der beiden löschen oder von der Belastungsrechnung ausnehmen —
+behalten wird die DURA-Datei.
 **Der Test läuft nicht im ERG-Modus** — ERG deckelt die Leistung und macht jeden Maximaltest wertlos.
 Level-/Sim-Modus oder freie Fahrt, Intensität kommt von den Beinen.
 

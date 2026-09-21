@@ -60,7 +60,7 @@ damit eine verlorene Woche den Block nicht kippt.
 | Gewicht | „ggf. Richtung 90 kg, weniger nicht" | als **seine** Untergrenze notiert, kein Coach-Ziel, kein Ernährungsthema · Größenordnung einmal genannt (≈1–1,5 min auf 10 km) |
 | Events | vorerst keine, auch kein Volkslauf | KW09-Benchmark läuft als eigener Zeitlauf auf Standardstrecke |
 | Indoor | MyWhoosh + Tacx-App vorhanden, kein Laufband · **Nachtrag: ROAM ist abgegeben, ERG darüber lief schlecht — kommt nicht in Frage** | Steuerung/Aufzeichnung über MyWhoosh oder Tacx-App · welcher Weg strukturierte Workouts sauber abspielt, wird in KW41/42 getestet · Fallback: manuell nach Wattvorgabe |
-| Aufzeichnung Radleistung | kein Head-Unit mehr | **COROS-Uhr** koppelt den XCadey als zweite Aufzeichnung — Voraussetzung für die Gegenprobe im KW40-Test · Kopplung vorher prüfen · **Test läuft nicht im ERG-Modus** (deckelt die Leistung) |
+| Aufzeichnung Radleistung | **XCadey → COROS DURA · Rolle → Tacx-App** (Stefans Setup) | DURA-Datei ist maßgeblich, Tacx nur für den Offset-Faktor · eine der beiden Aufzeichnungen aus der Belastungsrechnung nehmen (sonst doppelte CTL/ATL) · **Test läuft nicht im ERG-Modus** (deckelt die Leistung) |
 
 → `langfristplan.md` (Kraft, Prävention, Gewicht), `periodisierung.md` (Rahmenbedingungen, Benchmark),
 `profil.md` (Krafttraining, Gewichtsnotiz), `kw39.md` (Waden-Regel), `COACH_MEMORY.md` aktualisiert.

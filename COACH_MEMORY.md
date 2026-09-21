@@ -156,11 +156,14 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
   strukturellen Maßnahmen (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol).
 - **Indoor (korrigiert 21.9.2026): Der ELEMNT ROAM ist weg** und ERG-Steuerung darüber lief schlecht —
   Stefan will diesen Weg ausdrücklich nicht mehr. **Nie wieder den ROAM als Lösung vorschlagen.**
-  Steuerung und Aufzeichnung laufen über **MyWhoosh** oder die **Tacx-App**; welcher Weg strukturierte
+  Die Rolle läuft über die **Tacx-App** (MyWhoosh alternativ); ob sie strukturierte
   Workouts sauber abspielt, ist ungeprüft (in KW41/42 an einer einfachen Einheit testen). Fallback:
   Workout manuell nach Wattvorgabe fahren — bei 3×10min reicht das. Kein Laufband.
-- **Zweite Radaufzeichnung läuft über die COROS-Uhr** (XCadey als Leistungsmesser koppeln). Das ist ohne
-  Head-Unit der einzige Weg, XCadey und Tacx in derselben Fahrt zu vergleichen. Kopplung vor dem Testtag prüfen.
+- **Radcomputer ist die COROS DURA** (kein Wahoo mehr). Aufzeichnungs-Setup laut Stefan: **XCadey → COROS
+  DURA**, **Rolle → Tacx-App**. Die DURA-Datei ist die maßgebliche (XCadey = Referenzmessgerät), die
+  Tacx-Aufzeichnung dient nur dem Offset-Faktor. **Doppelzählung vermeiden:** laden beide hoch, liegt die
+  Fahrt zweimal in intervals.icu und CTL/ATL zählen doppelt — Tacx-Datei löschen oder von der
+  Belastungsrechnung ausnehmen.
 - **FTP-Tests nie im ERG-Modus** — ERG deckelt die Leistung und macht jeden Maximaltest wertlos.
 
 ### Gewicht: Stefans eigene Zielvorstellung (21.9.2026)

@@ -108,6 +108,6 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | **Events** | keine geplant und vorerst keine gesucht · Benchmarks laufen als eigene Zeitläufe |
 | **Kraft** | Eigengewicht + Widerstandsbänder · Lauf-Athletik 2×15min Pflicht, Ganzkörper 1× optional |
 | **Schuhe** | zwei brauchbare Paare im Wechsel · Kilometerstand im Blick, bei 94 kg eher 500–700 km pro Paar |
-| **Indoor** | **Kein Head-Unit mehr** (ROAM abgegeben, ERG darüber lief schlecht). Steuerung + Aufzeichnung laufen über **MyWhoosh** oder die **Tacx-App** · welcher Weg strukturierte Workouts sauber abspielt, wird in KW41/42 an einer einfachen Einheit getestet · Fallback: Workout manuell nach Wattvorgabe fahren |
+| **Indoor** | Rolle läuft über die **Tacx-App** (MyWhoosh alternativ) · die **COROS DURA** zeichnet parallel die XCadey-Leistung auf — indoor wie outdoor dieselbe Messquelle · ob die Tacx-App strukturierte Workouts sauber abspielt, wird in KW41/42 an einer einfachen Einheit getestet · Fallback: manuell nach Wattvorgabe |
 | **Gewicht** | Stefans Einordnung: ggf. Richtung 90 kg, darunter nicht · unterstützender Faktor, kein Coach-Ziel |
 | **Infekte** | kein erkennbares Muster → nur strukturelle Prävention (siehe `langfristplan.md`) |

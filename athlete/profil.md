@@ -187,11 +187,12 @@ Bändertraining ersetzt das nicht.
 
 | Gerät | Funktion | Verbindung |
 |---|---|---|
-| S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter | Outdoor-Rad, Powermeter-Referenz | ANT+/BLE → COROS |
+| S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter | Outdoor-Rad, **Powermeter-Referenz für alle FTP-Werte** | ANT+/BLE → COROS DURA |
 | Canyon Aeroad (alt, ohne Powermeter) | Indoor-Rad auf der Rolle | – |
-| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung | **MyWhoosh** oder **Tacx-App** (Steuerung + Aufzeichnung) |
+| **COROS DURA** | Radcomputer – Aufzeichnung der XCadey-Leistung indoor wie outdoor | ANT+/BLE |
+| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung | **Tacx-App** (Steuerung + Aufzeichnung) · MyWhoosh alternativ |
 | ~~4iiii Precision (Kurbel)~~ | Altes Setup – Basis von FTP 305W (Test 4.4.2026) | – |
 | ~~Wahoo ELEMNT ROAM~~ | **nicht mehr vorhanden** (Stand 21.9.2026) · ERG-Steuerung darüber hat ohnehin nicht gut funktioniert | – |
-| COROS Uhr | Laufen + Schlaf + HRV · **zweite Aufzeichnung für Radleistung** (XCadey koppeln) | COROS → Strava → TP |
+| COROS Uhr | Laufen + Schlaf + HRV | COROS → Strava → TP |
 | TrainingPeaks | Planung + PMC (CTL/ATL/TSB) | – |
 | Strava | Aktivitäts-Feed | – |
