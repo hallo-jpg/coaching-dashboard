@@ -8,31 +8,57 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#070b11">
+<meta name="theme-color" content="#f6f3f0">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Coaching">
 <link rel="apple-touch-icon" href="icon.svg?v=2">
 <link rel="icon" href="icon.svg?v=2" type="image/svg+xml">
 <style>
   :root {
-    --green:  #22c55e;
-    --yellow: #f59e0b;
-    --red:    #ef4444;
-    --orange: #ff6b35;
-    --purple: #a78bfa;
-    --teal:   #2dd4bf;
-    --blue:   #60a5fa;
-    --text:   #f0f6ff;
-    --muted:  rgba(180,210,240,0.42);
-    --border: rgba(255,255,255,0.08);
-    /* compat: kept for any inline-style references */
-    --bg: #070b11;
-    --surface: rgba(255,255,255,0.04);
-    --surface2: rgba(255,255,255,0.06);
-    --accent: #94a3b8;
-    --subtle: rgba(255,255,255,0.10);
+    /* ── Theme "Karte" · hell, Markenfarbe aus dem Favicon ───────────────
+       Palette mit dem dataviz-Validator geprueft (Kontrast gegen --card):
+       CTL/ATL als Warm-Kalt-Paar, Zonen als Ordinal-Rampe in einem
+       Farbton, Ampel ausschliesslich fuer Status.                       */
+
+    --brand:      #d1450f;                /* Marke auf Weiss: 4,8:1 */
+    --brand-tint: rgba(209,69,15,0.10);
+    --grad-from:  #ffa445;                /* Favicon-Verlauf, nur im Header */
+    --grad-mid:   #ff6b35;
+    --grad-to:    #e03e12;
+
+    /* Status – nur dort, wo sich wirklich etwas aendert */
+    --green:  #0a7a0a;   --green-mark:  #0ca30c;
+    --yellow: #a4540b;   --yellow-mark: #fab219;
+    --red:    #c2321a;   --red-mark:    #d03b3b;
+
+    /* Serien */
+    --ctl:    #d1450f;
+    --atl:    #4a3aa7;
+
+    /* Trainingszonen: eine Rampe, monotone Helligkeit */
+    --z0: #b6afa9; --z1: #ff9366; --z2: #f9752f; --z3: #e05613;
+    --z4: #bd400a; --z5: #992f07; --z6: #742305;
+
+    --text:   #16110f;
+    --text2:  #57504c;
+    --muted:  #8b837e;
+    --border: rgba(22,17,15,0.10);
+
+    --bg:      #f6f3f0;
+    --card:    #ffffff;
+    --track:   #ecebe7;
+
+    /* compat: von generate.py als var(...) ausgegeben */
+    --orange: #d1450f;
+    --purple: #d1450f;
+    --teal:   #d1450f;
+    --blue:   #d1450f;
+    --surface:  #f7f5f2;
+    --surface2: #f7f5f2;
+    --accent:   #57504c;
+    --subtle:   #b6afa9;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   /* ── GLASS CARDS ── */
@@ -44,20 +70,13 @@
   .readiness-card,
   .polar-card,
   .ausblick-card {
-    background: rgba(255,255,255,0.048);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 18px;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.35);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(22,17,15,0.05), 0 6px 20px rgba(22,17,15,0.07);
   }
   body {
-    background:
-      radial-gradient(ellipse 80% 60% at 15%  8%, rgba(99,70,210,0.26)  0%, transparent 55%),
-      radial-gradient(ellipse 55% 45% at 88% 18%, rgba(34,197,94,0.13)  0%, transparent 50%),
-      radial-gradient(ellipse 50% 55% at 50% 85%, rgba(45,212,191,0.11) 0%, transparent 55%),
-      radial-gradient(ellipse 65% 35% at  8% 75%, rgba(96,165,250,0.09) 0%, transparent 50%),
-      #070b11;
-    background-attachment: fixed;
+    background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
     font-size: 14px;
@@ -68,21 +87,25 @@
   }
 
   .header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(135deg, var(--grad-from) 0%, var(--grad-mid) 52%, var(--grad-to) 100%);
+    border-radius: 22px;
+    padding: 18px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 28px rgba(224,62,18,0.22);
   }
   .phase-pill {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(167,139,250,0.13); border: 1px solid rgba(167,139,250,0.22);
-    color: var(--purple); padding: 4px 12px; border-radius: 99px;
+    background: rgba(255,255,255,0.24); border: 1px solid rgba(255,255,255,0.40);
+    color: #fff; padding: 4px 12px; border-radius: 99px;
     font-size: 0.61rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
     margin-bottom: 7px;
   }
-  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); animation: pulse 2s infinite; }
+  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-  .header-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; }
-  .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-  .header-date { font-size: 0.72rem; color: var(--muted); }
+  .header-title { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; color: #fff; }
+  .header-sub { font-size: 0.75rem; color: rgba(255,255,255,0.82); margin-top: 2px; }
+  .header-date { font-size: 0.72rem; color: rgba(255,255,255,0.78); }
 
   /* ── COUNTDOWN ── */
   .countdown-row { display: flex; gap: 10px; margin-bottom: 22px; }
@@ -94,7 +117,7 @@
   }
   .cd-main-left { flex: 1; }
   .cd-flag { font-size: 1.4rem; margin-bottom: 6px; }
-  .cd-race-name { font-size: 0.92rem; font-weight: 800; color: #cbd5e1; margin-bottom: 10px; }
+  .cd-race-name { font-size: 0.92rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
 
   .cd-days { display: flex; flex-direction: column; gap: 5px; }
   .cd-day-row { display: flex; align-items: center; gap: 8px; }
@@ -102,20 +125,20 @@
     font-size: 0.56rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;
     white-space: nowrap; flex-shrink: 0;
   }
-  .badge-primary { background: rgba(148,163,184,0.15); color: var(--accent); }
-  .badge-secondary { background: rgba(155,127,232,0.15); color: var(--purple); }
+  .badge-primary { background: var(--track); color: var(--text2); }
+  .badge-secondary { background: var(--brand-tint); color: var(--brand); }
   .cd-day-detail { font-size: 0.65rem; color: var(--muted); }
   .cd-day-focus {
     font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 3px;
     margin-left: auto; white-space: nowrap;
   }
-  .focus-primary { background: rgba(148,163,184,0.12); color: var(--accent); }
-  .focus-secondary { background: rgba(155,127,232,0.1); color: var(--purple); }
+  .focus-primary { background: var(--track); color: var(--text2); }
+  .focus-secondary { background: var(--brand-tint); color: var(--brand); }
 
   .cd-main-right {
     display: flex; flex-direction: column; justify-content: center;
     align-items: flex-end; gap: 8px; flex-shrink: 0;
-    border-left: 1px solid rgba(148,163,184,0.12); padding-left: 20px;
+    border-left: 1px solid var(--border); padding-left: 20px;
   }
   .cd-item { text-align: center; }
   .cd-num { font-size: 2.7rem; font-weight: 900; line-height: 1; color: var(--yellow); letter-spacing: -2px; }
@@ -136,8 +159,8 @@
   .cd-raceplan-btn {
     display: inline-flex; align-items: center; gap: 5px;
     margin-top: 10px; padding: 5px 12px;
-    background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.3);
-    border-radius: 6px; color: #60a5fa;
+    background: var(--brand-tint); border: 1px solid var(--brand);
+    border-radius: 6px; color: var(--brand);
     font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
     text-decoration: none; cursor: pointer; transition: background 0.15s, border-color 0.15s;
   }
@@ -146,7 +169,7 @@
     display: inline-flex; align-items: center; gap: 4px;
     margin-top: 8px; padding: 4px 10px;
     background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25);
-    border-radius: 5px; color: #60a5fa;
+    border-radius: 5px; color: var(--brand);
     font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
     text-decoration: none; cursor: pointer; transition: background 0.15s;
   }
@@ -158,26 +181,27 @@
   .phases { display: flex; gap: 4px; }
   .phase { flex: 1; border-radius: 10px; padding: 7px 4px; font-size: 0.57rem; font-weight: 700; text-align: center; line-height: 1.3; }
   .phase .kw { font-size: 0.52rem; opacity: 0.6; margin-top: 2px; }
-  .phase.done { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.10); color: rgba(34,197,94,0.45); }
-  .phase.active { background: rgba(167,139,250,0.14); border: 1px solid rgba(167,139,250,0.28); color: var(--purple); box-shadow: 0 0 14px rgba(167,139,250,0.12); }
-  .phase.upcoming { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(180,210,240,0.2); }
-  .phase.open { background: rgba(251,191,36,0.06); border: 1px dashed rgba(251,191,36,0.35); color: rgba(251,191,36,0.75); }
+  .phase.done { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .phase.active { background: var(--brand-tint); border: 1px solid var(--brand); color: var(--brand); }
+  .phase.upcoming { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .phase.open { background: transparent; border: 1px dashed var(--border); color: var(--muted); }
   .phase-bar-note { font-size: 0.6rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
 
   /* ── RINGS ── */
   .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
-  .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+               background: linear-gradient(180deg, rgba(255,107,53,0.05), var(--card) 60%); }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
-  .card-headline { border-left: 3px solid var(--accent); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
+  .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-  .chard-icon { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+  .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
   .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; letter-spacing: -2px; }
   .ring-sub { font-size: 0.45rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 1px; }
   .ring-status { text-align: center; }
-  .ring-status-tag { font-size: 0.62rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+  .ring-status-tag { font-size: 0.62rem; font-weight: 700; color: var(--text2); margin-bottom: 2px; }
   .ring-status-sub { font-size: 0.55rem; color: var(--muted); }
   .dual-legend { display: flex; flex-direction: column; gap: 6px; width: 100%; padding-top: 10px; border-top: 1px solid var(--border); }
   .dual-legend-item { display: flex; align-items: center; gap: 7px; }
@@ -190,8 +214,8 @@
 
   /* ── SICK NOTICE ── */
   .sick-notice {
-    background: rgba(224,82,82,0.08);
-    border: 1px solid rgba(224,82,82,0.2);
+    background: rgba(208,59,59,0.09);
+    border: 1px solid rgba(208,59,59,0.26);
     border-radius: 10px;
     padding: 10px 14px;
     margin-bottom: 14px;
@@ -202,7 +226,7 @@
   .sick-notice strong { font-weight: 700; }
   .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
   .day-missed .day-workout { text-decoration: line-through; color: var(--subtle); }
-  .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--subtle); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
+  .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--muted); background: var(--track); border: 1px solid var(--border); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
   .bonus-activity { display: flex; align-items: center; gap: 6px; margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
   .badge-bonus { font-size: 0.58rem; font-weight: 800; color: var(--orange); background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.25); border-radius: 5px; padding: 1px 5px; flex-shrink: 0; }
   .bonus-name { font-size: 0.75rem; color: var(--muted); }
@@ -217,24 +241,24 @@
   .week-card { padding: 20px; }
   .week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
   .week-title { font-size: 0.9rem; font-weight: 800; }
-  .kw-pill { background: rgba(148,163,184,0.1); color: var(--accent); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
-  .tss-pill { background: var(--surface2); color: var(--muted); font-size: 0.62rem; padding: 2px 9px; border-radius: 99px; margin-left: auto; }
+  .kw-pill { background: var(--track); color: var(--text2); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
+  .tss-pill { background: var(--track); color: var(--text2); font-size: 0.62rem; padding: 2px 9px; border-radius: 99px; margin-left: auto; }
   .day-row { display: grid; grid-template-columns: 28px 9px 1fr auto; align-items: start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .day-row:last-child { border-bottom: none; }
   .day-name { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; padding-top: 3px; }
   .day-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-  .dot-planned { background: var(--accent); }
-  .dot-key { background: var(--purple); }
-  .dot-run { background: var(--green); }
-  .dot-ka { background: var(--yellow); }
+  .dot-planned { background: var(--muted); }
+  .dot-key { background: var(--brand); }
+  .dot-run { background: var(--brand); }
+  .dot-ka { background: var(--yellow-mark); }
   .dot-rest { background: transparent; border: 1px solid var(--border); }
   .day-workout { font-size: 0.84rem; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .tag { font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 4px; }
-  .tag-key  { background: rgba(155,127,232,0.15); color: var(--purple); }
-  .tag-run  { background: rgba(62,207,142,0.12);  color: var(--green); }
-  .tag-ka   { background: rgba(245,166,35,0.12);  color: var(--yellow); }
-  .tag-koff { background: rgba(90,184,184,0.1);   color: var(--teal); }
-  .day-fuel { font-size: 0.68rem; color: #4a8a5a; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 2px; }
+  .tag-key  { background: var(--brand-tint); color: var(--brand); }
+  .tag-run  { background: var(--track); color: var(--text2); }
+  .tag-ka   { background: var(--track); color: var(--text2); }
+  .tag-koff { background: var(--track); color: var(--text2); }
+  .day-fuel { font-size: 0.68rem; color: var(--muted); display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 2px; }
   .day-meal { font-size: 0.63rem; color: var(--muted); }
   .day-tss { font-size: 0.68rem; color: var(--muted); padding-top: 3px; white-space: nowrap; }
 
@@ -247,23 +271,23 @@
   .readiness-sub { font-size: 0.62rem; color: var(--muted); margin-bottom: 14px; }
   .rbar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
   .rbar-lbl { font-size: 0.6rem; color: var(--muted); min-width: 36px; }
-  .rbar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .rbar-track { flex: 1; height: 4px; background: var(--track); border-radius: 2px; overflow: hidden; }
   .rbar-fill { height: 100%; border-radius: 3px; }
   .rbar-val { font-size: 0.6rem; color: var(--muted); min-width: 32px; text-align: right; }
   .sparkline-wrap { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
   .spark-label { font-size: 0.55rem; color: var(--muted); margin-bottom: 6px; }
   .sparkline { display: flex; align-items: flex-end; gap: 3px; height: 30px; }
   .spark-bar { flex: 1; border-radius: 2px 2px 0 0; min-height: 3px; }
-  .spark-today { outline: 1px solid rgba(255,255,255,0.2); outline-offset: 1px; }
+  .spark-today { outline: 1px solid rgba(22,17,15,0.30); outline-offset: 1px; }
 
   .polar-card { padding: 18px; }
   .pi-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 12px; }
-  .pi-ok  { background: rgba(62,207,142,0.1); color: var(--green); }
-  .pi-warn { background: rgba(245,166,35,0.1); color: var(--yellow); }
-  .pi-bad  { background: rgba(224,82,82,0.1); color: var(--red); }
+  .pi-ok  { background: var(--brand-tint); color: var(--brand); }
+  .pi-warn { background: rgba(250,178,25,0.16); color: var(--yellow); }
+  .pi-bad  { background: rgba(208,59,59,0.12); color: var(--red); }
   .polar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
   .polar-lbl { font-size: 0.6rem; color: var(--muted); min-width: 34px; }
-  .polar-track { flex: 1; height: 7px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; }
+  .polar-track { flex: 1; height: 7px; background: var(--track); border-radius: 3px; overflow: hidden; }
   .polar-fill { height: 100%; border-radius: 4px; }
   .polar-pct { font-size: 0.65rem; font-weight: 700; min-width: 30px; text-align: right; }
   .polar-note { font-size: 0.58rem; color: var(--muted); margin-top: 8px; }
@@ -271,8 +295,8 @@
   .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .zone-dot { display:inline-block; width:8px; height:8px; border-radius:50%; flex-shrink:0; }
   .zone-val-normal { color:var(--text); font-size:0.7rem; font-weight:600; }
-  .zone-val-warm   { color:var(--yellow); font-size:0.7rem; font-weight:600; }
-  .zone-val-hot    { color:var(--red); font-size:0.7rem; font-weight:600; }
+  .zone-val-warm   { color:var(--z4); font-size:0.7rem; font-weight:600; }
+  .zone-val-hot    { color:var(--z6); font-size:0.7rem; font-weight:600; }
   .zone-val-muted  { color:var(--muted); font-size:0.7rem; }
   .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
@@ -370,23 +394,17 @@
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
           <linearGradient id="g-gr" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#16a34a"/>
-            <stop offset="100%" stop-color="#86efac"/>
+            <stop offset="0%"   stop-color="#e05613"/>
+            <stop offset="100%" stop-color="#ff9366"/>
           </linearGradient>
-          <filter id="glow-gr" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-          </filter>
         </defs>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#22c55e" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="82.9"
-                transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-gr)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
                 stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="82.9"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#f5a623">76</span>
+        <span class="ring-num" style="color:#a4540b">76</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
@@ -405,50 +423,38 @@
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
           <linearGradient id="g-pu" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#5b21b6"/>
-            <stop offset="100%" stop-color="#c4b5fd"/>
+            <stop offset="0%"   stop-color="#b03a0c"/>
+            <stop offset="100%" stop-color="#f9752f"/>
           </linearGradient>
           <linearGradient id="g-re" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#991b1b"/>
-            <stop offset="100%" stop-color="#fca5a5"/>
+            <stop offset="0%"   stop-color="#3b2d85"/>
+            <stop offset="100%" stop-color="#7b6de0"/>
           </linearGradient>
-          <filter id="glow-pu" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-          </filter>
-          <filter id="glow-re" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-          </filter>
         </defs>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#a78bfa" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="256.0"
-                transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-pu)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
                 stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="256.0"
                 transform="rotate(-90 65 65)"/>
-        <circle cx="65" cy="65" r="41" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
-        <circle cx="65" cy="65" r="41" fill="none" stroke="#f87171" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="106.3"
-                transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-re)"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="#ecebe7" stroke-width="8"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
                 stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="106.3"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#ef4444;font-size:1.8rem">-12</span>
+        <span class="ring-num" style="color:#c2321a;font-size:1.8rem">-12</span>
         <span class="ring-sub">TSB</span>
       </div>
     </div>
     <div class="dual-legend">
       <div class="dual-legend-item">
-        <div class="dl-dot" style="background:var(--purple)"></div>
+        <div class="dl-dot" style="background:var(--ctl)"></div>
         <span class="dl-name">CTL · Fitness</span>
-        <span class="dl-val" style="color:var(--purple)">23.3 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
+        <span class="dl-val" style="color:var(--text)">23.3 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
       </div>
       <div class="dual-legend-item">
-        <div class="dl-dot" style="background:#f87171"></div>
+        <div class="dl-dot" style="background:var(--atl)"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:#f87171">35.2</span>
+        <span class="dl-val" style="color:var(--text)">35.2</span>
       </div>
     </div>
   </div>
@@ -460,17 +466,11 @@
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
           <linearGradient id="g-te" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#0d9488"/>
-            <stop offset="100%" stop-color="#5eead4"/>
+            <stop offset="0%"   stop-color="#d1450f"/>
+            <stop offset="100%" stop-color="#ff9366"/>
           </linearGradient>
-          <filter id="glow-te" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-          </filter>
         </defs>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#2dd4bf" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
-                transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-te)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
                 stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
                 transform="rotate(-90 65 65)"/>
@@ -492,12 +492,12 @@
 
   <!-- READINESS -->
   <div class="readiness-card">
-    <div class="chard"><div class="chard-icon" style="background:rgba(34,197,94,0.12)">💚</div>Readiness Score</div>
+    <div class="chard"><div class="chard-icon">💚</div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:#f5a623">76</div>
-      <div class="readiness-tag" style="color:#f5a623">🟡 Normal trainieren</div>
+      <div class="readiness-score" style="color:#a4540b">76</div>
+      <div class="readiness-tag" style="color:#a4540b">🟡 Normal trainieren</div>
       
     </div>
 
@@ -505,12 +505,12 @@
 
     
     <div style="display:flex;gap:8px;margin-bottom:12px">
-      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
         <div style="font-size:1.2rem;font-weight:900;color:var(--text)">70</div>
         <div style="font-size:0.55rem;color:var(--muted)">HRV · Schlaf · TSB · Puls</div>
       </div>
-      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
         <div style="font-size:1.2rem;font-weight:900;color:var(--text)">85</div>
         <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
@@ -518,26 +518,26 @@
     </div>
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
         <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">52 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--green);background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Normal</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--green);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Normal</div>
         <div class="rbar-lbl">Normalber. 44–57 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--green)">8.5h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">8.5h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red)">-12</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">-12</div>
         <div class="rbar-lbl">Form</div>
         
         <div style="font-size:0.6rem;font-weight:700;color:var(--blue);margin-top:2px">
@@ -545,7 +545,7 @@
         </div>
         
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">53 bpm</div>
         <div class="rbar-lbl">bpm</div>
@@ -560,10 +560,10 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
-          <span style="font-size:0.62rem;color:#eab308">Durchschn. (2/4)</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Durchschn. (2/4)</span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:#eab308;width:74%;height:4px;border-radius:3px"></div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#fab219;width:74%;height:4px;border-radius:3px"></div>
         </div>
       </div>
       
@@ -572,10 +572,10 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
-          <span style="font-size:0.62rem;color:#22c55e">Durchschn. (2/4)</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Durchschn. (2/4)</span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:#22c55e;width:76%;height:4px;border-radius:3px"></div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#0ca30c;width:76%;height:4px;border-radius:3px"></div>
         </div>
       </div>
       
@@ -584,10 +584,10 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
-          <span style="font-size:0.62rem;color:#22c55e">Niedrig (1/4)</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:#22c55e;width:100%;height:4px;border-radius:3px"></div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#0ca30c;width:100%;height:4px;border-radius:3px"></div>
         </div>
       </div>
       
@@ -596,13 +596,13 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
-          <span style="font-size:0.62rem;color:#22c55e">
+          <span style="font-size:0.62rem;color:var(--text2)">
             Keine ✅ (1/4)
             
           </span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
-          <div style="background:#22c55e;width:100%;height:4px;border-radius:3px"></div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#0ca30c;width:100%;height:4px;border-radius:3px"></div>
         </div>
       </div>
       
@@ -614,19 +614,19 @@
       <div class="spark-label">Readiness · 7 Tage</div>
       <div class="sparkline">
         
-        <div class="spark-bar " style="height:66%;background:#f5a623"></div>
+        <div class="spark-bar " style="height:66%;background:#fab219"></div>
         
-        <div class="spark-bar " style="height:63%;background:#f5a623"></div>
+        <div class="spark-bar " style="height:63%;background:#fab219"></div>
         
-        <div class="spark-bar " style="height:68%;background:#f5a623"></div>
+        <div class="spark-bar " style="height:68%;background:#fab219"></div>
         
-        <div class="spark-bar " style="height:59%;background:#ef4444"></div>
+        <div class="spark-bar " style="height:59%;background:#d03b3b"></div>
         
-        <div class="spark-bar " style="height:79%;background:#f5a623"></div>
+        <div class="spark-bar " style="height:79%;background:#fab219"></div>
         
-        <div class="spark-bar " style="height:72%;background:#f5a623"></div>
+        <div class="spark-bar " style="height:72%;background:#fab219"></div>
         
-        <div class="spark-bar spark-today" style="height:66%;background:#f5a623"></div>
+        <div class="spark-bar spark-today" style="height:66%;background:#fab219"></div>
         
       </div>
     </div>
@@ -656,14 +656,14 @@
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:49%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:30%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:30%;background:var(--red-mark);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW32</span>
-          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Lauf</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:0;margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW32</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 98 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 160 TSS</div>
+          <span style="font-size:0.38rem;color:#d1450f;height:9px;line-height:9px;text-align:center">Lauf</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:0;margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW32</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 98 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 160 TSS</div>
           </div>
         </div>
         
@@ -677,14 +677,14 @@
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:47%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:13%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:13%;background:var(--red-mark);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW33</span>
-          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Lauf</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW33</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 44 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 154 TSS</div>
+          <span style="font-size:0.38rem;color:#d1450f;height:9px;line-height:9px;text-align:center">Lauf</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW33</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 44 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 154 TSS</div>
           </div>
         </div>
         
@@ -698,14 +698,14 @@
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:63%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:26%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:26%;background:var(--red-mark);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW34</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Pause</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW34</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 86 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 206 TSS</div>
+          <span style="font-size:0.38rem;color:#8b837e;height:9px;line-height:9px;text-align:center">Pause</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW34</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 86 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 206 TSS</div>
           </div>
         </div>
         
@@ -719,14 +719,14 @@
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:68%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:23%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:23%;background:var(--red-mark);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW35</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Pause</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW35</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 76 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 221 TSS</div>
+          <span style="font-size:0.38rem;color:#8b837e;height:9px;line-height:9px;text-align:center">Pause</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW35</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 76 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 221 TSS</div>
           </div>
         </div>
         
@@ -740,56 +740,56 @@
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:12%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:32%;background:var(--red);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:32%;background:var(--red-mark);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW36</span>
-          <span style="font-size:0.38rem;color:#f97316;height:9px;line-height:9px;text-align:center">Aufbau</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW36</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 106 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 38 TSS</div>
+          <span style="font-size:0.38rem;color:#d1450f;height:9px;line-height:9px;text-align:center">Aufbau</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW36</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 106 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 38 TSS</div>
           </div>
         </div>
         
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
              onmouseenter="this.querySelector('.tw').style.opacity='1';var f=this.querySelector('.tf');if(f)f.style.filter='brightness(1.4)'"
              onmouseleave="this.querySelector('.tw').style.opacity='0';var f=this.querySelector('.tf');if(f)f.style.filter=''">
-          <span style="font-size:0.46rem;color:var(--green);height:12px;line-height:12px;white-space:nowrap">
+          <span style="font-size:0.46rem;color:var(--brand);height:12px;line-height:12px;white-space:nowrap">
             296
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:31%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:91%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:91%;background:var(--brand);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW37</span>
-          <span style="font-size:0.38rem;color:#a78bfa;height:9px;line-height:9px;text-align:center">Tempo</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW37</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 296 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 100 TSS</div>
+          <span style="font-size:0.38rem;color:#992f07;height:9px;line-height:9px;text-align:center">Tempo</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW37</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 296 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 100 TSS</div>
           </div>
         </div>
         
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
              onmouseenter="this.querySelector('.tw').style.opacity='1';var f=this.querySelector('.tf');if(f)f.style.filter='brightness(1.4)'"
              onmouseleave="this.querySelector('.tw').style.opacity='0';var f=this.querySelector('.tf');if(f)f.style.filter=''">
-          <span style="font-size:0.46rem;color:var(--green);height:12px;line-height:12px;white-space:nowrap">
+          <span style="font-size:0.46rem;color:var(--brand);height:12px;line-height:12px;white-space:nowrap">
             248
           </span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             
             <div style="position:absolute;bottom:0;left:0;width:100%;height:36%;border-radius:3px 3px 0 0;border:1.5px solid rgba(148,163,184,0.35);background:transparent;box-sizing:border-box;z-index:0;"></div>
             
-            <div class="tf" style="width:100%;height:76%;background:var(--green);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
+            <div class="tf" style="width:100%;height:76%;background:var(--brand);border-radius:3px 3px 0 0;position:relative;z-index:1;"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px">KW38</span>
-          <span style="font-size:0.38rem;color:#60a5fa;height:9px;line-height:9px;text-align:center">Race</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW38</div>
-            <div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: 248 TSS</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 117 TSS</div>
+          <span style="font-size:0.38rem;color:#992f07;height:9px;line-height:9px;text-align:center">Race</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW38</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: 248 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 117 TSS</div>
           </div>
         </div>
         
@@ -806,11 +806,11 @@
             <div class="tf" style="width:100%;height:5%;background:var(--muted);border-radius:3px 3px 0 0;position:relative;z-index:1;opacity:0.55"></div>
           </div>
           <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px">KW39</span>
-          <span style="font-size:0.38rem;color:#94a3b8;height:9px;line-height:9px;text-align:center">Erhol.</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;right:0;margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW39</div>
+          <span style="font-size:0.38rem;color:#8b837e;height:9px;line-height:9px;text-align:center">Erhol.</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;right:0;margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW39</div>
             
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: 255 TSS</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: 255 TSS</div>
           </div>
         </div>
         
@@ -822,27 +822,27 @@
         <span style="display:inline-block;width:10px;height:6px;border:1.5px solid rgba(148,163,184,0.4);border-radius:1px"></span>Plan
       </span>
       <span style="display:inline-flex;align-items:center;gap:3px">
-        <span style="display:inline-block;width:10px;height:6px;background:var(--green);border-radius:1px"></span>Ist
+        <span style="display:inline-block;width:10px;height:6px;background:var(--brand);border-radius:1px"></span>Ist
       </span>
-      <span><span style="color:#94a3b8">■</span> Base</span>
+      <span><span style="color:var(--muted)">■</span> Base</span>
       <span><span style="color:#f97316">■</span> HIT</span>
-      <span><span style="color:#60a5fa">■</span> Taper/Race</span>
+      <span><span style="color:var(--brand)">■</span> Taper/Race</span>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø 8 Wochen</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">272</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Höchste</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">296</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Compliance</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--accent)">33%</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW40 Plan</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">195</div>
       </div>
@@ -856,34 +856,34 @@
     <span class="pi-badge pi-warn">LIT: 77% · ⚠️ Zu viel Grauzone (Z3)</span>
     <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
       <svg viewBox="0 0 120 120" width="120" height="120" style="flex-shrink:0">
-  <circle cx="60" cy="60" r="46" fill="none" stroke="#1a1a1a" stroke-width="20"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#22c55e" stroke-width="20" stroke-dasharray="222.6 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="49.1 289.0" stroke-dashoffset="-294.8" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="5.8 289.0" stroke-dashoffset="-343.9" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#a855f7" stroke-width="20" stroke-dasharray="11.6 289.0" stroke-dashoffset="-349.7" opacity="0.75"/>
-  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0" font-family="system-ui">77%</text>
-  <text x="60" y="69" text-anchor="middle" font-size="8" fill="#64748b" font-family="system-ui">LIT 8W</text>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#ecebe7" stroke-width="20"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#ff9366" stroke-width="20" stroke-dasharray="222.6 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#e05613" stroke-width="20" stroke-dasharray="49.1 289.0" stroke-dashoffset="-294.8" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#bd400a" stroke-width="20" stroke-dasharray="5.8 289.0" stroke-dashoffset="-343.9" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#992f07" stroke-width="20" stroke-dasharray="11.6 289.0" stroke-dashoffset="-349.7" opacity="0.75"/>
+  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#16110f" font-family="system-ui">77%</text>
+  <text x="60" y="69" text-anchor="middle" font-size="8" fill="#8b837e" font-family="system-ui">LIT 8W</text>
 </svg>
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z1);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">LIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">77%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">77%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z3);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">Grauzone</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--yellow);margin-left:auto">17%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">17%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#3b82f6;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z4);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">MIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:#3b82f6;margin-left:auto">2%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">2%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#a855f7;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z5);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">4%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">4%</span>
         </div>
         <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
       </div>
@@ -1097,19 +1097,19 @@
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
+            <stop offset="0%" stop-color="#d1450f" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/>
           </linearGradient>
         </defs>
         <line x1="0" y1="26" x2="300" y2="26" stroke="var(--border)" stroke-width="0.5"/>
         <line x1="0" y1="53" x2="300" y2="53" stroke="var(--border)" stroke-width="0.5"/>
         <path d="M0.0,23.6 L1.6,19.5 L3.3,13.0 L4.9,7.3 L6.6,7.4 L8.2,9.1 L9.9,10.8 L11.5,12.4 L13.2,13.3 L14.8,12.7 L16.5,14.3 L18.1,15.2 L19.8,14.2 L21.4,15.7 L23.1,15.8 L24.7,17.4 L26.4,17.3 L28.0,18.7 L29.7,20.2 L31.3,21.6 L33.0,23.0 L34.6,24.3 L36.3,25.6 L37.9,26.9 L39.6,28.1 L41.2,29.4 L42.9,30.5 L44.5,31.7 L46.2,32.8 L47.8,34.0 L49.5,35.0 L51.1,36.1 L52.7,37.1 L54.4,35.5 L56.0,34.2 L57.7,35.3 L59.3,32.8 L61.0,32.7 L62.6,33.8 L64.3,29.9 L65.9,23.8 L67.6,25.1 L69.2,26.4 L70.9,26.5 L72.5,26.3 L74.2,27.6 L75.8,27.3 L77.5,26.7 L79.1,26.3 L80.8,26.5 L82.4,25.0 L84.1,24.4 L85.7,21.5 L87.4,22.9 L89.0,24.2 L90.7,25.5 L92.3,25.9 L94.0,24.5 L95.6,24.3 L97.3,22.8 L98.9,24.1 L100.5,22.0 L102.2,23.4 L103.8,20.8 L105.5,18.3 L107.1,19.7 L108.8,15.9 L110.4,13.8 L112.1,15.4 L113.7,14.7 L115.4,15.4 L117.0,16.0 L118.7,17.5 L120.3,16.8 L122.0,17.3 L123.6,17.9 L125.3,18.4 L126.9,18.8 L128.6,20.2 L130.2,20.7 L131.9,22.1 L133.5,21.8 L135.2,20.1 L136.8,11.8 L138.5,13.4 L140.1,15.0 L141.8,15.6 L143.4,17.1 L145.1,16.3 L146.7,15.4 L148.4,16.9 L150.0,18.4 L151.6,18.8 L153.3,20.2 L154.9,20.0 L156.6,21.4 L158.2,20.6 L159.9,19.0 L161.5,20.4 L163.2,21.8 L164.8,23.2 L166.5,24.5 L168.1,25.9 L169.8,27.1 L171.4,28.4 L173.1,29.6 L174.7,30.8 L176.4,31.9 L178.0,33.1 L179.7,34.2 L181.3,35.2 L183.0,36.3 L184.6,37.3 L186.3,38.3 L187.9,39.3 L189.6,40.3 L191.2,41.2 L192.9,42.1 L194.5,43.0 L196.2,43.9 L197.8,44.7 L199.5,45.6 L201.1,46.4 L202.7,46.2 L204.4,47.0 L206.0,46.7 L207.7,47.5 L209.3,48.3 L211.0,47.8 L212.6,48.5 L214.3,47.7 L215.9,46.0 L217.6,46.8 L219.2,47.6 L220.9,48.3 L222.5,47.8 L224.2,46.8 L225.8,47.5 L227.5,48.3 L229.1,49.0 L230.8,48.4 L232.4,49.1 L234.1,49.9 L235.7,50.6 L237.4,51.3 L239.0,51.9 L240.7,52.6 L242.3,53.2 L244.0,53.9 L245.6,54.5 L247.3,55.0 L248.9,55.6 L250.5,56.2 L252.2,54.0 L253.8,54.6 L255.5,55.2 L257.1,55.8 L258.8,56.4 L260.4,55.3 L262.1,55.8 L263.7,56.4 L265.4,57.0 L267.0,57.5 L268.7,58.0 L270.3,58.6 L272.0,57.8 L273.6,58.4 L275.3,57.6 L276.9,57.3 L278.6,57.8 L280.2,56.5 L281.9,57.0 L283.5,57.6 L285.2,51.5 L286.8,52.2 L288.5,51.6 L290.1,49.6 L291.8,50.3 L293.4,51.0 L295.1,50.6 L296.7,50.4 L298.4,48.1 L300.0,48.8 L300,80 L0,80 Z" fill="url(#ctlGradFill)"/>
-        <path d="M0.0,23.6 L1.6,19.5 L3.3,13.0 L4.9,7.3 L6.6,7.4 L8.2,9.1 L9.9,10.8 L11.5,12.4 L13.2,13.3 L14.8,12.7 L16.5,14.3 L18.1,15.2 L19.8,14.2 L21.4,15.7 L23.1,15.8 L24.7,17.4 L26.4,17.3 L28.0,18.7 L29.7,20.2 L31.3,21.6 L33.0,23.0 L34.6,24.3 L36.3,25.6 L37.9,26.9 L39.6,28.1 L41.2,29.4 L42.9,30.5 L44.5,31.7 L46.2,32.8 L47.8,34.0 L49.5,35.0 L51.1,36.1 L52.7,37.1 L54.4,35.5 L56.0,34.2 L57.7,35.3 L59.3,32.8 L61.0,32.7 L62.6,33.8 L64.3,29.9 L65.9,23.8 L67.6,25.1 L69.2,26.4 L70.9,26.5 L72.5,26.3 L74.2,27.6 L75.8,27.3 L77.5,26.7 L79.1,26.3 L80.8,26.5 L82.4,25.0 L84.1,24.4 L85.7,21.5 L87.4,22.9 L89.0,24.2 L90.7,25.5 L92.3,25.9 L94.0,24.5 L95.6,24.3 L97.3,22.8 L98.9,24.1 L100.5,22.0 L102.2,23.4 L103.8,20.8 L105.5,18.3 L107.1,19.7 L108.8,15.9 L110.4,13.8 L112.1,15.4 L113.7,14.7 L115.4,15.4 L117.0,16.0 L118.7,17.5 L120.3,16.8 L122.0,17.3 L123.6,17.9 L125.3,18.4 L126.9,18.8 L128.6,20.2 L130.2,20.7 L131.9,22.1 L133.5,21.8 L135.2,20.1 L136.8,11.8 L138.5,13.4 L140.1,15.0 L141.8,15.6 L143.4,17.1 L145.1,16.3 L146.7,15.4 L148.4,16.9 L150.0,18.4 L151.6,18.8 L153.3,20.2 L154.9,20.0 L156.6,21.4 L158.2,20.6 L159.9,19.0 L161.5,20.4 L163.2,21.8 L164.8,23.2 L166.5,24.5 L168.1,25.9 L169.8,27.1 L171.4,28.4 L173.1,29.6 L174.7,30.8 L176.4,31.9 L178.0,33.1 L179.7,34.2 L181.3,35.2 L183.0,36.3 L184.6,37.3 L186.3,38.3 L187.9,39.3 L189.6,40.3 L191.2,41.2 L192.9,42.1 L194.5,43.0 L196.2,43.9 L197.8,44.7 L199.5,45.6 L201.1,46.4 L202.7,46.2 L204.4,47.0 L206.0,46.7 L207.7,47.5 L209.3,48.3 L211.0,47.8 L212.6,48.5 L214.3,47.7 L215.9,46.0 L217.6,46.8 L219.2,47.6 L220.9,48.3 L222.5,47.8 L224.2,46.8 L225.8,47.5 L227.5,48.3 L229.1,49.0 L230.8,48.4 L232.4,49.1 L234.1,49.9 L235.7,50.6 L237.4,51.3 L239.0,51.9 L240.7,52.6 L242.3,53.2 L244.0,53.9 L245.6,54.5 L247.3,55.0 L248.9,55.6 L250.5,56.2 L252.2,54.0 L253.8,54.6 L255.5,55.2 L257.1,55.8 L258.8,56.4 L260.4,55.3 L262.1,55.8 L263.7,56.4 L265.4,57.0 L267.0,57.5 L268.7,58.0 L270.3,58.6 L272.0,57.8 L273.6,58.4 L275.3,57.6 L276.9,57.3 L278.6,57.8 L280.2,56.5 L281.9,57.0 L283.5,57.6 L285.2,51.5 L286.8,52.2 L288.5,51.6 L290.1,49.6 L291.8,50.3 L293.4,51.0 L295.1,50.6 L296.7,50.4 L298.4,48.1 L300.0,48.8" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="48.8" r="3" fill="var(--green)"/>
-        <circle cx="300" cy="48.8" r="5" fill="var(--green)" opacity="0.2"/>
+        <path d="M0.0,23.6 L1.6,19.5 L3.3,13.0 L4.9,7.3 L6.6,7.4 L8.2,9.1 L9.9,10.8 L11.5,12.4 L13.2,13.3 L14.8,12.7 L16.5,14.3 L18.1,15.2 L19.8,14.2 L21.4,15.7 L23.1,15.8 L24.7,17.4 L26.4,17.3 L28.0,18.7 L29.7,20.2 L31.3,21.6 L33.0,23.0 L34.6,24.3 L36.3,25.6 L37.9,26.9 L39.6,28.1 L41.2,29.4 L42.9,30.5 L44.5,31.7 L46.2,32.8 L47.8,34.0 L49.5,35.0 L51.1,36.1 L52.7,37.1 L54.4,35.5 L56.0,34.2 L57.7,35.3 L59.3,32.8 L61.0,32.7 L62.6,33.8 L64.3,29.9 L65.9,23.8 L67.6,25.1 L69.2,26.4 L70.9,26.5 L72.5,26.3 L74.2,27.6 L75.8,27.3 L77.5,26.7 L79.1,26.3 L80.8,26.5 L82.4,25.0 L84.1,24.4 L85.7,21.5 L87.4,22.9 L89.0,24.2 L90.7,25.5 L92.3,25.9 L94.0,24.5 L95.6,24.3 L97.3,22.8 L98.9,24.1 L100.5,22.0 L102.2,23.4 L103.8,20.8 L105.5,18.3 L107.1,19.7 L108.8,15.9 L110.4,13.8 L112.1,15.4 L113.7,14.7 L115.4,15.4 L117.0,16.0 L118.7,17.5 L120.3,16.8 L122.0,17.3 L123.6,17.9 L125.3,18.4 L126.9,18.8 L128.6,20.2 L130.2,20.7 L131.9,22.1 L133.5,21.8 L135.2,20.1 L136.8,11.8 L138.5,13.4 L140.1,15.0 L141.8,15.6 L143.4,17.1 L145.1,16.3 L146.7,15.4 L148.4,16.9 L150.0,18.4 L151.6,18.8 L153.3,20.2 L154.9,20.0 L156.6,21.4 L158.2,20.6 L159.9,19.0 L161.5,20.4 L163.2,21.8 L164.8,23.2 L166.5,24.5 L168.1,25.9 L169.8,27.1 L171.4,28.4 L173.1,29.6 L174.7,30.8 L176.4,31.9 L178.0,33.1 L179.7,34.2 L181.3,35.2 L183.0,36.3 L184.6,37.3 L186.3,38.3 L187.9,39.3 L189.6,40.3 L191.2,41.2 L192.9,42.1 L194.5,43.0 L196.2,43.9 L197.8,44.7 L199.5,45.6 L201.1,46.4 L202.7,46.2 L204.4,47.0 L206.0,46.7 L207.7,47.5 L209.3,48.3 L211.0,47.8 L212.6,48.5 L214.3,47.7 L215.9,46.0 L217.6,46.8 L219.2,47.6 L220.9,48.3 L222.5,47.8 L224.2,46.8 L225.8,47.5 L227.5,48.3 L229.1,49.0 L230.8,48.4 L232.4,49.1 L234.1,49.9 L235.7,50.6 L237.4,51.3 L239.0,51.9 L240.7,52.6 L242.3,53.2 L244.0,53.9 L245.6,54.5 L247.3,55.0 L248.9,55.6 L250.5,56.2 L252.2,54.0 L253.8,54.6 L255.5,55.2 L257.1,55.8 L258.8,56.4 L260.4,55.3 L262.1,55.8 L263.7,56.4 L265.4,57.0 L267.0,57.5 L268.7,58.0 L270.3,58.6 L272.0,57.8 L273.6,58.4 L275.3,57.6 L276.9,57.3 L278.6,57.8 L280.2,56.5 L281.9,57.0 L283.5,57.6 L285.2,51.5 L286.8,52.2 L288.5,51.6 L290.1,49.6 L291.8,50.3 L293.4,51.0 L295.1,50.6 L296.7,50.4 L298.4,48.1 L300.0,48.8" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="48.8" r="3" fill="var(--brand)"/>
+        <circle cx="300" cy="48.8" r="5" fill="var(--brand)" opacity="0.2"/>
       </svg>
-      <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
-      <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(34,197,94,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
+      <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.25);pointer-events:none;z-index:5"></div>
+      <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem"></div>
       <div style="position:absolute;bottom:-14px;left:0;right:0">
         
         <span style="position:absolute;left:4.9%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Apr</span>
@@ -1127,7 +1127,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
-      Aktuell: <span style="color:var(--green);font-weight:700">CTL 23.3</span>
+      Aktuell: <span style="color:var(--text);font-weight:700">CTL 23.3</span>
     </div>
     
   </div>
@@ -1151,43 +1151,43 @@
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:89%;
-                  background:var(--green);
+                  background:var(--brand);
                   opacity:0.75"
            title="85 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:5%;
-                  background:var(--subtle);
+                  background:var(--track);
                   opacity:0.75"
            title="0 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:5%;
-                  background:var(--subtle);
+                  background:var(--track);
                   opacity:0.75"
            title="0 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:5%;
-                  background:var(--subtle);
+                  background:var(--track);
                   opacity:0.75"
            title="0 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:32%;
-                  background:var(--green);
+                  background:var(--brand);
                   opacity:0.75"
            title="30 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:100%;
-                  background:var(--green);
+                  background:var(--brand);
                   opacity:0.75"
            title="95 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:5%;
-                  background:var(--subtle);
+                  background:var(--track);
                   opacity:0.75"
            title="0 TSS"></div>
       
@@ -1204,30 +1204,30 @@
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7986cb" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#7986cb" stop-opacity="0.0"/>
+            <stop offset="0%" stop-color="#57504c" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#57504c" stop-opacity="0.0"/>
           </linearGradient>
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
-        <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
+        <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
         <path d="M0.0,3.3 L10.0,10.3 L30.0,12.4 L40.0,14.5 L50.0,8.1 L60.0,7.9 L70.0,17.2 L80.0,26.1 L90.0,7.6 L100.0,42.3 L110.0,10.4 L120.0,27.7 L130.0,26.1 L140.0,21.2 L150.0,21.9 L160.0,4.5 L170.0,11.2 L180.0,5.7 L190.0,7.5 L200.0,15.3 L210.0,8.3 L220.0,19.1 L230.0,9.6 L240.0,18.8 L250.0,12.3 L260.0,25.2 L270.0,26.9 L280.0,11.7 L290.0,11.1 L300.0,11.9 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,3.3 L10.0,10.3 L30.0,12.4 L40.0,14.5 L50.0,8.1 L60.0,7.9 L70.0,17.2 L80.0,26.1 L90.0,7.6 L100.0,42.3 L110.0,10.4 L120.0,27.7 L130.0,26.1 L140.0,21.2 L150.0,21.9 L160.0,4.5 L170.0,11.2 L180.0,5.7 L190.0,7.5 L200.0,15.3 L210.0,8.3 L220.0,19.1 L230.0,9.6 L240.0,18.8 L250.0,12.3 L260.0,25.2 L270.0,26.9 L280.0,11.7 L290.0,11.1 L300.0,11.9" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="11.9" r="3" fill="#7986cb"/>
-        <circle cx="300" cy="11.9" r="5" fill="#7986cb" opacity="0.2"/>
+        <path d="M0.0,3.3 L10.0,10.3 L30.0,12.4 L40.0,14.5 L50.0,8.1 L60.0,7.9 L70.0,17.2 L80.0,26.1 L90.0,7.6 L100.0,42.3 L110.0,10.4 L120.0,27.7 L130.0,26.1 L140.0,21.2 L150.0,21.9 L160.0,4.5 L170.0,11.2 L180.0,5.7 L190.0,7.5 L200.0,15.3 L210.0,8.3 L220.0,19.1 L230.0,9.6 L240.0,18.8 L250.0,12.3 L260.0,25.2 L270.0,26.9 L280.0,11.7 L290.0,11.1 L300.0,11.9" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="11.9" r="3" fill="#57504c"/>
+        <circle cx="300" cy="11.9" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
-        <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
+        <text x="296" y="13" font-size="7" fill="#8b837e" opacity="0.8" text-anchor="end">8h</text>
       </svg>
-      <div id="sl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
-      <div id="sl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(121,134,203,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
+      <div id="sl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.25);pointer-events:none;z-index:5"></div>
+      <div id="sl-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem"></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
-        <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
+        <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">
           8.5h
         </div>
         <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
       </div>
-      <div style="flex:1;height:1px;background:rgba(255,255,255,0.06)"></div>
+      <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
         <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.1h</div>
         <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
@@ -1247,102 +1247,102 @@
         <svg width="100%" viewBox="0 0 430 80" preserveAspectRatio="none" style="display:block;height:80px">
           <defs>
             <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+              <stop offset="0%" stop-color="#d1450f" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/>
             </linearGradient>
           </defs>
           <path d="M0.0,66.9 L51.7,44.9 L151.3,55.5 L194.1,44.1 L258.5,26.7 L415.9,41.1 L415.9,80 L0,80 Z" fill="url(#ftp-grad)"/>
-          <path d="M0.0,66.9 L51.7,44.9 L151.3,55.5 L194.1,44.1 L258.5,26.7 L415.9,41.1" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M0.0,66.9 L51.7,44.9 L151.3,55.5 L194.1,44.1 L258.5,26.7 L415.9,41.1" fill="none" stroke="#d1450f" stroke-width="1.8" stroke-linejoin="round"/>
           
-          <circle cx="0.0" cy="66.9" r="3.5" fill="#3b82f6"/>
+          <circle cx="0.0" cy="66.9" r="3.5" fill="#d1450f"/>
           
-          <circle cx="51.7" cy="44.9" r="3.5" fill="#3b82f6"/>
+          <circle cx="51.7" cy="44.9" r="3.5" fill="#d1450f"/>
           
-          <circle cx="151.3" cy="55.5" r="3.5" fill="#3b82f6"/>
+          <circle cx="151.3" cy="55.5" r="3.5" fill="#d1450f"/>
           
-          <circle cx="194.1" cy="44.1" r="3.5" fill="#3b82f6"/>
+          <circle cx="194.1" cy="44.1" r="3.5" fill="#d1450f"/>
           
-          <circle cx="258.5" cy="26.7" r="3.5" fill="#3b82f6"/>
+          <circle cx="258.5" cy="26.7" r="3.5" fill="#d1450f"/>
           
-          <circle cx="415.9" cy="41.1" r="3.5" fill="#3b82f6"/>
+          <circle cx="415.9" cy="41.1" r="3.5" fill="#d1450f"/>
           
         </svg>
         
         <div style="position:absolute;left:calc(0.0% - 12px);top:calc(83.6% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px">271W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             left:0">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">271W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">01.11.2023</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">271W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">01.11.2023</div>
           </div>
         </div>
         
         <div style="position:absolute;left:calc(12.0% - 12px);top:calc(56.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">300W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             left:50%;transform:translateX(-50%)">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">300W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">19.02.2024</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">300W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">19.02.2024</div>
           </div>
         </div>
         
         <div style="position:absolute;left:calc(35.2% - 12px);top:calc(69.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">286W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             left:50%;transform:translateX(-50%)">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">286W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">18.09.2024</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">286W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">18.09.2024</div>
           </div>
         </div>
         
         <div style="position:absolute;left:calc(45.1% - 12px);top:calc(55.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">301W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             left:50%;transform:translateX(-50%)">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">301W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">18.12.2024</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">301W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">18.12.2024</div>
           </div>
         </div>
         
         <div style="position:absolute;left:calc(60.1% - 12px);top:calc(33.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">324W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             left:50%;transform:translateX(-50%)">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">324W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">04.05.2025</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">324W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">04.05.2025</div>
           </div>
         </div>
         
         <div style="position:absolute;left:calc(96.7% - 12px);top:calc(51.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             right:12px">305W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             right:0">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">305W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">04.04.2026</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">305W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">04.04.2026</div>
           </div>
         </div>
         
@@ -1385,49 +1385,49 @@
     <tbody>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#64748b"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#b6afa9"></span></td>
       <td style="font-weight:500;font-size:0.7rem;color:var(--muted)">Z0 Recovery</td>
       <td style="text-align:right" class="zone-val-muted">0–159W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem"><52%</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#38bdf8"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#ff9366"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z1 Base</td>
       <td style="text-align:right" class="zone-val-normal">160–188W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">52–62%</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#2dd4bf"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#f9752f"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z2 FatMax</td>
       <td style="text-align:right" class="zone-val-normal">189–212W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">62–70%</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#facc15"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#e05613"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z3 Tempo</td>
       <td style="text-align:right" class="zone-val-warm">213–283W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">70–93%</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#fb923c"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#bd400a"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z4 FTP</td>
       <td style="text-align:right" class="zone-val-warm">283–314W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">93–103%</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#f87171"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#992f07"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z5 VO2max</td>
       <td style="text-align:right" class="zone-val-hot">315–422W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">103–138%</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#dc2626"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#742305"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z6 Anaerob</td>
       <td style="text-align:right" class="zone-val-hot">423W+</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">>138%</td>
@@ -1455,28 +1455,28 @@
     <tbody>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#38bdf8"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#ff9366"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z1 Easy</td>
       <td style="text-align:right" class="zone-val-normal">7:25–8:40</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">150–165</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#2dd4bf"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#f9752f"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z2 Aerob</td>
       <td style="text-align:right" class="zone-val-normal">6:55–7:25</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">165–176</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#fb923c"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#bd400a"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z3 Schwelle</td>
       <td style="text-align:right" class="zone-val-warm">6:10–6:40</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">176–189</td>
     </tr>
     
     <tr>
-      <td style="padding-left:0"><span class="zone-dot" style="background:#f87171"></span></td>
+      <td style="padding-left:0"><span class="zone-dot" style="background:#992f07"></span></td>
       <td style="font-weight:700;font-size:0.7rem;color:var(--text)">Z4 VO2max</td>
       <td style="text-align:right" class="zone-val-hot">5:25–6:10</td>
       <td style="text-align:right;color:var(--muted);font-size:0.65rem">189–200</td>
@@ -1511,77 +1511,77 @@
     
     <tr>
       <td style="font-weight:600;color:var(--text)">1s</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">1322W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">1322W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">15.02</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">6. Sep 25</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">5s</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">1231W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">1231W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">13.99</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">24. Aug 25</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">15s</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">1004W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">1004W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">11.41</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">6. Sep 25</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">30s</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">832W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">832W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">9.45</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">24. Aug 25</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">1 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">610W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">610W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">6.93</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">18. Jun 25</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">3 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">461W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">461W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">5.24</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">4. Apr 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">6 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">388W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">388W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">4.41</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">21. Dez 24</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">10 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">353W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">353W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">4.0</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">13. Jun 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">20 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">341W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">341W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">3.88</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">21. Apr 25</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">60 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">278W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">278W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">3.04</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">26. Mai 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">90 min</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">265W</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">265W</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">2.9</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">28. Mai 26</td>
     </tr>
@@ -1594,7 +1594,7 @@
 
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(34,197,94,0.10)">🏃</div>Lauf Bestwerte · All-Time</div>
+    <div class="chard" style="margin-bottom:0"><div class="chard-icon">🏃</div>Lauf Bestwerte · All-Time</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
@@ -1610,49 +1610,49 @@
     
     <tr>
       <td style="font-weight:600;color:var(--text)">400 m</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">1:49</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">1:49</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">4:32/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">22. Feb 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">800 m</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">4:13</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">4:13</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">5:16/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">22. Feb 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">1,5 km</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">8:10</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">8:10</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">5:27/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">22. Feb 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">1 Meile</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">8:41</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">8:41</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">5:24/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">22. Feb 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">3 km</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">16:50</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">16:50</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">5:37/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">22. Feb 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">5 km</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">30:46</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">30:46</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">6:09/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">22. Feb 26</td>
     </tr>
     
     <tr>
       <td style="font-weight:600;color:var(--text)">10 km</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">1:05:08</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">1:05:08</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">6:31/km</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">20. Sep 26</td>
     </tr>
@@ -1729,7 +1729,7 @@
       ch.style.display = 'block';
       ch.style.left = pt.x + '%';
       tt.innerHTML = '<div style="font-weight:700;color:' + color + '">' + fmtVal(pt) + '</div>'
-                   + '<div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">' + pt.d + '</div>';
+                   + '<div style="font-size:0.52rem;color:var(--muted);margin-top:1px">' + pt.d + '</div>';
       tt.style.display = 'block';
       if (pt.x < 70) { tt.style.left = 'calc(' + pt.x + '% + 8px)'; tt.style.right = ''; }
       else            { tt.style.right = 'calc(' + (100 - pt.x) + '% + 8px)'; tt.style.left = ''; }
@@ -1742,12 +1742,12 @@
 
   
   var ctlPts = [{"x":0.0,"d":"23.03.26","v":42.2},{"x":0.5,"d":"24.03.26","v":45.3},{"x":1.1,"d":"25.03.26","v":50.1},{"x":1.6,"d":"26.03.26","v":54.4},{"x":2.2,"d":"27.03.26","v":54.4},{"x":2.7,"d":"28.03.26","v":53.1},{"x":3.3,"d":"29.03.26","v":51.8},{"x":3.8,"d":"30.03.26","v":50.6},{"x":4.4,"d":"31.03.26","v":49.9},{"x":4.9,"d":"01.04.26","v":50.3},{"x":5.5,"d":"02.04.26","v":49.2},{"x":6.0,"d":"03.04.26","v":48.5},{"x":6.6,"d":"04.04.26","v":49.3},{"x":7.1,"d":"05.04.26","v":48.1},{"x":7.7,"d":"06.04.26","v":48.0},{"x":8.2,"d":"07.04.26","v":46.9},{"x":8.8,"d":"08.04.26","v":47.0},{"x":9.3,"d":"09.04.26","v":45.9},{"x":9.9,"d":"10.04.26","v":44.8},{"x":10.4,"d":"11.04.26","v":43.7},{"x":11.0,"d":"12.04.26","v":42.7},{"x":11.5,"d":"13.04.26","v":41.7},{"x":12.1,"d":"14.04.26","v":40.7},{"x":12.6,"d":"15.04.26","v":39.8},{"x":13.2,"d":"16.04.26","v":38.8},{"x":13.7,"d":"17.04.26","v":37.9},{"x":14.3,"d":"18.04.26","v":37.0},{"x":14.8,"d":"19.04.26","v":36.1},{"x":15.4,"d":"20.04.26","v":35.3},{"x":15.9,"d":"21.04.26","v":34.5},{"x":16.5,"d":"22.04.26","v":33.7},{"x":17.0,"d":"23.04.26","v":32.9},{"x":17.6,"d":"24.04.26","v":32.1},{"x":18.1,"d":"25.04.26","v":33.3},{"x":18.7,"d":"26.04.26","v":34.3},{"x":19.2,"d":"27.04.26","v":33.5},{"x":19.8,"d":"28.04.26","v":35.4},{"x":20.3,"d":"29.04.26","v":35.4},{"x":20.9,"d":"30.04.26","v":34.6},{"x":21.4,"d":"01.05.26","v":37.5},{"x":22.0,"d":"02.05.26","v":42.1},{"x":22.5,"d":"03.05.26","v":41.1},{"x":23.1,"d":"04.05.26","v":40.1},{"x":23.6,"d":"05.05.26","v":40.0},{"x":24.2,"d":"06.05.26","v":40.2},{"x":24.7,"d":"07.05.26","v":39.2},{"x":25.3,"d":"08.05.26","v":39.5},{"x":25.8,"d":"09.05.26","v":39.9},{"x":26.4,"d":"10.05.26","v":40.2},{"x":26.9,"d":"11.05.26","v":40.0},{"x":27.5,"d":"12.05.26","v":41.2},{"x":28.0,"d":"13.05.26","v":41.6},{"x":28.6,"d":"14.05.26","v":43.8},{"x":29.1,"d":"15.05.26","v":42.7},{"x":29.7,"d":"16.05.26","v":41.7},{"x":30.2,"d":"17.05.26","v":40.8},{"x":30.8,"d":"18.05.26","v":40.5},{"x":31.3,"d":"19.05.26","v":41.6},{"x":31.9,"d":"20.05.26","v":41.7},{"x":32.4,"d":"21.05.26","v":42.8},{"x":33.0,"d":"22.05.26","v":41.8},{"x":33.5,"d":"23.05.26","v":43.4},{"x":34.1,"d":"24.05.26","v":42.4},{"x":34.6,"d":"25.05.26","v":44.3},{"x":35.2,"d":"26.05.26","v":46.2},{"x":35.7,"d":"27.05.26","v":45.1},{"x":36.3,"d":"28.05.26","v":48.0},{"x":36.8,"d":"29.05.26","v":49.5},{"x":37.4,"d":"30.05.26","v":48.4},{"x":37.9,"d":"31.05.26","v":48.9},{"x":38.5,"d":"01.06.26","v":48.4},{"x":39.0,"d":"02.06.26","v":47.9},{"x":39.6,"d":"03.06.26","v":46.8},{"x":40.1,"d":"04.06.26","v":47.3},{"x":40.7,"d":"05.06.26","v":46.9},{"x":41.2,"d":"06.06.26","v":46.5},{"x":41.8,"d":"07.06.26","v":46.1},{"x":42.3,"d":"08.06.26","v":45.8},{"x":42.9,"d":"09.06.26","v":44.7},{"x":43.4,"d":"10.06.26","v":44.4},{"x":44.0,"d":"11.06.26","v":43.3},{"x":44.5,"d":"12.06.26","v":43.6},{"x":45.1,"d":"13.06.26","v":44.8},{"x":45.6,"d":"14.06.26","v":51.0},{"x":46.2,"d":"15.06.26","v":49.8},{"x":46.7,"d":"16.06.26","v":48.6},{"x":47.3,"d":"17.06.26","v":48.2},{"x":47.8,"d":"18.06.26","v":47.1},{"x":48.4,"d":"19.06.26","v":47.7},{"x":48.9,"d":"20.06.26","v":48.3},{"x":49.5,"d":"21.06.26","v":47.2},{"x":50.0,"d":"22.06.26","v":46.1},{"x":50.5,"d":"23.06.26","v":45.8},{"x":51.1,"d":"24.06.26","v":44.8},{"x":51.6,"d":"25.06.26","v":44.9},{"x":52.2,"d":"26.06.26","v":43.8},{"x":52.7,"d":"27.06.26","v":44.5},{"x":53.3,"d":"28.06.26","v":45.7},{"x":53.8,"d":"29.06.26","v":44.6},{"x":54.4,"d":"30.06.26","v":43.5},{"x":54.9,"d":"01.07.26","v":42.5},{"x":55.5,"d":"02.07.26","v":41.5},{"x":56.0,"d":"03.07.26","v":40.5},{"x":56.6,"d":"04.07.26","v":39.6},{"x":57.1,"d":"05.07.26","v":38.6},{"x":57.7,"d":"06.07.26","v":37.7},{"x":58.2,"d":"07.07.26","v":36.8},{"x":58.8,"d":"08.07.26","v":36.0},{"x":59.3,"d":"09.07.26","v":35.1},{"x":59.9,"d":"10.07.26","v":34.3},{"x":60.4,"d":"11.07.26","v":33.5},{"x":61.0,"d":"12.07.26","v":32.7},{"x":61.5,"d":"13.07.26","v":31.9},{"x":62.1,"d":"14.07.26","v":31.2},{"x":62.6,"d":"15.07.26","v":30.5},{"x":63.2,"d":"16.07.26","v":29.7},{"x":63.7,"d":"17.07.26","v":29.0},{"x":64.3,"d":"18.07.26","v":28.4},{"x":64.8,"d":"19.07.26","v":27.7},{"x":65.4,"d":"20.07.26","v":27.0},{"x":65.9,"d":"21.07.26","v":26.4},{"x":66.5,"d":"22.07.26","v":25.8},{"x":67.0,"d":"23.07.26","v":25.2},{"x":67.6,"d":"24.07.26","v":25.3},{"x":68.1,"d":"25.07.26","v":24.7},{"x":68.7,"d":"26.07.26","v":24.9},{"x":69.2,"d":"27.07.26","v":24.3},{"x":69.8,"d":"28.07.26","v":23.8},{"x":70.3,"d":"29.07.26","v":24.1},{"x":70.9,"d":"30.07.26","v":23.6},{"x":71.4,"d":"31.07.26","v":24.2},{"x":72.0,"d":"01.08.26","v":25.5},{"x":72.5,"d":"02.08.26","v":24.9},{"x":73.1,"d":"03.08.26","v":24.3},{"x":73.6,"d":"04.08.26","v":23.7},{"x":74.2,"d":"05.08.26","v":24.1},{"x":74.7,"d":"06.08.26","v":24.9},{"x":75.3,"d":"07.08.26","v":24.3},{"x":75.8,"d":"08.08.26","v":23.7},{"x":76.4,"d":"09.08.26","v":23.2},{"x":76.9,"d":"10.08.26","v":23.7},{"x":77.5,"d":"11.08.26","v":23.1},{"x":78.0,"d":"12.08.26","v":22.6},{"x":78.6,"d":"13.08.26","v":22.0},{"x":79.1,"d":"14.08.26","v":21.5},{"x":79.7,"d":"15.08.26","v":21.0},{"x":80.2,"d":"16.08.26","v":20.5},{"x":80.8,"d":"17.08.26","v":20.0},{"x":81.3,"d":"18.08.26","v":19.6},{"x":81.9,"d":"19.08.26","v":19.1},{"x":82.4,"d":"20.08.26","v":18.7},{"x":83.0,"d":"21.08.26","v":18.3},{"x":83.5,"d":"22.08.26","v":17.8},{"x":84.1,"d":"23.08.26","v":19.5},{"x":84.6,"d":"24.08.26","v":19.0},{"x":85.2,"d":"25.08.26","v":18.5},{"x":85.7,"d":"26.08.26","v":18.1},{"x":86.3,"d":"27.08.26","v":17.7},{"x":86.8,"d":"28.08.26","v":18.5},{"x":87.4,"d":"29.08.26","v":18.1},{"x":87.9,"d":"30.08.26","v":17.7},{"x":88.5,"d":"31.08.26","v":17.2},{"x":89.0,"d":"01.09.26","v":16.8},{"x":89.6,"d":"02.09.26","v":16.4},{"x":90.1,"d":"03.09.26","v":16.0},{"x":90.7,"d":"04.09.26","v":16.6},{"x":91.2,"d":"05.09.26","v":16.2},{"x":91.8,"d":"06.09.26","v":16.8},{"x":92.3,"d":"07.09.26","v":17.0},{"x":92.9,"d":"08.09.26","v":16.6},{"x":93.4,"d":"09.09.26","v":17.6},{"x":94.0,"d":"10.09.26","v":17.2},{"x":94.5,"d":"11.09.26","v":16.8},{"x":95.1,"d":"12.09.26","v":21.3},{"x":95.6,"d":"13.09.26","v":20.8},{"x":96.2,"d":"14.09.26","v":21.2},{"x":96.7,"d":"15.09.26","v":22.7},{"x":97.3,"d":"16.09.26","v":22.2},{"x":97.8,"d":"17.09.26","v":21.7},{"x":98.4,"d":"18.09.26","v":22.0},{"x":98.9,"d":"19.09.26","v":22.2},{"x":99.5,"d":"20.09.26","v":23.9},{"x":100.0,"d":"21.09.26","v":23.3}];
-  bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#22c55e', function(p){ return 'CTL ' + p.v; });
+  bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#d1450f', function(p){ return 'CTL ' + p.v; });
   
 
   
   var slPts = [{"x":0.0,"d":"22.08.26","v":9.6},{"x":3.3,"d":"23.08.26","v":8.7},{"x":10.0,"d":"25.08.26","v":8.4},{"x":13.3,"d":"26.08.26","v":8.2},{"x":16.7,"d":"27.08.26","v":9.0},{"x":20.0,"d":"28.08.26","v":9.0},{"x":23.3,"d":"29.08.26","v":7.8},{"x":26.7,"d":"30.08.26","v":6.7},{"x":30.0,"d":"31.08.26","v":9.1},{"x":33.3,"d":"01.09.26","v":4.7},{"x":36.7,"d":"02.09.26","v":8.7},{"x":40.0,"d":"03.09.26","v":6.5},{"x":43.3,"d":"04.09.26","v":6.7},{"x":46.7,"d":"05.09.26","v":7.3},{"x":50.0,"d":"06.09.26","v":7.3},{"x":53.3,"d":"07.09.26","v":9.4},{"x":56.7,"d":"08.09.26","v":8.6},{"x":60.0,"d":"09.09.26","v":9.3},{"x":63.3,"d":"10.09.26","v":9.1},{"x":66.7,"d":"11.09.26","v":8.1},{"x":70.0,"d":"12.09.26","v":9.0},{"x":73.3,"d":"13.09.26","v":7.6},{"x":76.7,"d":"14.09.26","v":8.8},{"x":80.0,"d":"15.09.26","v":7.7},{"x":83.3,"d":"16.09.26","v":8.5},{"x":86.7,"d":"17.09.26","v":6.8},{"x":90.0,"d":"18.09.26","v":6.6},{"x":93.3,"d":"19.09.26","v":8.5},{"x":96.7,"d":"20.09.26","v":8.6},{"x":100.0,"d":"21.09.26","v":8.5}];
-  bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#7986cb', function(p){
+  bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
   

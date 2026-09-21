@@ -252,13 +252,24 @@ def week_date_range(kw: int, year: int) -> tuple[date, date]:
     return monday, monday + timedelta(days=6)
 
 
+# Status als Markierung (Balken, Ringe) vs. als Text (Zahlen, Labels):
+# Amber #fab219 hat auf Weiss 1,8:1 – als Flaeche in Ordnung, als Text nicht.
+STATUS_MARK = {"good": "#0ca30c", "warn": "#fab219", "crit": "#d03b3b"}
+STATUS_TEXT = {"good": "#0a7a0a", "warn": "#a4540b", "crit": "#c2321a"}
+
+
+def _status_key(value: float, good_at: float, warn_at: float) -> str:
+    """Schwellenvergleich → 'good' | 'warn' | 'crit'."""
+    if value >= good_at:
+        return "good"
+    if value >= warn_at:
+        return "warn"
+    return "crit"
+
+
 def fmt_tsb_color(tsb: float) -> str:
     """Returns hex color for TSB value."""
-    if tsb >= 5:
-        return "#3ecf8e"
-    if tsb >= -5:
-        return "#f5a623"
-    return "#ef4444"
+    return STATUS_TEXT[_status_key(tsb, 5, -5)]
 
 
 def readiness_label(score: int) -> str:
@@ -273,12 +284,13 @@ def readiness_label(score: int) -> str:
 
 
 def readiness_color(score: int) -> str:
-    """Returns hex color for readiness score."""
-    if score >= 80:
-        return "#3ecf8e"
-    if score >= 60:
-        return "#f5a623"
-    return "#ef4444"
+    """Textfarbe für den Readiness-Score (Zahlen, Labels)."""
+    return STATUS_TEXT[_status_key(score, 80, 60)]
+
+
+def readiness_mark_color(score: int) -> str:
+    """Flächenfarbe für den Readiness-Score (Sparkline-Balken)."""
+    return STATUS_MARK[_status_key(score, 80, 60)]
 
 
 # ── API client ────────────────────────────────────────────────────────────────
@@ -424,19 +436,19 @@ def get_zone_data() -> dict:
         "schwelle_pace": "6:28/km",
         "lthr": 185,
         "rad": [
-            {"label": "Z0 Recovery", "range": "0–159W",   "pct": "<52%",     "color": "#64748b", "text_class": "muted"},
-            {"label": "Z1 Base",     "range": "160–188W", "pct": "52–62%",   "color": "#38bdf8", "text_class": "normal"},
-            {"label": "Z2 FatMax",   "range": "189–212W", "pct": "62–70%",   "color": "#2dd4bf", "text_class": "normal"},
-            {"label": "Z3 Tempo",    "range": "213–283W", "pct": "70–93%",   "color": "#facc15", "text_class": "warm"},
-            {"label": "Z4 FTP",      "range": "283–314W", "pct": "93–103%",  "color": "#fb923c", "text_class": "warm"},
-            {"label": "Z5 VO2max",   "range": "315–422W", "pct": "103–138%", "color": "#f87171", "text_class": "hot"},
-            {"label": "Z6 Anaerob",  "range": "423W+",    "pct": ">138%",    "color": "#dc2626", "text_class": "hot"},
+            {"label": "Z0 Recovery", "range": "0–159W",   "pct": "<52%",     "color": "#b6afa9", "text_class": "muted"},
+            {"label": "Z1 Base",     "range": "160–188W", "pct": "52–62%",   "color": "#ff9366", "text_class": "normal"},
+            {"label": "Z2 FatMax",   "range": "189–212W", "pct": "62–70%",   "color": "#f9752f", "text_class": "normal"},
+            {"label": "Z3 Tempo",    "range": "213–283W", "pct": "70–93%",   "color": "#e05613", "text_class": "warm"},
+            {"label": "Z4 FTP",      "range": "283–314W", "pct": "93–103%",  "color": "#bd400a", "text_class": "warm"},
+            {"label": "Z5 VO2max",   "range": "315–422W", "pct": "103–138%", "color": "#992f07", "text_class": "hot"},
+            {"label": "Z6 Anaerob",  "range": "423W+",    "pct": ">138%",    "color": "#742305", "text_class": "hot"},
         ],
         "lauf": [
-            {"label": "Z1 Easy",     "pace": "7:25–8:40", "hf_pct": "150–165", "color": "#38bdf8", "text_class": "normal"},
-            {"label": "Z2 Aerob",    "pace": "6:55–7:25", "hf_pct": "165–176", "color": "#2dd4bf", "text_class": "normal"},
-            {"label": "Z3 Schwelle", "pace": "6:10–6:40", "hf_pct": "176–189", "color": "#fb923c", "text_class": "warm"},
-            {"label": "Z4 VO2max",   "pace": "5:25–6:10", "hf_pct": "189–200", "color": "#f87171", "text_class": "hot"},
+            {"label": "Z1 Easy",     "pace": "7:25–8:40", "hf_pct": "150–165", "color": "#ff9366", "text_class": "normal"},
+            {"label": "Z2 Aerob",    "pace": "6:55–7:25", "hf_pct": "165–176", "color": "#f9752f", "text_class": "normal"},
+            {"label": "Z3 Schwelle", "pace": "6:10–6:40", "hf_pct": "176–189", "color": "#bd400a", "text_class": "warm"},
+            {"label": "Z4 VO2max",   "pace": "5:25–6:10", "hf_pct": "189–200", "color": "#992f07", "text_class": "hot"},
         ],
     }
 
@@ -739,18 +751,18 @@ PHASE_BAR_NOTE = ("Langfristplanung ab KW43 steht aus – "
                   "neues Zielevent und Zielsetzung folgen in den kommenden Wochen.")
 
 PHASE_ABBREV: dict[str, tuple[str, str]] = {
-    "🚴 Radsaison":        ("Rad",    "#60a5fa"),
-    "Verletzung":          ("Pause",  "#94a3b8"),
-    "Wiedereinstieg":      ("Reha",   "#94a3b8"),
-    "Lauf-Block":          ("Lauf",   "#f97316"),
-    "Zwangspause":         ("Pause",  "#94a3b8"),
-    "Wiederaufbau":        ("Aufbau", "#f97316"),
-    "Renntempo":           ("Tempo",  "#a78bfa"),
-    "🏁 Seelauf":          ("Race",   "#60a5fa"),
-    "🔬 FTP-Test":         ("Test",   "#a78bfa"),
-    "Neuaufbau":           ("Aufbau", "#f97316"),
-    "Erholung":            ("Erhol.", "#94a3b8"),
-    "❓ Neue Zielsetzung":  ("offen",  "#fbbf24"),
+    "🚴 Radsaison":        ("Rad",    "#d1450f"),
+    "Verletzung":          ("Pause",  "#8b837e"),
+    "Wiedereinstieg":      ("Reha",   "#8b837e"),
+    "Lauf-Block":          ("Lauf",   "#d1450f"),
+    "Zwangspause":         ("Pause",  "#8b837e"),
+    "Wiederaufbau":        ("Aufbau", "#d1450f"),
+    "Renntempo":           ("Tempo",  "#992f07"),
+    "🏁 Seelauf":          ("Race",   "#992f07"),
+    "🔬 FTP-Test":         ("Test",   "#992f07"),
+    "Neuaufbau":           ("Aufbau", "#d1450f"),
+    "Erholung":            ("Erhol.", "#8b837e"),
+    "❓ Neue Zielsetzung":  ("offen",  "#fab219"),
 }
 
 
@@ -830,7 +842,7 @@ RACE_EVENTS = [
         "date":   date(2026, 9, 20),
         "detail": "20. Sep · 10 km · KW38 · max. Pace",
         "kw":     38,
-        "color":  "#4ade80",
+        "color":  "#d1450f",
     },
 ]
 
@@ -956,7 +968,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         if komp is None:
             return None
         pct = round(komp["punkte"] / komp["max"] * 100) if komp["max"] else 0
-        color = "#22c55e" if pct >= 75 else "#eab308" if pct >= 50 else "#ef4444"
+        color = STATUS_MARK[_status_key(pct, 75, 50)]
         return {"detail": komp["detail"], "pct": pct, "color": color}
 
     subjektiv_bars = None
@@ -1013,7 +1025,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     tss_plan_week = icu_plan["total"] if icu_plan["total"] > 0 else plan["tss_plan"]
     tss_compliance_pct = round(tss_ist / tss_plan_week * 100) if tss_plan_week > 0 else 0
     tss_compliance_offset = calc_ring_offset(tss_compliance_pct, 100, CIRC_OUTER)
-    tss_compliance_color = ("var(--green)" if tss_compliance_pct >= 80
+    tss_compliance_color = ("var(--brand)" if tss_compliance_pct >= 80
                             else "var(--yellow)" if tss_compliance_pct >= 40
                             else "var(--accent)")
 
@@ -1023,7 +1035,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         sick_notice = f"Krank – alle Einheiten ausgefallen (Details in kw{kw}.md)"
 
     def bar_color(pct: int) -> str:
-        return "var(--green)" if pct >= 75 else "var(--yellow)" if pct >= 50 else "var(--red)"
+        return "var(--green-mark)" if pct >= 75 else "var(--yellow-mark)" if pct >= 50 else "var(--red-mark)"
 
     hrv_pct   = min(round(hrv / hrv_mean * 100), 100) if hrv_mean else 0
     sleep_h   = sleep_s / 3600 if sleep_s else 0
@@ -1036,7 +1048,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     sparkline = []
     for w in sparkline_data:
         pct = calc_readiness([w], hrv_baseline=wellness_30)
-        sparkline.append({"pct": pct, "color": readiness_color(pct)})
+        sparkline.append({"pct": pct, "color": readiness_mark_color(pct)})
 
     polar_acts = get_activities(
         (date.today() - timedelta(7)).isoformat(),
@@ -1208,14 +1220,14 @@ def _polar_donut_svg(polar: dict, size: int = 120) -> str:
 
     return "\n".join([
         f'<svg viewBox="0 0 {size} {size}" width="{size}" height="{size}" style="flex-shrink:0">',
-        f'  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#1a1a1a" stroke-width="20"/>',
-        arc("#22c55e", lit_arc,  start),
-        arc("#f59e0b", grau_arc, grau_off),
-        arc("#3b82f6", mit_arc,  mit_off),
-        arc("#a855f7", hit_arc,  hit_off),
+        f'  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#ecebe7" stroke-width="20"/>',
+        arc("#ff9366", lit_arc,  start),
+        arc("#e05613", grau_arc, grau_off),
+        arc("#bd400a", mit_arc,  mit_off),
+        arc("#992f07", hit_arc,  hit_off),
         f'  <text x="{cx}" y="{cy - 5}" text-anchor="middle" font-size="16" font-weight="700" '
-        f'fill="#e2e8f0" font-family="system-ui">{polar["z12"]}%</text>',
-        f'  <text x="{cx}" y="{cy + 9}" text-anchor="middle" font-size="8" fill="#64748b" '
+        f'fill="#16110f" font-family="system-ui">{polar["z12"]}%</text>',
+        f'  <text x="{cx}" y="{cy + 9}" text-anchor="middle" font-size="8" fill="#8b837e" '
         f'font-family="system-ui">LIT 8W</text>',
         '</svg>',
     ])
@@ -1523,13 +1535,13 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         if is_current or is_future:
             bar_color, label_color, arrow = "var(--muted)", "var(--muted)", ""
         elif ratio > 1.15:
-            bar_color, label_color, arrow = "var(--yellow)", "var(--yellow)", " ↑"
+            bar_color, label_color, arrow = "var(--yellow-mark)", "var(--yellow)", " ↑"
         elif ratio >= 0.75:
-            bar_color, label_color, arrow = "var(--green)", "var(--green)", ""
+            bar_color, label_color, arrow = "var(--brand)", "var(--brand)", ""
         elif ratio >= 0.50:
-            bar_color, label_color, arrow = "var(--yellow)", "var(--yellow)", " ↓"
+            bar_color, label_color, arrow = "var(--yellow-mark)", "var(--yellow)", " ↓"
         else:
-            bar_color, label_color, arrow = "var(--red)", "var(--red)", ""
+            bar_color, label_color, arrow = "var(--red-mark)", "var(--red)", ""
 
         bar_h = max(round(tss / bar_scale * 100), 3) if tss > 0 else (5 if is_current else 2)
 

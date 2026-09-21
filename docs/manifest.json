@@ -5,8 +5,8 @@
   "start_url": "./dashboard.html",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#f6f3f0",
+  "theme_color": "#f6f3f0",
   "icons": [
     {
       "src": "icon.svg?v=2",

@@ -8,31 +8,57 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#070b11">
+<meta name="theme-color" content="#f6f3f0">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Coaching">
 <link rel="apple-touch-icon" href="icon.svg?v=2">
 <link rel="icon" href="icon.svg?v=2" type="image/svg+xml">
 <style>
   :root {
-    --green:  #22c55e;
-    --yellow: #f59e0b;
-    --red:    #ef4444;
-    --orange: #ff6b35;
-    --purple: #a78bfa;
-    --teal:   #2dd4bf;
-    --blue:   #60a5fa;
-    --text:   #f0f6ff;
-    --muted:  rgba(180,210,240,0.42);
-    --border: rgba(255,255,255,0.08);
-    /* compat: kept for any inline-style references */
-    --bg: #070b11;
-    --surface: rgba(255,255,255,0.04);
-    --surface2: rgba(255,255,255,0.06);
-    --accent: #94a3b8;
-    --subtle: rgba(255,255,255,0.10);
+    /* ── Theme "Karte" · hell, Markenfarbe aus dem Favicon ───────────────
+       Palette mit dem dataviz-Validator geprueft (Kontrast gegen --card):
+       CTL/ATL als Warm-Kalt-Paar, Zonen als Ordinal-Rampe in einem
+       Farbton, Ampel ausschliesslich fuer Status.                       */
+
+    --brand:      #d1450f;                /* Marke auf Weiss: 4,8:1 */
+    --brand-tint: rgba(209,69,15,0.10);
+    --grad-from:  #ffa445;                /* Favicon-Verlauf, nur im Header */
+    --grad-mid:   #ff6b35;
+    --grad-to:    #e03e12;
+
+    /* Status – nur dort, wo sich wirklich etwas aendert */
+    --green:  #0a7a0a;   --green-mark:  #0ca30c;
+    --yellow: #a4540b;   --yellow-mark: #fab219;
+    --red:    #c2321a;   --red-mark:    #d03b3b;
+
+    /* Serien */
+    --ctl:    #d1450f;
+    --atl:    #4a3aa7;
+
+    /* Trainingszonen: eine Rampe, monotone Helligkeit */
+    --z0: #b6afa9; --z1: #ff9366; --z2: #f9752f; --z3: #e05613;
+    --z4: #bd400a; --z5: #992f07; --z6: #742305;
+
+    --text:   #16110f;
+    --text2:  #57504c;
+    --muted:  #8b837e;
+    --border: rgba(22,17,15,0.10);
+
+    --bg:      #f6f3f0;
+    --card:    #ffffff;
+    --track:   #ecebe7;
+
+    /* compat: von generate.py als var(...) ausgegeben */
+    --orange: #d1450f;
+    --purple: #d1450f;
+    --teal:   #d1450f;
+    --blue:   #d1450f;
+    --surface:  #f7f5f2;
+    --surface2: #f7f5f2;
+    --accent:   #57504c;
+    --subtle:   #b6afa9;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   /* ── GLASS CARDS ── */
@@ -44,20 +70,13 @@
   .readiness-card,
   .polar-card,
   .ausblick-card {
-    background: rgba(255,255,255,0.048);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 18px;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.35);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(22,17,15,0.05), 0 6px 20px rgba(22,17,15,0.07);
   }
   body {
-    background:
-      radial-gradient(ellipse 80% 60% at 15%  8%, rgba(99,70,210,0.26)  0%, transparent 55%),
-      radial-gradient(ellipse 55% 45% at 88% 18%, rgba(34,197,94,0.13)  0%, transparent 50%),
-      radial-gradient(ellipse 50% 55% at 50% 85%, rgba(45,212,191,0.11) 0%, transparent 55%),
-      radial-gradient(ellipse 65% 35% at  8% 75%, rgba(96,165,250,0.09) 0%, transparent 50%),
-      #070b11;
-    background-attachment: fixed;
+    background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
     font-size: 14px;
@@ -68,21 +87,25 @@
   }
 
   .header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(135deg, var(--grad-from) 0%, var(--grad-mid) 52%, var(--grad-to) 100%);
+    border-radius: 22px;
+    padding: 18px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 28px rgba(224,62,18,0.22);
   }
   .phase-pill {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(167,139,250,0.13); border: 1px solid rgba(167,139,250,0.22);
-    color: var(--purple); padding: 4px 12px; border-radius: 99px;
+    background: rgba(255,255,255,0.24); border: 1px solid rgba(255,255,255,0.40);
+    color: #fff; padding: 4px 12px; border-radius: 99px;
     font-size: 0.61rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
     margin-bottom: 7px;
   }
-  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); animation: pulse 2s infinite; }
+  .phase-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-  .header-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; }
-  .header-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-  .header-date { font-size: 0.72rem; color: var(--muted); }
+  .header-title { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; color: #fff; }
+  .header-sub { font-size: 0.75rem; color: rgba(255,255,255,0.82); margin-top: 2px; }
+  .header-date { font-size: 0.72rem; color: rgba(255,255,255,0.78); }
 
   /* ── COUNTDOWN ── */
   .countdown-row { display: flex; gap: 10px; margin-bottom: 22px; }
@@ -94,7 +117,7 @@
   }
   .cd-main-left { flex: 1; }
   .cd-flag { font-size: 1.4rem; margin-bottom: 6px; }
-  .cd-race-name { font-size: 0.92rem; font-weight: 800; color: #cbd5e1; margin-bottom: 10px; }
+  .cd-race-name { font-size: 0.92rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
 
   .cd-days { display: flex; flex-direction: column; gap: 5px; }
   .cd-day-row { display: flex; align-items: center; gap: 8px; }
@@ -102,20 +125,20 @@
     font-size: 0.56rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;
     white-space: nowrap; flex-shrink: 0;
   }
-  .badge-primary { background: rgba(148,163,184,0.15); color: var(--accent); }
-  .badge-secondary { background: rgba(155,127,232,0.15); color: var(--purple); }
+  .badge-primary { background: var(--track); color: var(--text2); }
+  .badge-secondary { background: var(--brand-tint); color: var(--brand); }
   .cd-day-detail { font-size: 0.65rem; color: var(--muted); }
   .cd-day-focus {
     font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 3px;
     margin-left: auto; white-space: nowrap;
   }
-  .focus-primary { background: rgba(148,163,184,0.12); color: var(--accent); }
-  .focus-secondary { background: rgba(155,127,232,0.1); color: var(--purple); }
+  .focus-primary { background: var(--track); color: var(--text2); }
+  .focus-secondary { background: var(--brand-tint); color: var(--brand); }
 
   .cd-main-right {
     display: flex; flex-direction: column; justify-content: center;
     align-items: flex-end; gap: 8px; flex-shrink: 0;
-    border-left: 1px solid rgba(148,163,184,0.12); padding-left: 20px;
+    border-left: 1px solid var(--border); padding-left: 20px;
   }
   .cd-item { text-align: center; }
   .cd-num { font-size: 2.7rem; font-weight: 900; line-height: 1; color: var(--yellow); letter-spacing: -2px; }
@@ -136,8 +159,8 @@
   .cd-raceplan-btn {
     display: inline-flex; align-items: center; gap: 5px;
     margin-top: 10px; padding: 5px 12px;
-    background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.3);
-    border-radius: 6px; color: #60a5fa;
+    background: var(--brand-tint); border: 1px solid var(--brand);
+    border-radius: 6px; color: var(--brand);
     font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
     text-decoration: none; cursor: pointer; transition: background 0.15s, border-color 0.15s;
   }
@@ -146,7 +169,7 @@
     display: inline-flex; align-items: center; gap: 4px;
     margin-top: 8px; padding: 4px 10px;
     background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25);
-    border-radius: 5px; color: #60a5fa;
+    border-radius: 5px; color: var(--brand);
     font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
     text-decoration: none; cursor: pointer; transition: background 0.15s;
   }
@@ -158,26 +181,27 @@
   .phases { display: flex; gap: 4px; }
   .phase { flex: 1; border-radius: 10px; padding: 7px 4px; font-size: 0.57rem; font-weight: 700; text-align: center; line-height: 1.3; }
   .phase .kw { font-size: 0.52rem; opacity: 0.6; margin-top: 2px; }
-  .phase.done { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.10); color: rgba(34,197,94,0.45); }
-  .phase.active { background: rgba(167,139,250,0.14); border: 1px solid rgba(167,139,250,0.28); color: var(--purple); box-shadow: 0 0 14px rgba(167,139,250,0.12); }
-  .phase.upcoming { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(180,210,240,0.2); }
-  .phase.open { background: rgba(251,191,36,0.06); border: 1px dashed rgba(251,191,36,0.35); color: rgba(251,191,36,0.75); }
+  .phase.done { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .phase.active { background: var(--brand-tint); border: 1px solid var(--brand); color: var(--brand); }
+  .phase.upcoming { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .phase.open { background: transparent; border: 1px dashed var(--border); color: var(--muted); }
   .phase-bar-note { font-size: 0.6rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
 
   /* ── RINGS ── */
   .rings-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
-  .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+               background: linear-gradient(180deg, rgba(255,107,53,0.05), var(--card) 60%); }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
-  .card-headline { border-left: 3px solid var(--accent); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
+  .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-  .chard-icon { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+  .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
   .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .ring-num { font-size: 2rem; font-weight: 900; line-height: 1; letter-spacing: -2px; }
   .ring-sub { font-size: 0.45rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 1px; }
   .ring-status { text-align: center; }
-  .ring-status-tag { font-size: 0.62rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+  .ring-status-tag { font-size: 0.62rem; font-weight: 700; color: var(--text2); margin-bottom: 2px; }
   .ring-status-sub { font-size: 0.55rem; color: var(--muted); }
   .dual-legend { display: flex; flex-direction: column; gap: 6px; width: 100%; padding-top: 10px; border-top: 1px solid var(--border); }
   .dual-legend-item { display: flex; align-items: center; gap: 7px; }
@@ -190,8 +214,8 @@
 
   /* ── SICK NOTICE ── */
   .sick-notice {
-    background: rgba(224,82,82,0.08);
-    border: 1px solid rgba(224,82,82,0.2);
+    background: rgba(208,59,59,0.09);
+    border: 1px solid rgba(208,59,59,0.26);
     border-radius: 10px;
     padding: 10px 14px;
     margin-bottom: 14px;
@@ -202,7 +226,7 @@
   .sick-notice strong { font-weight: 700; }
   .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
   .day-missed .day-workout { text-decoration: line-through; color: var(--subtle); }
-  .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--subtle); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
+  .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--muted); background: var(--track); border: 1px solid var(--border); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
   .bonus-activity { display: flex; align-items: center; gap: 6px; margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
   .badge-bonus { font-size: 0.58rem; font-weight: 800; color: var(--orange); background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.25); border-radius: 5px; padding: 1px 5px; flex-shrink: 0; }
   .bonus-name { font-size: 0.75rem; color: var(--muted); }
@@ -217,24 +241,24 @@
   .week-card { padding: 20px; }
   .week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
   .week-title { font-size: 0.9rem; font-weight: 800; }
-  .kw-pill { background: rgba(148,163,184,0.1); color: var(--accent); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
-  .tss-pill { background: var(--surface2); color: var(--muted); font-size: 0.62rem; padding: 2px 9px; border-radius: 99px; margin-left: auto; }
+  .kw-pill { background: var(--track); color: var(--text2); font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
+  .tss-pill { background: var(--track); color: var(--text2); font-size: 0.62rem; padding: 2px 9px; border-radius: 99px; margin-left: auto; }
   .day-row { display: grid; grid-template-columns: 28px 9px 1fr auto; align-items: start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .day-row:last-child { border-bottom: none; }
   .day-name { font-size: 0.62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; padding-top: 3px; }
   .day-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-  .dot-planned { background: var(--accent); }
-  .dot-key { background: var(--purple); }
-  .dot-run { background: var(--green); }
-  .dot-ka { background: var(--yellow); }
+  .dot-planned { background: var(--muted); }
+  .dot-key { background: var(--brand); }
+  .dot-run { background: var(--brand); }
+  .dot-ka { background: var(--yellow-mark); }
   .dot-rest { background: transparent; border: 1px solid var(--border); }
   .day-workout { font-size: 0.84rem; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .tag { font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 4px; }
-  .tag-key  { background: rgba(155,127,232,0.15); color: var(--purple); }
-  .tag-run  { background: rgba(62,207,142,0.12);  color: var(--green); }
-  .tag-ka   { background: rgba(245,166,35,0.12);  color: var(--yellow); }
-  .tag-koff { background: rgba(90,184,184,0.1);   color: var(--teal); }
-  .day-fuel { font-size: 0.68rem; color: #4a8a5a; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 2px; }
+  .tag-key  { background: var(--brand-tint); color: var(--brand); }
+  .tag-run  { background: var(--track); color: var(--text2); }
+  .tag-ka   { background: var(--track); color: var(--text2); }
+  .tag-koff { background: var(--track); color: var(--text2); }
+  .day-fuel { font-size: 0.68rem; color: var(--muted); display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 2px; }
   .day-meal { font-size: 0.63rem; color: var(--muted); }
   .day-tss { font-size: 0.68rem; color: var(--muted); padding-top: 3px; white-space: nowrap; }
 
@@ -247,23 +271,23 @@
   .readiness-sub { font-size: 0.62rem; color: var(--muted); margin-bottom: 14px; }
   .rbar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
   .rbar-lbl { font-size: 0.6rem; color: var(--muted); min-width: 36px; }
-  .rbar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .rbar-track { flex: 1; height: 4px; background: var(--track); border-radius: 2px; overflow: hidden; }
   .rbar-fill { height: 100%; border-radius: 3px; }
   .rbar-val { font-size: 0.6rem; color: var(--muted); min-width: 32px; text-align: right; }
   .sparkline-wrap { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
   .spark-label { font-size: 0.55rem; color: var(--muted); margin-bottom: 6px; }
   .sparkline { display: flex; align-items: flex-end; gap: 3px; height: 30px; }
   .spark-bar { flex: 1; border-radius: 2px 2px 0 0; min-height: 3px; }
-  .spark-today { outline: 1px solid rgba(255,255,255,0.2); outline-offset: 1px; }
+  .spark-today { outline: 1px solid rgba(22,17,15,0.30); outline-offset: 1px; }
 
   .polar-card { padding: 18px; }
   .pi-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 12px; }
-  .pi-ok  { background: rgba(62,207,142,0.1); color: var(--green); }
-  .pi-warn { background: rgba(245,166,35,0.1); color: var(--yellow); }
-  .pi-bad  { background: rgba(224,82,82,0.1); color: var(--red); }
+  .pi-ok  { background: var(--brand-tint); color: var(--brand); }
+  .pi-warn { background: rgba(250,178,25,0.16); color: var(--yellow); }
+  .pi-bad  { background: rgba(208,59,59,0.12); color: var(--red); }
   .polar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
   .polar-lbl { font-size: 0.6rem; color: var(--muted); min-width: 34px; }
-  .polar-track { flex: 1; height: 7px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; }
+  .polar-track { flex: 1; height: 7px; background: var(--track); border-radius: 3px; overflow: hidden; }
   .polar-fill { height: 100%; border-radius: 4px; }
   .polar-pct { font-size: 0.65rem; font-weight: 700; min-width: 30px; text-align: right; }
   .polar-note { font-size: 0.58rem; color: var(--muted); margin-top: 8px; }
@@ -271,8 +295,8 @@
   .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .zone-dot { display:inline-block; width:8px; height:8px; border-radius:50%; flex-shrink:0; }
   .zone-val-normal { color:var(--text); font-size:0.7rem; font-weight:600; }
-  .zone-val-warm   { color:var(--yellow); font-size:0.7rem; font-weight:600; }
-  .zone-val-hot    { color:var(--red); font-size:0.7rem; font-weight:600; }
+  .zone-val-warm   { color:var(--z4); font-size:0.7rem; font-weight:600; }
+  .zone-val-hot    { color:var(--z6); font-size:0.7rem; font-weight:600; }
   .zone-val-muted  { color:var(--muted); font-size:0.7rem; }
   .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
@@ -402,17 +426,11 @@
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
           <linearGradient id="g-gr" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#16a34a"/>
-            <stop offset="100%" stop-color="#86efac"/>
+            <stop offset="0%"   stop-color="#e05613"/>
+            <stop offset="100%" stop-color="#ff9366"/>
           </linearGradient>
-          <filter id="glow-gr" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-          </filter>
         </defs>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#22c55e" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ readiness_offset }}"
-                transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-gr)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
                 stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ readiness_offset }}"
                 transform="rotate(-90 65 65)"/>
@@ -437,31 +455,19 @@
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
           <linearGradient id="g-pu" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#5b21b6"/>
-            <stop offset="100%" stop-color="#c4b5fd"/>
+            <stop offset="0%"   stop-color="#b03a0c"/>
+            <stop offset="100%" stop-color="#f9752f"/>
           </linearGradient>
           <linearGradient id="g-re" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#991b1b"/>
-            <stop offset="100%" stop-color="#fca5a5"/>
+            <stop offset="0%"   stop-color="#3b2d85"/>
+            <stop offset="100%" stop-color="#7b6de0"/>
           </linearGradient>
-          <filter id="glow-pu" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-          </filter>
-          <filter id="glow-re" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-          </filter>
         </defs>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#a78bfa" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ ctl_offset }}"
-                transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-pu)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
                 stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ ctl_offset }}"
                 transform="rotate(-90 65 65)"/>
-        <circle cx="65" cy="65" r="41" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
-        <circle cx="65" cy="65" r="41" fill="none" stroke="#f87171" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="{{ atl_offset }}"
-                transform="rotate(-90 65 65)" opacity="0.4" filter="url(#glow-re)"/>
+        <circle cx="65" cy="65" r="41" fill="none" stroke="#ecebe7" stroke-width="8"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
                 stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="{{ atl_offset }}"
                 transform="rotate(-90 65 65)"/>
@@ -473,14 +479,14 @@
     </div>
     <div class="dual-legend">
       <div class="dual-legend-item">
-        <div class="dl-dot" style="background:var(--purple)"></div>
+        <div class="dl-dot" style="background:var(--ctl)"></div>
         <span class="dl-name">CTL · Fitness</span>
-        <span class="dl-val" style="color:var(--purple)">{{ ctl }} <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
+        <span class="dl-val" style="color:var(--text)">{{ ctl }} <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
       </div>
       <div class="dual-legend-item">
-        <div class="dl-dot" style="background:#f87171"></div>
+        <div class="dl-dot" style="background:var(--atl)"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:#f87171">{{ atl }}</span>
+        <span class="dl-val" style="color:var(--text)">{{ atl }}</span>
       </div>
     </div>
   </div>
@@ -492,17 +498,11 @@
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
           <linearGradient id="g-te" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#0d9488"/>
-            <stop offset="100%" stop-color="#5eead4"/>
+            <stop offset="0%"   stop-color="#d1450f"/>
+            <stop offset="100%" stop-color="#ff9366"/>
           </linearGradient>
-          <filter id="glow-te" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-          </filter>
         </defs>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#2dd4bf" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}"
-                transform="rotate(-90 65 65)" opacity="0.45" filter="url(#glow-te)"/>
+        <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
                 stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}"
                 transform="rotate(-90 65 65)"/>
@@ -524,7 +524,7 @@
 
   <!-- READINESS -->
   <div class="readiness-card">
-    <div class="chard"><div class="chard-icon" style="background:rgba(34,197,94,0.12)">💚</div>Readiness Score</div>
+    <div class="chard"><div class="chard-icon">💚</div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       {% if biometrics_pending %}
@@ -536,19 +536,19 @@
     </div>
 
     {% if biometrics_pending %}
-    <div style="background:rgba(15,17,23,0.7);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:#94a3b8;text-align:center;margin-bottom:10px">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:var(--muted);text-align:center;margin-bottom:10px">
       ⏳ Uhr noch nicht synchronisiert – Werte folgen
     </div>
     {% endif %}
 
     {% if has_subjektiv %}
     <div style="display:flex;gap:8px;margin-bottom:12px">
-      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
         <div style="font-size:1.2rem;font-weight:900;color:var(--text)">{{ score_obj }}</div>
         <div style="font-size:0.55rem;color:var(--muted)">HRV · Schlaf · TSB · Puls</div>
       </div>
-      <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:8px;text-align:center">
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
         <div style="font-size:1.2rem;font-weight:900;color:var(--text)">{{ score_sub }}</div>
         <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
@@ -556,24 +556,24 @@
     </div>
     {% endif %}
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent){% if biometrics_pending %};opacity:0.15{% endif %}">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid {{ hrv_status_color }};border-color:{{ hrv_status_color }};opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,{{ hrv_status_color }} 35%,transparent){% if biometrics_pending %};opacity:0.15{% endif %}">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
         <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">{{ hrv_val }}</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:rgba(255,255,255,0.05);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
+        <div style="font-size:0.6rem;font-weight:700;color:{{ hrv_status_color }};background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● {{ hrv_status }}</div>
         <div class="rbar-lbl">Normalber. {{ hrv_range }} ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
         <div style="font-size:0.85rem;font-weight:800;color:{{ sleep_color }}">{{ sleep_val }}</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
         <div style="font-size:0.85rem;font-weight:800;color:{{ tsb_bar_color }}">{{ tsb_bar_val }}</div>
         <div class="rbar-lbl">Form</div>
@@ -583,7 +583,7 @@
         </div>
         {% endif %}
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center{% if biometrics_pending %};opacity:0.15{% endif %}">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ pulse_val }}</div>
         <div class="rbar-lbl">bpm</div>
@@ -598,9 +598,9 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.ermuedung.color }}">{{ subjektiv_bars.ermuedung.detail }}</span>
+          <span style="font-size:0.62rem;color:var(--text2)">{{ subjektiv_bars.ermuedung.detail }}</span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+        <div style="background:var(--track);border-radius:3px;height:4px">
           <div style="background:{{ subjektiv_bars.ermuedung.color }};width:{{ subjektiv_bars.ermuedung.pct }}%;height:4px;border-radius:3px"></div>
         </div>
       </div>
@@ -610,9 +610,9 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.muskelkater.color }}">{{ subjektiv_bars.muskelkater.detail }}</span>
+          <span style="font-size:0.62rem;color:var(--text2)">{{ subjektiv_bars.muskelkater.detail }}</span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+        <div style="background:var(--track);border-radius:3px;height:4px">
           <div style="background:{{ subjektiv_bars.muskelkater.color }};width:{{ subjektiv_bars.muskelkater.pct }}%;height:4px;border-radius:3px"></div>
         </div>
       </div>
@@ -622,9 +622,9 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.stress.color }}">{{ subjektiv_bars.stress.detail }}</span>
+          <span style="font-size:0.62rem;color:var(--text2)">{{ subjektiv_bars.stress.detail }}</span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+        <div style="background:var(--track);border-radius:3px;height:4px">
           <div style="background:{{ subjektiv_bars.stress.color }};width:{{ subjektiv_bars.stress.pct }}%;height:4px;border-radius:3px"></div>
         </div>
       </div>
@@ -634,12 +634,12 @@
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:2px">
           <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
-          <span style="font-size:0.62rem;color:{{ subjektiv_bars.verletzung.color }}">
+          <span style="font-size:0.62rem;color:var(--text2)">
             {{ subjektiv_bars.verletzung.detail }}
             {% if verletzung_flag %} {{ verletzung_flag }}{% endif %}
           </span>
         </div>
-        <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px">
+        <div style="background:var(--track);border-radius:3px;height:4px">
           <div style="background:{{ subjektiv_bars.verletzung.color }};width:{{ subjektiv_bars.verletzung.pct }}%;height:4px;border-radius:3px"></div>
         </div>
       </div>
@@ -686,10 +686,10 @@
           </div>
           <span style="font-size:0.44rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %};height:10px;line-height:10px">KW{{ w.kw }}</span>
           <span style="font-size:0.38rem;color:{{ w.phase_color }};height:9px;line-height:9px;text-align:center">{{ w.phase_short }}</span>
-          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;{% if loop.first %}left:0{% elif loop.last %}right:0{% else %}left:50%;transform:translateX(-50%){% endif %};margin-bottom:4px;background:#1e293b;border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
-            <div style="font-size:0.6rem;font-weight:700;color:#e2e8f0">KW{{ w.kw }}</div>
-            {% if not w.is_future and w.tss_ist > 0 %}<div style="font-size:0.52rem;color:#22c55e;margin-top:1px">Ist: {{ w.tss_ist }} TSS</div>{% endif %}
-            {% if w.tss_plan > 0 %}<div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">Plan: {{ w.tss_plan }} TSS</div>{% endif %}
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;{% if loop.first %}left:0{% elif loop.last %}right:0{% else %}left:50%;transform:translateX(-50%){% endif %};margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW{{ w.kw }}</div>
+            {% if not w.is_future and w.tss_ist > 0 %}<div style="font-size:0.52rem;color:var(--brand);margin-top:1px">Ist: {{ w.tss_ist }} TSS</div>{% endif %}
+            {% if w.tss_plan > 0 %}<div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Plan: {{ w.tss_plan }} TSS</div>{% endif %}
           </div>
         </div>
         {% endfor %}
@@ -701,27 +701,27 @@
         <span style="display:inline-block;width:10px;height:6px;border:1.5px solid rgba(148,163,184,0.4);border-radius:1px"></span>Plan
       </span>
       <span style="display:inline-flex;align-items:center;gap:3px">
-        <span style="display:inline-block;width:10px;height:6px;background:var(--green);border-radius:1px"></span>Ist
+        <span style="display:inline-block;width:10px;height:6px;background:var(--brand);border-radius:1px"></span>Ist
       </span>
-      <span><span style="color:#94a3b8">■</span> Base</span>
+      <span><span style="color:var(--muted)">■</span> Base</span>
       <span><span style="color:#f97316">■</span> HIT</span>
-      <span><span style="color:#60a5fa">■</span> Taper/Race</span>
+      <span><span style="color:var(--brand)">■</span> Taper/Race</span>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø 8 Wochen</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.avg_tss }}</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Höchste</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--yellow)">{{ tss_summary.max_tss }}</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Compliance</div>
         <div style="font-size:0.85rem;font-weight:800;color:{% if tss_summary.compliance_pct >= 80 %}var(--green){% elif tss_summary.compliance_pct >= 60 %}var(--yellow){% else %}var(--accent){% endif %}">{{ tss_summary.compliance_pct }}%</div>
       </div>
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(148,163,184,0.08);border-radius:8px;padding:6px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_summary.next_kw }} Plan</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--blue)">{% if tss_summary.next_kw_plan > 0 %}{{ tss_summary.next_kw_plan }}{% else %}–{% endif %}</div>
       </div>
@@ -739,24 +739,24 @@
       {{ polar_donut_svg|safe }}
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z1);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">LIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--green);margin-left:auto">{{ polar_8w.z12 }}%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">{{ polar_8w.z12 }}%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z3);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">Grauzone</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--yellow);margin-left:auto">{{ polar_8w.z3 }}%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">{{ polar_8w.z3 }}%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#3b82f6;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z4);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">MIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:#3b82f6;margin-left:auto">{{ polar_8w.z5 }}%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">{{ polar_8w.z5 }}%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#a855f7;display:inline-block;flex-shrink:0"></span>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--z5);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--subtle);margin-left:auto">{{ polar_8w.z67 }}%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">{{ polar_8w.z67 }}%</span>
         </div>
         <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
       </div>
@@ -818,11 +818,11 @@
           </div>
           {% endif %}
           {% if day.rpe %}
-          {% set rpe_color = "#60b8f5" if day.rpe <= 3 else ("#f5c842" if day.rpe <= 7 else "#f56060") %}
+          {% set rpe_color = "#8b837e" if day.rpe <= 3 else ("#fab219" if day.rpe <= 7 else "#d03b3b") %}
           <div style="display:flex;align-items:center;gap:3px;margin-top:1px">
             <span style="font-size:0.58rem;color:var(--muted)">RPE</span>
             <span style="font-size:0.6rem;font-weight:600;color:{{ rpe_color }}">{{ day.rpe }}</span>
-            <div style="width:32px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+            <div style="width:32px;height:4px;background:var(--track);border-radius:2px;overflow:hidden">
               <div style="width:{{ (day.rpe * 10)|int }}%;height:100%;border-radius:2px;background:{{ rpe_color }}"></div>
             </div>
           </div>
@@ -904,19 +904,19 @@
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
+            <stop offset="0%" stop-color="#d1450f" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/>
           </linearGradient>
         </defs>
         <line x1="0" y1="26" x2="300" y2="26" stroke="var(--border)" stroke-width="0.5"/>
         <line x1="0" y1="53" x2="300" y2="53" stroke="var(--border)" stroke-width="0.5"/>
         <path d="{{ ctl_history.fill_path }}" fill="url(#ctlGradFill)"/>
-        <path d="{{ ctl_history.path }}" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="{{ ctl_history.last_y }}" r="3" fill="var(--green)"/>
-        <circle cx="300" cy="{{ ctl_history.last_y }}" r="5" fill="var(--green)" opacity="0.2"/>
+        <path d="{{ ctl_history.path }}" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="{{ ctl_history.last_y }}" r="3" fill="var(--brand)"/>
+        <circle cx="300" cy="{{ ctl_history.last_y }}" r="5" fill="var(--brand)" opacity="0.2"/>
       </svg>
-      <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
-      <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(34,197,94,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
+      <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.25);pointer-events:none;z-index:5"></div>
+      <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem"></div>
       <div style="position:absolute;bottom:-14px;left:0;right:0">
         {% for ml in ctl_history.month_labels %}
         <span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>
@@ -924,7 +924,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
-      Aktuell: <span style="color:var(--green);font-weight:700">CTL {{ ctl_history.ctl_now }}</span>
+      Aktuell: <span style="color:var(--text);font-weight:700">CTL {{ ctl_history.ctl_now }}</span>
     </div>
     {% else %}
     <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine CTL-Daten verfügbar</div>
@@ -950,7 +950,7 @@
       {% for tss in tss_7days %}
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:{{ [((tss / max_tss * 100) | round | int), 5] | max }}%;
-                  background:{% if tss > 0 %}var(--green){% else %}var(--subtle){% endif %};
+                  background:{% if tss > 0 %}var(--brand){% else %}var(--track){% endif %};
                   opacity:0.75"
            title="{{ tss | round | int }} TSS"></div>
       {% endfor %}
@@ -967,30 +967,30 @@
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7986cb" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#7986cb" stop-opacity="0.0"/>
+            <stop offset="0%" stop-color="#57504c" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#57504c" stop-opacity="0.0"/>
           </linearGradient>
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
-        <line x1="0" y1="16" x2="300" y2="16" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
+        <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
         <path d="{{ sleep_history.fill_path }}" fill="url(#sleepGradFill)"/>
-        <path d="{{ sleep_history.path }}" fill="none" stroke="#7986cb" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="{{ sleep_history.last_y }}" r="3" fill="#7986cb"/>
-        <circle cx="300" cy="{{ sleep_history.last_y }}" r="5" fill="#7986cb" opacity="0.2"/>
+        <path d="{{ sleep_history.path }}" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="{{ sleep_history.last_y }}" r="3" fill="#57504c"/>
+        <circle cx="300" cy="{{ sleep_history.last_y }}" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
-        <text x="296" y="13" font-size="7" fill="#4fc3f7" opacity="0.8" text-anchor="end">8h</text>
+        <text x="296" y="13" font-size="7" fill="#8b837e" opacity="0.8" text-anchor="end">8h</text>
       </svg>
-      <div id="sl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.18);pointer-events:none;z-index:5"></div>
-      <div id="sl-tt" style="display:none;position:absolute;top:2px;background:#1e293b;border:1px solid rgba(121,134,203,0.35);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,0.5);font-size:0.65rem"></div>
+      <div id="sl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.25);pointer-events:none;z-index:5"></div>
+      <div id="sl-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem"></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
-        <div style="font-size:1.1rem;font-weight:900;color:#7986cb;line-height:1">
+        <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">
           {% if sleep_history.sleep_today %}{{ sleep_history.sleep_today }}h{% else %}–{% endif %}
         </div>
         <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
       </div>
-      <div style="flex:1;height:1px;background:rgba(255,255,255,0.06)"></div>
+      <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
         <div style="font-size:0.85rem;font-weight:700;color:{% if sleep_history.avg_30d >= 7 %}var(--green){% else %}var(--red){% endif %}">Ø {{ sleep_history.avg_30d }}h</div>
         <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
@@ -1012,27 +1012,27 @@
         <svg width="100%" viewBox="0 0 {{ ftp_history.svg_w }} {{ ftp_history.svg_h }}" preserveAspectRatio="none" style="display:block;height:80px">
           <defs>
             <linearGradient id="ftp-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+              <stop offset="0%" stop-color="#d1450f" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/>
             </linearGradient>
           </defs>
           <path d="{{ ftp_history.fill_path }}" fill="url(#ftp-grad)"/>
-          <path d="{{ ftp_history.path }}" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="{{ ftp_history.path }}" fill="none" stroke="#d1450f" stroke-width="1.8" stroke-linejoin="round"/>
           {% for pt in ftp_history.points %}
-          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3.5" fill="#3b82f6"/>
+          <circle cx="{{ pt.x }}" cy="{{ pt.y }}" r="3.5" fill="#d1450f"/>
           {% endfor %}
         </svg>
         {% for pt in ftp_history.points %}
         <div style="position:absolute;left:calc({{ pt.x_pct }}% - 12px);top:calc({{ pt.y_pct }}% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
              onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
              onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
-          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:#60a5fa;font-weight:700;
+          <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             {% if pt.anchor == 'start' %}left:12px{% elif pt.anchor == 'end' %}right:12px{% else %}left:12px;transform:translateX(-50%){% endif %}">{{ pt.ftp }}W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
-            background:#1e293b;border:1px solid rgba(59,130,246,0.35);border-radius:6px;padding:5px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.5);
+            background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;box-shadow:0 4px 14px rgba(22,17,15,0.14);
             {% if pt.anchor == 'start' %}left:0{% elif pt.anchor == 'end' %}right:0{% else %}left:50%;transform:translateX(-50%){% endif %}">
-            <div style="font-size:0.65rem;font-weight:700;color:#60a5fa">{{ pt.ftp }}W</div>
-            <div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">{{ pt.label }}</div>
+            <div style="font-size:0.65rem;font-weight:700;color:var(--brand)">{{ pt.ftp }}W</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">{{ pt.label }}</div>
           </div>
         </div>
         {% endfor %}
@@ -1132,7 +1132,7 @@
     {% for pb in power_bests %}
     <tr>
       <td style="font-weight:600;color:var(--text)">{{ pb.label }}</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">{% if pb.watts %}{{ pb.watts }}W{% else %}–{% endif %}</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">{% if pb.watts %}{{ pb.watts }}W{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.wkg %}{{ pb.wkg }}{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{{ pb.date or "" }}</td>
     </tr>
@@ -1145,7 +1145,7 @@
 {% if pace_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(34,197,94,0.10)">🏃</div>Lauf Bestwerte · All-Time</div>
+    <div class="chard" style="margin-bottom:0"><div class="chard-icon">🏃</div>Lauf Bestwerte · All-Time</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
@@ -1161,7 +1161,7 @@
     {% for pb in pace_bests %}
     <tr>
       <td style="font-weight:600;color:var(--text)">{{ pb.label }}</td>
-      <td style="text-align:right;font-weight:700;color:var(--green)">{% if pb.time %}{{ pb.time }}{% else %}–{% endif %}</td>
+      <td style="text-align:right;font-weight:700;color:var(--text)">{% if pb.time %}{{ pb.time }}{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{% if pb.pace %}{{ pb.pace }}{% else %}–{% endif %}</td>
       <td style="text-align:right;color:var(--muted);font-size:0.7rem">{{ pb.date or "" }}</td>
     </tr>
@@ -1243,7 +1243,7 @@
       ch.style.display = 'block';
       ch.style.left = pt.x + '%';
       tt.innerHTML = '<div style="font-weight:700;color:' + color + '">' + fmtVal(pt) + '</div>'
-                   + '<div style="font-size:0.52rem;color:#94a3b8;margin-top:1px">' + pt.d + '</div>';
+                   + '<div style="font-size:0.52rem;color:var(--muted);margin-top:1px">' + pt.d + '</div>';
       tt.style.display = 'block';
       if (pt.x < 70) { tt.style.left = 'calc(' + pt.x + '% + 8px)'; tt.style.right = ''; }
       else            { tt.style.right = 'calc(' + (100 - pt.x) + '% + 8px)'; tt.style.left = ''; }
@@ -1256,12 +1256,12 @@
 
   {% if ctl_history.pts %}
   var ctlPts = [{% for p in ctl_history.pts %}{"x":{{p.x}},"d":"{{p.d}}","v":{{p.v}}}{% if not loop.last %},{% endif %}{% endfor %}];
-  bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#22c55e', function(p){ return 'CTL ' + p.v; });
+  bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#d1450f', function(p){ return 'CTL ' + p.v; });
   {% endif %}
 
   {% if sleep_history.pts %}
   var slPts = [{% for p in sleep_history.pts %}{"x":{{p.x}},"d":"{{p.d}}","v":{{p.v}}}{% if not loop.last %},{% endif %}{% endfor %}];
-  bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#7986cb', function(p){
+  bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
   {% endif %}
