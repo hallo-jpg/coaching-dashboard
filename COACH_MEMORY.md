@@ -153,6 +153,12 @@ Stefan trägt sein Gewicht unregelmäßig in der intervals.icu-Wellness ein (z.B
 Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase` → `git push` auf `main`. Das Dashboard liest aus dem Repo; lokal geschriebene Dateien sind bis zum Push unsichtbar – auch für die nächste Session am Handy.
 
 ### intervals.icu-Workouts: zwei Wege, zwei Fallen
+- **`workout_steps` kann keine Leistungs-Korridore** — `power_pct_low/high` wird bei normalen Schritten
+  zu einem **festen Wert** zusammengefaltet (verifiziert 21.9.2026: 56–68% → `55%` = 167W). Feste
+  Zielwerte lassen die Uhr outdoor dauernd piepen, Stefan will das nicht. **Für Korridore die
+  Description-Route nutzen** (`- 70m 52-69%`) — dann bleibt `workout_doc` leer, bis Stefan das Workout
+  **einmal in intervals.icu öffnet**; danach synct es normal. Bei Outdoor-Einheiten immer Korridor,
+  indoor in ERG ist ein fester Wert in Ordnung.
 - **`workout_steps`** rundet auf ganze Minuten: 20s → verworfen, 30s/45s → 60s. Nur für Einheiten ohne Schritte <1min.
 - **Description-Route** (Schrittliste als Text am Ende der `description`, `- 20s 120% Pace` gültig) für Strides/Antritte. `workout_doc` bleibt dabei leer – **Stefan muss das Workout einmal öffnen und OK klicken**, Hinweis oben in die Beschreibung.
 - Strides nie auf 60s strecken, um Weg A zu erzwingen (ab ~40s kippt der Reiz von neuromuskulär zu anaerob).
