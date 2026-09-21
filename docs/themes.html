@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme-Vorschau · Coaching Dashboard</title>
+<link rel="icon" href="icon.svg?v=2" type="image/svg+xml">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<style>
+  :root {
+    --ink:      #14100e;
+    --bar-line: rgba(255,255,255,0.14);
+    --txt:      #fdf8f4;
+    --mut:      rgba(253,248,244,0.55);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--ink);
+    color: var(--txt);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    display: flex; flex-direction: column;
+  }
+  .bar {
+    flex: 0 0 auto;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 10px 16px;
+    background: #14100e;
+    border-bottom: 1px solid var(--bar-line);
+  }
+  .bar-icon { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; }
+  .bar-title { font-size: 0.78rem; font-weight: 800; letter-spacing: -0.2px; white-space: nowrap; }
+  .bar-title span { color: var(--mut); font-weight: 600; }
+
+  .seg { display: flex; gap: 4px; background: rgba(255,255,255,0.07); border: 1px solid var(--bar-line); border-radius: 10px; padding: 3px; }
+  .seg button {
+    appearance: none; border: 0; cursor: pointer;
+    background: transparent; color: var(--mut);
+    font: inherit; font-size: 0.7rem; font-weight: 700;
+    padding: 5px 11px; border-radius: 7px; white-space: nowrap;
+    transition: background .15s, color .15s;
+  }
+  .seg button:hover { color: var(--txt); }
+  .seg button[aria-pressed="true"] { background: #ff6b35; color: #fff; }
+  .seg button[aria-pressed="true"][data-theme="none"] { background: rgba(255,255,255,0.16); color: var(--txt); }
+
+  .legend { display: flex; gap: 6px; margin-left: auto; align-items: center; }
+  .sw { width: 14px; height: 14px; border-radius: 4px; }
+  .hint { font-size: 0.6rem; color: var(--mut); }
+
+  .stage { flex: 1 1 auto; position: relative; min-height: 0; }
+  iframe { width: 100%; height: 100%; border: 0; display: block; background: #14100e; }
+
+  .note {
+    position: absolute; left: 50%; top: 40px; transform: translateX(-50%);
+    max-width: 480px; padding: 14px 18px; border-radius: 12px;
+    background: rgba(224,62,18,0.14); border: 1px solid rgba(255,140,80,0.35);
+    font-size: 0.75rem; line-height: 1.5; display: none;
+  }
+  @media (max-width: 760px) {
+    .bar { gap: 8px; padding: 8px 10px; }
+    .bar-title, .legend { display: none; }
+    .seg button { padding: 5px 9px; font-size: 0.66rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <img class="bar-icon" src="icon.svg?v=2" alt="">
+  <div class="bar-title">Theme-Vorschau <span>· v2 · Live-Dashboard</span></div>
+
+  <div class="seg" role="group" aria-label="Theme wählen">
+    <button data-theme="none"     aria-pressed="true">Jetzt</button>
+    <button data-theme="papier"   aria-pressed="false">Papier</button>
+    <button data-theme="karte"    aria-pressed="false">Karte</button>
+    <button data-theme="espresso" aria-pressed="false">Espresso</button>
+  </div>
+
+  <div class="legend" aria-hidden="true">
+    <div class="sw" style="background:#ff9366"></div>
+    <div class="sw" style="background:#f9752f"></div>
+    <div class="sw" style="background:#d1450f"></div>
+    <div class="sw" style="background:#992f07"></div>
+    <div class="hint">Zonen-Rampe · validiert</div>
+  </div>
+</div>
+
+<div class="stage">
+  <iframe id="dash" src="dashboard.html" title="Dashboard"></iframe>
+  <div class="note" id="note"></div>
+</div>
+
+<script>
+(function () {
+
+  /* ══════════════════════════════════════════════════════════════════
+     Warum die erste Runde nicht funktioniert hat:
+     Das Dashboard ist fuer Dark gebaut – Glas-Unschaerfe, Glow-Filter
+     auf den Ringen, weisse Inset-Kanten, und jeder Zahlenwert traegt
+     seine Serienfarbe. Auf hellem Grund wird daraus Matsch. Die drei
+     Themes hier kippen deshalb nicht nur Farben, sondern die Struktur:
+     flache Karten mit echter Haarlinie, keine Glows, Zahlen in Tinte,
+     Farbe nur noch auf den Markierungen selbst.
+
+     Die Palette ist mit dem dataviz-Validator geprueft (CVD-Abstand,
+     Helligkeitsband, Kontrast gegen die jeweilige Kartenfarbe).
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ── Farbrollen pro Theme ─────────────────────────────────────────── */
+
+  var LIGHT = {
+    page:'#f4f2ef', card:'#ffffff',
+    ink:'#16110f', ink2:'#57504c', muted:'#8b837e',
+    line:'rgba(22,17,15,0.10)', track:'#ecebe7',
+    brand:'#d1450f',            /* Marke auf Weiss: 4,8:1            */
+    brandTint:'rgba(209,69,15,0.10)',
+    ctl:'#d1450f', atl:'#4a3aa7',   /* geprueftes Paar: ΔE 33 normal */
+    good:'#0ca30c', warn:'#fab219', serious:'#ec835a', crit:'#d03b3b',
+    /* Ordinal-Rampe Z1→Z6, ein Farbton, monotone Helligkeit */
+    z:['#ff9366','#f9752f','#e05613','#bd400a','#992f07','#742305'],
+    z0:'#b6afa9',
+    sleep:'#8b837e', shadow:'0 1px 2px rgba(22,17,15,0.05), 0 6px 20px rgba(22,17,15,0.07)'
+  };
+
+  var DARK = {
+    page:'#0e0b09', card:'#16110f',
+    ink:'#f8f3ef', ink2:'rgba(248,243,239,0.70)', muted:'rgba(248,243,239,0.45)',
+    line:'rgba(255,255,255,0.09)', track:'rgba(255,255,255,0.08)',
+    brand:'#ff7a44',
+    brandTint:'rgba(255,122,68,0.13)',
+    ctl:'#db5412', atl:'#9085e9',
+    good:'#0ca30c', warn:'#fab219', serious:'#ec835a', crit:'#d03b3b',
+    z:['#a8350a','#d24a0d','#f96d26','#ff9366','#ffb38f','#ffd2bd'],
+    z0:'#6b625c',
+    sleep:'#a3968d', shadow:'0 1px 2px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3)'
+  };
+
+  /* ── Hexwerte des Generators → Rollen ─────────────────────────────── */
+
+  function marks(o) {
+    var m = {
+      /* Ampel-Status – bleibt Ampel, traegt immer Emoji + Label mit */
+      /* #22c55e bedient zwei Dinge: die echten Gut/Schlecht-Balken (bleibt
+         gruen) und den Readiness-Ring, der im Original IMMER gruen ist und
+         damit nichts kodiert – der wird weiter unten per circle[] zur Marke. */
+      '#22c55e': o.good, '#16a34a': o.z[1], '#86efac': o.z[0],
+      '#3ecf8e': o.good,
+      '#f5a623': o.warn, '#f59e0b': o.warn, '#eab308': o.warn, '#facc15': o.warn,
+      '#ef4444': o.crit, '#dc2626': o.crit,
+      /* CTL / ATL – geprueftes Warm-Kalt-Paar */
+      '#a78bfa': o.ctl, '#5b21b6': o.ctl, '#c4b5fd': o.ctl,
+      '#f87171': o.atl, '#991b1b': o.atl, '#fca5a5': o.atl,
+      /* alles uebrige Bunte auf die Marke */
+      '#2dd4bf': o.brand, '#0d9488': o.brand, '#5eead4': o.brand, '#4ade80': o.brand,
+      '#3b82f6': o.brand, '#60a5fa': o.brand, '#f97316': o.brand, '#fb923c': o.brand,
+      '#a855f7': o.z[5], '#38bdf8': o.z[1], '#4fc3f7': o.z[1],
+      /* Neutrale */
+      '#7986cb': o.sleep, '#94a3b8': o.muted, '#64748b': o.muted, '#475569': o.muted,
+      '#e2e8f0': o.ink, '#cbd5e1': o.ink2, '#1e293b': o.track, '#1a1a1a': o.track
+    };
+    var css = '';
+    for (var hex in m) {
+      var to = m[hex];
+      css += '[stroke="' + hex + '"]{stroke:' + to + '}\n'
+           + '[fill="' + hex + '"]{fill:' + to + '}\n'
+           + '[stop-color="' + hex + '"]{stop-color:' + to + '}\n'
+           + '[style*="' + hex + '"]{color:' + to + ' !important}\n'
+           + '[style*="background:' + hex + '"],[style*="background: ' + hex + '"]{background:' + to + ' !important}\n';
+    }
+    /* Readiness-Ring: dekorativ, also Marke – schlaegt die Zuordnung oben */
+    css += 'circle[stroke="#22c55e"]{stroke:' + o.brand + '}\n';
+
+    /* Token-Referenzen, die als Attribut im Markup stehen (CTL-Verlauf) */
+    css += '[stroke="var(--green)"]{stroke:' + o.brand + '}\n'
+         + '[fill="var(--green)"]{fill:' + o.brand + '}\n';
+
+    /* Trainingszonen: eigene Ordinal-Rampe, schlaegt die generische Zuordnung */
+    var zoneHex = ['#38bdf8','#2dd4bf','#facc15','#fb923c','#f87171','#dc2626'];
+    css += '.zone-dot[style*="#64748b"]{background:' + o.z0 + ' !important}\n';
+    for (var i = 0; i < zoneHex.length; i++) {
+      css += '.zone-dot[style*="' + zoneHex[i] + '"]{background:' + o.z[i] + ' !important}\n';
+    }
+
+    /* Polarisation ist ebenfalls ordinal (LIT → HIT = steigende Intensitaet) */
+    var polarHex = ['#22c55e','#f59e0b','#3b82f6','#a855f7'];
+    var polarTo  = [o.z[0], o.z[2], o.z[3], o.z[5]];
+    for (var j = 0; j < polarHex.length; j++) {
+      css += 'circle[stroke-width="20"][stroke="' + polarHex[j] + '"]{stroke:' + polarTo[j] + '}\n'
+           + '[style*="border-radius:50%"][style*="background:' + polarHex[j] + '"]'
+           + '{background:' + polarTo[j] + ' !important}\n';
+    }
+    return css;
+  }
+
+  /* ── Tinte: Zahlen tragen Textfarbe, nie die Serienfarbe ──────────── */
+
+  function ink(o) {
+    return `
+      .cd-num,.cd-sec-num,.dl-val,.rbar-val,
+      .polar-pct,.ausblick-tss,.pri-main,.week-title,.header-title,
+      td,.tss-split,.day-workout,.zone-val-normal,.zone-val-warm,.zone-val-hot,
+      .cd-race-name,.ausblick-kw { color:${o.ink} !important; }
+
+      .ring-sub,.cd-label,.dl-name,.rbar-lbl,.polar-lbl,.ring-status-sub,
+      .ausblick-sub,.day-tss,.day-meal,.spark-label,.polar-note,.pri-sub,
+      .header-sub,.header-date,.zone-val-muted,.day-name,.day-fuel,
+      .ring-eyebrow,.section-label,footer { color:${o.muted} !important; }
+
+      .ring-status-tag,.readiness-tag { color:${o.ink2} !important; }
+
+      /* Die Readiness-Balken sind echte Gut/Schlecht-Messer – dort bleibt
+         Gruen, auch wenn der Rest der Seite auf der Marke laeuft. */
+      .rbar-fill[style*="--green"] { background:${o.good} !important; }
+    `;
+  }
+
+  /* ── Bauteile ─────────────────────────────────────────────────────── */
+
+  function parts(o) {
+    return `
+      .card-headline { border-left-color:${o.brand}; }
+      .chard,.chard span { color:${o.ink}; }
+      .chard-icon { background:${o.brandTint}; }
+      .kw-pill,.tss-pill,.badge-missed { background:${o.track}; color:${o.ink2}; border-color:transparent; }
+      .tag-key { background:${o.brandTint}; color:${o.brand}; }
+      .tag-run,.tag-ka,.tag-koff { background:${o.track}; color:${o.ink2}; }
+      .phase.done,.phase.upcoming { background:transparent; border:1px solid ${o.line}; color:${o.muted}; }
+      .phase.open { background:transparent; border:1px dashed ${o.line}; color:${o.muted}; }
+      .phase.active { background:${o.brandTint}; border:1px solid ${o.brand}; color:${o.brand}; box-shadow:none; }
+      .cd-raceplan-btn { background:${o.brandTint}; border-color:transparent; color:${o.brand}; }
+      .sick-notice { background:rgba(208,59,59,0.10); border-color:rgba(208,59,59,0.28); color:${o.crit}; }
+      .pi-ok { background:${o.brandTint}; color:${o.brand}; }
+      footer { border-top-color:${o.line}; }
+    `;
+  }
+
+  /* ── Struktur: das, was auf hellem Grund vorher kaputt ging ───────── */
+
+  function structure(o) {
+    return `
+      :root {
+        --green:${o.brand}; --yellow:${o.warn}; --red:${o.crit}; --orange:${o.brand};
+        --purple:${o.brand}; --teal:${o.brand}; --blue:${o.brand};
+        --text:${o.ink}; --muted:${o.muted}; --border:${o.line};
+        --bg:${o.page}; --surface:${o.card}; --surface2:${o.card};
+        --accent:${o.ink2}; --subtle:${o.muted};
+      }
+      body { background:${o.page} !important; color:${o.ink}; }
+
+      /* Flache Karte statt Milchglas */
+      .g,.countdown-card-main,.countdown-card-secondary,.ring-card,
+      .week-card,.readiness-card,.polar-card,.ausblick-card {
+        background:${o.card};
+        backdrop-filter:none; -webkit-backdrop-filter:none;
+        border:1px solid ${o.line};
+        border-radius:16px;
+        box-shadow:${o.shadow};
+      }
+      /* Der Glow-Ring ist eine zweite, unscharfe Kopie – auf Papier nur Schlieren */
+      circle[filter^="url(#glow"] { display:none; }
+      circle[stroke="rgba(255,255,255,0.07)"] { stroke:${o.track}; }
+      .rbar-track,.polar-track { background:${o.track}; }
+      .day-row { border-bottom-color:${o.line}; }
+    ` + marks(o) + ink(o) + parts(o);
+  }
+
+  /* ── PAPIER · ruhig, Orange nur als Akzent ────────────────────────── */
+  var PAPIER = structure(LIGHT) + `
+    .phase-pill { background:${LIGHT.brandTint}; border-color:transparent; color:${LIGHT.brand}; }
+    .phase-pill .dot { background:${LIGHT.brand}; }
+  `;
+
+  /* ── KARTE · der Header IST das Icon ──────────────────────────────── */
+  var KARTE = structure(LIGHT) + `
+    body { background:#f6f3f0 !important; }
+    .header {
+      background:linear-gradient(135deg,#ffa445 0%,#ff6b35 52%,#e03e12 100%);
+      border-radius:22px; padding:18px 24px; margin-bottom:20px;
+      align-items:center;
+      box-shadow:0 10px 28px rgba(224,62,18,0.22);
+    }
+    .header-title { color:#fff !important; font-size:1.7rem; }
+    .header-sub { color:rgba(255,255,255,0.82) !important; }
+    .header-date { color:rgba(255,255,255,0.78) !important; }
+    .phase-pill {
+      background:rgba(255,255,255,0.24); border-color:rgba(255,255,255,0.4);
+      color:#fff; backdrop-filter:none;
+    }
+    .phase-pill .dot { background:#fff; }
+    .ring-card { background:linear-gradient(180deg,rgba(255,107,53,0.05),#ffffff 60%); }
+  `;
+
+  /* ── ESPRESSO · gleiche Disziplin, dunkel ─────────────────────────── */
+  var ESPRESSO = structure(DARK) + `
+    .phase-pill { background:${DARK.brandTint}; border-color:transparent; color:${DARK.brand}; }
+    .phase-pill .dot { background:${DARK.brand}; }
+    .header-title { color:${DARK.ink} !important; }
+  `;
+
+  var THEMES = { none:'', papier:PAPIER, karte:KARTE, espresso:ESPRESSO };
+  var PAGE   = { none:'#14100e', papier:'#f4f2ef', karte:'#f6f3f0', espresso:'#0e0b09' };
+  var KEY = 'coach_theme_preview';
+  var current = localStorage.getItem(KEY) || 'none';
+  if (!THEMES.hasOwnProperty(current)) current = 'none';
+  var frame = document.getElementById('dash');
+  var note  = document.getElementById('note');
+
+  function apply(name) {
+    var doc;
+    try { doc = frame.contentDocument; } catch (e) { doc = null; }
+    if (!doc || !doc.head) {
+      note.style.display = 'block';
+      note.textContent = 'Vorschau braucht denselben Origin – bitte über die GitHub-Pages-URL öffnen, nicht als lokale Datei.';
+      return;
+    }
+    note.style.display = 'none';
+    var tag = doc.getElementById('__theme_override');
+    if (!tag) {
+      tag = doc.createElement('style');
+      tag.id = '__theme_override';
+      doc.head.appendChild(tag);
+    }
+    tag.textContent = THEMES[name] || '';
+    frame.style.background = PAGE[name];
+  }
+
+  function select(name) {
+    current = name;
+    localStorage.setItem(KEY, name);
+    document.querySelectorAll('.seg button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.theme === name));
+    });
+    apply(name);
+  }
+
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () { select(b.dataset.theme); });
+  });
+
+  frame.addEventListener('load', function () { select(current); });
+  select(current);
+})();
+</script>
+
+</body>
+</html>
