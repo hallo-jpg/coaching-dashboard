@@ -2,7 +2,7 @@
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
 *Gilt in jeder Session – lokal wie in der Claude-App. Bei neuen Erkenntnissen oder Korrekturen hier ergänzen, nicht nur im Chat bestätigen.*
-*Stand: 20. September 2026*
+*Stand: 21. September 2026*
 
 ---
 
@@ -51,6 +51,25 @@ Stefans gewohnte Laufkadenz liegt bei **~140 spm, auch bei Tempo** (bestätigt 6
 **Regel daraus:** Unter Wettkampfstress und über längere Dauer driftet die Kadenz **~6 spm unter** den im Training mit Metronom erreichten Wert zurück. Trainingsziel deshalb immer ~5 spm **über** dem, was im Wettkampf stehen soll.
 **Anwenden:** Arbeitsziel **155–165** (Metronom 160), nach dem Seelauf konsolidieren auf 165–170. Nicht höher ansetzen – der Zielwert wurde zweimal falsch kalibriert (170–175 auf Schätzung; 165–170 mit den 161 als vermeintlicher Basis). Bei jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Wenn 160 nach 10min unnatürlich bleibt → 155, lieber konsequent 155 als verkrampft 165. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere Schritte, Fuß unter den Körper") – dort ist Kadenz Verletzungsschutz. Die Umstellung 140 → stabile 165–170 braucht 6–8 Wochen und ist das **wichtigste Laufprojekt nach dem Zielrennen**.
 
+### 🦵 „Langsames Laufen ist orthopädisch teuer" — Stefan hat recht, endgültige Fassung (21.9.2026)
+
+Die Aussage kam von Stefan, der Coach hat ihr zweimal zu grob widersprochen. Belastbare Begründung:
+Spitzenkraft pro Schritt ist langsam niedriger — aber das ist nur **eine von drei** Lastdimensionen.
+Bodenkontaktzeit und Zeit-unter-Spannung des Soleus steigen beim langsamen Laufen, und
+Knochenbelastung akkumuliert **hoch potenziert mit der Dehnung × Zyklenzahl**, nicht linear.
+Bei ~140 spm und 94 kg heißt langsam: Fuß weit vor dem Schwerpunkt, maximaler Bremsimpuls,
+maximales Biegemoment auf die Tibia. Deckt sich mit dem Befund — die Wade tat **nur** langsam weh.
+
+**Aber die Gegenmaßnahme ist nicht „mehr schnell statt langsam":** Tibia- und Achillessehnenlast
+skalieren mit dem Tempo (~7–8× Körpergewicht im Tempobereich). Easy-Volumen durch Tempo zu ersetzen
+kauft bei niedriger Laufbasis nur eine andere Überlastung.
+
+**Anwenden — die fünf Regeln:** (1) Kein langsames Trotten; Easy = 7:15–7:45/km @ HF 155–165.
+(2) Metronom in jeder Easy-Einheit, Kadenz ist die Hauptaufgabe. (3) Aerobes Volumen kommt vom Rad
+(null Impact, dient ohnehin dem FTP-Ziel). (4) Jeder Lauf hat einen Zweck — keine Füllkilometer.
+(5) 2×/Woche Lauf-Athletik 15min, bei 94 kg nicht optional.
+Nie wieder mit „Spitzenkraft ist langsam niedriger" argumentieren — das ist die widerlegte Fassung.
+
 ### Stefan läuft ohne Auto-Lap – Rennpläne nicht auf km-Piepser bauen
 Auto-Lap ist auf der COROS **aus**. Ohne Lap-Druck läuft eine einzige Runde über die
 gesamte Einheit, dadurch gilt: **Rundenzeit = Gesamtzeit**, Ø Pace der Runde = Ø Pace
@@ -69,6 +88,13 @@ deshalb immer über Zeit am Schild, nie über Ø Pace oder Uhr-Distanz.
 ### Lauf-Block (seit KW33): Kern Mo/Mi/Fr früh, Wochenende nur Bonus
 KW31 und KW32 sind **beide am Wochenende gescheitert** (Hitze, private Termine, spontane Radausfahrt) – der Longrun und zweimal der 2km-Kalibrierungscheck fielen aus. Werktags früh hat zuverlässig funktioniert.
 **Anwenden:** Im Lauf-Block Schlüsseleinheiten nie aufs Wochenende legen; Sa/So als „Bonus – ersatzlos streichbar" kennzeichnen. Im Sommer: früh morgens erste Wahl, spät abends zweite.
+### Zeitrahmen ab Winter 26/27 (Stefan, 21.9.2026)
+**Werktags max. 90min** (Ausnahme bis 2h), **vor oder nach der Arbeit** — beides geht, der Slot wird
+je Woche festgelegt. **Wochenende trägt die langen Einheiten.** Konkrete Wochenplanung macht Stefan
+**rollierend 1–2 Wochen im Voraus** — also nie mehr als zwei Wochen im Detail ausplanen, der Rest
+bleibt Blockstruktur. Damit ist die lange Ausfahrt Wochenend-gebunden; fällt das Wochenende aus, ist
+die Woche kürzer, nicht kaputt.
+
 **Rad-Regel (gilt wieder bei Rad-Fokus):** Ruhetag immer unter der Woche, Wochenende beide Tage Training (lange Ausfahrten). Vollzeit berufstätig: wochentags max. 2h, Wochenende 2,5–4h.
 
 ---
@@ -117,15 +143,39 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
 - Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.
 - Rad-Bibliothek: `.zwo` nur für `type: "Ride"`; Dateinamen exakt aus `planung/workout_index.md`.
 
+### Zwei Radleistungsquellen — nie gegeneinander rechnen (Stefans Einwand, 21.9.2026)
+Outdoor = Tarmac SL8 + XCadey Spindle · Indoor = Canyon Aeroad auf Tacx Flux S (Rollenleistung).
+**Zwei Räder, zwei Messsysteme.** Direktantriebsrollen lesen typisch 2–5% unter Kurbel-/Spindelmessern
+(Antriebsstrangverluste), Flux S ±3% Toleranz, dazu andere Sitzposition → realistisch 5–15% Versatz.
+Stefan hat das selbst angesprochen, bevor der Coach es gemerkt hat.
+**Anwenden:** Kalibrierung in KW40 — bevorzugt Tarmac einmal auf den Flux spannen und XCadey + Tacx
+parallel aufzeichnen (3×8min @ ~55/75/95% FTP → Faktor je Intensität); sonst Outdoor-Test + 5–7 Tage
+später derselbe Indoor-Block → **zwei FTP-Werte führen**. Fortschritt immer Quelle gegen sich selbst.
+Vor Indoor-Qualität: 10min warmfahren + Spindown in der Tacx-App (die Rolle driftet mit der Temperatur).
+
 ### Strava-Aktivitäten sind über die API leer
 Aktivitäten, die nur über Strava in intervals.icu ankommen, liefern über die API (MCP, Dashboard) **alle Felder `null`** – Strava-Lizenz. In der intervals.icu-Oberfläche sind sie sichtbar, für den Coach nicht. COROS- und Garmin-Quellen sind vollständig. Leere Aktivitätszeilen daher als „Strava-Hülle" erkennen, nicht als fehlende Einheit.
 
 ---
 
-## 6. Aktueller Kontext (Stand 19.9.2026)
+## 6. Aktueller Kontext (Stand 21.9.2026)
 
-- **Halswirbelfraktur 28.6.2026** (Rosenheimer, km 45,8) → 4 Wochen Pause, seit 26.7. Wiedereinstieg mit ärztlicher Freigabe für Laufen und Rad. Nacken-Abbruchkriterien bei jeder Einheit: Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme.
-- **Rad-Setup neu seit Sept. 2026:** Outdoor S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter. Indoor altes Canyon Aeroad ohne PM auf Tacx Flux S → Rollenleistung ist Indoor-Quelle. **FTP 305W stammt vom alten 4iiii-Setup** → Rad-Zonen erst nach neuem 3+10min-Test am Tarmac wieder trainingsleitend; bis dahin Rad nach HF/RPE. Indoor- und Outdoor-Watt nie gleichsetzen.
-- **Zielevent erreicht:** Karlsfelder Seelauf 10km am 20.9.2026 — **1:05:08 / 6:31/km**, Ziel (6:30–6:40) getroffen, PR von 1:11:28 um 6:20 verbessert. Saison-Zielrennen abgeschlossen.
-- **KW39:** Stefan in Kroatien, Mo/Di Arbeit, Mi–Fr Urlaub, Planung im Laufe der Woche. Recovery nach dem Rennen: Mo/Di Pause, erste lockere Einheit frühestens Mi.
-- **Danach:** KW40 FTP-Herbsttest (Sentiero 3+10min, **erster Test am Tarmac/XCadey**) → danach Neuaufbau mit dem Kadenz-Projekt als wichtigstem Laufthema. Kein neues Zielrennen gesetzt — bei der nächsten Planung nach Events für Herbst/Winter fragen.
+- **Wintersaison 2026/27 gesetzt** (Stefans Auftrag 21.9.): 9–10h/Woche, **FTP und Laufleistung parallel**
+  steigern, kein Zielrennen — Events sind später eingehängte Zwischenziele. Ziele: FTP +8–12% über die
+  KW40-Baseline, **10km sub-60 im Frühjahr 2027**, Laufvolumen 6,5 → 28–32 km/Woche, CTL 23 → 60–68.
+  Saisonplan `planung/periodisierung.md` (KW40–KW09), Rahmen `planung/langfristplan.md`.
+- **Dynamischer Split statt fixem:** Stefan wollte spontan 70:30 Rad:Lauf, war mit 60:40 einverstanden,
+  wenn beides vorangeht. Lösung: Okt 70:30 (Gewebe kann mehr Laufen noch nicht aufnehmen), Nov 65:35,
+  ab Dez 60:40. Begründung, die bei ihm gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5.
+  Laufstunde entscheidet über sub-60.
+- **Ausgangslage real:** letzte 4 Wochen nur ~3,2h/Woche. 9–10h ist eine Verdreifachung — die **Rampe**
+  ist wichtiger als der Zielwert (+10–15%/Woche, jede 4. Woche −45%).
+- **Halswirbelfraktur 28.6.2026 ausgeheilt** — 66min Wettkampf am 20.9. beschwerdefrei. Nacken-Abbruch-
+  kriterien bleiben Standard: Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme.
+- **Rad-Setup:** Outdoor Tarmac/XCadey, Indoor Aeroad/Tacx. FTP 305W (4iiii) ist **keine gültige Referenz
+  mehr** → KW40 Baseline-Test + Rollen-Kalibrierung. Bis dahin Rad nach HF/RPE.
+- **Krankheitsprävention ist Planbestandteil**, nicht Beiwerk: 2026 gingen ~4 Wochen durch Infekte
+  verloren (KW16 April, ~10.–22. August), beide mitten im Aufbau. Protokoll in `langfristplan.md`.
+- **Offen (Stefan gefragt am 21.9.):** Kraft 2×/Woche im Winter ja/nein · Infekt-Muster und
+  Vitamin-D-Wert · Laufschuh-Situation bei 94 kg · Gewicht als expliziter Hebel ja/nein ·
+  Frühjahrsevents (10km-Volkslauf als Benchmark, RadRace 2027?).

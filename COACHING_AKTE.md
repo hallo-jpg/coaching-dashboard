@@ -1,9 +1,59 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 20. September 2026*
+*Letzte Aktualisierung: 21. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
 
 ---
+
+## 21. September 2026 – Wintersaison 2026/27: Zielsetzung & Langfristplanung
+
+**Stefans Auftrag:** Den Winter durchziehen, ~9–10h/Woche, **FTP und Laufleistung parallel** steigern.
+Keine Events geplant — wenn, dann nur als Zwischenziele. „Im Fokus steht ganz klar kontinuierlich
+besser werden." Zusätzlich: weniger langsame Läufe (orthopädisch teuer) und Tipps zur Krankheitsprävention.
+
+**Ausgangslage:** CTL 23,3 · ATL 35,2 · TSB −11,9 · Readiness 76 🟡 · letzte 4 Wochen **~3,2h/Woche**.
+9–10h ist damit eine Verdreifachung — die Rampe ist der eigentliche Plan, nicht die Zielstruktur.
+
+### Entscheidungen (von Stefan bestätigt)
+
+| Frage | Entscheidung |
+|---|---|
+| Zeitrahmen | werktags max. 90min (Ausnahme 2h), vor **oder** nach der Arbeit · Wochenende lang · Planung rollierend 1–2 Wochen im Voraus |
+| Indoor | kein Problem, wetterabhängig |
+| Rad:Lauf | **dynamisch**: 70:30 (Okt) → 65:35 (Nov) → 60:40 (ab Dez). Stefan wollte spontan 70:30, 60:40 akzeptiert, „wenn wir beides gut steigern" |
+| Laufziel | **10km sub-60 im Frühjahr 2027** |
+| Leistungsmessung | **Stefans Vorschlag übernommen:** S-Works einmalig auf die Rolle, 3+10min-Test, XCadey parallel zur Tacx → **ein FTP + ein Offset-Faktor**. Keine zwei parallel gepflegten FTP-Werte („wir müssen das nicht übertreiben, ich bin kein Profi") |
+
+### Fachliche Klärung: langsames Laufen
+
+Stefans Aussage bestätigt und diesmal vollständig begründet: Spitzenkraft pro Schritt ist nur eine von
+drei Lastdimensionen; Bodenkontaktzeit und Soleus-Zeit-unter-Spannung steigen langsam, Knochenlast
+akkumuliert hoch potenziert × Zyklen. Bei 140 spm und 94 kg ist **langsames Trotten sein teuerster
+Laufmodus**. **Aber:** die Konsequenz ist nicht „mehr schnell" (Tibia-/Achilleslast skaliert mit Tempo,
+~7–8× KG), sondern kein Junk-Trotten, Kadenz 165–170, aerobes Volumen vom Rad, jeder Lauf mit Zweck,
+2×/Woche Athletik. Regeln in `langfristplan.md` (Abschnitt Laufbelastungs-Budget) und `COACH_MEMORY.md`.
+
+### Krankheitsprävention → Planbestandteil
+
+2026 ~4 Wochen durch Infekte verloren (KW16, ~10.–22.8.), beide mitten im Aufbau. Protokoll in
+`langfristplan.md`: 3:1-Rhythmus mit echter Entlastungswoche, HRV-Gate, keine harte Einheit 48h nach
+Reise/Schlafdefizit, KH während Einheiten >75min, Alkohol vor Schlüsselwochen, Vitamin-D-Wert messen,
+Zinkacetat in den ersten 24h, Grippeimpfung, Handhygiene. Blöcke à 3 Wochen mit eigenem Abschluss,
+damit eine verlorene Woche den Block nicht kippt.
+
+### Geschriebene Dateien
+
+- `planung/periodisierung.md` — **neuer Saisonplan Winter 26/27 (KW40–KW09)**, ersetzt den Frühjahrsplan KW14–27
+- `planung/langfristplan.md` — überarbeitet: Dual-Ziel, Baseline-Reset FTP, Laufbelastungs-Budget, Krankheitsprävention, Leistungsmessung, neue Testfenster
+- `athlete/profil.md` — Status 21.9., Wintersaison-Ziele, Event-Kalender (leer), Zeitrahmen 90min
+- `planung/kw40.md` – `kw44.md` — Baseline-Woche + Rampe + Entlastung (validiert gegen den Dashboard-Parser)
+- `COACH_MEMORY.md`, `CLAUDE.md` — Regeln und Schnellreferenz nachgezogen
+
+**Offen (an Stefan gestellt):** Kraft 2×/Woche im Winter · Infekt-Muster + Vitamin-D-Wert · Laufschuhe
+bei 94 kg · Gewicht als expliziter Hebel ja/nein · Frühjahrsevents.
+
+---
+
 
 ## 20. September 2026 – 🏁 Karlsfelder Seelauf: Zielrennen abgeschlossen
 

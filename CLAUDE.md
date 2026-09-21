@@ -15,14 +15,15 @@
 | **Zielevent** | ~~Karlsfelder Seelauf~~ ✅ · 20. September 2026 · **KW38** · **1:05:08 / 6:31 pro km** · Ziel getroffen, PR −6:20 · **kein neues Zielrennen gesetzt** |
 | **Aktuelle KW** | KW39 (21.–27. September 2026) · Erholung · **Stefan in Kroatien** (Mo/Di Arbeit, Mi–Fr Urlaub) |
 | **Aktuelle Phase** | Recovery nach Zielrennen · Mo/Di Pause, erste lockere Einheit frühestens Mi |
-| **Nächste Phase** | KW40 🔬 **FTP-Herbsttest** (Sentiero 3+10min, erster Test am Tarmac/XCadey) · danach Neuaufbau + Kadenz-Projekt |
-| **Tage bis Rennen** | – · nächster Fixpunkt: FTP-Test KW40 (Do 1.10.) |
+| **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
+| **Nächste Phase** | KW40 🔬 **FTP-Baseline** (3+10min, **S-Works auf der Rolle, XCadey + Tacx parallel** → ein FTP + Offset-Faktor) · KW41–43 Volumen-Rampe + Kadenz-Projekt |
+| **Tage bis Rennen** | – · nächste Fixpunkte: FTP-Baseline KW40 (Do 1.10.) · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 |
 | **CTL** | 23,9 (20.9.) · ATL 40,6 · TSB −16,7 · Readiness 78 🟡 (HRV 52, Schlaf 8,6h, RP 53) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
 | **Lauf-Schwellenwerte** | **Schwellenpace 6:28/km · LTHR 185** (aktualisiert 20.9. aus dem Wettkampf) · Zonen: Z1 7:25–8:40 · Z2 6:55–7:25 · Z3 6:10–6:40 · Z4 5:25–6:10 · ✅ in intervals.icu übernommen (Schwellentempo 6:28, Schwellen-HF 185, HFmax 205) |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
 | **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · Gewohnt ~140 spm · **Rennen 20.9.: 154 spm @ 6:31 über 66min** (Training mit Metronom: 160–162) → unter Stress driftet sie ~6 spm zurück · Arbeitsziel **165–170**, damit im Wettkampf 160 steht · **wichtigstes Laufprojekt der nächsten 6–8 Wochen** |
-| **Wochenstruktur** | Kern **Mo/Mi/Fr früh** · Wochenende nur Bonus (KW31+32 beide am WE gescheitert) |
+| **Wochenstruktur** | werktags **max. 90min** (Ausnahme 2h), vor oder nach der Arbeit · **Wochenende trägt die langen Einheiten** · Planung rollierend 1–2 Wochen im Voraus · Ruhetag unter der Woche |
 | **Steuerung** | Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
 ## Coaching-Skill
@@ -52,7 +53,7 @@ plane mir die nächste Woche
 | `athlete/profil.md` | Athletenprofil, Zonen, Geräte | Skill (bei FTP-Update) |
 | `athlete/fortschritt.md` | FTP-Verlauf, VO2max, Tests | Skill |
 | `planung/langfristplan.md` | **Mehrjähriger Entwicklungsplan, Jahreszyklus, CTL-Kurve** – läuft nie ab | Skill (bei Zielprofil-Änderung) |
-| `planung/periodisierung.md` | Aktueller Saisonplan (KW14–27) – wird nach KW26 ersetzt | Skill (mit Zustimmung) |
+| `planung/periodisierung.md` | Aktueller Saisonplan **Winter 26/27 (KW40–KW09)** – wird nach KW09/2027 ersetzt | Skill (mit Zustimmung) |
 | `planung/kw[N].md` | Aktuelle Wochenplanung | Skill |
 | `planung/archiv/` | Abgeschlossene Wochen (Plan + Ist + Feedback) | Skill (nach Wochenabschluss) |
 | `planung/workout_index.md` | Kompakter Workout-Index (55 Workouts) | Manuell |

@@ -1,20 +1,19 @@
 # Athletenprofil – Stefan
 
-*Stand: 26. Juli 2026*
+*Stand: 21. September 2026*
 
-## ⚠️ Aktueller Status (26. Juli 2026)
+## ⚠️ Aktueller Status (21. September 2026)
 
 | | |
 |---|---|
-| **Verletzung** | Angebrochener Halswirbel (Radunfall 28.6.2026, Rosenheimer) |
-| **Freigabe** | Laufen ✅ · Radfahren ✅ (ärztlich, 26.7.) |
-| **Rad** | ❌ **Defekt – nicht fahrbar.** Kein Rad-Training bis Ersatz/Reparatur |
-| **Trainingsfokus** | 100% Laufen bis auf Weiteres |
-| **CTL** | 24,1 (war 45,7 am 28.6. → −47% durch 4 Wochen Pause) |
-| **Aerobe Basis** | Lauf 24.7.: 7:50/km @ Ø166 bpm — nur ~3–5 bpm über seiner belegten Easy-HF (s.u.) → **kein Detraining-Alarm**, CTL-Verlust ist reine Volumensache |
-| **Steuerung KW31–32** | Easy-Cap **165 bpm** · Pace ergibt sich (erwartbar 7:45–8:15/km) |
-| **Nächstes Ziel** | Karlsfelder Seelauf 10km · 20.9.2026 · 8 Wochen Vorlauf |
-| **Abbruchkriterien** | Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in Arme → Einheit beenden |
+| **Saisonstand** | Zielrennen Karlsfelder Seelauf ✅ (1:05:08) · **Wintersaison 26/27 gestartet** |
+| **Verletzung** | Halswirbel (Unfall 28.6.) ausgeheilt – 66min Wettkampf beschwerdefrei · Wade/Soleus (MTSS-Verdacht 8/2026): beobachten |
+| **Freigabe** | Laufen ✅ · Radfahren ✅ |
+| **Trainingsfokus** | **Dual: FTP + Laufleistung** · 9–10h/Woche · Rad:Lauf wandert von 70:30 (Okt) auf 60:40 (Dez–Feb) |
+| **CTL** | 23,3 (21.9.) · Winterziel 60–68 bis Ende Januar |
+| **Zeitrahmen** | werktags max. 90min (Ausnahme bis 2h), vor oder nach der Arbeit · Wochenende trägt die langen Einheiten · Wochenplanung rollierend 1–2 Wochen im Voraus |
+| **Nächster Fixpunkt** | 🔬 FTP-Test **KW40** (Do 1.10.) – erster Test am Tarmac/XCadey + Rollen-Kalibrierung |
+| **Abbruchkriterien** | Nacken: Schmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme · Lauf: punktueller Schmerz an der Schienbeinkante |
 
 FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026, gemessen mit 4iiii). Seit dem Setup-Wechsel (Sept. 2026, siehe Geräte) ist die Leistungsquelle eine andere → **Zonen erst nach neuem FTP-Test auf dem Tarmac/XCadey wieder trainingsleitend.** Indoor- und Outdoor-Werte stammen aus verschiedenen Messgeräten und sind nicht 1:1 vergleichbar.
 
@@ -29,8 +28,8 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 | **VO2max** | 59 ml/min/kg | Sentiero metabolisches Profil |
 | **FatMax** | 202W | Sentiero |
 | **Erfahrung** | ~3 Jahre | strukturiertes Ausdauertraining · Ötztaler Radmarathon 2025 ✅ |
-| **Trainingstage/Woche** | 6 | Vollzeit berufstätig · Ruhetag immer unter der Woche · Wochenende beide Tage Training |
-| **Einheitsdauer Wochentags** | max. 2h | |
+| **Trainingstage/Woche** | 6 | Vollzeit berufstätig · Ruhetag immer unter der Woche · Wochenende trägt die langen Einheiten |
+| **Einheitsdauer Wochentags** | **max. 90min** (Ausnahme bis 2h) | vor **oder** nach der Arbeit möglich – Slot wird je Woche festgelegt (Stefan, 21.9.2026) |
 | **Einheitsdauer Wochenende** | 2,5–4h | |
 | **Indoor/Outdoor** | wetterabhängig | Indoor: Canyon Aeroad auf Tacx Flux S |
 | **Powermeter Outdoor** | XCadey Spindle (Cybrei-Kurbel, S-Works Tarmac SL8) | ab Sept. 2026 – Referenz für Outdoor-Zonen nach neuem FTP-Test |
@@ -39,31 +38,39 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 ## Ziele
 
 ### Langfristiges Entwicklungsziel (Übergeordnet)
-**Kontinuierlicher FTP-Aufbau über 2026 und darüber hinaus.**
-FTP Herbst 2026 > FTP Frühjahr 2026 ist der eigentliche Erfolgsmaßstab. Rennergebnisse sind Indikatoren, kein Endziel.
+**Zwei Motoren parallel entwickeln: FTP auf dem Rad und Laufleistung.**
+Rennergebnisse sind Indikatoren, kein Endziel. Details → `planung/langfristplan.md`.
 
-### Saisonziele 2026 (Fitness-Showcases)
-**Hauptevent: RadRace 120 – 12.–14. Juni 2026 (KW24)**
-- Fr 12.6: Anreise
-- Sa 13.6: Zeitfahren → Primärfokus
-- So 14.6: Rennen → Sekundärfokus
+### Wintersaison 2026/27 (KW40 – KW09) – aktiv
 
-**Nebenevent: Rosenheimer Radmarathon Tour V – 28. Juni 2026 (KW26)**
-- 197km / 3.550hm – Ausdauercharakter, Fueling-Herausforderung
+| Ziel | Start (21.9.2026) | Ziel März 2027 |
+|---|---|---|
+| **FTP** | Baseline wird KW40 neu gemessen (XCadey) | **+8–12%** über Baseline |
+| **10 km** | 1:05:08 · 6:31/km | **sub-60:00 · 5:59/km** |
+| **5 km** | – (Trainingslauf 30:46) | **<28:30** (Januar) |
+| **Laufvolumen** | ~6,5 km/Woche | **28–32 km/Woche** |
+| **Laufkadenz** | 140 gewohnt / 154 im Wettkampf | **165–170 stabil im Training** |
+| **CTL** | 23,3 | **60–68** |
+| **Wochenvolumen** | ~3,2h | **9–10h** |
+| **Prozess** | 4 Wochen Ausfall 2026 durch Infekte | **≤1 ungeplant verlorene Woche/Quartal** |
+
+Saisonplan → `planung/periodisierung.md`
 
 ### Event-Kalender (autoritativ für Taper-Triggering)
 
-| Event | Datum | Tage bis Event (auto) | Charakter | Taper-Start |
-|---|---|---|---|---|
-| RadRace 120 – Zeitfahren | 2026-06-13 | — | TT + Rennen | 2026-05-30 (T-14) |
-| Rosenheimer Radmarathon | 2026-06-28 | — | 197km / 3.550hm Gran Fondo | 2026-06-14 (T-14) |
-| ~~Karlsfelder Seelauf~~ ✅ | 2026-09-20 | abgeschlossen | 10km Lauf – max. Pace | — · **Ergebnis 1:05:08 / 6:31 pro km** |
+| Event | Datum | Charakter | Taper-Start |
+|---|---|---|---|
+| ~~RadRace 120 – Zeitfahren~~ ✅ | 2026-06-13 | TT + Rennen | abgeschlossen |
+| ~~Rosenheimer Radmarathon~~ ⚠️ | 2026-06-28 | nach 45,8km Unfall, abgebrochen | – |
+| ~~Karlsfelder Seelauf~~ ✅ | 2026-09-20 | 10km Lauf | **Ergebnis 1:05:08 / 6:31 pro km** |
 
-*"Tage bis Event" wird vom Coach-Skill beim Aufruf berechnet (heute − Event-Datum). Neue Events hier eintragen.*
+**Aktuell kein Event gesetzt.** Die Wintersaison läuft ohne Zielrennen — Taktgeber sind die Testfenster
+(FTP KW40 · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27). Events sind Zwischenziele und werden
+eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht nur in der Akte.
 
 ### Weitere Ziele
-- ~~**Karlsfelder Seelauf 20.9.2026 (KW38):** 10km – maximale Pace~~ ✅ **1:05:08 (6:31/km)**, Ø HF 183 · gelaufenes Ziel war 6:30–6:40/km (~66:00), getroffen · alter Bestwert 1:11:28. Die früheren Prognosen (sub-60, 1:01:46) stammten aus der zu schnell angesetzten Schwellenpace 6:03/km und waren nie realistisch.
-- Laufleistung 2026 gezielt aufbauen: Running Economy + 10km-Tempo (Schwerpunkt Herbstaufbau)
+- ~~**Karlsfelder Seelauf 20.9.2026:** 10km – maximale Pace~~ ✅ **1:05:08 (6:31/km)**, Ø HF 183 · alter Bestwert 1:11:28
+- Laufkadenz-Projekt 140 → 165–170: wichtigstes Laufthema der nächsten 6–8 Wochen (Ökonomie **und** orthopädisches Budget)
 - Kein Profi-Fokus: bestmöglich performen, nicht um jeden Preis
 
 ## Laufprofil (COROS)
