@@ -194,7 +194,22 @@
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-  .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+  .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+  .chard-icon .ico { width: 14px; height: 14px; }
+
+  /* Icons: eine Grundform fuer alle, Farbe kommt von der Umgebung */
+  .ico { stroke: currentColor; fill: none; stroke-width: 2;
+         stroke-linecap: round; stroke-linejoin: round; }
+  .ico .solid { fill: currentColor; stroke: none; }
+  /* im Kopfzeilen-Balken: inline vor dem Text */
+  .card-headline .ico { width: 14px; height: 14px; color: var(--brand);
+                        vertical-align: -2px; margin-right: 5px; }
+  /* im Fliesstext (Ausblick, Plantexte) */
+  .ausblick-sub .ico, .ausblick-table .ico { width: 12px; height: 12px;
+                        color: var(--muted); vertical-align: -1px; }
+  /* im Wochenplan: ruhiges Glyph, die Statusfarbe traegt der Punkt links */
+  .day-workout .ico { width: 14px; height: 14px; color: var(--text2);
+                      vertical-align: -2px; flex-shrink: 0; }
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
   .ring-wrap { position: relative; display: flex; align-items: center; justify-content: center; }
   .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -524,7 +539,7 @@
 
   <!-- READINESS -->
   <div class="readiness-card">
-    <div class="chard"><div class="chard-icon">💚</div>Readiness Score</div>
+    <div class="chard"><div class="chard-icon">{{ ico('heart') }}</div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       {% if biometrics_pending %}
@@ -730,7 +745,7 @@
 
   <!-- POLARISATION (in rechter Spalte) — 8-Wochen Donut -->
   <div class="polar-card" style="margin-bottom:0;flex:1">
-    <div class="chard"><div class="chard-icon" style="background:rgba(96,165,250,0.12)">📊</div>Polarisation · 8 Wochen · Rad</div>
+    <div class="chard"><div class="chard-icon">{{ ico('bars') }}</div>Polarisation · 8 Wochen · Rad</div>
     {% if polar_8w.no_data %}
     <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 8 Wochen</div>
     {% else %}
@@ -774,7 +789,7 @@
   <!-- WOCHENPLAN -->
   <div class="week-card">
     <div class="week-header">
-      <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(148,163,184,0.10)">📅</div>Wochenplan</div>
+      <div class="chard" style="margin-bottom:0"><div class="chard-icon">{{ ico('calendar') }}</div>Wochenplan</div>
       <span class="kw-pill">KW{{ kw }}</span>
       <span class="tss-pill">{{ tss_ist }} / ~{{ tss_plan }} TSS</span>
     </div>
@@ -791,12 +806,12 @@
         {% if day.rest %}
         <div class="day-workout" style="color:var(--subtle);font-weight:400;{% if day.bonus_activities %}text-decoration:line-through;{% endif %}">Ruhetag</div>
         {% else %}
-        <div class="day-workout">{% if day.is_run %}🏃{% elif day.is_kraft %}🏋️{% else %}🚴{% endif %} {{ day.workout }}</div>
+        <div class="day-workout">{% if day.is_run %}{{ ico('run') }}{% elif day.is_kraft %}{{ ico('dumbbell') }}{% else %}{{ ico('bike') }}{% endif %}{{ day.workout|icons }}</div>
         {% endif %}
         {% for bonus in day.bonus_activities %}
         <div class="bonus-activity">
           <span class="badge-bonus">+</span>
-          <span class="bonus-name">{{ bonus.name }}</span>
+          <span class="bonus-name">{{ bonus.name|icons }}</span>
         </div>
         {% endfor %}
       </div>
@@ -878,11 +893,11 @@
       <tr {% if loop.first %}style="background:rgba(148,163,184,0.04)"{% endif %}>
         <td><span class="ausblick-kw" style="color:{% if loop.first %}var(--accent){% else %}var(--muted){% endif %}">KW{{ week.kw }}</span></td>
         <td>
-          <div>{{ week.theme }}</div>
-          <div class="ausblick-sub">{{ week.sub }}</div>
+          <div>{{ week.theme|icons }}</div>
+          <div class="ausblick-sub">{{ week.sub|icons }}</div>
         </td>
         <td class="ausblick-tss">{% if loop.first %}{{ week.tss_ist }} / ~{{ week.tss_plan }}{% else %}~{{ week.tss_plan }}{% endif %}</td>
-        <td class="ausblick-key"><div class="ausblick-sub">{{ week.key_workouts }}</div></td>
+        <td class="ausblick-key"><div class="ausblick-sub">{{ week.key_workouts|icons }}</div></td>
       </tr>
       {% endfor %}
       </tbody>
@@ -934,7 +949,7 @@
   <!-- M1: LOAD QUALITY -->
   <div class="ausblick-card" style="margin-bottom:0">
     <div style="margin-bottom:12px">
-      <div class="card-headline">⚖️ Load Quality · 7 Tage</div>
+      <div class="card-headline">{{ ico('scale') }}Load Quality · 7 Tage</div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
@@ -960,7 +975,7 @@
   <!-- SCHLAF-VERLAUF 30 TAGE -->
   <div class="ausblick-card" style="margin-bottom:0">
     <div style="margin-bottom:14px">
-      <div class="card-headline">😴 Schlaf-Verlauf · 30 Tage</div>
+      <div class="card-headline">{{ ico('moon') }}Schlaf-Verlauf · 30 Tage</div>
     </div>
     {% if sleep_history.path %}
     <div id="sl-wrap" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
@@ -1005,7 +1020,7 @@
     {% if ftp_history.available %}
     <div class="ausblick-card" style="margin-bottom:0">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div class="card-headline">📈 FTP-Entwicklung</div>
+        <div class="card-headline">{{ ico('trend') }}FTP-Entwicklung</div>
         <span class="kw-pill" style="margin-left:auto">{{ ftp_history.current_ftp }}W aktuell</span>
       </div>
       <div style="position:relative">
@@ -1054,7 +1069,7 @@
 
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="card-headline">🚴 Trainingszonen Rad</div>
+    <div class="card-headline">{{ ico('bike') }}Trainingszonen Rad</div>
     <span class="kw-pill" style="margin-left:auto">FTP {{ zone_data.ftp }}W</span>
   </div>
   <table class="ausblick-table">
@@ -1082,7 +1097,7 @@
 
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="card-headline">🏃 Trainingszonen Lauf</div>
+    <div class="card-headline">{{ ico('run') }}Trainingszonen Lauf</div>
     <span class="kw-pill" style="margin-left:auto">{{ zone_data.schwelle_pace }}</span>
   </div>
   <table class="ausblick-table">
@@ -1116,7 +1131,7 @@
 {% if power_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="chard" style="margin-bottom:0"><div class="chard-icon" style="background:rgba(245,158,11,0.12)">⚡</div>Power Bestwerte · All-Time</div>
+    <div class="chard" style="margin-bottom:0"><div class="chard-icon">{{ ico('bolt') }}</div>Power Bestwerte · All-Time</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">
@@ -1145,7 +1160,7 @@
 {% if pace_bests %}
 <div class="ausblick-card" style="margin-bottom:0">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-    <div class="chard" style="margin-bottom:0"><div class="chard-icon">🏃</div>Lauf Bestwerte · All-Time</div>
+    <div class="chard" style="margin-bottom:0"><div class="chard-icon">{{ ico('run') }}</div>Lauf Bestwerte · All-Time</div>
     <span class="kw-pill" style="margin-left:auto">All-Time</span>
   </div>
   <table class="ausblick-table">

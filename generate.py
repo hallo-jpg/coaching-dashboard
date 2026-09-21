@@ -267,6 +267,45 @@ def _status_key(value: float, good_at: float, warn_at: float) -> str:
     return "crit"
 
 
+# ── Icon-Set ──────────────────────────────────────────────────────────────────
+# Form aus dem Favicon abgeleitet: runde Enden, Strichstärke rund 9 % der
+# Kantenlänge, kein Detail darunter – auf dem 24er Raster 2 px. Die Icons erben
+# currentColor, tragen also die Farbe der Stelle, an der sie stehen.
+ICON_PATHS: dict[str, str] = {
+    "heart":    '<path d="M12 20C7 16.5 4 13.7 4 10.3A4.3 4.3 0 0 1 12 7.8 4.3 4.3 0 0 1 20 10.3C20 13.7 17 16.5 12 20Z"/>',
+    "calendar": '<rect x="3.5" y="5.5" width="17" height="15" rx="4"/><path d="M8.5 3v4M15.5 3v4M3.5 10.5h17"/><circle cx="12" cy="15.5" r="1.6" class="solid"/>',
+    "bolt":     '<path d="M14.2 2.6 5.4 13.8h5.4L9.8 21.4 18.6 10.2h-5.4Z"/>',
+    "bike":     '<circle cx="6" cy="16.5" r="3.5"/><circle cx="18" cy="16.5" r="3.5"/><path d="M6 16.5 10.5 8h4.2l3.3 8.5M9.5 8h4"/>',
+    "run":      '<circle cx="16" cy="4.8" r="2"/><path d="M14.4 8.8 11.4 13.2"/><path d="M14.4 8.8 17.8 10.4 18.6 13.6"/><path d="M14.4 8.8 11 9.8 9.2 7.6"/><path d="M11.4 13.2 13.8 16.4 12.6 20.6"/><path d="M11.4 13.2 8.2 15.2 5.8 19.4"/>',
+    "dumbbell": '<path d="M4 9.5v5M7 7v10M17 7v10M20 9.5v5M7 12h10"/>',
+    "moon":     '<path d="M20 14.3A8 8 0 1 1 9.7 4a6.4 6.4 0 0 0 10.3 10.3Z"/>',
+    "bars":     '<path d="M4 19.5V10M10 19.5V5M16 19.5v-6.5M3 19.5h18"/>',
+    "trend":    '<path d="M3.5 16.5 9 10.5l3.5 3L20.5 6"/><path d="M15.5 6h5v5"/>',
+    "scale":    '<path d="M12 4.5v15M5 8.5h14M5 8.5 2.8 14a3.2 3.2 0 0 0 4.4 0L5 8.5ZM19 8.5 16.8 14a3.2 3.2 0 0 0 4.4 0L19 8.5Z"/>',
+    "flask":    '<path d="M9.5 3v6.4L5 17.2a2 2 0 0 0 1.7 3.1h10.6a2 2 0 0 0 1.7-3.1L14.5 9.4V3"/><path d="M8 3h8M7.6 14.6h8.8"/>',
+    "flag":     '<path d="M5.5 21V4"/><path d="M5.5 4.8h11l-2.2 3.6 2.2 3.6h-11"/>',
+}
+
+# Emojis, die in Plantexten stehen, auf Icons abbilden
+TEXT_EMOJI_ICONS: dict[str, str] = {
+    "🏃": "run", "🚴": "bike", "💪": "dumbbell",
+    "🔬": "flask", "🏁": "flag",
+}
+
+
+def icon_svg(name: str) -> str:
+    """Inline-SVG für ein Icon aus ICON_PATHS."""
+    return (f'<svg viewBox="0 0 24 24" class="ico" aria-hidden="true">'
+            f'{ICON_PATHS[name]}</svg>')
+
+
+def icons_in_text(text: str) -> str:
+    """Ersetzt Sport-Emojis in Freitext (Wochenpläne) durch Icons."""
+    for emoji, name in TEXT_EMOJI_ICONS.items():
+        text = text.replace(emoji, icon_svg(name))
+    return text
+
+
 def fmt_tsb_color(tsb: float) -> str:
     """Returns hex color for TSB value."""
     return STATUS_TEXT[_status_key(tsb, 5, -5)]
@@ -1590,6 +1629,8 @@ def _key_workouts(days: list) -> str:
 
 def render(ctx: dict) -> str:
     env = Environment(loader=FileSystemLoader("."), autoescape=False)
+    env.filters["icons"] = icons_in_text
+    env.globals["ico"] = icon_svg
     return env.get_template("dashboard.template.html").render(**ctx)
 
 def main() -> None:
