@@ -70,11 +70,26 @@ def test_week_date_range():
 
 
 def test_tsb_color_positive():
-    assert fmt_tsb_color(15) == "#3ecf8e"
+    from generate import STATUS_TEXT
+    assert fmt_tsb_color(15) == STATUS_TEXT["good"]
+
+
+def test_tsb_color_neutral():
+    from generate import STATUS_TEXT
+    assert fmt_tsb_color(0) == STATUS_TEXT["warn"]
 
 
 def test_tsb_color_negative():
-    assert fmt_tsb_color(-15) == "#ef4444"
+    from generate import STATUS_TEXT
+    assert fmt_tsb_color(-15) == STATUS_TEXT["crit"]
+
+
+def test_status_text_lesbar_auf_weiss():
+    """Textfarben muessen Kontrast haben – Amber als Flaeche ist in Ordnung,
+    als Zahl nicht. Deshalb gibt es beide Varianten."""
+    from generate import STATUS_TEXT, STATUS_MARK
+    assert set(STATUS_TEXT) == set(STATUS_MARK)
+    assert STATUS_TEXT["warn"] != STATUS_MARK["warn"]
 
 
 def test_parse_kw_plan_days():
@@ -474,34 +489,37 @@ def test_project_pmc_taper_raises_tsb():
 from generate import _phase_for_kw, calc_compliance
 
 
-def test_phase_for_kw_laufblock():
-    label, color = _phase_for_kw(32)  # KW31–33 = Lauf-Block
-    assert label == "Lauf"
-    assert color == "#f97316"
+def test_phase_for_kw_historie():
+    """Abgeschlossene Saisons kommen aus SEASON_PHASES_ARCHIV."""
+    assert _phase_for_kw(32, 2026)[0] == "Lauf"     # KW31–33 Lauf-Block
+    assert _phase_for_kw(18, 2026)[0] == "Rad"      # KW14–26 Radsaison
+    assert _phase_for_kw(38, 2026)[0] == "Race"     # KW38 Seelauf
 
 
-def test_phase_for_kw_radsaison():
-    label, color = _phase_for_kw(18)  # KW14–26 = Radsaison (abgeschlossen)
-    assert label == "Rad"
-    assert color == "#60a5fa"
+def test_phase_for_kw_aus_dem_plan():
+    """Die laufende Saison kommt aus periodisierung.md, nicht aus dem Code."""
+    assert _phase_for_kw(40, 2026)[0] == "Nullpunkt"
+    assert _phase_for_kw(45, 2026)[0] == "Schwelle"
 
 
-def test_phase_for_kw_race():
-    label, color = _phase_for_kw(38)  # KW38 = Karlsfelder Seelauf
-    assert label == "Race"
-    assert color == "#60a5fa"
-
-
-def test_phase_for_kw_open_planning():
-    label, color = _phase_for_kw(42)  # ab KW40: Zielsetzung offen
-    assert label == "offen"
-    assert color == "#fbbf24"
-
-
-def test_phase_for_kw_unknown():
-    label, color = _phase_for_kw(99)  # unbekannte KW
+def test_phase_for_kw_unbekannt():
+    label, _ = _phase_for_kw(25, 2027)  # nach Saisonende, kein Plan
     assert label == "–"
-    assert color == "#94a3b8"
+
+
+def test_phase_farben_folgen_der_art():
+    """Entlastung neutral, Test dunkel, Belastung auf der Marke."""
+    from generate import _phase_style
+    assert _phase_style("Entlastung", "−45%")[1] == "#8b837e"
+    assert _phase_style("Nullpunkt", "🔬 FTP-Test")[1] == "#992f07"
+    assert _phase_style("Block 1 · Schwelle", "Rad SwSp")[1] == "#d1450f"
+
+
+def test_phase_kurzname_ohne_nummer():
+    """"Block 1 · Schwelle" → "Schwelle": die Nummer traegt keine Information."""
+    from generate import _phase_style
+    assert _phase_style("Block 1 · Schwelle", "")[0] == "Schwelle"
+    assert _phase_style("Rampe", "")[0] == "Rampe"
 
 
 def test_calc_compliance_full():
@@ -692,3 +710,48 @@ def test_rpe_hidden_when_none():
     tpl = _JinjaEnv().from_string(_RPE_TPL)
     out = tpl.render(day={"rpe": None})
     assert "RPE" not in out
+
+
+# ── Saisonphasen aus planung/periodisierung.md ────────────────────────────────
+
+def test_periodisierung_wird_geparst():
+    from generate import parse_periodisierung
+    phases = parse_periodisierung()
+    assert phases, "Phasentabelle aus periodisierung.md nicht lesbar"
+    assert all(p["start"] <= p["end"] for p in phases)
+
+
+def test_periodisierung_lueckenlos():
+    """Jede Phase schliesst direkt an die vorige an – sonst faellt eine Woche
+    aus der Saisonleiste."""
+    from generate import parse_periodisierung
+    phases = parse_periodisierung()
+    for a, b in zip(phases, phases[1:]):
+        assert (b["start"] - a["end"]).days == 1, f"{a['kw']} -> {b['kw']}"
+
+
+def test_periodisierung_ueber_jahreswechsel():
+    """KW52-53 liegt 2026, KW01/27 im Folgejahr – die Reihenfolge muss halten."""
+    from generate import parse_periodisierung
+    phases = parse_periodisierung()
+    assert phases == sorted(phases, key=lambda p: p["start"])
+    jahreswechsel = [p for p in phases if p["start"].year != p["end"].year]
+    assert jahreswechsel, "erwartet eine Phase ueber den Jahreswechsel"
+
+
+def test_hinweis_nur_wenn_plan_auslaeuft():
+    from datetime import timedelta
+    from generate import parse_periodisierung, plan_horizon_note
+    phases = parse_periodisierung()
+    ende = phases[-1]["end"]
+    assert plan_horizon_note(phases[0]["start"]) == ""
+    assert "steht aus" in plan_horizon_note(ende - timedelta(days=7))
+    assert "ausgelaufen" in plan_horizon_note(ende + timedelta(days=7))
+
+
+def test_phase_fuer_datum():
+    from datetime import date
+    from generate import phase_for_date
+    assert phase_for_date(date(2026, 9, 30))["short"] == "Nullpunkt"
+    assert phase_for_date(date(2027, 1, 6))["short"] == "Standort"
+    assert phase_for_date(date(2027, 6, 1)) is None

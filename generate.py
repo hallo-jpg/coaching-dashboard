@@ -771,32 +771,30 @@ def _is_past(tag: str) -> bool:
     return DAY_ORDER.index(tag) < DAY_ORDER.index(today_tag)
 
 
-# ── Season config ─────────────────────────────────────────────────────────────
+# ── Saisonphasen ──────────────────────────────────────────────────────────────
+# Die laufende Saison wird aus planung/periodisierung.md gelesen, damit Plan und
+# Dashboard nicht auseinanderlaufen – genau das war der Grund, warum der Hinweis
+# "Langfristplanung steht aus" vier Wochen zu lang stehenblieb.
+#
+# Abgeschlossene Saisons stehen als eingefrorene Historie hier: sie aendern sich
+# nicht mehr, und die Rueckschau (TSS-Chart, Saisonleiste) braucht ihre Labels.
 
-SEASON_PHASES = [
-    {"name": "🚴 Radsaison",   "kw": "KW14–26", "start_kw": 14, "end_kw": 26},
-    {"name": "Verletzung",     "kw": "KW27–29", "start_kw": 27, "end_kw": 29},
-    {"name": "Wiedereinstieg", "kw": "KW30",    "start_kw": 30, "end_kw": 30},
-    {"name": "Lauf-Block",     "kw": "KW31–33", "start_kw": 31, "end_kw": 33},
-    {"name": "Zwangspause",    "kw": "KW34–35", "start_kw": 34, "end_kw": 35},
-    {"name": "Wiederaufbau",   "kw": "KW36",    "start_kw": 36, "end_kw": 36},
-    {"name": "Renntempo",      "kw": "KW37",    "start_kw": 37, "end_kw": 37},
-    {"name": "🏁 Seelauf",     "kw": "KW38",    "start_kw": 38, "end_kw": 38},
-    {"name": "Erholung",       "kw": "KW39",    "start_kw": 39, "end_kw": 39},
-    {"name": "🔬 FTP-Test",    "kw": "KW40",    "start_kw": 40, "end_kw": 40},
-    {"name": "Neuaufbau",      "kw": "KW41–42", "start_kw": 41, "end_kw": 42},
-    {"name": "❓ Neue Zielsetzung", "kw": "ab KW43", "start_kw": 43, "end_kw": 52,
-     "fixed_state": "open"},
+PERIODISIERUNG_PATH = Path("planung/periodisierung.md")
+
+SEASON_PHASES_ARCHIV: list[dict] = [
+    {"name": "🚴 Radsaison",   "year": 2026, "start_kw": 14, "end_kw": 26},
+    {"name": "Verletzung",     "year": 2026, "start_kw": 27, "end_kw": 29},
+    {"name": "Wiedereinstieg", "year": 2026, "start_kw": 30, "end_kw": 30},
+    {"name": "Lauf-Block",     "year": 2026, "start_kw": 31, "end_kw": 33},
+    {"name": "Zwangspause",    "year": 2026, "start_kw": 34, "end_kw": 35},
+    {"name": "Wiederaufbau",   "year": 2026, "start_kw": 36, "end_kw": 36},
+    {"name": "Renntempo",      "year": 2026, "start_kw": 37, "end_kw": 37},
+    {"name": "🏁 Seelauf",     "year": 2026, "start_kw": 38, "end_kw": 38},
+    {"name": "Erholung",       "year": 2026, "start_kw": 39, "end_kw": 39},
 ]
 
-# Letzte KW des aktuellen Saisonbogens (Zielrennen). Fallback für die
-# Saison-Fortschrittsrechnung, sobald kein Rennen mehr in der Zukunft liegt.
-SEASON_END_KW = 38
-
-# Hinweis unter der Saisonleiste, solange die Langfristplanung offen ist.
-PHASE_BAR_NOTE = ("Langfristplanung ab KW43 steht aus – "
-                  "neues Zielevent und Zielsetzung folgen in den kommenden Wochen.")
-
+# Kuerzel + Farbe fuer die Historie; die laufende Saison leitet beides aus dem
+# Plan ab (siehe _phase_style).
 PHASE_ABBREV: dict[str, tuple[str, str]] = {
     "🚴 Radsaison":        ("Rad",    "#d1450f"),
     "Verletzung":          ("Pause",  "#8b837e"),
@@ -806,42 +804,179 @@ PHASE_ABBREV: dict[str, tuple[str, str]] = {
     "Wiederaufbau":        ("Aufbau", "#d1450f"),
     "Renntempo":           ("Tempo",  "#992f07"),
     "🏁 Seelauf":          ("Race",   "#992f07"),
-    "🔬 FTP-Test":         ("Test",   "#992f07"),
-    "Neuaufbau":           ("Aufbau", "#d1450f"),
     "Erholung":            ("Erhol.", "#8b837e"),
-    "❓ Neue Zielsetzung":  ("offen",  "#fab219"),
 }
+def _iso_range(year: int, start_kw: int, end_kw: int) -> tuple[date, date]:
+    """Montag der ersten bis Sonntag der letzten Kalenderwoche."""
+    return (date.fromisocalendar(year, start_kw, 1),
+            date.fromisocalendar(year, end_kw, 7))
+
+
+def _phase_style(name: str, fokus: str) -> tuple[str, str]:
+    """Kuerzel und Farbe aus dem Plan ableiten statt sie zu pflegen.
+
+    "Block 1 · Schwelle" → "Schwelle": das Praefix nummeriert nur, der Fokus
+    dahinter ist die Information. Farbe folgt der Zonen-Rampe: Tests und
+    Benchmarks dunkel, Entlastung neutral, Belastung auf der Marke.
+    """
+    short = name.split("·", 1)[1].strip() if "·" in name else name.strip()
+    low   = name.lower()
+    if low.startswith(("entlastung", "übergang", "uebergang")):
+        return short, "#8b837e"
+    if "🔬" in fokus or "🏁" in fokus:
+        return short, "#992f07"
+    return short, "#d1450f"
+
+
+_KW_CELL = re.compile(
+    r"KW\s*(?P<a>\d{1,2})(?:/(?P<ay>\d{2}))?"
+    r"(?:\s*[–—-]\s*(?:KW\s*)?(?P<b>\d{1,2})(?:/(?P<by>\d{2}))?)?"
+)
+_GUELTIG = re.compile(r"KW\s*(\d{1,2})\s+(\d{4})\s*[–—-]\s*KW\s*(\d{1,2})\s+(\d{4})")
+
+
+def parse_periodisierung(path: Path = PERIODISIERUNG_PATH) -> list[dict]:
+    """Phasentabelle aus dem Saisonplan lesen.
+
+    Erwartet die Gueltigkeitszeile ("Gültig: KW40 2026 – KW09 2027") und den
+    Abschnitt "## Phasenübersicht" mit den Spalten Phase | KW | Zeitraum |
+    Fokus. Faellt die Datei aus oder passt das Format nicht, liefert die
+    Funktion eine leere Liste – das Dashboard zeigt dann einen Hinweis statt
+    stillschweigend falscher Phasen.
+    """
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return []
+
+    g = _GUELTIG.search(text)
+    if not g:
+        return []
+    first_kw, first_year = int(g.group(1)), int(g.group(2))
+
+    lines = text.split("\n")
+    try:
+        start = next(i for i, ln in enumerate(lines)
+                     if ln.strip().startswith("## ") and "Phasen" in ln)
+    except StopIteration:
+        return []
+
+    phases: list[dict] = []
+    for ln in lines[start + 1:]:
+        if ln.strip().startswith("## "):
+            break
+        if not ln.strip().startswith("|"):
+            continue
+        cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+        if len(cells) < 4 or cells[0].lower().startswith(("phase", "---", ":--")):
+            continue
+        if set(cells[0]) <= set("-: "):
+            continue
+
+        m = _KW_CELL.search(cells[1])
+        if not m:
+            continue
+        name  = cells[0].replace("**", "").strip()
+        fokus = cells[3]
+
+        def _year(kw: int, explicit: str | None) -> int:
+            if explicit:
+                return 2000 + int(explicit)
+            # Wochen vor dem Saisonstart liegen im Folgejahr (Winter laeuft
+            # ueber den Jahreswechsel).
+            return first_year if kw >= first_kw else first_year + 1
+
+        a  = int(m.group("a"))
+        b  = int(m.group("b")) if m.group("b") else a
+        ya = _year(a, m.group("ay"))
+        yb = _year(b, m.group("by"))
+        try:
+            start_d = date.fromisocalendar(ya, a, 1)
+            end_d   = date.fromisocalendar(yb, b, 7)
+        except ValueError:
+            continue
+
+        short, color = _phase_style(name, fokus)
+        phases.append({
+            "name": name, "short": short, "color": color,
+            "kw": cells[1].replace(" ", ""),
+            "start": start_d, "end": end_d,
+        })
+    return phases
+
+
+def _archiv_phases() -> list[dict]:
+    """Abgeschlossene Saisons im selben Format wie der geparste Plan."""
+    out = []
+    for p in SEASON_PHASES_ARCHIV:
+        start_d, end_d = _iso_range(p["year"], p["start_kw"], p["end_kw"])
+        short, color = PHASE_ABBREV.get(p["name"], (p["name"], "#8b837e"))
+        out.append({"name": p["name"], "short": short, "color": color,
+                    "kw": f"KW{p['start_kw']}" if p["start_kw"] == p["end_kw"]
+                          else f"KW{p['start_kw']}–{p['end_kw']}",
+                    "start": start_d, "end": end_d})
+    return out
+
+
+SEASON_PLAN   = parse_periodisierung()
+SEASON_PHASES = _archiv_phases() + SEASON_PLAN
+
+
+def phase_for_date(d: date) -> dict | None:
+    return next((p for p in SEASON_PHASES if p["start"] <= d <= p["end"]), None)
+
+
+def plan_horizon_note(today: date) -> str:
+    """Hinweis unter der Saisonleiste – nur wenn die Planung wirklich ausläuft."""
+    if not SEASON_PLAN:
+        return ("Saisonplan nicht lesbar – planung/periodisierung.md fehlt "
+                "oder die Phasentabelle hat ein anderes Format.")
+    last = SEASON_PLAN[-1]
+    if today > last["end"]:
+        return (f"Saisonplan ist am {last['end']:%d.%m.} ausgelaufen – "
+                "Anschlussplan steht aus.")
+    if (last["end"] - today).days <= 28:
+        return (f"Saisonplan endet am {last['end']:%d.%m.} "
+                f"({last['name']}) – Anschlussplan steht aus.")
+    return ""
+
 
 
 def build_phase_weeks(monday: date, span: int = 2) -> list[dict]:
     """Saisonverlauf-Kacheln: aktuelle KW ± span (Default 2 → 5 Kacheln).
 
-    Zeigt bewusst nur das nahe Umfeld statt des ganzen Saisonbogens – der Bogen
-    ist nach dem Zielrennen offen, bis Stefan neue Events nennt.
+    Zeigt bewusst nur das nahe Umfeld statt des ganzen Saisonbogens – bei einer
+    Saison ueber 24 Wochen waeren die Kacheln sonst unlesbar schmal.
     """
     tiles = []
     for offset in range(-span, span + 1):
         wk_monday = monday + timedelta(weeks=offset)
         wk        = wk_monday.isocalendar()[1]
-        label, _  = _phase_for_kw(wk)
-        phase     = next((p for p in SEASON_PHASES
-                          if p["start_kw"] <= wk <= p["end_kw"]), None)
+        phase     = phase_for_date(wk_monday)
         if offset == 0:
             state = "active"
         elif offset < 0:
             state = "done"
         else:
-            state = "open" if (phase or {}).get("fixed_state") == "open" else "upcoming"
-        tiles.append({"name": label, "kw": f"KW{wk}", "state": state})
+            # Ohne Phase im Plan bleibt die Kachel offen – das ist dann echt,
+            # nicht per Hand gesetzt.
+            state = "upcoming" if phase else "open"
+        tiles.append({"name": phase["short"] if phase else "offen",
+                      "kw": f"KW{wk}", "state": state})
     return tiles
 
 
-def _phase_for_kw(kw: int) -> tuple[str, str]:
-    """Return (short_label, css_color) for a given week number."""
-    phase = next((p for p in SEASON_PHASES if p["start_kw"] <= kw <= p["end_kw"]), None)
+def _phase_for_kw(kw: int, year: int | None = None) -> tuple[str, str]:
+    """Kuerzel + Farbe fuer eine Kalenderwoche (Default: laufendes ISO-Jahr)."""
+    year = year or date.today().isocalendar()[0]
+    try:
+        monday = date.fromisocalendar(year, kw, 1)
+    except ValueError:
+        return ("–", "#8b837e")
+    phase = phase_for_date(monday)
     if phase is None:
-        return ("–", "#94a3b8")
-    return PHASE_ABBREV.get(phase["name"], ("–", "#94a3b8"))
+        return ("–", "#8b837e")
+    return (phase["short"], phase["color"])
 
 
 def calc_compliance(weeks: list[dict]) -> int:
@@ -1035,18 +1170,23 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     ctl_offset    = calc_ring_offset(ctl, 90, CIRC_OUTER)
     atl_offset    = calc_ring_offset(atl, 60, CIRC_INNER)
     r_offset      = calc_ring_offset(r_score_combined, 100, CIRC_OUTER)
-    _countdown     = _build_countdown(date.today())
-    _next_race_kw  = _countdown["main"]["kw"] if _countdown["main"] else SEASON_END_KW
-    season_pos     = kw - 14
-    season_total   = _next_race_kw - 14 + 1
-    season_offset  = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
+    _countdown = _build_countdown(date.today())
 
-    current_phase = next(
-        (p for p in SEASON_PHASES if p["start_kw"] <= kw <= p["end_kw"]),
-        SEASON_PHASES[0]
-    )
-    next_phase_obj = next((p for p in SEASON_PHASES if p["start_kw"] > kw), None)
-    next_phase = (f"{next_phase_obj['name']} ab KW{next_phase_obj['start_kw']}"
+    # Fortschritt innerhalb des Saisonplans, nicht ab einer festen Startwoche
+    if SEASON_PLAN:
+        _plan_start  = SEASON_PLAN[0]["start"]
+        _plan_end    = SEASON_PLAN[-1]["end"]
+        season_total = max(1, ((_plan_end - _plan_start).days + 1) // 7)
+        season_pos   = max(0, min(season_total,
+                                  ((monday - _plan_start).days // 7) + 1))
+    else:
+        season_pos, season_total = 0, 1
+    season_offset = calc_ring_offset(season_pos, season_total, CIRC_OUTER)
+
+    current_phase = phase_for_date(monday) or (SEASON_PLAN[0] if SEASON_PLAN else
+                                               {"name": "–", "kw": "–"})
+    next_phase_obj = next((p for p in SEASON_PLAN if p["start"] > monday), None)
+    next_phase = (f"{next_phase_obj['name']} ab {next_phase_obj['kw']}"
                   if next_phase_obj else "")
 
     phases = build_phase_weeks(monday)
@@ -1178,7 +1318,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "phase_name": current_phase["name"], "next_phase": next_phase,
         "phases": phases,
         "phase_bar_label": phase_bar_label,
-        "phase_bar_note": PHASE_BAR_NOTE,
+        "phase_bar_note": plan_horizon_note(date.today()),
         "season_kw_current": season_pos, "season_kw_total": season_total,
         "season_offset": season_offset,
         "tss_compliance_pct": tss_compliance_pct,
