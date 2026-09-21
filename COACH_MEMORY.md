@@ -175,7 +175,8 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
 - **Workout-Zustellung funktioniert automatisch:** Planung in intervals.icu → Sync zu **Garmin Connect**
   und **COROS** → landet auf Pace 3 und DURA. Ob es von Garmin Connect weiter in die **Tacx-App** kommt,
   ist ungeprüft (erste Rolleneinheit zum Testen nutzen). Indoor bisher meist **MyWhoosh**, Stefan
-  bevorzugt die **Tacx-App**, weil einfacher.
+  bevorzugt die **Tacx-App**, weil einfacher. **Zustellung in die Tacx-App am 21.9. verifiziert** —
+  siehe Regeln unten (Emojis, erste Description-Zeile, FTP-Versatz).
 - **Rolle: max. 4h am Stück.** Kein limitierender Faktor für die geplanten Einheiten.
 - **Outdoor im Winter nur selten** — Wochenende oder Urlaub. **Nov–Feb ist faktisch Rolle**, auch die
   langen Wochenendeinheiten. Nicht mit Outdoor-Annahmen planen.
@@ -235,6 +236,22 @@ Stefan hat das selbst angesprochen, bevor der Coach es gemerkt hat.
 parallel aufzeichnen (3×8min @ ~55/75/95% FTP → Faktor je Intensität); sonst Outdoor-Test + 5–7 Tage
 später derselbe Indoor-Block → **zwei FTP-Werte führen**. Fortschritt immer Quelle gegen sich selbst.
 Vor Indoor-Qualität: 10min warmfahren + Spindown in der Tacx-App (die Rolle driftet mit der Temperatur).
+
+### Tacx-App: Zustellweg bestätigt – drei Regeln daraus (21.9.2026)
+Der Weg **intervals.icu → Garmin Connect → Tacx-App (Handy)** funktioniert, Stefan hat es mit einem
+5×5min-Workout verifiziert: Schritte, Balkengrafik und Startknopf kommen an.
+
+1. **Keine Emojis in intervals.icu-Workoutnamen.** Die Tacx-App zeigt sie als `������`. Umlaute, `×`
+   und `–` kommen sauber an. Emojis bleiben in `planung/kw*.md` (nur fürs Dashboard), nicht im
+   Workoutnamen.
+2. **Nur die erste Zeile der Description kommt in der Tacx-App an** (als „Trainingsnotizen"). Die
+   entscheidende Anweisung gehört deshalb in **Zeile 1** – nicht ein Datumskontext, sondern das, wonach
+   gesteuert wird (z.B. „RPE 7 führt – Watt nur Orientierung").
+3. **⚠️ In Garmin Connect / der Tacx-App steht FTP 325** (vermutlich der alte Coggan-Wert 324W von
+   5/2025), in intervals.icu stehen 305W. **Die Zielwatt eines ERG-Workouts rechnen gegen 325, nicht
+   gegen 305** – bei 88% sind das 286W statt 268W, also ~18W zu hoch. Nach dem KW40-Test muss die neue
+   FTP an **allen** Stellen gesetzt werden: intervals.icu, Garmin Connect, COROS, MyWhoosh. Bis dahin
+   bei Indoor-Einheiten immer dazuschreiben, dass RPE/HF führt.
 
 ### Strava-Aktivitäten sind über die API leer
 Aktivitäten, die nur über Strava in intervals.icu ankommen, liefern über die API (MCP, Dashboard) **alle Felder `null`** – Strava-Lizenz. In der intervals.icu-Oberfläche sind sie sichtbar, für den Coach nicht. COROS- und Garmin-Quellen sind vollständig. Leere Aktivitätszeilen daher als „Strava-Hülle" erkennen, nicht als fehlende Einheit.

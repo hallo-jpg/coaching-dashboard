@@ -67,7 +67,8 @@ damit eine verlorene Woche den Block nicht kippt.
 
 | Punkt | Stand |
 |---|---|
-| Workout-Zustellung | intervals.icu → Garmin Connect + COROS (automatisch) → **COROS Pace 3** (Lauf) und **COROS DURA** (Rad) · Weiterleitung in die **Tacx-App** ungeprüft, wird bei der ersten Rolleneinheit getestet |
+| Workout-Zustellung | intervals.icu → Garmin Connect + COROS (automatisch) → **COROS Pace 3** (Lauf) und **COROS DURA** (Rad) · **Tacx-App am 21.9. verifiziert** (Stefan hat ein 5×5min-Workout dort geöffnet: Schritte, Balken, Startknopf da) |
+| Befunde aus dem Zustelltest | 1) **Emojis** werden in der Tacx-App als `������` dargestellt → raus aus intervals.icu-Workoutnamen · 2) **nur die erste Description-Zeile** kommt an → Steueranweisung gehört in Zeile 1 · 3) **⚠️ Garmin Connect steht auf FTP 325**, intervals.icu auf 305 → ERG-Zielwatt ~7% zu hoch, nach dem KW40-Test überall angleichen |
 | Indoor-App | bisher meist MyWhoosh, **Tacx-App bevorzugt** (einfacher) · Rolle max. **4h** |
 | Outdoor im Winter | **selten**, nur Wochenende/Urlaub → Nov–Feb ist faktisch Rolle, auch die langen Einheiten |
 | Uhr | **COROS Pace 3** (Modell stand vorher nicht im Repo — berechtigter Hinweis von Stefan) |
