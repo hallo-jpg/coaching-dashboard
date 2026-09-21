@@ -2,6 +2,7 @@
 from __future__ import annotations
 import os
 import base64
+import html
 import math
 import re
 from datetime import date, timedelta
@@ -299,11 +300,18 @@ def icon_svg(name: str) -> str:
             f'{ICON_PATHS[name]}</svg>')
 
 
-def icons_in_text(text: str) -> str:
-    """Ersetzt Sport-Emojis in Freitext (Wochenpläne) durch Icons."""
+def plan_text(text: str) -> str:
+    """Freitext aus den Wochenplänen für die Anzeige aufbereiten.
+
+    Reihenfolge ist wichtig: erst escapen (die Dateien sind Markdown, kein
+    HTML), dann **fett** auswerten, zuletzt die Emojis durch Icons ersetzen –
+    sonst würde das eingefügte SVG gleich wieder escaped.
+    """
+    out = html.escape(str(text), quote=False)
+    out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
     for emoji, name in TEXT_EMOJI_ICONS.items():
-        text = text.replace(emoji, icon_svg(name))
-    return text
+        out = out.replace(emoji, icon_svg(name))
+    return out
 
 
 def fmt_tsb_color(tsb: float) -> str:
@@ -1629,7 +1637,7 @@ def _key_workouts(days: list) -> str:
 
 def render(ctx: dict) -> str:
     env = Environment(loader=FileSystemLoader("."), autoescape=False)
-    env.filters["icons"] = icons_in_text
+    env.filters["plan"] = plan_text
     env.globals["ico"] = icon_svg
     return env.get_template("dashboard.template.html").render(**ctx)
 

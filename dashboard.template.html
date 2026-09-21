@@ -267,6 +267,8 @@
   .dot-run { background: var(--brand); }
   .dot-ka { background: var(--yellow-mark); }
   .dot-rest { background: transparent; border: 1px solid var(--border); }
+  /* Die Zeile ist schon halbfett – Betonung aus dem Plan muss darueber liegen */
+  .day-workout strong { font-weight: 800; }
   .day-workout { font-size: 0.84rem; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .tag { font-size: 0.58rem; font-weight: 700; padding: 1px 7px; border-radius: 4px; }
   .tag-key  { background: var(--brand-tint); color: var(--brand); }
@@ -806,12 +808,12 @@
         {% if day.rest %}
         <div class="day-workout" style="color:var(--subtle);font-weight:400;{% if day.bonus_activities %}text-decoration:line-through;{% endif %}">Ruhetag</div>
         {% else %}
-        <div class="day-workout">{% if day.is_run %}{{ ico('run') }}{% elif day.is_kraft %}{{ ico('dumbbell') }}{% else %}{{ ico('bike') }}{% endif %}{{ day.workout|icons }}</div>
+        <div class="day-workout">{% if day.is_run %}{{ ico('run') }}{% elif day.is_kraft %}{{ ico('dumbbell') }}{% else %}{{ ico('bike') }}{% endif %}{{ day.workout|plan }}</div>
         {% endif %}
         {% for bonus in day.bonus_activities %}
         <div class="bonus-activity">
           <span class="badge-bonus">+</span>
-          <span class="bonus-name">{{ bonus.name|icons }}</span>
+          <span class="bonus-name">{{ bonus.name|plan }}</span>
         </div>
         {% endfor %}
       </div>
@@ -893,11 +895,11 @@
       <tr {% if loop.first %}style="background:rgba(148,163,184,0.04)"{% endif %}>
         <td><span class="ausblick-kw" style="color:{% if loop.first %}var(--accent){% else %}var(--muted){% endif %}">KW{{ week.kw }}</span></td>
         <td>
-          <div>{{ week.theme|icons }}</div>
-          <div class="ausblick-sub">{{ week.sub|icons }}</div>
+          <div>{{ week.theme|plan }}</div>
+          <div class="ausblick-sub">{{ week.sub|plan }}</div>
         </td>
         <td class="ausblick-tss">{% if loop.first %}{{ week.tss_ist }} / ~{{ week.tss_plan }}{% else %}~{{ week.tss_plan }}{% endif %}</td>
-        <td class="ausblick-key"><div class="ausblick-sub">{{ week.key_workouts|icons }}</div></td>
+        <td class="ausblick-key"><div class="ausblick-sub">{{ week.key_workouts|plan }}</div></td>
       </tr>
       {% endfor %}
       </tbody>
