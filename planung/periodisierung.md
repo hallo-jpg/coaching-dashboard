@@ -44,7 +44,7 @@ Werktags max. 90 min (Ausnahme 2h), Wochenende trägt die langen Einheiten. Vor 
 
 | Tag | Einheit | Dauer | Charakter |
 |---|---|---|---|
-| Mo | 🏃 Easy-brisk + Metronom · + Lauf-Athletik 15min | 50–70min | niedrig |
+| Mo | 🏃 Easy-brisk + Kadenz-Fokus · + Lauf-Athletik 15min | 50–70min | niedrig |
 | Di | 🚴 **Rad-Qualität** (indoor wenn Wetter schlecht) | 75–90min | **hoch** |
 | Mi | 🏃 Easy-brisk + 6 Steigerungen | 45–50min | niedrig |
 | Do | Ruhetag · optional Kraft 30min | – | – |
@@ -63,7 +63,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | Wochenkilometer-Zuwachs | **max. +10% pro Woche**, Entlastungswoche −30% |
 | Längster Einzellauf | **max. +10% gegenüber den letzten 30 Tagen** → 10 km (Sept) → ~15–16 km (Feb) |
 | Easy-Tempo | **7:15–7:45/km @ HF 155–165** — briskes Ende, nie langsames Trotten |
-| Kadenz | Metronom in **jeder** Easy-Einheit · Ziel 165, nie unter 155 erzwingen |
+| Kadenz | Ziel 165 in **jeder** Easy-Einheit, nie unter 155 erzwingen · **Umsetzung offen** — Stefan nutzt bisher kein Metronom, sondern läuft schneller und achtet nach Gefühl auf hohe Frequenz |
 | Lauf-Athletik | **2×/Woche 15min**, nicht optional: Wadenheben gebeugtes Knie (Soleus), einbeinige RDL, Step-ups, Hüfte seitlich, Copenhagen Plank · Eigengewicht + Bänder |
 | Qualität | **max. 1×/Woche** bis KW47, ab KW49 zusätzlich Intervalle im Longrun |
 | Abbruch | Schmerz am Schienbeinknochen punktuell → Einheit beenden, 2 Tage kein Lauf, melden |
@@ -105,10 +105,13 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 
 | | |
 |---|---|
-| **Events** | keine geplant und vorerst keine gesucht · Benchmarks laufen als eigene Zeitläufe |
+| **Events** | **aktuell keine geplant** — es wird sicher etwas kommen, steht nur noch nicht fest. Bis dahin laufen Benchmarks als eigene Zeitläufe; ein Event wird eingehängt, sobald Stefan eines nennt |
 | **Kraft** | Eigengewicht + Widerstandsbänder · Lauf-Athletik 2×15min Pflicht, Ganzkörper 1× optional |
-| **Schuhe** | zwei brauchbare Paare im Wechsel · Kilometerstand im Blick, bei 94 kg eher 500–700 km pro Paar |
-| **Indoor** | Auf der Rolle steht das Canyon **ohne Schaltung → ERG**. Steuerung über die Tacx-App (MyWhoosh alternativ). Stefan fährt auf der Rolle seit Langem strukturierte Intervalle inkl. 30/30 — das läuft. Workout-Formate deshalb wie bisher, keine Sonderregeln. |
+| **Schuhe** | zwei Paar im Wechsel, je ~200 km · reichlich Reserve (bei 94 kg ~500–700 km pro Paar) |
+| **Indoor** | Canyon **ohne Schaltung → ERG**. Bisher meist **MyWhoosh**, **Tacx-App** bevorzugt. Strukturierte Intervalle inkl. 30/30 laufen dort seit Jahren — keine Sonderregeln bei den Workout-Formaten. **Max. 4h am Stück.** |
+| **Workout-Zustellung** | Planung läuft über **intervals.icu** → synct automatisch zu **Garmin Connect** und **COROS**. Damit landen Einheiten auf **COROS Pace 3** (Lauf) und **COROS DURA** (Rad). Ob sie von dort in der **Tacx-App** ankommen, wird bei der ersten Rolleneinheit geprüft |
+| **Outdoor im Winter** | **selten** — nur Wochenende oder Urlaub. Nov–Feb ist faktisch Rolle. Lange Einheiten am Wochenende laufen deshalb überwiegend indoor |
+| **Trainingstage** | **5–6/Woche** |
 | **Testtage** | **offen** — ob das S-Works für Tests aufgespannt wird (Schaltung + XCadey-Gegenprobe, Level-Modus) oder der Test auf dem Canyon in ERG läuft, entscheidet Stefan |
 | **Gewicht** | Stefans Einordnung: ggf. Richtung 90 kg, darunter nicht · unterstützender Faktor, kein Coach-Ziel |
-| **Infekte** | kein erkennbares Muster → nur strukturelle Prävention (siehe `langfristplan.md`) |
+| **Infekte** | kein erkennbares Muster → nur strukturelle Prävention (siehe `langfristplan.md`) · Vitamin-D-Messung: von Stefan verneint, Thema erledigt |

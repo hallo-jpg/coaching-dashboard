@@ -49,7 +49,13 @@ Nie eigenmächtig auf T-2 oder früher verschieben, auch wenn Stefan an T-1 kein
 Stefans gewohnte Laufkadenz liegt bei **~140 spm, auch bei Tempo** (bestätigt 6.9.: 140 bei 7:47/km *und* bei ~6:15/km – ein Stilmerkmal, kein Artefakt). Bei 91 kg heißt das lange Bodenkontaktzeit, Fußaufsatz vor dem Schwerpunkt, hohes Biegemoment auf die Tibia → mit hoher Wahrscheinlichkeit **die** Ursache des Wadenschmerzes am Soleus-Tibia-Übergang (MTSS-Verdacht ab 9.8.2026; tat nur beim *langsamen* Laufen weh). Mit Konzentration erreichte er am 6.9. Ø 161 / max 179, Wade beschwerdefrei.
 **Wettkampf-Datenpunkt 20.9.2026:** im Rennen **154 spm** über 66min bei 6:31/km (Schrittlänge 1,00 m) — gegenüber 160–162 spm in den Metronom-Einheiten der Vorwochen, aber **+13 spm gegenüber dem alten Gewohnheitswert 141** (4.9., ohne Fokus). Nacken beschwerdefrei, keine Wadenbeschwerden gemeldet.
 **Regel daraus:** Unter Wettkampfstress und über längere Dauer driftet die Kadenz **~6 spm unter** den im Training mit Metronom erreichten Wert zurück. Trainingsziel deshalb immer ~5 spm **über** dem, was im Wettkampf stehen soll.
-**Anwenden:** Arbeitsziel **155–165** (Metronom 160), nach dem Seelauf konsolidieren auf 165–170. Nicht höher ansetzen – der Zielwert wurde zweimal falsch kalibriert (170–175 auf Schätzung; 165–170 mit den 161 als vermeintlicher Basis). Bei jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Wenn 160 nach 10min unnatürlich bleibt → 155, lieber konsequent 155 als verkrampft 165. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere Schritte, Fuß unter den Körper") – dort ist Kadenz Verletzungsschutz. Die Umstellung 140 → stabile 165–170 braucht 6–8 Wochen und ist das **wichtigste Laufprojekt nach dem Zielrennen**.
+⚠️ **Korrektur 21.9.2026: Stefan benutzt kein Metronom** — er läuft schneller und achtet nach Gefühl auf
+eine hohe Frequenz. Die Wochenpläne KW37/38 schrieben „Metronom 160" vor, das war eine Coach-Annahme.
+**Gute Nachricht daraus:** die 160–163 im Training hat er **ohne** Hilfsmittel erreicht. Rückmeldeweg für
+die 165–170 ist offen (Kadenzalarm der Pace 3 prüfen · Metronom-App mit einem Ohrhörer · Musik bei
+160–165 bpm · weiter nach Gefühl) — **Stefan entscheidet, der Coach schreibt kein Werkzeug vor.**
+
+**Anwenden:** Arbeitsziel **155–165**, nach dem Seelauf konsolidieren auf 165–170. Nicht höher ansetzen – der Zielwert wurde zweimal falsch kalibriert (170–175 auf Schätzung; 165–170 mit den 161 als vermeintlicher Basis). Bei jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Wenn 160 nach 10min unnatürlich bleibt → 155, lieber konsequent 155 als verkrampft 165. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere Schritte, Fuß unter den Körper") – dort ist Kadenz Verletzungsschutz. Die Umstellung 140 → stabile 165–170 braucht 6–8 Wochen und ist das **wichtigste Laufprojekt nach dem Zielrennen**.
 
 ### 🦵 „Langsames Laufen ist orthopädisch teuer" — Stefan hat recht, endgültige Fassung (21.9.2026)
 
@@ -161,8 +167,23 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
   ersetzen das nicht, und das gehört auch so gesagt.
 - **Keine Events**, und vorerst auch keine suchen (auch kein Volkslauf als Benchmark, kein RadRace 2027).
   Benchmarks laufen als eigene Zeitläufe auf Standardstrecke. Nicht ungefragt nachfassen.
-- **Zwei brauchbare Laufschuhe im Wechsel.** Kilometerstand im Blick behalten, bei 94 kg eher
-  500–700 km pro Paar.
+- **Zwei Laufschuhe im Wechsel, je ~200 km** (Stand 21.9.2026) — reichlich Reserve, bei 94 kg rechne ich
+  mit 500–700 km pro Paar. Kein Handlungsbedarf, nicht ungefragt ansprechen.
+- **Uhr ist eine COROS Pace 3**, Radcomputer die COROS DURA. Geführte Intervall-Workouts kommen auf
+  beiden an. Das Modell stand bis 21.9. nicht im Repo — Stefan hat zu Recht angemerkt, dass der Coach
+  das wissen sollte. Gerätemodelle gehören in `athlete/profil.md`, nicht in den Kopf.
+- **Workout-Zustellung funktioniert automatisch:** Planung in intervals.icu → Sync zu **Garmin Connect**
+  und **COROS** → landet auf Pace 3 und DURA. Ob es von Garmin Connect weiter in die **Tacx-App** kommt,
+  ist ungeprüft (erste Rolleneinheit zum Testen nutzen). Indoor bisher meist **MyWhoosh**, Stefan
+  bevorzugt die **Tacx-App**, weil einfacher.
+- **Rolle: max. 4h am Stück.** Kein limitierender Faktor für die geplanten Einheiten.
+- **Outdoor im Winter nur selten** — Wochenende oder Urlaub. **Nov–Feb ist faktisch Rolle**, auch die
+  langen Wochenendeinheiten. Nicht mit Outdoor-Annahmen planen.
+- **5–6 Trainingstage/Woche** bestätigt.
+- **Vitamin-D-Messung: von Stefan verneint.** Thema erledigt, nicht erneut aufmachen.
+- **Events: „aktuell keine geplant"** ist die richtige Formulierung (Stefans Korrektur) — es wird etwas
+  kommen, es steht nur noch nicht fest. Nicht als „will keine Events" führen und nicht danach suchen,
+  aber offen dafür bleiben und ein genanntes Event sofort in `profil.md` eintragen.
 - **Kein erkennbares Infekt-Muster.** Nicht weiter nach einer Einzelquelle suchen — es wirken nur die
   strukturellen Maßnahmen (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol).
 - **Indoor (korrigiert 21.9.2026): Der ELEMNT ROAM ist weg** und ERG-Steuerung darüber lief schlecht —

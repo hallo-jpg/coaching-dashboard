@@ -28,7 +28,7 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 | **VO2max** | 59 ml/min/kg | Sentiero metabolisches Profil |
 | **FatMax** | 202W | Sentiero |
 | **Erfahrung** | ~3 Jahre | strukturiertes Ausdauertraining · Ötztaler Radmarathon 2025 ✅ |
-| **Trainingstage/Woche** | 6 | Vollzeit berufstätig · Ruhetag immer unter der Woche · Wochenende trägt die langen Einheiten |
+| **Trainingstage/Woche** | **5–6** | Vollzeit berufstätig · Ruhetag immer unter der Woche · Wochenende trägt die langen Einheiten |
 | **Einheitsdauer Wochentags** | **max. 90min** (Ausnahme bis 2h) | vor **oder** nach der Arbeit möglich – Slot wird je Woche festgelegt (Stefan, 21.9.2026) |
 | **Einheitsdauer Wochenende** | 2,5–4h | |
 | **Indoor/Outdoor** | wetterabhängig | Indoor: Canyon Aeroad auf Tacx Flux S |
@@ -83,7 +83,7 @@ eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht
 | **HFmax** | **205 bpm** | gemessen |
 | 5km Prognose | ~31:15 (6:15/km) | Neu aus Schwellenpace 6:28/km · alter Wert 29:11 stammte aus der zu schnellen Schwelle 6:03 |
 | 10km **Ist** | **1:05:08** (6:31/km) | 🏁 Karlsfelder Seelauf 20.09.2026 – erster echter Wettkampf, ersetzt jede Prognose |
-| Laufeinheiten/Woche | **2–4** (Ziel: 25–33% des Gesamtvolumens) | |
+| Laufeinheiten/Woche | **2–4** (Ziel: 25–40% des Gesamtvolumens, Winter 26/27) | |
 | Easy-Run-Tempo | **7:25–8:10/km** | Konsequent unter aerober Schwelle · **bindend ist die HF (≤165 bpm)**, nicht die Pace |
 | Qualitätslauf | 1×/Woche (Schwelle oder VO2max) | |
 | Fokus | Aufbau Running Economy + VO2max | |
@@ -177,6 +177,8 @@ mit Band · Copenhagen Plank.
 **Ganzkörper (Erhalt):** Liegestütze, Banded Row, Band Pull-Apart, Overhead Press mit Band, Dumbbell
 Curl, Plank/Side Plank/Dead Bug, Superman.
 
+**Laufschuhe:** zwei Paar im Wechsel, je ~200 km (Stand 21.9.2026) — beide gut im Futter, bei 94 kg rechne ich mit 500–700 km pro Paar.
+
 **Coach-Regel:** Lauf-Athletik wird aktiv eingeplant. Die Ganzkörper-Einheit nur, wenn Stefan sie
 erwähnt. Für die Radleistung bleibt **KA auf der Rolle (91% FTP @ 55rpm)** der primäre Kraftreiz —
 Bändertraining ersetzt das nicht.
@@ -189,10 +191,11 @@ Bändertraining ersetzt das nicht.
 |---|---|---|
 | S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter | Outdoor-Rad, **Powermeter-Referenz für alle FTP-Werte** | ANT+/BLE → COROS DURA |
 | Canyon Aeroad (alt, ohne Powermeter) | Indoor-Rad auf der Rolle | – |
-| **COROS DURA** | Radcomputer – Aufzeichnung der XCadey-Leistung indoor wie outdoor | ANT+/BLE |
-| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung | **Tacx-App** (Steuerung + Aufzeichnung) · MyWhoosh alternativ |
+| **COROS DURA** | Radcomputer – Aufzeichnung der XCadey-Leistung | ANT+/BLE · geplante Workouts kommen automatisch an |
+| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung · **max. 4h am Stück** | bisher meist **MyWhoosh**, **Tacx-App** bevorzugt (einfacher) |
 | ~~4iiii Precision (Kurbel)~~ | Altes Setup – Basis von FTP 305W (Test 4.4.2026) | – |
 | ~~Wahoo ELEMNT ROAM~~ | **nicht mehr vorhanden** (Stand 21.9.2026) · ERG-Steuerung darüber hat ohnehin nicht gut funktioniert | – |
-| COROS Uhr | Laufen + Schlaf + HRV | COROS → Strava → TP |
+| **COROS Pace 3** | Laufen + Schlaf + HRV · geführte Intervall-Workouts kommen dort an | COROS ↔ intervals.icu (automatisch) |
 | TrainingPeaks | Planung + PMC (CTL/ATL/TSB) | – |
+| Garmin Connect | Bindeglied zur Tacx-App | mit intervals.icu verbunden |
 | Strava | Aktivitäts-Feed | – |

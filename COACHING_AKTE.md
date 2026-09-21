@@ -63,6 +63,20 @@ damit eine verlorene Woche den Block nicht kippt.
 | Indoor-Rad | **Canyon auf der Rolle hat keine Schaltung mehr** (ausgebaut) → ERG | **Korrektur am selben Tag:** Der Coach hatte daraus eigenmächtig eine Planregel gemacht (indoor nur 2–6-Minuten-Formate, 30/30 nur outdoor). Stefan: „Ich fahre schon ewig 30/30er auf der Rolle, das geht schon." → Regel zurückgenommen, Workout-Formate bleiben unverändert. Testaufbau (S-Works/Level vs. Canyon/ERG) ist **offen**, Stefans Entscheidung. Prozessregel in `COACH_MEMORY.md` ergänzt: keine Entscheidungen ohne vollständige Faktenlage. |
 | Aufzeichnung Radleistung | **XCadey → COROS DURA · Rolle → Tacx-App** (Stefans Setup) | DURA-Datei ist maßgeblich, Tacx nur für den Offset-Faktor · eine der beiden Aufzeichnungen aus der Belastungsrechnung nehmen (sonst doppelte CTL/ATL) · **Test läuft nicht im ERG-Modus** (deckelt die Leistung) |
 
+### Setup-Klärung (gleicher Tag, zweite Runde)
+
+| Punkt | Stand |
+|---|---|
+| Workout-Zustellung | intervals.icu → Garmin Connect + COROS (automatisch) → **COROS Pace 3** (Lauf) und **COROS DURA** (Rad) · Weiterleitung in die **Tacx-App** ungeprüft, wird bei der ersten Rolleneinheit getestet |
+| Indoor-App | bisher meist MyWhoosh, **Tacx-App bevorzugt** (einfacher) · Rolle max. **4h** |
+| Outdoor im Winter | **selten**, nur Wochenende/Urlaub → Nov–Feb ist faktisch Rolle, auch die langen Einheiten |
+| Uhr | **COROS Pace 3** (Modell stand vorher nicht im Repo — berechtigter Hinweis von Stefan) |
+| Kadenz | **Stefan nutzt kein Metronom** — er läuft schneller und achtet nach Gefühl auf hohe Frequenz. Die „Metronom 160"-Vorgaben in KW37/38 waren eine Coach-Annahme. Heißt umgekehrt: die 160–163 im Training kamen **ohne Hilfsmittel** zustande. Rückmeldeweg für 165–170 ist offen, Stefan entscheidet |
+| Schuhe | zwei Paar, je ~200 km — reichlich Reserve |
+| Trainingstage | 5–6/Woche bestätigt |
+| Vitamin D | keine Messung gewünscht → Thema geschlossen |
+| Events | Formulierung korrigiert: **„aktuell keine geplant"** — es wird etwas kommen, steht nur noch nicht fest |
+
 → `langfristplan.md` (Kraft, Prävention, Gewicht), `periodisierung.md` (Rahmenbedingungen, Benchmark),
 `profil.md` (Krafttraining, Gewichtsnotiz), `kw39.md` (Waden-Regel), `COACH_MEMORY.md` aktualisiert.
 

@@ -66,7 +66,7 @@ Tibia- und Achillessehnenbelastung skalieren mit dem Tempo (Achillessehnenkräft
 | Regel | Begründung |
 |---|---|
 | **Kein langsames Trotten.** Easy = 7:15–7:45/km @ HF 155–165 | briskes Ende des Bandes, kürzere Kontaktzeit |
-| **Kadenz in jeder Easy-Einheit, Metronom.** Ziel 165–170 | erweitert das orthopädische Budget — wichtigster Einzelhebel |
+| **Kadenz in jeder Easy-Einheit.** Ziel 165–170 · Rückmeldeweg noch offen (bisher kein Metronom im Einsatz) | erweitert das orthopädische Budget — wichtigster Einzelhebel |
 | **Aerobes Volumen kommt vom Rad** | null Impact, und es dient ohnehin dem FTP-Ziel |
 | **Jeder Lauf hat einen Zweck** — Qualität, Longrun, Kadenz-Easy. Keine Füllkilometer | Volumen ohne Zweck kostet Gewebe ohne Ertrag |
 | **2×/Woche Lauf-Athletik, 15min** (Soleus-Wadenheben gebeugtes Knie, einbeinige RDL, Hüfte seitlich) | bei 94 kg nicht optional |
@@ -89,7 +89,7 @@ Tibia- und Achillessehnenbelastung skalieren mit dem Tempo (Achillessehnenkräft
 - **Alkohol vor Schlüsselwochen meiden.** Referenzfall 1./2.8.2026: HRV −20, Ruhepuls +9, zwei Trainingstage verloren.
 
 **Medizinisch (Größenordnungen, ersetzt keine ärztliche Beratung):**
-- **Vitamin D**: in München Oktober–März praktisch keine Eigensynthese; niedriger Spiegel ist einer der wenigen gut belegten Zusammenhänge mit Atemwegsinfekten bei Sportlern. **Wert messen lassen (25-OH-D)**, dann gezielt supplementieren statt blind. *(Stand 21.9.: Wert unbekannt, offen.)*
+- ~~**Vitamin D**~~: von Stefan am 21.9.2026 verneint (keine Messung gewünscht). Thema erledigt, nicht erneut aufmachen.
 - **Zinkacetat-Lutschtabletten** innerhalb der ersten 24h nach den ersten Symptomen verkürzen Erkältungen moderat (~1–2 Tage). Danach wirkungslos → vorrätig halten.
 - **Grippeimpfung** im Oktober, wenn keine Vorbehalte bestehen: eine Grippe kostet im Winterblock 2–3 Wochen.
 - **Kein erkennbares Infekt-Muster** (Stefan, 21.9.2026) — keine vermeidbare Einzelquelle. Es wirken deshalb nur die strukturellen Maßnahmen oben, nicht Verhaltensänderungen an einer bestimmten Stelle.
