@@ -127,7 +127,10 @@ die Tacx-Aufzeichnung dient nur dem Faktor.
 ⚠️ **Doppelzählung vermeiden:** Laden beide Quellen hoch, liegt dieselbe Fahrt zweimal in intervals.icu
 und CTL/ATL zählen doppelt. Eine der beiden löschen oder von der Belastungsrechnung ausnehmen —
 behalten wird die DURA-Datei.
-**Der Test läuft nicht im ERG-Modus** — ERG deckelt die Leistung und macht jeden Maximaltest wertlos.
+**Der Test läuft nicht im ERG-Modus** — ERG hält eine feste Vorgabe, ein Maximaltest ist darin nicht
+möglich. Deshalb wird für Tests das **S-Works aufgespannt**: auf dem Indoor-Canyon ist die Schaltung
+ausgebaut, ohne Gänge ist Level-Modus nicht fahrbar. Im normalen Training ist ERG dagegen der
+Standardmodus — und für 2–6-Minuten-Intervalle ideal.
 Level-/Sim-Modus oder freie Fahrt, Intensität kommt von den Beinen.
 
 **Testbedingungen konstant halten** (sonst ist die nächste Messung nicht vergleichbar): immer indoor

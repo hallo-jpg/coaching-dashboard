@@ -164,7 +164,16 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
   Tacx-Aufzeichnung dient nur dem Offset-Faktor. **Doppelzählung vermeiden:** laden beide hoch, liegt die
   Fahrt zweimal in intervals.icu und CTL/ATL zählen doppelt — Tacx-Datei löschen oder von der
   Belastungsrechnung ausnehmen.
-- **FTP-Tests nie im ERG-Modus** — ERG deckelt die Leistung und macht jeden Maximaltest wertlos.
+- **Indoor-Canyon hat KEINE Schaltung mehr** (ausgebaut, Stand 21.9.2026) → auf der Rolle ist **ERG
+  Pflicht**, nicht Komfort. Daraus folgt für jede Indoor-Planung:
+  · **Keine Intervalle unter 2min und keine steilen Wechsel indoor** (30/30, Antritte, Sprints) — ERG
+    reagiert träge. Indoor 2–6-Minuten-Formate (SwSp, KA, MIT, HIT_EB), Kurzes nach draußen.
+  · **KA bei 55 rpm geht in ERG**, beim ersten Mal auf Pendeln der Rolle achten.
+  · Dass die Tacx-App strukturierte Workouts abspielt, ist **blockierend** — ohne ERG-Workout ist keine
+    Indoor-Qualität fahrbar. In KW41 testen. Fallback: ERG mit manuell gesetzter Zielwattzahl je Intervall.
+- **FTP-Tests nie im ERG-Modus** — ERG hält eine feste Vorgabe, Ausbelasten ist unmöglich. Für Tests
+  deshalb **das S-Works aufspannen** (Schaltung + XCadey in einer Fahrt, Level-Modus). Ohne Umbau:
+  nur 10min in ERG mit manuell nachgeregelter Vorgabe, kein 3min-Teil, kein CP/W', kein Offset-Faktor.
 
 ### Gewicht: Stefans eigene Zielvorstellung (21.9.2026)
 „Ich sehe mich eigentlich ganz gut beim aktuellen Gewicht, ggf. so Richtung 90 kg, weniger nicht.

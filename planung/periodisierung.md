@@ -76,9 +76,16 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 |---|---|
 | Rampe KW41–43 | LIT-Volumen aufbauen · 1× SwSp-Einstieg ab KW43 · keine HIT |
 | Block 1 KW45–47 | SwSp 3×15 → 4×15 · KA (55rpm) progressiv · 1× lange LIT am WE |
-| Block 2 KW49–51 | HIT_EB 4×4 → 4×6 · HIT_IE 30/30 · LIT-Volumen halten |
+| Block 2 KW49–51 | HIT_EB 4×4 → 4×6 · LIT-Volumen halten · **30/30-Intervalle nur outdoor oder auf dem S-Works** (siehe Regel unten) |
 | Block 3 KW02–04 | Volumen-Peak · SwSp + KA · lange Einheiten 3–3,5h |
 | Block 4 KW06–08 | Over-Under · MIT 4×16 · Schwellenausdauer |
+
+**⚠️ ERG-Regel für die Workout-Gestaltung:** Auf dem schaltungslosen Canyon läuft alles in ERG. ERG
+reagiert träge — Intervalle **unter 2 Minuten und alle Wechsel mit steilem Sprung** (30/30, Antritte,
+Sprints) funktionieren dort nicht sauber. Konsequenz: Indoor werden **2–6-Minuten-Formate** geplant
+(SwSp, KA, MIT, HIT_EB), kurze Intervalle wandern nach draußen oder auf den S-Works.
+**KA bei 55 rpm geht in ERG** — beim ersten Mal beobachten, ob die Rolle die Leistung bei so niedriger
+Trittfrequenz stabil hält; wenn sie pendelt, melden.
 
 **Leistungsmessung:** FTP-Test läuft indoor auf der Rolle mit dem S-Works, XCadey zeichnet parallel mit → ein FTP-Wert (XCadey) + ein Offset-Faktor für die Tacx. Die normalen Rolleneinheiten auf dem Aeroad laufen über den Faktor. Rollen- und XCadey-Watt im Training nie gegeneinander vergleichen. Details → `langfristplan.md`, Abschnitt Leistungsmessung.
 
@@ -108,6 +115,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | **Events** | keine geplant und vorerst keine gesucht · Benchmarks laufen als eigene Zeitläufe |
 | **Kraft** | Eigengewicht + Widerstandsbänder · Lauf-Athletik 2×15min Pflicht, Ganzkörper 1× optional |
 | **Schuhe** | zwei brauchbare Paare im Wechsel · Kilometerstand im Blick, bei 94 kg eher 500–700 km pro Paar |
-| **Indoor** | Rolle läuft über die **Tacx-App** (MyWhoosh alternativ) · die **COROS DURA** zeichnet parallel die XCadey-Leistung auf — indoor wie outdoor dieselbe Messquelle · ob die Tacx-App strukturierte Workouts sauber abspielt, wird in KW41/42 an einer einfachen Einheit getestet · Fallback: manuell nach Wattvorgabe |
+| **Indoor** | Auf der Rolle steht das **Canyon ohne Schaltung → ERG ist Pflicht**, nicht Komfort. Steuerung über die **Tacx-App** (MyWhoosh alternativ). Ob sie strukturierte Workouts sauber abspielt, wird **in KW41 getestet** — das ist blockierend, ohne ERG-Workout ist keine Indoor-Qualität fahrbar. Fallback: ERG mit manuell gesetzter Zielwattzahl, je Intervall von Hand umgestellt |
+| **Testtage** | **S-Works einmalig aufspannen** → Schaltung + XCadey in derselben Fahrt, Level-/Sim-Modus. Ein Maximaltest in ERG ist nicht möglich (ERG hält eine feste Vorgabe, man kann nur bestätigen, nicht ausbelasten) |
 | **Gewicht** | Stefans Einordnung: ggf. Richtung 90 kg, darunter nicht · unterstützender Faktor, kein Coach-Ziel |
 | **Infekte** | kein erkennbares Muster → nur strukturelle Prävention (siehe `langfristplan.md`) |
