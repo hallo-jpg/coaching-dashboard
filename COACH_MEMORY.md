@@ -143,6 +143,29 @@ Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase`
 - Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.
 - Rad-Bibliothek: `.zwo` nur für `type: "Ride"`; Dateinamen exakt aus `planung/workout_index.md`.
 
+### Ausstattung & Rahmenentscheidungen (Stefan, 21.9.2026)
+- **Kraft nur mit Eigengewicht und Widerstandsbändern**, kein Kraftraum. Nie ein Hantel-/Maximalkraft-
+  programm vorschlagen. Lauf-Athletik 2×15min ist Pflichtteil und aktiv einzuplanen, Ganzkörper 1×
+  optional. Für die Radleistung bleibt KA auf der Rolle (91% FTP @ 55rpm) der Kraftreiz — Bänder
+  ersetzen das nicht, und das gehört auch so gesagt.
+- **Keine Events**, und vorerst auch keine suchen (auch kein Volkslauf als Benchmark, kein RadRace 2027).
+  Benchmarks laufen als eigene Zeitläufe auf Standardstrecke. Nicht ungefragt nachfassen.
+- **Zwei brauchbare Laufschuhe im Wechsel.** Kilometerstand im Blick behalten, bei 94 kg eher
+  500–700 km pro Paar.
+- **Kein erkennbares Infekt-Muster.** Nicht weiter nach einer Einzelquelle suchen — es wirken nur die
+  strukturellen Maßnahmen (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol).
+- **Indoor:** ELEMNT ROAM steuert die Tacx per ANT+ FE-C im ERG-Modus, Workout aus intervals.icu/TP —
+  erprobter Weg, keine App nötig. MyWhoosh und Tacx-App vorhanden; ob MyWhoosh `.zwo` direkt importiert,
+  ist ungeprüft (Tacx-App zieht Workouts eher aus Garmin Connect). Kein Laufband.
+
+### Gewicht: Stefans eigene Zielvorstellung (21.9.2026)
+„Ich sehe mich eigentlich ganz gut beim aktuellen Gewicht, ggf. so Richtung 90 kg, weniger nicht.
+Auf 190 cm ist das eine gute Basis."
+**Anwenden:** 90 kg ist die von **ihm** genannte Untergrenze, nicht ein Coach-Ziel. Kein Ernährungs-
+programm, kein Zielgewicht vorgeben, kein Nachfassen. Größenordnung bei Bedarf einmal sachlich:
+93,6 → 90 kg ≈ 1–1,5 min auf 10 km. Damit ist das Thema besprochen — nicht erneut aufmachen, solange
+Stefan es nicht anspricht oder ein deutlicher Trend über Wochen etwas anderes zeigt.
+
 ### Zwei Radleistungsquellen — nie gegeneinander rechnen (Stefans Einwand, 21.9.2026)
 Outdoor = Tarmac SL8 + XCadey Spindle · Indoor = Canyon Aeroad auf Tacx Flux S (Rollenleistung).
 **Zwei Räder, zwei Messsysteme.** Direktantriebsrollen lesen typisch 2–5% unter Kurbel-/Spindelmessern

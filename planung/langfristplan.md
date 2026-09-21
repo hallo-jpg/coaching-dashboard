@@ -44,7 +44,7 @@ Bis September 2026 war Laufen die zweite Sportart, die nebenher lief. Ab Winter 
 
 **Ursachenreihenfolge für den Rückstand** (Analyse 20.9.2026, gilt weiter):
 1. **Laufvolumen / Durability** — mit Abstand der größte Faktor
-2. **Körpergewicht** — beim Laufen wird jedes Kilo bei jedem Schritt getragen (~200 ml O₂/kg/km); grob 4–5 kg ≈ 2–3 min auf 10 km. Faktor, keine Vorgabe.
+2. **Körpergewicht** — beim Laufen wird jedes Kilo bei jedem Schritt getragen (~200 ml O₂/kg/km); grob 4–5 kg ≈ 2–3 min auf 10 km. Stefans eigene Einordnung (21.9.2026): aktuelles Gewicht in Ordnung, **ggf. Richtung 90 kg, darunter nicht** — bei 190 cm eine gute Basis. 93,6 → 90 kg wären grob 1–1,5 min auf 10 km. Unterstützender Faktor, **kein Coach-Ziel, kein Ernährungsprogramm**.
 3. **Ökonomie / Kadenz** — 3–6%
 
 Nie als Talentfrage rahmen. Nie Ökonomie als „das Problem" bestätigen.
@@ -89,9 +89,10 @@ Tibia- und Achillessehnenbelastung skalieren mit dem Tempo (Achillessehnenkräft
 - **Alkohol vor Schlüsselwochen meiden.** Referenzfall 1./2.8.2026: HRV −20, Ruhepuls +9, zwei Trainingstage verloren.
 
 **Medizinisch (Größenordnungen, ersetzt keine ärztliche Beratung):**
-- **Vitamin D**: in München Oktober–März praktisch keine Eigensynthese; niedriger Spiegel ist einer der wenigen gut belegten Zusammenhänge mit Atemwegsinfekten bei Sportlern. **Wert messen lassen (25-OH-D)**, dann gezielt supplementieren statt blind.
+- **Vitamin D**: in München Oktober–März praktisch keine Eigensynthese; niedriger Spiegel ist einer der wenigen gut belegten Zusammenhänge mit Atemwegsinfekten bei Sportlern. **Wert messen lassen (25-OH-D)**, dann gezielt supplementieren statt blind. *(Stand 21.9.: Wert unbekannt, offen.)*
 - **Zinkacetat-Lutschtabletten** innerhalb der ersten 24h nach den ersten Symptomen verkürzen Erkältungen moderat (~1–2 Tage). Danach wirkungslos → vorrätig halten.
 - **Grippeimpfung** im Oktober, wenn keine Vorbehalte bestehen: eine Grippe kostet im Winterblock 2–3 Wochen.
+- **Kein erkennbares Infekt-Muster** (Stefan, 21.9.2026) — keine vermeidbare Einzelquelle. Es wirken deshalb nur die strukturellen Maßnahmen oben, nicht Verhaltensänderungen an einer bestimmten Stelle.
 - **Handhygiene / Gesicht nicht anfassen** — im Alltag der stärkste Einzelfaktor (Büro, ÖPNV).
 
 **Wenn es passiert:** Neck-Check-Regel (Coach-Skill, Schritt K). Oberhalb Hals: symptomfrei +24h → LIT. Unterhalb Hals: +72h. Fieber: fieberfrei +24h, dann Neck-Check. **Der Block wird nicht nachgeholt** — deshalb bekommt jeder 3-Wochen-Block einen eigenen Abschluss.
@@ -179,15 +180,21 @@ Unabhängig von konkreten Rennterminen. Rennen werden in dieses Rahmenwerk einge
 
 ## Kraft & Athletik – Ganzjahres-Strategie
 
-| Phase | Kraft-Schwerpunkt |
-|---|---|
-| Winterbasis | Maximalkraft aufbauen (3–4 Sets, 5–8 Reps, schwer) + **Lauf-Athletik 2×/Woche** |
-| Frühjahrsaufbau | Kraftausdauer-Übergang |
-| Rennsaison | Erhalt (kein Aufbau-Reiz) |
-| Sommererholung | Pause oder unstrukturiert |
-| Herbstaufbau | Wiederaufbau Maximalkraft |
+**Equipment (Stefan, 21.9.2026): Eigengewicht und Widerstandsbänder. Kein Kraftraum, keine schweren Hanteln.**
+Für die Laufverletzungsprävention vollständig ausreichend — die wirksamen Übungen sind einbeinig und
+brauchen kein Eisen. Für die FTP bringt Bändertraining wenig; der radspezifische Kraftreiz bleibt
+**KA auf der Rolle bei 55 rpm**.
 
-**Neu ab Winter 26/27:** Lauf-Athletik (2×15min, an Laufeinheiten angehängt) ist Pflichtbestandteil, nicht Kraftraum-Optional. Sie ist die Voraussetzung für das geplante Laufvolumen.
+| Baustein | Umfang | Inhalt |
+|---|---|---|
+| **Lauf-Athletik** (Pflicht) | **2×15min/Woche**, an Laufeinheiten angehängt | Wadenheben gebeugtes Knie (Soleus), einbeinige RDL, Step-ups, einbeinige Hip Thrust, seitliche Hüfte mit Band, Copenhagen Plank |
+| **Ganzkörper** (optional) | 1×25–30min/Woche, nach Rad oder Lauf | Liegestütze, Banded Row, Overhead Press, Rumpf — Erhalt, kein Aufbau |
+| **KA auf der Rolle** | im Rad-Plan enthalten | 91% FTP bei 55 rpm — der eigentliche Kraftreiz fürs Rad |
+
+**Progression ohne Zusatzgewicht:** Wiederholungen hoch (3×12 → 3×20) → langsamere Exzentrik (3s runter)
+→ einbeinig → Rucksack als Zusatzlast. In dieser Reihenfolge, nicht gleichzeitig.
+
+**Tapering:** Kraft ab T-10 weglassen. Lauf-Athletik darf bleiben (kein Ermüdungsbeitrag).
 
 ---
 

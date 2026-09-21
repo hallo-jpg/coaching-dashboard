@@ -49,8 +49,20 @@ damit eine verlorene Woche den Block nicht kippt.
 - `planung/kw40.md` – `kw44.md` — Baseline-Woche + Rampe + Entlastung (validiert gegen den Dashboard-Parser)
 - `COACH_MEMORY.md`, `CLAUDE.md` — Regeln und Schnellreferenz nachgezogen
 
-**Offen (an Stefan gestellt):** Kraft 2×/Woche im Winter · Infekt-Muster + Vitamin-D-Wert · Laufschuhe
-bei 94 kg · Gewicht als expliziter Hebel ja/nein · Frühjahrsevents.
+### Nachtrag gleicher Tag – Rückfragen beantwortet
+
+| Frage | Stefans Antwort | Konsequenz im Plan |
+|---|---|---|
+| Kraft | nur Eigengewicht + Widerstandsbänder | Lauf-Athletik 2×15min als Pflichtteil, Ganzkörper 1× optional · kein Maximalkraftprogramm · klar gesagt, dass Bänder die FTP kaum bewegen, KA auf der Rolle bleibt der Radkraftreiz |
+| Infekt-Muster | keines erkennbar | keine Suche nach Einzelquelle · nur strukturelle Prävention · Vitamin-D-Messung bleibt Empfehlung, Wert unbekannt |
+| Schuhe | zwei brauchbare Paare | Rotation läuft · Kilometerstand im Blick, bei 94 kg eher 500–700 km/Paar |
+| Wade | zieht am 21.9. leicht nach dem Rennen | Unterscheidungsregel in `kw39.md`: diffuser Muskelkater = Lauf ok · punktueller Schienbeinkantenschmerz = kein Lauf, erst Fr, melden |
+| Gewicht | „ggf. Richtung 90 kg, weniger nicht" | als **seine** Untergrenze notiert, kein Coach-Ziel, kein Ernährungsthema · Größenordnung einmal genannt (≈1–1,5 min auf 10 km) |
+| Events | vorerst keine, auch kein Volkslauf | KW09-Benchmark läuft als eigener Zeitlauf auf Standardstrecke |
+| Indoor | MyWhoosh + Tacx-App vorhanden, kein Laufband | Primärweg bleibt ELEMNT ROAM → Tacx per ANT+ FE-C im ERG-Modus (erprobt, keine App nötig) · MyWhoosh-`.zwo`-Import einmal testen, Ergebnis notieren |
+
+→ `langfristplan.md` (Kraft, Prävention, Gewicht), `periodisierung.md` (Rahmenbedingungen, Benchmark),
+`profil.md` (Krafttraining, Gewichtsnotiz), `kw39.md` (Waden-Regel), `COACH_MEMORY.md` aktualisiert.
 
 ---
 

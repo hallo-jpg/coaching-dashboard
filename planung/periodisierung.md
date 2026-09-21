@@ -64,7 +64,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | Längster Einzellauf | **max. +10% gegenüber den letzten 30 Tagen** → 10 km (Sept) → ~15–16 km (Feb) |
 | Easy-Tempo | **7:15–7:45/km @ HF 155–165** — briskes Ende, nie langsames Trotten |
 | Kadenz | Metronom in **jeder** Easy-Einheit · Ziel 165, nie unter 155 erzwingen |
-| Lauf-Athletik | **2×/Woche 15min**, nicht optional: Wadenheben gebeugtes Knie (Soleus), einbeinige RDL, Hüfte seitlich |
+| Lauf-Athletik | **2×/Woche 15min**, nicht optional: Wadenheben gebeugtes Knie (Soleus), einbeinige RDL, Step-ups, Hüfte seitlich, Copenhagen Plank · Eigengewicht + Bänder |
 | Qualität | **max. 1×/Woche** bis KW47, ab KW49 zusätzlich Intervalle im Longrun |
 | Abbruch | Schmerz am Schienbeinknochen punktuell → Einheit beenden, 2 Tage kein Lauf, melden |
 
@@ -90,7 +90,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | 🔬 5km-Zeitfahren | **KW01/27** · 4.–10.1. | Zwischenstand Laufen · Ziel <28:30 |
 | 🔬 FTP #2 | **KW01/27** | nach 11 Wochen Aufbau · erwarteter Zuwachs +5–8% |
 | 🔬 FTP #3 | **KW09/27** · 1.–7.3. | Abschluss Winter · Ziel +8–12% über Baseline |
-| 🏁 10km-Benchmark | **KW09/27** | Ziel sub-60 · idealerweise als Volkslauf |
+| 🏁 10km-Benchmark | **KW09/27** | Ziel sub-60 · **als eigener Zeitlauf auf Standardstrecke** (vorerst keine Events gewünscht) |
 | 🔬 HF-160-Check | **monatlich** | gleiche Strecke, morgens, gefrühstückt, ≥48h nach hart, 30min @ HF 160 → Pace |
 
 ## Was den Plan kippen darf (und was nicht)
@@ -100,3 +100,14 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 - **Wetter** → Rad geht indoor, kein Grund für eine Streichung.
 - **Volle Arbeitswoche** → Qualität hat Vorrang vor Volumen. Erst der lange Ausdauerblock fällt, dann die Easy-Einheit, zuletzt die Qualität.
 - **Nicht kippen darf:** die Entlastungswoche. Sie wird nie „genutzt", weil es gerade gut läuft.
+
+## Rahmenbedingungen (Stand 21.9.2026)
+
+| | |
+|---|---|
+| **Events** | keine geplant und vorerst keine gesucht · Benchmarks laufen als eigene Zeitläufe |
+| **Kraft** | Eigengewicht + Widerstandsbänder · Lauf-Athletik 2×15min Pflicht, Ganzkörper 1× optional |
+| **Schuhe** | zwei brauchbare Paare im Wechsel · Kilometerstand im Blick, bei 94 kg eher 500–700 km pro Paar |
+| **Indoor** | ELEMNT ROAM steuert die Tacx per ANT+ FE-C im ERG-Modus — erprobter Weg, keine App nötig · MyWhoosh optional, `.zwo`-Import einmal testen |
+| **Gewicht** | Stefans Einordnung: ggf. Richtung 90 kg, darunter nicht · unterstützender Faktor, kein Coach-Ziel |
+| **Infekte** | kein erkennbares Muster → nur strukturelle Prävention (siehe `langfristplan.md`) |

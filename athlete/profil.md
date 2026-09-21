@@ -22,7 +22,7 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 | Parameter | Wert | Anmerkung |
 |---|---|---|
 | **FTP** | **305W** | Sentiero-Modell (3+10min Protokoll, 4iiii Referenz – altes Setup) |
-| **Gewicht** | **93,6 kg** | Ø der Messungen der letzten 30 Tage aus intervals.icu (letzte: 94,0 am 20.09.2026) · wird vom Coach automatisch gepflegt · vorher 91 kg (1. Juni 2026) |
+| **Gewicht** | **93,6 kg** | Ø der Messungen der letzten 30 Tage aus intervals.icu (letzte: 94,0 am 20.09.2026) · wird vom Coach automatisch gepflegt · vorher 91 kg (1. Juni 2026) · **Stefans Einordnung 21.9.2026: in Ordnung, ggf. Richtung 90 kg, darunter nicht** — kein Coach-Ziel, kein Ernährungsprogramm |
 | **Größe** | 190 cm | |
 | **W/kg** | 3,26 | bei 305W / 93,6kg · (3,35 bei 91kg im Juni) |
 | **VO2max** | 59 ml/min/kg | Sentiero metabolisches Profil |
@@ -160,25 +160,28 @@ eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht
 
 ## Krafttraining
 
-**Ziel:** Ganzkörper-Erhalt — Oberkörper (Brust, Arme, Schultern), Rumpf, hintere Kette. Kein Aufbau, kein Sport-Spezifisch. Stefan möchte nicht "verkümmern" als reiner Ausdauerathlet.
+**Equipment (bestätigt 21.9.2026):** Eigengewicht · Widerstandsbänder · Hanteln bis 10kg. **Kein Kraftraum.**
 
-**Equipment:** Eigengewicht · Widerstandsbänder · Hanteln bis 10kg
+**Ab Wintersaison 26/27 zweigeteilt:**
 
-**Umfang:** Max. 1×/Woche · ~25–30 min · immer NACH einer Rad- oder Laufeinheit, nie vor HIT/MIT.
+| Baustein | Umfang | Status |
+|---|---|---|
+| **Lauf-Athletik** | **2×15min/Woche**, an Laufeinheiten angehängt | **Pflichtteil** — Voraussetzung für das geplante Laufvolumen |
+| **Ganzkörper** | 1×25–30min/Woche, nach Rad oder Lauf | optional, Erhalt |
 
-**Typische Übungen (Ganzkörper):**
+**Lauf-Athletik (die 6 Übungen):** Wadenheben mit **gebeugtem Knie** (sitzend, 3×12, 3s/3s — trifft den
+Soleus, nicht den Gastrocnemius) · einbeinige RDL · Step-ups · einbeinige Hip Thrust · seitliche Hüfte
+mit Band · Copenhagen Plank.
+**Progression ohne Gewicht:** Wiederholungen (3×12 → 3×20) → langsamere Exzentrik → einbeinig → Rucksack.
 
-| Bereich | Beispielübungen |
-|---|---|
-| Brust / Drücken | Liegestütze (Varianten), Dumbbell Press |
-| Rücken / Ziehen | Banded Row, Band Pull-Apart, Superman |
-| Schultern / Arme | Dumbbell Curl, Overhead Press mit Bändern |
-| Rumpf | Plank, Side Plank, Dead Bug |
-| Hintere Kette / Hüfte | Single-Leg Glute Bridge, RDL einbeinig |
+**Ganzkörper (Erhalt):** Liegestütze, Banded Row, Band Pull-Apart, Overhead Press mit Band, Dumbbell
+Curl, Plank/Side Plank/Dead Bug, Superman.
 
-**Coach-Regel:** Kraft wird **nicht aktiv in den Wochenplan eingeplant**. Nur auf Nachfrage oder wenn Stefan es explizit erwähnt. KA-Training auf der Tacx (55rpm) ist der primäre Kraftreiz für Radperformance.
+**Coach-Regel:** Lauf-Athletik wird aktiv eingeplant. Die Ganzkörper-Einheit nur, wenn Stefan sie
+erwähnt. Für die Radleistung bleibt **KA auf der Rolle (91% FTP @ 55rpm)** der primäre Kraftreiz —
+Bändertraining ersetzt das nicht.
 
-**Tapering:** Ab T-10 weglassen.
+**Tapering:** Kraft ab T-10 weglassen, Lauf-Athletik darf bleiben.
 
 ## Geräte & Plattformen
 
