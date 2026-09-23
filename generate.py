@@ -176,61 +176,132 @@ def calc_subjective(wellness_window: list) -> dict | None:
     }
 
 
-def calc_readiness(wellness_window: list[dict], hrv_baseline: list[dict] | None = None) -> int:
-    """HRV 40pts (vs. 30d baseline) + Sleep 25pts + TSB 20pts + RHR 15pts = 100pts max.
-    HRV baseline uses 30-day window so illness (~7d) only affects 25% of reference period.
-    Sleep/TSB/RHR use 7-day window (responsive). Missing data → neutral fallback.
+# ── Readiness ─────────────────────────────────────────────────────────────────
+# Morgendlicher Erholungszustand aus Körpersignalen + Gefühl. TSB zählt bewusst
+# NICHT mit: er ist ein Lastmodell, keine Messung, und steht im Trainingsform-Ring.
+# HRV und Ruhepuls schwanken von Tag zu Tag stark → 70 % 7-Tage-Schnitt gegen den
+# 30-Tage-Normalbereich (Plews/Buchheit), 30 % der heutige Wert. Nur echte
+# Ausreißer (HRV < −2,5 SD, Ruhepuls > +7 bpm) erzwingen sofort Rot.
+# Gleiche Logik im Coach: intervals-mcp/server.js → computeReadiness().
+
+READINESS_WEIGHTS = {"hrv": 35, "ruhepuls": 20, "schlaf": 20, "gefuehl": 25}
+READINESS_BASELINE_DAYS = 30
+READINESS_FLAG_CAP = 45
+
+
+def _round(x: float) -> int:
+    """Kaufmännisch runden wie Math.round im Coach (Python rundet .5 zur geraden Zahl)."""
+    return math.floor(x + 0.5)
+
+
+def _tier_hrv(z: float) -> int:
+    """HRV-Abweichung in SD-Einheiten → 0–100."""
+    if z >= 0.5:  return 100
+    if z >= 0:    return 90
+    if z >= -0.5: return 75
+    if z >= -1:   return 60
+    if z >= -2:   return 30
+    return 0
+
+
+def _tier_rhr(diff: float) -> int:
+    """Ruhepuls-Abweichung in bpm (positiv = höher) → 0–100."""
+    if diff <= -2: return 100
+    if diff <= 0:  return 85
+    if diff <= 2:  return 65
+    if diff <= 4:  return 35
+    return 0
+
+
+def _tier_sleep(hours: float) -> int:
+    if hours >= 8:   return 100
+    if hours >= 7.5: return 85
+    if hours >= 7:   return 70
+    if hours >= 6.5: return 50
+    if hours >= 5.5: return 25
+    return 0
+
+
+def readiness_breakdown(history: list[dict]) -> dict:
+    """Readiness für den letzten Eintrag in history (chronologisch).
+
+    Baseline = bis zu 30 Einträge VOR dem Tag, Trend = letzte 7 Einträge inkl. Tag,
+    Schlaf = Tag + Schnitt der letzten 3 Nächte. Fehlende Signale werden nicht
+    neutral aufgefüllt, sondern die übrigen anteilig hochgerechnet.
     """
-    # HRV (40 pts) — today vs. 30d baseline (illness-robust)
-    baseline = hrv_baseline if hrv_baseline is not None else wellness_window
-    hrv_baseline_vals = [w["hrv"] for w in baseline if w.get("hrv")]
-    hrv_today_vals    = [w["hrv"] for w in wellness_window if w.get("hrv")]
-    hrv_pts = 20  # neutral fallback
-    if len(hrv_baseline_vals) >= 3 and hrv_today_vals:
-        mean = _avg(hrv_baseline_vals)
-        sd   = max(_std_dev(hrv_baseline_vals), 1)
-        diff = hrv_today_vals[-1] - mean
-        if   diff >  sd:      hrv_pts = 40
-        elif diff >  0:       hrv_pts = 33
-        elif diff > -sd:      hrv_pts = 24
-        elif diff > -2 * sd:  hrv_pts = 10
-        else:                 hrv_pts = 0
+    if not history:
+        return {"score": 0, "score_obj": None, "score_sub": None, "flag": None, "parts": {}}
+    today    = history[-1]
+    baseline = history[-READINESS_BASELINE_DAYS - 1:-1]
+    last7    = history[-7:]
+    parts: dict[str, int] = {}
+    flag = None
 
-    # Sleep (25 pts) — prefer quality rating, fall back to duration
-    last3        = wellness_window[-3:]
-    quality_vals = [w["sleepQuality"] for w in last3 if w.get("sleepQuality") is not None]
-    sleep_vals   = [w["sleepSecs"]    for w in last3 if w.get("sleepSecs")]
-    sleep_pts = 13  # neutral fallback
-    if quality_vals:
-        avg_q = _avg(quality_vals)
-        sleep_pts = round(((5 - avg_q) / 4) * 25)
-    elif sleep_vals:
-        sleep_pts = min(25, round(_avg(sleep_vals) / 3600 / 8 * 25))
+    # HRV
+    hrv_base = [w["hrv"] for w in baseline if w.get("hrv")]
+    hrv_7    = [w["hrv"] for w in last7 if w.get("hrv")]
+    if len(hrv_base) >= 5 and hrv_7:
+        mean, sd = _avg(hrv_base), max(_std_dev(hrv_base), 1)
+        # Ein 7-Tage-Schnitt schwankt nur etwa halb so stark wie ein Einzelwert
+        trend = _tier_hrv((_avg(hrv_7) - mean) / (sd / 2))
+        if today.get("hrv"):
+            z_today = (today["hrv"] - mean) / sd
+            parts["hrv"] = _round(0.7 * trend + 0.3 * _tier_hrv(z_today))
+            if z_today < -2.5:
+                flag = "HRV stark unter Normalbereich"
+        else:
+            parts["hrv"] = trend
 
-    # TSB (20 pts)
-    latest  = wellness_window[-1]
-    ctl, atl = latest.get("ctl") or 0, latest.get("atl") or 0
-    tsb_pts = 10  # neutral fallback
-    if ctl and atl:
-        tsb = ctl - atl
-        if   tsb >  10:  tsb_pts = 20
-        elif tsb >=  0:  tsb_pts = 17
-        elif tsb >= -10: tsb_pts = 13
-        elif tsb >= -20: tsb_pts = 6
-        else:            tsb_pts = 0
+    # Ruhepuls
+    rhr_base = [w["restingHR"] for w in baseline if w.get("restingHR")]
+    rhr_7    = [w["restingHR"] for w in last7 if w.get("restingHR")]
+    if len(rhr_base) >= 5 and rhr_7:
+        mean  = _avg(rhr_base)
+        trend = _tier_rhr((_avg(rhr_7) - mean) * 2)
+        if today.get("restingHR"):
+            d_today = today["restingHR"] - mean
+            parts["ruhepuls"] = _round(0.7 * trend + 0.3 * _tier_rhr(d_today))
+            if d_today > 7:
+                flag = flag or "Ruhepuls deutlich erhöht"
+        else:
+            parts["ruhepuls"] = trend
 
-    # RHR (15 pts)
-    hr_vals = [w["restingHR"] for w in wellness_window if w.get("restingHR")]
-    hr_pts = 8  # neutral fallback
-    if len(hr_vals) >= 3:
-        diff_hr = hr_vals[-1] - _avg(hr_vals[:-1])
-        if   diff_hr <= -3: hr_pts = 15
-        elif diff_hr <=  0: hr_pts = 12
-        elif diff_hr <=  3: hr_pts = 8
-        elif diff_hr <=  6: hr_pts = 3
-        else:               hr_pts = 0
+    # Schlaf
+    sleep_3 = [w["sleepSecs"] / 3600 for w in history[-3:] if w.get("sleepSecs")]
+    if sleep_3:
+        hours = (0.5 * today["sleepSecs"] / 3600 + 0.5 * _avg(sleep_3)
+                 if today.get("sleepSecs") else _avg(sleep_3))
+        pts = _tier_sleep(hours)
+        if today.get("sleepQuality") is not None:
+            pts = _round(0.6 * pts + 0.4 * (5 - today["sleepQuality"]) / 4 * 100)
+        parts["schlaf"] = pts
 
-    return min(100, hrv_pts + sleep_pts + tsb_pts + hr_pts)
+    def weighted(keys):
+        avail = [(parts[k], READINESS_WEIGHTS[k]) for k in keys if k in parts]
+        if not avail:
+            return None
+        return _round(sum(p * w for p, w in avail) / sum(w for _, w in avail))
+
+    score_obj = weighted(["hrv", "ruhepuls", "schlaf"])
+    sub       = calc_subjective([today])
+    score_sub = sub["score"] if sub else None
+    if score_sub is not None:
+        parts["gefuehl"] = score_sub
+    score = weighted(["hrv", "ruhepuls", "schlaf", "gefuehl"]) or 0
+
+    if flag:
+        score = min(score, READINESS_FLAG_CAP)
+        if score_obj is not None:
+            score_obj = min(score_obj, READINESS_FLAG_CAP)
+    if sub and sub["verletzung_flag"] == "🚨 Verletzt":
+        score = 0
+    return {"score": score, "score_obj": score_obj, "score_sub": score_sub,
+            "flag": flag, "parts": parts}
+
+
+def calc_readiness(history: list[dict]) -> int:
+    """Readiness-Score 0–100 für den letzten Tag in history."""
+    return readiness_breakdown(history)["score"]
 
 
 def hrv_status_label(hrv: float, hrv_mean: float, hrv_std: float) -> tuple[str, str]:
@@ -1107,7 +1178,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     # 30-day HRV baseline for accurate normal range (Coros/RMSSD science)
     today_iso   = date.today().isoformat()
-    wellness_30 = get_wellness((date.today() - timedelta(30)).isoformat(), today_iso)
+    # Readiness braucht 30 Tage Baseline VOR jedem der 7 Sparkline-Tage
+    wellness_hist = get_wellness((date.today() - timedelta(READINESS_BASELINE_DAYS + 7)).isoformat(), today_iso)
+    wellness_30   = [w for w in wellness_hist if w.get("id", "") >= (date.today() - timedelta(30)).isoformat()] or wellness_hist
     hrv_30_vals = [w.get("hrv") for w in wellness_30 if w.get("hrv")]
     hrv_mean    = sum(hrv_30_vals) / len(hrv_30_vals) if hrv_30_vals else 40.0
     hrv_std     = (sum((v - hrv_mean) ** 2 for v in hrv_30_vals) / len(hrv_30_vals)) ** 0.5 if len(hrv_30_vals) > 1 else 5.0
@@ -1125,24 +1198,15 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     hrv_status, hrv_status_color = hrv_status_label(hrv, hrv_mean, hrv_std)
 
-    r_score = calc_readiness(wellness_30[-7:], hrv_baseline=wellness_30)
-    r_color = readiness_color(r_score)
-    r_label = readiness_label(r_score)
-    r_sub   = _readiness_sub(rhr, hrv, hrv_mean, wellness)
-
-    # Subjective sub-score
-    sub_result    = calc_subjective(wellness_30[-7:])
-    score_obj     = r_score
-    score_sub     = sub_result["score"] if sub_result else None
+    readiness     = readiness_breakdown(wellness_hist)
+    r_sub         = _readiness_sub(rhr, hrv, hrv_mean, wellness)
+    sub_result    = calc_subjective(wellness_hist[-1:])
+    score_obj     = readiness["score_obj"]
+    score_sub     = readiness["score_sub"]
     verletzung_flag = sub_result["verletzung_flag"] if sub_result else None
-
-    # Combined: 60% objective + 40% subjective; fallback to objective when no subjective data
-    if score_sub is not None:
-        r_score_combined = round(score_obj * 0.6 + score_sub * 0.4)
-        if verletzung_flag == "🚨 Verletzt":
-            r_score_combined = 0
-    else:
-        r_score_combined = score_obj
+    r_score_combined = readiness["score"]
+    if readiness["flag"]:
+        r_sub = f"⚠️ {readiness['flag']} · {r_sub}"
 
     r_color = readiness_color(r_score_combined)
     r_label = readiness_label(r_score_combined)
@@ -1233,10 +1297,10 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     rhr_base  = 50
     pulse_pct = max(0, min(100, round((1 - (rhr - rhr_base) / 20) * 100)))
 
-    sparkline_data = wellness_30[-7:] if len(wellness_30) >= 7 else wellness_30
+    # Gleiche Formel wie der Tages-Score, jeder Tag mit seiner eigenen Historie
     sparkline = []
-    for w in sparkline_data:
-        pct = calc_readiness([w], hrv_baseline=wellness_30)
+    for i in range(max(0, len(wellness_hist) - 7), len(wellness_hist)):
+        pct = calc_readiness(wellness_hist[:i + 1])
         sparkline.append({"pct": pct, "color": readiness_mark_color(pct)})
 
     polar_acts = get_activities(

@@ -43,24 +43,51 @@ def test_ring_offset_zero():
     assert calc_ring_offset(0, 100, 345.4) == pytest.approx(345.4, abs=1)
 
 
+def _hist(days=20, hrv=50, rhr=55, sleep_h=8.0):
+    return [{"id": f"2026-04-{i+1:02d}", "hrv": hrv + (-6, -3, 0, 3, 6)[i % 5], "restingHR": rhr + (i % 3) - 1,
+             "sleepSecs": int(sleep_h * 3600)} for i in range(days)]
+
+
 def test_readiness_high():
-    window = [
-        {"id": "2026-04-10", "hrv": 42, "sleepSecs": 28800, "ctl": 45.0, "atl": 35.0, "restingHR": 48},
-        {"id": "2026-04-11", "hrv": 44, "sleepSecs": 27000, "ctl": 45.5, "atl": 34.0, "restingHR": 47},
-        {"id": "2026-04-12", "hrv": 45, "sleepSecs": 28800, "ctl": 46.0, "atl": 33.0, "restingHR": 47},
-    ]
-    score = calc_readiness(wellness_window=window, hrv_baseline=window)
-    assert score >= 80
+    hist = _hist()
+    hist[-1].update(hrv=55, restingHR=53)
+    assert calc_readiness(hist) >= 80
 
 
-def test_readiness_low():
-    window = [
-        {"id": "2026-04-10", "hrv": 42, "sleepSecs": 25200, "ctl": 40.0, "atl": 55.0, "restingHR": 52},
-        {"id": "2026-04-11", "hrv": 35, "sleepSecs": 18000, "ctl": 40.5, "atl": 56.0, "restingHR": 56},
-        {"id": "2026-04-12", "hrv": 28, "sleepSecs": 18000, "ctl": 41.0, "atl": 57.0, "restingHR": 58},
-    ]
-    score = calc_readiness(wellness_window=window, hrv_baseline=window)
-    assert score < 60
+def test_readiness_low_trend():
+    """Mehrere Tage HRV unten + Puls oben + wenig Schlaf → rot."""
+    hist = _hist()
+    for w in hist[-5:]:
+        w.update(hrv=44, restingHR=59, sleepSecs=6 * 3600)
+    assert calc_readiness(hist) < 60
+
+
+def test_readiness_single_outlier_is_smoothed():
+    """Ein einzelner mäßig schwacher Tag kippt nicht sofort auf rot."""
+    hist = _hist()
+    hist[-1].update(hrv=46, restingHR=57)
+    assert calc_readiness(hist) >= 60
+
+
+def test_readiness_extreme_outlier_flags_red():
+    """HRV-Absturz / Ruhepuls-Sprung erzwingt rot, auch wenn der Rest gut ist."""
+    hist = _hist()
+    hist[-1].update(hrv=24, restingHR=67)
+    assert calc_readiness(hist) < 50
+
+
+def test_readiness_ignores_tsb():
+    """TSB ist kein Readiness-Signal: tiefer TSB bei guten Körperwerten bleibt grün."""
+    hist = _hist()
+    for w in hist:
+        w.update(ctl=24.0, atl=40.0)
+    assert calc_readiness(hist) >= 80
+
+
+def test_readiness_uses_subjective():
+    hist = _hist()
+    hist[-1].update(fatigue=4, soreness=4, stress=4, injury=1)
+    assert calc_readiness(hist) < calc_readiness(_hist())
 
 
 def test_week_date_range():

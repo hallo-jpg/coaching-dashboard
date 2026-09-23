@@ -2,7 +2,7 @@
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
 *Gilt in jeder Session – lokal wie in der Claude-App. Bei neuen Erkenntnissen oder Korrekturen hier ergänzen, nicht nur im Chat bestätigen.*
-*Stand: 21. September 2026*
+*Stand: 23. September 2026*
 
 ---
 
@@ -27,6 +27,11 @@ Vor dem Seelauf leitete der Coach aus 3×7min vom 9.9. eine Rennpace von 6:50/km
 ### HRV-Einbruch + Krank-Risiko-Flag → erst nach Alkohol fragen
 Stefans HRV-Einbrüche gingen wiederholt auf Alkohol zurück, nicht auf Training oder Infekt (17.5. JGA · 2.8. HRV 54→34, Ruhepuls 54→63 nach Gruppenausfahrt mit Bier). Beide Male meldete intervals.icu fälschlich 🔴 Krank-Risiko.
 **Anwenden:** Bei HRV-Einbruch mit Krank-Flag zuerst nach dem Vorabend fragen – besonders nach Wochenende, sozialem Anlass, Gruppenausfahrt. Alkoholsuppression klärt sich in 24–48h; bleibt die HRV danach unten, ist das Signal *stärker* zu gewichten. Statt Pauschalpause ein Gate in den Plan: grün HRV ≥45 & RP ≤58 · gelb 38–44 gekürzt · rot <38 oder RP >60 Ruhetag. Qualitätseinheiten nie streichen, nur verschieben.
+
+### 📊 Readiness-Score: neues Modell seit 23.9.2026 (Stefans Wunsch)
+Alt: HRV/Schlaf/**TSB**/Ruhepuls, nur Tageswerte. Folge: nach jedem Lastblock gelb/rot, obwohl der Körper gut erholt war (18.–23.9.: HRV normal, RP 53, 8,5h Schlaf → trotzdem 59–72). Stefan: HRV und Ruhepuls schwanken bei ihm stark (HRV ±7 ms, ~14 %), einzelne Tage sind nicht aussagekräftig.
+**Jetzt (Dashboard `generate.py` + Coach `get_readiness_score`, identische Formel):** HRV 35 % · Gefühl 25 % · Ruhepuls 20 % · Schlaf 20 %. HRV und RP jeweils **70 % 7-Tage-Schnitt vs. 30-Tage-Normalbereich + 30 % heute**, Schlaf = heute + 3-Nächte-Ø. **TSB zählt nicht** (steht im Trainingsform-Ring). Warnsignal → Score max. 45 🔴: HRV < −2,5 SD (≈ unter 33) oder RP > +7 bpm über dem 30-Tage-Schnitt.
+**Anwenden:** Tiefer TSB bei grüner Readiness = produktive Ermüdung, kein Grund zu kürzen. Einzelne gelbe Tage nicht überbewerten — der Trend über 3+ Tage zählt. Beim Warnsignal gilt weiterhin: erst nach Alkohol fragen (siehe unten).
 
 ### Zonen-Mapping intervals.icu ↔ Sentiero
 Gleiche Zonen, andere Nummerierung (Sentiero ab Z0, intervals.icu ab Z1 → Offset +1):

@@ -41,7 +41,7 @@ In der ersten Session eingeben:
 /coach Status-Check: rufe get_readiness_score ab und sag mir den Score
 ```
 
-Erwartung: ein Readiness-Score mit HRV/Schlaf/TSB. Kommt stattdessen „Tool nicht verfügbar":
+Erwartung: ein Readiness-Score mit HRV/Ruhepuls/Schlaf/Gefühl. Kommt stattdessen „Tool nicht verfügbar":
 Umgebungsvariablen prüfen (Schritt 2) und ob die MCP-Freigabe (Schritt 3) erteilt wurde.
 
 Dann ein Push-Test: eine Notiz in `COACHING_AKTE.md` ergänzen lassen und pushen. Nach ~2 Minuten

@@ -688,82 +688,104 @@ function _stdDev(arr) {
   return Math.sqrt(arr.reduce((s, v) => s + (v - m) ** 2, 0) / arr.length);
 }
 
-// Berechnet Score aus einem Array von Wellness-Einträgen (chronologisch, min. 3)
-// Gibt score, ampel, empfehlung, komponenten und interne _meta zurück
-function computeReadiness(data, hrvBaseline30 = null) {
-  // HRV (40 Punkte) — Baseline aus 30-Tage-Fenster (robust gegen Krankheit ~7d = nur 25% des Fensters)
-  const baselineData = hrvBaseline30 ?? data;
-  const hrvBaseline  = baselineData.map(d => d.hrv).filter(Boolean);
-  const hrvToday     = data.map(d => d.hrv).filter(Boolean);
-  let hrvPts = 20, hrvDetail = "Keine HRV-Daten", hrvDiffSDs = 0;
-  if (hrvBaseline.length >= 3 && hrvToday.length) {
-    const mean = _avg(hrvBaseline);
-    const sd = Math.max(_stdDev(hrvBaseline), 1);
-    const last = hrvToday[hrvToday.length - 1];
-    const diff = last - mean;
-    hrvDiffSDs = diff / sd;
-    if (diff > sd)         { hrvPts = 40; hrvDetail = `${last} ms (+${diff.toFixed(1)} > +1SD) – erhöht`; }
-    else if (diff > 0)     { hrvPts = 33; hrvDetail = `${last} ms (+${diff.toFixed(1)}) – leicht über Mittel`; }
-    else if (diff > -sd)   { hrvPts = 24; hrvDetail = `${last} ms (${diff.toFixed(1)}) – leicht unter Mittel`; }
-    else if (diff > -2*sd) { hrvPts = 10; hrvDetail = `${last} ms (${diff.toFixed(1)} < -1SD) – supprimiert`; }
-    else                   { hrvPts = 0;  hrvDetail = `${last} ms (${diff.toFixed(1)} < -2SD) – stark supprimiert`; }
+// ── Readiness ──
+// Morgendlicher Erholungszustand aus Körpersignalen + Gefühl. TSB zählt bewusst
+// NICHT mit (Lastmodell, keine Messung) – er fließt nur in detectPattern() ein.
+// HRV und Ruhepuls schwanken täglich stark → 70 % 7-Tage-Schnitt gegen den
+// 30-Tage-Normalbereich, 30 % heutiger Wert. Nur echte Ausreißer
+// (HRV < −2,5 SD, Ruhepuls > +7 bpm) erzwingen sofort Rot (Score ≤ 45).
+// Gleiche Logik im Dashboard: generate.py → readiness_breakdown().
+const READINESS_WEIGHTS = { hrv: 35, ruhepuls: 20, schlaf: 20, gefuehl: 25 };
+const READINESS_BASELINE_DAYS = 30;
+const READINESS_FLAG_CAP = 45;
+
+const tierHrv = z => z >= 0.5 ? 100 : z >= 0 ? 90 : z >= -0.5 ? 75 : z >= -1 ? 60 : z >= -2 ? 30 : 0;
+const tierRhr = d => d <= -2 ? 100 : d <= 0 ? 85 : d <= 2 ? 65 : d <= 4 ? 35 : 0;
+const tierSleep = h => h >= 8 ? 100 : h >= 7.5 ? 85 : h >= 7 ? 70 : h >= 6.5 ? 50 : h >= 5.5 ? 25 : 0;
+const fmtSigned = v => `${v >= 0 ? "+" : ""}${v.toFixed(1)}`;
+
+// history: chronologische Wellness-Einträge, letzter Eintrag = bewerteter Tag.
+// Gibt score, ampel, empfehlung, komponenten und interne _meta zurück.
+function computeReadiness(history) {
+  const today    = history[history.length - 1] ?? {};
+  const baseline = history.slice(-READINESS_BASELINE_DAYS - 1, -1);
+  const last7    = history.slice(-7);
+  const parts = {};
+  const details = {};
+  let flag = null, hrvDiffSDs = 0, hrDiff = 0;
+
+  // HRV
+  const hrvBase = baseline.map(d => d.hrv).filter(Boolean);
+  const hrv7    = last7.map(d => d.hrv).filter(Boolean);
+  details.hrv = "Keine HRV-Daten / zu wenig Baseline";
+  if (hrvBase.length >= 5 && hrv7.length) {
+    const mean = _avg(hrvBase), sd = Math.max(_stdDev(hrvBase), 1);
+    const avg7 = _avg(hrv7);
+    // Ein 7-Tage-Schnitt schwankt nur etwa halb so stark wie ein Einzelwert
+    const trend = tierHrv((avg7 - mean) / (sd / 2));
+    if (today.hrv) {
+      hrvDiffSDs = (today.hrv - mean) / sd;
+      parts.hrv = Math.round(0.7 * trend + 0.3 * tierHrv(hrvDiffSDs));
+      if (hrvDiffSDs < -2.5) flag = "HRV stark unter Normalbereich";
+      details.hrv = `heute ${today.hrv} ms (${fmtSigned(hrvDiffSDs)} SD) · 7d-Ø ${avg7.toFixed(1)} · Normal ${Math.round(mean - sd)}–${Math.round(mean + sd)}`;
+    } else {
+      parts.hrv = trend;
+      details.hrv = `heute keine HRV · 7d-Ø ${avg7.toFixed(1)} · Normal ${Math.round(mean - sd)}–${Math.round(mean + sd)}`;
+    }
   }
 
-  // Schlaf (25 Punkte)
-  const last3 = data.slice(-3);
-  let sleepPts = 13, sleepDetail = "Keine Schlafdaten";
-  const qualityVals = last3.map(d => d.sleepQuality).filter(v => v != null);
-  const sleepSecsVals = last3.map(d => d.sleepSecs).filter(Boolean);
-  if (qualityVals.length) {
-    const avgQ = _avg(qualityVals);
-    // intervals.icu sleep quality: 1=Sehr gut, 2=Gut, 3=Durchschnitt, 4=Schlecht (lower = better)
-    sleepPts = Math.round(((5 - avgQ) / 4) * 25);
-    const qualLabel = avgQ <= 1.5 ? "Sehr gut" : avgQ <= 2.5 ? "Gut" : avgQ <= 3.5 ? "Durchschnitt" : "Schlecht";
-    sleepDetail = `Schlafqualität Ø ${avgQ.toFixed(1)}/4 – ${qualLabel} (letzte 3 Nächte)`;
-  } else if (sleepSecsVals.length) {
-    const avgH = _avg(sleepSecsVals) / 3600;
-    sleepPts = Math.min(25, Math.round((avgH / 8) * 25));
-    sleepDetail = `Schlafdauer Ø ${avgH.toFixed(1)}h (Ziel: 8h)`;
+  // Ruhepuls
+  const rhrBase = baseline.map(d => d.restingHR).filter(Boolean);
+  const rhr7    = last7.map(d => d.restingHR).filter(Boolean);
+  details.ruhepuls = "Keine Ruhepuls-Daten / zu wenig Baseline";
+  if (rhrBase.length >= 5 && rhr7.length) {
+    const mean = _avg(rhrBase), avg7 = _avg(rhr7);
+    const trend = tierRhr((avg7 - mean) * 2);
+    if (today.restingHR) {
+      hrDiff = today.restingHR - mean;
+      parts.ruhepuls = Math.round(0.7 * trend + 0.3 * tierRhr(hrDiff));
+      if (hrDiff > 7) flag = flag ?? "Ruhepuls deutlich erhöht";
+      details.ruhepuls = `heute ${today.restingHR} bpm (${fmtSigned(hrDiff)} vs. 30d-Ø ${mean.toFixed(1)}) · 7d-Ø ${avg7.toFixed(1)}`;
+    } else {
+      parts.ruhepuls = trend;
+      details.ruhepuls = `heute kein Ruhepuls · 7d-Ø ${avg7.toFixed(1)} vs. 30d-Ø ${mean.toFixed(1)}`;
+    }
   }
 
-  // TSB (20 Punkte)
-  const latest = data[data.length - 1];
-  const tsb = latest.ctl && latest.atl ? latest.ctl - latest.atl : null;
-  let tsbPts = 10, tsbDetail = "TSB nicht verfügbar";
-  if (tsb !== null) {
-    if (tsb > 10)        { tsbPts = 20; tsbDetail = `TSB ${tsb.toFixed(1)} – frisch`; }
-    else if (tsb >= 0)   { tsbPts = 17; tsbDetail = `TSB ${tsb.toFixed(1)} – ausgeglichen`; }
-    else if (tsb >= -10) { tsbPts = 13; tsbDetail = `TSB ${tsb.toFixed(1)} – leicht ermüdet`; }
-    else if (tsb >= -20) { tsbPts = 6;  tsbDetail = `TSB ${tsb.toFixed(1)} – ermüdet`; }
-    else                 { tsbPts = 0;  tsbDetail = `TSB ${tsb.toFixed(1)} – stark ermüdet`; }
+  // Schlaf: letzte Nacht + Schnitt der letzten 3 Nächte
+  const sleep3 = history.slice(-3).map(d => d.sleepSecs).filter(Boolean).map(s => s / 3600);
+  details.schlaf = "Keine Schlafdaten";
+  if (sleep3.length) {
+    const hours = today.sleepSecs ? 0.5 * today.sleepSecs / 3600 + 0.5 * _avg(sleep3) : _avg(sleep3);
+    let pts = tierSleep(hours);
+    // intervals.icu sleepQuality: 1=Sehr gut … 4=Schlecht
+    if (today.sleepQuality != null) pts = Math.round(0.6 * pts + 0.4 * (5 - today.sleepQuality) / 4 * 100);
+    parts.schlaf = pts;
+    details.schlaf = `${hours.toFixed(1)}h gewichtet (heute + 3-Nächte-Ø)` +
+      (today.sleepQuality != null ? ` · Qualität ${today.sleepQuality}/4` : "");
   }
 
-  // Ruhepuls (15 Punkte)
-  const hrValues = data.map(d => d.restingHR).filter(Boolean);
-  let hrPts = 8, hrDetail = "Keine Ruhepuls-Daten", hrDiff = 0;
-  if (hrValues.length >= 3) {
-    const meanHR = _avg(hrValues.slice(0, -1));
-    const lastHR = hrValues[hrValues.length - 1];
-    hrDiff = lastHR - meanHR;
-    if (hrDiff <= -3)     { hrPts = 15; hrDetail = `${lastHR} bpm (${hrDiff.toFixed(1)} vs. Ø) – deutlich niedriger`; }
-    else if (hrDiff <= 0) { hrPts = 12; hrDetail = `${lastHR} bpm (${hrDiff.toFixed(1)} vs. Ø) – normal/niedriger`; }
-    else if (hrDiff <= 3) { hrPts = 8;  hrDetail = `${lastHR} bpm (+${hrDiff.toFixed(1)} vs. Ø) – leicht erhöht`; }
-    else if (hrDiff <= 6) { hrPts = 3;  hrDetail = `${lastHR} bpm (+${hrDiff.toFixed(1)} vs. Ø) – erhöht`; }
-    else                  { hrPts = 0;  hrDetail = `${lastHR} bpm (+${hrDiff.toFixed(1)} vs. Ø) – deutlich erhöht`; }
-  }
+  const weighted = keys => {
+    const avail = keys.filter(k => parts[k] != null);
+    if (!avail.length) return null;
+    const w = avail.reduce((s, k) => s + READINESS_WEIGHTS[k], 0);
+    return Math.round(avail.reduce((s, k) => s + parts[k] * READINESS_WEIGHTS[k], 0) / w);
+  };
 
-  const score_obj = hrvPts + sleepPts + tsbPts + hrPts;
-  const subResult = computeSubjective(data);
+  let score_obj = weighted(["hrv", "ruhepuls", "schlaf"]);
+  const subResult = computeSubjective([today]);
   const score_sub = subResult?.score ?? null;
+  if (score_sub != null) parts.gefuehl = score_sub;
+  let score = weighted(["hrv", "ruhepuls", "schlaf", "gefuehl"]) ?? 0;
 
-  // Combined: 60% objective + 40% subjective; fallback to objective if no subjective data
-  const score = score_sub != null
-    ? Math.round(score_obj * 0.6 + score_sub * 0.4)
-    : score_obj;
+  if (flag) {
+    score = Math.min(score, READINESS_FLAG_CAP);
+    if (score_obj != null) score_obj = Math.min(score_obj, READINESS_FLAG_CAP);
+  }
 
-  // Verletzung-Override: always 🔴 if Verletzt (injury=4)
   let ampel, empfehlung;
   if (subResult?.verletzung_flag === "🚨 Verletzt") {
+    score = 0;
     ampel = "🔴";
     empfehlung = "🚨 Verletzt – Training pausieren bis zur Erholung.";
   } else if (score >= 80) {
@@ -775,6 +797,11 @@ function computeReadiness(data, hrvBaseline30 = null) {
   } else {
     ampel = "🔴"; empfehlung = "Nur LIT oder Ruhetag – Erholung priorisieren.";
   }
+  if (flag && ampel !== "🔴") ampel = "🔴";
+  if (flag) empfehlung = `⚠️ ${flag} – ${empfehlung}`;
+
+  const tsb = today.ctl && today.atl ? today.ctl - today.atl : null;
+  const komp = k => parts[k] != null ? { punkte: parts[k], max: 100, gewicht: READINESS_WEIGHTS[k], detail: details[k] } : null;
 
   return {
     score,
@@ -782,15 +809,16 @@ function computeReadiness(data, hrvBaseline30 = null) {
     score_sub,
     ampel,
     empfehlung,
+    warnsignal: flag,
     verletzung_flag: subResult?.verletzung_flag ?? null,
     komponenten: {
-      hrv:      { punkte: hrvPts,   max: 40, detail: hrvDetail },
-      schlaf:   { punkte: sleepPts, max: 25, detail: sleepDetail },
-      tsb:      { punkte: tsbPts,   max: 20, detail: tsbDetail },
-      ruhepuls: { punkte: hrPts,    max: 15, detail: hrDetail },
+      hrv:      komp("hrv"),
+      ruhepuls: komp("ruhepuls"),
+      schlaf:   komp("schlaf"),
+      tsb_info: tsb !== null ? `TSB ${tsb.toFixed(1)} – nicht im Score, nur für Muster-Erkennung` : null,
     },
     komponenten_subjektiv: subResult?.komponenten ?? null,
-    _meta: { hrvDiffSDs, hrDiff, tsbVal: tsb, sleepPts },
+    _meta: { hrvDiffSDs, hrDiff, tsbVal: tsb, sleepPts: parts.schlaf ?? null },
   };
 }
 
@@ -910,36 +938,33 @@ function suggestWorkoutMods(score, plannedEvents) {
 // ── Tool 9: Readiness Score ──────────────────────────────────
 server.tool(
   "get_readiness_score",
-  "Readiness-Score (0–100) aus HRV-Trend, Schlaf, TSB und Ruhepuls. Erkennt Krank-Risiko vs. Trainings-Ermüdung, gibt konkrete Workout-Modifikationen für geplante Einheiten und zeigt 7/30-Tage-Verlauf.",
+  "Readiness-Score (0–100) aus HRV- und Ruhepuls-Trend (7d-Schnitt vs. 30d-Normalbereich), Schlaf und Gefühl (TSB zählt nicht mit). Erkennt Krank-Risiko vs. Trainings-Ermüdung, gibt konkrete Workout-Modifikationen für geplante Einheiten und zeigt 7/30-Tage-Verlauf.",
   {
     datum: z.string().optional().describe("Datum für Workout-Check YYYY-MM-DD (default: heute)"),
   },
   async ({ datum }) => {
     const checkDate = datum ?? today();
 
-    // 30 Tage Wellness für Trend + 7-Tage-Fenster für heutigen Score
+    // 30 Tage Verlauf + 30 Tage Baseline davor + Puffer
+    const oldest = new Date(`${checkDate}T12:00:00Z`);
+    oldest.setUTCDate(oldest.getUTCDate() - (2 * READINESS_BASELINE_DAYS + 7));
     const [wellnessAll, plannedEvents] = await Promise.all([
-      apiFetch(`/wellness?oldest=${daysAgo(30)}&newest=${checkDate}`),
+      apiFetch(`/wellness?oldest=${oldest.toISOString().split("T")[0]}&newest=${checkDate}`),
       apiFetch(`/events?oldest=${checkDate}&newest=${checkDate}`),
     ]);
 
     if (!wellnessAll.length) return { content: [{ type: "text", text: "Keine Wellness-Daten gefunden." }] };
 
-    // Heutiger Score: 7-Tage-Fenster für Schlaf/TSB/RHR, 30-Tage-Baseline für HRV
-    const window7 = wellnessAll.slice(-7);
-    const { score, score_obj, score_sub, ampel, empfehlung, verletzung_flag,
-        komponenten, komponenten_subjektiv, _meta } = computeReadiness(window7, wellnessAll);
+    const { score, score_obj, score_sub, ampel, empfehlung, warnsignal, verletzung_flag,
+        komponenten, komponenten_subjektiv, _meta } = computeReadiness(wellnessAll);
     const { muster, hinweis } = detectPattern(_meta);
     const workout_empfehlungen = suggestWorkoutMods(score, plannedEvents);
 
-    // ── Verlauf: Score für jeden der letzten 30 Tage berechnen ──
-    // Pro Tag: nutze die bis dahin verfügbaren letzten 7 Einträge als Fenster,
-    // HRV-Baseline wie beim Tages-Score aus den bis dahin verfügbaren 30 Tagen
-    // (sonst weicht der Verlaufswert vom Tages-Score desselben Tages ab)
+    // ── Verlauf: Score der letzten 30 Tage, jeder Tag mit seiner eigenen Historie ──
+    // (identisch zum Tages-Score und zur Dashboard-Sparkline)
     const verlauf = wellnessAll.map((_, i) => {
-      if (i < 2) return null; // Mindestens 3 Datenpunkte nötig
-      const slice = wellnessAll.slice(Math.max(0, i - 6), i + 1);
-      const r = computeReadiness(slice, wellnessAll.slice(0, i + 1));
+      if (i < wellnessAll.length - 30) return null;
+      const r = computeReadiness(wellnessAll.slice(0, i + 1));
       return { datum: wellnessAll[i].id, score: r.score, ampel: r.ampel };
     }).filter(Boolean);
 
@@ -965,6 +990,7 @@ server.tool(
           score_sub,
           ampel,
           empfehlung,
+          warnsignal,
           verletzung_flag,
           muster,
           muster_hinweis: hinweis,
