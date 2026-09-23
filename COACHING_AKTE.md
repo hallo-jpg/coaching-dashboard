@@ -17,7 +17,7 @@
 
 **Umbau:** KW40 Sa LIT-1h30 bleibt, vormittags vor dem Flug · So-Lauf in London. KW41: Läufe Mo/Mi/Fr morgens in London (der So-Lauf rückt auf Fr) · Di-Rad entfällt ersatzlos → Ruhetag · Sa Rückreise = Ruhetag · **LIT-2h von Sa auf So**. KW41-TSS ~151 statt ~195, Laufvolumen unverändert.
 
-**Noch offen:** Arbeit oder Urlaub in London? · Hotel-Gym/Laufband (Athletik, Plan B bei Regen)?
+**Geklärt:** London = **Urlaub** · kein Gym/Laufband → Athletik als Körpergewicht-Programm im Zimmer, bei Regen wird trotzdem gelaufen. Stefan: „das wird schon".
 
 ---
 
