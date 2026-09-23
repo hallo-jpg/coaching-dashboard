@@ -719,16 +719,16 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_summary.current_kw }} bisher</div>
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Vorwoche · KW{{ tss_summary.prev_kw }}</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.prev_ist }}{% if tss_summary.prev_plan > 0 %}<span style="color:var(--muted);font-weight:600"> / {{ tss_summary.prev_plan }}</span>{% endif %}</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Diese Woche · KW{{ tss_summary.current_kw }}</div>
         <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.current_ist }}{% if tss_summary.current_plan > 0 %}<span style="color:var(--muted);font-weight:600"> / {{ tss_summary.current_plan }}</span>{% endif %}</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ist / Plan · 8 Wo.</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{% if tss_summary.fulfilment_pct > 0 %}{{ tss_summary.fulfilment_pct }}%{% else %}–{% endif %}</div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">KW{{ tss_summary.next_kw }} Plan</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{% if tss_summary.next_kw_plan > 0 %}{{ tss_summary.next_kw_plan }}{% else %}–{% endif %}</div>
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø pro Woche · {{ tss_summary.year }}</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.year_avg }}</div>
       </div>
     </div>
   </div>

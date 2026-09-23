@@ -1741,7 +1741,9 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
     first_monday, _ = week_date_range(first_kw, first_year)
 
     try:
-        all_acts = get_activities(first_monday.isoformat(), today.isoformat())
+        # Ab KW1 des Jahres laden → Jahresschnitt aus demselben Abruf
+        year_monday = week_date_range(1, year)[0]
+        all_acts = get_activities(min(first_monday, year_monday).isoformat(), today.isoformat())
     except Exception:
         all_acts = []
 
@@ -1793,11 +1795,13 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
             "phase_color": phase_color,
         })
 
-    # Erfüllung über alle abgeschlossenen Wochen mit Plan: Summe Ist / Summe Plan
-    planned = [w for w in weeks if not w["is_current"] and not w["is_future"] and w["tss_plan"] > 0]
-    plan_sum = sum(w["tss_plan"] for w in planned)
-    fulfilment_pct = round(sum(w["tss_ist"] for w in planned) / plan_sum * 100) if plan_sum else 0
-    current = next((w for w in weeks if w["is_current"]), {"kw": current_kw, "tss_ist": 0, "tss_plan": 0})
+    current  = next((w for w in weeks if w["is_current"]), {"kw": current_kw, "tss_ist": 0, "tss_plan": 0})
+    previous = next((w for w in reversed(weeks) if not w["is_current"] and not w["is_future"]),
+                    {"kw": current_kw - 1, "tss_ist": 0, "tss_plan": 0})
+
+    # Jahresschnitt: abgeschlossene Wochen des laufenden Jahres (KW1 bis Vorwoche)
+    year_weeks = [tss_by_week.get((year, k), 0) for k in range(1, current_kw)]
+    year_avg   = round(sum(year_weeks) / len(year_weeks)) if year_weeks else 0
 
     max_week = max(weeks_raw, key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0})
     min_week = min(
@@ -1812,8 +1816,9 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         "max_tss": max_week["tss_ist"], "max_kw": max_week["kw"],
         "min_tss": min_week["tss_ist"], "min_kw": min_week["kw"],
         "compliance_pct": compliance,
-        "fulfilment_pct": fulfilment_pct,
         "current_kw": current["kw"], "current_ist": current["tss_ist"], "current_plan": current["tss_plan"],
+        "prev_kw": previous["kw"], "prev_ist": previous["tss_ist"], "prev_plan": previous["tss_plan"],
+        "year": year, "year_avg": year_avg, "year_weeks": len(year_weeks),
         "next_kw_plan": next_kw_plan,
         "next_kw": next_kw,
     }
