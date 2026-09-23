@@ -1729,7 +1729,7 @@ def get_sleep_history(days: int = 30) -> dict:
 
 
 def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
-    """Last num_weeks weekly TSS overview, colored relative to own average. Returns (weeks_list, summary_dict)."""
+    """Wochen-TSS der letzten num_weeks: Ist gegen Plan. Returns (weeks_list, summary_dict)."""
     today = date.today()
     year = today.isocalendar()[0]
 
@@ -1770,48 +1770,34 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         tss_ist = round(tss_by_week.get((w_year, w_kw), 0))
         weeks_raw.append({"kw": w_kw, "tss_ist": tss_ist, "is_current": is_current, "is_future": is_future})
 
-    # Average from completed weeks with meaningful training load (exclude sick/vacation outliers)
-    completed = [w["tss_ist"] for w in weeks_raw if not w["is_current"] and not w["is_future"]]
-    normal = [t for t in completed if t >= 150]
-    avg_tss = round(sum(normal) / len(normal)) if normal else (round(sum(completed) / len(completed)) if completed else 1)
-    max_tss = max((w["tss_ist"] for w in weeks_raw), default=1)
-    bar_scale = max(max_tss * 1.05, avg_tss * 1.2, 1)  # headroom above tallest bar
-    # Avg-line position as % from bottom
-    avg_pct = round(avg_tss / bar_scale * 100)
+    # Einfach Ist gegen Plan: gefüllter Balken = Ist, Umriss = Plan, eine Farbe
+    for w in weeks_raw:
+        w["tss_plan"] = parse_kw_plan(w["kw"]).get("tss_plan", 0)
+    completed = [w for w in weeks_raw if not w["is_current"] and not w["is_future"]]
+    avg_tss = round(sum(w["tss_ist"] for w in completed) / len(completed)) if completed else 0
+    bar_scale = max(max((max(w["tss_ist"], w["tss_plan"]) for w in weeks_raw), default=1) * 1.05, 1)
 
     weeks = []
     for w in weeks_raw:
-        tss = w["tss_ist"]
-        is_current, is_future = w["is_current"], w["is_future"]
-        ratio = tss / avg_tss if avg_tss > 0 and not is_future else 0
-
-        if is_current or is_future:
-            bar_color, label_color, arrow = "var(--muted)", "var(--muted)", ""
-        elif ratio > 1.15:
-            bar_color, label_color, arrow = "var(--yellow-mark)", "var(--yellow)", " ↑"
-        elif ratio >= 0.75:
-            bar_color, label_color, arrow = "var(--brand)", "var(--brand)", ""
-        elif ratio >= 0.50:
-            bar_color, label_color, arrow = "var(--yellow-mark)", "var(--yellow)", " ↓"
-        else:
-            bar_color, label_color, arrow = "var(--red-mark)", "var(--red)", ""
-
-        bar_h = max(round(tss / bar_scale * 100), 3) if tss > 0 else (5 if is_current else 2)
-
-        tss_plan = parse_kw_plan(w["kw"]).get("tss_plan", 0)
+        tss, tss_plan = w["tss_ist"], w["tss_plan"]
+        bar_h  = max(round(tss / bar_scale * 100), 3) if tss > 0 else 0
         plan_h = min(round(tss_plan / bar_scale * 100), 100) if tss_plan > 0 else 0
         phase_short, phase_color = _phase_for_kw(w["kw"])
-
         weeks.append({
             "kw": w["kw"], "tss_ist": tss,
-            "bar_color": bar_color, "bar_height_pct": bar_h,
-            "label_color": label_color, "arrow": arrow,
-            "is_current": is_current, "is_future": is_future,
+            "bar_color": "var(--brand)", "bar_height_pct": bar_h,
+            "is_current": w["is_current"], "is_future": w["is_future"],
             "tss_plan": tss_plan,
             "plan_bar_height_pct": plan_h,
             "phase_short": phase_short,
             "phase_color": phase_color,
         })
+
+    # Erfüllung über alle abgeschlossenen Wochen mit Plan: Summe Ist / Summe Plan
+    planned = [w for w in weeks if not w["is_current"] and not w["is_future"] and w["tss_plan"] > 0]
+    plan_sum = sum(w["tss_plan"] for w in planned)
+    fulfilment_pct = round(sum(w["tss_ist"] for w in planned) / plan_sum * 100) if plan_sum else 0
+    current = next((w for w in weeks if w["is_current"]), {"kw": current_kw, "tss_ist": 0, "tss_plan": 0})
 
     max_week = max(weeks_raw, key=lambda w: w["tss_ist"], default={"kw": 0, "tss_ist": 0})
     min_week = min(
@@ -1825,8 +1811,9 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         "avg_tss": avg_tss,
         "max_tss": max_week["tss_ist"], "max_kw": max_week["kw"],
         "min_tss": min_week["tss_ist"], "min_kw": min_week["kw"],
-        "avg_line_pct": avg_pct,
         "compliance_pct": compliance,
+        "fulfilment_pct": fulfilment_pct,
+        "current_kw": current["kw"], "current_ist": current["tss_ist"], "current_plan": current["tss_plan"],
         "next_kw_plan": next_kw_plan,
         "next_kw": next_kw,
     }
