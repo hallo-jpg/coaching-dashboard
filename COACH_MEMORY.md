@@ -33,10 +33,6 @@ Alt: HRV/Schlaf/**TSB**/Ruhepuls, nur Tageswerte. Folge: nach jedem Lastblock ge
 **Jetzt (Dashboard `generate.py` + Coach `get_readiness_score`, identische Formel):** HRV 35 % · Gefühl 25 % · Ruhepuls 20 % · Schlaf 20 %. HRV und RP jeweils **70 % 7-Tage-Schnitt vs. 30-Tage-Normalbereich + 30 % heute**, Schlaf = heute + 3-Nächte-Ø. **TSB zählt nicht** (steht im Trainingsform-Ring). Warnsignal → Score max. 45 🔴: HRV < −2,5 SD (≈ unter 33) oder RP > +7 bpm über dem 30-Tage-Schnitt.
 **Anwenden:** Tiefer TSB bei grüner Readiness = produktive Ermüdung, kein Grund zu kürzen. Einzelne gelbe Tage nicht überbewerten — der Trend über 3+ Tage zählt. Beim Warnsignal gilt weiterhin: erst nach Alkohol fragen (siehe unten).
 
-### 😴 Schlafdauer in intervals.icu = Bettzeit inkl. Wachphasen (geprüft 23.9.2026)
-COROS überträgt nur die Gesamtzeit: `sleepSecs` 8h28 = COROS „Gesamtzeit“, echter Schlaf laut COROS 7h33 (55 min wach). Schlafphasen, Wachzeit und COROS-Schlaf-Score kommen **nicht** an, nur zusätzlich `avgSleepingHR`.
-**Anwenden:** Schlafangaben aus intervals.icu immer als Bettzeit lesen (real ~30–60 min weniger). Schlafqualität/-probleme nur aus Stefans eigener Angabe (Schlafqualität 1–4) oder auf Nachfrage ableiten. Stefan hat entschieden, die Readiness-Schwellen dafür nicht anzupassen.
-
 ### Zonen-Mapping intervals.icu ↔ Sentiero
 Gleiche Zonen, andere Nummerierung (Sentiero ab Z0, intervals.icu ab Z1 → Offset +1):
 - **LIT** = Sentiero Z0+Z1+Z2 = intervals.icu **Z1+Z2+Z3** (Z3 = FatMax = LIT, kein Drift-Signal!)
