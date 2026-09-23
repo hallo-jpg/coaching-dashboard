@@ -13,7 +13,11 @@
 
 **Fachliche Leitplanke (Vorschlag):** Das fehlende Radvolumen wird **nicht** in Laufkilometer umgerechnet — die Wade (MTSS-Verdacht) verträgt keinen Sprung. London-Woche = Laufwoche mit Easy-Läufen morgens + Kadenz + Athletik, TSS bewusst unter Plan. Die Rampe startet dann nach der Rückkehr.
 
-**Offen, vor dem Umbau zu klären:** Abreise Sa 3.10. wann (Rad morgens noch möglich, oder LIT auf Fr vorziehen)? · Rückkehr Sa 10.10. wann (So lange Einheit möglich)? · Arbeit oder Urlaub in London? · Hotel-Gym/Laufband verfügbar?
+**Flüge (Stefan, 23.9.):** Hin Sa 3.10. MUC 16:00 (LH2478) · zurück Sa 10.10. LHR 13:35 (LH2475), Landung MUC ~16:30.
+
+**Umbau:** KW40 Sa LIT-1h30 bleibt, vormittags vor dem Flug · So-Lauf in London. KW41: Läufe Mo/Mi/Fr morgens in London (der So-Lauf rückt auf Fr) · Di-Rad entfällt ersatzlos → Ruhetag · Sa Rückreise = Ruhetag · **LIT-2h von Sa auf So**. KW41-TSS ~151 statt ~195, Laufvolumen unverändert.
+
+**Noch offen:** Arbeit oder Urlaub in London? · Hotel-Gym/Laufband (Athletik, Plan B bei Regen)?
 
 ---
 
