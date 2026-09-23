@@ -391,7 +391,7 @@ def get_planned_tss_from_icu(week_start: str, week_end: str) -> dict:
 
 
 POWER_TARGETS = [
-    (1, "1s"), (5, "5s"), (15, "15s"), (60, "1 min"), (180, "3 min"),
+    (5, "5s"), (15, "15s"), (60, "1 min"), (180, "3 min"),
     (360, "6 min"), (600, "10 min"),
     (1200, "20 min"), (3600, "60 min"), (5400, "90 min"),
 ]
@@ -405,6 +405,7 @@ PACE_TARGETS = [
     (5000,  "5 km"),
     (10000, "10 km"),
     (21097, "Halbmarathon"),
+    (42195, "Marathon"),
 ]
 
 
