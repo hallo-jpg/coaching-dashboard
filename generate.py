@@ -326,8 +326,8 @@ def week_date_range(kw: int, year: int) -> tuple[date, date]:
 
 # Status als Markierung (Balken, Ringe) vs. als Text (Zahlen, Labels):
 # Amber #fab219 hat auf Weiss 1,8:1 – als Flaeche in Ordnung, als Text nicht.
-STATUS_MARK = {"good": "#0ca30c", "warn": "#fab219", "crit": "#d03b3b"}
-STATUS_TEXT = {"good": "#0a7a0a", "warn": "#a4540b", "crit": "#c2321a"}
+STATUS_MARK = {"good": "#5b8f3a", "warn": "#fab219", "crit": "#d03b3b"}
+STATUS_TEXT = {"good": "#46702c", "warn": "#a4540b", "crit": "#c2321a"}
 
 
 def _status_key(value: float, good_at: float, warn_at: float) -> str:
