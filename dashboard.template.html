@@ -728,7 +728,7 @@
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px">Ø pro Woche · {{ tss_summary.year }}</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{{ tss_summary.year_avg }}</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">{% if tss_summary.year_weeks %}{{ tss_summary.year_avg }}{% else %}–{% endif %}</div>
       </div>
     </div>
   </div>
