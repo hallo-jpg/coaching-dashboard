@@ -16,7 +16,7 @@
 | **Aktuelle KW** | KW39 (21.–27. September 2026) · Erholung · **Stefan in Kroatien** (Mo/Di Arbeit, Mi–Fr Urlaub) |
 | **Aktuelle Phase** | Recovery nach Zielrennen · Mo/Di Pause, erste lockere Einheit frühestens Mi |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
-| **Nächste Phase** | KW40 🔬 **FTP-Baseline** (3+10min, **S-Works auf der Rolle, XCadey + Tacx parallel** → ein FTP + Offset-Faktor) · KW41–43 Volumen-Rampe + Kadenz-Projekt |
+| **Nächste Phase** | KW40 🔬 **FTP-Baseline** (3+10min, **S-Works auf der Rolle, XCadey + Tacx parallel** → ein FTP + Offset-Faktor) · KW41–43 Volumen-Rampe + Kadenz-Projekt · ✈️ **London Sa 3.10.–Sa 10.10.: kein Rad, Laufen morgens** |
 | **Tage bis Rennen** | – · nächste Fixpunkte: FTP-Baseline KW40 (Do 1.10.) · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 |
 | **CTL** | 23,9 (20.9.) · ATL 40,6 · TSB −16,7 · Readiness 78 🟡 (HRV 52, Schlaf 8,6h, RP 53) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |

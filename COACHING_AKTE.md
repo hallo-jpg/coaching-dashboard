@@ -1,7 +1,19 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 21. September 2026*
+*Letzte Aktualisierung: 23. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 23. September 2026 – Reise angekündigt: London 3.–10.10.
+
+**Stefan:** Sa 3.10. bis Sa 10.10. in London · **kein Rad** · Laufen möglich, eher morgens.
+
+**Betroffen:** KW40 Sa (LIT-1h30) + So · KW41 Mo–Sa, davon Rad Di LIT-1h15 und Sa LIT-2h. Der FTP-Test Do 1.10. liegt **vor** der Reise und bleibt.
+
+**Fachliche Leitplanke (Vorschlag):** Das fehlende Radvolumen wird **nicht** in Laufkilometer umgerechnet — die Wade (MTSS-Verdacht) verträgt keinen Sprung. London-Woche = Laufwoche mit Easy-Läufen morgens + Kadenz + Athletik, TSS bewusst unter Plan. Die Rampe startet dann nach der Rückkehr.
+
+**Offen, vor dem Umbau zu klären:** Abreise Sa 3.10. wann (Rad morgens noch möglich, oder LIT auf Fr vorziehen)? · Rückkehr Sa 10.10. wann (So lange Einheit möglich)? · Arbeit oder Urlaub in London? · Hotel-Gym/Laufband verfügbar?
 
 ---
 
