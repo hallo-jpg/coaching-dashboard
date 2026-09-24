@@ -1246,15 +1246,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                             else "var(--yellow)" if tss_compliance_pct >= 40
                             else "var(--accent)")
 
-    kern_days  = [d for d in days if d["kern"]]
-    kern_total = len(kern_days)
-    kern_done  = sum(1 for d in kern_days if d["done"])
-    kern_open  = sum(1 for d in kern_days if not d["done"] and not d["missed"])
-    kern_offset = calc_ring_offset(kern_done, kern_total or 1, CIRC_OUTER)
-    kern_color  = ("var(--brand)" if kern_total and kern_done == kern_total
-                   else "var(--red)" if any(d["missed"] for d in kern_days)
-                   else "var(--text)")
-
     sick_days   = [d for d in days if not d["done"] and not d["rest"] and _is_past(d["tag"])]
     sick_notice = ""
     if sick_days and all(not d["done"] for d in days if not d["rest"]):
@@ -1348,8 +1339,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "tss_compliance_pct": tss_compliance_pct,
         "tss_compliance_offset": tss_compliance_offset,
         "tss_compliance_color": tss_compliance_color,
-        "kern_total": kern_total, "kern_done": kern_done, "kern_open": kern_open,
-        "kern_offset": kern_offset, "kern_color": kern_color, "kern_days": kern_days,
         "readiness_score": r_score_combined, "readiness_offset": r_offset,
         "readiness_color": r_color, "readiness_label": r_label, "readiness_sub": r_sub,
         "score_obj": score_obj,

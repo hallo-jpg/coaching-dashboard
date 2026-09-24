@@ -72,7 +72,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 | **Datenquellen** | intervals.icu API: Wellness, Activities, Power-Curves, Pace-Curves, Wochenplan aus `planung/kw[N].md` |
 
 **Karten im Dashboard (alle auto-generiert):**
-- Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), **Kern-Ring** (erledigte `🎯 Kern`-Einheiten der Woche)
+- Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), Wochenziel-Ring (TSS-Compliance)
 - Wochenplan (aus `planung/kw[N].md` + intervals.icu Aktivitäten, Kern-Einheiten markiert)
 - Polarisation 8 Wochen **Rad + Lauf** (Rad nach Watt, Lauf nach HF) + Zeitanteil Rad : Lauf gegen den Soll-Split
 - **Lauf-Aufbau** 12 Wochen: km/Woche gegen die +10%-Grenze, längster Lauf gegen die 30-Tage-Regel

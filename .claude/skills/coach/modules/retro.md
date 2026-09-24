@@ -38,7 +38,7 @@ Hinweise:
 - **Kadenz:** Das Wochenziel steht in der Workout-Spalte des Plans (z.B. „Kadenz-Fokus 165"). Qualitätsläufe
   und Rennen fließen nicht ein (dort ist die Kadenz ohnehin höher bzw. driftet).
 - Fehlt eine Datengrundlage (kein Lauf in der Woche): Kennzahl `–`, zählt nicht in die Note.
-- Pläne vor KW40 (z.B. KW39) haben keine `🎯 Kern`-Markierungen → Kennzahl 1 = `–`, Note ohne Zeile 2.
+- Pläne vor KW39 haben keine `🎯 Kern`-Markierungen → Kennzahl 1 = `–`, Note ohne Zeile 2.
 
 ### Rad-Block (kein Einfluss auf die Note, aber immer ausgeben)
 - **Rad-Qualität:** gefahren ja/nein · Qualität per Tabelle unten.

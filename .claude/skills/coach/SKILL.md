@@ -135,7 +135,7 @@ Bei Wochenplanung danach: **Retro** (`modules/retro.md`) → **Checks** (`module
 2. **Lauf-Qualität** (Standard Fr) – bis KW44 der Easy-Lauf mit Kadenz-Fokus + Athletik
 3. **Eine lange Einheit am Wochenende** (Sa oder So, Rad oder Lauf)
 
-In der Notiz-Spalte mit **`🎯 Kern`** markieren. Kern fällt aus → verschieben (Interferenzregeln beachten),
+**In jedem Wochenplan** (auch Stubs, sobald sie ausgeplant werden) in der Notiz-Spalte mit **`🎯 Kern`** markieren – das Dashboard zeigt daraus ein „Kern“-Label im Wochenplan. Kern fällt aus → verschieben (Interferenzregeln beachten),
 flexible Einheit fällt aus → ersatzlos. In Entlastungswochen gibt es keine Qualität – dort markiert der
 Plan 2–3 lockere Einheiten als Kern (z.B. HF-160-Check, lange lockere Einheit am WE). Reisewochen: Kern so
 setzen, wie es die Reise zulässt, und das im Plan sagen.

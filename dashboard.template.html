@@ -192,14 +192,6 @@
   .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;
                background: linear-gradient(180deg, rgba(255,107,53,0.05), var(--card) 60%); }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
-  .kern-list { display: flex; flex-direction: column; gap: 3px; width: 100%; text-align: left; }
-  .kern-item { display: flex; align-items: baseline; gap: 6px; font-size: 0.66rem; color: var(--text2); min-width: 0; }
-  .kern-mark { width: 12px; flex-shrink: 0; font-weight: 800; color: var(--muted); text-align: center; }
-  .kern-tag  { font-weight: 700; color: var(--muted); flex-shrink: 0; width: 18px; }
-  .kern-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-  .kern-done .kern-mark { color: var(--brand); }
-  .kern-done .kern-name { color: var(--text); }
-  .kern-missed .kern-mark, .kern-missed .kern-name { color: var(--red); }
   .kern-badge { display: inline-block; margin-left: 6px; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.4px;
                 text-transform: uppercase; color: var(--brand); border: 1px solid currentColor; border-radius: 4px;
                 padding: 0 4px; vertical-align: 2px; }
@@ -229,7 +221,6 @@
   .ausblick-sub .ico, .ausblick-table .ico { width: 12px; height: 12px;
                         color: var(--muted); vertical-align: -1px; }
   /* im Wochenplan: ruhiges Glyph, die Statusfarbe traegt der Punkt links */
-  .kern-name .ico { width: 11px; height: 11px; vertical-align: -1px; margin-right: 2px; }
   .day-workout .ico { width: 14px; height: 14px; color: var(--text2);
                       vertical-align: -2px; flex-shrink: 0; }
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
@@ -530,9 +521,9 @@
     </div>
   </div>
 
-  <!-- Kern-Einheiten der Woche -->
+  <!-- Wochen-TSS Compliance -->
   <div class="ring-card">
-    <div class="ring-eyebrow">Kern-Einheiten · KW{{ kw }}</div>
+    <div class="ring-eyebrow">Wochenziel · TSS</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
@@ -542,36 +533,18 @@
           </linearGradient>
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
-        {% if kern_total %}
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ kern_offset }}"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}"
                 transform="rotate(-90 65 65)"/>
-        {% endif %}
       </svg>
       <div class="ring-center">
-        {% if kern_total %}
-        <span class="ring-num" style="color:{{ kern_color }};font-size:1.8rem">{{ kern_done }}/{{ kern_total }}</span>
-        <span class="ring-sub">erledigt</span>
-        {% else %}
-        <span class="ring-num" style="color:var(--muted);font-size:1.8rem">–</span>
-        <span class="ring-sub">kein Kern</span>
-        {% endif %}
+        <span class="ring-num" style="color:{{ tss_compliance_color }};font-size:1.8rem">{{ tss_compliance_pct }}%</span>
+        <span class="ring-sub">TSS</span>
       </div>
     </div>
     <div class="phase-ring-info">
-      {% if kern_total %}
-      <div class="kern-list">
-        {% for d in kern_days %}
-        <div class="kern-item {% if d.done %}kern-done{% elif d.missed %}kern-missed{% endif %}">
-          <span class="kern-mark">{% if d.done %}✓{% elif d.missed %}!{% else %}○{% endif %}</span>
-          <span class="kern-tag">{{ d.tag }}</span>
-          <span class="kern-name">{{ d.workout|plan }}</span>
-        </div>
-        {% endfor %}
-      </div>
-      {% else %}
-      <div class="pri-sub">Im Wochenplan ist nichts als 🎯 Kern markiert</div>
-      {% endif %}
+      <div class="pri-main">{{ tss_ist }} / {{ tss_plan }} TSS</div>
+      <div class="pri-sub">Wochenziel · KW{{ kw }}</div>
     </div>
   </div>
 </div>
