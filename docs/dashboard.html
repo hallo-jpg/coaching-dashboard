@@ -192,6 +192,27 @@
   .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;
                background: linear-gradient(180deg, rgba(255,107,53,0.05), var(--card) 60%); }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
+  .kern-list { display: flex; flex-direction: column; gap: 3px; width: 100%; text-align: left; }
+  .kern-item { display: flex; align-items: baseline; gap: 6px; font-size: 0.66rem; color: var(--text2); min-width: 0; }
+  .kern-mark { width: 12px; flex-shrink: 0; font-weight: 800; color: var(--muted); text-align: center; }
+  .kern-tag  { font-weight: 700; color: var(--muted); flex-shrink: 0; width: 18px; }
+  .kern-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .kern-done .kern-mark { color: var(--brand); }
+  .kern-done .kern-name { color: var(--text); }
+  .kern-missed .kern-mark, .kern-missed .kern-name { color: var(--red); }
+  .kern-badge { display: inline-block; margin-left: 6px; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.4px;
+                text-transform: uppercase; color: var(--brand); border: 1px solid currentColor; border-radius: 4px;
+                padding: 0 4px; vertical-align: 2px; }
+  .split-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .split-lbl { font-size: 0.6rem; color: var(--muted); white-space: nowrap; }
+  .split-bar { flex: 1; display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: var(--track); min-width: 40px; }
+  .split-val { font-size: 0.66rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .mini-tile { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px; text-align: center; min-width: 0; }
+  .mini-lbl  { font-size: 0.58rem; color: var(--muted); margin-bottom: 2px; }
+  .mini-val  { font-size: 0.85rem; font-weight: 800; color: var(--text); }
+  .mini-unit { font-size: 0.6rem; color: var(--muted); font-weight: 600; }
+  .hf-dot { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
+            background: var(--card); border: 1.5px solid var(--brand); z-index: 3; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -208,6 +229,7 @@
   .ausblick-sub .ico, .ausblick-table .ico { width: 12px; height: 12px;
                         color: var(--muted); vertical-align: -1px; }
   /* im Wochenplan: ruhiges Glyph, die Statusfarbe traegt der Punkt links */
+  .kern-name .ico { width: 11px; height: 11px; vertical-align: -1px; margin-right: 2px; }
   .day-workout .ico { width: 14px; height: 14px; color: var(--text2);
                       vertical-align: -2px; flex-shrink: 0; }
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
@@ -476,9 +498,9 @@
     </div>
   </div>
 
-  <!-- Wochen-TSS Compliance -->
+  <!-- Kern-Einheiten der Woche -->
   <div class="ring-card">
-    <div class="ring-eyebrow">Wochenziel · TSS</div>
+    <div class="ring-eyebrow">Kern-Einheiten · KW39</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
@@ -488,18 +510,20 @@
           </linearGradient>
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="79.5"
-                transform="rotate(-90 65 65)"/>
+        
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--yellow);font-size:1.8rem">77%</span>
-        <span class="ring-sub">TSS</span>
+        
+        <span class="ring-num" style="color:var(--muted);font-size:1.8rem">–</span>
+        <span class="ring-sub">kein Kern</span>
+        
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">196 / 255 TSS</div>
-      <div class="pri-sub">Wochenziel · KW39</div>
+      
+      <div class="pri-sub">Im Wochenplan ist nichts als 🎯 Kern markiert</div>
+      
+      <div class="pri-sub" style="margin-top:6px">196 / 255 TSS</div>
     </div>
   </div>
 </div>
@@ -849,42 +873,47 @@
 
   <!-- POLARISATION (in rechter Spalte) — 8-Wochen Donut -->
   <div class="polar-card" style="margin-bottom:0;flex:1">
-    <div class="chard"><div class="chard-icon"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M4 19.5V10M10 19.5V5M16 19.5v-6.5M3 19.5h18"/></svg></div>Polarisation · 8 Wochen · Rad</div>
+    <div class="chard"><div class="chard-icon"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M4 19.5V10M10 19.5V5M16 19.5v-6.5M3 19.5h18"/></svg></div>Polarisation · 8 Wochen · Rad + Lauf</div>
     
-    <span class="pi-badge pi-warn">LIT: 78% · ⚠️ Zu viel Grauzone (Z3)</span>
+    <span class="pi-badge pi-warn">LIT: 66% · ⚠️ Zu viel Grauzone (Z3)</span>
     <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
       <svg viewBox="0 0 120 120" width="120" height="120" style="flex-shrink:0">
   <circle cx="60" cy="60" r="46" fill="none" stroke="#ecebe7" stroke-width="20"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#ff9366" stroke-width="20" stroke-dasharray="225.4 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#e05613" stroke-width="20" stroke-dasharray="49.1 289.0" stroke-dashoffset="-297.7" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#bd400a" stroke-width="20" stroke-dasharray="5.8 289.0" stroke-dashoffset="-346.8" opacity="0.75"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="#992f07" stroke-width="20" stroke-dasharray="8.7 289.0" stroke-dashoffset="-352.6" opacity="0.75"/>
-  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#16110f" font-family="system-ui">78%</text>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#ff9366" stroke-width="20" stroke-dasharray="190.8 289.0" stroke-dashoffset="-72.3" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#e05613" stroke-width="20" stroke-dasharray="54.9 289.0" stroke-dashoffset="-263.0" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#bd400a" stroke-width="20" stroke-dasharray="26.0 289.0" stroke-dashoffset="-317.9" opacity="0.75"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="#992f07" stroke-width="20" stroke-dasharray="17.3 289.0" stroke-dashoffset="-343.9" opacity="0.75"/>
+  <text x="60" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#16110f" font-family="system-ui">66%</text>
   <text x="60" y="69" text-anchor="middle" font-size="8" fill="#8b837e" font-family="system-ui">LIT 8W</text>
 </svg>
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--z1);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">LIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">78%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">66%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--z3);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">Grauzone</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">17%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">19%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--z4);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">MIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">2%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">9%</span>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
           <span style="width:8px;height:8px;border-radius:50%;background:var(--z5);display:inline-block;flex-shrink:0"></span>
           <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">3%</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">6%</span>
         </div>
-        <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
+        <div class="polar-note">Ziel ≥80% LIT · Grauzone &lt;15% · Rad nach Watt, Lauf nach HF</div>
       </div>
+    </div>
+    <div class="split-row">
+      <span class="split-lbl">Zeit Rad : Lauf</span>
+      <div class="split-bar"><div style="width:63%;background:var(--brand)"></div><div style="width:37%;background:var(--z1)"></div></div>
+      <span class="split-val">63 : 37</span>
     </div>
     
   </div>
@@ -1117,6 +1146,313 @@
       
       </tbody>
     </table>
+  </div>
+
+</div>
+
+<!-- LAUF: AUFBAU + PACE BEI HF 160 -->
+<div class="two-col-grid">
+
+  <!-- LAUF-AUFBAU -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="card-headline"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><circle cx="16" cy="4.8" r="2"/><path d="M14.4 8.8 11.4 13.2"/><path d="M14.4 8.8 17.8 10.4 18.6 13.6"/><path d="M14.4 8.8 11 9.8 9.2 7.6"/><path d="M11.4 13.2 13.8 16.4 12.6 20.6"/><path d="M11.4 13.2 8.2 15.2 5.8 19.4"/></svg>Lauf-Aufbau · 12 Wochen</div>
+      <span class="kw-pill">+10%-Regel</span>
+    </div>
+    
+    <div style="position:relative;height:100px;margin-bottom:6px">
+      <div style="display:flex;gap:3px;height:100%">
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap"></span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:14%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:0%;min-height:0;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW28</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:0;margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW28</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">0 km · längster 0.0 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 3 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap"></span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:14%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:0%;min-height:0;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW29</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW29</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">0 km · längster 0.0 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 3 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">8</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:14%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:36%;min-height:2px;background:var(--red-mark);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW30</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW30</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">8.0 km · längster 4.4 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 3 km · überschritten</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">11</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:50%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:49%;min-height:2px;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW31</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW31</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">10.8 km · längster 5.8 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 11.0 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">12</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:62%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:54%;min-height:2px;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW32</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW32</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">12.0 km · längster 6.8 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 13.8 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">5</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:68%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:24%;min-height:2px;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW33</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW33</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">5.4 km · längster 5.4 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 15.0 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap"></span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:54%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:0%;min-height:0;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW34</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW34</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">0 km · längster 0.0 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 12.1 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap"></span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:45%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:0%;min-height:0;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW35</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW35</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">0 km · längster 0.0 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 10.1 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">9</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:33%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:41%;min-height:2px;background:var(--red-mark);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW36</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW36</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">9.2 km · längster 4.8 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 7.3 km · überschritten</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">10</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:55%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:46%;min-height:2px;background:var(--brand);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW37</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW37</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">10.3 km · längster 6.9 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 12.2 km</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">18</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:60%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:83%;min-height:2px;background:var(--red-mark);border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--muted);height:10px;line-height:10px;margin-top:2px">KW38</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW38</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">18.4 km · längster 10.1 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 13.3 km · überschritten</div>
+          </div>
+        </div>
+        
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">4</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:91%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:18%;min-height:2px;background:var(--brand);border-radius:3px 3px 0 0;opacity:0.55"></div>
+          </div>
+          <span style="font-size:0.44rem;color:var(--text);height:10px;line-height:10px;margin-top:2px">KW39</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;right:0;margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW39</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">4.0 km · längster 4.0 km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze 20.2 km</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div style="font-size:0.44rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;margin-top:4px">
+      <span style="display:inline-flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:6px;background:var(--brand);border-radius:1px"></span>km</span>
+      <span style="display:inline-flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;border-top:1.5px dashed var(--muted)"></span>Grenze: +10% auf Vorwoche bzw. Ø 4 Wo. (unter 15 km: +3 km)</span>
+      <span style="display:inline-flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:6px;background:var(--red-mark);border-radius:1px"></span>über der Grenze</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div class="mini-tile">
+        <div class="mini-lbl">Diese Woche</div>
+        <div class="mini-val">4.0<span class="mini-unit"> / 20.2 km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">Ø 4 Wochen</div>
+        <div class="mini-val">9.5<span class="mini-unit"> km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">Längster Lauf · 30 T.</div>
+        <div class="mini-val">10.1<span class="mini-unit"> → max 11.1</span></div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- PACE BEI HF 160 -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="card-headline"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M3.5 16.5 9 10.5l3.5 3L20.5 6"/><path d="M15.5 6h5v5"/></svg>Pace bei HF 160 · 6 Monate</div>
+      <span class="kw-pill">14 Läufe</span>
+    </div>
+    
+    <div style="position:relative;width:100%;height:90px;margin-bottom:22px">
+      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none" overflow="visible">
+        <line x1="0" y1="44.8" x2="300" y2="44.8" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6" vector-effect="non-scaling-stroke"/>
+        <path d="M6.7,44.0 L15.0,25.6 L53.3,32.8 L65.0,32.0 L71.7,36.0 L88.3,34.4 L108.3,35.2 L116.7,36.0 L200.0,39.2 L225.0,43.2 L271.7,52.0 L275.0,59.2 L291.7,64.0 L296.7,63.2" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      </svg>
+      
+      <span class="hf-dot" style="left:2.2%;top:55.0%" title="01.04. · 7:29/km"></span>
+      
+      <span class="hf-dot" style="left:5.0%;top:10.0%" title="06.04. · 6:44/km"></span>
+      
+      <span class="hf-dot" style="left:17.8%;top:57.0%" title="29.04. · 7:31/km"></span>
+      
+      <span class="hf-dot" style="left:21.7%;top:53.0%" title="06.05. · 7:27/km"></span>
+      
+      <span class="hf-dot" style="left:23.9%;top:25.0%" title="10.05. · 6:59/km"></span>
+      
+      <span class="hf-dot" style="left:29.4%;top:50.0%" title="20.05. · 7:24/km"></span>
+      
+      <span class="hf-dot" style="left:36.1%;top:57.0%" title="01.06. · 7:31/km"></span>
+      
+      <span class="hf-dot" style="left:38.9%;top:28.0%" title="06.06. · 7:02/km"></span>
+      
+      <span class="hf-dot" style="left:66.7%;top:63.0%" title="26.07. · 7:37/km"></span>
+      
+      <span class="hf-dot" style="left:75.0%;top:70.0%" title="10.08. · 7:44/km"></span>
+      
+      <span class="hf-dot" style="left:90.6%;top:63.0%" title="07.09. · 7:37/km"></span>
+      
+      <span class="hf-dot" style="left:91.7%;top:88.0%" title="09.09. · 8:02/km"></span>
+      
+      <span class="hf-dot" style="left:97.2%;top:90.0%" title="19.09. · 8:04/km"></span>
+      
+      <span class="hf-dot" style="left:98.9%;top:59.0%" title="22.09. · 7:33/km"></span>
+      
+      <span style="position:absolute;right:0;top:calc(56.0% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
+      <div style="position:absolute;bottom:-16px;left:0;right:0">
+        
+        <span style="position:absolute;left:2.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Apr</span>
+        
+        <span style="position:absolute;left:18.9%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
+        
+        <span style="position:absolute;left:36.1%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
+        
+        <span style="position:absolute;left:52.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
+        
+        <span style="position:absolute;left:70.0%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
+        
+        <span style="position:absolute;left:87.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
+        
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div class="mini-tile">
+        <div class="mini-lbl">Letzter Lauf</div>
+        <div class="mini-val">7:33<span class="mini-unit"> /km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">Ø letzte 4</div>
+        <div class="mini-val">7:49<span class="mini-unit"> /km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">vs. 4 Läufe davor</div>
+        <div class="mini-val" style="color:var(--red)">+20<span class="mini-unit"> s/km</span></div>
+      </div>
+    </div>
+    <div class="polar-note" style="margin-top:8px">Median-Pace aller Sekunden bei HF 157–163 (ab Minute 10) · nur Easy-Läufe · höher = schneller</div>
+    
   </div>
 
 </div>
