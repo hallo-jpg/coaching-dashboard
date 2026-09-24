@@ -430,18 +430,15 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="10.4"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#46702c">97</span>
+        <span class="ring-num" style="color:var(--muted)">–</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
-      
-      <div class="ring-status-tag">🟢 Voll trainieren</div>
-      <div class="ring-status-sub">HRV über Schnitt</div>
       
     </div>
   </div>
@@ -463,15 +460,15 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="244.7"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="240.8"
                 transform="rotate(-90 65 65)"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="#ecebe7" stroke-width="8"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="57.5"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="44.2"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#c2321a;font-size:1.8rem">-20</span>
+        <span class="ring-num" style="color:#c2321a;font-size:1.8rem">-22</span>
         <span class="ring-sub">TSB</span>
       </div>
     </div>
@@ -479,12 +476,12 @@
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:var(--ctl)"></div>
         <span class="dl-name">CTL · Fitness</span>
-        <span class="dl-val" style="color:var(--text)">26.3 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
+        <span class="dl-val" style="color:var(--text)">27.3 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
       </div>
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:var(--atl)"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:var(--text)">46.6</span>
+        <span class="dl-val" style="color:var(--text)">49.7</span>
       </div>
     </div>
   </div>
@@ -526,125 +523,57 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:#46702c">97</div>
-      <div class="readiness-tag" style="color:#46702c">🟢 Voll trainieren</div>
+      <div class="readiness-score" style="color:var(--muted)">–</div>
       
     </div>
 
     
-
-    
-    <div style="display:flex;gap:8px;margin-bottom:12px">
-      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">96</div>
-        <div style="font-size:0.55rem;color:var(--muted)">HRV · Puls · Schlaf</div>
-      </div>
-      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">100</div>
-        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
-      </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:var(--muted);text-align:center;margin-bottom:10px">
+      ⏳ Uhr noch nicht synchronisiert – Werte folgen
     </div>
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
+    
+
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">51 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--green);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Normal</div>
-        <div class="rbar-lbl">Normalber. 45–57 ms</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
+        <div class="rbar-lbl">Normalber. 44–57 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">9.5h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">0.0h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">-20</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">-22</div>
         <div class="rbar-lbl">Form</div>
         
         <div style="font-size:0.6rem;font-weight:700;color:var(--accent);margin-top:2px">
-          ATL +14.3 ⚠️
+          ATL +17.1 ⚠️
         </div>
         
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">54 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
 
     
-    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
-          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
-          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
-          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
-          <span style="font-size:0.62rem;color:var(--text2)">
-            Keine ✅ (1/4)
-            
-          </span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-    </div>
-    
 
     <div class="sparkline-wrap">
       <div class="spark-label">Readiness · 7 Tage</div>
       <div class="sparkline">
-        
-        <div class="spark-bar " style="height:90%;background:#5b8f3a"></div>
         
         <div class="spark-bar " style="height:96%;background:#5b8f3a"></div>
         
@@ -656,7 +585,9 @@
         
         <div class="spark-bar " style="height:100%;background:#5b8f3a"></div>
         
-        <div class="spark-bar spark-today" style="height:97%;background:#5b8f3a"></div>
+        <div class="spark-bar " style="height:97%;background:#5b8f3a"></div>
+        
+        <div class="spark-bar spark-today" style="height:100%;background:#5b8f3a"></div>
         
       </div>
     </div>
@@ -1378,51 +1309,51 @@
     <div style="position:relative;width:100%;height:90px;margin-bottom:38px">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none" overflow="visible">
         <line x1="0" y1="44.8" x2="300" y2="44.8" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6" vector-effect="non-scaling-stroke"/>
-        <path d="M6.7,44.0 L15.0,25.6 L53.3,32.8 L65.0,32.0 L71.7,36.0 L88.3,34.4 L108.3,35.2 L116.7,36.0 L200.0,39.2 L225.0,43.2 L271.7,52.0 L275.0,59.2 L291.7,64.0 L296.7,63.2" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        <path d="M5.0,44.0 L13.3,25.6 L51.7,32.8 L63.3,32.0 L70.0,36.0 L86.7,34.4 L106.7,35.2 L115.0,36.0 L198.3,39.2 L223.3,43.2 L270.0,52.0 L273.3,59.2 L290.0,64.0 L295.0,63.2" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
       
-      <span class="hf-dot" style="left:2.2%;top:55.0%" title="01.04. · 7:29/km"></span>
+      <span class="hf-dot" style="left:1.7%;top:55.0%" title="01.04. · 7:29/km"></span>
       
-      <span class="hf-dot" style="left:5.0%;top:10.0%" title="06.04. · 6:44/km"></span>
+      <span class="hf-dot" style="left:4.4%;top:10.0%" title="06.04. · 6:44/km"></span>
       
-      <span class="hf-dot" style="left:17.8%;top:57.0%" title="29.04. · 7:31/km"></span>
+      <span class="hf-dot" style="left:17.2%;top:57.0%" title="29.04. · 7:31/km"></span>
       
-      <span class="hf-dot" style="left:21.7%;top:53.0%" title="06.05. · 7:27/km"></span>
+      <span class="hf-dot" style="left:21.1%;top:53.0%" title="06.05. · 7:27/km"></span>
       
-      <span class="hf-dot" style="left:23.9%;top:25.0%" title="10.05. · 6:59/km"></span>
+      <span class="hf-dot" style="left:23.3%;top:25.0%" title="10.05. · 6:59/km"></span>
       
-      <span class="hf-dot" style="left:29.4%;top:50.0%" title="20.05. · 7:24/km"></span>
+      <span class="hf-dot" style="left:28.9%;top:50.0%" title="20.05. · 7:24/km"></span>
       
-      <span class="hf-dot" style="left:36.1%;top:57.0%" title="01.06. · 7:31/km"></span>
+      <span class="hf-dot" style="left:35.6%;top:57.0%" title="01.06. · 7:31/km"></span>
       
-      <span class="hf-dot" style="left:38.9%;top:28.0%" title="06.06. · 7:02/km"></span>
+      <span class="hf-dot" style="left:38.3%;top:28.0%" title="06.06. · 7:02/km"></span>
       
-      <span class="hf-dot" style="left:66.7%;top:63.0%" title="26.07. · 7:37/km"></span>
+      <span class="hf-dot" style="left:66.1%;top:63.0%" title="26.07. · 7:37/km"></span>
       
-      <span class="hf-dot" style="left:75.0%;top:70.0%" title="10.08. · 7:44/km"></span>
+      <span class="hf-dot" style="left:74.4%;top:70.0%" title="10.08. · 7:44/km"></span>
       
-      <span class="hf-dot" style="left:90.6%;top:63.0%" title="07.09. · 7:37/km"></span>
+      <span class="hf-dot" style="left:90.0%;top:63.0%" title="07.09. · 7:37/km"></span>
       
-      <span class="hf-dot" style="left:91.7%;top:88.0%" title="09.09. · 8:02/km"></span>
+      <span class="hf-dot" style="left:91.1%;top:88.0%" title="09.09. · 8:02/km"></span>
       
-      <span class="hf-dot" style="left:97.2%;top:90.0%" title="19.09. · 8:04/km"></span>
+      <span class="hf-dot" style="left:96.7%;top:90.0%" title="19.09. · 8:04/km"></span>
       
-      <span class="hf-dot" style="left:98.9%;top:59.0%" title="22.09. · 7:33/km"></span>
+      <span class="hf-dot" style="left:98.3%;top:59.0%" title="22.09. · 7:33/km"></span>
       
       <span style="position:absolute;right:0;top:calc(56.0% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
       <div style="position:absolute;bottom:-20px;left:0;right:0">
         
-        <span style="position:absolute;left:2.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Apr</span>
+        <span style="position:absolute;left:1.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Apr</span>
         
-        <span style="position:absolute;left:18.9%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
+        <span style="position:absolute;left:18.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
         
-        <span style="position:absolute;left:36.1%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
+        <span style="position:absolute;left:35.6%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
         
-        <span style="position:absolute;left:52.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
+        <span style="position:absolute;left:52.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
         
-        <span style="position:absolute;left:70.0%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
+        <span style="position:absolute;left:69.4%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
         
-        <span style="position:absolute;left:87.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
+        <span style="position:absolute;left:86.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
         
       </div>
     </div>
@@ -1465,31 +1396,31 @@
         </defs>
         <line x1="0" y1="26" x2="300" y2="26" stroke="var(--border)" stroke-width="0.5"/>
         <line x1="0" y1="53" x2="300" y2="53" stroke="var(--border)" stroke-width="0.5"/>
-        <path d="M0.0,7.3 L1.6,7.4 L3.3,9.1 L4.9,10.8 L6.6,12.4 L8.2,13.3 L9.9,12.7 L11.5,14.3 L13.2,15.2 L14.8,14.2 L16.5,15.7 L18.1,15.8 L19.8,17.4 L21.4,17.3 L23.1,18.7 L24.7,20.2 L26.4,21.6 L28.0,23.0 L29.7,24.3 L31.3,25.6 L33.0,26.9 L34.6,28.1 L36.3,29.4 L37.9,30.5 L39.6,31.7 L41.2,32.8 L42.9,34.0 L44.5,35.0 L46.2,36.1 L47.8,37.1 L49.5,35.5 L51.1,34.2 L52.7,35.3 L54.4,32.8 L56.0,32.7 L57.7,33.8 L59.3,29.9 L61.0,23.8 L62.6,25.1 L64.3,26.4 L65.9,26.5 L67.6,26.3 L69.2,27.6 L70.9,27.3 L72.5,26.7 L74.2,26.3 L75.8,26.5 L77.5,25.0 L79.1,24.4 L80.8,21.5 L82.4,22.9 L84.1,24.2 L85.7,25.5 L87.4,25.9 L89.0,24.5 L90.7,24.3 L92.3,22.8 L94.0,24.1 L95.6,22.0 L97.3,23.4 L98.9,20.8 L100.5,18.3 L102.2,19.7 L103.8,15.9 L105.5,13.8 L107.1,15.4 L108.8,14.7 L110.4,15.4 L112.1,16.0 L113.7,17.5 L115.4,16.8 L117.0,17.3 L118.7,17.9 L120.3,18.4 L122.0,18.8 L123.6,20.2 L125.3,20.7 L126.9,22.1 L128.6,21.8 L130.2,20.1 L131.9,11.8 L133.5,13.4 L135.2,15.0 L136.8,15.6 L138.5,17.1 L140.1,16.3 L141.8,15.4 L143.4,16.9 L145.1,18.4 L146.7,18.8 L148.4,20.2 L150.0,20.0 L151.6,21.4 L153.3,20.6 L154.9,19.0 L156.6,20.4 L158.2,21.8 L159.9,23.2 L161.5,24.5 L163.2,25.9 L164.8,27.1 L166.5,28.4 L168.1,29.6 L169.8,30.8 L171.4,31.9 L173.1,33.1 L174.7,34.2 L176.4,35.2 L178.0,36.3 L179.7,37.3 L181.3,38.3 L183.0,39.3 L184.6,40.3 L186.3,41.2 L187.9,42.1 L189.6,43.0 L191.2,43.9 L192.9,44.7 L194.5,45.6 L196.2,46.4 L197.8,46.2 L199.5,47.0 L201.1,46.7 L202.7,47.5 L204.4,48.3 L206.0,47.8 L207.7,48.5 L209.3,47.7 L211.0,46.0 L212.6,46.8 L214.3,47.6 L215.9,48.3 L217.6,47.8 L219.2,46.8 L220.9,47.5 L222.5,48.3 L224.2,49.0 L225.8,48.4 L227.5,49.1 L229.1,49.9 L230.8,50.6 L232.4,51.3 L234.1,51.9 L235.7,52.6 L237.4,53.2 L239.0,53.9 L240.7,54.5 L242.3,55.0 L244.0,55.6 L245.6,56.2 L247.3,54.0 L248.9,54.6 L250.5,55.2 L252.2,55.8 L253.8,56.4 L255.5,55.3 L257.1,55.8 L258.8,56.4 L260.4,57.0 L262.1,57.5 L263.7,58.0 L265.4,58.6 L267.0,57.8 L268.7,58.4 L270.3,57.6 L272.0,57.3 L273.6,57.8 L275.3,56.5 L276.9,57.0 L278.6,57.6 L280.2,51.5 L281.9,52.2 L283.5,51.6 L285.2,49.6 L286.8,50.3 L288.5,51.0 L290.1,50.6 L291.8,50.4 L293.4,48.1 L295.1,48.8 L296.7,48.4 L298.4,47.0 L300.0,44.9 L300,80 L0,80 Z" fill="url(#ctlGradFill)"/>
-        <path d="M0.0,7.3 L1.6,7.4 L3.3,9.1 L4.9,10.8 L6.6,12.4 L8.2,13.3 L9.9,12.7 L11.5,14.3 L13.2,15.2 L14.8,14.2 L16.5,15.7 L18.1,15.8 L19.8,17.4 L21.4,17.3 L23.1,18.7 L24.7,20.2 L26.4,21.6 L28.0,23.0 L29.7,24.3 L31.3,25.6 L33.0,26.9 L34.6,28.1 L36.3,29.4 L37.9,30.5 L39.6,31.7 L41.2,32.8 L42.9,34.0 L44.5,35.0 L46.2,36.1 L47.8,37.1 L49.5,35.5 L51.1,34.2 L52.7,35.3 L54.4,32.8 L56.0,32.7 L57.7,33.8 L59.3,29.9 L61.0,23.8 L62.6,25.1 L64.3,26.4 L65.9,26.5 L67.6,26.3 L69.2,27.6 L70.9,27.3 L72.5,26.7 L74.2,26.3 L75.8,26.5 L77.5,25.0 L79.1,24.4 L80.8,21.5 L82.4,22.9 L84.1,24.2 L85.7,25.5 L87.4,25.9 L89.0,24.5 L90.7,24.3 L92.3,22.8 L94.0,24.1 L95.6,22.0 L97.3,23.4 L98.9,20.8 L100.5,18.3 L102.2,19.7 L103.8,15.9 L105.5,13.8 L107.1,15.4 L108.8,14.7 L110.4,15.4 L112.1,16.0 L113.7,17.5 L115.4,16.8 L117.0,17.3 L118.7,17.9 L120.3,18.4 L122.0,18.8 L123.6,20.2 L125.3,20.7 L126.9,22.1 L128.6,21.8 L130.2,20.1 L131.9,11.8 L133.5,13.4 L135.2,15.0 L136.8,15.6 L138.5,17.1 L140.1,16.3 L141.8,15.4 L143.4,16.9 L145.1,18.4 L146.7,18.8 L148.4,20.2 L150.0,20.0 L151.6,21.4 L153.3,20.6 L154.9,19.0 L156.6,20.4 L158.2,21.8 L159.9,23.2 L161.5,24.5 L163.2,25.9 L164.8,27.1 L166.5,28.4 L168.1,29.6 L169.8,30.8 L171.4,31.9 L173.1,33.1 L174.7,34.2 L176.4,35.2 L178.0,36.3 L179.7,37.3 L181.3,38.3 L183.0,39.3 L184.6,40.3 L186.3,41.2 L187.9,42.1 L189.6,43.0 L191.2,43.9 L192.9,44.7 L194.5,45.6 L196.2,46.4 L197.8,46.2 L199.5,47.0 L201.1,46.7 L202.7,47.5 L204.4,48.3 L206.0,47.8 L207.7,48.5 L209.3,47.7 L211.0,46.0 L212.6,46.8 L214.3,47.6 L215.9,48.3 L217.6,47.8 L219.2,46.8 L220.9,47.5 L222.5,48.3 L224.2,49.0 L225.8,48.4 L227.5,49.1 L229.1,49.9 L230.8,50.6 L232.4,51.3 L234.1,51.9 L235.7,52.6 L237.4,53.2 L239.0,53.9 L240.7,54.5 L242.3,55.0 L244.0,55.6 L245.6,56.2 L247.3,54.0 L248.9,54.6 L250.5,55.2 L252.2,55.8 L253.8,56.4 L255.5,55.3 L257.1,55.8 L258.8,56.4 L260.4,57.0 L262.1,57.5 L263.7,58.0 L265.4,58.6 L267.0,57.8 L268.7,58.4 L270.3,57.6 L272.0,57.3 L273.6,57.8 L275.3,56.5 L276.9,57.0 L278.6,57.6 L280.2,51.5 L281.9,52.2 L283.5,51.6 L285.2,49.6 L286.8,50.3 L288.5,51.0 L290.1,50.6 L291.8,50.4 L293.4,48.1 L295.1,48.8 L296.7,48.4 L298.4,47.0 L300.0,44.9" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="44.9" r="3" fill="var(--brand)"/>
-        <circle cx="300" cy="44.9" r="5" fill="var(--brand)" opacity="0.2"/>
+        <path d="M0.0,7.3 L1.6,9.0 L3.3,10.7 L4.9,12.3 L6.6,13.2 L8.2,12.6 L9.9,14.2 L11.5,15.1 L13.2,14.1 L14.8,15.6 L16.5,15.7 L18.1,17.3 L19.8,17.2 L21.4,18.6 L23.1,20.1 L24.7,21.5 L26.4,22.9 L28.0,24.2 L29.7,25.5 L31.3,26.8 L33.0,28.1 L34.6,29.3 L36.3,30.5 L37.9,31.6 L39.6,32.8 L41.2,33.9 L42.9,35.0 L44.5,36.0 L46.2,37.1 L47.8,35.5 L49.5,34.2 L51.1,35.2 L52.7,32.7 L54.4,32.6 L56.0,33.7 L57.7,29.8 L59.3,23.7 L61.0,25.0 L62.6,26.3 L64.3,26.4 L65.9,26.2 L67.6,27.5 L69.2,27.2 L70.9,26.6 L72.5,26.2 L74.2,26.5 L75.8,24.9 L77.5,24.4 L79.1,21.4 L80.8,22.8 L82.4,24.1 L84.1,25.5 L85.7,25.8 L87.4,24.4 L89.0,24.2 L90.7,22.7 L92.3,24.0 L94.0,21.9 L95.6,23.3 L97.3,20.7 L98.9,18.2 L100.5,19.7 L102.2,15.8 L103.8,13.7 L105.5,15.3 L107.1,14.6 L108.8,15.3 L110.4,15.9 L112.1,17.4 L113.7,16.7 L115.4,17.2 L117.0,17.8 L118.7,18.3 L120.3,18.7 L122.0,20.1 L123.6,20.6 L125.3,22.0 L126.9,21.7 L128.6,20.0 L130.2,11.7 L131.9,13.3 L133.5,14.9 L135.2,15.5 L136.8,17.0 L138.5,16.2 L140.1,15.3 L141.8,16.8 L143.4,18.3 L145.1,18.7 L146.7,20.1 L148.4,19.9 L150.0,21.4 L151.6,20.5 L153.3,18.9 L154.9,20.4 L156.6,21.8 L158.2,23.1 L159.9,24.5 L161.5,25.8 L163.2,27.0 L164.8,28.3 L166.5,29.5 L168.1,30.7 L169.8,31.9 L171.4,33.0 L173.1,34.1 L174.7,35.2 L176.4,36.2 L178.0,37.3 L179.7,38.3 L181.3,39.2 L183.0,40.2 L184.6,41.1 L186.3,42.1 L187.9,43.0 L189.6,43.8 L191.2,44.7 L192.9,45.5 L194.5,46.3 L196.2,46.2 L197.8,47.0 L199.5,46.7 L201.1,47.5 L202.7,48.2 L204.4,47.7 L206.0,48.5 L207.7,47.7 L209.3,45.9 L211.0,46.7 L212.6,47.5 L214.3,48.3 L215.9,47.7 L217.6,46.7 L219.2,47.5 L220.9,48.3 L222.5,49.0 L224.2,48.3 L225.8,49.1 L227.5,49.8 L229.1,50.5 L230.8,51.2 L232.4,51.9 L234.1,52.6 L235.7,53.2 L237.4,53.8 L239.0,54.5 L240.7,55.0 L242.3,55.5 L244.0,56.1 L245.6,54.0 L247.3,54.6 L248.9,55.2 L250.5,55.8 L252.2,56.3 L253.8,55.2 L255.5,55.8 L257.1,56.4 L258.8,56.9 L260.4,57.5 L262.1,58.0 L263.7,58.5 L265.4,57.8 L267.0,58.3 L268.7,57.5 L270.3,57.2 L272.0,57.8 L273.6,56.4 L275.3,57.0 L276.9,57.5 L278.6,51.4 L280.2,52.1 L281.9,51.6 L283.5,49.6 L285.2,50.3 L286.8,51.0 L288.5,50.6 L290.1,50.3 L291.8,48.0 L293.4,48.8 L295.1,48.3 L296.7,46.9 L298.4,44.9 L300.0,43.5 L300,80 L0,80 Z" fill="url(#ctlGradFill)"/>
+        <path d="M0.0,7.3 L1.6,9.0 L3.3,10.7 L4.9,12.3 L6.6,13.2 L8.2,12.6 L9.9,14.2 L11.5,15.1 L13.2,14.1 L14.8,15.6 L16.5,15.7 L18.1,17.3 L19.8,17.2 L21.4,18.6 L23.1,20.1 L24.7,21.5 L26.4,22.9 L28.0,24.2 L29.7,25.5 L31.3,26.8 L33.0,28.1 L34.6,29.3 L36.3,30.5 L37.9,31.6 L39.6,32.8 L41.2,33.9 L42.9,35.0 L44.5,36.0 L46.2,37.1 L47.8,35.5 L49.5,34.2 L51.1,35.2 L52.7,32.7 L54.4,32.6 L56.0,33.7 L57.7,29.8 L59.3,23.7 L61.0,25.0 L62.6,26.3 L64.3,26.4 L65.9,26.2 L67.6,27.5 L69.2,27.2 L70.9,26.6 L72.5,26.2 L74.2,26.5 L75.8,24.9 L77.5,24.4 L79.1,21.4 L80.8,22.8 L82.4,24.1 L84.1,25.5 L85.7,25.8 L87.4,24.4 L89.0,24.2 L90.7,22.7 L92.3,24.0 L94.0,21.9 L95.6,23.3 L97.3,20.7 L98.9,18.2 L100.5,19.7 L102.2,15.8 L103.8,13.7 L105.5,15.3 L107.1,14.6 L108.8,15.3 L110.4,15.9 L112.1,17.4 L113.7,16.7 L115.4,17.2 L117.0,17.8 L118.7,18.3 L120.3,18.7 L122.0,20.1 L123.6,20.6 L125.3,22.0 L126.9,21.7 L128.6,20.0 L130.2,11.7 L131.9,13.3 L133.5,14.9 L135.2,15.5 L136.8,17.0 L138.5,16.2 L140.1,15.3 L141.8,16.8 L143.4,18.3 L145.1,18.7 L146.7,20.1 L148.4,19.9 L150.0,21.4 L151.6,20.5 L153.3,18.9 L154.9,20.4 L156.6,21.8 L158.2,23.1 L159.9,24.5 L161.5,25.8 L163.2,27.0 L164.8,28.3 L166.5,29.5 L168.1,30.7 L169.8,31.9 L171.4,33.0 L173.1,34.1 L174.7,35.2 L176.4,36.2 L178.0,37.3 L179.7,38.3 L181.3,39.2 L183.0,40.2 L184.6,41.1 L186.3,42.1 L187.9,43.0 L189.6,43.8 L191.2,44.7 L192.9,45.5 L194.5,46.3 L196.2,46.2 L197.8,47.0 L199.5,46.7 L201.1,47.5 L202.7,48.2 L204.4,47.7 L206.0,48.5 L207.7,47.7 L209.3,45.9 L211.0,46.7 L212.6,47.5 L214.3,48.3 L215.9,47.7 L217.6,46.7 L219.2,47.5 L220.9,48.3 L222.5,49.0 L224.2,48.3 L225.8,49.1 L227.5,49.8 L229.1,50.5 L230.8,51.2 L232.4,51.9 L234.1,52.6 L235.7,53.2 L237.4,53.8 L239.0,54.5 L240.7,55.0 L242.3,55.5 L244.0,56.1 L245.6,54.0 L247.3,54.6 L248.9,55.2 L250.5,55.8 L252.2,56.3 L253.8,55.2 L255.5,55.8 L257.1,56.4 L258.8,56.9 L260.4,57.5 L262.1,58.0 L263.7,58.5 L265.4,57.8 L267.0,58.3 L268.7,57.5 L270.3,57.2 L272.0,57.8 L273.6,56.4 L275.3,57.0 L276.9,57.5 L278.6,51.4 L280.2,52.1 L281.9,51.6 L283.5,49.6 L285.2,50.3 L286.8,51.0 L288.5,50.6 L290.1,50.3 L291.8,48.0 L293.4,48.8 L295.1,48.3 L296.7,46.9 L298.4,44.9 L300.0,43.5" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="43.5" r="3" fill="var(--brand)"/>
+        <circle cx="300" cy="43.5" r="5" fill="var(--brand)" opacity="0.2"/>
       </svg>
       <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.25);pointer-events:none;z-index:5"></div>
       <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem"></div>
       <div style="position:absolute;bottom:-14px;left:0;right:0">
         
-        <span style="position:absolute;left:3.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Apr</span>
+        <span style="position:absolute;left:2.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Apr</span>
         
-        <span style="position:absolute;left:19.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
+        <span style="position:absolute;left:19.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
         
-        <span style="position:absolute;left:36.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
+        <span style="position:absolute;left:36.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
         
-        <span style="position:absolute;left:53.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
+        <span style="position:absolute;left:52.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
         
-        <span style="position:absolute;left:70.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
+        <span style="position:absolute;left:69.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
         
-        <span style="position:absolute;left:87.4%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
+        <span style="position:absolute;left:86.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
         
       </div>
     </div>
     <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
-      Aktuell: <span style="color:var(--text);font-weight:700">CTL 26.3</span>
+      Aktuell: <span style="color:var(--text);font-weight:700">CTL 27.3</span>
     </div>
     
   </div>
@@ -1510,12 +1441,6 @@
     <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
     <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
       
-      
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
-                  height:5%;
-                  background:var(--track);
-                  opacity:0.75"
-           title="0 TSS"></div>
       
       <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:32%;
@@ -1553,6 +1478,12 @@
                   opacity:0.75"
            title="91 TSS"></div>
       
+      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+                  height:5%;
+                  background:var(--track);
+                  opacity:0.75"
+           title="0 TSS"></div>
+      
     </div>
   </div>
 
@@ -1572,8 +1503,8 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,12.4 L10.0,14.5 L20.0,8.1 L30.0,7.9 L40.0,17.2 L50.0,26.1 L60.0,7.6 L70.0,42.3 L80.0,10.4 L90.0,27.7 L100.0,26.1 L110.0,21.2 L120.0,21.9 L130.0,4.5 L140.0,11.2 L150.0,5.7 L160.0,7.5 L170.0,15.3 L180.0,8.3 L190.0,19.1 L200.0,9.6 L210.0,18.8 L220.0,12.3 L230.0,25.2 L240.0,26.9 L250.0,11.7 L260.0,11.1 L270.0,11.9 L280.0,4.0 L290.0,12.3 L300.0,4.0 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,12.4 L10.0,14.5 L20.0,8.1 L30.0,7.9 L40.0,17.2 L50.0,26.1 L60.0,7.6 L70.0,42.3 L80.0,10.4 L90.0,27.7 L100.0,26.1 L110.0,21.2 L120.0,21.9 L130.0,4.5 L140.0,11.2 L150.0,5.7 L160.0,7.5 L170.0,15.3 L180.0,8.3 L190.0,19.1 L200.0,9.6 L210.0,18.8 L220.0,12.3 L230.0,25.2 L240.0,26.9 L250.0,11.7 L260.0,11.1 L270.0,11.9 L280.0,4.0 L290.0,12.3 L300.0,4.0" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M0.0,14.5 L10.0,8.1 L20.0,7.9 L30.0,17.2 L40.0,26.1 L50.0,7.6 L60.0,42.3 L70.0,10.4 L80.0,27.7 L90.0,26.1 L100.0,21.2 L110.0,21.9 L120.0,4.5 L130.0,11.2 L140.0,5.7 L150.0,7.5 L160.0,15.3 L170.0,8.3 L180.0,19.1 L190.0,9.6 L200.0,18.8 L210.0,12.3 L220.0,25.2 L230.0,26.9 L240.0,11.7 L250.0,11.1 L260.0,11.9 L270.0,4.0 L280.0,12.3 L290.0,4.0 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,14.5 L10.0,8.1 L20.0,7.9 L30.0,17.2 L40.0,26.1 L50.0,7.6 L60.0,42.3 L70.0,10.4 L80.0,27.7 L90.0,26.1 L100.0,21.2 L110.0,21.9 L120.0,4.5 L130.0,11.2 L140.0,5.7 L150.0,7.5 L160.0,15.3 L170.0,8.3 L180.0,19.1 L190.0,9.6 L200.0,18.8 L210.0,12.3 L220.0,25.2 L230.0,26.9 L240.0,11.7 L250.0,11.1 L260.0,11.9 L270.0,4.0 L280.0,12.3 L290.0,4.0" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="300" cy="4.0" r="3" fill="#57504c"/>
         <circle cx="300" cy="4.0" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
@@ -2103,12 +2034,12 @@
   }
 
   
-  var ctlPts = [{"x":0.0,"d":"26.03.26","v":54.4},{"x":0.5,"d":"27.03.26","v":54.4},{"x":1.1,"d":"28.03.26","v":53.1},{"x":1.6,"d":"29.03.26","v":51.8},{"x":2.2,"d":"30.03.26","v":50.6},{"x":2.7,"d":"31.03.26","v":49.9},{"x":3.3,"d":"01.04.26","v":50.3},{"x":3.8,"d":"02.04.26","v":49.2},{"x":4.4,"d":"03.04.26","v":48.5},{"x":4.9,"d":"04.04.26","v":49.3},{"x":5.5,"d":"05.04.26","v":48.1},{"x":6.0,"d":"06.04.26","v":48.0},{"x":6.6,"d":"07.04.26","v":46.9},{"x":7.1,"d":"08.04.26","v":47.0},{"x":7.7,"d":"09.04.26","v":45.9},{"x":8.2,"d":"10.04.26","v":44.8},{"x":8.8,"d":"11.04.26","v":43.7},{"x":9.3,"d":"12.04.26","v":42.7},{"x":9.9,"d":"13.04.26","v":41.7},{"x":10.4,"d":"14.04.26","v":40.7},{"x":11.0,"d":"15.04.26","v":39.8},{"x":11.5,"d":"16.04.26","v":38.8},{"x":12.1,"d":"17.04.26","v":37.9},{"x":12.6,"d":"18.04.26","v":37.0},{"x":13.2,"d":"19.04.26","v":36.1},{"x":13.7,"d":"20.04.26","v":35.3},{"x":14.3,"d":"21.04.26","v":34.5},{"x":14.8,"d":"22.04.26","v":33.7},{"x":15.4,"d":"23.04.26","v":32.9},{"x":15.9,"d":"24.04.26","v":32.1},{"x":16.5,"d":"25.04.26","v":33.3},{"x":17.0,"d":"26.04.26","v":34.3},{"x":17.6,"d":"27.04.26","v":33.5},{"x":18.1,"d":"28.04.26","v":35.4},{"x":18.7,"d":"29.04.26","v":35.4},{"x":19.2,"d":"30.04.26","v":34.6},{"x":19.8,"d":"01.05.26","v":37.5},{"x":20.3,"d":"02.05.26","v":42.1},{"x":20.9,"d":"03.05.26","v":41.1},{"x":21.4,"d":"04.05.26","v":40.1},{"x":22.0,"d":"05.05.26","v":40.0},{"x":22.5,"d":"06.05.26","v":40.2},{"x":23.1,"d":"07.05.26","v":39.2},{"x":23.6,"d":"08.05.26","v":39.5},{"x":24.2,"d":"09.05.26","v":39.9},{"x":24.7,"d":"10.05.26","v":40.2},{"x":25.3,"d":"11.05.26","v":40.0},{"x":25.8,"d":"12.05.26","v":41.2},{"x":26.4,"d":"13.05.26","v":41.6},{"x":26.9,"d":"14.05.26","v":43.8},{"x":27.5,"d":"15.05.26","v":42.7},{"x":28.0,"d":"16.05.26","v":41.7},{"x":28.6,"d":"17.05.26","v":40.8},{"x":29.1,"d":"18.05.26","v":40.5},{"x":29.7,"d":"19.05.26","v":41.6},{"x":30.2,"d":"20.05.26","v":41.7},{"x":30.8,"d":"21.05.26","v":42.8},{"x":31.3,"d":"22.05.26","v":41.8},{"x":31.9,"d":"23.05.26","v":43.4},{"x":32.4,"d":"24.05.26","v":42.4},{"x":33.0,"d":"25.05.26","v":44.3},{"x":33.5,"d":"26.05.26","v":46.2},{"x":34.1,"d":"27.05.26","v":45.1},{"x":34.6,"d":"28.05.26","v":48.0},{"x":35.2,"d":"29.05.26","v":49.5},{"x":35.7,"d":"30.05.26","v":48.4},{"x":36.3,"d":"31.05.26","v":48.9},{"x":36.8,"d":"01.06.26","v":48.4},{"x":37.4,"d":"02.06.26","v":47.9},{"x":37.9,"d":"03.06.26","v":46.8},{"x":38.5,"d":"04.06.26","v":47.3},{"x":39.0,"d":"05.06.26","v":46.9},{"x":39.6,"d":"06.06.26","v":46.5},{"x":40.1,"d":"07.06.26","v":46.1},{"x":40.7,"d":"08.06.26","v":45.8},{"x":41.2,"d":"09.06.26","v":44.7},{"x":41.8,"d":"10.06.26","v":44.4},{"x":42.3,"d":"11.06.26","v":43.3},{"x":42.9,"d":"12.06.26","v":43.6},{"x":43.4,"d":"13.06.26","v":44.8},{"x":44.0,"d":"14.06.26","v":51.0},{"x":44.5,"d":"15.06.26","v":49.8},{"x":45.1,"d":"16.06.26","v":48.6},{"x":45.6,"d":"17.06.26","v":48.2},{"x":46.2,"d":"18.06.26","v":47.1},{"x":46.7,"d":"19.06.26","v":47.7},{"x":47.3,"d":"20.06.26","v":48.3},{"x":47.8,"d":"21.06.26","v":47.2},{"x":48.4,"d":"22.06.26","v":46.1},{"x":48.9,"d":"23.06.26","v":45.8},{"x":49.5,"d":"24.06.26","v":44.8},{"x":50.0,"d":"25.06.26","v":44.9},{"x":50.5,"d":"26.06.26","v":43.8},{"x":51.1,"d":"27.06.26","v":44.5},{"x":51.6,"d":"28.06.26","v":45.7},{"x":52.2,"d":"29.06.26","v":44.6},{"x":52.7,"d":"30.06.26","v":43.5},{"x":53.3,"d":"01.07.26","v":42.5},{"x":53.8,"d":"02.07.26","v":41.5},{"x":54.4,"d":"03.07.26","v":40.5},{"x":54.9,"d":"04.07.26","v":39.6},{"x":55.5,"d":"05.07.26","v":38.6},{"x":56.0,"d":"06.07.26","v":37.7},{"x":56.6,"d":"07.07.26","v":36.8},{"x":57.1,"d":"08.07.26","v":36.0},{"x":57.7,"d":"09.07.26","v":35.1},{"x":58.2,"d":"10.07.26","v":34.3},{"x":58.8,"d":"11.07.26","v":33.5},{"x":59.3,"d":"12.07.26","v":32.7},{"x":59.9,"d":"13.07.26","v":31.9},{"x":60.4,"d":"14.07.26","v":31.2},{"x":61.0,"d":"15.07.26","v":30.5},{"x":61.5,"d":"16.07.26","v":29.7},{"x":62.1,"d":"17.07.26","v":29.0},{"x":62.6,"d":"18.07.26","v":28.4},{"x":63.2,"d":"19.07.26","v":27.7},{"x":63.7,"d":"20.07.26","v":27.0},{"x":64.3,"d":"21.07.26","v":26.4},{"x":64.8,"d":"22.07.26","v":25.8},{"x":65.4,"d":"23.07.26","v":25.2},{"x":65.9,"d":"24.07.26","v":25.3},{"x":66.5,"d":"25.07.26","v":24.7},{"x":67.0,"d":"26.07.26","v":24.9},{"x":67.6,"d":"27.07.26","v":24.3},{"x":68.1,"d":"28.07.26","v":23.8},{"x":68.7,"d":"29.07.26","v":24.1},{"x":69.2,"d":"30.07.26","v":23.6},{"x":69.8,"d":"31.07.26","v":24.2},{"x":70.3,"d":"01.08.26","v":25.5},{"x":70.9,"d":"02.08.26","v":24.9},{"x":71.4,"d":"03.08.26","v":24.3},{"x":72.0,"d":"04.08.26","v":23.7},{"x":72.5,"d":"05.08.26","v":24.1},{"x":73.1,"d":"06.08.26","v":24.9},{"x":73.6,"d":"07.08.26","v":24.3},{"x":74.2,"d":"08.08.26","v":23.7},{"x":74.7,"d":"09.08.26","v":23.2},{"x":75.3,"d":"10.08.26","v":23.7},{"x":75.8,"d":"11.08.26","v":23.1},{"x":76.4,"d":"12.08.26","v":22.6},{"x":76.9,"d":"13.08.26","v":22.0},{"x":77.5,"d":"14.08.26","v":21.5},{"x":78.0,"d":"15.08.26","v":21.0},{"x":78.6,"d":"16.08.26","v":20.5},{"x":79.1,"d":"17.08.26","v":20.0},{"x":79.7,"d":"18.08.26","v":19.6},{"x":80.2,"d":"19.08.26","v":19.1},{"x":80.8,"d":"20.08.26","v":18.7},{"x":81.3,"d":"21.08.26","v":18.3},{"x":81.9,"d":"22.08.26","v":17.8},{"x":82.4,"d":"23.08.26","v":19.5},{"x":83.0,"d":"24.08.26","v":19.0},{"x":83.5,"d":"25.08.26","v":18.5},{"x":84.1,"d":"26.08.26","v":18.1},{"x":84.6,"d":"27.08.26","v":17.7},{"x":85.2,"d":"28.08.26","v":18.5},{"x":85.7,"d":"29.08.26","v":18.1},{"x":86.3,"d":"30.08.26","v":17.7},{"x":86.8,"d":"31.08.26","v":17.2},{"x":87.4,"d":"01.09.26","v":16.8},{"x":87.9,"d":"02.09.26","v":16.4},{"x":88.5,"d":"03.09.26","v":16.0},{"x":89.0,"d":"04.09.26","v":16.6},{"x":89.6,"d":"05.09.26","v":16.2},{"x":90.1,"d":"06.09.26","v":16.8},{"x":90.7,"d":"07.09.26","v":17.0},{"x":91.2,"d":"08.09.26","v":16.6},{"x":91.8,"d":"09.09.26","v":17.6},{"x":92.3,"d":"10.09.26","v":17.2},{"x":92.9,"d":"11.09.26","v":16.8},{"x":93.4,"d":"12.09.26","v":21.3},{"x":94.0,"d":"13.09.26","v":20.8},{"x":94.5,"d":"14.09.26","v":21.2},{"x":95.1,"d":"15.09.26","v":22.7},{"x":95.6,"d":"16.09.26","v":22.2},{"x":96.2,"d":"17.09.26","v":21.7},{"x":96.7,"d":"18.09.26","v":22.0},{"x":97.3,"d":"19.09.26","v":22.2},{"x":97.8,"d":"20.09.26","v":23.9},{"x":98.4,"d":"21.09.26","v":23.3},{"x":98.9,"d":"22.09.26","v":23.7},{"x":99.5,"d":"23.09.26","v":24.7},{"x":100.0,"d":"24.09.26","v":26.3}];
+  var ctlPts = [{"x":0.0,"d":"27.03.26","v":54.4},{"x":0.5,"d":"28.03.26","v":53.1},{"x":1.1,"d":"29.03.26","v":51.8},{"x":1.6,"d":"30.03.26","v":50.6},{"x":2.2,"d":"31.03.26","v":49.9},{"x":2.7,"d":"01.04.26","v":50.3},{"x":3.3,"d":"02.04.26","v":49.2},{"x":3.8,"d":"03.04.26","v":48.5},{"x":4.4,"d":"04.04.26","v":49.3},{"x":4.9,"d":"05.04.26","v":48.1},{"x":5.5,"d":"06.04.26","v":48.0},{"x":6.0,"d":"07.04.26","v":46.9},{"x":6.6,"d":"08.04.26","v":47.0},{"x":7.1,"d":"09.04.26","v":45.9},{"x":7.7,"d":"10.04.26","v":44.8},{"x":8.2,"d":"11.04.26","v":43.7},{"x":8.8,"d":"12.04.26","v":42.7},{"x":9.3,"d":"13.04.26","v":41.7},{"x":9.9,"d":"14.04.26","v":40.7},{"x":10.4,"d":"15.04.26","v":39.8},{"x":11.0,"d":"16.04.26","v":38.8},{"x":11.5,"d":"17.04.26","v":37.9},{"x":12.1,"d":"18.04.26","v":37.0},{"x":12.6,"d":"19.04.26","v":36.1},{"x":13.2,"d":"20.04.26","v":35.3},{"x":13.7,"d":"21.04.26","v":34.5},{"x":14.3,"d":"22.04.26","v":33.7},{"x":14.8,"d":"23.04.26","v":32.9},{"x":15.4,"d":"24.04.26","v":32.1},{"x":15.9,"d":"25.04.26","v":33.3},{"x":16.5,"d":"26.04.26","v":34.3},{"x":17.0,"d":"27.04.26","v":33.5},{"x":17.6,"d":"28.04.26","v":35.4},{"x":18.1,"d":"29.04.26","v":35.4},{"x":18.7,"d":"30.04.26","v":34.6},{"x":19.2,"d":"01.05.26","v":37.5},{"x":19.8,"d":"02.05.26","v":42.1},{"x":20.3,"d":"03.05.26","v":41.1},{"x":20.9,"d":"04.05.26","v":40.1},{"x":21.4,"d":"05.05.26","v":40.0},{"x":22.0,"d":"06.05.26","v":40.2},{"x":22.5,"d":"07.05.26","v":39.2},{"x":23.1,"d":"08.05.26","v":39.5},{"x":23.6,"d":"09.05.26","v":39.9},{"x":24.2,"d":"10.05.26","v":40.2},{"x":24.7,"d":"11.05.26","v":40.0},{"x":25.3,"d":"12.05.26","v":41.2},{"x":25.8,"d":"13.05.26","v":41.6},{"x":26.4,"d":"14.05.26","v":43.8},{"x":26.9,"d":"15.05.26","v":42.7},{"x":27.5,"d":"16.05.26","v":41.7},{"x":28.0,"d":"17.05.26","v":40.8},{"x":28.6,"d":"18.05.26","v":40.5},{"x":29.1,"d":"19.05.26","v":41.6},{"x":29.7,"d":"20.05.26","v":41.7},{"x":30.2,"d":"21.05.26","v":42.8},{"x":30.8,"d":"22.05.26","v":41.8},{"x":31.3,"d":"23.05.26","v":43.4},{"x":31.9,"d":"24.05.26","v":42.4},{"x":32.4,"d":"25.05.26","v":44.3},{"x":33.0,"d":"26.05.26","v":46.2},{"x":33.5,"d":"27.05.26","v":45.1},{"x":34.1,"d":"28.05.26","v":48.0},{"x":34.6,"d":"29.05.26","v":49.5},{"x":35.2,"d":"30.05.26","v":48.4},{"x":35.7,"d":"31.05.26","v":48.9},{"x":36.3,"d":"01.06.26","v":48.4},{"x":36.8,"d":"02.06.26","v":47.9},{"x":37.4,"d":"03.06.26","v":46.8},{"x":37.9,"d":"04.06.26","v":47.3},{"x":38.5,"d":"05.06.26","v":46.9},{"x":39.0,"d":"06.06.26","v":46.5},{"x":39.6,"d":"07.06.26","v":46.1},{"x":40.1,"d":"08.06.26","v":45.8},{"x":40.7,"d":"09.06.26","v":44.7},{"x":41.2,"d":"10.06.26","v":44.4},{"x":41.8,"d":"11.06.26","v":43.3},{"x":42.3,"d":"12.06.26","v":43.6},{"x":42.9,"d":"13.06.26","v":44.8},{"x":43.4,"d":"14.06.26","v":51.0},{"x":44.0,"d":"15.06.26","v":49.8},{"x":44.5,"d":"16.06.26","v":48.6},{"x":45.1,"d":"17.06.26","v":48.2},{"x":45.6,"d":"18.06.26","v":47.1},{"x":46.2,"d":"19.06.26","v":47.7},{"x":46.7,"d":"20.06.26","v":48.3},{"x":47.3,"d":"21.06.26","v":47.2},{"x":47.8,"d":"22.06.26","v":46.1},{"x":48.4,"d":"23.06.26","v":45.8},{"x":48.9,"d":"24.06.26","v":44.8},{"x":49.5,"d":"25.06.26","v":44.9},{"x":50.0,"d":"26.06.26","v":43.8},{"x":50.5,"d":"27.06.26","v":44.5},{"x":51.1,"d":"28.06.26","v":45.7},{"x":51.6,"d":"29.06.26","v":44.6},{"x":52.2,"d":"30.06.26","v":43.5},{"x":52.7,"d":"01.07.26","v":42.5},{"x":53.3,"d":"02.07.26","v":41.5},{"x":53.8,"d":"03.07.26","v":40.5},{"x":54.4,"d":"04.07.26","v":39.6},{"x":54.9,"d":"05.07.26","v":38.6},{"x":55.5,"d":"06.07.26","v":37.7},{"x":56.0,"d":"07.07.26","v":36.8},{"x":56.6,"d":"08.07.26","v":36.0},{"x":57.1,"d":"09.07.26","v":35.1},{"x":57.7,"d":"10.07.26","v":34.3},{"x":58.2,"d":"11.07.26","v":33.5},{"x":58.8,"d":"12.07.26","v":32.7},{"x":59.3,"d":"13.07.26","v":31.9},{"x":59.9,"d":"14.07.26","v":31.2},{"x":60.4,"d":"15.07.26","v":30.5},{"x":61.0,"d":"16.07.26","v":29.7},{"x":61.5,"d":"17.07.26","v":29.0},{"x":62.1,"d":"18.07.26","v":28.4},{"x":62.6,"d":"19.07.26","v":27.7},{"x":63.2,"d":"20.07.26","v":27.0},{"x":63.7,"d":"21.07.26","v":26.4},{"x":64.3,"d":"22.07.26","v":25.8},{"x":64.8,"d":"23.07.26","v":25.2},{"x":65.4,"d":"24.07.26","v":25.3},{"x":65.9,"d":"25.07.26","v":24.7},{"x":66.5,"d":"26.07.26","v":24.9},{"x":67.0,"d":"27.07.26","v":24.3},{"x":67.6,"d":"28.07.26","v":23.8},{"x":68.1,"d":"29.07.26","v":24.1},{"x":68.7,"d":"30.07.26","v":23.6},{"x":69.2,"d":"31.07.26","v":24.2},{"x":69.8,"d":"01.08.26","v":25.5},{"x":70.3,"d":"02.08.26","v":24.9},{"x":70.9,"d":"03.08.26","v":24.3},{"x":71.4,"d":"04.08.26","v":23.7},{"x":72.0,"d":"05.08.26","v":24.1},{"x":72.5,"d":"06.08.26","v":24.9},{"x":73.1,"d":"07.08.26","v":24.3},{"x":73.6,"d":"08.08.26","v":23.7},{"x":74.2,"d":"09.08.26","v":23.2},{"x":74.7,"d":"10.08.26","v":23.7},{"x":75.3,"d":"11.08.26","v":23.1},{"x":75.8,"d":"12.08.26","v":22.6},{"x":76.4,"d":"13.08.26","v":22.0},{"x":76.9,"d":"14.08.26","v":21.5},{"x":77.5,"d":"15.08.26","v":21.0},{"x":78.0,"d":"16.08.26","v":20.5},{"x":78.6,"d":"17.08.26","v":20.0},{"x":79.1,"d":"18.08.26","v":19.6},{"x":79.7,"d":"19.08.26","v":19.1},{"x":80.2,"d":"20.08.26","v":18.7},{"x":80.8,"d":"21.08.26","v":18.3},{"x":81.3,"d":"22.08.26","v":17.8},{"x":81.9,"d":"23.08.26","v":19.5},{"x":82.4,"d":"24.08.26","v":19.0},{"x":83.0,"d":"25.08.26","v":18.5},{"x":83.5,"d":"26.08.26","v":18.1},{"x":84.1,"d":"27.08.26","v":17.7},{"x":84.6,"d":"28.08.26","v":18.5},{"x":85.2,"d":"29.08.26","v":18.1},{"x":85.7,"d":"30.08.26","v":17.7},{"x":86.3,"d":"31.08.26","v":17.2},{"x":86.8,"d":"01.09.26","v":16.8},{"x":87.4,"d":"02.09.26","v":16.4},{"x":87.9,"d":"03.09.26","v":16.0},{"x":88.5,"d":"04.09.26","v":16.6},{"x":89.0,"d":"05.09.26","v":16.2},{"x":89.6,"d":"06.09.26","v":16.8},{"x":90.1,"d":"07.09.26","v":17.0},{"x":90.7,"d":"08.09.26","v":16.6},{"x":91.2,"d":"09.09.26","v":17.6},{"x":91.8,"d":"10.09.26","v":17.2},{"x":92.3,"d":"11.09.26","v":16.8},{"x":92.9,"d":"12.09.26","v":21.3},{"x":93.4,"d":"13.09.26","v":20.8},{"x":94.0,"d":"14.09.26","v":21.2},{"x":94.5,"d":"15.09.26","v":22.7},{"x":95.1,"d":"16.09.26","v":22.2},{"x":95.6,"d":"17.09.26","v":21.7},{"x":96.2,"d":"18.09.26","v":22.0},{"x":96.7,"d":"19.09.26","v":22.2},{"x":97.3,"d":"20.09.26","v":23.9},{"x":97.8,"d":"21.09.26","v":23.3},{"x":98.4,"d":"22.09.26","v":23.7},{"x":98.9,"d":"23.09.26","v":24.7},{"x":99.5,"d":"24.09.26","v":26.3},{"x":100.0,"d":"25.09.26","v":27.3}];
   bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#d1450f', function(p){ return 'CTL ' + p.v; });
   
 
   
-  var slPts = [{"x":0.0,"d":"25.08.26","v":8.4},{"x":3.3,"d":"26.08.26","v":8.2},{"x":6.7,"d":"27.08.26","v":9.0},{"x":10.0,"d":"28.08.26","v":9.0},{"x":13.3,"d":"29.08.26","v":7.8},{"x":16.7,"d":"30.08.26","v":6.7},{"x":20.0,"d":"31.08.26","v":9.1},{"x":23.3,"d":"01.09.26","v":4.7},{"x":26.7,"d":"02.09.26","v":8.7},{"x":30.0,"d":"03.09.26","v":6.5},{"x":33.3,"d":"04.09.26","v":6.7},{"x":36.7,"d":"05.09.26","v":7.3},{"x":40.0,"d":"06.09.26","v":7.3},{"x":43.3,"d":"07.09.26","v":9.4},{"x":46.7,"d":"08.09.26","v":8.6},{"x":50.0,"d":"09.09.26","v":9.3},{"x":53.3,"d":"10.09.26","v":9.1},{"x":56.7,"d":"11.09.26","v":8.1},{"x":60.0,"d":"12.09.26","v":9.0},{"x":63.3,"d":"13.09.26","v":7.6},{"x":66.7,"d":"14.09.26","v":8.8},{"x":70.0,"d":"15.09.26","v":7.7},{"x":73.3,"d":"16.09.26","v":8.5},{"x":76.7,"d":"17.09.26","v":6.8},{"x":80.0,"d":"18.09.26","v":6.6},{"x":83.3,"d":"19.09.26","v":8.5},{"x":86.7,"d":"20.09.26","v":8.6},{"x":90.0,"d":"21.09.26","v":8.5},{"x":93.3,"d":"22.09.26","v":9.5},{"x":96.7,"d":"23.09.26","v":8.5},{"x":100.0,"d":"24.09.26","v":9.5}];
+  var slPts = [{"x":0.0,"d":"26.08.26","v":8.2},{"x":3.3,"d":"27.08.26","v":9.0},{"x":6.7,"d":"28.08.26","v":9.0},{"x":10.0,"d":"29.08.26","v":7.8},{"x":13.3,"d":"30.08.26","v":6.7},{"x":16.7,"d":"31.08.26","v":9.1},{"x":20.0,"d":"01.09.26","v":4.7},{"x":23.3,"d":"02.09.26","v":8.7},{"x":26.7,"d":"03.09.26","v":6.5},{"x":30.0,"d":"04.09.26","v":6.7},{"x":33.3,"d":"05.09.26","v":7.3},{"x":36.7,"d":"06.09.26","v":7.3},{"x":40.0,"d":"07.09.26","v":9.4},{"x":43.3,"d":"08.09.26","v":8.6},{"x":46.7,"d":"09.09.26","v":9.3},{"x":50.0,"d":"10.09.26","v":9.1},{"x":53.3,"d":"11.09.26","v":8.1},{"x":56.7,"d":"12.09.26","v":9.0},{"x":60.0,"d":"13.09.26","v":7.6},{"x":63.3,"d":"14.09.26","v":8.8},{"x":66.7,"d":"15.09.26","v":7.7},{"x":70.0,"d":"16.09.26","v":8.5},{"x":73.3,"d":"17.09.26","v":6.8},{"x":76.7,"d":"18.09.26","v":6.6},{"x":80.0,"d":"19.09.26","v":8.5},{"x":83.3,"d":"20.09.26","v":8.6},{"x":86.7,"d":"21.09.26","v":8.5},{"x":90.0,"d":"22.09.26","v":9.5},{"x":93.3,"d":"23.09.26","v":8.5},{"x":96.7,"d":"24.09.26","v":9.5}];
   bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
