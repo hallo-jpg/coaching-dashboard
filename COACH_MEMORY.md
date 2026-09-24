@@ -114,7 +114,9 @@ Jede Woche hat **3 Kern-Einheiten**, der Rest ist ausdrücklich flexibel:
 1. **Rad-Qualität** (Standard Di)
 2. **Lauf-Qualität** (Standard Fr) – bis KW44 ist das der Easy-Lauf mit Kadenz-Fokus + Athletik
 3. **Eine lange Einheit am Wochenende** – Sa **oder** So, Rad oder Lauf, egal welche
-Im Wochenplan in der Notiz-Spalte mit **`🎯 Kern`** markieren. Fällt eine Kern-Einheit aus → **verschieben**,
+Im Wochenplan in der Notiz-Spalte mit **`🎯 Kern`** markieren – **das macht immer der Coach**, in jedem Wochenplan
+und bei jeder Umplanung (Stefan, 24.9.: „dafür habe ich ja dich“). Stefan markiert nichts selbst und wird nicht
+gefragt, welche Einheit Kern ist – der Coach entscheidet nach den drei Regeln und nennt es im Output. Fällt eine Kern-Einheit aus → **verschieben**,
 nicht streichen. Fällt eine flexible Einheit aus → ersatzlos.
 **Warum:** Plan und Ist weichen regelmäßig ab (KW38 Di 1h geplant / 2:16h gefahren, KW39 75 → 255 TSS,
 KW31/32 an den Wochenenden gescheitert). Das ist Information, kein Fehlverhalten – bewertet wird, ob der Kern
