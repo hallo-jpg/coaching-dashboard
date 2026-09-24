@@ -417,11 +417,11 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="3.5"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="10.4"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#46702c">99</span>
+        <span class="ring-num" style="color:#46702c">97</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
@@ -513,13 +513,26 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:#46702c">99</div>
+      <div class="readiness-score" style="color:#46702c">97</div>
       <div class="readiness-tag" style="color:#46702c">🟢 Voll trainieren</div>
       
     </div>
 
     
 
+    
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">96</div>
+        <div style="font-size:0.55rem;color:var(--muted)">HRV · Puls · Schlaf</div>
+      </div>
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">100</div>
+        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
+      </div>
+    </div>
     
 
     <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
@@ -557,6 +570,62 @@
     </div>
 
     
+    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
+          <span style="font-size:0.62rem;color:var(--text2)">
+            Keine ✅ (1/4)
+            
+          </span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+    </div>
+    
 
     <div class="sparkline-wrap">
       <div class="spark-label">Readiness · 7 Tage</div>
@@ -574,7 +643,7 @@
         
         <div class="spark-bar " style="height:100%;background:#5b8f3a"></div>
         
-        <div class="spark-bar spark-today" style="height:99%;background:#5b8f3a"></div>
+        <div class="spark-bar spark-today" style="height:97%;background:#5b8f3a"></div>
         
       </div>
     </div>
