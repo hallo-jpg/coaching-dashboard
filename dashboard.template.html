@@ -192,6 +192,27 @@
   .ring-card { padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px;
                background: linear-gradient(180deg, rgba(255,107,53,0.05), var(--card) 60%); }
   .ring-card-title { font-size: 0.68rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
+  .kern-list { display: flex; flex-direction: column; gap: 3px; width: 100%; text-align: left; }
+  .kern-item { display: flex; align-items: baseline; gap: 6px; font-size: 0.66rem; color: var(--text2); min-width: 0; }
+  .kern-mark { width: 12px; flex-shrink: 0; font-weight: 800; color: var(--muted); text-align: center; }
+  .kern-tag  { font-weight: 700; color: var(--muted); flex-shrink: 0; width: 18px; }
+  .kern-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .kern-done .kern-mark { color: var(--brand); }
+  .kern-done .kern-name { color: var(--text); }
+  .kern-missed .kern-mark, .kern-missed .kern-name { color: var(--red); }
+  .kern-badge { display: inline-block; margin-left: 6px; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.4px;
+                text-transform: uppercase; color: var(--brand); border: 1px solid currentColor; border-radius: 4px;
+                padding: 0 4px; vertical-align: 2px; }
+  .split-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .split-lbl { font-size: 0.6rem; color: var(--muted); white-space: nowrap; }
+  .split-bar { flex: 1; display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: var(--track); min-width: 40px; }
+  .split-val { font-size: 0.66rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .mini-tile { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px; text-align: center; min-width: 0; }
+  .mini-lbl  { font-size: 0.58rem; color: var(--muted); margin-bottom: 2px; }
+  .mini-val  { font-size: 0.85rem; font-weight: 800; color: var(--text); }
+  .mini-unit { font-size: 0.6rem; color: var(--muted); font-weight: 600; }
+  .hf-dot { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
+            background: var(--card); border: 1.5px solid var(--brand); z-index: 3; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -208,6 +229,7 @@
   .ausblick-sub .ico, .ausblick-table .ico { width: 12px; height: 12px;
                         color: var(--muted); vertical-align: -1px; }
   /* im Wochenplan: ruhiges Glyph, die Statusfarbe traegt der Punkt links */
+  .kern-name .ico { width: 11px; height: 11px; vertical-align: -1px; margin-right: 2px; }
   .day-workout .ico { width: 14px; height: 14px; color: var(--text2);
                       vertical-align: -2px; flex-shrink: 0; }
   .ring-eyebrow { font-size: .62rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; text-align: center; }
@@ -508,9 +530,9 @@
     </div>
   </div>
 
-  <!-- Wochen-TSS Compliance -->
+  <!-- Kern-Einheiten der Woche -->
   <div class="ring-card">
-    <div class="ring-eyebrow">Wochenziel · TSS</div>
+    <div class="ring-eyebrow">Kern-Einheiten · KW{{ kw }}</div>
     <div class="ring-wrap">
       <svg viewBox="0 0 130 130" width="140" height="140" overflow="visible">
         <defs>
@@ -520,18 +542,37 @@
           </linearGradient>
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
+        {% if kern_total %}
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-te)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ tss_compliance_offset }}"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="{{ kern_offset }}"
                 transform="rotate(-90 65 65)"/>
+        {% endif %}
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:{{ tss_compliance_color }};font-size:1.8rem">{{ tss_compliance_pct }}%</span>
-        <span class="ring-sub">TSS</span>
+        {% if kern_total %}
+        <span class="ring-num" style="color:{{ kern_color }};font-size:1.8rem">{{ kern_done }}/{{ kern_total }}</span>
+        <span class="ring-sub">erledigt</span>
+        {% else %}
+        <span class="ring-num" style="color:var(--muted);font-size:1.8rem">–</span>
+        <span class="ring-sub">kein Kern</span>
+        {% endif %}
       </div>
     </div>
     <div class="phase-ring-info">
-      <div class="pri-main">{{ tss_ist }} / {{ tss_plan }} TSS</div>
-      <div class="pri-sub">Wochenziel · KW{{ kw }}</div>
+      {% if kern_total %}
+      <div class="kern-list">
+        {% for d in kern_days %}
+        <div class="kern-item {% if d.done %}kern-done{% elif d.missed %}kern-missed{% endif %}">
+          <span class="kern-mark">{% if d.done %}✓{% elif d.missed %}!{% else %}○{% endif %}</span>
+          <span class="kern-tag">{{ d.tag }}</span>
+          <span class="kern-name">{{ d.workout|plan }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="pri-sub">Im Wochenplan ist nichts als 🎯 Kern markiert</div>
+      {% endif %}
+      <div class="pri-sub" style="margin-top:6px">{{ tss_ist }} / {{ tss_plan }} TSS</div>
     </div>
   </div>
 </div>
@@ -735,9 +776,9 @@
 
   <!-- POLARISATION (in rechter Spalte) — 8-Wochen Donut -->
   <div class="polar-card" style="margin-bottom:0;flex:1">
-    <div class="chard"><div class="chard-icon">{{ ico('bars') }}</div>Polarisation · 8 Wochen · Rad</div>
+    <div class="chard"><div class="chard-icon">{{ ico('bars') }}</div>Polarisation · 8 Wochen · Rad + Lauf</div>
     {% if polar_8w.no_data %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Rad-Aktivitäten in den letzten 8 Wochen</div>
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Aktivitäten in den letzten 8 Wochen</div>
     {% else %}
     <span class="pi-badge {% if polar_8w.ok %}pi-ok{% else %}pi-warn{% endif %}">LIT: {{ polar_8w.z12 }}% · {% if polar_8w.ok %}✅ Gut polarisiert{% else %}⚠️ Zu viel Grauzone (Z3){% endif %}</span>
     <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
@@ -763,8 +804,13 @@
           <span style="font-size:0.68rem;color:var(--muted)">HIT</span>
           <span style="font-size:0.75rem;font-weight:700;color:var(--text);margin-left:auto">{{ polar_8w.z67 }}%</span>
         </div>
-        <div class="polar-note">Ziel ≥80% LIT · Z3 &lt;15%<br>Seiler &amp; Kjerland 2006</div>
+        <div class="polar-note">Ziel ≥80% LIT · Grauzone &lt;15% · Rad nach Watt, Lauf nach HF</div>
       </div>
+    </div>
+    <div class="split-row">
+      <span class="split-lbl">Zeit Rad : Lauf</span>
+      <div class="split-bar"><div style="width:{{ polar_8w.ride_pct }}%;background:var(--brand)"></div><div style="width:{{ polar_8w.run_pct }}%;background:var(--z1)"></div></div>
+      <span class="split-val">{{ polar_8w.ride_pct }} : {{ polar_8w.run_pct }}{% if split_soll %} <span style="color:var(--muted);font-weight:500">· Soll {{ split_soll }}</span>{% endif %}</span>
     </div>
     {% endif %}
   </div>
@@ -796,7 +842,7 @@
         {% if day.rest %}
         <div class="day-workout" style="color:var(--subtle);font-weight:400;{% if day.bonus_activities %}text-decoration:line-through;{% endif %}">Ruhetag</div>
         {% else %}
-        <div class="day-workout">{% if day.is_run %}{{ ico('run') }}{% elif day.is_kraft %}{{ ico('dumbbell') }}{% else %}{{ ico('bike') }}{% endif %}{{ day.workout|plan }}</div>
+        <div class="day-workout">{% if day.is_run %}{{ ico('run') }}{% elif day.is_kraft %}{{ ico('dumbbell') }}{% else %}{{ ico('bike') }}{% endif %}{{ day.workout|plan }}{% if day.kern %}<span class="kern-badge">Kern</span>{% endif %}</div>
         {% endif %}
         {% for bonus in day.bonus_activities %}
         <div class="bonus-activity">
@@ -892,6 +938,105 @@
       {% endfor %}
       </tbody>
     </table>
+  </div>
+
+</div>
+
+<!-- LAUF: AUFBAU + PACE BEI HF 160 -->
+<div class="two-col-grid">
+
+  <!-- LAUF-AUFBAU -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="card-headline">{{ ico('run') }}Lauf-Aufbau · 12 Wochen</div>
+      <span class="kw-pill">+10%-Regel</span>
+    </div>
+    {% if run_build.available %}
+    <div style="position:relative;height:100px;margin-bottom:6px">
+      <div style="display:flex;gap:3px;height:100%">
+        {% for w in run_build.weeks %}
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
+             onmouseenter="this.querySelector('.tw').style.opacity='1'"
+             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+          <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">{% if w.km > 0 %}{{ '%.0f'|format(w.km) }}{% endif %}</span>
+          <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
+            <div style="position:absolute;left:-1px;right:-1px;bottom:{{ w.limit_pct }}%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
+            <div style="width:100%;height:{{ w.bar_pct }}%;min-height:{% if w.km > 0 %}2px{% else %}0{% endif %};background:{% if w.over %}var(--red-mark){% else %}var(--brand){% endif %};border-radius:3px 3px 0 0;{% if w.is_current %}opacity:0.55{% endif %}"></div>
+          </div>
+          <span style="font-size:0.44rem;color:{% if w.is_current %}var(--text){% else %}var(--muted){% endif %};height:10px;line-height:10px;margin-top:2px">KW{{ w.kw }}</span>
+          <div class="tw" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:100%;{% if loop.first %}left:0{% elif loop.last %}right:0{% else %}left:50%;transform:translateX(-50%){% endif %};margin-bottom:4px;background:var(--card);border:1px solid rgba(148,163,184,0.25);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:30;box-shadow:0 4px 14px rgba(22,17,15,0.14)">
+            <div style="font-size:0.6rem;font-weight:700;color:var(--text)">KW{{ w.kw }}</div>
+            <div style="font-size:0.52rem;color:var(--brand);margin-top:1px">{{ w.km }} km · längster {{ w.longest }} km</div>
+            <div style="font-size:0.52rem;color:var(--muted);margin-top:1px">Grenze {{ w.limit }} km{% if w.over %} · überschritten{% endif %}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div style="font-size:0.44rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;margin-top:4px">
+      <span style="display:inline-flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:6px;background:var(--brand);border-radius:1px"></span>km</span>
+      <span style="display:inline-flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;border-top:1.5px dashed var(--muted)"></span>Grenze: +10% auf Vorwoche bzw. Ø 4 Wo. (unter 15 km: +3 km)</span>
+      <span style="display:inline-flex;align-items:center;gap:3px"><span style="display:inline-block;width:10px;height:6px;background:var(--red-mark);border-radius:1px"></span>über der Grenze</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div class="mini-tile">
+        <div class="mini-lbl">Diese Woche</div>
+        <div class="mini-val">{{ run_build.current_km }}<span class="mini-unit"> / {{ run_build.current_limit }} km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">Ø 4 Wochen</div>
+        <div class="mini-val">{{ run_build.avg_4w }}<span class="mini-unit"> km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">Längster Lauf · 30 T.</div>
+        <div class="mini-val">{{ run_build.longest_30d }}<span class="mini-unit"> → max {{ run_build.longest_next }}</span></div>
+      </div>
+    </div>
+    {% else %}
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine Läufe in den letzten 12 Wochen</div>
+    {% endif %}
+  </div>
+
+  <!-- PACE BEI HF 160 -->
+  <div class="ausblick-card" style="margin-bottom:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="card-headline">{{ ico('trend') }}Pace bei HF 160 · 6 Monate</div>
+      {% if hf160.available %}<span class="kw-pill">{{ hf160.count }} Läufe</span>{% endif %}
+    </div>
+    {% if hf160.available %}
+    <div style="position:relative;width:100%;height:90px;margin-bottom:22px">
+      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none" overflow="visible">
+        <line x1="0" y1="{{ hf160.ref_y }}" x2="300" y2="{{ hf160.ref_y }}" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6" vector-effect="non-scaling-stroke"/>
+        <path d="{{ hf160.trend }}" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      </svg>
+      {% for d in hf160.dots %}
+      <span class="hf-dot" style="left:{{ (d.x / 3)|round(1) }}%;top:{{ (d.y / 0.8)|round(1) }}%" title="{{ d.label }}"></span>
+      {% endfor %}
+      <span style="position:absolute;right:0;top:calc({{ (hf160.ref_y / 0.8)|round(1) }}% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
+      <div style="position:absolute;bottom:-16px;left:0;right:0">
+        {% for ml in hf160.month_labels %}
+        <span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div class="mini-tile">
+        <div class="mini-lbl">Letzter Lauf</div>
+        <div class="mini-val">{{ hf160.last }}<span class="mini-unit"> /km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">Ø letzte 4</div>
+        <div class="mini-val">{{ hf160.avg_recent }}<span class="mini-unit"> /km</span></div>
+      </div>
+      <div class="mini-tile">
+        <div class="mini-lbl">vs. 4 Läufe davor</div>
+        <div class="mini-val" style="color:{% if hf160.delta is none %}var(--muted){% elif hf160.delta < 0 %}var(--green){% elif hf160.delta > 0 %}var(--red){% else %}var(--text){% endif %}">{% if hf160.delta is none %}–{% elif hf160.delta < 0 %}−{{ -hf160.delta }}<span class="mini-unit"> s/km</span>{% elif hf160.delta > 0 %}+{{ hf160.delta }}<span class="mini-unit"> s/km</span>{% else %}±0{% endif %}</div>
+      </div>
+    </div>
+    <div class="polar-note" style="margin-top:8px">Median-Pace aller Sekunden bei HF 157–163 (ab Minute 10) · nur Easy-Läufe · höher = schneller</div>
+    {% else %}
+    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Noch zu wenige Easy-Läufe mit Abschnitten bei HF 160</div>
+    {% endif %}
   </div>
 
 </div>

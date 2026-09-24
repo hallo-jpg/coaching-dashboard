@@ -56,7 +56,7 @@ Newton-Solver → Geschwindigkeit). Ohne GPX: aus Distanz, Hm, Ø-Steigung schä
 | > 8% | 108% CP |
 
 TT-Faktor × 1,03 · Gran-Fondo × 0,95 · Gran Fondo zusätzlich Energie-Budget (60–90 g KH/h).
-Vollanalyse: https://hallo-jpg.github.io/coaching-dashboard/pacing.html
+Vollanalyse bei Bedarf: `python3 generate_pacing.py` erzeugt `docs/pacing.html` (nicht Teil des automatischen Builds), danach https://hallo-jpg.github.io/coaching-dashboard/pacing.html
 
 ## Recovery (1–14 Tage nach Event)
 

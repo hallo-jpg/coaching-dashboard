@@ -425,6 +425,14 @@ def _api_get(path: str) -> list | dict:
     return r.json()
 
 
+def _api_get_activity(path: str) -> list | dict:
+    """GET auf den aktivitaetsbezogenen Pfad (/api/v1/activity/...), nicht unter /athlete."""
+    r = requests.get(f"https://intervals.icu/api/v1/activity{path}",
+                     headers={"Authorization": AUTH}, timeout=15)
+    r.raise_for_status()
+    return r.json()
+
+
 def get_wellness(oldest: str, newest: str) -> list[dict]:
     """Fetch wellness data for date range."""
     return _api_get(f"/wellness?oldest={oldest}&newest={newest}")
@@ -681,14 +689,15 @@ def parse_kw_plan(kw: int) -> dict:
             "rest":     is_rest,
             "is_run":   is_run,
             "is_kraft": is_kraft,
+            "kern":     "🎯 Kern" in rest,
         })
 
     # Ensure all 7 days present
     present = {d["tag"] for d in days}
     for t in DAY_ORDER:
         if t not in present:
-            days.append({"tag": t, "workout": "", "tss_plan": 0,
-                         "status": "–", "rest": False, "is_run": False, "is_kraft": False})
+            days.append({"tag": t, "workout": "", "tss_plan": 0, "status": "–", "rest": False,
+                         "is_run": False, "is_kraft": False, "kern": False})
     days.sort(key=lambda d: DAY_ORDER.index(d["tag"]))
 
     return {"theme": theme, "sub": sub, "tss_plan": tss_plan_total, "days": days}
@@ -696,7 +705,7 @@ def parse_kw_plan(kw: int) -> dict:
 
 def _empty_days() -> list:
     return [{"tag": t, "workout": "", "tss_plan": 0, "status": "–",
-             "rest": t == "Mi", "is_run": False, "is_kraft": False} for t in DAY_ORDER]
+             "rest": t == "Mi", "is_run": False, "is_kraft": False, "kern": False} for t in DAY_ORDER]
 
 
 # ── Activity Matching & Data Building ────────────────────────────────────────
@@ -830,6 +839,7 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
             "missed":           missed,
             "is_run":           day["is_run"],
             "is_kraft":         day.get("is_kraft", False),
+            "kern":             day.get("kern", False),
             "dot_class":        dot,
             "row_class":        row_class,
             "activity_name":    primary["name"] if primary else "",
@@ -972,6 +982,7 @@ def parse_periodisierung(path: Path = PERIODISIERUNG_PATH) -> list[dict]:
         short, color = _phase_style(name, fokus)
         phases.append({
             "name": name, "short": short, "color": color,
+            "split": cells[5] if len(cells) > 5 else "",
             "kw": cells[1].replace(" ", ""),
             "start": start_d, "end": end_d,
         })
@@ -1087,7 +1098,6 @@ RACE_EVENTS = [
         "detail": "28. Juni · Tour V · 197 km · 3.550 Hm · KW26",
         "kw":     26,
         "color":  None,
-        "raceplan": "rosenheimer_raceplan.html",
     },
     {
         "id":     "seelauf",
@@ -1121,54 +1131,8 @@ def _build_countdown(today: date) -> dict:
     return {"main": future[0], "secondary": future[1:]}
 
 
-RACE_KW  = 24
 MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
             "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
-
-def build_pacing_card(tage_bis_event: int) -> dict | None:
-    """Compact pacing card for dashboard. Only active T-14 to T-0 with GPX present."""
-    if tage_bis_event is None or tage_bis_event > 14 or tage_bis_event < 0:
-        return None
-
-    gpx_files = sorted(Path("athlete/routes").glob("*.gpx"))
-    if not gpx_files:
-        return None
-
-    from generate_pacing import load_route_meta, build_route_context
-    today = date.today().isoformat()
-    best_path = None
-    best_date = "9999-12-31"
-    for gpx_path in gpx_files:
-        meta = load_route_meta(str(gpx_path))
-        ed = meta.get("event_date") or "9999-12-31"
-        if ed >= today and ed < best_date:
-            best_date = ed
-            best_path = gpx_path
-
-    if best_path is None:
-        best_path = gpx_files[0]
-
-    try:
-        ctx = build_route_context(str(best_path))
-    except Exception:
-        return None
-
-    if not ctx["segments"]:
-        return None
-    steepest = max(ctx["segments"], key=lambda s: s["gradient_pct"])
-    first    = ctx["segments"][0]
-
-    return {
-        "name":          ctx["name"],
-        "event_date":    ctx["event_date"],
-        "total_time":    ctx["total_time_fmt"],
-        "avg_power":     ctx["avg_power_w"],
-        "start_power":   first["target_w"],
-        "peak_power":    steepest["target_w"],
-        "peak_gradient": round(steepest["gradient_pct"], 1),
-        "w_prime_pct":   ctx["w_prime_pct_used"],
-    }
-
 
 # ── Context builder ───────────────────────────────────────────────────────────
 
@@ -1282,6 +1246,15 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                             else "var(--yellow)" if tss_compliance_pct >= 40
                             else "var(--accent)")
 
+    kern_days  = [d for d in days if d["kern"]]
+    kern_total = len(kern_days)
+    kern_done  = sum(1 for d in kern_days if d["done"])
+    kern_open  = sum(1 for d in kern_days if not d["done"] and not d["missed"])
+    kern_offset = calc_ring_offset(kern_done, kern_total or 1, CIRC_OUTER)
+    kern_color  = ("var(--brand)" if kern_total and kern_done == kern_total
+                   else "var(--red)" if any(d["missed"] for d in kern_days)
+                   else "var(--text)")
+
     sick_days   = [d for d in days if not d["done"] and not d["rest"] and _is_past(d["tag"])]
     sick_notice = ""
     if sick_days and all(not d["done"] for d in days if not d["rest"]):
@@ -1341,21 +1314,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                       else "var(--blue)")
     ramprate_icon = "⚠️" if ramprate > 7 else ("🔴" if ramprate > 10 else "")
 
-    # D1: PMC Forward View (project to RadRace KW24)
-    _current_year = monday.year
-    _planned_tss = parse_planned_tss_from_kw_files(kw + 1, RACE_KW, _current_year)
-    _race_monday, _ = week_date_range(RACE_KW, _current_year)
-    _race_date = _race_monday + timedelta(days=4)  # Friday of race week (TT day)
-    pmc_forecast = project_pmc(ctl, atl, _planned_tss, _race_date)
-    _tsb_s = pmc_forecast["tsb_race"]
-    pmc_tsb_color = ("var(--green)"  if 5 <= _tsb_s <= 25
-                     else "var(--yellow)" if -5 <= _tsb_s < 5 or 25 < _tsb_s <= 35
-                     else "var(--accent)")
-    pmc_tsb_label = ("✅ auf Kurs" if pmc_forecast["tsb_status"] == "on_track"
-                     else "⚠️ zu wenig getapert" if pmc_forecast["tsb_status"] == "too_tired"
-                     else "⚠️ zu frisch")
-    pmc_available = bool(_planned_tss)
-
     outlook = []
     for i in range(4):
         p = parse_kw_plan(kw + i)
@@ -1390,6 +1348,8 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "tss_compliance_pct": tss_compliance_pct,
         "tss_compliance_offset": tss_compliance_offset,
         "tss_compliance_color": tss_compliance_color,
+        "kern_total": kern_total, "kern_done": kern_done, "kern_open": kern_open,
+        "kern_offset": kern_offset, "kern_color": kern_color, "kern_days": kern_days,
         "readiness_score": r_score_combined, "readiness_offset": r_offset,
         "readiness_color": r_color, "readiness_label": r_label, "readiness_sub": r_sub,
         "score_obj": score_obj,
@@ -1424,6 +1384,9 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,
         "polar_8w": polar_8w,
+        "split_soll": (current_phase.get("split") or "").replace(":", " : "),
+        "run_build": get_run_build(),
+        "hf160": get_hf160_trend(),
         "polar_donut_svg": polar_donut_svg,
         "ftp_history": ftp_history,
         "monotony_val":    monotony_val,
@@ -1433,8 +1396,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ramprate":        ramprate,
         "ramprate_color":  ramprate_color,
         "ramprate_icon":   ramprate_icon,
-        "pmc_tsb_color":       pmc_tsb_color,
-        "pmc_tsb_label":       pmc_tsb_label,
         "countdown_main":      _countdown["main"],
         "countdown_secondary": _countdown["secondary"],
 
@@ -1586,37 +1547,217 @@ def get_ftp_history() -> dict:
     }
 
 
+RIDE_TYPES = ("Ride", "VirtualRide", "GravelRide")
+RUN_TYPES  = ("Run", "TrailRun")
+
+
 def _calc_polarisation(activities: list) -> dict:
-    """Zone split from ride activities via detail endpoint icu_zone_times field."""
-    rides = [a for a in activities
-             if a.get("type") in ("Ride", "VirtualRide", "GravelRide")]
-    if not rides:
-        return {"z12": 0, "z3": 0, "z5": 0, "z67": 0, "pi": 0, "ok": True, "no_data": True}
-    totals = [0] * 8
-    for r in rides:
-        act_id = r.get("id", "")
+    """Zonenverteilung Rad + Lauf aus den Detail-Endpunkten.
+
+    Rad ueber Power-Zonen (icu_zone_times): LIT = icu Z1-Z3 (Sentiero Z0-Z2),
+    Grauzone = Z4, MIT = Z5, HIT = Z6+Z7.
+    Lauf ueber HF-Zonen (icu_hr_zone_times, LTHR 185): LIT = Z1+Z2 (<=165),
+    Grauzone = Z3 (166-174), MIT = Z4 (175-184), HIT = Z5-Z7 (>=185).
+    Zusaetzlich Zeitanteil Rad vs. Lauf (ride_pct / run_pct).
+    """
+    empty = {"z12": 0, "z3": 0, "z5": 0, "z67": 0, "pi": 0, "ok": True, "no_data": True,
+             "ride_pct": 0, "run_pct": 0}
+    acts = [a for a in activities if a.get("type") in RIDE_TYPES + RUN_TYPES]
+    if not acts:
+        return empty
+    buckets = {"lit": 0, "grau": 0, "mit": 0, "hit": 0}
+    sport_secs = {"ride": 0, "run": 0}
+    for a in acts:
+        act_id = a.get("id", "")
         if not act_id:
             continue
+        is_run = a.get("type") in RUN_TYPES
         try:
             detail = _api_get(f"/activities/{act_id}")
             if isinstance(detail, list):
                 detail = detail[0] if detail else {}
+        except Exception:
+            continue
+        z = [0] * 8
+        if is_run:
+            for i, secs in enumerate(detail.get("icu_hr_zone_times") or []):
+                if i < 7:
+                    z[i + 1] += secs or 0
+            lit, grau, mit, hit = z[1] + z[2], z[3], z[4], z[5] + z[6] + z[7]
+        else:
             for zt in (detail.get("icu_zone_times") or []):
                 z_id = zt.get("id", "")
                 if z_id.startswith("Z") and z_id[1:].isdigit():
                     z_num = int(z_id[1:])
                     if 1 <= z_num <= 7:
-                        totals[z_num] += zt.get("secs", 0)
+                        z[z_num] += zt.get("secs", 0)
+            lit, grau, mit, hit = z[1] + z[2] + z[3], z[4], z[5], z[6] + z[7]
+        buckets["lit"] += lit; buckets["grau"] += grau
+        buckets["mit"] += mit; buckets["hit"] += hit
+        sport_secs["run" if is_run else "ride"] += lit + grau + mit + hit
+    total = sum(buckets.values())
+    if total == 0:
+        return empty
+    z123 = round(buckets["lit"] / total * 100)
+    z4   = round(buckets["grau"] / total * 100)
+    z5   = round(buckets["mit"] / total * 100)
+    z67  = max(0, 100 - z123 - z4 - z5)
+    sport_total = sport_secs["ride"] + sport_secs["run"]
+    ride_pct = round(sport_secs["ride"] / sport_total * 100) if sport_total else 0
+    return {"z12": z123, "z3": z4, "z5": z5, "z67": z67, "pi": z123, "ok": z4 < 15,
+            "no_data": False, "ride_pct": ride_pct, "run_pct": 100 - ride_pct if sport_total else 0}
+
+
+def _run_km_limit(prev_km: float, avg4_km: float = 0.0) -> float:
+    """+10%-Regel. Basis ist der hoehere Wert aus Vorwoche und Oe der 4 Wochen davor
+    (eine einzelne Ausfall- oder Entlastungswoche senkt die Grenze nicht auf null).
+    Unter 15 km/Woche gelten +3 km absolut (Einstieg)."""
+    base = max(prev_km, avg4_km)
+    return round(base + 3, 1) if base < 15 else round(base * 1.1, 1)
+
+
+def get_run_build(today: date | None = None, weeks: int = 12) -> dict:
+    """Lauf-Aufbau: km pro Woche vs. +10%-Grenze, laengster Lauf vs. 30-Tage-Regel."""
+    today = today or date.today()
+    this_monday = today - timedelta(days=today.weekday())
+    first_monday = this_monday - timedelta(weeks=weeks - 1)
+    try:
+        acts = get_activities((first_monday - timedelta(days=37)).isoformat(), today.isoformat())
+    except Exception:
+        return {"available": False}
+    runs = [(a.get("start_date_local", "")[:10], (a.get("distance") or 0) / 1000)
+            for a in acts if a.get("type") in RUN_TYPES and a.get("distance")]
+    if not runs:
+        return {"available": False}
+
+    def week_km(monday: date) -> tuple[float, float]:
+        lo, hi = monday.isoformat(), (monday + timedelta(days=6)).isoformat()
+        ks = [k for d, k in runs if lo <= d <= hi]
+        return round(sum(ks), 1), round(max(ks), 1) if ks else 0.0
+
+    rows = []
+    history = [week_km(first_monday - timedelta(weeks=k))[0] for k in (4, 3, 2, 1)]
+    for i in range(weeks):
+        monday = first_monday + timedelta(weeks=i)
+        km, longest = week_km(monday)
+        limit = _run_km_limit(history[-1], sum(history[-4:]) / 4)
+        rows.append({"kw": monday.isocalendar()[1], "km": km, "longest": longest,
+                     "limit": limit, "over": km > limit, "is_current": monday == this_monday})
+        history.append(km)
+
+    scale = max(max(r["km"] for r in rows), max(r["limit"] for r in rows), 1) * 1.1
+    for r in rows:
+        r["bar_pct"]   = round(r["km"] / scale * 100)
+        r["limit_pct"] = round(r["limit"] / scale * 100)
+
+    cur = rows[-1]
+    last = rows[-2]
+    win_lo = (today - timedelta(days=30)).isoformat()
+    long_30 = max([k for d, k in runs if win_lo <= d < today.isoformat()] or [0])
+    return {
+        "available": True,
+        "weeks": rows,
+        "current_km": cur["km"], "current_limit": cur["limit"],
+        "prev_km": last["km"], "prev_kw": last["kw"],
+        "avg_4w": round(sum(r["km"] for r in rows[-5:-1]) / 4, 1),
+        "longest_30d": round(long_30, 1),
+        "longest_next": round(long_30 * 1.1, 1),
+    }
+
+
+HF160_BAND   = (157, 163)   # HF 160 +-3
+EASY_MIN_PACE = 410         # s/km – nur Laeufe mit Oe-Pace langsamer als 6:50/km
+
+
+def _hf160_pace(streams: list) -> int | None:
+    """Median-Pace (s/km) aller Sekunden im HF-Band 157-163, ab Minute 10, ohne Gehen."""
+    by_type = {s.get("type"): s.get("data") or [] for s in streams}
+    hr, vel, tm = by_type.get("heartrate"), by_type.get("velocity_smooth"), by_type.get("time")
+    if not hr or not vel:
+        return None
+    tm = tm or list(range(len(hr)))
+    speeds = sorted(v for h, v, t in zip(hr, vel, tm)
+                    if t is not None and t >= 600 and h and HF160_BAND[0] <= h <= HF160_BAND[1]
+                    and v and v > 1.8)
+    if len(speeds) < 180:
+        return None
+    return round(1000 / speeds[len(speeds) // 2])
+
+
+def get_hf160_trend(days: int = 180) -> dict:
+    """Pace bei HF 160 je Easy-Lauf – Fortschrittsmesser fuer die Lauf-Aerobie."""
+    end = date.today()
+    start = end - timedelta(days=days)
+    try:
+        acts = get_activities(start.isoformat(), end.isoformat())
+    except Exception:
+        return {"available": False}
+    pts = []
+    for a in sorted(acts, key=lambda x: x.get("start_date_local", "")):
+        if a.get("type") not in RUN_TYPES or a.get("race"):
+            continue
+        dist, mt = a.get("distance") or 0, a.get("moving_time") or 0
+        if dist < 2000 or mt < 1200 or mt / (dist / 1000) < EASY_MIN_PACE:
+            continue
+        try:
+            streams = _api_get_activity(f"/{a['id']}/streams?types=heartrate,velocity_smooth,time")
         except Exception:
             continue
-    total = sum(totals[1:])
-    if total == 0:
-        return {"z12": 0, "z3": 0, "z5": 0, "z67": 0, "pi": 0, "ok": True, "no_data": True}
-    z123 = round((totals[1] + totals[2] + totals[3]) / total * 100)  # LIT:      icu Z1+Z2+Z3 = Sentiero Z0–Z2
-    z4   = round(totals[4] / total * 100)                             # Grauzone: icu Z4       = Sentiero Z3
-    z5   = round(totals[5] / total * 100)                             # MIT:      icu Z5       = Sentiero Z4 (Schwelle)
-    z67  = max(0, 100 - z123 - z4 - z5)                              # HIT:      icu Z6+Z7    = Sentiero Z5+Z6 (VO2max+)
-    return {"z12": z123, "z3": z4, "z5": z5, "z67": z67, "pi": z123, "ok": z4 < 15, "no_data": False}
+        pace = _hf160_pace(streams if isinstance(streams, list) else [])
+        if pace:
+            pts.append({"date": date.fromisoformat(a["start_date_local"][:10]), "pace": pace})
+    if len(pts) < 2:
+        return {"available": False, "count": len(pts)}
+
+    fast = min(p["pace"] for p in pts + [{"pace": 450}]) - 10
+    slow = max(p["pace"] for p in pts + [{"pace": 450}]) + 10
+    total_days = max((end - start).days, 1)
+    W, H = 300, 80
+
+    def y_of(pace: int) -> float:  # schneller = weiter oben
+        return round((pace - fast) / (slow - fast) * H, 1)
+
+    dots = []
+    for p in pts:
+        dots.append({
+            "x": round((p["date"] - start).days / total_days * W, 1),
+            "y": y_of(p["pace"]),
+            "label": f"{p['date'].day:02d}.{p['date'].month:02d}. · {p['pace'] // 60}:{p['pace'] % 60:02d}/km",
+        })
+    # gleitender Schnitt ueber 3 Laeufe als Trendlinie
+    trend = []
+    for i in range(len(pts)):
+        win = pts[max(0, i - 2): i + 1]
+        avg = sum(w["pace"] for w in win) / len(win)
+        trend.append(f"{dots[i]['x']},{y_of(round(avg))}")
+
+    def fmt(s: float) -> str:
+        s = round(s)
+        return f"{s // 60}:{s % 60:02d}"
+
+    recent = [p["pace"] for p in pts[-4:]]
+    earlier = [p["pace"] for p in pts[-8:-4]]
+    delta = round(sum(recent) / len(recent) - sum(earlier) / len(earlier)) if earlier else None
+
+    month_labels = []
+    cur = (start + timedelta(days=32)).replace(day=1)
+    while cur <= end:
+        month_labels.append({"label": _MONTHS_DE[cur.month - 1],
+                             "x_pct": round((cur - start).days / total_days * 100, 1)})
+        cur = (cur + timedelta(days=32)).replace(day=1)
+
+    return {
+        "available": True,
+        "dots": dots,
+        "trend": "M" + " L".join(trend),
+        "ref_y": y_of(450),
+        "last": fmt(pts[-1]["pace"]),
+        "avg_recent": fmt(sum(recent) / len(recent)),
+        "delta": delta,
+        "count": len(pts),
+        "month_labels": month_labels,
+    }
+
 
 def get_ctl_history(weeks: int = 26) -> dict:
     """6-month CTL line for SVG. Returns path strings + current CTL + month labels."""

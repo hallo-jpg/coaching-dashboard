@@ -125,8 +125,8 @@ Bei Wochenplanung danach: **Retro** (`modules/retro.md`) → **Checks** (`module
 - Ziel-TSS aus `periodisierung.md` als Richtwert. Rhythmus 3:1, Entlastung −40–50%, keine Qualität –
   die Entlastungswoche wird nie „genutzt", weil es gerade gut läuft.
 - Rampe: +10–15%/Woche Gesamtvolumen. Ausgefallenes wird **nicht** kompensiert (max. +10% TSS).
-- Lauf-Budget (hart, `periodisierung.md` → Laufaufbau): Wochen-km **max. +10%** (bei < 15 km/Woche: +3 km
-  absolut) · längster Lauf **max. +10%** ggü. den 30 Tagen davor · Qualität max. 1×/Woche bis KW47 ·
+- Lauf-Budget (hart, `periodisierung.md` → Laufaufbau): Wochen-km **max. +10%** gegenüber dem höheren Wert aus
+  Vorwoche und Ø der 4 Wochen davor (Basis < 15 km: +3 km absolut) – dieselbe Grenze zeigt das Dashboard · längster Lauf **max. +10%** ggü. den 30 Tagen davor · Qualität max. 1×/Woche bis KW47 ·
   Easy 7:15–7:45/km @ HF 155–165 · kein langsames Trotten.
 - Wade meldet sich → Laufvolumen auf den Stand von vor 2 Wochen, Rad kompensiert. Nie „durchziehen".
 

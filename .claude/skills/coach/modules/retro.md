@@ -25,15 +25,16 @@ Leere Aktivitäten (alle Felder `null`) sind Strava-Hüllen → nicht als fehlen
 | # | Kennzahl | Berechnung | ✅ | ⚠️ | ❌ |
 |---|---|---|---|---|---|
 | 1 | **Kern-Einheiten** | erfüllte `🎯 Kern`-Einheiten / geplante (verschoben & gefahren = erfüllt) | 3/3 | 2/3 | ≤1/3 |
-| 2 | **Lauf-km** | Σ `distanz_km` aller Läufe der Woche vs. Vorwoche | ≤ +10% (Entlastung: ≤ −30% ok) | +10–20% | > +20% |
+| 2 | **Lauf-km** | Σ `distanz_km` der Woche vs. **Basis = höherer Wert aus Vorwoche und Ø der 4 Wochen davor** | ≤ +10% | +10–20% | > +20% |
 | 3 | **Längster Lauf** | längster Einzellauf vs. längster Lauf der 30 Tage davor | ≤ +10% | +10–20% | > +20% |
 | 4 | **Kadenz Easy** | Ø `kadenz` der Easy-Läufe (Pace langsamer als 6:50/km), nach Dauer gewichtet | ≥ Wochenziel aus dem Plan | bis 5 spm darunter | > 5 spm darunter |
 | 5 | **Athletik** | im Plan abgehakte Athletik-Blöcke (Stefan meldet sie; ohne Meldung nachfragen) | 2/2 | 1/2 | 0/2 |
 | 6 | **Wade / Nacken** | aus Stefans Meldungen und dem Plan (kein Wellness-Feld) | beschwerdefrei | Ziehen / Muskelkater | punktueller Schmerz → Abbruchregel |
 
 Hinweise:
-- **Lauf-km:** In der Aufbauphase von sehr niedrigem Niveau (<15 km/Woche) gelten +3 km absolut als ✅,
-  auch wenn das prozentual mehr ist – sonst blockiert die Regel den Einstieg.
+- **Lauf-km:** Basis < 15 km/Woche → +3 km absolut gelten als ✅ (sonst blockiert die Regel den Einstieg).
+  Die Ø-4-Wochen-Basis verhindert, dass eine einzelne Ausfall- oder Entlastungswoche die Grenze auf null
+  drückt. Identische Rechnung wie die Dashboard-Karte „Lauf-Aufbau" (`generate.py` → `_run_km_limit`).
 - **Kadenz:** Das Wochenziel steht in der Workout-Spalte des Plans (z.B. „Kadenz-Fokus 165"). Qualitätsläufe
   und Rennen fließen nicht ein (dort ist die Kadenz ohnehin höher bzw. driftet).
 - Fehlt eine Datengrundlage (kein Lauf in der Woche): Kennzahl `–`, zählt nicht in die Note.

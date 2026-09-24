@@ -782,3 +782,53 @@ def test_phase_fuer_datum():
     assert phase_for_date(date(2026, 9, 30))["short"] == "Nullpunkt"
     assert phase_for_date(date(2027, 1, 6))["short"] == "Standort"
     assert phase_for_date(date(2027, 6, 1)) is None
+
+
+# ── Lauf-Aufbau, HF-160, Kern ────────────────────────────────────────────────
+
+def test_run_km_limit_small_base_adds_3km():
+    from generate import _run_km_limit
+    assert _run_km_limit(8.0) == 11.0
+
+
+def test_run_km_limit_uses_higher_of_prev_and_avg4():
+    from generate import _run_km_limit
+    # Ausfallwoche (0 km) darf die Grenze nicht auf 3 km druecken
+    assert _run_km_limit(0.0, 20.0) == 22.0
+    assert _run_km_limit(25.0, 20.0) == 27.5
+
+
+def test_hf160_pace_median_in_band_after_10min():
+    from generate import _hf160_pace
+    n = 1200
+    streams = [
+        {"type": "time", "data": list(range(n))},
+        {"type": "heartrate", "data": [150] * 600 + [160] * 600},
+        {"type": "velocity_smooth", "data": [3.0] * 600 + [2.222] * 600},
+    ]
+    assert _hf160_pace(streams) == 450  # 2.222 m/s = 7:30/km
+
+
+def test_hf160_pace_needs_3min_in_band():
+    from generate import _hf160_pace
+    streams = [
+        {"type": "time", "data": list(range(900))},
+        {"type": "heartrate", "data": [170] * 800 + [160] * 100},
+        {"type": "velocity_smooth", "data": [2.5] * 900},
+    ]
+    assert _hf160_pace(streams) is None
+
+
+def test_parse_kw_plan_detects_kern(tmp_path, monkeypatch):
+    from generate import parse_kw_plan
+    (tmp_path / "planung").mkdir()
+    (tmp_path / "planung" / "kw50.md").write_text(
+        "# KW50 – Test\n\n## Wochenplan\n\n"
+        "| Tag | Workout | TSS ca. | TSS Ist | Status | Notiz |\n|---|---|---|---|---|---|\n"
+        "| Mo | 🏃 Easy 40min | 30 | – | ⬜ | 🎯 Kern · morgens |\n"
+        "| Di | 🚴 LIT-1h | 35 | – | ⬜ | |\n"
+        "| **Total** | | **~65** | | | |\n", encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+    days = {d["tag"]: d for d in parse_kw_plan(50)["days"]}
+    assert days["Mo"]["kern"] is True
+    assert days["Di"]["kern"] is False
