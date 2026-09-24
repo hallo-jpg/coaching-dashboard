@@ -36,12 +36,12 @@
 | Datum | Schwellenpace | 5km Prognose | Notiz |
 |---|---|---|---|
 | 29.03.2026 | 6:03/km | 29:11 | Projektstart – Schätzwert, nie durch einen Wettkampf belegt |
-| 20.09.2026 | **6:28/km** | ~31:15 | 🏁 10km-Wettkampf 6:31/km @ Ø HF 183 (66min) → Schwellenpace 6:03 → **6:28**, LTHR 179 → **185** (TrainingPeaks-Erkennung, von Stefan freigegeben). Zonen in `profil.md`, `generate.py` und Coach-Skill umgestellt. Offen: gleiche Werte in intervals.icu hinterlegen |
+| 20.09.2026 | **6:28/km** | ~31:15 | 🏁 10km-Wettkampf 6:31/km @ Ø HF 183 (66min) → Schwellenpace 6:03 → **6:28**, LTHR 179 → **185** (TrainingPeaks-Erkennung, von Stefan freigegeben). Zonen in `profil.md`, `generate.py` und Coach-Skill umgestellt. In intervals.icu übernommen (20.9.). |
 
 ## Nächster FTP-Test
 
 **Testfenster:** KW40 (28. Sep – 4. Okt 2026) – Herbsttest, von KW39 verschoben (≥11 Tage Abstand zum Seelauf). **Erster Test am neuen Setup** (Tarmac SL8 / XCadey) – FTP 305W stammt noch vom 4iiii.
-**Methode:** 3+10min Protokoll, outdoor, 4iiii Referenz
+**Methode:** Sentiero 3+10min · Tarmac mit XCadey auf der Rolle, kein ERG · XCadey → DURA + Tacx-App parallel → FTP + Offset-Faktor (entschieden 24.9.2026)
 **Hinweis:** KW21-Test gestrichen (03.05.2026) – Krankheit KW16 hat Trainingsgrundlage zu stark reduziert, Fokus auf Aufbau bis KW21
 
 ---

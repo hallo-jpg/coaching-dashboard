@@ -12,7 +12,7 @@
 | **Trainingsfokus** | **Dual: FTP + Laufleistung** · 9–10h/Woche · Rad:Lauf wandert von 70:30 (Okt) auf 60:40 (Dez–Feb) |
 | **CTL** | 23,3 (21.9.) · Winterziel 60–68 bis Ende Januar |
 | **Zeitrahmen** | werktags max. 90min (Ausnahme bis 2h), vor oder nach der Arbeit · Wochenende trägt die langen Einheiten · Wochenplanung rollierend 1–2 Wochen im Voraus |
-| **Nächster Fixpunkt** | 🔬 FTP-Test **KW40** (Do 1.10.) – erster Test am Tarmac/XCadey + Rollen-Kalibrierung |
+| **Nächster Fixpunkt** | 🔬 FTP-Test **KW40** (Do 1.10.) – Tarmac mit XCadey auf der Rolle, kein ERG, DURA + Tacx-App parallel → FTP + Offset-Faktor |
 | **Abbruchkriterien** | Nacken: Schmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme · Lauf: punktueller Schmerz an der Schienbeinkante |
 
 FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026, gemessen mit 4iiii). Seit dem Setup-Wechsel (Sept. 2026, siehe Geräte) ist die Leistungsquelle eine andere → **Zonen erst nach neuem FTP-Test auf dem Tarmac/XCadey wieder trainingsleitend.** Indoor- und Outdoor-Werte stammen aus verschiedenen Messgeräten und sind nicht 1:1 vergleichbar.

@@ -1,7 +1,34 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 23. September 2026*
+*Letzte Aktualisierung: 24. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 24. September 2026 – System-Aufräumen: Memory, Skill, Retro, Kern-Einheiten
+
+**Anlass:** Stefan wollte das Coaching „auf den Prüfstand“. Befund: `COACH_MEMORY.md` enthielt sich widersprechende
+Regeln (Metronom ja/nein, ERG-Formate zurückgenommen und trotzdem noch gültig, FTP-Testaufbau offen/entschieden,
+Kadenzziel 155–165 vs. 165–170, doppelte Absätze, beantwortete Fragen als „offen“). Der Coach-Skill (1.366 Zeilen)
+nannte noch RadRace als Ziel, lud die Memory nicht und widersprach ihr mehrfach (Emojis im Workoutnamen, Kraft
+„nicht aktiv einplanen“, Schwelle 6:03, FTP-Test „outdoor/4iiii“).
+
+**Stefans Entscheidungen:**
+| Frage | Entscheidung |
+|---|---|
+| FTP-Testaufbau | Tarmac mit XCadey auf den Flux · XCadey → DURA + Tacx-App parallel · kein ERG → FTP + Offset-Faktor aus einer Einheit |
+| Kadenz-Rückmeldung | **nach Gefühl** – kein Metronom, keine Musik, kein Alarm |
+| Wochen-Retro | Note aus Kern-Einheiten, Lauf-km (+10%), längstem Lauf (30-Tage-Regel), Kadenz Easy, Athletik, Wade/Nacken · TSS nur Info · Polarisation Rad + Lauf |
+| Kern-Einheiten | **3 pro Woche**: Rad-Qualität · Lauf-Qualität · eine lange WE-Einheit – Kern wird verschoben, der Rest ist flexibel |
+| Wade/Nacken-Wellness-Feld | nicht gewünscht |
+
+**Umgesetzt:**
+- `COACH_MEMORY.md` neu strukturiert (ein Thema = ein Eintrag, Pflegeregel oben, erledigte Entscheidungen als Tabelle, offene Punkte nur in Abschnitt 8).
+- Coach-Skill in Kern (`SKILL.md`, 268 Zeilen) + Module `modules/retro.md`, `checks.md`, `krank.md`, `ftp-test.md`, `event.md` aufgeteilt. Pflicht-Ladetabelle im Kern, jeder Output nennt die gelesenen Module (`Module: …`).
+- MCP `get_recent_activities` liefert jetzt IF, Kadenz (Lauf in spm – intervals.icu speichert Doppelschritte, 77 = 154 spm) und Lauf-Pace.
+- KW33–37 und Rosenheimer-Raceplan ins Archiv, KW39 entdoppelt, KW40 mit Testaufbau + Stufen-Warmfahren, KW40/41 mit `🎯 Kern`.
+- CLAUDE.md, `periodisierung.md`, `langfristplan.md`, `profil.md`, `fortschritt.md` auf denselben Stand gebracht.
+- Korrektur nebenbei: TSB-Prognose im Taper rechnete mit falschen Abklingfaktoren (0,965/0,916 → richtig 0,976/0,867).
 
 ---
 

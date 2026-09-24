@@ -1,298 +1,260 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Bei neuen Erkenntnissen oder Korrekturen hier ergänzen, nicht nur im Chat bestätigen.*
-*Stand: 23. September 2026*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 24. September 2026 (bereinigt).*
+
+**Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
+zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
+hier steht nur die gültige Regel + ein Satz Begründung. Offene Fragen stehen ausschließlich in Abschnitt 8.
 
 ---
 
 ## 1. Steuerung & Physiologie
 
 ### ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run-Cap nie unter 160
-Belegte Easy-Run-Werte über die ganze Saison 2026: **155–163 bpm bei 7:10–7:35/km**, auch bei voller Fitness (CTL 40–48). Beispiele: 6.5. 42min @ 7:30 → 163 · 20.5. 45min @ 7:30 → 161 · 18.3. 73min @ 7:10 → 156.
-**Warum:** Die Laufzonen in `athlete/profil.md` waren ursprünglich von der Rad-HFmax (205) abgeleitet (Z1 = 123–148) – dafür müsste Stefan gehen. Der Fehler wurde dreimal gemacht (KW18, KW19, 26.7.), Stefan hat jedes Mal widersprochen, die Daten geben ihm recht.
-**Anwenden:** Easy-Run-Cap Standard **165**, nie unter 160. Fortschrittsmesser: „Pace bei HF 160" (Referenz 7:30/km @ 163 bei CTL 40). Erhöhte Lauf-HF **nie** als Detraining oder Krankheit deuten, ohne die Belegtabelle im Profil zu prüfen. Aus **einem** Datenpunkt nach ungewohnter Belastung keine Fitnessdiagnose – erst ab 3–4 vergleichbaren Einheiten.
+Belegte Easy-Run-Werte 2026: **155–163 bpm bei 7:10–7:35/km**, auch bei CTL 40–48 (6.5. 42min @ 7:30 → 163 ·
+20.5. 45min @ 7:30 → 161 · 18.3. 73min @ 7:10 → 156). Die Laufzonen wurden früher dreimal fälschlich aus der
+Rad-HFmax abgeleitet – Stefan hat jedes Mal zu Recht widersprochen.
+**Anwenden:** Easy-Cap **165**, nie unter 160. Erhöhte Lauf-HF nie als Detraining oder Krankheit deuten. Aus
+**einem** Datenpunkt nach ungewohnter Belastung keine Fitnessdiagnose – erst ab 3–4 vergleichbaren Einheiten.
 
-### 🏁 Wettkampf-Referenz Laufen (20.9.2026): 10km in 1:05:08 @ Ø HF 183
-Karlsfelder Seelauf, erster echter 10-km-Wettkampf: **6:31/km über 66min**, Ø HF **183**, max **196**, RPE 8 — 48% der Zeit in 164–184 bpm, **41% über 184 bpm**. Vorheriger 10-km-Bestwert 1:11:28 (Trainingslauf).
-**Anwenden:** Das ist ab jetzt der Ankerpunkt für jede Lauf-Leistungsaussage — kein Trainingslauf mit Confoundern kann ihn überstimmen. Lauf-LTHR liegt real bei **183–185** (gespeichert: 179), Lauf-HFmax deutlich über 196. HF-Obergrenzen in Rennplänen nie unter 185 ansetzen. **Umgesetzt am 20.09.2026:** Schwellenpace **6:03 → 6:28/km**, LTHR **179 → 185** (Quelle LTHR: TrainingPeaks-Auto-Erkennung nach dem Seelauf, von Stefan freigegeben). Laufzonen in `athlete/profil.md`, `generate.py` und die Pacebänder im Coach-Skill sind darauf umgestellt.
-**In intervals.icu übernommen (Stefan, 20.09.2026):** Schwellentempo 6:28/km, Schwellen-HF 185, HFmax 205. Damit rechnen rTSS, Zonen und `pace_pct` dort auf derselben Basis wie die Dateien im Repo — kein Versatz mehr.
-**Zonen-Mapping Lauf (intervals.icu-Tempozonen bei Schwelle 6:28):** Z1 >8:21 · Z2 7:22–8:20 · Z3 6:51–7:21 · Z4 6:28–6:50 · Z5a 6:15–6:27 · Z5b 5:48–6:14 · Z5c <5:47. Unser Z1 Easy (7:25–8:40) = deren Z1+Z2 · unser Z2 Aerob = deren Z3 · unser Z3 Schwelle = deren Z4+Z5a · unser Z4 VO2max = deren Z5b+Z5c.
-**HF-Zonen dort (LTHR 185):** Z1 ≤156 · Z2 157–165 · Z3 166–174 · Z4 SubThreshold 175–184 · Z5 SuperThreshold 185–189 · Z6 190–195 · Z7 196–205.
+### 🏁 Lauf-Referenz: 10 km in 1:05:08 @ Ø HF 183 (Seelauf 20.9.2026)
+6:31/km über 66min, max HF 196, RPE 8, 41% der Zeit über 184 bpm. Alter Bestwert 1:11:28.
+**Anwenden:** Ankerpunkt für jede Lauf-Leistungsaussage – kein Trainingslauf mit Confoundern überstimmt ihn.
+Daraus gesetzt und **in intervals.icu übernommen**: Schwellenpace **6:28/km**, LTHR **185**, HFmax 205.
+HF-Obergrenzen in Rennplänen nie unter 185.
+- **Tempozonen intervals.icu (Schwelle 6:28):** Z1 >8:21 · Z2 7:22–8:20 · Z3 6:51–7:21 · Z4 6:28–6:50 ·
+  Z5a 6:15–6:27 · Z5b 5:48–6:14 · Z5c <5:47. Unser Z1 Easy (7:25–8:40) = deren Z1+Z2 · unser Z2 Aerob =
+  deren Z3 · unser Z3 Schwelle = deren Z4+Z5a · unser Z4 VO2max = deren Z5b+Z5c.
+- **HF-Zonen dort (LTHR 185):** Z1 ≤156 · Z2 157–165 · Z3 166–174 · Z4 175–184 · Z5 185–189 · Z6 190–195 · Z7 196–205.
 
 ### Rennpace nie aus einem Intervalllauf mit Confoundern ableiten
-Vor dem Seelauf leitete der Coach aus 3×7min vom 9.9. eine Rennpace von 6:50/km ab (Prognose 68:20). Stefan entschied sich gegen diese Ableitung für 6:30–6:40 und lief **6:31** — der Coach lag 20 sek/km daneben. Der Ableitungs-Datenpunkt war ein Intervalllauf **mit Trabpausen**, bei ACWR 1,7 und TSB −15, zwei Tage nach 5,5h Rad.
-**Anwenden:** Aus Intervallen mit Pausen, unter Ermüdung oder nach Fremdbelastung wird **keine** Wettkampfpace abgeleitet. Wenn Stefan eine eigene Zielzeit nennt, die über der Coach-Schätzung liegt: nicht kleinrechnen, sondern **mit einem Entscheidungspunkt im Rennen absichern** (Split- und HF-Check bei Halbdistanz) — das hat hier funktioniert. Gate-Schwellen dabei aus Wettkampf-HF ableiten, nicht aus Trainings-LTHR: das km-5-Gate ">182 → langsamer" war zu eng und hätte das Rennen gebremst.
+Vor dem Seelauf leitete der Coach aus 3×7min (mit Trabpausen, ACWR 1,7, TSB −15, 2 Tage nach 5,5h Rad) 6:50/km
+ab. Stefan lief 6:31 – der Coach lag 20 sek/km daneben.
+**Anwenden:** Aus Intervallen mit Pausen, unter Ermüdung oder nach Fremdbelastung keine Wettkampfpace ableiten.
+Nennt Stefan eine ehrgeizigere Zielzeit: nicht kleinrechnen, sondern mit einem **Entscheidungspunkt im Rennen**
+absichern (Split + HF bei Halbdistanz). Gate-Schwellen aus Wettkampf-HF ableiten, nicht aus Trainings-LTHR.
+
+### 📊 Readiness-Score (Modell seit 23.9.2026, Stefans Wunsch)
+HRV 35 % · Gefühl 25 % · Ruhepuls 20 % · Schlaf 20 %. HRV und RP jeweils **70 % 7-Tage-Schnitt vs.
+30-Tage-Normalbereich + 30 % heute**, Schlaf = heute + 3-Nächte-Ø. **TSB zählt nicht** (steht im
+Trainingsform-Ring). Warnsignal → Score max. 45 🔴: HRV < −2,5 SD (≈ unter 33) oder RP > +7 bpm über 30-Tage-Ø.
+Identische Formel in `generate.py` und MCP `get_readiness_score`.
+Grund: Stefans HRV/RP schwanken stark (HRV ±7 ms); das alte Tagesmodell mit TSB zeigte nach jedem Lastblock
+gelb/rot, obwohl er erholt war.
+**Anwenden:** Tiefer TSB bei grüner Readiness = produktive Ermüdung, kein Grund zu kürzen. Einzelne gelbe Tage
+nicht überbewerten – der Trend über 3+ Tage zählt.
 
 ### HRV-Einbruch + Krank-Risiko-Flag → erst nach Alkohol fragen
-Stefans HRV-Einbrüche gingen wiederholt auf Alkohol zurück, nicht auf Training oder Infekt (17.5. JGA · 2.8. HRV 54→34, Ruhepuls 54→63 nach Gruppenausfahrt mit Bier). Beide Male meldete intervals.icu fälschlich 🔴 Krank-Risiko.
-**Anwenden:** Bei HRV-Einbruch mit Krank-Flag zuerst nach dem Vorabend fragen – besonders nach Wochenende, sozialem Anlass, Gruppenausfahrt. Alkoholsuppression klärt sich in 24–48h; bleibt die HRV danach unten, ist das Signal *stärker* zu gewichten. Statt Pauschalpause ein Gate in den Plan: grün HRV ≥45 & RP ≤58 · gelb 38–44 gekürzt · rot <38 oder RP >60 Ruhetag. Qualitätseinheiten nie streichen, nur verschieben.
+Die HRV-Einbrüche gingen wiederholt auf Alkohol zurück (17.5. JGA · 2.8. HRV 54→34, RP 54→63 nach
+Gruppenausfahrt mit Bier); intervals.icu meldete beide Male fälschlich 🔴 Krank-Risiko.
+**Anwenden:** Zuerst nach dem Vorabend fragen. Alkoholsuppression klärt sich in 24–48h; bleibt die HRV danach
+unten, das Signal *stärker* gewichten. Statt Pauschalpause ein Gate in den Plan: grün HRV ≥45 & RP ≤58 ·
+gelb 38–44 gekürzt · rot <38 oder RP >60 Ruhetag. Qualitätseinheiten nie streichen, nur verschieben.
 
-### 📊 Readiness-Score: neues Modell seit 23.9.2026 (Stefans Wunsch)
-Alt: HRV/Schlaf/**TSB**/Ruhepuls, nur Tageswerte. Folge: nach jedem Lastblock gelb/rot, obwohl der Körper gut erholt war (18.–23.9.: HRV normal, RP 53, 8,5h Schlaf → trotzdem 59–72). Stefan: HRV und Ruhepuls schwanken bei ihm stark (HRV ±7 ms, ~14 %), einzelne Tage sind nicht aussagekräftig.
-**Jetzt (Dashboard `generate.py` + Coach `get_readiness_score`, identische Formel):** HRV 35 % · Gefühl 25 % · Ruhepuls 20 % · Schlaf 20 %. HRV und RP jeweils **70 % 7-Tage-Schnitt vs. 30-Tage-Normalbereich + 30 % heute**, Schlaf = heute + 3-Nächte-Ø. **TSB zählt nicht** (steht im Trainingsform-Ring). Warnsignal → Score max. 45 🔴: HRV < −2,5 SD (≈ unter 33) oder RP > +7 bpm über dem 30-Tage-Schnitt.
-**Anwenden:** Tiefer TSB bei grüner Readiness = produktive Ermüdung, kein Grund zu kürzen. Einzelne gelbe Tage nicht überbewerten — der Trend über 3+ Tage zählt. Beim Warnsignal gilt weiterhin: erst nach Alkohol fragen (siehe unten).
-
-### Zonen-Mapping intervals.icu ↔ Sentiero
-Gleiche Zonen, andere Nummerierung (Sentiero ab Z0, intervals.icu ab Z1 → Offset +1):
+### Zonen-Mapping Rad: intervals.icu ↔ Sentiero
+Gleiche Zonen, Sentiero zählt ab Z0 (Offset +1):
 - **LIT** = Sentiero Z0+Z1+Z2 = intervals.icu **Z1+Z2+Z3** (Z3 = FatMax = LIT, kein Drift-Signal!)
 - **Grauzone** = Sentiero Z3 = intervals.icu **Z4** (+ Sweetspot)
 - **HIT** = Sentiero Z4+Z5+Z6 = intervals.icu **Z5+Z6+Z7**
-Fehler entstanden durch Verwechslung von Watt-Grenzen mit Zonennummern.
 
 ### RPE 7–8 bei HIT/VO2max ist korrekt
-Stefan hat explizit korrigiert (KW18 Retro): Berg-HIT mit RPE 7–8 ist genau richtig. Wenn Überlastung oder Grauzone erkannt wird, liegt es am **Gesamtvolumen / fehlender Erholung**, nie an der Intervallintensität. Formulierung: „Das Gesamtvolumen war zu hoch", nicht „die Einheiten waren zu intensiv".
+Wird Überlastung oder Grauzone erkannt, liegt es am **Gesamtvolumen / fehlender Erholung**, nie an der
+Intervallintensität. Formulierung: „Das Gesamtvolumen war zu hoch", nicht „die Einheiten waren zu intensiv".
 
 ### Rennwoche: Aktivierung IMMER auf T-1
-Nie eigenmächtig auf T-2 oder früher verschieben, auch wenn Stefan an T-1 keinen Slot nennt. Neuromuskuläres Priming wirkt 24h vor Start, nicht 48h. Bei Zeitkonflikt an T-1: nachfragen, **kürzen** (30min statt 1:30h) – den Tag nie ändern.
+Nie eigenmächtig auf T-2 oder früher verschieben. Bei Zeitkonflikt an T-1: nachfragen und **kürzen**
+(30min statt 1:30h) – den Tag nie ändern.
 
 ---
 
 ## 2. Wade, Kadenz, Laufstil
 
-### 🦵 Kadenz ~140 spm ist die Ursache – Arbeitsziel 155–165
-Stefans gewohnte Laufkadenz liegt bei **~140 spm, auch bei Tempo** (bestätigt 6.9.: 140 bei 7:47/km *und* bei ~6:15/km – ein Stilmerkmal, kein Artefakt). Bei 91 kg heißt das lange Bodenkontaktzeit, Fußaufsatz vor dem Schwerpunkt, hohes Biegemoment auf die Tibia → mit hoher Wahrscheinlichkeit **die** Ursache des Wadenschmerzes am Soleus-Tibia-Übergang (MTSS-Verdacht ab 9.8.2026; tat nur beim *langsamen* Laufen weh). Mit Konzentration erreichte er am 6.9. Ø 161 / max 179, Wade beschwerdefrei.
-**Wettkampf-Datenpunkt 20.9.2026:** im Rennen **154 spm** über 66min bei 6:31/km (Schrittlänge 1,00 m) — gegenüber 160–162 spm in den Metronom-Einheiten der Vorwochen, aber **+13 spm gegenüber dem alten Gewohnheitswert 141** (4.9., ohne Fokus). Nacken beschwerdefrei, keine Wadenbeschwerden gemeldet.
-**Regel daraus:** Unter Wettkampfstress und über längere Dauer driftet die Kadenz **~6 spm unter** den im Training mit Metronom erreichten Wert zurück. Trainingsziel deshalb immer ~5 spm **über** dem, was im Wettkampf stehen soll.
-⚠️ **Korrektur 21.9.2026: Stefan benutzt kein Metronom** — er läuft schneller und achtet nach Gefühl auf
-eine hohe Frequenz. Die Wochenpläne KW37/38 schrieben „Metronom 160" vor, das war eine Coach-Annahme.
-**Gute Nachricht daraus:** die 160–163 im Training hat er **ohne** Hilfsmittel erreicht. Rückmeldeweg für
-die 165–170 ist offen (Kadenzalarm der Pace 3 prüfen · Metronom-App mit einem Ohrhörer · Musik bei
-160–165 bpm · weiter nach Gefühl) — **Stefan entscheidet, der Coach schreibt kein Werkzeug vor.**
+### 🦵 Kadenz: Ziel 165–170 im Training, Rückmeldung **nach Gefühl**
+- **Ausgangslage:** gewohnt ~140 spm, auch bei Tempo (ein Stilmerkmal). Bei 190 cm / ~94 kg heißt das lange
+  Bodenkontaktzeit, Fußaufsatz vor dem Schwerpunkt, hohes Biegemoment auf die Tibia → sehr wahrscheinlich die
+  Ursache des Wadenschmerzes am Soleus-Tibia-Übergang (MTSS-Verdacht seit 9.8.2026, schmerzte nur langsam).
+- **Belegt:** Training mit bewusster Frequenz 160–163 · Wettkampf 20.9.: **154** über 66min.
+  Unter Wettkampfstress driftet die Kadenz ~6 spm unter den Trainingswert → Trainingsziel liegt ~5 spm über dem,
+  was im Wettkampf stehen soll. Daher **165–170 im Training**, damit im Wettkampf ~160 steht.
+- **Werkzeug (Stefan, 24.9.2026): nach Gefühl** – schneller laufen, bewusst kurze Schritte, hohe Frequenz.
+  Kein Metronom, keine Musik, kein Kadenzalarm vorschreiben. Pläne nennen nur die Zielzahl.
+- **Anwenden:** In jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Nicht höher als 170
+  ansetzen (Zielwert wurde schon zweimal falsch kalibriert). Wenn 165 nach 10min verkrampft wirkt → lieber
+  konsequent 160 als verkrampft 170. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere
+  Schritte, Fuß unter den Körper"). Umstellung braucht 6–8 Wochen – wichtigstes Laufprojekt Herbst 2026.
 
-**Anwenden:** Arbeitsziel **155–165**, nach dem Seelauf konsolidieren auf 165–170. Nicht höher ansetzen – der Zielwert wurde zweimal falsch kalibriert (170–175 auf Schätzung; 165–170 mit den 161 als vermeintlicher Basis). Bei jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Wenn 160 nach 10min unnatürlich bleibt → 155, lieber konsequent 155 als verkrampft 165. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere Schritte, Fuß unter den Körper") – dort ist Kadenz Verletzungsschutz. Die Umstellung 140 → stabile 165–170 braucht 6–8 Wochen und ist das **wichtigste Laufprojekt nach dem Zielrennen**.
-
-### 🦵 „Langsames Laufen ist orthopädisch teuer" — Stefan hat recht, endgültige Fassung (21.9.2026)
-
-Die Aussage kam von Stefan, der Coach hat ihr zweimal zu grob widersprochen. Belastbare Begründung:
-Spitzenkraft pro Schritt ist langsam niedriger — aber das ist nur **eine von drei** Lastdimensionen.
-Bodenkontaktzeit und Zeit-unter-Spannung des Soleus steigen beim langsamen Laufen, und
-Knochenbelastung akkumuliert **hoch potenziert mit der Dehnung × Zyklenzahl**, nicht linear.
-Bei ~140 spm und 94 kg heißt langsam: Fuß weit vor dem Schwerpunkt, maximaler Bremsimpuls,
-maximales Biegemoment auf die Tibia. Deckt sich mit dem Befund — die Wade tat **nur** langsam weh.
-
-**Aber die Gegenmaßnahme ist nicht „mehr schnell statt langsam":** Tibia- und Achillessehnenlast
-skalieren mit dem Tempo (~7–8× Körpergewicht im Tempobereich). Easy-Volumen durch Tempo zu ersetzen
-kauft bei niedriger Laufbasis nur eine andere Überlastung.
-
-**Anwenden — die fünf Regeln:** (1) Kein langsames Trotten; Easy = 7:15–7:45/km @ HF 155–165.
-(2) Metronom in jeder Easy-Einheit, Kadenz ist die Hauptaufgabe. (3) Aerobes Volumen kommt vom Rad
-(null Impact, dient ohnehin dem FTP-Ziel). (4) Jeder Lauf hat einen Zweck — keine Füllkilometer.
-(5) 2×/Woche Lauf-Athletik 15min, bei 94 kg nicht optional.
-Nie wieder mit „Spitzenkraft ist langsam niedriger" argumentieren — das ist die widerlegte Fassung.
+### 🦵 „Langsames Laufen ist orthopädisch teuer" – Stefan hat recht
+Spitzenkraft pro Schritt ist langsam zwar niedriger, aber Bodenkontaktzeit und Zeit-unter-Spannung des Soleus
+steigen, und Knochenbelastung akkumuliert **hoch potenziert mit Dehnung × Zyklenzahl**. Bei ~140 spm heißt
+langsam: maximaler Bremsimpuls, maximales Biegemoment auf die Tibia – deckt sich mit dem Befund.
+Gegenmaßnahme ist aber **nicht** „mehr Tempo statt Easy": Tibia- und Achillessehnenlast skalieren mit dem Tempo.
+**Die fünf Regeln:** (1) Kein langsames Trotten; Easy = 7:15–7:45/km @ HF 155–165. (2) Kadenz ist in jeder
+Easy-Einheit die Hauptaufgabe (nach Gefühl, s.o.). (3) Aerobes Volumen kommt vom Rad. (4) Jeder Lauf hat einen
+Zweck – keine Füllkilometer. (5) 2×/Woche Lauf-Athletik 15min, nicht optional.
+Nie wieder mit „Spitzenkraft ist langsam niedriger" argumentieren – das ist die widerlegte Fassung.
 
 ### Stefan läuft ohne Auto-Lap – Rennpläne nicht auf km-Piepser bauen
-Auto-Lap ist auf der COROS **aus**. Ohne Lap-Druck läuft eine einzige Runde über die
-gesamte Einheit, dadurch gilt: **Rundenzeit = Gesamtzeit**, Ø Pace der Runde = Ø Pace
-gesamt. Ein Zeitfeld extra braucht es also nicht.
-**Anwenden:** Checkpoints in Rennplänen nie an einen automatischen km-Piepser hängen,
-sondern an die **km-Schilder der Strecke** – dort Rundenzeit gegen die Soll-Splittabelle
-prüfen. Das ist ohnehin genauer: die Uhr misst auf dem Kurs typisch **1–2 % zu lang**
-(keine Ideallinie, GPS-Rauschen), auf 10 km also 100–200 m. Folge: Uhr-Distanz läuft dem
-Schild voraus und die angezeigte Ø Pace liegt über der offiziellen. Zielkontrolle
-deshalb immer über Zeit am Schild, nie über Ø Pace oder Uhr-Distanz.
+Ohne Lap-Druck ist Rundenzeit = Gesamtzeit. Die Uhr misst auf Kursen typisch 1–2 % zu lang.
+**Anwenden:** Checkpoints an die **km-Schilder der Strecke** hängen, dort Zeit gegen Soll-Splittabelle prüfen.
+Zielkontrolle immer über Zeit am Schild, nie über Ø Pace oder Uhr-Distanz.
 
 ---
 
 ## 3. Wochenstruktur & Verfügbarkeit
 
-### Lauf-Block (seit KW33): Kern Mo/Mi/Fr früh, Wochenende nur Bonus
-KW31 und KW32 sind **beide am Wochenende gescheitert** (Hitze, private Termine, spontane Radausfahrt) – der Longrun und zweimal der 2km-Kalibrierungscheck fielen aus. Werktags früh hat zuverlässig funktioniert.
-**Anwenden:** Im Lauf-Block Schlüsseleinheiten nie aufs Wochenende legen; Sa/So als „Bonus – ersatzlos streichbar" kennzeichnen. Im Sommer: früh morgens erste Wahl, spät abends zweite.
-### Zeitrahmen ab Winter 26/27 (Stefan, 21.9.2026)
-**Werktags max. 90min** (Ausnahme bis 2h), **vor oder nach der Arbeit** — beides geht, der Slot wird
-je Woche festgelegt. **Wochenende trägt die langen Einheiten.** Konkrete Wochenplanung macht Stefan
-**rollierend 1–2 Wochen im Voraus** — also nie mehr als zwei Wochen im Detail ausplanen, der Rest
-bleibt Blockstruktur. Damit ist die lange Ausfahrt Wochenend-gebunden; fällt das Wochenende aus, ist
-die Woche kürzer, nicht kaputt.
+### Zeitrahmen Winter 26/27 (Stefan, 21.9.2026)
+- **Werktags max. 90min** (Ausnahme bis 2h), vor **oder** nach der Arbeit – Slot wird je Woche festgelegt.
+- **Wochenende trägt die langen Einheiten.** **Ruhetag immer unter der Woche.** **5–6 Trainingstage.**
+- Detailplanung **rollierend 1–2 Wochen im Voraus**, weiter hinten nur Blockstruktur (Stubs).
+- Nov–Feb ist faktisch Rolle, auch die langen Wochenendeinheiten.
 
-**Rad-Regel (gilt wieder bei Rad-Fokus):** Ruhetag immer unter der Woche, Wochenende beide Tage Training (lange Ausfahrten). Vollzeit berufstätig: wochentags max. 2h, Wochenende 2,5–4h.
+### 🎯 Kern-Einheiten statt TSS-Quote (Stefan, 24.9.2026)
+Jede Woche hat **3 Kern-Einheiten**, der Rest ist ausdrücklich flexibel:
+1. **Rad-Qualität** (Standard Di)
+2. **Lauf-Qualität** (Standard Fr) – bis KW44 ist das der Easy-Lauf mit Kadenz-Fokus + Athletik
+3. **Eine lange Einheit am Wochenende** – Sa **oder** So, Rad oder Lauf, egal welche
+Im Wochenplan in der Notiz-Spalte mit **`🎯 Kern`** markieren. Fällt eine Kern-Einheit aus → **verschieben**,
+nicht streichen. Fällt eine flexible Einheit aus → ersatzlos.
+**Warum:** Plan und Ist weichen regelmäßig ab (KW38 Di 1h geplant / 2:16h gefahren, KW39 75 → 255 TSS,
+KW31/32 an den Wochenenden gescheitert). Das ist Information, kein Fehlverhalten – bewertet wird, ob der Kern
+steht, nicht wie nah die TSS-Summe am Plan liegt.
 
 ---
 
 ## 4. Kommunikation & Selbstbild
 
 ### HIT/VO2max nie als „Neuland" bezeichnen
-Stefan hat 2025 den Ötztaler Radmarathon absolviert, mit intensivem HIT/VO2max-Training indoor und outdoor. Formulierungen wie „neues Terrain" oder „wenig Erfahrung" fühlen sich für ihn falsch und herabsetzend an. Intensität als Progression beschreiben, auf Augenhöhe.
+Stefan hat 2025 den Ötztaler absolviert, mit intensivem HIT-Training indoor und outdoor. Intensität als
+Progression beschreiben, auf Augenhöhe.
 
-### Rad→Lauf-Transfer: die Lücke ist Volumen, nicht Talent (Stand 20.9.2026)
-Stefan erlebt wiederkehrend, dass sein Radmotor sich nicht aufs Laufen überträgt, und diagnostiziert sich selbst „schlechte Laufökonomie". Belastbare Zahlen dagegen (Details + Rechenweg: `COACHING_AKTE.md`, Eintrag 20.9.2026):
-- Rad-VO2max ≈ 48–50 ml/kg/min (aus FTP 305W bei 91–94kg) · Renn-VO2 beim 10km ≈ 31–35 → er lief bei **maximaler Ausbelastung** nur mit 62–73% seiner Radkapazität.
-- **2026: 40 Läufe, ~250 km = 6,5 km/Woche**, 16% der Trainingszeit. Längster Lauf seit März vor dem Rennen: 6,9 km.
-- Reihenfolge der Ursachen: **1. Lauf-Volumen/Durability (größter Faktor) · 2. Körpergewicht 93–94 kg (Laufen trägt jedes Kilo, Flachrad nicht) · 3. Ökonomie/Kadenz (3–6%)**.
-**Anwenden:** Nie bestätigen, dass Ökonomie „das Problem" ist — sie ist Platz 3. Nie als Talentfrage rahmen. Immer mit der Volumenzahl antworten und daran erinnern, dass der Radmotor selbst gerade nicht auf Stand ist (CTL 24, FTP vom April am alten Messgerät). Zielkorridor bei 25–40 km/Woche über 6–12 Monate: 5:45–6:05/km (57:30–61:00). Gewicht nur als Faktor benennen, nie als Vorgabe.
+### Rad→Lauf-Transfer: die Lücke ist Volumen, nicht Talent
+Rad-VO2max ≈ 48–50 ml/kg/min · Renn-VO2 beim 10km ≈ 31–35 → er lief mit 62–73% seiner Radkapazität.
+2026: 40 Läufe, ~250 km = **6,5 km/Woche**, längster Lauf vor dem Rennen 6,9 km (Rechenweg: Akte, 20.9.2026).
+Ursachen in dieser Reihenfolge: **1. Lauf-Volumen/Durability · 2. Körpergewicht · 3. Ökonomie/Kadenz (3–6%)**.
+**Anwenden:** Nie bestätigen, dass Ökonomie „das Problem" ist, nie als Talentfrage rahmen. Mit der Volumenzahl
+antworten. Zielkorridor bei 25–40 km/Woche über 6–12 Monate: 5:45–6:05/km (57:30–61:00).
 
 ### Realitätscheck statt Zuspruch
-Nach einzelnen ernüchternden Einheiten (z.B. 14.9., T-6) äußert Stefan das Gefühl, „seit Jahren keinen Fortschritt" zu machen und „schwach" zu sein. Auslöser fast immer: hohe absolute HF bei moderater Leistung. Er will dann explizit einen **Realitätscheck, keinen Zuspruch**.
-**Anwenden:** Mit Langzeitzahlen aus `athlete/fortschritt.md` antworten (FTP 271W/2,8 W/kg 11/2023 → 305–317W/3,35–3,6 W/kg 2026, VO2max 59, Ötztaler). HF-Vergleich als **HFmax-Frage** reframen (Rad 202 beobachtet, Lauf vermutlich 210+ → absolute HF höher als bei anderen, relativ normal). Auf fehlende vergleichbare Datenpunkte hinweisen (Confounder: nüchtern, nach Pause, nach langer Radtour) statt Fitness zu diagnostizieren. Lauf-Fortschritt nur über standardisierten Check: gleiche Strecke, morgens, gefrühstückt, ≥48h nach harter Einheit, 30min @ HF 160 → Pace.
+Nach ernüchternden Einheiten (Auslöser meist hohe absolute HF bei moderater Leistung) will Stefan einen
+**Realitätscheck, keinen Zuspruch**.
+**Anwenden:** Mit Langzeitzahlen aus `athlete/fortschritt.md` antworten (FTP 271W 11/2023 → 305–317W 2026,
+VO2max 59, Ötztaler). HF als **HFmax-Frage** reframen. Confounder benennen (nüchtern, nach Pause, nach langer
+Radtour) statt Fitness zu diagnostizieren. Lauf-Fortschritt nur über den standardisierten HF-160-Check.
+
+### Gewicht
+- **Quelle:** intervals.icu-Wellness, nie nachfragen. `get_current_fitness` liefert `Gewicht_schnitt_30d_kg`.
+  Ab **0,5 kg** Abweichung vom Profilwert: Gewicht + W/kg in `profil.md`, `fortschritt.md`, `CLAUDE.md`
+  nachziehen, eine Zeile im Output, Akte-Eintrag. Nie einen Tageswert übernehmen. Ohne Messung in 30 Tagen
+  bleibt der alte Wert.
+- **Kommunikation (Stefan, 20.9.2026):** sachlich erwähnen, wenn es für die Sache zählt (Leistungsanalysen,
+  Pace-Prognosen, W/kg, deutlicher Trend über Wochen) – als eine Variable unter mehreren, mit Größenordnung
+  statt Wertung. **Nicht:** bewerten, Ernährungstipps ohne Frage, Zielgewicht vorgeben, in jeder Planung
+  wiederholen. Ein Hinweis pro Anlass, kein Nachfassen.
+- **Stefans eigene Einordnung (21.9.2026):** „ggf. Richtung 90 kg, weniger nicht. Auf 190 cm ist das eine gute
+  Basis." 90 kg ist **seine** Untergrenze, kein Coach-Ziel. Größenordnung bei Bedarf: 93,6 → 90 kg ≈ 1–1,5 min
+  auf 10 km. Thema ist besprochen.
 
 ---
 
 ## 5. Arbeitsweise des Coaches
 
-### ⛔ Nicht entscheiden, wenn die Fakten fehlen — fragen (Stefans Ansage, 21.9.2026)
-Der Coach hat aus einer Annahme über den ERG-Modus eine Planregel gemacht und sie in vier Dateien
-geschrieben, ohne zu fragen. Stefan fährt 30/30er seit Jahren auf der Rolle — die Regel war frei erfunden.
-**Anwenden:** Bei allem, was Stefans Ausstattung, Gewohnheiten oder Praxis betrifft (was funktioniert,
-was er fährt, wie er etwas aufzeichnet), wird **gefragt, nicht beschlossen** — auch dann, wenn es
-plausibel klingt. Entscheidungen trifft der Coach nur, wenn er alle Fakten hat oder Stefan ihn ausdrücklich
-entscheiden lässt. Richtungsweisende Punkte (Zielsetzung, Struktur, Ausrüstungsannahmen) gehen **vor**
-dem Schreiben in die Dateien als Frage raus. Fachliche Einschätzungen bleiben erlaubt — als Vorschlag
-mit Begründung, nicht als eingetragene Regel.
-
+### ⛔ Nicht entscheiden, wenn Fakten fehlen – fragen (Stefan, 21.9.2026)
+Der Coach hat aus einer Annahme über den ERG-Modus eine Planregel gemacht und in vier Dateien geschrieben –
+Stefan fährt 30/30er seit Jahren auf der Rolle.
+**Anwenden:** Bei Ausstattung, Gewohnheiten, Praxis (was funktioniert, was er fährt, wie er aufzeichnet)
+**fragen, nicht beschließen**, auch wenn es plausibel klingt. Richtungsweisende Punkte gehen **vor** dem
+Schreiben als Frage raus. Fachliche Einschätzungen bleiben erlaubt – als Vorschlag mit Begründung.
 
 ### Datum immer per `date` prüfen
-Am 20.4.2026 wurde der 20. April als Sonntag angenommen, weil CLAUDE.md „KW16 = 14.–20. April" zeigte – er war ein Montag. 10 Workouts mussten gelöscht und neu angelegt werden. **Immer** `date "+%A, %d. %B %Y – KW%V"` als erste Aktion; CLAUDE.md-Datumsangaben sind Orientierung, nie Tagesquelle.
+Am 20.4.2026 wurde ein Montag als Sonntag angenommen → 10 Workouts neu angelegt.
+**Immer** `date "+%A, %d. %B %Y – KW%V"` als erste Aktion; CLAUDE.md-Daten sind nie Tagesquelle.
 
-### Gewicht kommt aus intervals.icu – nie nachfragen
-Stefan trägt sein Gewicht unregelmäßig in der intervals.icu-Wellness ein (z.B. 15./16./18./20.9.: 93,5 · 93,7 · 93,3 · 94,0). Seit 20.9.2026 liefert `get_current_fitness` es mit: `Gewicht_kg`, `Gewicht_datum`, `Gewicht_schnitt_30d_kg`, `Gewicht_messungen_30d`; `get_wellness_range` hat pro Tag ein Feld `gewicht`.
-**Anwenden:** Bei jedem Aufruf den **30-Tage-Schnitt** gegen `athlete/profil.md` prüfen. Ab **0,5 kg** Abweichung Gewicht und W/kg (FTP ÷ Gewicht) in `profil.md`, `fortschritt.md` und `CLAUDE.md` nachziehen, eine Zeile im Output, Eintrag in die Akte. Nie einen Tageswert übernehmen (Schwankung ~1 kg ist normal), nie nach dem Gewicht fragen. Ohne Messung in 30 Tagen bleibt der alte Wert stehen.
-
-**Kommunikationsregel (Stefans Entscheidung, 20.9.2026): sachlich erwähnen, wenn es für die Sache zählt.**
-- **Erwähnen:** in Leistungsanalysen, Renn- und Pace-Prognosen, W/kg-Betrachtungen und bei einem deutlichen Trend über mehrere Wochen — rein faktisch, als **eine Variable unter mehreren**, mit Größenordnung statt Wertung (z.B. „−5 kg wären grob 3–4% schneller auf 10km").
-- **Nicht:** bewerten, kommentieren („zugenommen"), Ernährungstipps ohne Frage, Zielgewicht vorgeben, das Thema ohne sachlichen Anlass aufmachen, es in jeder Wochenplanung wiederholen.
-- Ein Hinweis pro Anlass reicht; wenn Stefan nicht darauf eingeht, nicht nachfassen.
-- Vorherige Fassung war „nur auf Nachfrage" — bewusst gelockert, weil Gewicht beim Laufen ein echter Leistungsfaktor ist und Zurückhalten relevanter Information kein Coaching ist.
-
-### Am Ende jeder Planung committen und pushen
-Ohne Erinnerung durch Stefan: `git add` → `git commit` → `git pull --rebase` → `git push` auf `main`. Das Dashboard liest aus dem Repo; lokal geschriebene Dateien sind bis zum Push unsichtbar – auch für die nächste Session am Handy.
-
-### intervals.icu-Workouts: zwei Wege, zwei Fallen
-- **`workout_steps` kann keine Leistungs-Korridore** — `power_pct_low/high` wird bei normalen Schritten
-  zu einem **festen Wert** zusammengefaltet (verifiziert 21.9.2026: 56–68% → `55%` = 167W). Feste
-  Zielwerte lassen die Uhr outdoor dauernd piepen, Stefan will das nicht. **Für Korridore die
-  Description-Route nutzen** (`- 70m 52-69%`) — dann bleibt `workout_doc` leer, bis Stefan das Workout
-  **einmal in intervals.icu öffnet**; danach synct es normal. **Standard ist der Korridor — überall, auch indoor** (Stefans Vorschlag 21.9.2026: eine Regel statt
-  Sonderfällen). **Offen und in KW40 zu prüfen:** ob die Rolle im ERG-Modus bei einem Bereich den
-  Mittelwert hält oder über das Intervall von unten nach oben rampt. Stefan schaut bei der ersten
-  ERG-Einheit aufs Display. Rampt sie → Indoor-Einheiten auf feste Werte umstellen, outdoor bleibt
-  Korridor. Hält sie den Mittelwert → Korridor bleibt überall Standard.
-- **`workout_steps`** rundet auf ganze Minuten: 20s → verworfen, 30s/45s → 60s. Nur für Einheiten ohne Schritte <1min.
-- **Description-Route** (Schrittliste als Text am Ende der `description`, `- 20s 120% Pace` gültig) für Strides/Antritte. `workout_doc` bleibt dabei leer – **Stefan muss das Workout einmal öffnen und OK klicken**, Hinweis oben in die Beschreibung.
-- Strides nie auf 60s strecken, um Weg A zu erzwingen (ab ~40s kippt der Reiz von neuromuskulär zu anaerob).
-- `pace_pct` = % der Schwellen*geschwindigkeit* — **seit 20.09.2026: 388s/km (6:28) = 100%** (vorher 363s/km): 55% = 11:45 (Gehen), 75–87% = 8:40–7:25 (Easy), 100% = 6:28, 105% = 6:10, 119% = 5:25. Gilt nur, wenn die Schwellenpace **in intervals.icu** ebenfalls auf 6:28 steht.
-- Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.
-- Rad-Bibliothek: `.zwo` nur für `type: "Ride"`; Dateinamen exakt aus `planung/workout_index.md`.
-
-### Ausstattung & Rahmenentscheidungen (Stefan, 21.9.2026)
-- **Kraft nur mit Eigengewicht und Widerstandsbändern**, kein Kraftraum. Nie ein Hantel-/Maximalkraft-
-  programm vorschlagen. Lauf-Athletik 2×15min ist Pflichtteil und aktiv einzuplanen, Ganzkörper 1×
-  optional. Für die Radleistung bleibt KA auf der Rolle (91% FTP @ 55rpm) der Kraftreiz — Bänder
-  ersetzen das nicht, und das gehört auch so gesagt.
-- **Keine Events**, und vorerst auch keine suchen (auch kein Volkslauf als Benchmark, kein RadRace 2027).
-  Benchmarks laufen als eigene Zeitläufe auf Standardstrecke. Nicht ungefragt nachfassen.
-- **Zwei Laufschuhe im Wechsel, je ~200 km** (Stand 21.9.2026) — reichlich Reserve, bei 94 kg rechne ich
-  mit 500–700 km pro Paar. Kein Handlungsbedarf, nicht ungefragt ansprechen.
-- **Uhr ist eine COROS Pace 3**, Radcomputer die COROS DURA. Geführte Intervall-Workouts kommen auf
-  beiden an. Das Modell stand bis 21.9. nicht im Repo — Stefan hat zu Recht angemerkt, dass der Coach
-  das wissen sollte. Gerätemodelle gehören in `athlete/profil.md`, nicht in den Kopf.
-- **Workout-Zustellung funktioniert automatisch:** Planung in intervals.icu → Sync zu **Garmin Connect**
-  und **COROS** → landet auf Pace 3 und DURA. Ob es von Garmin Connect weiter in die **Tacx-App** kommt,
-  ist ungeprüft (erste Rolleneinheit zum Testen nutzen). Indoor bisher meist **MyWhoosh**, Stefan
-  bevorzugt die **Tacx-App**, weil einfacher. **Zustellung in die Tacx-App am 21.9. verifiziert** —
-  siehe Regeln unten (Emojis, erste Description-Zeile, FTP-Versatz).
-- **Rolle: max. 4h am Stück.** Kein limitierender Faktor für die geplanten Einheiten.
-- **Outdoor im Winter nur selten** — Wochenende oder Urlaub. **Nov–Feb ist faktisch Rolle**, auch die
-  langen Wochenendeinheiten. Nicht mit Outdoor-Annahmen planen.
-- **5–6 Trainingstage/Woche** bestätigt.
-- **Vitamin-D-Messung: von Stefan verneint.** Thema erledigt, nicht erneut aufmachen.
-- **Events: „aktuell keine geplant"** ist die richtige Formulierung (Stefans Korrektur) — es wird etwas
-  kommen, es steht nur noch nicht fest. Nicht als „will keine Events" führen und nicht danach suchen,
-  aber offen dafür bleiben und ein genanntes Event sofort in `profil.md` eintragen.
-- **Kein erkennbares Infekt-Muster.** Nicht weiter nach einer Einzelquelle suchen — es wirken nur die
-  strukturellen Maßnahmen (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol).
-- **Indoor (korrigiert 21.9.2026): Der ELEMNT ROAM ist weg** und ERG-Steuerung darüber lief schlecht —
-  Stefan will diesen Weg ausdrücklich nicht mehr. **Nie wieder den ROAM als Lösung vorschlagen.**
-  Die Rolle läuft über die **Tacx-App** (MyWhoosh alternativ); ob sie strukturierte
-  Workouts sauber abspielt, ist ungeprüft (in KW41/42 an einer einfachen Einheit testen). Fallback:
-  Workout manuell nach Wattvorgabe fahren — bei 3×10min reicht das. Kein Laufband.
-- **Radcomputer ist die COROS DURA** (kein Wahoo mehr). Aufzeichnungs-Setup laut Stefan: **XCadey → COROS
-  DURA**, **Rolle → Tacx-App**. Die DURA-Datei ist die maßgebliche (XCadey = Referenzmessgerät), die
-  Tacx-Aufzeichnung dient nur dem Offset-Faktor. **Doppelzählung vermeiden:** laden beide hoch, liegt die
-  Fahrt zweimal in intervals.icu und CTL/ATL zählen doppelt — Tacx-Datei löschen oder von der
-  Belastungsrechnung ausnehmen.
-- **Indoor-Canyon hat keine Schaltung mehr** (ausgebaut, Stand 21.9.2026) → auf der Rolle läuft alles in
-  **ERG**. **Das ist kein Problem und schränkt die Workout-Formate nicht ein:** Stefan fährt seit Jahren
-  strukturierte Intervalle auf der Rolle, **30/30er inklusive**. Der Coach hatte am 21.9. aus eigener
-  Annahme eine Regel daraus gebastelt („indoor nur 2–6-Minuten-Formate") — falsch, zurückgenommen.
-- **FTP-Test-Modus ist offen**, nicht vom Coach zu setzen: entweder S-Works aufspannen (Level, Schaltung,
-  XCadey-Gegenprobe) oder Canyon in ERG mit manuell nachgeregelter Vorgabe. Stefan entscheidet.
-- **Radcomputer ist die COROS DURA** (kein Wahoo mehr). Aufzeichnungs-Setup laut Stefan: **XCadey → COROS
-  DURA**, **Rolle → Tacx-App**. Die DURA-Datei ist die maßgebliche (XCadey = Referenzmessgerät), die
-  Tacx-Aufzeichnung dient nur dem Offset-Faktor. **Doppelzählung vermeiden:** laden beide hoch, liegt die
-  Fahrt zweimal in intervals.icu und CTL/ATL zählen doppelt — Tacx-Datei löschen oder von der
-  Belastungsrechnung ausnehmen.
-- **Indoor-Canyon hat KEINE Schaltung mehr** (ausgebaut, Stand 21.9.2026) → auf der Rolle ist **ERG
-  Pflicht**, nicht Komfort. Daraus folgt für jede Indoor-Planung:
-  · **Keine Intervalle unter 2min und keine steilen Wechsel indoor** (30/30, Antritte, Sprints) — ERG
-    reagiert träge. Indoor 2–6-Minuten-Formate (SwSp, KA, MIT, HIT_EB), Kurzes nach draußen.
-  · **KA bei 55 rpm geht in ERG**, beim ersten Mal auf Pendeln der Rolle achten.
-  · Dass die Tacx-App strukturierte Workouts abspielt, ist **blockierend** — ohne ERG-Workout ist keine
-    Indoor-Qualität fahrbar. In KW41 testen. Fallback: ERG mit manuell gesetzter Zielwattzahl je Intervall.
-- **FTP-Tests nie im ERG-Modus** — ERG hält eine feste Vorgabe, Ausbelasten ist unmöglich. Für Tests
-  deshalb **das S-Works aufspannen** (Schaltung + XCadey in einer Fahrt, Level-Modus). Ohne Umbau:
-  nur 10min in ERG mit manuell nachgeregelter Vorgabe, kein 3min-Teil, kein CP/W', kein Offset-Faktor.
-
-### Gewicht: Stefans eigene Zielvorstellung (21.9.2026)
-„Ich sehe mich eigentlich ganz gut beim aktuellen Gewicht, ggf. so Richtung 90 kg, weniger nicht.
-Auf 190 cm ist das eine gute Basis."
-**Anwenden:** 90 kg ist die von **ihm** genannte Untergrenze, nicht ein Coach-Ziel. Kein Ernährungs-
-programm, kein Zielgewicht vorgeben, kein Nachfassen. Größenordnung bei Bedarf einmal sachlich:
-93,6 → 90 kg ≈ 1–1,5 min auf 10 km. Damit ist das Thema besprochen — nicht erneut aufmachen, solange
-Stefan es nicht anspricht oder ein deutlicher Trend über Wochen etwas anderes zeigt.
-
-### Zwei Radleistungsquellen — nie gegeneinander rechnen (Stefans Einwand, 21.9.2026)
-Outdoor = Tarmac SL8 + XCadey Spindle · Indoor = Canyon Aeroad auf Tacx Flux S (Rollenleistung).
-**Zwei Räder, zwei Messsysteme.** Direktantriebsrollen lesen typisch 2–5% unter Kurbel-/Spindelmessern
-(Antriebsstrangverluste), Flux S ±3% Toleranz, dazu andere Sitzposition → realistisch 5–15% Versatz.
-Stefan hat das selbst angesprochen, bevor der Coach es gemerkt hat.
-**Anwenden:** Kalibrierung in KW40 — bevorzugt Tarmac einmal auf den Flux spannen und XCadey + Tacx
-parallel aufzeichnen (3×8min @ ~55/75/95% FTP → Faktor je Intensität); sonst Outdoor-Test + 5–7 Tage
-später derselbe Indoor-Block → **zwei FTP-Werte führen**. Fortschritt immer Quelle gegen sich selbst.
-Vor Indoor-Qualität: 10min warmfahren + Spindown in der Tacx-App (die Rolle driftet mit der Temperatur).
-
-### Tacx-App: Zustellweg bestätigt – drei Regeln daraus (21.9.2026)
-Der Weg **intervals.icu → Garmin Connect → Tacx-App (Handy)** funktioniert, Stefan hat es mit einem
-5×5min-Workout verifiziert: Schritte, Balkengrafik und Startknopf kommen an.
-
-1. **Keine Emojis in intervals.icu-Workoutnamen.** Die Tacx-App zeigt sie als `������`. Umlaute, `×`
-   und `–` kommen sauber an. Emojis bleiben in `planung/kw*.md` (nur fürs Dashboard), nicht im
-   Workoutnamen.
-2. **Nur die erste Zeile der Description kommt in der Tacx-App an** (als „Trainingsnotizen"). Die
-   entscheidende Anweisung gehört deshalb in **Zeile 1** – nicht ein Datumskontext, sondern das, wonach
-   gesteuert wird (z.B. „RPE 7 führt – Watt nur Orientierung").
-3. **Absolute Watt in Zeile 1**, kurz und ohne Erklärbär. Bis zum nächsten Test gelten einfach die
-   **alten Zonen (FTP 305)** — Stefans Ansage 21.9.2026: „Wir nehmen bis zum nächsten Test einfach die
-   alten Werte, egal ob die jetzt genau passen. Als ob irgendwas passiert wenn ich 20 Watt zu viel
-   trete." **Keine Doppelkorridore, keine Caveat-Absätze, keine Messversatz-Diskussion in Workouts.**
-   Dass Garmin auf FTP 325 steht, wird nach dem KW40-Test beim FTP-Setzen mit erledigt — bis dahin kein
-   Thema. Umgekehrt gilt aber: **nie ganz ohne Wattvorgabe planen**, nur weil die FTP alt ist.
-4. **Garmin Connect steht auf FTP 325**, intervals.icu auf 305. Kein Handlungsbedarf bis zum Test —
-   danach die neue FTP überall setzen: intervals.icu, Garmin Connect, COROS, MyWhoosh.
+### Am Ende jeder Planung committen und pushen – direkt auf `main`
+Ohne Erinnerung: `git add` → `git commit` → `git pull --rebase` → `git push` auf `main`. Das Dashboard liest
+aus `main`; alles andere ist für Stefan unsichtbar.
 
 ### Strava-Aktivitäten sind über die API leer
-Aktivitäten, die nur über Strava in intervals.icu ankommen, liefern über die API (MCP, Dashboard) **alle Felder `null`** – Strava-Lizenz. In der intervals.icu-Oberfläche sind sie sichtbar, für den Coach nicht. COROS- und Garmin-Quellen sind vollständig. Leere Aktivitätszeilen daher als „Strava-Hülle" erkennen, nicht als fehlende Einheit.
+Nur über Strava importierte Aktivitäten liefern über die API alle Felder `null` (Lizenz). COROS/Garmin sind
+vollständig. Leere Aktivitätszeilen als „Strava-Hülle" erkennen, nicht als fehlende Einheit.
 
 ---
 
-## 6. Aktueller Kontext (Stand 21.9.2026)
+## 6. Ausstattung & Setup
 
-- **Wintersaison 2026/27 gesetzt** (Stefans Auftrag 21.9.): 9–10h/Woche, **FTP und Laufleistung parallel**
-  steigern, kein Zielrennen — Events sind später eingehängte Zwischenziele. Ziele: FTP +8–12% über die
-  KW40-Baseline, **10km sub-60 im Frühjahr 2027**, Laufvolumen 6,5 → 28–32 km/Woche, CTL 23 → 60–68.
-  Saisonplan `planung/periodisierung.md` (KW40–KW09), Rahmen `planung/langfristplan.md`.
-- **Dynamischer Split statt fixem:** Stefan wollte spontan 70:30 Rad:Lauf, war mit 60:40 einverstanden,
-  wenn beides vorangeht. Lösung: Okt 70:30 (Gewebe kann mehr Laufen noch nicht aufnehmen), Nov 65:35,
-  ab Dez 60:40. Begründung, die bei ihm gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5.
-  Laufstunde entscheidet über sub-60.
-- **Ausgangslage real:** letzte 4 Wochen nur ~3,2h/Woche. 9–10h ist eine Verdreifachung — die **Rampe**
-  ist wichtiger als der Zielwert (+10–15%/Woche, jede 4. Woche −45%).
-- **Halswirbelfraktur 28.6.2026 ausgeheilt** — 66min Wettkampf am 20.9. beschwerdefrei. Nacken-Abbruch-
-  kriterien bleiben Standard: Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme.
-- **Rad-Setup:** Outdoor Tarmac/XCadey, Indoor Aeroad/Tacx. FTP 305W (4iiii) ist **keine gültige Referenz
-  mehr** → KW40 Baseline-Test + Rollen-Kalibrierung. Bis dahin Rad nach HF/RPE.
-- **Krankheitsprävention ist Planbestandteil**, nicht Beiwerk: 2026 gingen ~4 Wochen durch Infekte
-  verloren (KW16 April, ~10.–22. August), beide mitten im Aufbau. Protokoll in `langfristplan.md`.
-- **Offen (Stefan gefragt am 21.9.):** Kraft 2×/Woche im Winter ja/nein · Infekt-Muster und
-  Vitamin-D-Wert · Laufschuh-Situation bei 94 kg · Gewicht als expliziter Hebel ja/nein ·
-  Frühjahrsevents (10km-Volkslauf als Benchmark, RadRace 2027?).
+### Geräte
+| Zweck | Gerät |
+|---|---|
+| Lauf | **COROS Pace 3** · Auto-Lap aus · 2 Paar Laufschuhe im Wechsel, je ~200 km (Stand 21.9.) |
+| Rad outdoor | **S-Works Tarmac SL8** · Cybrei-Kurbel · **XCadey Spindle** = Referenz-Powermeter |
+| Radcomputer | **COROS DURA** (kein Wahoo, der ELEMNT ROAM ist weg – **nie wieder vorschlagen**) |
+| Rad indoor | **Canyon Aeroad ohne Powermeter und ohne Schaltung** auf **Tacx Flux S** → immer ERG |
+| Indoor-App | **Tacx-App** bevorzugt, MyWhoosh alternativ · max. 4h am Stück · kein Laufband |
+| Kraft | nur Eigengewicht + Widerstandsbänder, kein Kraftraum |
+
+### Indoor: ERG ist kein Einschränkungsgrund
+Stefan fährt seit Jahren alle strukturierten Formate in ERG, **30/30er inklusive**. Keine Sonderregeln für
+Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahren + Spindown in der Tacx-App.
+
+### Zwei Radleistungsquellen – nie gegeneinander rechnen
+Outdoor = Tarmac + XCadey · Indoor = Aeroad auf Tacx (Rollenleistung). Realistisch 5–15% Versatz
+(Antriebsstrang, Rollen-Toleranz ±3%, Sitzposition). Fortschritt immer Quelle gegen sich selbst.
+**Bis zum Baseline-Test:** alte Zonen **FTP 305** als Wattvorgabe (Stefan: „Als ob irgendwas passiert, wenn
+ich 20 Watt zu viel trete."). Keine Doppelkorridore, keine Messversatz-Diskussion in Workouts – aber nie ganz
+ohne Wattvorgabe planen.
+
+### 🔬 FTP-Test-Setup (entschieden, Stefan 24.9.2026)
+**Tarmac mit XCadey auf den Flux.** Aufzeichnung parallel: **XCadey → COROS DURA** (maßgeblich) und
+**Rolle → Tacx-App**. **Kein ERG-Modus** (Ausbelastung unmöglich) – Level-/Standardmodus, geschaltet wird am
+Tarmac. Ergebnis aus einer Einheit:
+- **FTP = XCadey-10min-Ø × 0,90** (Sentiero 3+10min)
+- **Offset-Faktor = Tacx ÷ XCadey** – aus den All-Outs und zusätzlich aus den Stufen des progressiven
+  Warmfahrens (zeigt, ob der Versatz mit der Intensität schwankt). Gilt dann für die Aeroad-Einheiten.
+- **Doppelzählung vermeiden:** Tacx-Datei in intervals.icu löschen oder von der Belastung ausnehmen.
+- Danach neue FTP **überall** setzen: intervals.icu (305), **Garmin Connect (steht auf 325)**, COROS, MyWhoosh.
+
+### Workout-Zustellung (verifiziert 21.9.2026)
+intervals.icu → **Garmin Connect → Tacx-App** (Schritte, Balkengrafik, Startknopf kommen an) und
+intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
+1. **Keine Emojis in intervals.icu-Workoutnamen** (Tacx zeigt `������`). Umlaute, `×`, `–` gehen.
+   Emojis nur in `planung/kw*.md`.
+2. **Nur Zeile 1 der Description kommt in der Tacx-App an** → dort steht die Steueranweisung.
+3. **Absolute Watt in Zeile 1**, kurz, ohne Erklärbär.
+
+### intervals.icu-Workouts: Fallen
+- **`workout_steps` kann keine Leistungskorridore** – `power_pct_low/high` wird zu einem festen Wert
+  (verifiziert: 56–68% → 55%). **Korridor ist Standard, überall** (Stefan, 21.9.2026) → dafür die
+  **Description-Route** (`- 70m 52-69%`). `workout_doc` bleibt dann leer, bis Stefan das Workout **einmal in
+  intervals.icu öffnet** – Hinweis dazu in die Beschreibung.
+- **`workout_steps`** rundet auf ganze Minuten (20s → weg, 30/45s → 60s) → nur für Einheiten ohne Schritte <1min.
+- **Strides/Antritte** über die Description-Route (`- 20s 120% Pace` gültig). Nie auf 60s strecken.
+- **Distanzen:** `m` heißt in intervals.icu **Minuten** → Distanz immer in km (`0.4km`) bzw. `distance_m`.
+  Freitext nie mit `- ` beginnen (wird als Schritt geparst) → `·` benutzen.
+- `pace_pct` = % der Schwellen*geschwindigkeit*, **388 s/km (6:28) = 100%**: 75–87% = 8:40–7:25 (Easy),
+  105% = 6:10, 119% = 5:25.
+- Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.
+- Rad-Bibliothek: `.zwo` nur für `type: "Ride"`; Dateinamen exakt aus `planung/workout_index.md`.
+
+---
+
+## 7. Erledigte Rahmenentscheidungen – nicht erneut aufmachen
+
+| Thema | Stand |
+|---|---|
+| **Events** | „**aktuell keine geplant**" (Stefans Formulierung) – es wird etwas kommen. Nicht danach suchen, nicht nachfassen; ein genanntes Event sofort in `athlete/profil.md` eintragen. Benchmarks bis dahin als eigene Zeitläufe auf Standardstrecke. |
+| **Kraft** | Lauf-Athletik **2×15min Pflicht** und aktiv einplanen · Ganzkörper 1× optional · KA auf der Rolle bleibt der Kraftreiz fürs Rad (Bänder ersetzen das nicht – so auch sagen) |
+| **Laufschuhe** | zwei Paar, reichlich Reserve – nicht ungefragt ansprechen |
+| **Vitamin D** | Messung von Stefan verneint – erledigt |
+| **Infekt-Muster** | keins erkennbar → nur strukturelle Prävention (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol), Protokoll in `planung/langfristplan.md` |
+| **Wade/Nacken-Tracking** | kein eigenes Wellness-Feld gewünscht (24.9.2026) – Stefan meldet Beschwerden selbst; bei Laufeinheiten die Abbruchregeln im Plan nennen |
+| **Nacken** | Halswirbelfraktur 28.6. ausgeheilt (66min Wettkampf beschwerdefrei). Abbruchkriterien bleiben Standard: Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme |
+| **Rad:Lauf-Split** | dynamisch: Okt 70:30 → Nov 65:35 → ab Dez 60:40. Argument, das gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5. Laufstunde entscheidet über sub-60 |
+| **Rampe** | Ausgangslage ~3,2h/Woche → 9–10h. Die Rampe (+10–15%/Woche, jede 4. Woche −45%) ist wichtiger als der Zielwert |
+
+---
+
+## 8. Offene Punkte (nur hier führen)
+
+- **ERG + Korridor:** Hält die Rolle bei einem Wattbereich den Mittelwert oder rampt sie über das Intervall
+  hoch? Stefan schaut bei der ersten ERG-Einheit aufs Display. Rampt sie → Indoor-Einheiten auf feste Zielwerte,
+  outdoor bleibt Korridor.

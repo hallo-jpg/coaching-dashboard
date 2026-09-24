@@ -126,7 +126,7 @@ server.tool(
 // ── Tool 2: Aktivitäten ──────────────────────────────────────
 server.tool(
   "get_recent_activities",
-  "Letzte Aktivitäten (Rad + Lauf) mit TSS, Watt, HF, Dauer. Für Wochen-Review.",
+  "Letzte Aktivitäten (Rad + Lauf) mit TSS, Watt, HF, Dauer, Distanz, IF, Kadenz (Lauf in spm, Rad in rpm) und Lauf-Pace. Für Wochen-Retro und Checks.",
   {
     days: z.number().optional().describe("Wie viele Tage zurückschauen (default: 14)"),
   },
@@ -152,6 +152,14 @@ server.tool(
       ctl_danach: a.icu_ctl?.toFixed(1),
       atl_danach: a.icu_atl?.toFixed(1),
       rpe: a.icu_rpe ?? null,
+      intensity_if: a.icu_intensity != null ? +(a.icu_intensity / 100).toFixed(2) : null,
+      // intervals.icu liefert Laufkadenz in Doppelschritten/min (77 = 154 spm) -> x2
+      kadenz: a.average_cadence != null
+        ? Math.round(a.type === "Run" ? a.average_cadence * 2 : a.average_cadence)
+        : null,
+      pace_min_km: a.type === "Run" && a.distance && a.moving_time
+        ? (() => { const s = Math.round(a.moving_time / (a.distance / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; })()
+        : null,
     }));
 
     return {

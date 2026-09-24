@@ -12,7 +12,7 @@
 Bis September 2026 war Laufen die zweite Sportart, die nebenher lief. Ab Winter 2026/27 ist es ein gleichrangiges Entwicklungsziel mit eigenem Volumen, eigener Progression und eigenen Tests — weil Stefan das so will und weil die Datenlage zeigt, dass dort der größte ungenutzte Hebel liegt (2026: ~250 Laufkilometer im ganzen Jahr).
 
 **Messgrößen:**
-- **Rad:** FTP nach formalem Test (3+10min, outdoor, XCadey). Keine spekulativen Anpassungen.
+- **Rad:** FTP nach formalem Test (3+10min, Tarmac mit XCadey auf der Rolle, kein ERG). Keine spekulativen Anpassungen.
 - **Lauf:** 10km-Wettkampfzeit + monatlicher HF-160-Standardcheck (Pace bei HF 160).
 
 ---
@@ -66,7 +66,7 @@ Tibia- und Achillessehnenbelastung skalieren mit dem Tempo (Achillessehnenkräft
 | Regel | Begründung |
 |---|---|
 | **Kein langsames Trotten.** Easy = 7:15–7:45/km @ HF 155–165 | briskes Ende des Bandes, kürzere Kontaktzeit |
-| **Kadenz in jeder Easy-Einheit.** Ziel 165–170 · Rückmeldeweg noch offen (bisher kein Metronom im Einsatz) | erweitert das orthopädische Budget — wichtigster Einzelhebel |
+| **Kadenz in jeder Easy-Einheit.** Ziel 165–170 · Rückmeldung nach Gefühl (Stefan, 24.9.) | erweitert das orthopädische Budget — wichtigster Einzelhebel |
 | **Aerobes Volumen kommt vom Rad** | null Impact, und es dient ohnehin dem FTP-Ziel |
 | **Jeder Lauf hat einen Zweck** — Qualität, Longrun, Kadenz-Easy. Keine Füllkilometer | Volumen ohne Zweck kostet Gewebe ohne Ertrag |
 | **2×/Woche Lauf-Athletik, 15min** (Soleus-Wadenheben gebeugtes Knie, einbeinige RDL, Hüfte seitlich) | bei 94 kg nicht optional |
@@ -127,11 +127,10 @@ die Tacx-Aufzeichnung dient nur dem Faktor.
 ⚠️ **Doppelzählung vermeiden:** Laden beide Quellen hoch, liegt dieselbe Fahrt zweimal in intervals.icu
 und CTL/ATL zählen doppelt. Eine der beiden löschen oder von der Belastungsrechnung ausnehmen —
 behalten wird die DURA-Datei.
-**Modus am Testtag: offen.** Auf dem Indoor-Canyon ist die Schaltung ausgebaut, dort läuft alles in ERG.
-Ein Maximaltest in ERG ist nur eingeschränkt möglich (feste Vorgabe, manuelles Nachregeln nötig; der
-3-min-All-Out entfällt praktisch). Alternative: S-Works für den Test aufspannen — dann Level-Modus,
-Schaltung und XCadey-Gegenprobe in einer Fahrt. **Stefan entscheidet, welcher Weg gefahren wird.**
-Level-/Sim-Modus oder freie Fahrt, Intensität kommt von den Beinen.
+**Modus am Testtag (entschieden, Stefan 24.9.2026):** Tarmac (S-Works SL8) mit XCadey auf den Flux,
+**kein ERG** – Level-/Standardmodus, geschaltet wird am Tarmac, die Intensität kommt von den Beinen.
+Das progressive Warmfahren in 5-min-Stufen (~50/60/70/80% FTP) liefert zusätzliche Offset-Punkte bei
+niedriger Last – so zeigt sich, ob der Versatz mit der Intensität schwankt.
 
 **Testbedingungen konstant halten** (sonst ist die nächste Messung nicht vergleichbar): immer indoor
 auf der Rolle mit dem S-Works, Ventilator an, 20min Warmfahren, XCadey vor dem Start nullen, Tacx-Spindown
@@ -232,7 +231,7 @@ brauchen kein Eisen. Für die FTP bringt Bändertraining wenig; der radspezifisc
 |---|---|---|
 | **HF-160-Standardcheck** | monatlich | gleiche Strecke, morgens, gefrühstückt, ≥48h nach harter Einheit, 30min @ HF 160 → Pace |
 | **5km-Zeitfahren** | alle ~8 Wochen | flach, gleiche Strecke |
-| **10km-Benchmark** | 2×/Jahr | möglichst als Volkslauf |
+| **10km-Benchmark** | 2×/Jahr | eigener Zeitlauf auf Standardstrecke (solange keine Events geplant sind) |
 
 Einzelne Einheiten mit Confoundern (nüchtern, nach Radbelastung, nach Pause) sind **keine** Fortschrittsmessung. Erst 3–4 vergleichbare Punkte werden bewertet.
 
