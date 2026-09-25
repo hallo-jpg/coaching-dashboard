@@ -1,7 +1,14 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 24. September 2026*
+*Letzte Aktualisierung: 25. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 25. September 2026 – KW39 Sa: Bonus-Lauf freigegeben
+
+**Stefan:** fühlt sich gut, fragt nach 30min Lauf am Sa. **Daten:** Readiness 100 🟢 (HRV 57, RP 54, Schlaf 9h, subjektiv alles niedrig) · TSB −23,6 nach 4 Radtagen (Mi–Fr 239 TSS, Fr 5×5 RPE 4) · Lauf Di 22.9. 30min @ 7:32, HF 155, **160 spm**, Wade unauffällig.
+**Entscheidung:** Sa-Bonus als Lauf statt Rad – Beine vom Rad müde, Laufen ist Abwechslung und bringt die Kadenzarbeit. Easy 30min, Kadenz 165 nach Gefühl, HF-Cap 165 + erste Lauf-Athletik (15min, Eigengewicht, 2×12). Lauf-km KW39 damit ~8 km. So bleibt Ruhetag.
 
 ---
 
