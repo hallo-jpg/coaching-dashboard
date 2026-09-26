@@ -1,7 +1,15 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 25. September 2026*
+*Letzte Aktualisierung: 26. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 26. September 2026 – KW39 Sa-Lauf auf So verschoben
+
+**Stefan:** heute müde, keine Lust auf den Lauf · abends Autofahrt Kroatien → München · So daheim.
+**Daten:** Readiness 97 🟢 (HRV 54, RP 55, Schlaf 9,3h, Ermüdung subjektiv 2/4) · TSB −21,6 nach 4 Radtagen.
+**Entscheidung:** Bonus-Lauf + erste Lauf-Athletik Sa → So. Flexible Einheit, Streichen wäre auch ok – aber So passt: Mo Ruhetag, Test erst Do, 30min easy stören nicht. Sa = Ruhetag + Reise. Nach später Ankunft/kurzer Nacht fällt So ersatzlos weg.
 
 ---
 
