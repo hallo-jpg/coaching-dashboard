@@ -812,7 +812,7 @@
       <span class="day-dot {{ day.dot_class }}"></span>
       <div>
         {% if day.rest %}
-        <div class="day-workout" style="color:var(--subtle);font-weight:400;{% if day.bonus_activities %}text-decoration:line-through;{% endif %}">Ruhetag</div>
+        <div class="day-workout" style="color:var(--subtle);font-weight:400;{% if day.bonus_activities %}text-decoration:line-through;{% endif %}">{{ day.workout if day.workout and day.workout not in ('–',) else 'Ruhetag' }}</div>
         {% else %}
         <div class="day-workout">{% if day.is_run %}{{ ico('run') }}{% elif day.is_kraft %}{{ ico('dumbbell') }}{% else %}{{ ico('bike') }}{% endif %}{{ day.workout|plan }}{% if day.kern %}<span class="kern-badge">Kern</span>{% endif %}</div>
         {% endif %}

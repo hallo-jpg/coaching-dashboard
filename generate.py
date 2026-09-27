@@ -676,7 +676,8 @@ def parse_kw_plan(kw: int) -> dict:
 
         is_run   = "🏃" in workout or "lauf" in workout.lower()
         is_kraft = "💪" in workout or (workout.strip().lower().startswith("kraft") and "🚴" not in workout and "🏃" not in workout)
-        is_rest  = workout.strip() in ("Ruhetag", "–", "")
+        # "Ruhetag / Heimfahrt", "🚶 Ruhetag / Spaziergang", "Ruhetag (JGA)" … are rest days too
+        is_rest  = workout.strip() in ("–", "") or bool(re.match(r"^\W*ruhetag", workout.strip(), re.I))
 
         # Strip emoji prefix
         workout_clean = re.sub(r"^[🚴🏃💪🧘]\s*", "", workout).strip()
