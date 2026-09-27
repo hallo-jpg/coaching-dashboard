@@ -204,7 +204,16 @@
   .mini-val  { font-size: 0.85rem; font-weight: 800; color: var(--text); }
   .mini-unit { font-size: 0.6rem; color: var(--muted); font-weight: 600; }
   .hf-dot { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
-            background: var(--card); border: 1.5px solid var(--brand); z-index: 3; }
+            background: var(--card); border: 1.5px solid var(--brand); z-index: 3; cursor: pointer; outline: none;
+            transition: transform .12s, background .12s; }
+  .hf-dot::before { content: ""; position: absolute; inset: -7px; border-radius: 50%; } /* groessere Trefferflaeche */
+  .hf-dot::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+            white-space: nowrap; font-size: 0.62rem; font-weight: 700; color: var(--card); background: var(--text);
+            padding: 3px 7px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .12s; }
+  .hf-dot.tip-l::after { left: -4px; transform: none; }
+  .hf-dot.tip-r::after { left: auto; right: -4px; transform: none; }
+  .hf-dot:hover, .hf-dot:focus { background: var(--brand); transform: scale(1.35); z-index: 5; }
+  .hf-dot:hover::after, .hf-dot:focus::after { opacity: 1; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -1457,35 +1466,35 @@
         <path d="M1.7,44.0 L10.0,25.6 L48.3,32.8 L60.0,32.0 L66.7,36.0 L83.3,34.4 L103.3,35.2 L111.7,36.0 L195.0,39.2 L220.0,43.2 L266.7,52.0 L270.0,59.2 L286.7,64.0 L291.7,63.2 L300.0,55.2" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
       
-      <span class="hf-dot" style="left:0.6%;top:55.0%" title="01.04. · 7:29/km"></span>
+      <span class="hf-dot tip-l" tabindex="0" style="left:0.6%;top:55.0%" data-tip="01.04. · 7:29/km" aria-label="01.04. · 7:29/km"></span>
       
-      <span class="hf-dot" style="left:3.3%;top:10.0%" title="06.04. · 6:44/km"></span>
+      <span class="hf-dot tip-l" tabindex="0" style="left:3.3%;top:10.0%" data-tip="06.04. · 6:44/km" aria-label="06.04. · 6:44/km"></span>
       
-      <span class="hf-dot" style="left:16.1%;top:57.0%" title="29.04. · 7:31/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:16.1%;top:57.0%" data-tip="29.04. · 7:31/km" aria-label="29.04. · 7:31/km"></span>
       
-      <span class="hf-dot" style="left:20.0%;top:53.0%" title="06.05. · 7:27/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:20.0%;top:53.0%" data-tip="06.05. · 7:27/km" aria-label="06.05. · 7:27/km"></span>
       
-      <span class="hf-dot" style="left:22.2%;top:25.0%" title="10.05. · 6:59/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:22.2%;top:25.0%" data-tip="10.05. · 6:59/km" aria-label="10.05. · 6:59/km"></span>
       
-      <span class="hf-dot" style="left:27.8%;top:50.0%" title="20.05. · 7:24/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:27.8%;top:50.0%" data-tip="20.05. · 7:24/km" aria-label="20.05. · 7:24/km"></span>
       
-      <span class="hf-dot" style="left:34.4%;top:57.0%" title="01.06. · 7:31/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:34.4%;top:57.0%" data-tip="01.06. · 7:31/km" aria-label="01.06. · 7:31/km"></span>
       
-      <span class="hf-dot" style="left:37.2%;top:28.0%" title="06.06. · 7:02/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:37.2%;top:28.0%" data-tip="06.06. · 7:02/km" aria-label="06.06. · 7:02/km"></span>
       
-      <span class="hf-dot" style="left:65.0%;top:63.0%" title="26.07. · 7:37/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:65.0%;top:63.0%" data-tip="26.07. · 7:37/km" aria-label="26.07. · 7:37/km"></span>
       
-      <span class="hf-dot" style="left:73.3%;top:70.0%" title="10.08. · 7:44/km"></span>
+      <span class="hf-dot" tabindex="0" style="left:73.3%;top:70.0%" data-tip="10.08. · 7:44/km" aria-label="10.08. · 7:44/km"></span>
       
-      <span class="hf-dot" style="left:88.9%;top:63.0%" title="07.09. · 7:37/km"></span>
+      <span class="hf-dot tip-r" tabindex="0" style="left:88.9%;top:63.0%" data-tip="07.09. · 7:37/km" aria-label="07.09. · 7:37/km"></span>
       
-      <span class="hf-dot" style="left:90.0%;top:88.0%" title="09.09. · 8:02/km"></span>
+      <span class="hf-dot tip-r" tabindex="0" style="left:90.0%;top:88.0%" data-tip="09.09. · 8:02/km" aria-label="09.09. · 8:02/km"></span>
       
-      <span class="hf-dot" style="left:95.6%;top:90.0%" title="19.09. · 8:04/km"></span>
+      <span class="hf-dot tip-r" tabindex="0" style="left:95.6%;top:90.0%" data-tip="19.09. · 8:04/km" aria-label="19.09. · 8:04/km"></span>
       
-      <span class="hf-dot" style="left:97.2%;top:59.0%" title="22.09. · 7:33/km"></span>
+      <span class="hf-dot tip-r" tabindex="0" style="left:97.2%;top:59.0%" data-tip="22.09. · 7:33/km" aria-label="22.09. · 7:33/km"></span>
       
-      <span class="hf-dot" style="left:100.0%;top:57.0%" title="27.09. · 7:31/km"></span>
+      <span class="hf-dot tip-r" tabindex="0" style="left:100.0%;top:57.0%" data-tip="27.09. · 7:31/km" aria-label="27.09. · 7:31/km"></span>
       
       <span style="position:absolute;right:0;top:calc(56.0% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
       <div style="position:absolute;bottom:-20px;left:0;right:0">
