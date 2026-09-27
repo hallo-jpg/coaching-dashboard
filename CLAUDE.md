@@ -11,12 +11,12 @@
 | **Nacken** | Halswirbelfraktur 28.6. ausgeheilt (Seelauf beschwerdefrei) · Abbruchkriterien bleiben: Nacken-/Kopfschmerz, Kribbeln in den Armen |
 | **FTP** | 305W (Sentiero) · 3,26 W/kg · **93,6 kg** (Ø 30d aus intervals.icu, Stand 20.9.; 91 kg im Juni) · *Referenz, aktuell nicht trainingsleitend* |
 | **Events** | **aktuell keine geplant** · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
-| **Aktuelle KW** | KW39 (21.–27. September 2026) · Erholung · **Stefan in Kroatien** (Mo/Di Arbeit, Mi–Fr Urlaub) |
-| **Aktuelle Phase** | Recovery nach Zielrennen · Mo/Di Pause, erste lockere Einheit frühestens Mi |
+| **Aktuelle KW** | KW40 (28. September – 4. Oktober 2026) · 🔬 FTP-Baseline Do 1.10. · Mo nur morgens · **Sa Abflug London 16:00** (1h Rad vormittags) |
+| **Aktuelle Phase** | Nullpunkt · Test-Taper Mo–Mi (Easy-Lauf, LIT 1h, Vorbelastung 3×1min) · Fr Ruhetag · KW39 Retro 🟢 (Kern 3/3, Kadenz Easy erstmals 166 spm) |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
-| **Nächste Phase** | KW40 🔬 **FTP-Baseline** Do 1.10. (3+10min, **Tarmac mit XCadey auf der Rolle, kein ERG · DURA + Tacx-App parallel** → FTP + Offset-Faktor) · KW41–43 Volumen-Rampe + Kadenz-Projekt · ✈️ **London Sa 3.10. (ab 16:00) – Sa 10.10. (an MUC ~16:30): kein Rad, Laufen morgens** |
+| **Nächste Phase** | KW41 London-Laufwoche (Mo/Mi/Fr morgens, ~13 km, kein Rad) · So 11.10. LIT 2h · KW41–43 Volumen-Rampe + Kadenz-Projekt · ✈️ **London Sa 3.10. (ab 16:00) – Sa 10.10. (an MUC ~16:30)** |
 | **Fixpunkte** | FTP-Baseline KW40 (Do 1.10.) · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 |
-| **CTL** | 23,9 (20.9.) · ATL 40,6 · TSB −16,7 · Readiness 78 🟡 (HRV 52, Schlaf 8,6h, RP 53) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
+| **CTL** | 27,1 (27.9.) · ATL 46,2 · TSB −19,0 · Readiness 95 🟢 (HRV 47, 7d-Ø 52, RP 54, Schlaf 7,9h) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
 | **Lauf-Schwellenwerte** | **Schwellenpace 6:28/km · LTHR 185** (aktualisiert 20.9. aus dem Wettkampf) · Zonen: Z1 7:25–8:40 · Z2 6:55–7:25 · Z3 6:10–6:40 · Z4 5:25–6:10 · ✅ in intervals.icu übernommen (Schwellentempo 6:28, Schwellen-HF 185, HFmax 205) |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |

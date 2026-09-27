@@ -1,7 +1,19 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 26. September 2026*
+*Letzte Aktualisierung: 27. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 27. September 2026 – KW39 Retro + KW40 geplant
+
+🟢 Kern 3/3 · Lauf 8,0 km (−42%) · Kadenz Easy 163 (So **166**) · Athletik 1/1 · Mehrbelastung 324 / 245 TSS (Urlaub, bewusst) · Grauzone ~15% durch Hügel in den LIT-Fahrten.
+
+**Stefan:** Mo nur morgens · Sa ca. 1h Sport vor dem Abflug · sonst frei.
+**Daten:** Readiness 95 🟢 (7 Tage 93–100) · CTL 27,1 · ATL 46,2 · TSB −19,0 · ACWR 1,7 (bei CTL < 35 und grüner Readiness kein Deload-Signal) · Gewicht 30d 93,7 kg (kein Update, < 0,5 kg).
+**KW40:** Mo Easy 35min + Athletik (morgens, 🎯) · Di LIT 1h · Mi Vorbelastung 45min 3×1min · **Do FTP-Test** (🎯) · Fr Ruhetag · Sa LIT 1h vor dem Flug (🎯, reisebedingt kurz) · So London Easy 35min + Athletik im Zimmer. ~270 TSS statt ~195 laut Saisonplan (KW39 war 324 statt 75), Lauf 9,3 km bei Grenze 11,3.
+**Abweichung vom Test-Modul:** T-3 (Mo) Easy-Lauf statt Ruhetag, Ruhetag auf T+1 (Fr) – drei Tage ohne Qualität bleiben, Stefan wollte Mo trainieren.
+**KW41 nachgezogen:** Läufe 3×40min → 35/30/35min, sonst läge die Woche über der +3-km-Grenze (Basis ~10,3 → max. ~13,3 km).
 
 ---
 
