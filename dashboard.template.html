@@ -204,7 +204,16 @@
   .mini-val  { font-size: 0.85rem; font-weight: 800; color: var(--text); }
   .mini-unit { font-size: 0.6rem; color: var(--muted); font-weight: 600; }
   .hf-dot { position: absolute; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
-            background: var(--card); border: 1.5px solid var(--brand); z-index: 3; }
+            background: var(--card); border: 1.5px solid var(--brand); z-index: 3; cursor: pointer; outline: none;
+            transition: transform .12s, background .12s; }
+  .hf-dot::before { content: ""; position: absolute; inset: -7px; border-radius: 50%; } /* groessere Trefferflaeche */
+  .hf-dot::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+            white-space: nowrap; font-size: 0.62rem; font-weight: 700; color: var(--card); background: var(--text);
+            padding: 3px 7px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .12s; }
+  .hf-dot.tip-l::after { left: -4px; transform: none; }
+  .hf-dot.tip-r::after { left: auto; right: -4px; transform: none; }
+  .hf-dot:hover, .hf-dot:focus { background: var(--brand); transform: scale(1.35); z-index: 5; }
+  .hf-dot:hover::after, .hf-dot:focus::after { opacity: 1; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -982,7 +991,7 @@
         <path d="{{ hf160.trend }}" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
       {% for d in hf160.dots %}
-      <span class="hf-dot" style="left:{{ (d.x / 3)|round(1) }}%;top:{{ (d.y / 0.8)|round(1) }}%" title="{{ d.label }}"></span>
+      <span class="hf-dot{% if d.x < 40 %} tip-l{% elif d.x > 260 %} tip-r{% endif %}" tabindex="0" style="left:{{ (d.x / 3)|round(1) }}%;top:{{ (d.y / 0.8)|round(1) }}%" data-tip="{{ d.label }}" aria-label="{{ d.label }}"></span>
       {% endfor %}
       <span style="position:absolute;right:0;top:calc({{ (hf160.ref_y / 0.8)|round(1) }}% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
       <div style="position:absolute;bottom:-20px;left:0;right:0">
