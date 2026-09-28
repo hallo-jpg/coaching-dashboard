@@ -109,6 +109,8 @@ mehr Muskelmasse am OK") – nicht nur Beine + Core. Die „Lauf-Athletik 2×15m
 auch leichtes Gewicht), ~10 harte Sätze pro Muskelgruppe/Woche, Läufer-Beinübungen am Ende jeder Einheit.
 Equipment: 2 KH bis 10 kg, Bänder, Outdoor-Klimmzugstange in der Nähe. Nebenziel: erster Klimmzug bis KW09/27.
 **Anwenden:** A/B aktiv einplanen (flexibel, kein Kern), Übungen nur aus `athlete/profil.md` → Krafttraining.
+Zustellung: als `WeightTraining`-Einheit mit Übungsliste als **Text** in intervals.icu – Stefan liest dort nach.
+Keine COROS-Kraft-Workouts vorschlagen (28.9.2026: „nicht so wichtig").
 Ehrlich bleiben: FTP und 10-km-Zeit bewegt das kaum – es ist Stefans eigenes Ziel und wird so behandelt.
 
 ### Stefan läuft ohne Auto-Lap – Rennpläne nicht auf km-Piepser bauen
