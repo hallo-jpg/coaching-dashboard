@@ -133,7 +133,7 @@ Bei Wochenplanung danach: **Retro** (`modules/retro.md`) → **Checks** (`module
 
 ### 🎯 Kern-Einheiten (jede Woche genau 3)
 1. **Rad-Qualität** (Standard Di)
-2. **Lauf-Qualität** (Standard Fr) – bis KW44 der Easy-Lauf mit Kadenz-Fokus + Lauf-ABC
+2. **Lauf-Qualität** (Standard Fr) – bis KW44 der Easy-Lauf mit Kadenz-Fokus
 3. **Eine lange Einheit am Wochenende** (Sa oder So, Rad oder Lauf)
 
 **In jedem Wochenplan** (auch Stubs, sobald sie ausgeplant werden) in der Notiz-Spalte mit **`🎯 Kern`** markieren – das Dashboard zeigt daraus ein „Kern“-Label im Wochenplan. Kern fällt aus → verschieben (Interferenzregeln beachten),
@@ -169,8 +169,7 @@ setzen, wie es die Reise zulässt, und das im Plan sagen.
 - **Strides / Schritte < 1 min** → Description-Route (`- 20s 120% Pace`), Hinweis „einmal öffnen".
 - **Distanz-Intervalle** über `distance_m` (Server schreibt `0.4km`). `m` = Minuten! Freitext nie mit `- `.
   Bei Distanz-Workouts kein `duration_secs`. Gegenprobe mit `get_planned_events`.
-- **Lauf-ABC 2×/Woche** in zwei Läufe einbauen (Kadenz-Lauf + Steigerungslauf): im Workout als eigener
-  Schritt nach 10min Einlaufen, Ablauf aus `athlete/profil.md` → Lauf-ABC. Kein Fueling bei Läufen (außer Wettkampf).
+- Kein Lauf-ABC (Stefan, 28.9.2026). Kein Fueling bei Läufen (außer Wettkampf).
 
 ### Kraft
 - **2× pro Woche Kraft A + B** (Oberkörper-Aufbau, Stefans eigenes Ziel), je ~30–35min, ≥ 48h Abstand, als eigene

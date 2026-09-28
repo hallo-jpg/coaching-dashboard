@@ -16,7 +16,7 @@
    (für die 30-Tage-Regel und den Wochenvergleich). Felder: `distanz_km`, `dauer_min`, `kadenz`
    (Lauf bereits in **spm**, nicht verdoppeln), `pace_min_km`, `intensity_if`, `rpe`, `avg_hf`, `tss`.
 2. `get_weekly_review(week_start: Montag der Vorwoche)` → Zonenzeiten pro Tag, HRV-Verlauf.
-3. `planung/kw[N-1].md` → welche Einheiten waren `🎯 Kern`, welche flexibel, wo standen Kraft A/B und Lauf-ABC.
+3. `planung/kw[N-1].md` → welche Einheiten waren `🎯 Kern`, welche flexibel, wo standen Kraft A/B.
 
 Leere Aktivitäten (alle Felder `null`) sind Strava-Hüllen → nicht als fehlende Einheit werten, Stefan fragen.
 

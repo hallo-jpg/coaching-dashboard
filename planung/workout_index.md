@@ -250,9 +250,9 @@ Kleinste darstellbare Einheit: **exakt 60 Sekunden.** Alles wird auf volle Minut
 
 ---
 
-### Kraft A/B + Lauf-ABC
+### Kraft A/B
 
-Seit 28.9.2026 ersetzt durch **Kraft A (Drücken) / B (Ziehen)** und **Lauf-ABC** – Übungslisten und Progression
+Seit 28.9.2026 ersetzt durch **Kraft A (Drücken) / B (Ziehen)** – Übungslisten und Progression
 ausschließlich in `athlete/profil.md` → Krafttraining (eine Quelle, keine Kopien).
 
 ---

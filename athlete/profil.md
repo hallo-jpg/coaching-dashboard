@@ -158,7 +158,7 @@ eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht
 | HIT_EB (VO2max Dauer) | 106–112% | 323–341W | 100–110rpm |
 | HIT_IE (VO2max Intervall) | 125% | 381W | 100–110rpm |
 
-## Krafttraining & Lauf-ABC
+## Krafttraining
 
 *Neu aufgesetzt 28.9.2026 (Stefan): Oberkörper ist ein eigenes Ziel, nicht Beiwerk.*
 
@@ -212,13 +212,6 @@ sinnvollste Anschaffung (Vorschlag, keine Pflicht). **Klimmzug-Check:** ein Vers
 **Planung:** A und B mit ≥ 48h Abstand, an einen Easy-Lauf oder eine lockere Radeinheit anhängen oder als eigene
 kurze Einheit. Ruhetag bleibt frei. Vortag von FTP-Test oder Qualität: Beinübungen weglassen. Kraft ist
 **flexibel, kein Kern** – die Retro zählt sie aber (x/2). Tapering: Beinübungen ab T-10 weg, Oberkörper bis T-3.
-
-### Lauf-ABC – 2×/Woche, im Lauf (~8min)
-
-Nach 10min Einlaufen: Fußgelenksarbeit · Skipping · Anfersen · Kniehebelauf · Hopserlauf · Seitgalopp – je
-2 × ~20 m, zurück gehen/traben. Danach 3–4 Steigerungen à ~80 m, dann den Lauf mit Kadenz 165 fortsetzen.
-**Zweck:** Frequenz- und Fußaufsatzgefühl für das Kadenz-Projekt (kurzer Bodenkontakt, Fuß unter dem Körper).
-Sitzt in den Läufen mit Kadenz-Fokus bzw. Steigerungen, ab der ersten Lauf-Qualität als Teil des Warm-ups.
 
 ## Geräte & Plattformen
 

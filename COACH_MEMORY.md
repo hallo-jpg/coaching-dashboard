@@ -91,7 +91,6 @@ ausgeheilt.
   ansetzen (Zielwert wurde schon zweimal falsch kalibriert). Wenn 165 nach 10min verkrampft wirkt → lieber
   konsequent 160 als verkrampft 170. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere
   Schritte, Fuß unter den Körper"). Umstellung braucht 6–8 Wochen – wichtigstes Laufprojekt Herbst 2026.
-  **Lauf-ABC 2×/Woche** (im Lauf, ~8min) ist das Technik-Werkzeug dafür – Details `athlete/profil.md`.
 
 ### 🦵 „Langsames Laufen ist orthopädisch teuer" – Stefan hat recht
 Spitzenkraft pro Schritt ist langsam zwar niedriger, aber Bodenkontaktzeit und Zeit-unter-Spannung des Soleus
@@ -130,7 +129,7 @@ Zielkontrolle immer über Zeit am Schild, nie über Ø Pace oder Uhr-Distanz.
 ### 🎯 Kern-Einheiten statt TSS-Quote (Stefan, 24.9.2026)
 Jede Woche hat **3 Kern-Einheiten**, der Rest ist ausdrücklich flexibel:
 1. **Rad-Qualität** (Standard Di)
-2. **Lauf-Qualität** (Standard Fr) – bis KW44 ist das der Easy-Lauf mit Kadenz-Fokus + Lauf-ABC
+2. **Lauf-Qualität** (Standard Fr) – bis KW44 ist das der Easy-Lauf mit Kadenz-Fokus
 3. **Eine lange Einheit am Wochenende** – Sa **oder** So, Rad oder Lauf, egal welche
 Im Wochenplan in der Notiz-Spalte mit **`🎯 Kern`** markieren – **das macht immer der Coach**, in jedem Wochenplan
 und bei jeder Umplanung (Stefan, 24.9.: „dafür habe ich ja dich“). Stefan markiert nichts selbst und wird nicht
@@ -262,7 +261,7 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 | Thema | Stand |
 |---|---|
 | **Events** | „**aktuell keine geplant**" (Stefans Formulierung) – es wird etwas kommen. Nicht danach suchen, nicht nachfassen; ein genanntes Event sofort in `athlete/profil.md` eintragen. Benchmarks bis dahin als eigene Zeitläufe auf Standardstrecke. |
-| **Kraft** | 2× Kraft A/B mit Oberkörper-Schwerpunkt (28.9.2026, s. Abschnitt 2) · Lauf-ABC 2× im Lauf · KA auf der Rolle bleibt der Kraftreiz fürs Rad |
+| **Kraft** | 2× Kraft A/B mit Oberkörper-Schwerpunkt (28.9.2026, s. Abschnitt 2) · **kein Lauf-ABC** (Stefan, 28.9.2026: gefällt ihm nicht – nicht wieder vorschlagen) · KA auf der Rolle bleibt der Kraftreiz fürs Rad |
 | **Laufschuhe** | zwei Paar, reichlich Reserve – nicht ungefragt ansprechen |
 | **Vitamin D** | Messung von Stefan verneint – erledigt |
 | **Infekt-Muster** | keins erkennbar → nur strukturelle Prävention (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol), Protokoll in `planung/langfristplan.md` |

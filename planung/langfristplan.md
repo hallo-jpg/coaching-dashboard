@@ -69,7 +69,7 @@ Tibia- und Achillessehnenbelastung skalieren mit dem Tempo (Achillessehnenkräft
 | **Kadenz in jeder Easy-Einheit.** Ziel 165–170 · Rückmeldung nach Gefühl (Stefan, 24.9.) | erweitert das orthopädische Budget — wichtigster Einzelhebel |
 | **Aerobes Volumen kommt vom Rad** | null Impact, und es dient ohnehin dem FTP-Ziel |
 | **Jeder Lauf hat einen Zweck** — Qualität, Longrun, Kadenz-Easy. Keine Füllkilometer | Volumen ohne Zweck kostet Gewebe ohne Ertrag |
-| **2×/Woche Kraft A/B** mit Läufer-Beinübungen (Soleus-Wadenheben gebeugtes Knie, einbeinige RDL, Split Squat, Copenhagen) · **Lauf-ABC 2×/Woche** | Gewebetoleranz bei 94 kg + Laufstil |
+| **2×/Woche Kraft A/B** mit Läufer-Beinübungen (Soleus-Wadenheben gebeugtes Knie, einbeinige RDL, Split Squat, Copenhagen) | Gewebetoleranz bei 94 kg + Laufstil |
 | **+10%-Regeln**: Wochenkilometer max. +10%/Woche, längster Lauf max. +10% gegenüber den letzten 30 Tagen | einzige belastbare Volumen-Leitplanke |
 | **Schuhrotation**, gedämpfte Trainingsschuhe bei 94 kg, Kilometerstand im Blick | Materialermüdung ist bei hohem Körpergewicht früher relevant |
 
@@ -198,7 +198,6 @@ Unabhängig von konkreten Rennterminen. Rennen werden in dieses Rahmenwerk einge
 | Baustein | Umfang | Inhalt |
 |---|---|---|
 | **Kraft A / B** | **2× pro Woche, je ~30–35min** | A = Drücken, B = Ziehen (Klimmzug-Projekt) · Sätze 1–2 Wdh vor dem Versagen · Läufer-Beinübungen am Ende jeder Einheit |
-| **Lauf-ABC** | 2× pro Woche, ~8min im Lauf | Technik fürs Kadenz-Projekt |
 | **KA auf der Rolle** | im Rad-Plan enthalten | 91% FTP bei 55 rpm — der eigentliche Kraftreiz fürs Rad |
 
 Übungen, Progression und Reise-Variante: `athlete/profil.md` → Krafttraining. Oberkörper-Training stört die

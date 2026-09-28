@@ -42,15 +42,15 @@ Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — i
 
 Werktags max. 90 min (Ausnahme 2h), Wochenende trägt die langen Einheiten. Vor oder nach der Arbeit — Slot wird in der Wochenplanung festgelegt.
 
-**🎯 Kern-Einheiten (Stefan, 24.9.):** Rad-Qualität (Di) · Lauf-Qualität (Fr, bis KW44 Kadenz-Easy + Lauf-ABC) · eine lange Einheit am Wochenende (Sa oder So). Kern wird bei Ausfall verschoben, alles andere ist flexibel und entfällt ersatzlos. Die Wochen-Retro bewertet, ob der Kern steht – nicht die TSS-Quote.
+**🎯 Kern-Einheiten (Stefan, 24.9.):** Rad-Qualität (Di) · Lauf-Qualität (Fr, bis KW44 Kadenz-Easy) · eine lange Einheit am Wochenende (Sa oder So). Kern wird bei Ausfall verschoben, alles andere ist flexibel und entfällt ersatzlos. Die Wochen-Retro bewertet, ob der Kern steht – nicht die TSS-Quote.
 
 | Tag | Einheit | Dauer | Charakter |
 |---|---|---|---|
-| Mo | 🏃 Easy-brisk + Kadenz-Fokus + Lauf-ABC · + 💪 Kraft A | 45–60min + 30min | niedrig |
+| Mo | 🏃 Easy-brisk + Kadenz-Fokus · + 💪 Kraft A | 45–60min + 30min | niedrig |
 | Di | 🚴 **Rad-Qualität** (indoor wenn Wetter schlecht) | 75–90min | **hoch** |
-| Mi | 🏃 Easy-brisk + Lauf-ABC + 6 Steigerungen | 45–50min | niedrig |
+| Mi | 🏃 Easy-brisk + 6 Steigerungen | 45–50min | niedrig |
 | Do | Ruhetag | – | – |
-| Fr | 🏃 **Lauf-Qualität** (Schwelle/Intervalle) · ABC im Warm-up | 60–70min | **hoch** |
+| Fr | 🏃 **Lauf-Qualität** (Schwelle/Intervalle) | 60–70min | **hoch** |
 | Sa | 🚴 **Rad lang LIT** | 2,5–3,5h | niedrig, lang |
 | So | 🏃 Longrun progressiv **oder** 🚴 LIT · 💪 Kraft B nach der kürzeren WE-Einheit | 70–90min + 30min | niedrig |
 
@@ -66,7 +66,6 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | Längster Einzellauf | **max. +10% gegenüber den letzten 30 Tagen** → 10 km (Sept) → ~15–16 km (Feb) |
 | Easy-Tempo | **7:15–7:45/km @ HF 155–165** — briskes Ende, nie langsames Trotten |
 | Kadenz | Ziel **165–170** in **jeder** Easy-Einheit · Rückmeldung **nach Gefühl** (Stefan, 24.9.) — schneller, kürzere Schritte, kein Metronom · lieber konsequent 160 als verkrampft 170 |
-| Lauf-ABC | **2×/Woche ~8min im Lauf** (Kadenz-Lauf + Steigerungslauf) · Technik-Werkzeug fürs Kadenz-Projekt |
 | Kraft | **2× Kraft A/B** (Oberkörper-Aufbau + Läufer-Beinübungen) · Programm in `athlete/profil.md` |
 | Qualität | **max. 1×/Woche** bis KW47, ab KW49 zusätzlich Intervalle im Longrun |
 
@@ -108,7 +107,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | | |
 |---|---|
 | **Events** | **aktuell keine geplant** — es wird sicher etwas kommen, steht nur noch nicht fest. Bis dahin laufen Benchmarks als eigene Zeitläufe; ein Event wird eingehängt, sobald Stefan eines nennt |
-| **Kraft** | 2 KH bis 10 kg, Bänder, Klimmzugstange draußen · **2× Kraft A/B, Ziel Oberkörper-Aufbau** (Stefan, 28.9.) · Lauf-ABC 2× im Lauf |
+| **Kraft** | 2 KH bis 10 kg, Bänder, Klimmzugstange draußen · **2× Kraft A/B, Ziel Oberkörper-Aufbau** (Stefan, 28.9.) |
 | **Schuhe** | zwei Paar im Wechsel, je ~200 km · reichlich Reserve (bei 94 kg ~500–700 km pro Paar) |
 | **Indoor** | Canyon **ohne Schaltung → ERG**. Bisher meist **MyWhoosh**, **Tacx-App** bevorzugt. Strukturierte Intervalle inkl. 30/30 laufen dort seit Jahren — keine Sonderregeln bei den Workout-Formaten. **Max. 4h am Stück.** |
 | **Workout-Zustellung** | Planung läuft über **intervals.icu** → synct automatisch zu **Garmin Connect** und **COROS**. Damit landen Einheiten auf **COROS Pace 3** (Lauf) und **COROS DURA** (Rad). Über Garmin Connect kommen sie auch in der **Tacx-App** an (verifiziert 21.9.) |

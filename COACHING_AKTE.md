@@ -1,6 +1,12 @@
 # Coaching-Akte – Logs & Notizen
 
 *Letzte Aktualisierung: 28. September 2026*
+
+---
+
+## 28. September 2026 – Lauf-ABC wieder gestrichen
+
+**Stefan:** „gefällt mir nicht so, lass uns das Lauf-ABC nicht machen." → aus Profil, Plänen KW40–44, Periodisierung, Langfristplan, Skill und intervals.icu (Mo-Lauf) entfernt. Steigerungen bleiben wie vorher. In `COACH_MEMORY.md` als „nicht wieder vorschlagen" vermerkt. Kraft A/B bleibt unverändert.
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
 
 ---
