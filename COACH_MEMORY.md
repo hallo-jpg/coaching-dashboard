@@ -1,7 +1,7 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 24. September 2026 (bereinigt).*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 28. September 2026.*
 
 **Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
 zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
@@ -68,12 +68,20 @@ Nie eigenmächtig auf T-2 oder früher verschieben. Bei Zeitkonflikt an T-1: nac
 
 ---
 
-## 2. Wade, Kadenz, Laufstil
+## 2. Beschwerden, Kadenz, Laufstil, Kraft
+
+### ✅ Beschwerdefrei ist der Standard (Stefan, 28.9.2026)
+Wade und Nacken sind aktuell völlig okay. **Geplant wird ohne Schmerz-Rücksicht:** keine Abbruchregeln,
+Wadenregeln oder Nacken-Hinweise in Pläne und Workout-Beschreibungen, keine Umplanung „vorsichtshalber".
+Stefan meldet sich bei Beschwerden selbst, wie bei jeder anderen Verletzung auch. Gelegentlich nachfragen ist
+okay (z.B. in der Retro), aber immer von „keine Probleme" ausgehen, wenn nichts erwähnt wird.
+Randnotiz Historie: MTSS-Verdacht Soleus/Tibia 8/2026 (nur beim langsamen Laufen) · Halswirbelfraktur 28.6.2026,
+ausgeheilt.
 
 ### 🦵 Kadenz: Ziel 165–170 im Training, Rückmeldung **nach Gefühl**
 - **Ausgangslage:** gewohnt ~140 spm, auch bei Tempo (ein Stilmerkmal). Bei 190 cm / ~94 kg heißt das lange
-  Bodenkontaktzeit, Fußaufsatz vor dem Schwerpunkt, hohes Biegemoment auf die Tibia → sehr wahrscheinlich die
-  Ursache des Wadenschmerzes am Soleus-Tibia-Übergang (MTSS-Verdacht seit 9.8.2026, schmerzte nur langsam).
+  Bodenkontaktzeit, Fußaufsatz vor dem Schwerpunkt, hohes Biegemoment auf die Tibia (war wahrscheinlich die
+  Ursache des Wadenschmerzes 8/2026) und schlechtere Laufökonomie.
 - **Belegt:** Training mit bewusster Frequenz 160–163 · Wettkampf 20.9.: **154** über 66min.
   Unter Wettkampfstress driftet die Kadenz ~6 spm unter den Trainingswert → Trainingsziel liegt ~5 spm über dem,
   was im Wettkampf stehen soll. Daher **165–170 im Training**, damit im Wettkampf ~160 steht.
@@ -83,16 +91,26 @@ Nie eigenmächtig auf T-2 oder früher verschieben. Bei Zeitkonflikt an T-1: nac
   ansetzen (Zielwert wurde schon zweimal falsch kalibriert). Wenn 165 nach 10min verkrampft wirkt → lieber
   konsequent 160 als verkrampft 170. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere
   Schritte, Fuß unter den Körper"). Umstellung braucht 6–8 Wochen – wichtigstes Laufprojekt Herbst 2026.
+  **Lauf-ABC 2×/Woche** (im Lauf, ~8min) ist das Technik-Werkzeug dafür – Details `athlete/profil.md`.
 
 ### 🦵 „Langsames Laufen ist orthopädisch teuer" – Stefan hat recht
 Spitzenkraft pro Schritt ist langsam zwar niedriger, aber Bodenkontaktzeit und Zeit-unter-Spannung des Soleus
 steigen, und Knochenbelastung akkumuliert **hoch potenziert mit Dehnung × Zyklenzahl**. Bei ~140 spm heißt
-langsam: maximaler Bremsimpuls, maximales Biegemoment auf die Tibia – deckt sich mit dem Befund.
+langsam: maximaler Bremsimpuls, maximales Biegemoment auf die Tibia.
 Gegenmaßnahme ist aber **nicht** „mehr Tempo statt Easy": Tibia- und Achillessehnenlast skalieren mit dem Tempo.
 **Die fünf Regeln:** (1) Kein langsames Trotten; Easy = 7:15–7:45/km @ HF 155–165. (2) Kadenz ist in jeder
 Easy-Einheit die Hauptaufgabe (nach Gefühl, s.o.). (3) Aerobes Volumen kommt vom Rad. (4) Jeder Lauf hat einen
-Zweck – keine Füllkilometer. (5) 2×/Woche Lauf-Athletik 15min, nicht optional.
+Zweck – keine Füllkilometer. (5) 2×/Woche Kraft A/B (enthält die Läufer-Übungen für Wade und Hüfte).
 Nie wieder mit „Spitzenkraft ist langsam niedriger" argumentieren – das ist die widerlegte Fassung.
+
+### 💪 Kraft: Oberkörper-Aufbau ist ein eigenes Ziel (Stefan, 28.9.2026)
+Stefans ursprünglicher Gedanke beim Krafttraining war **Oberkörper** („optisch, und ich fühle mich besser mit
+mehr Muskelmasse am OK") – nicht nur Beine + Core. Die „Lauf-Athletik 2×15min" vom 21.9. hatte das verdrängt.
+**Jetzt:** 2×/Woche **Kraft A (Drücken) + B (Ziehen)**, je ~30–35min, Sätze 1–2 Wdh vor dem Versagen (so wirkt
+auch leichtes Gewicht), ~10 harte Sätze pro Muskelgruppe/Woche, Läufer-Beinübungen am Ende jeder Einheit.
+Equipment: 2 KH bis 10 kg, Bänder, Outdoor-Klimmzugstange in der Nähe. Nebenziel: erster Klimmzug bis KW09/27.
+**Anwenden:** A/B aktiv einplanen (flexibel, kein Kern), Übungen nur aus `athlete/profil.md` → Krafttraining.
+Ehrlich bleiben: FTP und 10-km-Zeit bewegt das kaum – es ist Stefans eigenes Ziel und wird so behandelt.
 
 ### Stefan läuft ohne Auto-Lap – Rennpläne nicht auf km-Piepser bauen
 Ohne Lap-Druck ist Rundenzeit = Gesamtzeit. Die Uhr misst auf Kursen typisch 1–2 % zu lang.
@@ -112,7 +130,7 @@ Zielkontrolle immer über Zeit am Schild, nie über Ø Pace oder Uhr-Distanz.
 ### 🎯 Kern-Einheiten statt TSS-Quote (Stefan, 24.9.2026)
 Jede Woche hat **3 Kern-Einheiten**, der Rest ist ausdrücklich flexibel:
 1. **Rad-Qualität** (Standard Di)
-2. **Lauf-Qualität** (Standard Fr) – bis KW44 ist das der Easy-Lauf mit Kadenz-Fokus + Athletik
+2. **Lauf-Qualität** (Standard Fr) – bis KW44 ist das der Easy-Lauf mit Kadenz-Fokus + Lauf-ABC
 3. **Eine lange Einheit am Wochenende** – Sa **oder** So, Rad oder Lauf, egal welche
 Im Wochenplan in der Notiz-Spalte mit **`🎯 Kern`** markieren – **das macht immer der Coach**, in jedem Wochenplan
 und bei jeder Umplanung (Stefan, 24.9.: „dafür habe ich ja dich“). Stefan markiert nichts selbst und wird nicht
@@ -192,7 +210,7 @@ vollständig. Leere Aktivitätszeilen als „Strava-Hülle" erkennen, nicht als 
 | Radcomputer | **COROS DURA** (kein Wahoo, der ELEMNT ROAM ist weg – **nie wieder vorschlagen**) |
 | Rad indoor | **Canyon Aeroad ohne Powermeter und ohne Schaltung** auf **Tacx Flux S** → immer ERG |
 | Indoor-App | **Tacx-App** bevorzugt, MyWhoosh alternativ · max. 4h am Stück · kein Laufband |
-| Kraft | nur Eigengewicht + Widerstandsbänder, kein Kraftraum |
+| Kraft | 2 Kurzhanteln bis 10 kg · Widerstandsbänder · Outdoor-Klimmzugstange in der Nähe · kein Kraftraum |
 
 ### Indoor: ERG ist kein Einschränkungsgrund
 Stefan fährt seit Jahren alle strukturierten Formate in ERG, **30/30er inklusive**. Keine Sonderregeln für
@@ -244,12 +262,11 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 | Thema | Stand |
 |---|---|
 | **Events** | „**aktuell keine geplant**" (Stefans Formulierung) – es wird etwas kommen. Nicht danach suchen, nicht nachfassen; ein genanntes Event sofort in `athlete/profil.md` eintragen. Benchmarks bis dahin als eigene Zeitläufe auf Standardstrecke. |
-| **Kraft** | Lauf-Athletik **2×15min Pflicht** und aktiv einplanen · Ganzkörper 1× optional · KA auf der Rolle bleibt der Kraftreiz fürs Rad (Bänder ersetzen das nicht – so auch sagen) |
+| **Kraft** | 2× Kraft A/B mit Oberkörper-Schwerpunkt (28.9.2026, s. Abschnitt 2) · Lauf-ABC 2× im Lauf · KA auf der Rolle bleibt der Kraftreiz fürs Rad |
 | **Laufschuhe** | zwei Paar, reichlich Reserve – nicht ungefragt ansprechen |
 | **Vitamin D** | Messung von Stefan verneint – erledigt |
 | **Infekt-Muster** | keins erkennbar → nur strukturelle Prävention (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol), Protokoll in `planung/langfristplan.md` |
-| **Wade/Nacken-Tracking** | kein eigenes Wellness-Feld gewünscht (24.9.2026) – Stefan meldet Beschwerden selbst; bei Laufeinheiten die Abbruchregeln im Plan nennen |
-| **Nacken** | Halswirbelfraktur 28.6. ausgeheilt (66min Wettkampf beschwerdefrei). Abbruchkriterien bleiben Standard: Nackenschmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme |
+| **Wade/Nacken** | beschwerdefrei ist der Standard (28.9.2026, s. Abschnitt 2) · kein Wellness-Feld · Stefan meldet sich selbst · keine Abbruchregeln in Plänen |
 | **Rad:Lauf-Split** | dynamisch: Okt 70:30 → Nov 65:35 → ab Dez 60:40. Argument, das gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5. Laufstunde entscheidet über sub-60 |
 | **Rampe** | Ausgangslage ~3,2h/Woche → 9–10h. Die Rampe (+10–15%/Woche, jede 4. Woche −45%) ist wichtiger als der Zielwert |
 

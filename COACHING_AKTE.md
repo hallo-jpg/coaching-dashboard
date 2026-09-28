@@ -1,7 +1,21 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 27. September 2026*
+*Letzte Aktualisierung: 28. September 2026*
 *Athletenprofil → `athlete/profil.md` | Periodisierung → `planung/periodisierung.md`*
+
+---
+
+## 28. September 2026 – Kraft neu aufgesetzt · Lauf-ABC · beschwerdefrei als Standard
+
+**Stefan:** fragt nach Lauf-ABC und woher die „Lauf-Athletik" kommt – sein ursprünglicher Gedanke beim Krafttraining war **Oberkörper**, nicht nur Beine + Core. Ziel: optisch, sich besser fühlen mit mehr Muskelmasse am OK. Equipment: 2 KH bis 10 kg, Bänder, Outdoor-Klimmzugstange in der Nähe (schafft aktuell keinen Klimmzug).
+**Eingeräumt:** Die Lauf-Athletik stammt vom Coach (Saisonplanung 21.9., Begründung MTSS + Laufvolumen). Die Ganzkörper-Einheit stand dort nur als „optional, wenn Stefan sie erwähnt" – damit war sein eigentliches Ziel untergegangen. Außerdem existierten drei verschiedene Übungslisten (Profil, KW41, Workout-Index).
+**Stefan zu Beschwerden:** Wade wieder völlig okay, Nacken zu 95% kein Thema → **nicht mehr mit Schmerzen planen**, er meldet sich wie bei jeder Verletzung. Nachfragen ok, Standard ist „keine Probleme".
+**Neu:**
+- **Kraft A (Drücken) / B (Ziehen)** 2×/Woche, je ~30–35min, Sätze 1–2 Wdh vor dem Versagen, ~10 harte Sätze pro Muskelgruppe/Woche, Läufer-Beinübungen am Ende · Nebenziel erster Klimmzug bis KW09/27 · Reise-Variante mit Bändern (London: Bänder mitnehmen).
+- **Lauf-ABC** 2×/Woche, ~8min im Lauf nach dem Einlaufen + Steigerungen – Technik-Werkzeug fürs Kadenz-Projekt.
+- Abbruch-/Wadenregeln aus Plänen, Skill, Retro (Kennzahl „Athletik" → „Kraft", „Wade/Nacken" → „Beschwerden nur auf Meldung") und Workout-Beschreibungen entfernt.
+**KW40:** Mo Kraft A Einstieg (3 Wdh Reserve, ohne Beine wegen FTP-Test Do) + ABC im Lauf · So London Kraft B mit Bändern. In intervals.icu neu angelegt, alte Athletik-Einheiten gelöscht. KW41–44 nachgezogen.
+→ `athlete/profil.md` (einzige Quelle für die Übungen), `COACH_MEMORY.md`, `CLAUDE.md`, `periodisierung.md` (Standardwoche, Kraft-Zeile – mit Stefans Zustimmung im Gespräch), `langfristplan.md`, Coach-Skill + Module, `workout_index.md`.
 
 ---
 

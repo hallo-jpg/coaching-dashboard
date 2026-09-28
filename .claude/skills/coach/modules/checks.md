@@ -85,7 +85,7 @@ Keine Läufe in 4 Wochen → Check C überspringen.
 | 1 | TSB < −30 an ≥ 3 aufeinanderfolgenden Tagen | 🔴 |
 | 2 | HRV 7d-Schnitt > 10% unter 30d-Basis an ≥ 5 Tagen | 🟡 |
 | 3 | ACWR (ATL ÷ CTL) > 1,5 | 🟡 |
-| 4 | Lauf-km zwei Wochen in Folge > +10% **und** Wade meldet sich | 🟡 |
+| 4 | Lauf-km zwei Wochen in Folge > +10% **und** Stefan meldet Beschwerden | 🟡 |
 
 ```
 ⚠️ Deload-Signal: [Begründung]

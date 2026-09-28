@@ -42,17 +42,17 @@ Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — i
 
 Werktags max. 90 min (Ausnahme 2h), Wochenende trägt die langen Einheiten. Vor oder nach der Arbeit — Slot wird in der Wochenplanung festgelegt.
 
-**🎯 Kern-Einheiten (Stefan, 24.9.):** Rad-Qualität (Di) · Lauf-Qualität (Fr, bis KW44 Kadenz-Easy + Athletik) · eine lange Einheit am Wochenende (Sa oder So). Kern wird bei Ausfall verschoben, alles andere ist flexibel und entfällt ersatzlos. Die Wochen-Retro bewertet, ob der Kern steht – nicht die TSS-Quote.
+**🎯 Kern-Einheiten (Stefan, 24.9.):** Rad-Qualität (Di) · Lauf-Qualität (Fr, bis KW44 Kadenz-Easy + Lauf-ABC) · eine lange Einheit am Wochenende (Sa oder So). Kern wird bei Ausfall verschoben, alles andere ist flexibel und entfällt ersatzlos. Die Wochen-Retro bewertet, ob der Kern steht – nicht die TSS-Quote.
 
 | Tag | Einheit | Dauer | Charakter |
 |---|---|---|---|
-| Mo | 🏃 Easy-brisk + Kadenz-Fokus · + Lauf-Athletik 15min | 50–70min | niedrig |
+| Mo | 🏃 Easy-brisk + Kadenz-Fokus + Lauf-ABC · + 💪 Kraft A | 45–60min + 30min | niedrig |
 | Di | 🚴 **Rad-Qualität** (indoor wenn Wetter schlecht) | 75–90min | **hoch** |
-| Mi | 🏃 Easy-brisk + 6 Steigerungen | 45–50min | niedrig |
-| Do | Ruhetag · optional Kraft 30min | – | – |
-| Fr | 🏃 **Lauf-Qualität** (Schwelle/Intervalle) · + Athletik | 60–70min | **hoch** |
+| Mi | 🏃 Easy-brisk + Lauf-ABC + 6 Steigerungen | 45–50min | niedrig |
+| Do | Ruhetag | – | – |
+| Fr | 🏃 **Lauf-Qualität** (Schwelle/Intervalle) · ABC im Warm-up | 60–70min | **hoch** |
 | Sa | 🚴 **Rad lang LIT** | 2,5–3,5h | niedrig, lang |
-| So | 🏃 Longrun progressiv **oder** 🚴 LIT | 70–90min | niedrig |
+| So | 🏃 Longrun progressiv **oder** 🚴 LIT · 💪 Kraft B nach der kürzeren WE-Einheit | 70–90min + 30min | niedrig |
 
 **Warum so:** Rad-Qualität (Di) und Lauf-Qualität (Fr) liegen 3 Tage auseinander — keine Interferenz. Ruhetag liegt unter der Woche. Sa/So sind tauschbar (langer Lauf am Sa, lange Ausfahrt am So), je nach Wetter. Fällt das Wochenende aus, ist die Woche nicht kaputt — nur kürzer.
 
@@ -66,9 +66,9 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | Längster Einzellauf | **max. +10% gegenüber den letzten 30 Tagen** → 10 km (Sept) → ~15–16 km (Feb) |
 | Easy-Tempo | **7:15–7:45/km @ HF 155–165** — briskes Ende, nie langsames Trotten |
 | Kadenz | Ziel **165–170** in **jeder** Easy-Einheit · Rückmeldung **nach Gefühl** (Stefan, 24.9.) — schneller, kürzere Schritte, kein Metronom · lieber konsequent 160 als verkrampft 170 |
-| Lauf-Athletik | **2×/Woche 15min**, nicht optional: Wadenheben gebeugtes Knie (Soleus), einbeinige RDL, Step-ups, Hüfte seitlich, Copenhagen Plank · Eigengewicht + Bänder |
+| Lauf-ABC | **2×/Woche ~8min im Lauf** (Kadenz-Lauf + Steigerungslauf) · Technik-Werkzeug fürs Kadenz-Projekt |
+| Kraft | **2× Kraft A/B** (Oberkörper-Aufbau + Läufer-Beinübungen) · Programm in `athlete/profil.md` |
 | Qualität | **max. 1×/Woche** bis KW47, ab KW49 zusätzlich Intervalle im Longrun |
-| Abbruch | Schmerz am Schienbeinknochen punktuell → Einheit beenden, 2 Tage kein Lauf, melden |
 
 **Warum kein langsames Trotten:** Bei niedriger Kadenz und 94 kg steigen Bodenkontaktzeit, Bremsimpuls und Biegemoment auf die Tibia — langsam bei 140 spm ist der teuerste Laufmodus. Bei 165 spm wird dieselbe Einheit zur billigsten. Details → `planung/langfristplan.md`, Abschnitt Laufbelastungs-Budget.
 
@@ -98,7 +98,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 ## Was den Plan kippen darf (und was nicht)
 
 - **Infekt** → Krank-Modus, Block wird nicht nachgeholt. Jeder 3-Wochen-Block hat seinen eigenen Abschluss, damit eine verlorene Woche nichts zerstört.
-- **Wadenschmerz** → Laufvolumen sofort auf den Stand vor 2 Wochen zurück, Kadenz prüfen, Rad kompensiert. Nie „durchziehen".
+- **Gemeldete Beschwerden** (Stefan meldet sich selbst, Standard ist beschwerdefrei) → Laufvolumen auf den Stand vor 2 Wochen zurück, Rad kompensiert. Nie „durchziehen".
 - **Wetter** → Rad geht indoor, kein Grund für eine Streichung.
 - **Volle Arbeitswoche** → Qualität hat Vorrang vor Volumen. Erst der lange Ausdauerblock fällt, dann die Easy-Einheit, zuletzt die Qualität.
 - **Nicht kippen darf:** die Entlastungswoche. Sie wird nie „genutzt", weil es gerade gut läuft.
@@ -108,7 +108,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | | |
 |---|---|
 | **Events** | **aktuell keine geplant** — es wird sicher etwas kommen, steht nur noch nicht fest. Bis dahin laufen Benchmarks als eigene Zeitläufe; ein Event wird eingehängt, sobald Stefan eines nennt |
-| **Kraft** | Eigengewicht + Widerstandsbänder · Lauf-Athletik 2×15min Pflicht, Ganzkörper 1× optional |
+| **Kraft** | 2 KH bis 10 kg, Bänder, Klimmzugstange draußen · **2× Kraft A/B, Ziel Oberkörper-Aufbau** (Stefan, 28.9.) · Lauf-ABC 2× im Lauf |
 | **Schuhe** | zwei Paar im Wechsel, je ~200 km · reichlich Reserve (bei 94 kg ~500–700 km pro Paar) |
 | **Indoor** | Canyon **ohne Schaltung → ERG**. Bisher meist **MyWhoosh**, **Tacx-App** bevorzugt. Strukturierte Intervalle inkl. 30/30 laufen dort seit Jahren — keine Sonderregeln bei den Workout-Formaten. **Max. 4h am Stück.** |
 | **Workout-Zustellung** | Planung läuft über **intervals.icu** → synct automatisch zu **Garmin Connect** und **COROS**. Damit landen Einheiten auf **COROS Pace 3** (Lauf) und **COROS DURA** (Rad). Über Garmin Connect kommen sie auch in der **Tacx-App** an (verifiziert 21.9.) |

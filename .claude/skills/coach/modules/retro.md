@@ -16,7 +16,7 @@
    (für die 30-Tage-Regel und den Wochenvergleich). Felder: `distanz_km`, `dauer_min`, `kadenz`
    (Lauf bereits in **spm**, nicht verdoppeln), `pace_min_km`, `intensity_if`, `rpe`, `avg_hf`, `tss`.
 2. `get_weekly_review(week_start: Montag der Vorwoche)` → Zonenzeiten pro Tag, HRV-Verlauf.
-3. `planung/kw[N-1].md` → welche Einheiten waren `🎯 Kern`, welche flexibel, wo stand Athletik.
+3. `planung/kw[N-1].md` → welche Einheiten waren `🎯 Kern`, welche flexibel, wo standen Kraft A/B und Lauf-ABC.
 
 Leere Aktivitäten (alle Felder `null`) sind Strava-Hüllen → nicht als fehlende Einheit werten, Stefan fragen.
 
@@ -28,8 +28,8 @@ Leere Aktivitäten (alle Felder `null`) sind Strava-Hüllen → nicht als fehlen
 | 2 | **Lauf-km** | Σ `distanz_km` der Woche vs. **Basis = höherer Wert aus Vorwoche und Ø der 4 Wochen davor** | ≤ +10% | +10–20% | > +20% |
 | 3 | **Längster Lauf** | längster Einzellauf vs. längster Lauf der 30 Tage davor | ≤ +10% | +10–20% | > +20% |
 | 4 | **Kadenz Easy** | Ø `kadenz` der Easy-Läufe (Pace langsamer als 6:50/km), nach Dauer gewichtet | ≥ Wochenziel aus dem Plan | bis 5 spm darunter | > 5 spm darunter |
-| 5 | **Athletik** | im Plan abgehakte Athletik-Blöcke (Stefan meldet sie; ohne Meldung nachfragen) | 2/2 | 1/2 | 0/2 |
-| 6 | **Wade / Nacken** | aus Stefans Meldungen und dem Plan (kein Wellness-Feld) | beschwerdefrei | Ziehen / Muskelkater | punktueller Schmerz → Abbruchregel |
+| 5 | **Kraft** | Kraft-Einheiten A/B (intervals.icu `WeightTraining` oder Stefans Meldung) | 2/2 | 1/2 | 0/2 |
+| 6 | **Beschwerden** | nur aus Stefans Meldungen – ohne Meldung = beschwerdefrei (nicht jede Woche abfragen) | keine | leicht, gemeldet | Verletzung gemeldet |
 
 Hinweise:
 - **Lauf-km:** Basis < 15 km/Woche → +3 km absolut gelten als ✅ (sonst blockiert die Regel den Einstieg).
@@ -84,8 +84,8 @@ Plans → als eigener Hinweis „Mehrbelastung" in der Bewertung erwähnen (kein
 | Lauf-km | 18,4 km (Vorwoche 16,5 · +12%) | ⚠️ |
 | Längster Lauf | 8,2 km (30 Tage davor: 7,5 · +9%) | ✅ |
 | Kadenz Easy | Ø 163 spm (Ziel 165) | ⚠️ |
-| Athletik | 2/2 | ✅ |
-| Wade / Nacken | beschwerdefrei | ✅ |
+| Kraft | 2/2 | ✅ |
+| Beschwerden | keine | ✅ |
 
 **Rad:** Qualität ✅ (Di SwSp IF 0,88 · RPE 7) · LIT-Disziplin ✅ · Polarisation (Rad+Lauf): LIT 82% · Grauzone 11% · HIT 7%
 **Info:** TSS 312 / Plan 300 · HRV → stabil (48 → 50)
@@ -114,13 +114,13 @@ git mv planung/kw[N-1].md planung/archiv/kw[N-1].md
 In `COACHING_AKTE.md` einen Eintrag **oben** (neueste zuerst) ergänzen:
 ```markdown
 ## [Datum] – KW[N-1] Retro
-[🟢/🟡/🔴] Kern [x]/3 · Lauf [km] km ([±%]) · Kadenz Easy [spm] · Athletik [x]/2 · [ein Satz Kernerkenntnis]
+[🟢/🟡/🔴] Kern [x]/3 · Lauf [km] km ([±%]) · Kadenz Easy [spm] · Kraft [x]/2 · [ein Satz Kernerkenntnis]
 ```
 
 ### Periodisierungsempfehlung (nur wenn eine Schwelle erreicht ist)
 - zwei 🔴 in Folge (aktuelle + letzte archivierte Woche)
 - Kern zwei Wochen in Folge ⚠️ oder ❌ → Wochenstruktur passt nicht zum Alltag
-- Wade/Nacken ❌
+- Beschwerden ❌
 - HRV 7d-Schnitt > 10% unter 30d-Basis über die ganze Woche
 
 Dann konkret vorschlagen und auf Bestätigung warten (Periodisierung nur mit Stefans Zustimmung):
@@ -142,7 +142,7 @@ Antwort in der Akte dokumentieren (`→ periodisierung.md angepasst: …` bzw. `
 ## 📊 Monats-Retrospektive [Monat YYYY]
 
 ### Zahlen
-| KW | Kern | Lauf-km | Längster Lauf | Kadenz Easy | Athletik | Rad-h | Note |
+| KW | Kern | Lauf-km | Längster Lauf | Kadenz Easy | Kraft | Rad-h | Note |
 |---|---|---|---|---|---|---|---|
 
 **Monat:** Lauf [km] (Vormonat [km]) · Rad [h] · Kern [x]/[y] · Ø Kadenz Easy [spm]

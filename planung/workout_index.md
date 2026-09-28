@@ -250,14 +250,10 @@ Kleinste darstellbare Einheit: **exakt 60 Sekunden.** Alles wird auf volle Minut
 
 ---
 
-### Pflicht-Athletik Laufen (2×/Woche, je 10–15min)
+### Kraft A/B + Lauf-ABC
 
-Nicht in intervals.icu, sondern als Notiz / Reminder:
-- Wadenheben: 3×15 (einbeinig ab Woche 4)
-- Einbeinige Romanian Deadlift: 3×10 je Seite
-- Hip-Thrust: 3×12
-- Seitliche Hüftabduktion (Widerstandsband): 3×15
-- Einbeinige Balance + kleine Plyos (ab Woche 5): 3×10s Hold + 5 Sprünge
+Seit 28.9.2026 ersetzt durch **Kraft A (Drücken) / B (Ziehen)** und **Lauf-ABC** – Übungslisten und Progression
+ausschließlich in `athlete/profil.md` → Krafttraining (eine Quelle, keine Kopien).
 
 ---
 

@@ -53,7 +53,7 @@ Nie als Talentfrage rahmen. Nie Ökonomie als „das Problem" bestätigen.
 
 ## Laufbelastungs-Budget (Orthopädie-Regeln)
 
-*Grundlage: Wadenproblematik seit 8/2026 (MTSS-Verdacht Soleus-Tibia-Übergang) und Stefans eigene Beobachtung, dass langsames Laufen ihn mehr kostet als schnelles. Die Beobachtung ist richtig — hier die vollständige Begründung und die Konsequenzen.*
+*Grundlage: Wadenproblematik 8/2026 (MTSS-Verdacht, seit 9/2026 wieder okay – Planung geht von beschwerdefrei aus) und Stefans eigene Beobachtung, dass langsames Laufen ihn mehr kostet als schnelles. Die Beobachtung ist richtig — hier die vollständige Begründung und die Konsequenzen.*
 
 **Warum langsames Laufen bei ihm teuer ist:**
 Die Spitzenkraft pro Schritt ist bei langsamem Tempo niedriger — das ist aber nur eine von drei Lastdimensionen. Bodenkontaktzeit und Zeit-unter-Spannung des Soleus steigen beim langsamen Laufen. Knochenbelastung akkumuliert nicht linear mit der Dehnung, sondern hoch potenziert × Zyklenzahl. Bei ~140 spm und 94 kg heißt langsam: Fuß weit vor dem Schwerpunkt, maximaler Bremsimpuls, maximales Biegemoment auf die Tibia. **Langsames Trotten bei niedriger Kadenz ist sein teuerster Laufmodus.** Deckt sich mit dem Befund: die Wade tat nur beim langsamen Laufen weh.
@@ -69,7 +69,7 @@ Tibia- und Achillessehnenbelastung skalieren mit dem Tempo (Achillessehnenkräft
 | **Kadenz in jeder Easy-Einheit.** Ziel 165–170 · Rückmeldung nach Gefühl (Stefan, 24.9.) | erweitert das orthopädische Budget — wichtigster Einzelhebel |
 | **Aerobes Volumen kommt vom Rad** | null Impact, und es dient ohnehin dem FTP-Ziel |
 | **Jeder Lauf hat einen Zweck** — Qualität, Longrun, Kadenz-Easy. Keine Füllkilometer | Volumen ohne Zweck kostet Gewebe ohne Ertrag |
-| **2×/Woche Lauf-Athletik, 15min** (Soleus-Wadenheben gebeugtes Knie, einbeinige RDL, Hüfte seitlich) | bei 94 kg nicht optional |
+| **2×/Woche Kraft A/B** mit Läufer-Beinübungen (Soleus-Wadenheben gebeugtes Knie, einbeinige RDL, Split Squat, Copenhagen) · **Lauf-ABC 2×/Woche** | Gewebetoleranz bei 94 kg + Laufstil |
 | **+10%-Regeln**: Wochenkilometer max. +10%/Woche, längster Lauf max. +10% gegenüber den letzten 30 Tagen | einzige belastbare Volumen-Leitplanke |
 | **Schuhrotation**, gedämpfte Trainingsschuhe bei 94 kg, Kilometerstand im Blick | Materialermüdung ist bei hohem Körpergewicht früher relevant |
 
@@ -192,13 +192,25 @@ Unabhängig von konkreten Rennterminen. Rennen werden in dieses Rahmenwerk einge
 
 ## Kraft & Athletik – Ganzjahres-Strategie
 
-**Equipment (Stefan, 21.9.2026): Eigengewicht und Widerstandsbänder. Kein Kraftraum, keine schweren Hanteln.**
-Für die Laufverletzungsprävention vollständig ausreichend — die wirksamen Übungen sind einbeinig und
-brauchen kein Eisen. Für die FTP bringt Bändertraining wenig; der radspezifische Kraftreiz bleibt
-**KA auf der Rolle bei 55 rpm**.
+**Equipment:** 2 Kurzhanteln bis 10 kg · Widerstandsbänder · Outdoor-Klimmzugstange in der Nähe. Kein Kraftraum.
+**Ziel (Stefan, 28.9.2026):** Oberkörper-Aufbau (Optik, Wohlbefinden) – ein eigenes Ziel neben FTP und 10 km.
 
 | Baustein | Umfang | Inhalt |
 |---|---|---|
+| **Kraft A / B** | **2× pro Woche, je ~30–35min** | A = Drücken, B = Ziehen (Klimmzug-Projekt) · Sätze 1–2 Wdh vor dem Versagen · Läufer-Beinübungen am Ende jeder Einheit |
+| **Lauf-ABC** | 2× pro Woche, ~8min im Lauf | Technik fürs Kadenz-Projekt |
+| **KA auf der Rolle** | im Rad-Plan enthalten | 91% FTP bei 55 rpm — der eigentliche Kraftreiz fürs Rad |
+
+Übungen, Progression und Reise-Variante: `athlete/profil.md` → Krafttraining. Oberkörper-Training stört die
+Ausdauer praktisch nicht (Rad als Hauptsport = minimale Interferenz). Für FTP und 10-km-Zeit bringt es wenig –
+das ist in Ordnung, es dient Stefans eigenem Ziel.
+
+**Jahreszyklus:** Im Winter (Rolle, weniger Draußen-Zeit) ist die beste Aufbauphase. Im Frühjahr/Sommer mit
+Radvolumen auf Erhalt (1–2×/Woche, weniger Sätze) herunterfahren.
+
+**Tapering:** Beinübungen ab T-10 weglassen. Oberkörper bis T-3.
+
+---|---|---|
 | **Lauf-Athletik** (Pflicht) | **2×15min/Woche**, an Laufeinheiten angehängt | Wadenheben gebeugtes Knie (Soleus), einbeinige RDL, Step-ups, einbeinige Hip Thrust, seitliche Hüfte mit Band, Copenhagen Plank |
 | **Ganzkörper** (optional) | 1×25–30min/Woche, nach Rad oder Lauf | Liegestütze, Banded Row, Overhead Press, Rumpf — Erhalt, kein Aufbau |
 | **KA auf der Rolle** | im Rad-Plan enthalten | 91% FTP bei 55 rpm — der eigentliche Kraftreiz fürs Rad |

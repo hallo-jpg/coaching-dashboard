@@ -60,8 +60,7 @@ Vollanalyse bei Bedarf: `python3 generate_pacing.py` erzeugt `docs/pacing.html` 
 
 ## Recovery (1–14 Tage nach Event)
 
-- Tage 1–4: Pause oder locker, keine Intensität. Nach Lauf-Wettkampf: erster Lauf frühestens Tag 2–3,
-  Wadenregel (diffuser Muskelkater ok · punktueller Schienbeinschmerz → kein Lauf, melden).
+- Tage 1–4: Pause oder locker, keine Intensität. Nach Lauf-Wettkampf: erster Lauf frühestens Tag 2–3.
 - Tage 5–10: aufbauen, Rad-Intensität früher möglich als Lauf-Intensität (kein Impact).
 - Danach entscheidet die Readiness. Zweites Event ≤ 14 Tage später: keine formelle Recovery, sondern Taper
   für Event B mit mindestens einer Schärfungseinheit ab T+5.

@@ -7,13 +7,13 @@
 | | |
 |---|---|
 | **Saisonstand** | Zielrennen Karlsfelder Seelauf ✅ (1:05:08) · **Wintersaison 26/27 gestartet** |
-| **Verletzung** | Halswirbel (Unfall 28.6.) ausgeheilt – 66min Wettkampf beschwerdefrei · Wade/Soleus (MTSS-Verdacht 8/2026): beobachten |
+| **Verletzung** | **keine** – Planung geht von beschwerdefrei aus (Stefan, 28.9.2026) · Randnotiz: Halswirbel (Unfall 28.6.) ausgeheilt · Wade/Soleus (MTSS-Verdacht 8/2026) wieder völlig okay |
 | **Freigabe** | Laufen ✅ · Radfahren ✅ |
 | **Trainingsfokus** | **Dual: FTP + Laufleistung** · 9–10h/Woche · Rad:Lauf wandert von 70:30 (Okt) auf 60:40 (Dez–Feb) |
 | **CTL** | 23,3 (21.9.) · Winterziel 60–68 bis Ende Januar |
 | **Zeitrahmen** | werktags max. 90min (Ausnahme bis 2h), vor oder nach der Arbeit · Wochenende trägt die langen Einheiten · Wochenplanung rollierend 1–2 Wochen im Voraus |
 | **Nächster Fixpunkt** | 🔬 FTP-Test **KW40** (Do 1.10.) – Tarmac mit XCadey auf der Rolle, kein ERG, DURA + Tacx-App parallel → FTP + Offset-Faktor |
-| **Abbruchkriterien** | Nacken: Schmerz, Kopfschmerz, Ausstrahlung/Kribbeln in die Arme · Lauf: punktueller Schmerz an der Schienbeinkante |
+| **Beschwerden** | Stefan meldet sich selbst, wie bei jeder Verletzung · keine Abbruchregeln in die Pläne schreiben |
 
 FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026, gemessen mit 4iiii). Seit dem Setup-Wechsel (Sept. 2026, siehe Geräte) ist die Leistungsquelle eine andere → **Zonen erst nach neuem FTP-Test auf dem Tarmac/XCadey wieder trainingsleitend.** Indoor- und Outdoor-Werte stammen aus verschiedenen Messgeräten und sind nicht 1:1 vergleichbar.
 
@@ -158,32 +158,67 @@ eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht
 | HIT_EB (VO2max Dauer) | 106–112% | 323–341W | 100–110rpm |
 | HIT_IE (VO2max Intervall) | 125% | 381W | 100–110rpm |
 
-## Krafttraining
+## Krafttraining & Lauf-ABC
 
-**Equipment (bestätigt 21.9.2026):** Eigengewicht · Widerstandsbänder · Hanteln bis 10kg. **Kein Kraftraum.**
+*Neu aufgesetzt 28.9.2026 (Stefan): Oberkörper ist ein eigenes Ziel, nicht Beiwerk.*
 
-**Ab Wintersaison 26/27 zweigeteilt:**
+**Equipment:** 2 Kurzhanteln bis 10 kg · Widerstandsbänder · Eigengewicht · Outdoor-Klimmzugstange ein paar
+hundert Meter von zuhause. Kein Kraftraum.
 
-| Baustein | Umfang | Status |
-|---|---|---|
-| **Lauf-Athletik** | **2×15min/Woche**, an Laufeinheiten angehängt | **Pflichtteil** — Voraussetzung für das geplante Laufvolumen |
-| **Ganzkörper** | 1×25–30min/Woche, nach Rad oder Lauf | optional, Erhalt |
+**Ziel:** sichtbar mehr Muskelmasse am Oberkörper, sich besser fühlen → **Hypertrophie Oberkörper**. Beine:
+Läufer-Standard (Soleus, Hüfte, einbeinig), kein Aufbauziel. Der Rad-Kraftreiz bleibt **KA auf der Rolle
+(91% FTP @ 55rpm)**. Nebenziel: **erster sauberer Klimmzug bis KW09/27**.
 
-**Lauf-Athletik (die 6 Übungen):** Wadenheben mit **gebeugtem Knie** (sitzend, 3×12, 3s/3s — trifft den
-Soleus, nicht den Gastrocnemius) · einbeinige RDL · Step-ups · einbeinige Hip Thrust · seitliche Hüfte
-mit Band · Copenhagen Plank.
-**Progression ohne Gewicht:** Wiederholungen (3×12 → 3×20) → langsamere Exzentrik → einbeinig → Rucksack.
+### Kraft A + B – 2×/Woche, je ~30–35min
 
-**Ganzkörper (Erhalt):** Liegestütze, Banded Row, Band Pull-Apart, Overhead Press mit Band, Dumbbell
-Curl, Plank/Side Plank/Dead Bug, Superman.
+- **Intensität:** jeder Satz bis **1–2 Wiederholungen vor dem Versagen**, 8–25 Wdh. Mit leichten Gewichten
+  wächst Muskel genauso, solange die Sätze nah ans Versagen gehen – deshalb sind 10 kg kein Hindernis.
+- **Volumen:** ~10 harte Sätze pro Muskelgruppe und Woche am Oberkörper (A + B zusammen).
+- **Ablauf:** Übungen als Paare (a/b im Wechsel), 60–90s Pause pro Paar.
+- **Einstieg KW40–41:** 3 Wdh Reserve statt 1–2 (kein Muskelkater vor dem FTP-Test und auf Reisen).
 
-**Laufschuhe:** zwei Paar im Wechsel, je ~200 km (Stand 21.9.2026) — beide gut im Futter, bei 94 kg rechne ich mit 500–700 km pro Paar.
+| Kraft A – Drücken | Sätze × Wdh |
+|---|---|
+| 1a Liegestütze | 3 × bis 1–2 vor Versagen |
+| 1b Einarmiges KH-Rudern | 3 × 12–20 je Seite, 1s Halt oben |
+| 2a KH-Schulterdrücken | 3 × 10–20 |
+| 2b KH-Bizepscurl | 2 × 12–20 |
+| 3a Seitheben KH | 2 × 15–25 |
+| 3b Wadenheben gebeugtes Knie (sitzend, KH auf den Knien) | 2 × 15–20, 3s runter |
+| 4 Einbeinige RDL mit KH | 2 × 10 je Seite |
 
-**Coach-Regel:** Lauf-Athletik wird aktiv eingeplant. Die Ganzkörper-Einheit nur, wenn Stefan sie
-erwähnt. Für die Radleistung bleibt **KA auf der Rolle (91% FTP @ 55rpm)** der primäre Kraftreiz —
-Bändertraining ersetzt das nicht.
+| Kraft B – Ziehen (gern an der Klimmzugstange) | Sätze × Wdh |
+|---|---|
+| 1a Negativ-Klimmzüge (hochspringen, 5s ablassen) | 3 × 3–5 |
+| 1b Enge Liegestütze (Trizeps) | 3 × bis 1–2 vor Versagen |
+| 2a Australische Klimmzüge / tiefes Rudern an der Stange | 3 × 8–20 |
+| 2b Pike-Liegestütze (Schulter) | 2 × bis 1–2 vor Versagen |
+| 3a Band Pull-Apart oder Face Pull | 3 × 15–25 |
+| 3b Trizeps überkopf mit KH | 2 × 12–20 |
+| 4 Bulgarian Split Squat mit KH · Copenhagen Plank | 2 × 10 je Seite · 2 × 20–30s je Seite |
 
-**Tapering:** Kraft ab T-10 weglassen, Lauf-Athletik darf bleiben.
+**Zuhause ohne Stange:** 1a → Band-Latzug kniend (Band oben an der Tür) · 2a → vorgebeugtes Rudern mit beiden KH.
+
+**Reise-Variante (nur Bänder, z. B. London):** Liegestütze (Füße aufs Bett) · Band-Rudern (Tür/Bettpfosten) ·
+Band-Schulterdrücken (aufs Band stellen) · Band Pull-Apart · Band-Curls · Pike-Liegestütze · einbeiniges
+Wadenheben mit gebeugtem Knie an der Wand · Bulgarian Split Squat am Bett. Mitnehmen: ein langes Loop-Band
+(mittel–schwer) + ein Mini-Band.
+
+**Progression (in dieser Reihenfolge):** Wdh bis zur Obergrenze → langsamer ablassen (3s) → Pause in der
+Dehnposition / 1½-Wiederholungen → schwerere Variante (Liegestütz Füße erhöht, Rucksack) → Band zusätzlich
+zur Hantel. Geht Rudern/Drücken mit 10 kg über 25 Wdh: verstellbare Kurzhanteln bis ~20–25 kg wären die
+sinnvollste Anschaffung (Vorschlag, keine Pflicht). **Klimmzug-Check:** ein Versuch in jeder Entlastungswoche.
+
+**Planung:** A und B mit ≥ 48h Abstand, an einen Easy-Lauf oder eine lockere Radeinheit anhängen oder als eigene
+kurze Einheit. Ruhetag bleibt frei. Vortag von FTP-Test oder Qualität: Beinübungen weglassen. Kraft ist
+**flexibel, kein Kern** – die Retro zählt sie aber (x/2). Tapering: Beinübungen ab T-10 weg, Oberkörper bis T-3.
+
+### Lauf-ABC – 2×/Woche, im Lauf (~8min)
+
+Nach 10min Einlaufen: Fußgelenksarbeit · Skipping · Anfersen · Kniehebelauf · Hopserlauf · Seitgalopp – je
+2 × ~20 m, zurück gehen/traben. Danach 3–4 Steigerungen à ~80 m, dann den Lauf mit Kadenz 165 fortsetzen.
+**Zweck:** Frequenz- und Fußaufsatzgefühl für das Kadenz-Projekt (kurzer Bodenkontakt, Fuß unter dem Körper).
+Sitzt in den Läufen mit Kadenz-Fokus bzw. Steigerungen, ab der ersten Lauf-Qualität als Teil des Warm-ups.
 
 ## Geräte & Plattformen
 

@@ -8,7 +8,7 @@
 |---|---|
 | **Athlet** | Stefan |
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
-| **Nacken** | Halswirbelfraktur 28.6. ausgeheilt (Seelauf beschwerdefrei) · Abbruchkriterien bleiben: Nacken-/Kopfschmerz, Kribbeln in den Armen |
+| **Beschwerden** | **keine** – Planung geht von beschwerdefrei aus, Stefan meldet sich selbst (28.9.) · keine Abbruchregeln in Pläne · Randnotiz: Halswirbelfraktur 28.6. ausgeheilt, Wade (MTSS-Verdacht 8/2026) wieder okay |
 | **FTP** | 305W (Sentiero) · 3,26 W/kg · **93,6 kg** (Ø 30d aus intervals.icu, Stand 20.9.; 91 kg im Juni) · *Referenz, aktuell nicht trainingsleitend* |
 | **Events** | **aktuell keine geplant** · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
 | **Aktuelle KW** | KW40 (28. September – 4. Oktober 2026) · 🔬 FTP-Baseline Do 1.10. · Mo nur morgens · **Sa Abflug London 16:00** (1h Rad vormittags) |
@@ -20,7 +20,8 @@
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
 | **Lauf-Schwellenwerte** | **Schwellenpace 6:28/km · LTHR 185** (aktualisiert 20.9. aus dem Wettkampf) · Zonen: Z1 7:25–8:40 · Z2 6:55–7:25 · Z3 6:10–6:40 · Z4 5:25–6:10 · ✅ in intervals.icu übernommen (Schwellentempo 6:28, Schwellen-HF 185, HFmax 205) |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |
-| **⚠️ Wade / Kadenz** | MTSS-Verdacht Soleus/Tibia · Gewohnt ~140 spm · **Rennen 20.9.: 154 spm @ 6:31 über 66min** (Training nach Gefühl: 160–163) → unter Stress driftet sie ~6 spm zurück · Arbeitsziel **165–170**, damit im Wettkampf 160 steht · Rückmeldung **nach Gefühl** (kein Metronom) · **wichtigstes Laufprojekt der nächsten 6–8 Wochen** |
+| **🦵 Kadenz** | Gewohnt ~140 spm · **Rennen 20.9.: 154 spm @ 6:31 über 66min** (Training nach Gefühl: 160–163) → unter Stress driftet sie ~6 spm zurück · Arbeitsziel **165–170**, damit im Wettkampf 160 steht · Rückmeldung **nach Gefühl** (kein Metronom) · **Lauf-ABC 2×/Woche** im Lauf · **wichtigstes Laufprojekt der nächsten 6–8 Wochen** |
+| **💪 Kraft** | **2× Kraft A (Drücken) / B (Ziehen)**, je ~30–35min, Ziel **Oberkörper-Aufbau** (Stefan, 28.9.) + Läufer-Beinübungen · 2 KH bis 10 kg, Bänder, Klimmzugstange draußen · Programm: `athlete/profil.md` |
 | **Wochenstruktur** | werktags **max. 90min** (Ausnahme 2h), vor oder nach der Arbeit · **Wochenende trägt die langen Einheiten** · Planung rollierend 1–2 Wochen im Voraus · Ruhetag unter der Woche · **3 Kern-Einheiten/Woche** (Rad-Qualität · Lauf-Qualität · 1 lange WE-Einheit, `🎯 Kern`) – Kern wird verschoben, der Rest ist flexibel |
 | **Steuerung** | Easy-Cap **165 bpm** · ⚠️ Lauf-HF liegt 25–30 bpm über Rad – Easy-Run = 155–165 bpm, **nie unter 160 cappen** (Details `athlete/profil.md`) |
 
