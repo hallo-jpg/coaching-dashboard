@@ -1656,6 +1656,7 @@ def get_run_build(today: date | None = None, weeks: int = 12) -> dict:
 
 
 HF160_BAND   = (157, 163)   # HF 160 +-3
+HF160_SKIP_NAMES = ("pendel", "rucksack")
 EASY_MIN_PACE = 410         # s/km – nur Laeufe mit Oe-Pace langsamer als 6:50/km
 
 
@@ -1686,6 +1687,8 @@ def get_hf160_trend(days: int = 180) -> dict:
     for a in sorted(acts, key=lambda x: x.get("start_date_local", "")):
         if a.get("type") not in RUN_TYPES or a.get("race"):
             continue
+        if any(k in (a.get("name") or "").lower() for k in HF160_SKIP_NAMES):
+            continue  # Rucksack-Pendellauf: HF hoeher, keine Referenz
         dist, mt = a.get("distance") or 0, a.get("moving_time") or 0
         if dist < 2000 or mt < 1200 or mt / (dist / 1000) < EASY_MIN_PACE:
             continue

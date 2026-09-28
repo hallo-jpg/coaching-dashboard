@@ -18,6 +18,14 @@ Rad-HFmax abgeleitet – Stefan hat jedes Mal zu Recht widersprochen.
 **Anwenden:** Easy-Cap **165**, nie unter 160. Erhöhte Lauf-HF nie als Detraining oder Krankheit deuten. Aus
 **einem** Datenpunkt nach ungewohnter Belastung keine Fitnessdiagnose – erst ab 3–4 vergleichbaren Einheiten.
 
+### 🎒 Pendellauf mit Rucksack = Confounder, keine Referenz (Stefan, 28.9.2026)
+Stefan läuft teils den Heimweg von der Arbeit mit Rucksack. Das macht den Lauf schwerer, die HF liegt höher, die
+Pace und oft auch die Kadenz tiefer (28.9.: 7:38 @ HF 162, 162 spm; tags davor ohne Rucksack 7:34 @ 157, 166 spm).
+Stefan sagt dazu, wenn der Rucksack dabei war. In intervals.icu heißen die Läufe meist „Pendeln".
+**Anwenden:** Zählt voll als Training (Kern erledigt, km zählen fürs Lauf-Budget). Nicht als Pace-/HF-Referenz
+nutzen, nicht in Trenddiagnosen (Pace bei HF 160, Kadenz-Fortschritt) einbeziehen. Das Dashboard lässt Läufe mit
+„Pendel" oder „Rucksack" im Namen im HF-160-Chart weg.
+
 ### 🏁 Lauf-Referenz: 10 km in 1:05:08 @ Ø HF 183 (Seelauf 20.9.2026)
 6:31/km über 66min, max HF 196, RPE 8, 41% der Zeit über 184 bpm. Alter Bestwert 1:11:28.
 **Anwenden:** Ankerpunkt für jede Lauf-Leistungsaussage – kein Trainingslauf mit Confoundern überstimmt ihn.

@@ -4,6 +4,13 @@
 
 ---
 
+## 28. September 2026 – Mo-Lauf als Pendellauf mit Rucksack
+
+**Stefan:** Heimweg von der Arbeit mit Rucksack gelaufen, schwerer als sonst, „vielleicht nicht die beste Referenz, aber Training erledigt. Wenn Rucksack dabei war, sage ich es dazu."
+28min / 3,6 km @ 7:38, HF 162 (max 174), Kadenz 162. Kraft A 17min. Kern Mo ✅. Neue Regel in `COACH_MEMORY.md` (Pendellauf = Confounder). Im Dashboard werden Läufe mit „Pendel"/„Rucksack" im Namen nicht mehr im HF-160-Chart gezählt.
+
+---
+
 ## 28. September 2026 – Lauf-ABC wieder gestrichen
 
 **Stefan:** „gefällt mir nicht so, lass uns das Lauf-ABC nicht machen." → aus Profil, Plänen KW40–44, Periodisierung, Langfristplan, Skill und intervals.icu (Mo-Lauf) entfernt. Steigerungen bleiben wie vorher. In `COACH_MEMORY.md` als „nicht wieder vorschlagen" vermerkt. Kraft A/B bleibt unverändert.
