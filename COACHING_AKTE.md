@@ -1,6 +1,14 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 28. September 2026*
+*Letzte Aktualisierung: 30. September 2026*
+
+---
+
+## 30. September 2026 – FTP-Test-Protokoll angepasst
+
+**Stefan:** Fragt, ob der Testaufbau so Sinn ergibt („sieht irgendwie komisch aus").
+**Coach:** Stufen fürs Warmfahren bleiben, weil sie den Offset-Faktor bei niedriger Last liefern. Zwei Änderungen: 3min locker zwischen der 245-W-Stufe und dem 3-min-All-Out, und die Pause zwischen den All-Outs von 5 auf **10min** verlängert. Nach 5min ist W' nicht zurück, die 10min (→ FTP und CP) fielen sonst zu tief aus. Vergleichbarkeit mit April geht nicht verloren, denn mit XCadey statt 4iiii ist das ohnehin ein neuer Nullpunkt. Abbruchregel aus der Description entfernt (Regel 28.9.). Protokoll gilt für alle Wintertests (KW40/KW01/KW09).
+intervals.icu: Workout neu angelegt (ID 140289502, ~58min), altes gelöscht, Fueling-Note bleibt.
 
 ---
 

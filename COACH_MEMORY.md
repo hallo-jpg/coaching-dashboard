@@ -239,6 +239,7 @@ Tarmac. Ergebnis aus einer Einheit:
 - **FTP = XCadey-10min-Ø × 0,90** (Sentiero 3+10min)
 - **Offset-Faktor = Tacx ÷ XCadey** – aus den All-Outs und zusätzlich aus den Stufen des progressiven
   Warmfahrens (zeigt, ob der Versatz mit der Intensität schwankt). Gilt dann für die Aeroad-Einheiten.
+- **Protokoll (Stand 30.9.):** 20min Stufen 50/60/70/80% · 3min locker · 3min All-Out · **10min Pause** · 10min All-Out · 10min aus (~58min). Alle Wintertests identisch – Details `modules/ftp-test.md`.
 - **Doppelzählung vermeiden:** Tacx-Datei in intervals.icu löschen oder von der Belastung ausnehmen.
 - Danach neue FTP **überall** setzen: intervals.icu (305), **Garmin Connect (steht auf 325)**, COROS, MyWhoosh.
 

@@ -31,10 +31,14 @@ Route (freie Fahrt in den All-Outs, keine Zielwatt).
 
 1. **20 min progressiv warmfahren** in Stufen à 5 min: ~50 / 60 / 70 / 80% FTP (alte FTP 305 bzw. letzte
    Baseline) – jede Stufe sauber gleichmäßig, die Stufen liefern die Offset-Punkte bei niedriger Last.
-2. 3 min All-Out (nicht überpacen)
-3. 5 min aktive Erholung
-4. 10 min All-Out (gleichmäßig, letzte 2 min alles)
-5. 10 min ausfahren
+2. 3 min locker (~50% FTP) – nicht direkt aus der 80%-Stufe ins All-Out
+3. 3 min All-Out (nicht überpacen)
+4. **10 min** aktive Erholung (~50% FTP) – seit 30.9.2026, vorher 5 min: zu kurz, W' ist danach nicht zurück
+   und die 10 min (→ FTP und CP) fallen zu tief aus
+5. 10 min All-Out (gleichmäßig, letzte 2 min alles)
+6. 10 min ausfahren
+
+Gesamt ~58 min. **Keine Abbruchregeln in die Description** (Stefan, 28.9.).
 
 ## Auswertung (wenn Stefan das Ergebnis meldet oder die Aktivität in intervals.icu liegt)
 
