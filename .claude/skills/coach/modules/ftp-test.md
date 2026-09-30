@@ -23,6 +23,9 @@ Alle Wintertests (KW40, KW01, KW09) identisch aufbauen – nur die Differenz zä
 
 Keine Qualität in den 3 Tagen davor. Readiness ≥ 70 am Testtag, sonst um 1–2 Tage schieben.
 
+**Tacx-App (getestet 30.9.2026):** Ein Workout mit `freeride`-Schritten läuft dort komplett ohne ERG, die Stufen
+sind nur Anzeige. Das Test-Workout kann also in der Tacx-App laufen. DURA koppelt **nur den XCadey**, nie den Flux.
+
 **Workout in intervals.icu:** `type: "Ride"`, Name ohne Emoji: „FTP-Test Sentiero 3+10min", Zeile 1 der
 Description: „Kein ERG – Level-Modus. XCadey an DURA, Tacx-App zeichnet parallel." Schritte als Description-
 Route (freie Fahrt in den All-Outs, keine Zielwatt).

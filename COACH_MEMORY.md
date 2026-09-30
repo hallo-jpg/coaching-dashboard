@@ -250,6 +250,9 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
    Emojis nur in `planung/kw*.md`.
 2. **Nur Zeile 1 der Description kommt in der Tacx-App an** → dort steht die Steueranweisung.
 3. **Absolute Watt in Zeile 1**, kurz, ohne Erklärbär.
+4. **Workout mit `freeride`-Schritten → Tacx-App fährt das ganze Workout ohne ERG** (getestet 30.9.2026,
+   2:30-min-Testworkout): Stufen werden angezeigt, geregelt wird nicht, die Watt folgen dem Gang. Passt für
+   den FTP-Test. Normale Workouts ohne freie Schritte laufen weiter in ERG.
 
 ### intervals.icu-Workouts: Fallen
 - **`workout_steps` kann keine Leistungskorridore** – `power_pct_low/high` wird zu einem festen Wert
