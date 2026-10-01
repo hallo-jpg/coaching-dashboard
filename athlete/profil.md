@@ -220,7 +220,7 @@ kurze Einheit. Ruhetag bleibt frei. Vortag von FTP-Test oder Qualität: Beinübu
 | S-Works Tarmac SL8 · Cybrei-Kurbel · XCadey Spindle-Powermeter | Outdoor-Rad, **Powermeter-Referenz für alle FTP-Werte** | ANT+/BLE → COROS DURA |
 | Canyon Aeroad (alt, ohne Powermeter) | Indoor-Rad auf der Rolle | – |
 | **COROS DURA** | Radcomputer – Aufzeichnung der XCadey-Leistung | ANT+/BLE · geplante Workouts kommen automatisch an |
-| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung · **max. 4h am Stück** | bisher meist **MyWhoosh**, **Tacx-App** bevorzugt (einfacher) |
+| Tacx Flux S | Smart Trainer Indoor – liefert die Indoor-Leistung · **max. 4h am Stück** | **nur noch Tacx-App** (seit 1.10.2026, MyWhoosh nicht mehr genutzt) · FTP dort 300W |
 | ~~4iiii Precision (Kurbel)~~ | Altes Setup – Basis von FTP 305W (Test 4.4.2026) | – |
 | ~~Wahoo ELEMNT ROAM~~ | **nicht mehr vorhanden** (Stand 21.9.2026) · ERG-Steuerung darüber hat ohnehin nicht gut funktioniert | – |
 | **COROS Pace 3** | Laufen + Schlaf + HRV · geführte Intervall-Workouts kommen dort an | COROS ↔ intervals.icu (automatisch) |

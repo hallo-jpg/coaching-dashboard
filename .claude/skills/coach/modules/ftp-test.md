@@ -73,8 +73,8 @@ Zielwatt: LIT 55% [x] · SwSp 89% [x] · KA 91% [x] · MIT 101% [x]
 4. `CLAUDE.md`: FTP-Zeile + Hinweis „nicht trainingsleitend" entfernen.
 5. `COACH_MEMORY.md` → Abschnitt 6: „Bis zum Baseline-Test alte Zonen" ersetzen durch neue FTP + Offset.
 6. `COACHING_AKTE.md` (oben): `## [Datum] – FTP-Test KW[N]` mit 10min/3min, FTP alt → neu, Offset, CP/W'.
-7. **Stefan erinnern, die FTP überall zu setzen:** intervals.icu, **Garmin Connect (steht auf 325)**, COROS,
-   MyWhoosh/Tacx-App.
+7. **Stefan erinnern, die FTP überall zu setzen:** intervals.icu, **COROS DURA** (outdoor) und
+   **Tacx-App** (indoor). MyWhoosh wird nicht mehr genutzt.
 8. Bereits angelegte Rad-Workouts der nächsten 2 Wochen prüfen: Zeile-1-Watt an die neue FTP anpassen.
 9. Commit + push.
 

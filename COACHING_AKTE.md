@@ -11,7 +11,7 @@
 **Kennzahlen:** 3,21 W/kg @ 93,6 kg · CP ~287W / W' ~27,8 kJ (rechnerisch) · vorher 305W (4iiii, 4.4.2026 – nicht vergleichbar). Winterziel +8–12 % → ~325–335W bis KW09/27.
 **Offset Tacx ÷ XCadey** (sekundengenau aus beiden Aufzeichnungen, Versatz 2 s): Stufen 1,03–1,05 · 3min 1,01 · 10-min-Versuch 0,99 · Ausfahren 0,99 → **Faktor 1,0**, Indoor-Watt = XCadey-Watt.
 **Neue Regel (Stefan):** Tests künftig **nur am Wochenende**, werktags nach der Arbeit mental zu zehrend → `COACH_MEMORY.md`, KW01/KW09-Tests in Periodisierung und Langfristplan auf Sa/So gelegt.
-**Umgesetzt:** Zonen + Zielwatt in `profil.md`, Dashboard-Zonen (`generate.py`), `fortschritt.md` (FTP-Verlauf, Power-PR-Referenz auf XCadey zurückgesetzt, CP/W'), CLAUDE.md, KW40 (Do ✅, Sa 160–200W). intervals.icu: Tacx-Aufzeichnung gelöscht (Doppelzählung), Sa-Workout Zeile 1 auf 160–200W. FTP in intervals.icu/Garmin/COROS/MyWhoosh setzt Stefan selbst.
+**Umgesetzt:** Zonen + Zielwatt in `profil.md`, Dashboard-Zonen (`generate.py`), `fortschritt.md` (FTP-Verlauf, Power-PR-Referenz auf XCadey zurückgesetzt, CP/W'), CLAUDE.md, KW40 (Do ✅, Sa 160–200W). intervals.icu: Tacx-Aufzeichnung gelöscht (Doppelzählung), Sa-Workout Zeile 1 auf 160–200W. **Nachtrag Stefan:** FTP 300W in DURA und Tacx-App gesetzt. Ab sofort nur noch DURA (outdoor) und Tacx-App (indoor), MyWhoosh nicht mehr.
 
 ---
 

@@ -111,7 +111,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | **Events** | **aktuell keine geplant** — es wird sicher etwas kommen, steht nur noch nicht fest. Bis dahin laufen Benchmarks als eigene Zeitläufe; ein Event wird eingehängt, sobald Stefan eines nennt |
 | **Kraft** | 2 KH bis 10 kg, Bänder, Klimmzugstange draußen · **2× Kraft A/B, Ziel Oberkörper-Aufbau** (Stefan, 28.9.) |
 | **Schuhe** | zwei Paar im Wechsel, je ~200 km · reichlich Reserve (bei 94 kg ~500–700 km pro Paar) |
-| **Indoor** | Canyon **ohne Schaltung → ERG**. Bisher meist **MyWhoosh**, **Tacx-App** bevorzugt. Strukturierte Intervalle inkl. 30/30 laufen dort seit Jahren — keine Sonderregeln bei den Workout-Formaten. **Max. 4h am Stück.** |
+| **Indoor** | Canyon **ohne Schaltung → ERG**. **Nur noch Tacx-App** (seit 1.10.2026). Strukturierte Intervalle inkl. 30/30 laufen dort seit Jahren — keine Sonderregeln bei den Workout-Formaten. **Max. 4h am Stück.** |
 | **Workout-Zustellung** | Planung läuft über **intervals.icu** → synct automatisch zu **Garmin Connect** und **COROS**. Damit landen Einheiten auf **COROS Pace 3** (Lauf) und **COROS DURA** (Rad). Über Garmin Connect kommen sie auch in der **Tacx-App** an (verifiziert 21.9.) |
 | **Outdoor im Winter** | **selten** — nur Wochenende oder Urlaub. Nov–Feb ist faktisch Rolle. Lange Einheiten am Wochenende laufen deshalb überwiegend indoor |
 | **Trainingstage** | **5–6/Woche** |

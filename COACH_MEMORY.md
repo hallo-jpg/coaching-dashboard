@@ -226,7 +226,7 @@ vollständig. Leere Aktivitätszeilen als „Strava-Hülle" erkennen, nicht als 
 | Rad outdoor | **S-Works Tarmac SL8** · Cybrei-Kurbel · **XCadey Spindle** = Referenz-Powermeter |
 | Radcomputer | **COROS DURA** (kein Wahoo, der ELEMNT ROAM ist weg – **nie wieder vorschlagen**) |
 | Rad indoor | **Canyon Aeroad ohne Powermeter und ohne Schaltung** auf **Tacx Flux S** → immer ERG |
-| Indoor-App | **Tacx-App** bevorzugt, MyWhoosh alternativ · max. 4h am Stück · kein Laufband |
+| Indoor-App | **nur Tacx-App** (MyWhoosh nicht mehr genutzt, Stefan 1.10.2026 – nicht mehr vorschlagen) · max. 4h am Stück · kein Laufband |
 | Kraft | 2 Kurzhanteln bis 10 kg · Widerstandsbänder · Outdoor-Klimmzugstange in der Nähe · kein Kraftraum |
 
 ### Indoor: ERG ist kein Einschränkungsgrund
@@ -249,7 +249,7 @@ Tarmac. Ergebnis aus einer Einheit:
   Warmfahrens (zeigt, ob der Versatz mit der Intensität schwankt). Gilt dann für die Aeroad-Einheiten.
 - **Protokoll (Stand 30.9.):** 20min Stufen 50/60/70/80% · 3min locker · 3min All-Out · **10min Pause** · 10min All-Out · 10min aus (~58min). Alle Wintertests identisch – Details `modules/ftp-test.md`.
 - **Doppelzählung vermeiden:** Tacx-Datei in intervals.icu löschen oder von der Belastung ausnehmen.
-- Danach neue FTP **überall** setzen: intervals.icu, Garmin Connect, COROS, MyWhoosh (Stefan macht das selbst; KW40: 300W).
+- Danach neue FTP setzen in **intervals.icu, COROS DURA (outdoor) und Tacx-App (indoor)** – Stefan macht das selbst (KW40: 300W überall gesetzt, 1.10.2026).
 
 ### Workout-Zustellung (verifiziert 21.9.2026)
 intervals.icu → **Garmin Connect → Tacx-App** (Schritte, Balkengrafik, Startknopf kommen an) und
