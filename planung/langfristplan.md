@@ -24,8 +24,8 @@ Bis September 2026 war Laufen die zweite Sportart, die nebenher lief. Ab Winter 
 | Zeitpunkt | FTP-Ziel | Anmerkung |
 |---|---|---|
 | Frühjahr 2026 | 305W (4iiii) | historisch, nicht mehr vergleichbar |
-| **KW40 2026** | **Baseline neu** | erster Test am XCadey · misst Form bei CTL 23, nicht Potenzial |
-| März 2027 | **+8–12% über Baseline** | nach dem Winterblock |
+| **KW40 2026** | **300W** (Baseline neu) | erster Test am XCadey · Form bei CTL 27, nicht Potenzial · 10min geschätzt |
+| März 2027 | **+8–12% über Baseline → ~325–335W** | nach dem Winterblock |
 | Herbst 2027 | +12–18% über Baseline | nach zweitem Aufbaujahr |
 | Langfristig | ~4,0 W/kg | Plateau für Stefans Profil (~5–7 Jahre) |
 
@@ -226,13 +226,13 @@ Radvolumen auf Erhalt (1–2×/Woche, weniger Sätze) herunterfahren.
 | Testfenster | KW | Datum | Rationale |
 |---|---|---|---|
 | ~~🔬 Frühjahrstest 2026~~ | ~~KW21~~ | — | gestrichen 03.05.2026 (Krankheitspause KW16) |
-| 🔬 **Herbsttest 2026 (Baseline)** | **KW40** | 28.9.–4.10.2026 | erster Test am XCadey · Rolle + Gegenprobe · Nullpunkt für den Winterblock |
-| 🔬 **Wintertest 2027** | **KW01** | 4.–10.1.2027 | nach 11 Wochen Aufbau · zusammen mit 5km-Zeitfahren |
-| 🔬 **Abschlusstest Winter** | **KW09** | 1.–7.3.2027 | Bilanz Winterblock · zusammen mit 10km-Benchmark |
+| 🔬 **Herbsttest 2026 (Baseline)** | **KW40** | Do 1.10.2026 ✅ | **300W** (10min geschätzt) · Offset Tacx ÷ XCadey ≈ 1,0 |
+| 🔬 **Wintertest 2027** | **KW01** | Sa 9./So 10.1.2027 | nach 11 Wochen Aufbau · zusammen mit 5km-Zeitfahren |
+| 🔬 **Abschlusstest Winter** | **KW09** | Sa 6./So 7.3.2027 | Bilanz Winterblock · zusammen mit 10km-Benchmark |
 
 **Testprotokoll:** Sentiero 3+10min · **indoor auf der Rolle mit dem S-Works** · FTP = XCadey-10min-Avg × 0,90 · Bedingungen bei jedem Test identisch halten
 
-**Coach-Verhalten:** 3 Wochen vor Testfenster automatischer Hinweis. Stefan bestätigt oder verschiebt um max. 1 KW. Kein Test im Tapering.
+**Tests nur am Wochenende** (Stefan, 1.10.2026). **Coach-Verhalten:** 3 Wochen vor Testfenster automatischer Hinweis. Stefan bestätigt oder verschiebt um max. 1 KW. Kein Test im Tapering.
 
 ---
 

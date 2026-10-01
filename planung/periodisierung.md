@@ -23,18 +23,18 @@ Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — i
 
 | Phase | KW | Zeitraum | Fokus | Ziel-TSS | Rad:Lauf |
 |---|---|---|---|---|---|
-| **Nullpunkt** | KW40 | 28.9.–4.10. | 🔬 FTP-Test auf der Rolle (S-Works + XCadey parallel) | ~195 | 70:30 |
+| **Nullpunkt** | KW40 | 28.9.–4.10. | 🔬 FTP-Test auf der Rolle ✅ **300W** | ~195 | 70:30 |
 | **Rampe** | KW41–43 | 5.–25.10. | Volumen 5→7h · Kadenz-Projekt · Laufen nur Easy | 195 / 218 / 258 | 70:30 |
 | **Entlastung** | KW44 | 26.10.–1.11. | −45% · HF-160-Check | ~148 | 70:30 |
 | **Block 1 · Schwelle** | KW45–47 | 2.–22.11. | Rad SwSp/KA · 1× Lauf-Schwelle · Longrun wächst | 270 / 300 / 320 | 65:35 |
 | **Entlastung** | KW48 | 23.–29.11. | −45% | ~170 | 65:35 |
 | **Block 2 · VO2max** | KW49–51 | 30.11.–20.12. | Rad HIT_EB/IE · Lauf-Intervalle · 9–10h erreicht | 340 / 360 / 380 | 60:40 |
 | **Übergang** | KW52–53 | 21.12.–3.1. | Weihnachten · reduziert, flexibel, **bewusst geplant** | ~200 / ~200 | frei |
-| **Standort** | KW01/27 | 4.–10.1. | 🔬 FTP-Test #2 + 🔬 5km-Zeitfahren | ~280 | 60:40 |
+| **Standort** | KW01/27 | 4.–10.1. | 🔬 FTP-Test #2 + 🔬 5km-Zeitfahren (Sa/So) | ~280 | 60:40 |
 | **Block 3 · Volumen-Peak** | KW02–04 | 11.–31.1. | höchstes Volumen des Winters · CTL-Peak | 400 / 430 / 450 | 60:40 |
 | **Entlastung** | KW05 | 1.–7.2. | −45% | ~230 | 60:40 |
 | **Block 4 · Spezifik** | KW06–08 | 8.–28.2. | Rad Over-Under/Schwelle · Lauf 10km-Renntempo | 420 / 440 / 430 | 60:40 |
-| **Abschluss** | KW09 | 1.–7.3. | 🔬 FTP-Test #3 + 🏁 10km-Benchmark → Frühjahrsplan | ~300 | 60:40 |
+| **Abschluss** | KW09 | 1.–7.3. | 🔬 FTP-Test #3 + 🏁 10km-Benchmark (Sa/So) → Frühjahrsplan | ~300 | 60:40 |
 
 **Rhythmus:** 3 Belastungswochen : 1 Entlastungswoche. Die Entlastungswoche ist −40–50% TSS, keine Qualität — nicht „etwas weniger". Sie ist der Grund, warum der Block hält.
 
@@ -85,12 +85,14 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 
 ## Testfenster
 
+**Tests nur am Wochenende** (Stefan, 1.10.2026) – FTP-Test und Lauftest derselben Woche auf Sa und So verteilen.
+
 | Test | KW | Zweck |
 |---|---|---|
-| 🔬 FTP #1 (Baseline) | **KW40** · Do 1.10. | Nullpunkt am neuen Setup — S-Works auf der Rolle, XCadey + Tacx parallel. Misst die Form bei CTL 23, kein Urteil |
-| 🔬 5km-Zeitfahren | **KW01/27** · 4.–10.1. | Zwischenstand Laufen · Ziel <28:30 |
-| 🔬 FTP #2 | **KW01/27** | nach 11 Wochen Aufbau · erwarteter Zuwachs +5–8% |
-| 🔬 FTP #3 | **KW09/27** · 1.–7.3. | Abschluss Winter · Ziel +8–12% über Baseline |
+| 🔬 FTP #1 (Baseline) | **KW40** · Do 1.10. ✅ | **300W** (3min 441W gemessen, 10min geschätzt) · Offset Tacx ÷ XCadey ≈ 1,0 |
+| 🔬 5km-Zeitfahren | **KW01/27** · Sa 9. oder So 10.1. | Zwischenstand Laufen · Ziel <28:30 |
+| 🔬 FTP #2 | **KW01/27** · Sa 9. oder So 10.1. | nach 11 Wochen Aufbau · erwarteter Zuwachs +5–8% → ~315–325W |
+| 🔬 FTP #3 | **KW09/27** · Sa 6. oder So 7.3. | Abschluss Winter · Ziel +8–12% über Baseline → ~325–335W |
 | 🏁 10km-Benchmark | **KW09/27** | Ziel sub-60 · **als eigener Zeitlauf auf Standardstrecke** (vorerst keine Events gewünscht) |
 | 🔬 HF-160-Check | **monatlich** | gleiche Strecke, morgens, gefrühstückt, ≥48h nach hart, 30min @ HF 160 → Pace |
 

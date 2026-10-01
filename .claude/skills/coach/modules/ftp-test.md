@@ -21,7 +21,7 @@ Alle Wintertests (KW40, KW01, KW09) identisch aufbauen – nur die Differenz zä
 | T+1 | Ruhetag | – |
 | T+2/3 | LIT lang, Recovery-Charakter | ~40–55 |
 
-Keine Qualität in den 3 Tagen davor. Readiness ≥ 70 am Testtag, sonst um 1–2 Tage schieben.
+**T-0 liegt immer auf Sa oder So** (Stefan, 1.10.2026 – werktags nach der Arbeit mental zu zehrend). Keine Qualität in den 3 Tagen davor. Readiness ≥ 70 am Testtag, sonst um 1–2 Tage schieben.
 
 **Tacx-App (getestet 30.9.2026):** Ein Workout mit `freeride`-Schritten läuft dort komplett ohne ERG, die Stufen
 sind nur Anzeige. Das Test-Workout kann also in der Tacx-App laufen. DURA koppelt **nur den XCadey**, nie den Flux.
@@ -32,8 +32,8 @@ Route (freie Fahrt in den All-Outs, keine Zielwatt).
 
 ## Protokoll Sentiero 3+10min
 
-1. **20 min progressiv warmfahren** in Stufen à 5 min: ~50 / 60 / 70 / 80% FTP (alte FTP 305 bzw. letzte
-   Baseline) – jede Stufe sauber gleichmäßig, die Stufen liefern die Offset-Punkte bei niedriger Last.
+1. **20 min progressiv warmfahren** in Stufen à 5 min: ~50 / 60 / 70 / 80% FTP (letzte
+   Baseline, seit 1.10.2026: 300W) – jede Stufe sauber gleichmäßig, die Stufen liefern die Offset-Punkte bei niedriger Last.
 2. 3 min locker (~50% FTP) – nicht direkt aus der 80%-Stufe ins All-Out
 3. 3 min All-Out (nicht überpacen)
 4. **10 min** aktive Erholung (~50% FTP) – seit 30.9.2026, vorher 5 min: zu kurz, W' ist danach nicht zurück

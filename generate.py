@@ -558,19 +558,19 @@ def get_power_bests() -> list[dict]:
 
 
 def get_zone_data() -> dict:
-    """Static training zones for dashboard tiles. Values from athlete/profil.md (Sentiero FTP 305W · Lauf: Schwellenpace 6:28/km, LTHR 185 seit 20.09.2026)."""
+    """Static training zones for dashboard tiles. Values from athlete/profil.md (Sentiero FTP 300W seit 01.10.2026 · Lauf: Schwellenpace 6:28/km, LTHR 185 seit 20.09.2026)."""
     return {
-        "ftp": 305,
+        "ftp": 300,
         "schwelle_pace": "6:28/km",
         "lthr": 185,
         "rad": [
-            {"label": "Z0 Recovery", "range": "0–159W",   "pct": "<52%",     "color": "#b6afa9", "text_class": "muted"},
-            {"label": "Z1 Base",     "range": "160–188W", "pct": "52–62%",   "color": "#ff9366", "text_class": "normal"},
-            {"label": "Z2 FatMax",   "range": "189–212W", "pct": "62–70%",   "color": "#f9752f", "text_class": "normal"},
-            {"label": "Z3 Tempo",    "range": "213–283W", "pct": "70–93%",   "color": "#e05613", "text_class": "warm"},
-            {"label": "Z4 FTP",      "range": "283–314W", "pct": "93–103%",  "color": "#bd400a", "text_class": "warm"},
-            {"label": "Z5 VO2max",   "range": "315–422W", "pct": "103–138%", "color": "#992f07", "text_class": "hot"},
-            {"label": "Z6 Anaerob",  "range": "423W+",    "pct": ">138%",    "color": "#742305", "text_class": "hot"},
+            {"label": "Z0 Recovery", "range": "0–155W",   "pct": "<52%",     "color": "#b6afa9", "text_class": "muted"},
+            {"label": "Z1 Base",     "range": "156–186W", "pct": "52–62%",   "color": "#ff9366", "text_class": "normal"},
+            {"label": "Z2 FatMax",   "range": "187–210W", "pct": "62–70%",   "color": "#f9752f", "text_class": "normal"},
+            {"label": "Z3 Tempo",    "range": "211–279W", "pct": "70–93%",   "color": "#e05613", "text_class": "warm"},
+            {"label": "Z4 FTP",      "range": "280–309W", "pct": "93–103%",  "color": "#bd400a", "text_class": "warm"},
+            {"label": "Z5 VO2max",   "range": "310–414W", "pct": "103–138%", "color": "#992f07", "text_class": "hot"},
+            {"label": "Z6 Anaerob",  "range": "415W+",    "pct": ">138%",    "color": "#742305", "text_class": "hot"},
         ],
         "lauf": [
             {"label": "Z1 Easy",     "pace": "7:25–8:40", "hf_pct": "150–165", "color": "#ff9366", "text_class": "normal"},

@@ -1,6 +1,17 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 30. September 2026*
+*Letzte Aktualisierung: 1. Oktober 2026*
+
+---
+
+## 1. Oktober 2026 – FTP-Baseline KW40: 300W (geschätzt)
+
+**Test (Do, Tarmac/XCadey auf dem Flux, kein ERG):** Readiness 90 🟢 · Warmfahr-Stufen XCadey 147/174/205/237W · **3min All-Out 441W** (30s-Abschnitte 448·445·431·437·435·451, sauber gepaced) · 10min All-Out nach **2:01 @ 328W** abgebrochen (HF 180, max HF 199).
+**Stefan:** „Für 10 Minuten hat mir heute die mentale Power gefehlt.“ Er ist sicher, dass er die 2 min auch über 10 min gehalten hätte. → **FTP 300W als Ausnahme übernommen, 10min-Wert geschätzt** (≈333W × 0,90). Coach-Rechnung aus 328W wäre 295W gewesen; Stefan setzt 300W.
+**Kennzahlen:** 3,21 W/kg @ 93,6 kg · CP ~287W / W' ~27,8 kJ (rechnerisch) · vorher 305W (4iiii, 4.4.2026 – nicht vergleichbar). Winterziel +8–12 % → ~325–335W bis KW09/27.
+**Offset Tacx ÷ XCadey** (sekundengenau aus beiden Aufzeichnungen, Versatz 2 s): Stufen 1,03–1,05 · 3min 1,01 · 10-min-Versuch 0,99 · Ausfahren 0,99 → **Faktor 1,0**, Indoor-Watt = XCadey-Watt.
+**Neue Regel (Stefan):** Tests künftig **nur am Wochenende**, werktags nach der Arbeit mental zu zehrend → `COACH_MEMORY.md`, KW01/KW09-Tests in Periodisierung und Langfristplan auf Sa/So gelegt.
+**Umgesetzt:** Zonen + Zielwatt in `profil.md`, Dashboard-Zonen (`generate.py`), `fortschritt.md` (FTP-Verlauf, Power-PR-Referenz auf XCadey zurückgesetzt, CP/W'), CLAUDE.md, KW40 (Do ✅, Sa 160–200W). intervals.icu: Tacx-Aufzeichnung gelöscht (Doppelzählung), Sa-Workout Zeile 1 auf 160–200W. FTP in intervals.icu/Garmin/COROS/MyWhoosh setzt Stefan selbst.
 
 ---
 

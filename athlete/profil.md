@@ -1,6 +1,6 @@
 # Athletenprofil – Stefan
 
-*Stand: 21. September 2026*
+*Stand: 1. Oktober 2026*
 
 ## ⚠️ Aktueller Status (21. September 2026)
 
@@ -12,19 +12,19 @@
 | **Trainingsfokus** | **Dual: FTP + Laufleistung** · 9–10h/Woche · Rad:Lauf wandert von 70:30 (Okt) auf 60:40 (Dez–Feb) |
 | **CTL** | 23,3 (21.9.) · Winterziel 60–68 bis Ende Januar |
 | **Zeitrahmen** | werktags max. 90min (Ausnahme bis 2h), vor oder nach der Arbeit · Wochenende trägt die langen Einheiten · Wochenplanung rollierend 1–2 Wochen im Voraus |
-| **Nächster Fixpunkt** | 🔬 FTP-Test **KW40** (Do 1.10.) – Tarmac mit XCadey auf der Rolle, kein ERG, DURA + Tacx-App parallel → FTP + Offset-Faktor |
+| **Nächster Fixpunkt** | 🔬 FTP-Test #2 + 5km-Zeitfahren **KW01/27** – **am Wochenende** (Stefan, 1.10.2026: keine Tests mehr an Arbeitstagen) |
 | **Beschwerden** | Stefan meldet sich selbst, wie bei jeder Verletzung · keine Abbruchregeln in die Pläne schreiben |
 
-FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valider Test 4.4.2026, gemessen mit 4iiii). Seit dem Setup-Wechsel (Sept. 2026, siehe Geräte) ist die Leistungsquelle eine andere → **Zonen erst nach neuem FTP-Test auf dem Tarmac/XCadey wieder trainingsleitend.** Indoor- und Outdoor-Werte stammen aus verschiedenen Messgeräten und sind nicht 1:1 vergleichbar.
+**FTP 300W seit 1.10.2026** (Baseline-Test KW40 am Tarmac/XCadey, 10min-Wert geschätzt – siehe `fortschritt.md`) → **Rad-Zonen wieder trainingsleitend.** Offset Tacx ÷ XCadey ≈ **1,0** → Indoor-Zielwatt = XCadey-Zielwatt, keine Umrechnung. Die 305W vom 4iiii (4.4.2026) sind historisch.
 
 ## Basisdaten
 
 | Parameter | Wert | Anmerkung |
 |---|---|---|
-| **FTP** | **305W** | Sentiero-Modell (3+10min Protokoll, 4iiii Referenz – altes Setup) |
+| **FTP** | **300W** | Baseline-Test 1.10.2026 · 3+10min auf der Rolle, XCadey · 3min 441W gemessen, 10min **geschätzt** (Abbruch nach 2:01 @ 328W, Stefans Einschätzung 333W) · vorher 305W (4iiii, 4.4.2026) |
 | **Gewicht** | **93,6 kg** | Ø der Messungen der letzten 30 Tage aus intervals.icu (letzte: 94,0 am 20.09.2026) · wird vom Coach automatisch gepflegt · vorher 91 kg (1. Juni 2026) · **Stefans Einordnung 21.9.2026: in Ordnung, ggf. Richtung 90 kg, darunter nicht** — kein Coach-Ziel, kein Ernährungsprogramm |
 | **Größe** | 190 cm | |
-| **W/kg** | 3,26 | bei 305W / 93,6kg · (3,35 bei 91kg im Juni) |
+| **W/kg** | 3,21 | bei 300W / 93,6kg |
 | **VO2max** | 59 ml/min/kg | Sentiero metabolisches Profil |
 | **FatMax** | 202W | Sentiero |
 | **Erfahrung** | ~3 Jahre | strukturiertes Ausdauertraining · Ötztaler Radmarathon 2025 ✅ |
@@ -33,7 +33,7 @@ FTP 305W und alle Rad-Zonen unten bleiben als **Referenz** stehen (letzter valid
 | **Einheitsdauer Wochenende** | 2,5–4h | |
 | **Indoor/Outdoor** | wetterabhängig | Indoor: Canyon Aeroad auf Tacx Flux S |
 | **Powermeter Outdoor** | XCadey Spindle (Cybrei-Kurbel, S-Works Tarmac SL8) | ab Sept. 2026 – Referenz für Outdoor-Zonen nach neuem FTP-Test |
-| **Powermeter Indoor** | Tacx Flux S (Rolle) | Aeroad ohne Powermeter → Rollenleistung ist die Indoor-Quelle |
+| **Powermeter Indoor** | Tacx Flux S (Rolle) | Aeroad ohne Powermeter → Rollenleistung ist die Indoor-Quelle · **Offset zum XCadey ≈ 1,0** (Test 1.10.2026: LIT +3–5 %, Schwelle/All-Out ±1 %) |
 
 ## Ziele
 
@@ -133,30 +133,30 @@ eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht
 | Laktatclearance (LC) | Einführung ab KW18 |
 | Laufen | Solide Basis, Steigerungspotenzial |
 
-## Leistungszonen (Sentiero-Modell · FTP 305W)
+## Leistungszonen (Sentiero-Modell · FTP 300W seit 1.10.2026)
 
 | Zone | Name | Wattbereich | KH g/h | Fett g/h |
 |---|---|---|---|---|
-| Z0 | Recovery | 0–159W | 4–54 | 9–44 |
-| Z1 | Base | 160–188W | 55–74 | 44–47 |
-| Z2 | FatMax | 189–212W | 75–96 | 47–48 |
-| Z3 | Tempo | 213–283W | 97–212 | 48–23 |
-| Z4 | FTP | 283–314W | 212–282 | 23–0 |
-| Z5 | VO2max | 315–422W | 283–371 | 0 |
-| Z6 | Anaerob | 423+W | 372+ | 0 |
+| Z0 | Recovery | 0–155W | 4–54 | 9–44 |
+| Z1 | Base | 156–186W | 55–74 | 44–47 |
+| Z2 | FatMax | 187–210W | 75–96 | 47–48 |
+| Z3 | Tempo | 211–279W | 97–212 | 48–23 |
+| Z4 | FTP | 280–309W | 212–282 | 23–0 |
+| Z5 | VO2max | 310–414W | 283–371 | 0 |
+| Z6 | Anaerob | 415+W | 372+ | 0 |
 
-*LaShuttle-Zone (LC-Training): 202–335W*
+*LaShuttle-Zone (LC-Training): ~199–330W · KH/Fett-Spalten aus dem Sentiero-Profil 4/2026 (Richtwerte)*
 
 ### Workout-Zielwattwerte
 
 | Workout-Typ | % FTP | Zielwatt | Kadenz |
 |---|---|---|---|
-| LIT (Grundlage) | 55% | 168W | frei |
-| SwSp (Sweetspot) | 89% | 271W | 85–95rpm |
-| KA (Kraftausdauer) | 91% | 278W | **55rpm** Intervall / 65rpm Pause |
-| MIT (Schwelle) | 101% | 308W | frei |
-| HIT_EB (VO2max Dauer) | 106–112% | 323–341W | 100–110rpm |
-| HIT_IE (VO2max Intervall) | 125% | 381W | 100–110rpm |
+| LIT (Grundlage) | 55% | 165W | frei |
+| SwSp (Sweetspot) | 89% | 267W | 85–95rpm |
+| KA (Kraftausdauer) | 91% | 273W | **55rpm** Intervall / 65rpm Pause |
+| MIT (Schwelle) | 101% | 303W | frei |
+| HIT_EB (VO2max Dauer) | 106–112% | 318–336W | 100–110rpm |
+| HIT_IE (VO2max Intervall) | 125% | 375W | 100–110rpm |
 
 ## Krafttraining
 

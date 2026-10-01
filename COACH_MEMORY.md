@@ -1,7 +1,7 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 28. September 2026.*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 1. Oktober 2026.*
 
 **Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
 zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
@@ -151,6 +151,14 @@ steht, nicht wie nah die TSS-Summe am Plan liegt.
 
 ---
 
+### 🔬 Tests nur am Wochenende (Stefan, 1.10.2026)
+Der KW40-Test am Donnerstag nach der Arbeit: 3min gut (441W), die 10min nach 2min abgebrochen – „mental zu
+zehrend unter der Woche". Alle künftigen Tests (FTP, 5km, 10km-Benchmark) liegen auf **Sa oder So**. Die
+Test-Taper-Logik verschiebt sich mit (T+1-Ruhetag dann am Montag oder als lockerer Tag).
+**Anwenden:** Testwochen so bauen, dass der Test am Wochenende liegt – nie wieder werktags vorschlagen.
+
+---
+
 ## 4. Kommunikation & Selbstbild
 
 ### HIT/VO2max nie als „Neuland" bezeichnen
@@ -228,9 +236,9 @@ Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahre
 ### Zwei Radleistungsquellen – nie gegeneinander rechnen
 Outdoor = Tarmac + XCadey · Indoor = Aeroad auf Tacx (Rollenleistung). Realistisch 5–15% Versatz
 (Antriebsstrang, Rollen-Toleranz ±3%, Sitzposition). Fortschritt immer Quelle gegen sich selbst.
-**Bis zum Baseline-Test:** alte Zonen **FTP 305** als Wattvorgabe (Stefan: „Als ob irgendwas passiert, wenn
-ich 20 Watt zu viel trete."). Keine Doppelkorridore, keine Messversatz-Diskussion in Workouts – aber nie ganz
-ohne Wattvorgabe planen.
+**FTP 300W seit 1.10.2026** (Baseline am XCadey, 10min-Wert auf Stefans Einschätzung – Ausnahme). **Offset
+Tacx ÷ XCadey ≈ 1,0** (LIT +3–5 %, Schwelle ±1 %, warm eher −1 %) → Indoor-Zielwatt = XCadey-Zielwatt, keine
+Umrechnung, keine Doppelkorridore. Nie ganz ohne Wattvorgabe planen.
 
 ### 🔬 FTP-Test-Setup (entschieden, Stefan 24.9.2026)
 **Tarmac mit XCadey auf den Flux.** Aufzeichnung parallel: **XCadey → COROS DURA** (maßgeblich) und
@@ -241,7 +249,7 @@ Tarmac. Ergebnis aus einer Einheit:
   Warmfahrens (zeigt, ob der Versatz mit der Intensität schwankt). Gilt dann für die Aeroad-Einheiten.
 - **Protokoll (Stand 30.9.):** 20min Stufen 50/60/70/80% · 3min locker · 3min All-Out · **10min Pause** · 10min All-Out · 10min aus (~58min). Alle Wintertests identisch – Details `modules/ftp-test.md`.
 - **Doppelzählung vermeiden:** Tacx-Datei in intervals.icu löschen oder von der Belastung ausnehmen.
-- Danach neue FTP **überall** setzen: intervals.icu (305), **Garmin Connect (steht auf 325)**, COROS, MyWhoosh.
+- Danach neue FTP **überall** setzen: intervals.icu, Garmin Connect, COROS, MyWhoosh (Stefan macht das selbst; KW40: 300W).
 
 ### Workout-Zustellung (verifiziert 21.9.2026)
 intervals.icu → **Garmin Connect → Tacx-App** (Schritte, Balkengrafik, Startknopf kommen an) und
