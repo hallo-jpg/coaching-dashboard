@@ -4,6 +4,14 @@
 
 ---
 
+## 1. Oktober 2026 – Rad-Qualität ab KW42 statt KW43
+
+**Stefan:** Will nach London direkt wieder mit Intervallen starten, „außer du sagst, das muss sein".
+**Coach:** Muss nicht – die Rampe ohne Qualität schützt das Laufgewebe, nicht das Rad. Sweetspot statt VO2max (bei CTL 27 der beste Hebel, HIT kommt in Block 2). Laufen bleibt bis KW45 Easy (Volumen ~13 km/Woche + Kadenz-Projekt).
+**Periodisierung geändert (mit Stefans Zustimmung):** KW42 Di SwSp 3×10 @ 267W (statt LIT 1h15) · KW43 Di SwSp 3×12 (statt 3×10) · Block 1 KW45 unverändert ab 3×15. Ziel-TSS Rampe 170 / 241 / 278.
+
+---
+
 ## 1. Oktober 2026 – FTP-Baseline KW40: 300W (geschätzt)
 
 **Test (Do, Tarmac/XCadey auf dem Flux, kein ERG):** Readiness 90 🟢 · Warmfahr-Stufen XCadey 147/174/205/237W · **3min All-Out 441W** (30s-Abschnitte 448·445·431·437·435·451, sauber gepaced) · 10min All-Out nach **2:01 @ 328W** abgebrochen (HF 180, max HF 199).

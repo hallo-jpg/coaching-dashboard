@@ -24,7 +24,7 @@ Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — i
 | Phase | KW | Zeitraum | Fokus | Ziel-TSS | Rad:Lauf |
 |---|---|---|---|---|---|
 | **Nullpunkt** | KW40 | 28.9.–4.10. | 🔬 FTP-Test auf der Rolle ✅ **300W** | ~195 | 70:30 |
-| **Rampe** | KW41–43 | 5.–25.10. | Volumen 5→7h · Kadenz-Projekt · Laufen nur Easy | 195 / 218 / 258 | 70:30 |
+| **Rampe** | KW41–43 | 5.–25.10. | Volumen 5→7h · Kadenz-Projekt · Laufen nur Easy · Rad-SwSp ab KW42 | 170 / 241 / 278 | 70:30 |
 | **Entlastung** | KW44 | 26.10.–1.11. | −45% · HF-160-Check | ~148 | 70:30 |
 | **Block 1 · Schwelle** | KW45–47 | 2.–22.11. | Rad SwSp/KA · 1× Lauf-Schwelle · Longrun wächst | 270 / 300 / 320 | 65:35 |
 | **Entlastung** | KW48 | 23.–29.11. | −45% | ~170 | 65:35 |
@@ -75,7 +75,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 
 | Block | Inhalt |
 |---|---|
-| Rampe KW41–43 | LIT-Volumen aufbauen · 1× SwSp-Einstieg ab KW43 · keine HIT |
+| Rampe KW41–43 | LIT-Volumen aufbauen · SwSp ab KW42 (3×10 → 3×12, Stefan 1.10.) · keine HIT |
 | Block 1 KW45–47 | SwSp 3×15 → 4×15 · KA (55rpm) progressiv · 1× lange LIT am WE |
 | Block 2 KW49–51 | HIT_EB 4×4 → 4×6 · HIT_IE 30/30 · LIT-Volumen halten |
 | Block 3 KW02–04 | Volumen-Peak · SwSp + KA · lange Einheiten 3–3,5h |
