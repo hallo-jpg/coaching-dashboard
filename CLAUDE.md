@@ -74,7 +74,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 
 **Karten im Dashboard (alle auto-generiert):**
 - Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), Wochenziel-Ring (TSS-Compliance)
-- Wochenplan (aus `planung/kw[N].md` + intervals.icu Aktivitäten, Kern-Einheiten markiert)
+- Wochenplan (aus `planung/kw[N].md` + intervals.icu Aktivitäten, Kern-Einheiten markiert) · **Soll-TSS = berechnete Load des geplanten Workouts in intervals.icu**, die `kw*.md`-Schätzung nur für Tage ohne ICU-Workout
 - Polarisation 8 Wochen **Rad + Lauf** (Rad nach Watt, Lauf nach HF) + Zeitanteil Rad : Lauf gegen den Soll-Split
 - **Lauf-Aufbau** 12 Wochen: km/Woche gegen die +10%-Grenze, längster Lauf gegen die 30-Tage-Regel
 - **Pace bei HF 160** (6 Monate, je Easy-Lauf) – Fortschrittsmesser der Lauf-Aerobie

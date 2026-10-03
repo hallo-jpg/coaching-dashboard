@@ -446,8 +446,10 @@ def get_activities(oldest: str, newest: str) -> list[dict]:
 def get_planned_tss_from_icu(week_start: str, week_end: str) -> dict:
     """Fetch planned TSS per day from intervals.icu planned events.
 
-    Uses intervals.icu /events endpoint (category=WORKOUT) and reads load_target
-    (the planned TSS calculated by ICU from the .zwo file structure, NP-based).
+    Uses intervals.icu /events endpoint (category=WORKOUT) and reads
+    icu_training_load – the load ICU calculates from the workout structure
+    (NP-based for rides, pace-based for runs). load_target is only a manually
+    set target and usually empty, so it is just the fallback.
 
     Returns {"total": int, "by_day": {"2026-05-25": 90, ...}}
     Falls back to {"total": 0, "by_day": {}} on error or no planned events.
@@ -461,7 +463,7 @@ def get_planned_tss_from_icu(week_start: str, week_end: str) -> dict:
             day = (ev.get("start_date_local") or "")[:10]
             if not day:
                 continue
-            tss = int(ev.get("load_target") or 0)
+            tss = round(ev.get("icu_training_load") or ev.get("load_target") or 0)
             if tss > 0:
                 by_day[day] = by_day.get(day, 0) + tss
         return {"total": sum(by_day.values()), "by_day": by_day}
@@ -702,6 +704,28 @@ def parse_kw_plan(kw: int) -> dict:
     days.sort(key=lambda d: DAY_ORDER.index(d["tag"]))
 
     return {"theme": theme, "sub": sub, "tss_plan": tss_plan_total, "days": days}
+
+
+def planned_week(kw: int, monday: date) -> dict:
+    """parse_kw_plan + Soll-TSS aus intervals.icu.
+
+    Sobald ein Tag ein geplantes Workout in intervals.icu hat, gilt dessen
+    berechnete Load als Soll – die TSS-Spalte in kw*.md ist beim Planen nur
+    geschätzt. Tage ohne ICU-Workout (Kraft, Stubs) behalten die Schätzung.
+    Das Wochen-Soll ist dann die Summe der Tage; ohne ICU-Workouts bleibt
+    es beim Total aus kw*.md.
+    """
+    plan = parse_kw_plan(kw)
+    sunday = monday + timedelta(days=6)
+    icu_plan = get_planned_tss_from_icu(monday.isoformat(), sunday.isoformat())
+    if icu_plan["total"] > 0:
+        for d in plan["days"]:
+            day_date = (monday + timedelta(days=DAY_ORDER.index(d["tag"]))).isoformat()
+            icu_tss = icu_plan["by_day"].get(day_date, 0)
+            if icu_tss > 0:
+                d["tss_plan"] = icu_tss
+        plan["tss_plan"] = sum(d["tss_plan"] for d in plan["days"])
+    return plan
 
 
 def _empty_days() -> list:
@@ -1223,24 +1247,13 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     phases = build_phase_weeks(monday)
     phase_bar_label = f"Saisonverlauf · {phases[0]['kw']}–{phases[-1]['kw']}"
 
-    plan    = parse_kw_plan(kw)
-
-    # Pull planned TSS from intervals.icu (NP-based, accurate).
-    # Fallback to kw*.md values when ICU has no events (older weeks, fallback).
-    icu_plan = get_planned_tss_from_icu(monday.isoformat(), sunday.isoformat())
-    if icu_plan["total"] > 0:
-        for d in plan["days"]:
-            day_idx  = DAY_ORDER.index(d["tag"])
-            day_date = (monday + timedelta(days=day_idx)).isoformat()
-            icu_tss  = icu_plan["by_day"].get(day_date, 0)
-            if icu_tss > 0:
-                d["tss_plan"] = icu_tss
+    plan    = planned_week(kw, monday)
 
     matched = match_activities(activities, plan["days"], monday)
     days    = build_day_rows(plan["days"], matched)
     tss_ist = sum(d["tss_ist"] for d in days)
 
-    tss_plan_week = icu_plan["total"] if icu_plan["total"] > 0 else plan["tss_plan"]
+    tss_plan_week = plan["tss_plan"]
     tss_compliance_pct = round(tss_ist / tss_plan_week * 100) if tss_plan_week > 0 else 0
     tss_compliance_offset = calc_ring_offset(tss_compliance_pct, 100, CIRC_OUTER)
     tss_compliance_color = ("var(--brand)" if tss_compliance_pct >= 80
@@ -1351,7 +1364,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "tsb_display": f"+{round(tsb):.0f}" if tsb >= 0 else f"{round(tsb):.0f}",
         "tsb_color": fmt_tsb_color(tsb),
         "ctl_offset": ctl_offset, "atl_offset": atl_offset,
-        "tss_ist": tss_ist, "tss_plan": plan["tss_plan"],
+        "tss_ist": tss_ist, "tss_plan": tss_plan_week,
         "sick_notice": sick_notice, "days": days,
         "hrv_val": f"{round(hrv)} ms", "hrv_status": hrv_status, "hrv_status_color": hrv_status_color,
         "hrv_range": f"{hrv_low}–{hrv_high}", "hrv_30d_avg": round(hrv_mean),
@@ -1904,11 +1917,12 @@ def get_tss_overview_history(current_kw: int, num_weeks: int = 8) -> tuple:
         is_current = w_kw == current_kw
         is_future = monday > today
         tss_ist = round(tss_by_week.get((w_year, w_kw), 0))
-        weeks_raw.append({"kw": w_kw, "tss_ist": tss_ist, "is_current": is_current, "is_future": is_future})
+        weeks_raw.append({"kw": w_kw, "monday": monday, "tss_ist": tss_ist,
+                          "is_current": is_current, "is_future": is_future})
 
     # Einfach Ist gegen Plan: gefüllter Balken = Ist, Umriss = Plan, eine Farbe
     for w in weeks_raw:
-        w["tss_plan"] = parse_kw_plan(w["kw"]).get("tss_plan", 0)
+        w["tss_plan"] = planned_week(w["kw"], w["monday"])["tss_plan"]
     completed = [w for w in weeks_raw if not w["is_current"] and not w["is_future"]]
     avg_tss = round(sum(w["tss_ist"] for w in completed) / len(completed)) if completed else 0
     bar_scale = max(max((max(w["tss_ist"], w["tss_plan"]) for w in weeks_raw), default=1) * 1.05, 1)

@@ -832,3 +832,30 @@ def test_parse_kw_plan_detects_kern(tmp_path, monkeypatch):
     days = {d["tag"]: d for d in parse_kw_plan(50)["days"]}
     assert days["Mo"]["kern"] is True
     assert days["Di"]["kern"] is False
+
+
+def test_planned_week_prefers_icu_load():
+    """Soll-TSS kommt aus icu_training_load des geplanten Workouts, nicht aus der kw*.md-Schätzung."""
+    from generate import planned_week
+    events = [
+        {"start_date_local": "2026-10-03T00:00:00", "icu_training_load": 33, "load_target": None},
+        {"start_date_local": "2026-10-01T00:00:00", "icu_training_load": None, "load_target": 70},
+    ]
+    with patch("generate._api_get", return_value=events), \
+         patch("generate.parse_kw_plan", return_value={
+             "theme": "", "sub": "", "tss_plan": 120,
+             "days": [{"tag": t, "tss_plan": v} for t, v in
+                      zip(["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"], [45, 0, 0, 75, 0, 37, 0])]}):
+        plan = planned_week(40, date(2026, 9, 28))
+    by_tag = {d["tag"]: d["tss_plan"] for d in plan["days"]}
+    assert by_tag["Sa"] == 33   # ICU-Load ersetzt Schätzung 37
+    assert by_tag["Do"] == 70   # load_target als Fallback
+    assert by_tag["Mo"] == 45   # kein ICU-Workout → Schätzung bleibt
+    assert plan["tss_plan"] == 148
+
+
+def test_planned_week_without_icu_keeps_md_total():
+    from generate import planned_week
+    with patch("generate._api_get", return_value=[]):
+        plan = planned_week(40, date(2026, 9, 28))
+    assert plan["tss_plan"] == parse_kw_plan(40)["tss_plan"]

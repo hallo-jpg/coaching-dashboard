@@ -223,6 +223,11 @@ Nächste Woche in 1–2 Sätzen konkret, danach je KW eine Zeile Blockstruktur (
 1. **intervals.icu:** alle Einheiten der Woche anlegen (Schritt 4), danach `get_planned_events` prüfen
    (`workout_doc.steps`, `moving_time`, Distanz-Schritte). Workouts mit leerem `workout_doc`
    (Description-Route) im Output auflisten: „bitte einmal in intervals.icu öffnen".
+   **TSS-Abgleich:** je Workout `icu_training_load` (von intervals.icu aus der Struktur berechnet)
+   mit der eigenen Schätzung vergleichen und den ICU-Wert in die Spalte `TSS ca.` von `kw[N].md`
+   übernehmen, das Total neu summieren. Das Dashboard nimmt ohnehin den ICU-Wert als Soll –
+   die Datei soll dasselbe zeigen. Weicht ein Workout **> 15 %** ab, im Output kurz nennen
+   (Schätzung → ICU, warum) und die Schätzregel (rTSS-Tabelle oben) nachschärfen, wenn es systematisch ist.
 2. **`planung/kw[N].md`** – Pflichtformat (sonst bricht der Dashboard-Parser lautlos):
 
 ```markdown
