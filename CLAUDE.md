@@ -14,7 +14,7 @@
 | **Aktuelle KW** | KW40 (28. September – 4. Oktober 2026) · 🔬 FTP-Baseline Do 1.10. ✅ **300W** (3min 441W) · Mo nur morgens · **Sa Abflug London 16:00** (1h Rad vormittags) |
 | **Aktuelle Phase** | Nullpunkt · Test-Taper Mo–Mi (Easy-Lauf, LIT 1h, Vorbelastung 3×1min) · Fr Ruhetag · KW39 Retro 🟢 (Kern 3/3, Kadenz Easy erstmals 166 spm) |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
-| **Nächste Phase** | KW41 London-Laufwoche (Mo/Mi/Fr morgens, ~13 km, kein Rad) · So 11.10. LIT 2h · KW41–43 Volumen-Rampe + Kadenz-Projekt · ✈️ **London Sa 3.10. (ab 16:00) – Sa 10.10. (an MUC ~16:30)** |
+| **Nächste Phase** | KW41 London-Woche **nach Gefühl** (keine festen Workouts, 3 Läufe morgens, HF-Cap 165, max. ~14 km, 1× Intervalle zum Spaß ok, Mo frei, kein Rad) · So 11.10. LIT 2h · KW41–43 Volumen-Rampe + Kadenz-Projekt · ✈️ **London Sa 3.10. (ab 16:00) – Sa 10.10. (an MUC ~16:30)** |
 | **Fixpunkte** | FTP-Baseline KW40 ✅ 300W · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 · **Tests nur am Wochenende** |
 | **CTL** | 27,1 (27.9.) · ATL 46,2 · TSB −19,0 · Readiness 95 🟢 (HRV 47, 7d-Ø 52, RP 54, Schlaf 7,9h) · Muster: Trainings-Ermüdung, keine Krank-Indikatoren |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |

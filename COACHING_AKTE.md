@@ -1,6 +1,15 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 1. Oktober 2026*
+*Letzte Aktualisierung: 4. Oktober 2026*
+
+---
+
+## 4. Oktober 2026 – KW41 London: Woche nach Gefühl
+
+**Stefan:** Morgens laufen geht in London gut, Mo nicht (24k Schritte am Tag, viel Bewegung im Urlaub). Kraft B heute ausgelassen („keine Lust, passt auch"). KW41 ohne konkrete Workouts: laufen an den Tagen, an denen es passt, HF-Cap 165, evtl. Intervalle zum Spaß.
+**Coach:** Einverstanden. Leitplanken statt Workouts: 3 Läufe à 30–40min, max. ~14 km (Vorwoche 7,8 km, Ø 4 Wochen ~11,5 km), Mo frei wegen der Gehbelastung. Intervalle 1× ok als lockeres Fahrtspiel (6×1min zügig ~6:15–6:40, 1min Trab), keine Ausbelastung – die Rampe bleibt formal ohne Lauf-Qualität, ein spielerischer Reiz stört sie nicht. Kraft in London optional. Kern: ein Lauf (Do) + So LIT-2h.
+So-Lauf London: 31min / 4,2 km @ 7:23, HF 158, Kadenz 164 – Kadenz sitzt jetzt auch ohne Druck nah am Ziel.
+intervals.icu: für KW41 war nichts angelegt, bleibt leer (So LIT-2h nur im Plan).
 
 ---
 
