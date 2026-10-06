@@ -6,7 +6,8 @@
 
 ## 6. Oktober 2026 – KW41 Di: Lauf mit 1-min-Intervallen
 
-30min / 4,2 km @ Ø 7:05, Ø HF 165, max 186, Kadenz 163 · Readiness 92 🟢. Das Fahrtspiel der Woche ist damit erledigt, Rest der Woche easy. Lauf-km KW41: 4,2 von max. ~14.
+30min / 4,2 km · Readiness 92 🟢. **Auswertung aus den Streams (intervals.icu-API):** 12min easy @ ~7:15, HF 159, 163 spm · dann 5×~1min mit 2–3min Trab: 5:25 · 5:22 · ~6:15 · 5:29 · ~5:45 – also VO2max-Tempo (Z4 5:25–6:10), nicht das vorgeschlagene „zügig" 6:15–6:40. HF-Peaks 182 · 182 · 183 · 186 · 186, Pausen-HF steigt von 166 auf 174 → kumulativ, aber kontrolliert. **Kadenz in den Intervallen 170–177 spm** (Rennen @ 6:31: 154) – die hohe Frequenz ist da, sobald das Tempo steigt. Fahrtspiel der Woche erledigt, Rest easy. Lauf-km KW41: 4,2 von max. ~14.
+Coach-Fehler: erst behauptet, Intervalle seien nicht auswertbar – die API-Streams sind in der Cloud-Session per `INTERVALS_API_KEY` erreichbar → COACH_MEMORY Abschnitt 5.
 
 ---
 

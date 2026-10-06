@@ -211,6 +211,13 @@ Am 20.4.2026 wurde ein Montag als Sonntag angenommen → 10 Workouts neu angeleg
 Ohne Erinnerung: `git add` → `git commit` → `git pull --rebase` → `git push` auf `main`. Das Dashboard liest
 aus `main`; alles andere ist für Stefan unsichtbar.
 
+### Einzelne Intervalle auswerten: intervals.icu-Streams direkt abrufen (6.10.2026)
+Das MCP liefert nur Aktivitäts-Summen. Für Intervall-/Lap-Auswertung die Sekundendaten direkt holen –
+`INTERVALS_API_KEY` und `INTERVALS_ATHLETE_ID` sind als Umgebungsvariablen gesetzt (auch in der Cloud-Session):
+`curl -u "API_KEY:$INTERVALS_API_KEY" https://intervals.icu/api/v1/activity/{id}/streams?types=time,heartrate,velocity_smooth,cadence,distance`
+(Activity-ID über `/athlete/{id}/activities?oldest=…&newest=…`). Lauf-`cadence` im Stream ist **pro Bein → ×2 = spm**.
+**Anwenden:** Nie sagen „kann ich nicht auswerten" – erst die Streams holen.
+
 ### Strava-Aktivitäten sind über die API leer
 Nur über Strava importierte Aktivitäten liefern über die API alle Felder `null` (Lizenz). COROS/Garmin sind
 vollständig. Leere Aktivitätszeilen als „Strava-Hülle" erkennen, nicht als fehlende Einheit.
