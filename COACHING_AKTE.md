@@ -1,6 +1,12 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 4. Oktober 2026*
+*Letzte Aktualisierung: 6. Oktober 2026*
+
+---
+
+## 6. Oktober 2026 – KW41 Di: Lauf mit 1-min-Intervallen
+
+30min / 4,2 km @ Ø 7:05, Ø HF 165, max 186, Kadenz 163 · Readiness 92 🟢. Das Fahrtspiel der Woche ist damit erledigt, Rest der Woche easy. Lauf-km KW41: 4,2 von max. ~14.
 
 ---
 
