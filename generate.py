@@ -355,6 +355,7 @@ ICON_PATHS: dict[str, str] = {
     "trend":    '<path d="M3.5 16.5 9 10.5l3.5 3L20.5 6"/><path d="M15.5 6h5v5"/>',
     "scale":    '<path d="M12 4.5v15M5 8.5h14M5 8.5 2.8 14a3.2 3.2 0 0 0 4.4 0L5 8.5ZM19 8.5 16.8 14a3.2 3.2 0 0 0 4.4 0L19 8.5Z"/>',
     "flask":    '<path d="M9.5 3v6.4L5 17.2a2 2 0 0 0 1.7 3.1h10.6a2 2 0 0 0 1.7-3.1L14.5 9.4V3"/><path d="M8 3h8M7.6 14.6h8.8"/>',
+    "steps":    '<path d="M7.5 3.5c1.9 0 2.8 2.2 2.6 4.7-.2 2.1-1 3.6-1 5.3H5.6C5.3 11.6 4.8 10 4.8 8c0-2.6 1-4.5 2.7-4.5ZM5.8 16.5h3.4v1.2a1.7 1.7 0 0 1-3.4 0ZM16.5 7.5c1.7 0 2.7 1.9 2.7 4.5 0 2-.5 3.6-.8 5.5h-3.5c0-1.7-.8-3.2-1-5.3-.2-2.5.7-4.7 2.6-4.7ZM14.8 20.5h3.4v1.2a1.7 1.7 0 0 1-3.4 0Z"/>',
     "flag":     '<path d="M5.5 21V4"/><path d="M5.5 4.8h11l-2.2 3.6 2.2 3.6h-11"/>',
 }
 
@@ -1339,6 +1340,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
 
     ctl_history = get_ctl_history(weeks=26)
     sleep_history = get_sleep_history(days=30)
+    steps_history = get_steps_history(days=30)
     tss_weeks, tss_summary = get_tss_overview_history(current_kw=kw, num_weeks=8)
     ftp_history = get_ftp_history()
 
@@ -1384,6 +1386,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "pace_bests": get_pace_bests(),
         "ctl_history": ctl_history,
         "sleep_history": sleep_history,
+        "steps_history": steps_history,
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,
         "polar_8w": polar_8w,
@@ -1872,6 +1875,62 @@ def get_sleep_history(days: int = 30) -> dict:
         "day_labels": day_labels,
         "last_y": coords[-1][1] if coords else 40,
         "pts": pts,
+    }
+
+
+def get_steps_history(days: int = 30) -> dict:
+    """Tägliche Schritte (intervals.icu-Wellness, von der Uhr) als Balken für SVG.
+    Fließen in intervals.icu nicht in CTL/ATL ein – Kontext für Alltagsbelastung."""
+    empty = {"bars": [], "pts": [], "last": None, "last_label": "", "avg_7d": 0, "avg_30d": 0,
+             "goal_y": 0, "day_labels": []}
+    end = date.today()
+    start = end - timedelta(days=days - 1)
+    try:
+        wellness = get_wellness(start.isoformat(), end.isoformat())
+    except Exception:
+        return empty
+
+    by_day = {w["id"][:10]: int(w["steps"]) for w in wellness if w.get("id") and w.get("steps")}
+    if not by_day:
+        return empty
+
+    STEPS_GOAL = 10000
+    SVG_W, SVG_H = 300, 80
+    y_max = max(15000, -(-max(by_day.values()) // 5000) * 5000)  # auf 5k aufrunden
+    slot = SVG_W / days
+    bars, pts = [], []
+    for i in range(days):
+        d = start + timedelta(days=i)
+        v = by_day.get(d.isoformat())
+        x_pct = round((i + 0.5) / days * 100, 1)
+        if v is None:
+            continue
+        h = round(v / y_max * SVG_H, 1)
+        bars.append({"x": round(i * slot + slot * 0.15, 1), "w": round(slot * 0.7, 1),
+                     "y": round(SVG_H - h, 1), "h": h, "hit": v >= STEPS_GOAL})
+        pts.append({"x": x_pct, "d": f"{d.day:02d}.{d.month:02d}.{str(d.year)[2:]}", "v": v})
+
+    last_day = max(by_day)
+    last_label = "Heute" if last_day == end.isoformat() else (
+        "Gestern" if last_day == (end - timedelta(1)).isoformat() else _fmt_date(last_day))
+    last7 = [by_day[k] for k in by_day if k > (end - timedelta(7)).isoformat()]
+
+    day_labels = []
+    for ld in range(0, days - 3, 7):  # letztes Label nicht an den rechten Rand
+        d = start + timedelta(days=ld)
+        day_labels.append({"label": f"{d.day}. {_MONTHS_DE[d.month - 1]}",
+                           "x_pct": round(ld / days * 100, 1)})
+
+    return {
+        "bars": bars,
+        "pts": pts,
+        "last": by_day[last_day],
+        "last_label": last_label,
+        "avg_7d": round(_avg(last7)) if last7 else 0,
+        "avg_30d": round(_avg(list(by_day.values()))),
+        "goal": STEPS_GOAL,
+        "goal_y": round(SVG_H - STEPS_GOAL / y_max * SVG_H, 1),
+        "day_labels": day_labels,
     }
 
 

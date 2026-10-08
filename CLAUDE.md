@@ -79,6 +79,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 - **Lauf-Aufbau** 12 Wochen: km/Woche gegen die +10%-Grenze, längster Lauf gegen die 30-Tage-Regel
 - **Pace bei HF 160** (6 Monate, je Easy-Lauf) – Fortschrittsmesser der Lauf-Aerobie
 - Readiness-Card mit HRV/Schlaf/TSB/Puls-Balken + Sparkline
+- **Schritte 30 Tage** (Balken, 10k-Linie, Ø 7/30 Tage) – aus der intervals.icu-Wellness, fließen **nicht** in CTL/ATL/TSS ein
 - Ausblick 4 Wochen (aus `planung/kw[N].md` bis kw[N+3].md) – rechts neben dem Wochenplan
 - Power Bestwerte All-Time (Rad, 11 Dauern)
 - Lauf Bestwerte All-Time (Tempokurven, 7 Distanzen)
