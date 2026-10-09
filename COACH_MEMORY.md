@@ -222,6 +222,16 @@ Das MCP liefert nur Aktivitäts-Summen. Für Intervall-/Lap-Auswertung die Sekun
 Nur über Strava importierte Aktivitäten liefern über die API alle Felder `null` (Lizenz). COROS/Garmin sind
 vollständig. Leere Aktivitätszeilen als „Strava-Hülle" erkennen, nicht als fehlende Einheit.
 
+### ⌚ COROS MCP: nur lesen – Schlaf & HRV-Nachtkurve (9.10.2026)
+Verbunden (`mcp__COROS__*`). **Nur lesend nutzen** – Workouts weiter über intervals.icu (sonst doppelt auf der Uhr;
+Löschen/Verschieben geht über das MCP nicht). Nützlich: `querySleepOverview` (Score, Tief/Leicht/REM %, Wachzeit,
+Schlaffenster, Nickerchen), `querySleepHrv` (Tages-Ø + Normalbereich + Kurve alle 5–10 min), Runden/FIT für Kadenz.
+**intervals.icu `sleepSecs` = Zeit im Bett inkl. Wachphasen**, nicht Schlaf (1.10.: icu 8,2h, geschlafen 7h10, 1h wach)
+→ Dashboard überschätzt Schlaf um 10–60 min. HRV-Tageswert ist in beiden identisch.
+**Anwenden:** Bei auffälliger HRV die Nachtkurve ansehen: **niedrig nur in den ersten 1–3h, danach normal** = Vorabend
+(Alkohol, spätes Essen, späte Belastung) → nachfragen, nicht als Ermüdung werten. Durchgehend niedrig = echte
+Ermüdung/Infekt. Zeitstempel: `timezone` in 15-min-Einheiten (4 = UTC+1, 8 = UTC+2). Schlafphasen nur als Trend.
+
 ---
 
 ## 6. Ausstattung & Setup
