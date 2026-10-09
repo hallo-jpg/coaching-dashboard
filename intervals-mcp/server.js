@@ -28,6 +28,25 @@ const ATHLETE_ID = process.env.INTERVALS_ATHLETE_ID;
 const BASE_URL = `https://intervals.icu/api/v1/athlete/${ATHLETE_ID}`;
 const AUTH = "Basic " + Buffer.from(`API_KEY:${API_KEY}`).toString("base64");
 
+// COROS-Schlaf (data/coros_sleep.json, tägliche Claude-Routine) über die Wellness legen –
+// gleiche Logik wie apply_coros_sleep() in generate.py: echte Schlafzeit statt Zeit im Bett,
+// HRV nur auffüllen, wenn intervals.icu (noch) keine hat.
+function applyCorosSleep(wellness) {
+  let nights = {};
+  try {
+    nights = JSON.parse(readFileSync(join(__dirname, "..", "data", "coros_sleep.json"), "utf8")).nights ?? {};
+  } catch {
+    return wellness;
+  }
+  for (const w of wellness) {
+    const night = nights[(w.id ?? "").slice(0, 10)];
+    if (!night) continue;
+    if (night.asleep_min) w.sleepSecs = night.asleep_min * 60;
+    if (!w.hrv && night.hrv) w.hrv = night.hrv;
+  }
+  return wellness;
+}
+
 async function apiFetch(path, options = {}) {
   const url = `${BASE_URL}${path}`;
   const res = await fetch(url, {
@@ -957,7 +976,7 @@ server.tool(
     const oldest = new Date(`${checkDate}T12:00:00Z`);
     oldest.setUTCDate(oldest.getUTCDate() - (2 * READINESS_BASELINE_DAYS + 7));
     const [wellnessAll, plannedEvents] = await Promise.all([
-      apiFetch(`/wellness?oldest=${oldest.toISOString().split("T")[0]}&newest=${checkDate}`),
+      apiFetch(`/wellness?oldest=${oldest.toISOString().split("T")[0]}&newest=${checkDate}`).then(applyCorosSleep),
       apiFetch(`/events?oldest=${checkDate}&newest=${checkDate}`),
     ]);
 
@@ -1025,7 +1044,7 @@ server.tool(
     newest: z.string().describe("Enddatum YYYY-MM-DD"),
   },
   async ({ oldest, newest }) => {
-    const data = await apiFetch(`/wellness?oldest=${oldest}&newest=${newest}`);
+    const data = applyCorosSleep(await apiFetch(`/wellness?oldest=${oldest}&newest=${newest}`));
     const simplified = data.map(d => ({
       datum: d.id,
       ctl: d.ctl?.toFixed(1),

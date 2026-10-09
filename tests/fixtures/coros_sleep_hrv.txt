@@ -1,0 +1,79 @@
+Sleep HRV — 2026-10-03 to 2026-10-09
+HRV Assessment — Last 7 days
+2026-10-09:
+  HRV Avg: 49 ms — Normal
+  Normal Range: 47 - 57 ms
+  Baseline: 52 ms
+2026-10-08:
+  HRV Avg: 44 ms — Below normal
+  Normal Range: 47 - 57 ms
+  Baseline: 52 ms
+2026-10-07:
+  HRV Avg: 44 ms — Below normal
+  Normal Range: 47 - 57 ms
+  Baseline: 52 ms
+2026-10-06:
+  HRV Avg: 58 ms — Above normal
+  Normal Range: 47 - 57 ms
+  Baseline: 52 ms
+2026-10-05:
+  HRV Avg: 55 ms — Normal
+  Normal Range: 46 - 56 ms
+  Baseline: 51 ms
+2026-10-04:
+  HRV Avg: 54 ms — Normal
+  Normal Range: 46 - 56 ms
+  Baseline: 51 ms
+2026-10-03:
+  HRV Avg: 52 ms — Normal
+  Normal Range: 44 - 56 ms
+  Baseline: 50 ms
+
+Sleep HRV Time Series — Last 7 days
+2026-10-07:
+  timestamp=1791410390, timezone=4, hrv=33 ms, status=4, confidence=100000
+  timestamp=1791410690, timezone=4, hrv=23 ms, status=4, confidence=100000
+  timestamp=1791410990, timezone=4, hrv=22 ms, status=4, confidence=100000
+  timestamp=1791411590, timezone=4, hrv=25 ms, status=4, confidence=100000
+  timestamp=1791411890, timezone=4, hrv=31 ms, status=4, confidence=100000
+  timestamp=1791412190, timezone=4, hrv=24 ms, status=4, confidence=100000
+  timestamp=1791412790, timezone=4, hrv=34 ms, status=4, confidence=100000
+  timestamp=1791413090, timezone=4, hrv=32 ms, status=4, confidence=100000
+  timestamp=1791413390, timezone=4, hrv=22 ms, status=4, confidence=100000
+  timestamp=1791413990, timezone=4, hrv=33 ms, status=4, confidence=100000
+2026-10-08:
+  timestamp=1791414890, timezone=4, hrv=28 ms, status=4, confidence=100000
+  timestamp=1791415490, timezone=4, hrv=47 ms, status=4, confidence=100000
+  timestamp=1791416690, timezone=4, hrv=75 ms, status=4, confidence=85735
+  timestamp=1791417590, timezone=4, hrv=36 ms, status=4, confidence=100000
+  timestamp=1791418190, timezone=4, hrv=40 ms, status=4, confidence=100000
+  timestamp=1791418790, timezone=4, hrv=38 ms, status=4, confidence=100000
+  timestamp=1791419390, timezone=4, hrv=38 ms, status=4, confidence=100000
+  timestamp=1791419990, timezone=4, hrv=44 ms, status=4, confidence=100000
+  timestamp=1791420590, timezone=4, hrv=39 ms, status=4, confidence=100000
+  timestamp=1791421490, timezone=4, hrv=50 ms, status=4, confidence=100000
+  timestamp=1791422090, timezone=4, hrv=50 ms, status=4, confidence=100000
+  timestamp=1791422690, timezone=4, hrv=99 ms, status=4, confidence=82977
+  timestamp=1791423290, timezone=4, hrv=46 ms, status=4, confidence=100000
+  timestamp=1791425390, timezone=4, hrv=57 ms, status=4, confidence=100000
+  timestamp=1791425990, timezone=4, hrv=59 ms, status=4, confidence=100000
+  timestamp=1791426590, timezone=4, hrv=39 ms, status=4, confidence=100000
+  timestamp=1791427190, timezone=4, hrv=42 ms, status=4, confidence=100000
+  timestamp=1791428690, timezone=4, hrv=83 ms, status=4, confidence=85846
+  timestamp=1791429290, timezone=4, hrv=47 ms, status=4, confidence=100000
+  timestamp=1791429890, timezone=4, hrv=70 ms, status=4, confidence=100000
+  timestamp=1791430490, timezone=4, hrv=52 ms, status=4, confidence=100000
+  timestamp=1791431390, timezone=4, hrv=49 ms, status=4, confidence=100000
+  timestamp=1791431990, timezone=4, hrv=35 ms, status=4, confidence=100000
+  timestamp=1791432590, timezone=4, hrv=53 ms, status=4, confidence=100000
+  timestamp=1791433190, timezone=4, hrv=61 ms, status=4, confidence=100000
+  timestamp=1791433790, timezone=4, hrv=50 ms, status=4, confidence=100000
+  timestamp=1791434390, timezone=4, hrv=40 ms, status=4, confidence=100000
+  timestamp=1791435290, timezone=4, hrv=40 ms, status=4, confidence=100000
+  timestamp=1791435890, timezone=4, hrv=33 ms, status=4, confidence=100000
+  timestamp=1791436490, timezone=4, hrv=43 ms, status=4, confidence=100000
+  timestamp=1791437090, timezone=4, hrv=50 ms, status=4, confidence=100000
+  timestamp=1791437690, timezone=4, hrv=81 ms, status=4, confidence=96551
+  timestamp=1791438290, timezone=4, hrv=40 ms, status=4, confidence=89655
+  timestamp=1791439190, timezone=4, hrv=40 ms, status=4, confidence=100000
+  timestamp=1791443090, timezone=4, hrv=40 ms, status=4, confidence=100000

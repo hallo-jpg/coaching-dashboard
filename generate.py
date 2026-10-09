@@ -4,6 +4,7 @@ import os
 import base64
 import html
 import math
+import json
 import re
 from datetime import date, timedelta
 from pathlib import Path
@@ -434,9 +435,58 @@ def _api_get_activity(path: str) -> list | dict:
     return r.json()
 
 
+COROS_SLEEP_FILE = Path(__file__).parent / "data" / "coros_sleep.json"
+
+
+def load_coros_sleep() -> dict:
+    """Nächte aus data/coros_sleep.json (tägliche Claude-Routine via COROS-MCP), Schlüssel = Aufwach-Tag."""
+    try:
+        return json.loads(COROS_SLEEP_FILE.read_text(encoding="utf-8")).get("nights", {})
+    except (OSError, ValueError):
+        return {}
+
+
+def apply_coros_sleep(wellness: list[dict], nights: dict) -> list[dict]:
+    """COROS-Werte über die intervals.icu-Wellness legen.
+
+    intervals.icu `sleepSecs` ist Zeit im Bett inkl. Wachphasen – COROS liefert die echte Schlafzeit.
+    HRV nur auffüllen, wenn intervals.icu (noch) keine hat. Ohne COROS-Nacht bleibt der icu-Wert.
+    """
+    for w in wellness:
+        night = nights.get(w.get("id", "")[:10])
+        if not night:
+            continue
+        if night.get("asleep_min"):
+            w["sleepSecs"] = night["asleep_min"] * 60
+        if not w.get("hrv") and night.get("hrv"):
+            w["hrv"] = night["hrv"]
+        w["coros"] = night
+    return wellness
+
+
+def coros_sleep_summary(night: dict | None) -> dict | None:
+    """Detailzeile + Vorabend-Hinweis für die Schlaf-Karte (nur mit COROS-Nacht)."""
+    if not night:
+        return None
+    bits = []
+    if night.get("score"):
+        bits.append(f"Score {night['score']}")
+    if night.get("deep_pct") is not None:
+        bits.append(f"Tief {night['deep_pct']} %")
+    if night.get("rem_pct") is not None:
+        bits.append(f"REM {night['rem_pct']} %")
+    if night.get("awake_min") is not None:
+        bits.append(f"{night['awake_min']} min wach")
+    hint = None
+    early, late = night.get("hrv_early"), night.get("hrv_late")
+    if early and late and late - early >= 8:
+        hint = f"HRV erste 2h {early} ms, danach {late} ms – Vorabend-Muster (spät, Essen, Alkohol?)"
+    return {"detail": " · ".join(bits), "hint": hint, "in_bed_h": round(night.get("in_bed_min", 0) / 60, 1)}
+
+
 def get_wellness(oldest: str, newest: str) -> list[dict]:
     """Fetch wellness data for date range."""
-    return _api_get(f"/wellness?oldest={oldest}&newest={newest}")
+    return apply_coros_sleep(_api_get(f"/wellness?oldest={oldest}&newest={newest}"), load_coros_sleep())
 
 
 def get_activities(oldest: str, newest: str) -> list[dict]:
@@ -1272,6 +1322,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     hrv_pct   = min(round(hrv / hrv_mean * 100), 100) if hrv_mean else 0
     sleep_h   = sleep_s / 3600 if sleep_s else 0
     sleep_pct = min(round(sleep_h / 8 * 100), 100)
+    sleep_coros = coros_sleep_summary(today_w.get("coros"))
     tsb_pct   = min(max(round((tsb + 30) / 60 * 100), 0), 100)
     rhr_base  = 50
     pulse_pct = max(0, min(100, round((1 - (rhr - rhr_base) / 20) * 100)))
@@ -1386,6 +1437,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "pace_bests": get_pace_bests(),
         "ctl_history": ctl_history,
         "sleep_history": sleep_history,
+        "sleep_coros": sleep_coros,
         "steps_history": steps_history,
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,

@@ -12,6 +12,7 @@ on:
       - "planung/**"
       - "athlete/**"
       - "generate.py"
+      - "data/**"
       - "dashboard.template.html"
 
 permissions:

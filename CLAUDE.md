@@ -70,7 +70,8 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 | **URL** | https://hallo-jpg.github.io/coaching-dashboard/ (Passwort-geschützt) |
 | **Rebuild** | alle 30 min via GitHub Actions, bei Push auf `planung/`, `athlete/`, Generator + manuell triggerbar |
 | **Generator** | `generate.py` + `dashboard.template.html` → `docs/dashboard.html` |
-| **Datenquellen** | intervals.icu API: Wellness, Activities, Power-Curves, Pace-Curves, Wochenplan aus `planung/kw[N].md` |
+| **Datenquellen** | intervals.icu API: Wellness, Activities, Power-Curves, Pace-Curves, Wochenplan aus `planung/kw[N].md` · **COROS-Schlaf** aus `data/coros_sleep.json` (echte Schlafzeit, Phasen, HRV-Nachtkurve) |
+| **COROS-Routine** | täglich 8:50 (Berlin) holt eine Claude-Routine Schlaf + Schlaf-HRV per COROS-MCP → `python3 coros_sleep.py` → Commit auf `main`. Fehlt eine Nacht, gilt der intervals.icu-Wert |
 
 **Karten im Dashboard (alle auto-generiert):**
 - Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), Wochenziel-Ring (TSS-Compliance)
