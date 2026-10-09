@@ -579,6 +579,18 @@
     </div>
     {% endif %}
 
+    <!-- Datenquellen heute: COROS (Routine 8:50) · intervals.icu (Uhr-Sync) · Gefühl (Eintrag in icu) -->
+    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
+      {% for label, val, title in [
+          ('COROS', sources.coros, 'Uhrdaten direkt von COROS (Routine)'),
+          ('intervals', sources.icu, 'Uhrdaten in intervals.icu angekommen'),
+          ('Gefühl', '✓' if sources.gefuehl else None, 'Gefühl in intervals.icu eingetragen')] %}
+      <span title="{{ title }}" style="font-size:0.58rem;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:{% if val %}var(--green){% else %}var(--muted){% endif %}">
+        {% if val %}●{% else %}○{% endif %} {{ label }}{% if val and val != '✓' %} {{ val }}{% endif %}
+      </span>
+      {% endfor %}
+    </div>
+
     {% if has_subjektiv %}
     <div style="display:flex;gap:8px;margin-bottom:12px">
       <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">

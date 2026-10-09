@@ -135,14 +135,15 @@ def night_split(night: dict, points: list) -> dict:
 
 def merge(store: dict, overview: dict, hrv_days: dict, points: list, *extra: dict) -> dict:
     days = store.setdefault("days", {})
+    fetched = datetime.now(timezone.utc).isoformat(timespec="seconds")
     for source in (overview, hrv_days, *extra):
         for d, vals in source.items():
-            days.setdefault(d, {}).update(vals)
+            days.setdefault(d, {}).update(vals, fetched=fetched)
     for day in days.values():
         day.update(night_split(day, points))
     cutoff = (datetime.now() - timedelta(days=KEEP_DAYS)).date().isoformat()
     store["days"] = {d: days[d] for d in sorted(days) if d >= cutoff}
-    store["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    store["updated"] = fetched
     return store
 
 

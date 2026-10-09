@@ -6,7 +6,8 @@ import html
 import math
 import json
 import re
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 import requests
 from jinja2 import Environment, FileSystemLoader
@@ -455,6 +456,8 @@ def apply_coros(wellness: list[dict], days: dict) -> list[dict]:
     Schritte: der höhere Wert – der heutige Tag ist um 8:50 bei COROS erst angezählt.
     """
     for w in wellness:
+        # Für die Quellen-Anzeige: hatte intervals.icu schon eigene Uhrdaten für den Tag?
+        w["icu_watch"] = bool(w.get("hrv") or w.get("restingHR") or w.get("sleepSecs"))
         day = days.get(w.get("id", "")[:10])
         if not day:
             continue
@@ -488,6 +491,26 @@ def coros_sleep_summary(night: dict | None) -> dict | None:
     if early and late and late - early >= 8:
         hint = f"HRV erste 2h {early} ms, danach {late} ms – Vorabend-Muster (spät, Essen, Alkohol?)"
     return {"detail": " · ".join(bits), "hint": hint, "in_bed_h": round(night.get("in_bed_min", 0) / 60, 1)}
+
+
+def _berlin_hhmm(iso: str | None) -> str | None:
+    if not iso:
+        return None
+    try:
+        return datetime.fromisoformat(iso).astimezone(ZoneInfo("Europe/Berlin")).strftime("%H:%M")
+    except ValueError:
+        return None
+
+
+def sync_status(today_row: dict | None) -> dict:
+    """Welche Quellen haben heute schon geliefert? Für die Chips in der Readiness-Kachel."""
+    row = today_row or {}
+    coros = row.get("coros") or {}
+    return {
+        "coros": _berlin_hhmm(coros.get("fetched")) or ("✓" if coros.get("hrv") else None),
+        "icu": _berlin_hhmm(row.get("updated")) if row.get("icu_watch") else None,
+        "gefuehl": any(row.get(k) is not None for k in ("fatigue", "soreness", "stress", "injury")),
+    }
 
 
 def get_wellness(oldest: str, newest: str) -> list[dict]:
@@ -1329,6 +1352,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     sleep_h   = sleep_s / 3600 if sleep_s else 0
     sleep_pct = min(round(sleep_h / 8 * 100), 100)
     sleep_coros = coros_sleep_summary(today_w.get("coros"))
+    sources     = sync_status(next((w for w in wellness_hist if w.get("id", "")[:10] == today_iso), None))
     tsb_pct   = min(max(round((tsb + 30) / 60 * 100), 0), 100)
     rhr_base  = 50
     pulse_pct = max(0, min(100, round((1 - (rhr - rhr_base) / 20) * 100)))
@@ -1444,6 +1468,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ctl_history": ctl_history,
         "sleep_history": sleep_history,
         "sleep_coros": sleep_coros,
+        "sources": sources,
         "steps_history": steps_history,
         "tss_weeks": tss_weeks,
         "tss_summary": tss_summary,

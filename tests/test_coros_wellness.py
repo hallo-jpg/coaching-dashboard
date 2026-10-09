@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from coros_wellness import _read, merge, parse_daily, parse_hrv, parse_overview, parse_rhr
-from generate import apply_coros, coros_sleep_summary
+from generate import apply_coros, coros_sleep_summary, sync_status
 
 FIX = Path(__file__).parent / "fixtures"
 
@@ -62,7 +62,8 @@ def test_apply_takes_watch_data_from_coros():
     assert w["steps"] == 20000                                   # höherer Wert gewinnt
     assert (w["weight"], w["fatigue"]) == (93.6, 2)              # Gewicht & Gefühl bleiben icu
     assert (wellness[1]["hrv"], wellness[1]["restingHR"], wellness[1]["steps"]) == (49, 58, 70)
-    assert wellness[2] == {"id": "2026-10-10", "sleepSecs": 30000, "hrv": 50}   # Fallback icu
+    assert (wellness[2]["sleepSecs"], wellness[2]["hrv"]) == (30000, 50)   # Fallback icu
+    assert "coros" not in wellness[2]
 
 
 def test_summary_hint():
@@ -71,3 +72,15 @@ def test_summary_hint():
     assert "Tief 19 %" in s["detail"] and s["hint"]
     assert coros_sleep_summary(nights["2026-10-09"])["hint"] is None
     assert coros_sleep_summary(None) is None
+
+
+def test_sync_status_chips():
+    days = merge({}, *_parsed())["days"]
+    rows = [{"id": "2026-10-09", "hrv": None, "updated": "2026-10-09T09:13:52+00:00"},
+            {"id": "2026-10-08", "hrv": 44, "updated": "2026-10-09T01:57:33+00:00", "fatigue": 1}]
+    apply_coros(rows, days)
+    today = sync_status(rows[0])
+    assert today["coros"] and today["icu"] is None and today["gefuehl"] is False   # icu hatte noch nichts
+    yday = sync_status(rows[1])
+    assert yday["icu"] == "03:57" and yday["gefuehl"] is True
+    assert sync_status(None) == {"coros": None, "icu": None, "gefuehl": False}

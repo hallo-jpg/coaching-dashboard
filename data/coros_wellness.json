@@ -236,7 +236,8 @@
    "steps": 70,
    "stress_avg": 17,
    "sleep_hr_avg": 57,
-   "sleep_hr_min": 36
+   "sleep_hr_min": 36,
+   "fetched": "2026-10-09T08:45:00+00:00"
   }
  },
  "updated": "2026-10-09T08:48:03+00:00"
