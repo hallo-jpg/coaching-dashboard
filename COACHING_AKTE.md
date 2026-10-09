@@ -1,6 +1,13 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 6. Oktober 2026*
+*Letzte Aktualisierung: 9. Oktober 2026*
+
+---
+
+## 9. Oktober 2026 – KW41 Fr: Lauf ausgelassen, Sa optional
+
+**Stefan:** Heute zu stressig zum Laufen – vielleicht morgen vor dem Flug.
+**Coach:** Passt. Der Do-Lauf (Kern) ist erledigt: 35min / 5,1 km @ 6:51, HF 163, Kadenz 165. Fr ist flexibel → ersatzlos. Sa optional 30–35min easy vor dem Flug (LHR 13:35), nur wenn es ohne Hetze geht. Lauf-km KW41: 9,3 von max. ~14. Readiness 74 🟡 (RP +3, HRV im Normalbereich), Gefühl durchweg gut – kein Grund zur Sorge, aber auch kein Grund, etwas nachzuholen. So LIT 2h bleibt Kern.
 
 ---
 
