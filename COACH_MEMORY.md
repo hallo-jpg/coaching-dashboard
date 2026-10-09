@@ -229,8 +229,9 @@ Schlaffenster, Nickerchen), `querySleepHrv` (Tages-Ø + Normalbereich + Kurve al
 **intervals.icu `sleepSecs` = Zeit im Bett inkl. Wachphasen**, nicht Schlaf (1.10.: icu 8,2h, geschlafen 7h10, 1h wach)
 → seit 9.10. ist **COROS Quelle für alle Uhrdaten** (HRV, Ruhepuls, Schlaf, Schritte) via `data/coros_wellness.json`
 (tägliche Routine 8:50, Fallback icu); intervals.icu nur noch Gefühl, Gewicht, CTL/ATL. COROS-Gewicht = statische
-Profilangabe, kein Verlauf → Gewicht bleibt icu. intervals.icu bekommt die Uhrdaten eines Tages **erst am Folgetag**
-(67 Tage geprüft: 52× D+1, meist 7–15 Uhr; nur 1× am selben Tag) → ohne COROS kannte der Morgen-Score die letzte Nacht nie. HRV-Tageswert ist in beiden identisch.
+Profilangabe, kein Verlauf → Gewicht bleibt icu. intervals.icu holt COROS-Wellness **mehrmals täglich, aber ohne festen Takt**
+(9.10.: Nacht erst um 11:13 in icu, COROS-MCP hatte sie vor 8:50). `updated` in icu zeigt nur die *letzte* Änderung
+(meist der finale Schrittstand nach Mitternacht) → taugt nicht, um den Sync-Zeitpunkt abzuleiten. HRV-Tageswert ist in beiden identisch.
 **Anwenden:** Bei auffälliger HRV die Nachtkurve ansehen: **niedrig nur in den ersten 1–3h, danach normal** = Vorabend
 (Alkohol, spätes Essen, späte Belastung) → nachfragen, nicht als Ermüdung werten. Durchgehend niedrig = echte
 Ermüdung/Infekt. Zeitstempel: `timezone` in 15-min-Einheiten (4 = UTC+1, 8 = UTC+2). Schlafphasen nur als Trend.
