@@ -435,32 +435,38 @@ def _api_get_activity(path: str) -> list | dict:
     return r.json()
 
 
-COROS_SLEEP_FILE = Path(__file__).parent / "data" / "coros_sleep.json"
+COROS_FILE = Path(__file__).parent / "data" / "coros_wellness.json"
 
 
-def load_coros_sleep() -> dict:
-    """Nächte aus data/coros_sleep.json (tägliche Claude-Routine via COROS-MCP), Schlüssel = Aufwach-Tag."""
+def load_coros() -> dict:
+    """Tage aus data/coros_wellness.json (tägliche Claude-Routine via COROS-MCP), Schlüssel = Aufwach-Tag."""
     try:
-        return json.loads(COROS_SLEEP_FILE.read_text(encoding="utf-8")).get("nights", {})
+        return json.loads(COROS_FILE.read_text(encoding="utf-8")).get("days", {})
     except (OSError, ValueError):
         return {}
 
 
-def apply_coros_sleep(wellness: list[dict], nights: dict) -> list[dict]:
-    """COROS-Werte über die intervals.icu-Wellness legen.
+def apply_coros(wellness: list[dict], days: dict) -> list[dict]:
+    """Uhrdaten von COROS über die intervals.icu-Wellness legen.
 
-    intervals.icu `sleepSecs` ist Zeit im Bett inkl. Wachphasen – COROS liefert die echte Schlafzeit.
-    HRV nur auffüllen, wenn intervals.icu (noch) keine hat. Ohne COROS-Nacht bleibt der icu-Wert.
+    COROS ist Quelle für alles, was die Uhr misst: HRV, Ruhepuls, Schlaf (echte Schlafzeit –
+    icu `sleepSecs` ist Zeit im Bett), Schritte. intervals.icu bleibt Quelle für Gefühl, Gewicht,
+    CTL/ATL. Fehlt ein COROS-Wert, bleibt der icu-Wert (Fallback, wenn die Routine ausfällt).
+    Schritte: der höhere Wert – der heutige Tag ist um 8:50 bei COROS erst angezählt.
     """
     for w in wellness:
-        night = nights.get(w.get("id", "")[:10])
-        if not night:
+        day = days.get(w.get("id", "")[:10])
+        if not day:
             continue
-        if night.get("asleep_min"):
-            w["sleepSecs"] = night["asleep_min"] * 60
-        if not w.get("hrv") and night.get("hrv"):
-            w["hrv"] = night["hrv"]
-        w["coros"] = night
+        if day.get("asleep_min"):
+            w["sleepSecs"] = day["asleep_min"] * 60
+        if day.get("hrv"):
+            w["hrv"] = day["hrv"]
+        if day.get("rhr"):
+            w["restingHR"] = day["rhr"]
+        if day.get("steps"):
+            w["steps"] = max(day["steps"], w.get("steps") or 0)
+        w["coros"] = day
     return wellness
 
 
@@ -486,7 +492,7 @@ def coros_sleep_summary(night: dict | None) -> dict | None:
 
 def get_wellness(oldest: str, newest: str) -> list[dict]:
     """Fetch wellness data for date range."""
-    return apply_coros_sleep(_api_get(f"/wellness?oldest={oldest}&newest={newest}"), load_coros_sleep())
+    return apply_coros(_api_get(f"/wellness?oldest={oldest}&newest={newest}"), load_coros())
 
 
 def get_activities(oldest: str, newest: str) -> list[dict]:
