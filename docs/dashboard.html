@@ -529,7 +529,15 @@
 <div class="two-col-grid" style="align-items:stretch">
 
   <!-- READINESS -->
-  <div class="readiness-card">
+  <div class="readiness-card" style="position:relative">
+    <!-- Datenquellen heute: grün = für heute geliefert, rot = fehlt noch -->
+    <div style="position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;align-items:stretch">
+      
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">COROS</span>
+      
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">intervals</span>
+      
+    </div>
     <div class="chard"><div class="chard-icon"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 20C7 16.5 4 13.7 4 10.3A4.3 4.3 0 0 1 12 7.8 4.3 4.3 0 0 1 20 10.3C20 13.7 17 16.5 12 20Z"/></svg></div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
@@ -540,23 +548,6 @@
     </div>
 
     
-
-    <!-- Datenquellen heute: COROS (Routine 8:50) · intervals.icu (Uhr-Sync) · Gefühl (Eintrag in icu) -->
-    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
-      
-      <span title="Uhrdaten direkt von COROS (Routine)" style="font-size:0.58rem;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--green)">
-        ● COROS 10:45
-      </span>
-      
-      <span title="Uhrdaten in intervals.icu angekommen" style="font-size:0.58rem;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--green)">
-        ● intervals 11:16
-      </span>
-      
-      <span title="Gefühl in intervals.icu eingetragen" style="font-size:0.58rem;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--green)">
-        ● Gefühl
-      </span>
-      
-    </div>
 
     
     <div style="display:flex;gap:8px;margin-bottom:12px">
