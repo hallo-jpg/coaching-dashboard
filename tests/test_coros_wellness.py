@@ -76,11 +76,11 @@ def test_summary_hint():
 
 def test_sync_status_chips():
     days = merge({}, *_parsed())["days"]
-    rows = [{"id": "2026-10-09", "hrv": None, "updated": "2026-10-09T09:13:52+00:00"},
-            {"id": "2026-10-08", "hrv": 44, "updated": "2026-10-09T01:57:33+00:00", "fatigue": 1}]
+    rows = [{"id": "2026-10-09", "hrv": None},
+            {"id": "2026-10-08", "hrv": 44},
+            {"id": "2026-10-07", "hrv": None, "fatigue": 1}]
     apply_coros(rows, days)
-    today = sync_status(rows[0])
-    assert today["coros"] and today["icu"] is None and today["gefuehl"] is False   # icu hatte noch nichts
-    yday = sync_status(rows[1])
-    assert yday["icu"] == "03:57" and yday["gefuehl"] is True
-    assert sync_status(None) == {"coros": None, "icu": None, "gefuehl": False}
+    assert sync_status(rows[0]) == {"coros": True, "icu": False}   # icu hatte noch nichts
+    assert sync_status(rows[1]) == {"coros": True, "icu": True}
+    assert sync_status(rows[2])["icu"] is True                      # Gefühl zählt als intervals
+    assert sync_status(None) == {"coros": False, "icu": False}

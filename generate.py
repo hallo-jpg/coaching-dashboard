@@ -6,8 +6,7 @@ import html
 import math
 import json
 import re
-from datetime import date, datetime, timedelta
-from zoneinfo import ZoneInfo
+from datetime import date, timedelta
 from pathlib import Path
 import requests
 from jinja2 import Environment, FileSystemLoader
@@ -493,24 +492,12 @@ def coros_sleep_summary(night: dict | None) -> dict | None:
     return {"detail": " · ".join(bits), "hint": hint, "in_bed_h": round(night.get("in_bed_min", 0) / 60, 1)}
 
 
-def _berlin_hhmm(iso: str | None) -> str | None:
-    if not iso:
-        return None
-    try:
-        return datetime.fromisoformat(iso).astimezone(ZoneInfo("Europe/Berlin")).strftime("%H:%M")
-    except ValueError:
-        return None
-
-
 def sync_status(today_row: dict | None) -> dict:
-    """Welche Quellen haben heute schon geliefert? Für die Chips in der Readiness-Kachel."""
+    """Haben COROS bzw. intervals.icu (Uhrdaten oder Gefühl) für heute schon geliefert?"""
     row = today_row or {}
-    coros = row.get("coros") or {}
-    return {
-        "coros": _berlin_hhmm(coros.get("fetched")) or ("✓" if coros.get("hrv") else None),
-        "icu": _berlin_hhmm(row.get("updated")) if row.get("icu_watch") else None,
-        "gefuehl": any(row.get(k) is not None for k in ("fatigue", "soreness", "stress", "injury")),
-    }
+    gefuehl = any(row.get(k) is not None for k in ("fatigue", "soreness", "stress", "injury"))
+    return {"coros": bool((row.get("coros") or {}).get("hrv")),
+            "icu": bool(row.get("icu_watch") or gefuehl)}
 
 
 def get_wellness(oldest: str, newest: str) -> list[dict]:

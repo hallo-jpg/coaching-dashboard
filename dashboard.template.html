@@ -561,7 +561,13 @@
 <div class="two-col-grid" style="align-items:stretch">
 
   <!-- READINESS -->
-  <div class="readiness-card">
+  <div class="readiness-card" style="position:relative">
+    <!-- Datenquellen heute: grün = für heute geliefert, rot = fehlt noch -->
+    <div style="position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;align-items:stretch">
+      {% for label, live in [('COROS', sources.coros), ('intervals', sources.icu)] %}
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:{% if live %}var(--green-mark){% else %}var(--red-mark){% endif %}">{{ label }}</span>
+      {% endfor %}
+    </div>
     <div class="chard"><div class="chard-icon">{{ ico('heart') }}</div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
@@ -578,18 +584,6 @@
       ⏳ Uhr noch nicht synchronisiert – Werte folgen
     </div>
     {% endif %}
-
-    <!-- Datenquellen heute: COROS (Routine 8:50) · intervals.icu (Uhr-Sync) · Gefühl (Eintrag in icu) -->
-    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
-      {% for label, val, title in [
-          ('COROS', sources.coros, 'Uhrdaten direkt von COROS (Routine)'),
-          ('intervals', sources.icu, 'Uhrdaten in intervals.icu angekommen'),
-          ('Gefühl', '✓' if sources.gefuehl else None, 'Gefühl in intervals.icu eingetragen')] %}
-      <span title="{{ title }}" style="font-size:0.58rem;font-weight:700;padding:2px 8px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:{% if val %}var(--green){% else %}var(--muted){% endif %}">
-        {% if val %}●{% else %}○{% endif %} {{ label }}{% if val and val != '✓' %} {{ val }}{% endif %}
-      </span>
-      {% endfor %}
-    </div>
 
     {% if has_subjektiv %}
     <div style="display:flex;gap:8px;margin-bottom:12px">
