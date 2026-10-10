@@ -438,15 +438,18 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="96.8"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--muted)">–</span>
+        <span class="ring-num" style="color:#a4540b">72</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
+      
+      <div class="ring-status-tag">🟡 Normal trainieren</div>
+      <div class="ring-status-sub">HRV unter Schnitt · Puls erhöht</div>
       
     </div>
   </div>
@@ -539,14 +542,11 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:var(--muted)">–</div>
+      <div class="readiness-score" style="color:#a4540b">72</div>
+      <div class="readiness-tag" style="color:#a4540b">🟡 Normal trainieren</div>
       
     </div>
 
-    
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:var(--muted);text-align:center;margin-bottom:10px">
-      ⏳ Uhr noch nicht synchronisiert – Werte folgen
-    </div>
     
 
     
@@ -564,21 +564,21 @@
     </div>
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--orange);border-color:var(--orange);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--orange) 35%,transparent)">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">46 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
-        <div class="rbar-lbl">Normalber. 47–57 ms</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--orange);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Reduziert</div>
+        <div class="rbar-lbl">Normalber. 47–56 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">0.0h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">8.7h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
@@ -591,9 +591,9 @@
         </div>
         
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">56 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
@@ -1592,10 +1592,10 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,7.5 L10.0,15.3 L20.0,8.3 L30.0,19.1 L40.0,9.6 L50.0,18.8 L60.0,12.3 L70.0,25.2 L80.0,26.9 L90.0,11.7 L100.0,11.1 L110.0,11.9 L120.0,4.0 L130.0,12.3 L140.0,4.0 L150.0,7.9 L160.0,10.5 L170.0,18.9 L180.0,6.1 L190.0,24.5 L200.0,11.2 L210.0,22.7 L220.0,23.2 L230.0,21.7 L240.0,12.7 L250.0,14.9 L260.0,12.8 L270.0,18.8 L280.0,21.7 L290.0,20.5 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,7.5 L10.0,15.3 L20.0,8.3 L30.0,19.1 L40.0,9.6 L50.0,18.8 L60.0,12.3 L70.0,25.2 L80.0,26.9 L90.0,11.7 L100.0,11.1 L110.0,11.9 L120.0,4.0 L130.0,12.3 L140.0,4.0 L150.0,7.9 L160.0,10.5 L170.0,18.9 L180.0,6.1 L190.0,24.5 L200.0,11.2 L210.0,22.7 L220.0,23.2 L230.0,21.7 L240.0,12.7 L250.0,14.9 L260.0,12.8 L270.0,18.8 L280.0,21.7 L290.0,20.5" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="20.5" r="3" fill="#57504c"/>
-        <circle cx="300" cy="20.5" r="5" fill="#57504c" opacity="0.2"/>
+        <path d="M0.0,7.5 L10.0,15.3 L20.0,8.3 L30.0,19.1 L40.0,9.6 L50.0,18.8 L60.0,12.3 L70.0,25.2 L80.0,26.9 L90.0,11.7 L100.0,11.1 L110.0,11.9 L120.0,4.0 L130.0,12.3 L140.0,4.0 L150.0,7.9 L160.0,10.5 L170.0,18.9 L180.0,6.1 L190.0,24.5 L200.0,11.2 L210.0,22.7 L220.0,23.2 L230.0,21.7 L240.0,12.7 L250.0,14.9 L260.0,12.8 L270.0,18.8 L280.0,21.7 L290.0,20.5 L300.0,10.3 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,7.5 L10.0,15.3 L20.0,8.3 L30.0,19.1 L40.0,9.6 L50.0,18.8 L60.0,12.3 L70.0,25.2 L80.0,26.9 L90.0,11.7 L100.0,11.1 L110.0,11.9 L120.0,4.0 L130.0,12.3 L140.0,4.0 L150.0,7.9 L160.0,10.5 L170.0,18.9 L180.0,6.1 L190.0,24.5 L200.0,11.2 L210.0,22.7 L220.0,23.2 L230.0,21.7 L240.0,12.7 L250.0,14.9 L260.0,12.8 L270.0,18.8 L280.0,21.7 L290.0,20.5 L300.0,10.3" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="10.3" r="3" fill="#57504c"/>
+        <circle cx="300" cy="10.3" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
         <text x="296" y="13" font-size="7" fill="#8b837e" opacity="0.8" text-anchor="end">8h</text>
       </svg>
@@ -1605,13 +1605,13 @@
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
         <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">
-          7.4h
+          8.7h
         </div>
         <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.1h</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.2h</div>
         <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
       </div>
     </div>
@@ -1856,6 +1856,9 @@
         <rect x="281.5" y="36.8" width="7.0" height="43.2" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
+        <rect x="291.5" y="59.4" width="7.0" height="20.6" rx="1"
+              fill="#8b837e" opacity="0.45"/>
+        
         <line x1="0" y1="48.0" x2="300" y2="48.0" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
       </svg>
       <span style="position:absolute;right:0;top:calc(60.0% - 12px);font-size:0.55rem;color:var(--muted)">10k</span>
@@ -1875,16 +1878,16 @@
     </div>
     <div style="display:flex;align-items:center;gap:8px">
       <div>
-        <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">13.502</div>
-        <div style="font-size:0.6rem;color:var(--muted)">Gestern · Schritte</div>
+        <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">6.441</div>
+        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schritte</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--text)">Ø 19.207</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text)">Ø 17.383</div>
         <div style="font-size:0.6rem;color:var(--muted)">7 Tage</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--muted)">Ø 8.642</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--muted)">Ø 8.569</div>
         <div style="font-size:0.6rem;color:var(--muted)">30 Tage</div>
       </div>
     </div>
@@ -2275,14 +2278,14 @@
   
 
   
-  var stPts = [{"x":1.7,"d":"11.09.26","v":3572},{"x":5.0,"d":"12.09.26","v":5310},{"x":8.3,"d":"13.09.26","v":3344},{"x":11.7,"d":"14.09.26","v":8853},{"x":15.0,"d":"15.09.26","v":4337},{"x":18.3,"d":"16.09.26","v":4108},{"x":21.7,"d":"17.09.26","v":3882},{"x":25.0,"d":"18.09.26","v":1782},{"x":28.3,"d":"19.09.26","v":13044},{"x":31.7,"d":"20.09.26","v":18009},{"x":35.0,"d":"21.09.26","v":6558},{"x":38.3,"d":"22.09.26","v":7030},{"x":41.7,"d":"23.09.26","v":4819},{"x":45.0,"d":"24.09.26","v":5509},{"x":48.3,"d":"25.09.26","v":8692},{"x":51.7,"d":"26.09.26","v":6068},{"x":55.0,"d":"27.09.26","v":8110},{"x":58.3,"d":"28.09.26","v":8258},{"x":61.7,"d":"29.09.26","v":2398},{"x":65.0,"d":"30.09.26","v":1833},{"x":68.3,"d":"01.10.26","v":2118},{"x":71.7,"d":"02.10.26","v":2116},{"x":75.0,"d":"03.10.26","v":5635},{"x":78.3,"d":"04.10.26","v":24094},{"x":81.7,"d":"05.10.26","v":19840},{"x":85.0,"d":"06.10.26","v":23505},{"x":88.3,"d":"07.10.26","v":15176},{"x":91.7,"d":"08.10.26","v":19124},{"x":95.0,"d":"09.10.26","v":13502}];
+  var stPts = [{"x":1.7,"d":"11.09.26","v":3572},{"x":5.0,"d":"12.09.26","v":5310},{"x":8.3,"d":"13.09.26","v":3344},{"x":11.7,"d":"14.09.26","v":8853},{"x":15.0,"d":"15.09.26","v":4337},{"x":18.3,"d":"16.09.26","v":4108},{"x":21.7,"d":"17.09.26","v":3882},{"x":25.0,"d":"18.09.26","v":1782},{"x":28.3,"d":"19.09.26","v":13044},{"x":31.7,"d":"20.09.26","v":18009},{"x":35.0,"d":"21.09.26","v":6558},{"x":38.3,"d":"22.09.26","v":7030},{"x":41.7,"d":"23.09.26","v":4819},{"x":45.0,"d":"24.09.26","v":5509},{"x":48.3,"d":"25.09.26","v":8692},{"x":51.7,"d":"26.09.26","v":6068},{"x":55.0,"d":"27.09.26","v":8110},{"x":58.3,"d":"28.09.26","v":8258},{"x":61.7,"d":"29.09.26","v":2398},{"x":65.0,"d":"30.09.26","v":1833},{"x":68.3,"d":"01.10.26","v":2118},{"x":71.7,"d":"02.10.26","v":2116},{"x":75.0,"d":"03.10.26","v":5635},{"x":78.3,"d":"04.10.26","v":24094},{"x":81.7,"d":"05.10.26","v":19840},{"x":85.0,"d":"06.10.26","v":23505},{"x":88.3,"d":"07.10.26","v":15176},{"x":91.7,"d":"08.10.26","v":19124},{"x":95.0,"d":"09.10.26","v":13502},{"x":98.3,"d":"10.10.26","v":6441}];
   bindChartHover('st-wrap','st-ch','st-tt', stPts, '#d1450f', function(p){
     return p.v.toLocaleString('de-DE') + ' Schritte';
   });
   
 
   
-  var slPts = [{"x":0.0,"d":"10.09.26","v":9.1},{"x":3.3,"d":"11.09.26","v":8.1},{"x":6.7,"d":"12.09.26","v":9.0},{"x":10.0,"d":"13.09.26","v":7.6},{"x":13.3,"d":"14.09.26","v":8.8},{"x":16.7,"d":"15.09.26","v":7.7},{"x":20.0,"d":"16.09.26","v":8.5},{"x":23.3,"d":"17.09.26","v":6.8},{"x":26.7,"d":"18.09.26","v":6.6},{"x":30.0,"d":"19.09.26","v":8.5},{"x":33.3,"d":"20.09.26","v":8.6},{"x":36.7,"d":"21.09.26","v":8.5},{"x":40.0,"d":"22.09.26","v":9.5},{"x":43.3,"d":"23.09.26","v":8.5},{"x":46.7,"d":"24.09.26","v":9.5},{"x":50.0,"d":"25.09.26","v":9.0},{"x":53.3,"d":"26.09.26","v":8.7},{"x":56.7,"d":"27.09.26","v":7.6},{"x":60.0,"d":"28.09.26","v":9.2},{"x":63.3,"d":"29.09.26","v":6.9},{"x":66.7,"d":"30.09.26","v":8.6},{"x":70.0,"d":"01.10.26","v":7.2},{"x":73.3,"d":"02.10.26","v":7.1},{"x":76.7,"d":"03.10.26","v":7.3},{"x":80.0,"d":"04.10.26","v":8.4},{"x":83.3,"d":"05.10.26","v":8.1},{"x":86.7,"d":"06.10.26","v":8.4},{"x":90.0,"d":"07.10.26","v":7.7},{"x":93.3,"d":"08.10.26","v":7.3},{"x":96.7,"d":"09.10.26","v":7.4}];
+  var slPts = [{"x":0.0,"d":"10.09.26","v":9.1},{"x":3.3,"d":"11.09.26","v":8.1},{"x":6.7,"d":"12.09.26","v":9.0},{"x":10.0,"d":"13.09.26","v":7.6},{"x":13.3,"d":"14.09.26","v":8.8},{"x":16.7,"d":"15.09.26","v":7.7},{"x":20.0,"d":"16.09.26","v":8.5},{"x":23.3,"d":"17.09.26","v":6.8},{"x":26.7,"d":"18.09.26","v":6.6},{"x":30.0,"d":"19.09.26","v":8.5},{"x":33.3,"d":"20.09.26","v":8.6},{"x":36.7,"d":"21.09.26","v":8.5},{"x":40.0,"d":"22.09.26","v":9.5},{"x":43.3,"d":"23.09.26","v":8.5},{"x":46.7,"d":"24.09.26","v":9.5},{"x":50.0,"d":"25.09.26","v":9.0},{"x":53.3,"d":"26.09.26","v":8.7},{"x":56.7,"d":"27.09.26","v":7.6},{"x":60.0,"d":"28.09.26","v":9.2},{"x":63.3,"d":"29.09.26","v":6.9},{"x":66.7,"d":"30.09.26","v":8.6},{"x":70.0,"d":"01.10.26","v":7.2},{"x":73.3,"d":"02.10.26","v":7.1},{"x":76.7,"d":"03.10.26","v":7.3},{"x":80.0,"d":"04.10.26","v":8.4},{"x":83.3,"d":"05.10.26","v":8.1},{"x":86.7,"d":"06.10.26","v":8.4},{"x":90.0,"d":"07.10.26","v":7.7},{"x":93.3,"d":"08.10.26","v":7.3},{"x":96.7,"d":"09.10.26","v":7.4},{"x":100.0,"d":"10.10.26","v":8.7}];
   bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
