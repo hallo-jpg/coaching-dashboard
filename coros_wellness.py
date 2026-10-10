@@ -15,6 +15,7 @@ import json
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 DATA_FILE = Path(__file__).parent / "data" / "coros_wellness.json"
 KEEP_DAYS = 120
@@ -138,7 +139,8 @@ def merge(store: dict, overview: dict, hrv_days: dict, points: list, *extra: dic
     fetched = datetime.now(timezone.utc).isoformat(timespec="seconds")
     for source in (overview, hrv_days, *extra):
         for d, vals in source.items():
-            days.setdefault(d, {}).update(vals, fetched=fetched)
+            if vals:   # „not available yet" → keinen leeren Tag anlegen
+                days.setdefault(d, {}).update(vals, fetched=fetched)
     for day in days.values():
         day.update(night_split(day, points))
     cutoff = (datetime.now() - timedelta(days=KEEP_DAYS)).date().isoformat()
@@ -154,7 +156,17 @@ def main() -> None:
     ap.add_argument("--rhr", help="Ausgabe von queryRestingHeartRate")
     ap.add_argument("--daily", help="Ausgabe von queryDailyHealthData")
     ap.add_argument("--out", default=str(DATA_FILE))
+    ap.add_argument("--has-today", action="store_true",
+                    help="nur prüfen: Exit 0, wenn die heutige Nacht (HRV) schon gespeichert ist, sonst 1")
     args = ap.parse_args()
+
+    if args.has_today:
+        out = Path(args.out)
+        today = datetime.now(ZoneInfo("Europe/Berlin")).date().isoformat()
+        days = json.loads(out.read_text()).get("days", {}) if out.exists() else {}
+        has = bool(days.get(today, {}).get("hrv"))
+        print(f"{today}: {'vorhanden' if has else 'fehlt'}")
+        raise SystemExit(0 if has else 1)
 
     overview = parse_overview(_read(args.overview)) if args.overview else {}
     hrv_days, points = parse_hrv(_read(args.hrv)) if args.hrv else ({}, [])
