@@ -71,7 +71,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 | **Rebuild** | alle 30 min via GitHub Actions, bei Push auf `planung/`, `athlete/`, Generator + manuell triggerbar |
 | **Generator** | `generate.py` + `dashboard.template.html` → `docs/dashboard.html` |
 | **Datenquellen** | **Uhrdaten von COROS** (`data/coros_wellness.json`): HRV, Ruhepuls, echte Schlafzeit + Phasen + HRV-Nachtkurve, Schritte · **intervals.icu** nur noch: Gefühl (Ermüdung, Muskelkater, Stress, Verletzung, Schlafqualität), Gewicht, CTL/ATL/TSB, Activities, Power-/Pace-Curves · Wochenplan aus `planung/kw[N].md` |
-| **COROS-Routine** | täglich 8:50 (Berlin) holt eine Claude-Routine Schlaf, Schlaf-HRV, Ruhepuls, Tageswerte per COROS-MCP → `python3 coros_wellness.py` → Commit auf `main`. Fehlt ein COROS-Wert, gilt der intervals.icu-Wert |
+| **COROS-Routine** | stündlich 8:50–13:50 (Berlin), bis die heutige Nacht da ist (`coros_wellness.py --has-today`), holt eine Claude-Routine Schlaf, Schlaf-HRV, Ruhepuls, Tageswerte per COROS-MCP → `python3 coros_wellness.py` → Commit auf `main`. Fehlt ein COROS-Wert, gilt der intervals.icu-Wert |
 
 **Karten im Dashboard (alle auto-generiert):**
 - Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), Wochenziel-Ring (TSS-Compliance)
