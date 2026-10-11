@@ -292,6 +292,9 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 - **Strides/Antritte** über die Description-Route (`- 20s 120% Pace` gültig). Nie auf 60s strecken.
 - **Distanzen:** `m` heißt in intervals.icu **Minuten** → Distanz immer in km (`0.4km`) bzw. `distance_m`.
   Freitext nie mit `- ` beginnen (wird als Schritt geparst) → `·` benutzen.
+- **Wiederholungsblock (`6x`) braucht eine Leerzeile davor und danach** – sonst hängt intervals.icu das
+  `6x` als Text an den vorherigen Schritt und die Intervalle laufen nur 1× (KW42 Mi Steigerungen, 11.10.2026).
+  Nach dem Anlegen `workout_doc.steps` auf `reps` prüfen.
 - `pace_pct` = % der Schwellen*geschwindigkeit*, **388 s/km (6:28) = 100%**: 75–87% = 8:40–7:25 (Easy),
   105% = 6:10, 119% = 5:25.
 - Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.

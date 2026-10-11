@@ -11,6 +11,7 @@
 **Stefan:** So 18.10. kein Training (Biathlon zuschauen) · Wetter schlecht → Rad indoor, Laufen auch bei Regen · sonst frei.
 **Daten:** Readiness 72 🟡 (seit 7.10. 72–78, HRV-Delle London 44–49, heute 52 = Normalbereich, RP +0,1, Gefühl 1/4) · CTL 28,3 · ATL 35,9 · TSB −7,6 · ACWR 1,27 · Gewicht 30d 93,7 (kein Update). Kein Deload-Signal; Delle passt zu Reise + viel Gehen.
 **KW42:** Mo Easy 35 + Kraft A · **Di SwSp 3×10 @ 267W** (🎯, SwSp_3x10.zwo) · Mi Easy 40 + 6 Steigerungen · Do Ruhetag · **Fr Easy 45 Kadenz** (🎯, längster Lauf) + Kraft B · **Sa LIT 2h15** (🎯, Rolle) · So frei. Lauf ~16 km bei Grenze 16,5. Der So-Lauf aus dem Vorentwurf entfällt ersatzlos, Sa bleibt bei 2h15 (nicht verlängert, kein Nachholen).
+**Nachtrag:** Mi-Steigerungen liefen nur 1× (fehlende Leerzeile vor `6x`), per API korrigiert → 6×20s, 40min. Regel in COACH_MEMORY.
 **TSS:** ICU-Load 294 statt 241 (Saisonplan). Grund: SwSp_3x10 hat 34min Ein-/Ausfahren → ICU 81 statt geschätzt 65; Läufe bewertet ICU höher als die rTSS-Tabelle (35min 38, 45min 49). Volumen in Stunden ~5h45 + Kraft – im Rahmen der Rampe.
 intervals.icu: 143497069 (Mo Lauf) · 143497072 (Kraft A) · 143497075 (SwSp + Fueling) · 143497181 (Mi, Description-Route) · 143497186 (Fr Lauf) · 143497187 (Kraft B) · 143497280 (Sa LIT, Description-Route + Fueling). KW40 ohne Retro mit archiviert, Stub KW45 angelegt.
 
