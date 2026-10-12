@@ -750,8 +750,9 @@ function computeReadiness(history) {
   if (hrvBase.length >= 5 && hrv7.length) {
     const mean = _avg(hrvBase), sd = Math.max(_stdDev(hrvBase), 1);
     const avg7 = _avg(hrv7);
-    // Ein 7-Tage-Schnitt schwankt nur etwa halb so stark wie ein Einzelwert
-    const trend = tierHrv((avg7 - mean) / (sd / 2));
+    // 7-Tage-Schnitt gegen den vollen Normalbereich (wie COROS) – ein auf SD/2
+    // geschärfter Trend machte Werte im COROS-Normalbereich zu 30 Punkten
+    const trend = tierHrv((avg7 - mean) / sd);
     if (today.hrv) {
       hrvDiffSDs = (today.hrv - mean) / sd;
       parts.hrv = Math.round(0.7 * trend + 0.3 * tierHrv(hrvDiffSDs));
@@ -769,7 +770,7 @@ function computeReadiness(history) {
   details.ruhepuls = "Keine Ruhepuls-Daten / zu wenig Baseline";
   if (rhrBase.length >= 5 && rhr7.length) {
     const mean = _avg(rhrBase), avg7 = _avg(rhr7);
-    const trend = tierRhr((avg7 - mean) * 2);
+    const trend = tierRhr(avg7 - mean);
     if (today.restingHR) {
       hrDiff = today.restingHR - mean;
       parts.ruhepuls = Math.round(0.7 * trend + 0.3 * tierRhr(hrDiff));

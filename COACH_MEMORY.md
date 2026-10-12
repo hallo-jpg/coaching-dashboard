@@ -45,7 +45,9 @@ absichern (Split + HF bei Halbdistanz). Gate-Schwellen aus Wettkampf-HF ableiten
 
 ### 📊 Readiness-Score (Modell seit 23.9.2026, Stefans Wunsch)
 HRV 35 % · Gefühl 25 % · Ruhepuls 20 % · Schlaf 20 %. HRV und RP jeweils **70 % 7-Tage-Schnitt vs.
-30-Tage-Normalbereich + 30 % heute**, Schlaf = heute + 3-Nächte-Ø. **TSB zählt nicht** (steht im
+30-Tage-Normalbereich + 30 % heute**, Schlaf = heute + 3-Nächte-Ø. Der 7-Tage-Trend wird gegen die **volle**
+SD (HRV) bzw. die echte bpm-Differenz (RP) bewertet – seit 12.10. nicht mehr verschärft (SD/2 bzw. ×2), weil
+Werte im COROS-Normalbereich sonst nur 30–35 Punkte bekamen. **TSB zählt nicht** (steht im
 Trainingsform-Ring). Warnsignal → Score max. 45 🔴: HRV < −2,5 SD (≈ unter 33) oder RP > +7 bpm über 30-Tage-Ø.
 Identische Formel in `generate.py` und MCP `get_readiness_score`.
 Grund: Stefans HRV/RP schwanken stark (HRV ±7 ms); das alte Tagesmodell mit TSB zeigte nach jedem Lastblock

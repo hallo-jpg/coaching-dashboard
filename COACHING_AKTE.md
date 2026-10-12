@@ -1,8 +1,12 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 11. Oktober 2026*
+*Letzte Aktualisierung: 12. Oktober 2026*
 
 ---
+
+## 12. Oktober 2026 – Readiness-Formel entschärft
+
+Stefan: Readiness „seit der Umstellung bodenlos“. Nachgerechnet: COROS-Umstellung ändert praktisch nichts (HRV/RP identisch mit icu, nur Schlaf = echte Schlafzeit, ≤2 Punkte). Ursache war der 7-Tage-Trend: HRV gegen SD/2, RP-Differenz ×2 → HRV-7d-Ø 48,7 bei Normal 47–57 (COROS „Normal“) ergab 30 Punkte. Jetzt volle SD bzw. echte bpm-Differenz (`generate.py` + MCP `computeReadiness`). Effekt 12.10.: **67 → 79**, 8.–10.10.: 72–74 → 76–77. Warn-Cap (HRV < −2,5 SD, RP > +7) unverändert.
 
 ## 11. Oktober 2026 – KW41 Retro + KW42 geplant
 

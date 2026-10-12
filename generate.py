@@ -243,8 +243,9 @@ def readiness_breakdown(history: list[dict]) -> dict:
     hrv_7    = [w["hrv"] for w in last7 if w.get("hrv")]
     if len(hrv_base) >= 5 and hrv_7:
         mean, sd = _avg(hrv_base), max(_std_dev(hrv_base), 1)
-        # Ein 7-Tage-Schnitt schwankt nur etwa halb so stark wie ein Einzelwert
-        trend = _tier_hrv((_avg(hrv_7) - mean) / (sd / 2))
+        # 7-Tage-Schnitt gegen den vollen Normalbereich (wie COROS) – ein auf SD/2
+        # geschärfter Trend machte Werte im COROS-Normalbereich zu 30 Punkten
+        trend = _tier_hrv((_avg(hrv_7) - mean) / sd)
         if today.get("hrv"):
             z_today = (today["hrv"] - mean) / sd
             parts["hrv"] = _round(0.7 * trend + 0.3 * _tier_hrv(z_today))
@@ -258,7 +259,7 @@ def readiness_breakdown(history: list[dict]) -> dict:
     rhr_7    = [w["restingHR"] for w in last7 if w.get("restingHR")]
     if len(rhr_base) >= 5 and rhr_7:
         mean  = _avg(rhr_base)
-        trend = _tier_rhr((_avg(rhr_7) - mean) * 2)
+        trend = _tier_rhr(_avg(rhr_7) - mean)
         if today.get("restingHR"):
             d_today = today["restingHR"] - mean
             parts["ruhepuls"] = _round(0.7 * trend + 0.3 * _tier_rhr(d_today))
