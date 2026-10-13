@@ -456,8 +456,6 @@ def apply_coros(wellness: list[dict], days: dict) -> list[dict]:
     Schritte: der höhere Wert – der heutige Tag ist um 8:50 bei COROS erst angezählt.
     """
     for w in wellness:
-        # Für die Quellen-Anzeige: hatte intervals.icu schon eigene Uhrdaten für den Tag?
-        w["icu_watch"] = bool(w.get("hrv") or w.get("restingHR") or w.get("sleepSecs"))
         day = days.get(w.get("id", "")[:10])
         if not day:
             continue
@@ -494,11 +492,15 @@ def coros_sleep_summary(night: dict | None) -> dict | None:
 
 
 def sync_status(today_row: dict | None) -> dict:
-    """Haben COROS bzw. intervals.icu (Uhrdaten oder Gefühl) für heute schon geliefert?"""
+    """Haben COROS (Uhrdaten) bzw. intervals.icu (Gefühl) für heute schon geliefert?
+
+    intervals zählt nur mit eingetragenem Gefühl – Uhrdaten synct COROS automatisch nach icu,
+    die sagen nichts darüber, ob Stefan seine Werte schon eingetragen hat.
+    """
     row = today_row or {}
     gefuehl = any(row.get(k) is not None for k in ("fatigue", "soreness", "stress", "injury"))
     return {"coros": bool((row.get("coros") or {}).get("hrv")),
-            "icu": bool(row.get("icu_watch") or gefuehl)}
+            "icu": gefuehl}
 
 
 def get_wellness(oldest: str, newest: str) -> list[dict]:

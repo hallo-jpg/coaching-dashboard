@@ -81,6 +81,6 @@ def test_sync_status_chips():
             {"id": "2026-10-07", "hrv": None, "fatigue": 1}]
     apply_coros(rows, days)
     assert sync_status(rows[0]) == {"coros": True, "icu": False}   # icu hatte noch nichts
-    assert sync_status(rows[1]) == {"coros": True, "icu": True}
+    assert sync_status(rows[1]) == {"coros": True, "icu": False}   # Uhrdaten in icu ≠ Gefühl eingetragen
     assert sync_status(rows[2])["icu"] is True                      # Gefühl zählt als intervals
     assert sync_status(None) == {"coros": False, "icu": False}
