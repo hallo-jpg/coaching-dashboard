@@ -1,6 +1,6 @@
 import pytest
 from datetime import date, timedelta
-from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation, calc_monotony_strain, calc_ramprate, project_pmc, calc_subjective
+from generate import calc_ring_offset, calc_readiness, week_date_range, fmt_tsb_color, parse_kw_plan, match_activities, build_day_rows, _calc_polarisation, calc_ramprate, project_pmc, calc_subjective
 from unittest.mock import patch
 
 
@@ -23,7 +23,7 @@ def test_build_context_keys(mock_act, mock_well):
         "tss_ist", "tss_plan", "days", "sparkline", "outlook",
         "phases", "polar_z12_pct", "polar_z3_pct", "polar_z5_pct", "polar_z67_pct",
         "biometrics_pending",
-        "monotony_val", "monotony_strain", "monotony_color",
+        "fitness_chart",
         "ramprate", "ramprate_color",
         "countdown_main", "countdown_secondary",
     ]
@@ -450,32 +450,45 @@ def test_build_day_rows_bonus_rest_day():
     assert mi["tss_primary"] == 0
 
 
-# ── M1: calc_monotony_strain ─────────────────────────────────────────────────
+# ── Fitness & Form (CTL/ATL/TSB + Prognose) ─────────────────────────────────
 
-def test_calc_monotony_strain_varied():
-    daily = [100, 0, 80, 0, 90, 120, 60]
-    result = calc_monotony_strain(daily)
-    assert result["monotony"] < 1.5, f"Expected monotony < 1.5 for varied week, got {result['monotony']}"
-    assert result["strain"] == round(sum(daily) * result["monotony"])
-
-
-def test_calc_monotony_strain_uniform():
-    daily = [80, 80, 80, 80, 80, 80, 80]
-    result = calc_monotony_strain(daily)
-    assert result["monotony"] > 2.0, f"Expected high monotony for uniform week, got {result['monotony']}"
+def test_tsb_zone_boundaries():
+    from generate import tsb_zone
+    assert tsb_zone(26) == "Übergang"
+    assert tsb_zone(5) == "Frisch"
+    assert tsb_zone(0) == "Grauzone"
+    assert tsb_zone(-10) == "Grauzone"
+    assert tsb_zone(-10.5) == "Optimal"
+    assert tsb_zone(-14.8) == "Optimal"
+    assert tsb_zone(-31) == "Hohes Risiko"
 
 
-def test_calc_monotony_strain_rest_lowers_monotony():
-    with_rest = calc_monotony_strain([80, 0, 80, 80, 80, 80, 80])
-    uniform   = calc_monotony_strain([80, 80, 80, 80, 80, 80, 80])
-    assert with_rest["monotony"] < uniform["monotony"]
+def test_build_fitness_chart_projection_matches_icu_formula():
+    from generate import build_fitness_chart
+    start = date(2026, 10, 1)
+    hist = [(start + timedelta(days=i), 30.0, 41.0) for i in range(14)]
+    today = hist[-1][0]
+    plan = {(today + timedelta(days=1)).isoformat(): 100}
+    fc = build_fitness_chart(hist, plan, today + timedelta(days=2))
+    assert fc["available"]
+    exp_ctl = 30 + (100 - 30) / 42
+    exp_atl = 41 + (100 - 41) / 7
+    exp_ctl, exp_atl = exp_ctl - exp_ctl / 42, exp_atl - exp_atl / 7   # Ruhetag danach
+    assert fc["ctl_end"] == round(exp_ctl)
+    assert fc["tsb_end"] == round(exp_ctl - exp_atl)
+    assert fc["tsb_now"] == -11 and fc["zone_now"] == "Optimal"
+    proj = [p for p in fc["pts"] if p["p"]]
+    assert len(proj) == 2 and fc["pts"][-1]["x"] == 100.0
+    assert fc["ctl_proj"].startswith("M") and fc["today_pct"] < 100
 
 
-def test_calc_monotony_strain_zero_week():
-    result = calc_monotony_strain([0, 0, 0, 0, 0, 0, 0])
-    assert result["monotony"] == 0.0
-    assert result["strain"] == 0
-
+def test_build_fitness_chart_without_plan_and_empty():
+    from generate import build_fitness_chart
+    assert build_fitness_chart([], {}, date(2026, 10, 20)) == {"available": False}
+    hist = [(date(2026, 10, 1), 20.0, 20.0), (date(2026, 10, 2), 21.0, 25.0)]
+    fc = build_fitness_chart(hist, {}, date(2026, 10, 2))
+    assert fc["ctl_proj"] == "" and fc["today_pct"] == 100.0
+    assert len(fc["bands"]) == 5 and abs(sum(b["h"] for b in fc["bands"]) - fc["tsb_h"]) < 0.05
 
 # ── M2: calc_ramprate ────────────────────────────────────────────────────────
 

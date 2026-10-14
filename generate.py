@@ -39,20 +39,6 @@ def _std_dev(values: list) -> float:
     return (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
 
 
-def calc_monotony_strain(daily_tss: list[float]) -> dict:
-    """Training Monotony + Strain (Foster et al. 2001).
-    Monotony = mean/std; Strain = sum × monotony. High monotony (>2) = overtraining risk."""
-    n = len(daily_tss) or 1
-    mean = sum(daily_tss) / n
-    std = _std_dev(daily_tss) if len(daily_tss) >= 2 else 0.01
-    monotony = round(mean / max(std, 0.01), 2)
-    strain = int(sum(daily_tss) * monotony)
-    if mean == 0:
-        monotony = 0.0
-        strain = 0
-    return {"monotony": monotony, "strain": strain}
-
-
 def calc_ramprate(wellness_history: list[dict]) -> float:
     """ATL change over last 7 days. >7 = elevated, >10 = too fast (injury risk)."""
     atl_entries = [(w["id"][:10], w["atl"]) for w in wellness_history if w.get("atl") and w.get("id")]
@@ -1367,22 +1353,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
     polar_8w = _calc_polarisation(polar_8w_acts)
     polar_donut_svg = _polar_donut_svg(polar_8w)
 
-    # M1: Training Monotony + Strain (last 7 days)
-    _daily_tss_map: dict[str, float] = {}
-    for _act in polar_acts:
-        _d = _act.get("start_date_local", "")[:10]
-        _daily_tss_map[_d] = _daily_tss_map.get(_d, 0) + float(_act.get("icu_training_load") or 0)
-    _tss_7days = [
-        _daily_tss_map.get((date.today() - timedelta(days=6 - i)).isoformat(), 0.0)
-        for i in range(7)
-    ]
-    monotony_data = calc_monotony_strain(_tss_7days)
-    monotony_val      = monotony_data["monotony"]
-    monotony_strain   = monotony_data["strain"]
-    monotony_color    = ("var(--green)" if monotony_val < 1.5
-                         else "var(--yellow)" if monotony_val < 2.0
-                         else "var(--accent)")
-
     # M2: ATL Ramprate (from wellness_30 ATL history)
     ramprate = calc_ramprate(wellness_30)
     ramprate_color = ("var(--accent)"  if ramprate > 10
@@ -1409,7 +1379,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         else f"{monday.day}. {MONTH_DE[monday.month]}–{sunday.day}. {MONTH_DE[sunday.month]} {monday.year}"
     )
 
-    ctl_history = get_ctl_history(weeks=26)
+    fitness_chart = get_fitness_chart(kw, monday)
     sleep_history = get_sleep_history(days=30)
     steps_history = get_steps_history(days=30)
     tss_weeks, tss_summary = get_tss_overview_history(current_kw=kw, num_weeks=8)
@@ -1455,7 +1425,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "zone_data": get_zone_data(),
         "power_bests": get_power_bests(),
         "pace_bests": get_pace_bests(),
-        "ctl_history": ctl_history,
+        "fitness_chart": fitness_chart,
         "sleep_history": sleep_history,
         "sleep_coros": sleep_coros,
         "sources": sources,
@@ -1468,10 +1438,6 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "hf160": get_hf160_trend(),
         "polar_donut_svg": polar_donut_svg,
         "ftp_history": ftp_history,
-        "monotony_val":    monotony_val,
-        "monotony_strain": monotony_strain,
-        "monotony_color":  monotony_color,
-        "tss_7days":       _tss_7days,
         "ramprate":        ramprate,
         "ramprate_color":  ramprate_color,
         "ramprate_icon":   ramprate_icon,
@@ -1841,55 +1807,118 @@ def get_hf160_trend(days: int = 180) -> dict:
     }
 
 
-def get_ctl_history(weeks: int = 26) -> dict:
-    """6-month CTL line for SVG. Returns path strings + current CTL + month labels."""
-    end = date.today()
-    start = end - timedelta(weeks=weeks)
-    try:
-        wellness = get_wellness(start.isoformat(), end.isoformat())
-    except Exception:
-        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": [], "pts": []}
+TSB_ZONES = [  # (untere Grenze, Name, Farbe) – Zonen wie in intervals.icu
+    (25,   "Übergang",     "rgba(250,178,25,0.16)"),
+    (5,    "Frisch",       "rgba(70,120,190,0.12)"),
+    (-10,  "Grauzone",     "rgba(139,131,126,0.10)"),
+    (-30,  "Optimal",      "rgba(91,143,58,0.16)"),
+    (-999, "Hohes Risiko", "rgba(208,59,59,0.14)"),
+]
+_TSB_MIN, _TSB_MAX = -40, 30
 
-    points = [(w["id"][:10], w["ctl"]) for w in wellness if w.get("ctl") and w.get("id")]
-    if not points:
-        return {"path": "", "fill_path": "", "ctl_now": 0, "last_y": 40, "month_labels": [], "pts": []}
 
-    ctl_values = [v for _, v in points]
-    ctl_max = max(ctl_values) * 1.1
-    ctl_now = ctl_values[-1]
-    total_days = max((end - start).days, 1)
-    SVG_W, SVG_H = 300, 80
+def tsb_zone(tsb: float) -> str:
+    for lo, name, _ in TSB_ZONES:
+        if tsb >= lo:
+            return name
+    return TSB_ZONES[-1][1]
 
-    coords = []
-    pts = []
-    for d_str, ctl in points:
-        d = date.fromisoformat(d_str)
-        x = round((d - start).days / total_days * SVG_W, 1)
-        y = round(SVG_H - (ctl / ctl_max) * SVG_H, 1)
-        coords.append((x, y))
-        x_pct = round((d - start).days / total_days * 100, 1)
-        d_fmt = f"{d.day:02d}.{d.month:02d}.{str(d.year)[2:]}"
-        pts.append({"x": x_pct, "d": d_fmt, "v": round(ctl, 1)})
 
-    line_parts = [f"M{coords[0][0]},{coords[0][1]}"] + [f"L{x},{y}" for x, y in coords[1:]]
-    line_path = " ".join(line_parts)
-    fill_path = line_path + f" L{SVG_W},{SVG_H} L0,{SVG_H} Z"
+def build_fitness_chart(history: list[tuple], planned_by_day: dict, horizon: date) -> dict:
+    """Fitness/Ermuedung/Form-Chart wie in intervals.icu, plus Prognose aus dem Plan.
 
-    month_labels = []
-    cur = (start + timedelta(days=32)).replace(day=1)
+    history: [(date, ctl, atl), ...] aufsteigend, letzter Eintrag = heute.
+    planned_by_day: {"YYYY-MM-DD": load} fuer die Tage nach heute.
+    Prognose mit derselben Formel wie intervals.icu (CTL tau 42, ATL tau 7).
+    """
+    if not history:
+        return {"available": False}
+    today, ctl, atl = history[-1]
+    proj = []
+    d = today
+    while d < horizon:
+        d += timedelta(days=1)
+        load = planned_by_day.get(d.isoformat(), 0)
+        ctl += (load - ctl) / 42
+        atl += (load - atl) / 7
+        proj.append((d, ctl, atl))
+
+    start = history[0][0]
+    end = proj[-1][0] if proj else today
+    span = max((end - start).days, 1)
+    W, H, H2 = 300, 80, 44
+    ymax = max(max(c, a) for _, c, a in history + proj) * 1.08 or 1
+
+    def x(day):  return round((day - start).days / span * W, 2)
+    def y(v):    return round(H - v / ymax * H, 2)
+    def y2(v):   return round((_TSB_MAX - max(_TSB_MIN, min(_TSB_MAX, v))) / (_TSB_MAX - _TSB_MIN) * H2, 2)
+    def path(pts, f):
+        return "M" + " L".join(f"{x(p[0])},{f(p)}" for p in pts)
+
+    joined = [history[-1]] + proj
+    bands, uppers = [], [_TSB_MAX] + [lo for lo, _, _ in TSB_ZONES[:-1]]
+    for (lo, name, color), hi in zip(TSB_ZONES, uppers):
+        lo = max(lo, _TSB_MIN)
+        bands.append({"y": y2(hi), "h": round(y2(lo) - y2(hi), 2), "color": color, "name": name,
+                      "swatch": color.rsplit(",", 1)[0] + ",0.5)"})
+
+    months = []
+    cur = (start.replace(day=1) + timedelta(days=32)).replace(day=1)
     while cur <= end:
-        x_pct = round((cur - start).days / total_days * 100, 1)
-        month_labels.append({"label": _MONTHS_DE[cur.month - 1], "x_pct": x_pct})
+        months.append({"label": _MONTHS_DE[cur.month - 1], "x_pct": round((cur - start).days / span * 100, 1)})
         cur = (cur + timedelta(days=32)).replace(day=1)
 
+    def pt(day, c, a, is_proj):
+        return {"x": round((day - start).days / span * 100, 2), "d": f"{day.day:02d}.{day.month:02d}.",
+                "c": round(c, 1), "a": round(a, 1), "f": round(c - a, 1), "z": tsb_zone(c - a), "p": int(is_proj)}
+
+    ctl_now, atl_now = history[-1][1], history[-1][2]
+    end_ctl, end_atl = (proj[-1][1], proj[-1][2]) if proj else (ctl_now, atl_now)
     return {
-        "path": line_path,
-        "fill_path": fill_path,
-        "ctl_now": round(ctl_now, 1),
-        "last_y": coords[-1][1],
-        "month_labels": month_labels,
-        "pts": pts,
+        "available": True,
+        "ctl_now": round(ctl_now), "atl_now": round(atl_now),
+        "tsb_now": round(ctl_now - atl_now), "zone_now": tsb_zone(ctl_now - atl_now),
+        "ctl_end": round(end_ctl), "tsb_end": round(end_ctl - end_atl), "zone_end": tsb_zone(end_ctl - end_atl),
+        "end_label": f"{end.day}.{end.month}.",
+        "ctl_path": path(history, lambda p: y(p[1])),
+        "atl_path": path(history, lambda p: y(p[2])),
+        "ctl_fill": path(history, lambda p: y(p[1])) + f" L{x(today)},{H} L0,{H} Z",
+        "ctl_proj": path(joined, lambda p: y(p[1])) if proj else "",
+        "atl_proj": path(joined, lambda p: y(p[2])) if proj else "",
+        "tsb_path": path(history, lambda p: y2(p[1] - p[2])),
+        "tsb_proj": path(joined, lambda p: y2(p[1] - p[2])) if proj else "",
+        "tsb_zero_y": y2(0), "tsb_h": H2,
+        "today_x": x(today), "today_pct": round(x(today) / W * 100, 2),
+        "bands": bands, "month_labels": months,
+        "pts": [pt(*h, False) for h in history] + [pt(*p, True) for p in proj],
     }
+
+
+def get_fitness_chart(kw: int, monday: date, weeks: int = 26) -> dict:
+    """6 Monate CTL/ATL/TSB aus intervals.icu + Prognose bis Ende naechster Woche.
+
+    Geplante Load: intervals.icu-Workouts (icu_training_load), fuer Tage ohne
+    ICU-Workout die TSS-Schaetzung aus planung/kw[N].md.
+    """
+    today = date.today()
+    start = today - timedelta(weeks=weeks)
+    horizon = monday + timedelta(days=13)
+    try:
+        wellness = get_wellness(start.isoformat(), today.isoformat())
+    except Exception:
+        return {"available": False}
+    history = [(date.fromisoformat(w["id"][:10]), w["ctl"], w["atl"])
+               for w in wellness if w.get("id") and w.get("ctl") is not None and w.get("atl") is not None]
+
+    planned: dict[str, float] = {}
+    next_monday = monday + timedelta(days=7)
+    for wk, mon in ((kw, monday), (next_monday.isocalendar()[1], next_monday)):
+        for i, day in enumerate(parse_kw_plan(wk)["days"]):
+            if day["tss_plan"]:
+                planned[(mon + timedelta(days=i)).isoformat()] = day["tss_plan"]
+    icu = get_planned_tss_from_icu((today + timedelta(days=1)).isoformat(), horizon.isoformat())
+    planned.update(icu["by_day"])
+    return build_fitness_chart(history, planned, horizon)
 
 
 def get_sleep_history(days: int = 30) -> dict:

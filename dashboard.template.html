@@ -229,6 +229,17 @@
   .dtip.tip-r::after { left: auto; right: 0; transform: none; }
   .dtip.tip-on::after { opacity: 1; }
   .chart-touch { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+  .fc-top { position: relative; height: 130px; }
+  @media (min-width: 900px) { .fc-top { height: 170px; } }
+  .fc-stats { display: flex; gap: 18px; margin-bottom: 8px; }
+  .fc-stats div { font-size: 0.6rem; color: var(--muted); }
+  .fc-stats b { display: block; font-size: 1.05rem; font-weight: 800; }
+  .fc-zone { font-size: 0.6rem; font-weight: 600; color: var(--muted); }
+  .fc-proj { font-size: 0.62rem; color: var(--muted); margin-bottom: 12px; }
+  .fc-proj b { color: var(--text); }
+  .fc-legend { display: flex; gap: 6px 12px; flex-wrap: wrap; margin-top: 6px; font-size: 0.58rem; color: var(--muted); }
+  .fc-legend i { display: inline-block; width: 12px; vertical-align: middle; margin-right: 4px; }
+  .fc-legend i.fc-sw { width: 9px; height: 9px; border-radius: 2px; vertical-align: -1px; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -941,6 +952,56 @@
 
 </div>
 
+<!-- FITNESS & FORM (CTL/ATL/TSB wie intervals.icu + Prognose aus dem Plan) -->
+{% if fitness_chart.available %}
+{% set fc = fitness_chart %}
+<div class="ausblick-card">
+  <div class="card-headline" style="margin-bottom:12px">Fitness &amp; Form · 6 Monate</div>
+  <div class="fc-stats">
+    <div>Fitness<b style="color:var(--ctl)">{{ fc.ctl_now }}</b></div>
+    <div>Ermüdung<b style="color:var(--atl)">{{ fc.atl_now }}</b></div>
+    <div>Form<b style="color:var(--text)">{{ "%+d"|format(fc.tsb_now) }} <span class="fc-zone">{{ fc.zone_now }}</span></b></div>
+  </div>
+  <div class="fc-proj">Prognose {{ fc.end_label }} aus dem Plan: <b>CTL {{ fc.ctl_end }} · Form {{ "%+d"|format(fc.tsb_end) }}</b> ({{ fc.zone_end }})</div>
+  <div id="fc-wrap" class="chart-touch" style="position:relative;cursor:crosshair">
+    <div class="fc-top">
+      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
+        <defs><linearGradient id="fcGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d1450f" stop-opacity="0.18"/><stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/></linearGradient></defs>
+        <rect x="{{ fc.today_x }}" y="0" width="{{ 300 - fc.today_x }}" height="80" fill="var(--track)" opacity="0.5"/>
+        <path d="{{ fc.ctl_fill }}" fill="url(#fcGrad)"/>
+        <path d="{{ fc.atl_path }}" fill="none" stroke="var(--atl)" stroke-width="1" opacity="0.75" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        {% if fc.atl_proj %}<path d="{{ fc.atl_proj }}" fill="none" stroke="var(--atl)" stroke-width="1" stroke-dasharray="3,3" opacity="0.75" vector-effect="non-scaling-stroke"/>{% endif %}
+        <path d="{{ fc.ctl_path }}" fill="none" stroke="var(--ctl)" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        {% if fc.ctl_proj %}<path d="{{ fc.ctl_proj }}" fill="none" stroke="var(--ctl)" stroke-width="2" stroke-dasharray="4,3" vector-effect="non-scaling-stroke"/>{% endif %}
+      </svg>
+    </div>
+    <div style="position:relative;height:64px;margin-top:6px">
+      <svg width="100%" height="100%" viewBox="0 0 300 {{ fc.tsb_h }}" preserveAspectRatio="none">
+        {% for b in fc.bands %}<rect x="0" y="{{ b.y }}" width="300" height="{{ b.h }}" fill="{{ b.color }}"/>{% endfor %}
+        <line x1="0" y1="{{ fc.tsb_zero_y }}" x2="300" y2="{{ fc.tsb_zero_y }}" stroke="var(--muted)" stroke-width="0.6" stroke-dasharray="2,2" vector-effect="non-scaling-stroke"/>
+        <path d="{{ fc.tsb_path }}" fill="none" stroke="var(--text2)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        {% if fc.tsb_proj %}<path d="{{ fc.tsb_proj }}" fill="none" stroke="var(--text2)" stroke-width="1.5" stroke-dasharray="3,3" vector-effect="non-scaling-stroke"/>{% endif %}
+      </svg>
+    </div>
+    <div style="position:absolute;top:0;bottom:0;left:{{ fc.today_pct }}%;border-left:1px dashed var(--muted);opacity:.6;pointer-events:none"></div>
+    <div id="fc-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.3);pointer-events:none;z-index:5"></div>
+    <div id="fc-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem;line-height:1.45"></div>
+  </div>
+  <div style="position:relative;height:14px;margin-top:4px">
+    {% for ml in fc.month_labels %}<span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>{% endfor %}
+  </div>
+  <div class="fc-legend">
+    <span><i style="border-top:2px solid var(--ctl)"></i>Fitness (CTL)</span>
+    <span><i style="border-top:1px solid var(--atl)"></i>Ermüdung (ATL)</span>
+    <span><i style="border-top:1.5px solid var(--text2)"></i>Form (TSB)</span>
+    <span><i style="border-top:2px dashed var(--muted)"></i>Prognose aus Plan</span>
+  </div>
+  <div class="fc-legend">
+    {% for b in fc.bands|reverse %}<span><i class="fc-sw" style="background:{{ b.swatch }}"></i>{{ b.name }}</span>{% endfor %}
+  </div>
+</div>
+{% endif %}
+
 <!-- LAUF: AUFBAU + PACE BEI HF 160 -->
 <div class="two-col-grid">
 
@@ -1038,70 +1099,8 @@
 
 </div>
 
-<!-- CTL + SCHLAF -->
+<!-- SCHLAF + FTP + SCHRITTE -->
 <div class="two-col-grid">
-
-  <!-- CTL-VERLAUF 6 MONATE -->
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:14px">
-      <div class="card-headline">CTL-Verlauf · 6 Monate</div>
-    </div>
-    {% if ctl_history.path %}
-    <div id="ctl-wrap" class="chart-touch" style="position:relative;width:100%;height:90px;margin-bottom:30px;cursor:crosshair">
-      <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#d1450f" stop-opacity="0.18"/>
-            <stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/>
-          </linearGradient>
-        </defs>
-        <line x1="0" y1="26" x2="300" y2="26" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="53" x2="300" y2="53" stroke="var(--border)" stroke-width="0.5"/>
-        <path d="{{ ctl_history.fill_path }}" fill="url(#ctlGradFill)"/>
-        <path d="{{ ctl_history.path }}" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="{{ ctl_history.last_y }}" r="3" fill="var(--brand)"/>
-        <circle cx="300" cy="{{ ctl_history.last_y }}" r="5" fill="var(--brand)" opacity="0.2"/>
-      </svg>
-      <div id="ctl-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.25);pointer-events:none;z-index:5"></div>
-      <div id="ctl-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem"></div>
-      <div style="position:absolute;bottom:-14px;left:0;right:0">
-        {% for ml in ctl_history.month_labels %}
-        <span style="position:absolute;left:{{ ml.x_pct }}%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">{{ ml.label }}</span>
-        {% endfor %}
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:4px;font-size:0.7rem;color:var(--muted)">
-      Aktuell: <span style="color:var(--text);font-weight:700">CTL {{ ctl_history.ctl_now }}</span>
-    </div>
-    {% else %}
-    <div style="color:var(--muted);font-size:0.75rem;padding:16px 0;text-align:center">Keine CTL-Daten verfügbar</div>
-    {% endif %}
-  </div>
-
-  <!-- M1: LOAD QUALITY -->
-  <div class="ausblick-card" style="margin-bottom:0">
-    <div style="margin-bottom:12px">
-      <div class="card-headline">{{ ico('scale') }}Load Quality · 7 Tage</div>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <span style="font-size:0.72rem;color:var(--muted)">Monotony</span>
-      <span style="font-size:0.92rem;font-weight:800;color:{{ monotony_color }}">{{ "%.2f"|format(monotony_val) }}</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-      <span style="font-size:0.72rem;color:var(--muted)">Strain</span>
-      <span style="font-size:0.88rem;font-weight:700;color:var(--text)">{{ monotony_strain }}</span>
-    </div>
-    <div style="font-size:0.65rem;color:var(--muted);margin-bottom:4px">TSS Mo–So</div>
-    <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
-      {% set max_tss = [tss_7days | max, 1] | max %}
-      {% for tss in tss_7days %}
-      <div class="tip-host dtip{% if loop.first %} tip-l{% elif loop.last %} tip-r{% endif %}" data-tip="{{ ['Mo','Di','Mi','Do','Fr','Sa','So'][loop.index0] }} · {{ tss | round | int }} TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
-                  height:{{ [((tss / max_tss * 100) | round | int), 5] | max }}%;
-                  background:{% if tss > 0 %}var(--brand){% else %}var(--track){% endif %};
-                  opacity:0.75"></div>
-      {% endfor %}
-    </div>
-  </div>
 
   <!-- SCHLAF-VERLAUF 30 TAGE -->
   <div class="ausblick-card" style="margin-bottom:0">
@@ -1434,8 +1433,10 @@
       tt.innerHTML = '<div style="font-weight:700;color:' + color + '">' + fmtVal(pt) + '</div>'
                    + '<div style="font-size:0.52rem;color:var(--muted);margin-top:1px">' + pt.d + '</div>';
       tt.style.display = 'block';
-      if (pt.x < 70) { tt.style.left = 'calc(' + pt.x + '% + 8px)'; tt.style.right = ''; }
-      else            { tt.style.right = 'calc(' + (100 - pt.x) + '% + 8px)'; tt.style.left = ''; }
+      // rechts vom Fadenkreuz, wenn Platz ist, sonst links davon – nie über den Kartenrand
+      var xpx = pt.x / 100 * r.width, w = tt.offsetWidth;
+      var left = xpx + 8 + w <= r.width ? xpx + 8 : xpx - 8 - w;
+      tt.style.left = Math.max(0, Math.min(left, r.width - w)) + 'px'; tt.style.right = '';
     }
     function hide() {
       document.getElementById(chId).style.display = 'none';
@@ -1466,9 +1467,12 @@
     if (e.pointerType !== 'mouse' && !(e.target.closest && e.target.closest('.tip-host'))) closeAll(null);
   });
 
-  {% if ctl_history.pts %}
-  var ctlPts = [{% for p in ctl_history.pts %}{"x":{{p.x}},"d":"{{p.d}}","v":{{p.v}}}{% if not loop.last %},{% endif %}{% endfor %}];
-  bindChartHover('ctl-wrap','ctl-ch','ctl-tt', ctlPts, '#d1450f', function(p){ return 'CTL ' + p.v; });
+  {% if fitness_chart.available %}
+  var fcPts = {{ fitness_chart.pts | tojson }};
+  bindChartHover('fc-wrap','fc-ch','fc-tt', fcPts, 'var(--text)', function(p){
+    return (p.p ? 'Prognose · ' : '') + '<span style="color:var(--ctl)">Fitness ' + p.c + '</span> · <span style="color:var(--atl)">Ermüdung ' + p.a + '</span>'
+         + '<br><span style="font-weight:600">Form ' + (p.f > 0 ? '+' : '') + p.f + ' · ' + p.z + '</span>';
+  });
   {% endif %}
 
   {% if steps_history.pts %}
