@@ -212,8 +212,23 @@
             padding: 3px 7px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .12s; }
   .hf-dot.tip-l::after { left: -4px; transform: none; }
   .hf-dot.tip-r::after { left: auto; right: -4px; transform: none; }
-  .hf-dot:hover, .hf-dot:focus { background: var(--brand); transform: scale(1.35); z-index: 5; }
-  .hf-dot:hover::after, .hf-dot:focus::after { opacity: 1; }
+  .hf-dot.tip-on, .hf-dot:focus-visible { background: var(--brand); transform: scale(1.35); z-index: 5; }
+  .hf-dot.tip-on::after, .hf-dot:focus-visible::after { opacity: 1; }
+  @media (hover: hover) {
+    .hf-dot:hover { background: var(--brand); transform: scale(1.35); z-index: 5; }
+    .hf-dot:hover::after { opacity: 1; }
+  }
+  /* Tooltips per Hover (Laptop) oder Tippen (Handy) – Logik im Script am Seitenende */
+  .tip-host { -webkit-tap-highlight-color: transparent; }
+  .tip-host.tip-on .tw, .tip-host.tip-on .ftp-tt { opacity: 1 !important; }
+  .dtip { position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dtip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+            white-space: nowrap; font-size: 0.6rem; font-weight: 700; color: var(--card); background: var(--text);
+            padding: 3px 7px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .12s; z-index: 30; }
+  .dtip.tip-l::after { left: 0; transform: none; }
+  .dtip.tip-r::after { left: auto; right: 0; transform: none; }
+  .dtip.tip-on::after { opacity: 1; }
+  .chart-touch { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -712,9 +727,7 @@
     <div style="position:relative;height:95px;margin-bottom:6px">
       <div style="display:flex;gap:3px;height:100%">
         {% for w in tss_weeks %}
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             {% if not w.is_future and w.tss_ist > 0 %}{{ w.tss_ist }}{% if w.tss_plan > 0 %}<span style="color:var(--muted)"> / {{ w.tss_plan }}</span>{% endif %}{% endif %}
           </span>
@@ -941,9 +954,7 @@
     <div style="position:relative;height:100px;margin-bottom:6px">
       <div style="display:flex;gap:3px;height:100%">
         {% for w in run_build.weeks %}
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">{% if w.km > 0 %}{{ '%.0f'|format(w.km) }}{% endif %}</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:{{ w.limit_pct }}%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -996,7 +1007,7 @@
         <path d="{{ hf160.trend }}" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
       {% for d in hf160.dots %}
-      <span class="hf-dot{% if d.x < 40 %} tip-l{% elif d.x > 260 %} tip-r{% endif %}" tabindex="0" style="left:{{ (d.x / 3)|round(1) }}%;top:{{ (d.y / 0.8)|round(1) }}%" data-tip="{{ d.label }}" aria-label="{{ d.label }}"></span>
+      <span class="tip-host hf-dot{% if d.x < 40 %} tip-l{% elif d.x > 260 %} tip-r{% endif %}" tabindex="0" style="left:{{ (d.x / 3)|round(1) }}%;top:{{ (d.y / 0.8)|round(1) }}%" data-tip="{{ d.label }}" aria-label="{{ d.label }}"></span>
       {% endfor %}
       <span style="position:absolute;right:0;top:calc({{ (hf160.ref_y / 0.8)|round(1) }}% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
       <div style="position:absolute;bottom:-20px;left:0;right:0">
@@ -1036,7 +1047,7 @@
       <div class="card-headline">CTL-Verlauf · 6 Monate</div>
     </div>
     {% if ctl_history.path %}
-    <div id="ctl-wrap" style="position:relative;width:100%;height:90px;margin-bottom:30px;cursor:crosshair">
+    <div id="ctl-wrap" class="chart-touch" style="position:relative;width:100%;height:90px;margin-bottom:30px;cursor:crosshair">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -1084,11 +1095,10 @@
     <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
       {% set max_tss = [tss_7days | max, 1] | max %}
       {% for tss in tss_7days %}
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip{% if loop.first %} tip-l{% elif loop.last %} tip-r{% endif %}" data-tip="{{ ['Mo','Di','Mi','Do','Fr','Sa','So'][loop.index0] }} · {{ tss | round | int }} TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:{{ [((tss / max_tss * 100) | round | int), 5] | max }}%;
                   background:{% if tss > 0 %}var(--brand){% else %}var(--track){% endif %};
-                  opacity:0.75"
-           title="{{ tss | round | int }} TSS"></div>
+                  opacity:0.75"></div>
       {% endfor %}
     </div>
   </div>
@@ -1099,7 +1109,7 @@
       <div class="card-headline">{{ ico('moon') }}Schlaf-Verlauf · 30 Tage</div>
     </div>
     {% if sleep_history.path %}
-    <div id="sl-wrap" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
+    <div id="sl-wrap" class="chart-touch" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -1163,9 +1173,7 @@
           {% endfor %}
         </svg>
         {% for pt in ftp_history.points %}
-        <div style="position:absolute;left:calc({{ pt.x_pct }}% - 12px);top:calc({{ pt.y_pct }}% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc({{ pt.x_pct }}% - 12px);top:calc({{ pt.y_pct }}% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             {% if pt.anchor == 'start' %}left:12px{% elif pt.anchor == 'end' %}right:12px{% else %}left:12px;transform:translateX(-50%){% endif %}">{{ pt.ftp }}W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1192,7 +1200,7 @@
       <div class="card-headline">{{ ico('steps') }}Schritte · 30 Tage</div>
       <span class="kw-pill" style="margin-left:auto">nicht im TSS</span>
     </div>
-    <div id="st-wrap" style="position:relative;width:100%;height:80px;margin-bottom:4px;cursor:crosshair">
+    <div id="st-wrap" class="chart-touch" style="position:relative;width:100%;height:80px;margin-bottom:4px;cursor:crosshair">
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         {% for b in steps_history.bars %}
         <rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" rx="1"
@@ -1415,7 +1423,7 @@
   function bindChartHover(wrId, chId, ttId, pts, color, fmtVal) {
     var wr = document.getElementById(wrId);
     if (!wr || !pts.length) return;
-    wr.addEventListener('mousemove', function(e) {
+    function show(e) {
       var r = wr.getBoundingClientRect();
       var xp = (e.clientX - r.left) / r.width * 100;
       var pt = nearestPt(pts, xp);
@@ -1428,12 +1436,35 @@
       tt.style.display = 'block';
       if (pt.x < 70) { tt.style.left = 'calc(' + pt.x + '% + 8px)'; tt.style.right = ''; }
       else            { tt.style.right = 'calc(' + (100 - pt.x) + '% + 8px)'; tt.style.left = ''; }
-    });
-    wr.addEventListener('mouseleave', function() {
+    }
+    function hide() {
       document.getElementById(chId).style.display = 'none';
       document.getElementById(ttId).style.display = 'none';
-    });
+    }
+    // Maus: Hover · Touch: Tippen oder waagerecht wischen, Tooltip bleibt bis zum Tippen daneben
+    wr.addEventListener('pointerdown', show);
+    wr.addEventListener('pointermove', function(e) { if (e.pointerType === 'mouse' || e.buttons) show(e); });
+    wr.addEventListener('pointerleave', function(e) { if (e.pointerType === 'mouse') hide(); });
+    document.addEventListener('pointerdown', function(e) { if (e.pointerType !== 'mouse' && !wr.contains(e.target)) hide(); });
   }
+
+  // Tooltips an Balken/Punkten: Hover am Laptop, Tippen am Handy (erneut tippen oder daneben = zu)
+  var hosts = document.querySelectorAll('.tip-host');
+  function closeAll(except) {
+    for (var i = 0; i < hosts.length; i++) if (hosts[i] !== except) hosts[i].classList.remove('tip-on');
+  }
+  for (var i = 0; i < hosts.length; i++) (function(h) {
+    h.addEventListener('pointerenter', function(e) { if (e.pointerType === 'mouse') h.classList.add('tip-on'); });
+    h.addEventListener('pointerleave', function(e) { if (e.pointerType === 'mouse') h.classList.remove('tip-on'); });
+    h.addEventListener('pointerup', function(e) {
+      if (e.pointerType === 'mouse') return;
+      closeAll(h);
+      h.classList.toggle('tip-on');
+    });
+  })(hosts[i]);
+  document.addEventListener('pointerup', function(e) {
+    if (e.pointerType !== 'mouse' && !(e.target.closest && e.target.closest('.tip-host'))) closeAll(null);
+  });
 
   {% if ctl_history.pts %}
   var ctlPts = [{% for p in ctl_history.pts %}{"x":{{p.x}},"d":"{{p.d}}","v":{{p.v}}}{% if not loop.last %},{% endif %}{% endfor %}];
