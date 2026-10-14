@@ -4,6 +4,14 @@
 
 ---
 
+## 14. Oktober 2026 – KW43/44 auf ICU-Skala korrigiert
+
+**Stefan:** KW42 landet bei ~294 TSS, KW43 steht mit 278 im Plan – passt nicht zur Rampe.
+**Coach:** Stimmt. Der KW43-Stub stammte noch aus dem Saisonplan (rTSS-Schätzskala 170/241/278). Seit KW42 rechnet die Datei mit den intervals.icu-Werten (SwSp mit 34min Ein-/Ausfahren 81 statt 65, Läufe ~1,1 TSS/min) → derselbe Plan liegt ~20% höher. Zusätzlich hätte der Stub das Lauf-Budget gesprengt (4 Läufe = 180min ≈ 25 km bei Grenze ~18,5).
+**KW43 neu:** Mo Easy 40 + Kraft A (43) · **Di SwSp 3×12** (🎯, 86) · Mi Easy 40 + 6 Steigerungen (45) · Do Ruhetag · **Fr Easy 50 Kadenz** (🎯, längster Lauf ~7 km, 54) + Kraft B · **Sa LIT 2h45** (🎯, 99) · So Ruhetag → **~327 (+11%)**, ~6h25 + Kraft, Lauf ~18 km. Workouts werden nach der KW42-Retro angelegt.
+**KW44** auf ICU-Skala nachgezogen: Inhalt unverändert, 148 → ~194 (−40%).
+**Offen (Zustimmung nötig):** Ziel-TSS in `periodisierung.md` (Block 1 270/300/320 usw.) sind ebenfalls rTSS-Skala und lägen unter KW43 → auf ICU-Skala anheben (~+20%).
+
 ## 14. Oktober 2026 – KW42 Mi: Easy + Steigerungen, HF höher
 
 **Stefan:** HF höher als sonst – Ermüdung von gestern oder zu schnell angegangen? Verbesserung im HF-160-Chart sichtbar.

@@ -153,6 +153,13 @@ steht, nicht wie nah die TSS-Summe am Plan liegt.
 
 ---
 
+### 📏 TSS immer auf intervals.icu-Skala (14.10.2026)
+intervals.icu bewertet dieselbe Woche ~20% höher als die rTSS-Schätzungen im Saisonplan (Ein-/Ausfahren der
+.zwo-Dateien, Läufe ~1,1 TSS/min). KW42 lag so bei 294 statt 241, der alte KW43-Stub (278) wäre eine Rückwärtswoche gewesen – Stefan hat es bemerkt.
+**Anwenden:** Rampe immer gegen die **ICU-Load der Vorwoche** rechnen (+10–15%), nicht gegen den Ziel-TSS im
+Saisonplan. Stubs und Folgewochen beim Planen auf dieselbe Skala ziehen. Richtwerte Lauf: 35min ~38 · 40min ~43 ·
+40min + Steigerungen ~45 · 45min ~49 · 50min ~54. Rad: SwSp 3×10/90min 81 · LIT 2h15 81 (~0,6 TSS/min).
+
 ### 🔬 Tests nur am Wochenende (Stefan, 1.10.2026)
 Der KW40-Test am Donnerstag nach der Arbeit: 3min gut (441W), die 10min nach 2min abgebrochen – „mental zu
 zehrend unter der Woche". Alle künftigen Tests (FTP, 5km, 10km-Benchmark) liegen auf **Sa oder So**. Die
