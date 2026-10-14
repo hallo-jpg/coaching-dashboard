@@ -24,17 +24,19 @@ Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — i
 | Phase | KW | Zeitraum | Fokus | Ziel-TSS | Rad:Lauf |
 |---|---|---|---|---|---|
 | **Nullpunkt** | KW40 | 28.9.–4.10. | 🔬 FTP-Test auf der Rolle ✅ **300W** | ~195 | 70:30 |
-| **Rampe** | KW41–43 | 5.–25.10. | Volumen 5→7h · Kadenz-Projekt · Laufen nur Easy · Rad-SwSp ab KW42 | 170 / 241 / 278 | 70:30 |
-| **Entlastung** | KW44 | 26.10.–1.11. | −45% · HF-160-Check | ~148 | 70:30 |
-| **Block 1 · Schwelle** | KW45–47 | 2.–22.11. | Rad SwSp/KA · 1× Lauf-Schwelle · Longrun wächst | 270 / 300 / 320 | 65:35 |
-| **Entlastung** | KW48 | 23.–29.11. | −45% | ~170 | 65:35 |
-| **Block 2 · VO2max** | KW49–51 | 30.11.–20.12. | Rad HIT_EB/IE · Lauf-Intervalle · 9–10h erreicht | 340 / 360 / 380 | 60:40 |
-| **Übergang** | KW52–53 | 21.12.–3.1. | Weihnachten · reduziert, flexibel, **bewusst geplant** | ~200 / ~200 | frei |
-| **Standort** | KW01/27 | 4.–10.1. | 🔬 FTP-Test #2 + 🔬 5km-Zeitfahren (Sa/So) | ~280 | 60:40 |
-| **Block 3 · Volumen-Peak** | KW02–04 | 11.–31.1. | höchstes Volumen des Winters · CTL-Peak | 400 / 430 / 450 | 60:40 |
-| **Entlastung** | KW05 | 1.–7.2. | −45% | ~230 | 60:40 |
-| **Block 4 · Spezifik** | KW06–08 | 8.–28.2. | Rad Over-Under/Schwelle · Lauf 10km-Renntempo | 420 / 440 / 430 | 60:40 |
-| **Abschluss** | KW09 | 1.–7.3. | 🔬 FTP-Test #3 + 🏁 10km-Benchmark (Sa/So) → Frühjahrsplan | ~300 | 60:40 |
+| **Rampe** | KW41–43 | 5.–25.10. | Volumen 5→7h · Kadenz-Projekt · Laufen nur Easy · Rad-SwSp ab KW42 | 170 / 294 / 327 | 70:30 |
+| **Entlastung** | KW44 | 26.10.–1.11. | −40% · HF-160-Check | ~194 | 70:30 |
+| **Block 1 · Schwelle** | KW45–47 | 2.–22.11. | Rad SwSp/KA · 1× Lauf-Schwelle · Longrun wächst | 340 / 370 / 400 | 65:35 |
+| **Entlastung** | KW48 | 23.–29.11. | −50% | ~200 | 65:35 |
+| **Block 2 · VO2max** | KW49–51 | 30.11.–20.12. | Rad HIT_EB/IE · Lauf-Intervalle · 9–10h erreicht | 420 / 440 / 460 | 60:40 |
+| **Übergang** | KW52–53 | 21.12.–3.1. | Weihnachten · reduziert, flexibel, **bewusst geplant** | ~240 / ~240 | frei |
+| **Standort** | KW01/27 | 4.–10.1. | 🔬 FTP-Test #2 + 🔬 5km-Zeitfahren (Sa/So) | ~330 | 60:40 |
+| **Block 3 · Volumen-Peak** | KW02–04 | 11.–31.1. | höchstes Volumen des Winters · CTL-Peak | 470 / 490 / 510 | 60:40 |
+| **Entlastung** | KW05 | 1.–7.2. | −45% | ~280 | 60:40 |
+| **Block 4 · Spezifik** | KW06–08 | 8.–28.2. | Rad Over-Under/Schwelle · Lauf 10km-Renntempo | 490 / 510 / 500 | 60:40 |
+| **Abschluss** | KW09 | 1.–7.3. | 🔬 FTP-Test #3 + 🏁 10km-Benchmark (Sa/So) → Frühjahrsplan | ~350 | 60:40 |
+
+**Ziel-TSS = intervals.icu-Load** (angepasst 14.10.2026 mit Stefans Zustimmung): Die ursprünglichen Werte waren grobe rTSS-Schätzungen und lagen ~20 % unter dem, was intervals.icu für dieselben Einheiten berechnet (KW42: 241 geplant → 294 ICU). Ab KW45 ×1,2, ab Block 3 durch das Zeitbudget gedeckelt (9–10h × ~0,8–0,85 TSS/min ≈ 470–510). Gegenprobe CTL: ~70 TSS/Tag im Januar → CTL 60–68 passt. Gesteuert wird weiter über +10–15 % gegenüber der ICU-Load der Vorwoche.
 
 **Rhythmus:** 3 Belastungswochen : 1 Entlastungswoche. Die Entlastungswoche ist −40–50% TSS, keine Qualität — nicht „etwas weniger". Sie ist der Grund, warum der Block hält.
 
