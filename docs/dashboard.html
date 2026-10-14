@@ -212,8 +212,23 @@
             padding: 3px 7px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .12s; }
   .hf-dot.tip-l::after { left: -4px; transform: none; }
   .hf-dot.tip-r::after { left: auto; right: -4px; transform: none; }
-  .hf-dot:hover, .hf-dot:focus { background: var(--brand); transform: scale(1.35); z-index: 5; }
-  .hf-dot:hover::after, .hf-dot:focus::after { opacity: 1; }
+  .hf-dot.tip-on, .hf-dot:focus-visible { background: var(--brand); transform: scale(1.35); z-index: 5; }
+  .hf-dot.tip-on::after, .hf-dot:focus-visible::after { opacity: 1; }
+  @media (hover: hover) {
+    .hf-dot:hover { background: var(--brand); transform: scale(1.35); z-index: 5; }
+    .hf-dot:hover::after { opacity: 1; }
+  }
+  /* Tooltips per Hover (Laptop) oder Tippen (Handy) – Logik im Script am Seitenende */
+  .tip-host { -webkit-tap-highlight-color: transparent; }
+  .tip-host.tip-on .tw, .tip-host.tip-on .ftp-tt { opacity: 1 !important; }
+  .dtip { position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .dtip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+            white-space: nowrap; font-size: 0.6rem; font-weight: 700; color: var(--card); background: var(--text);
+            padding: 3px 7px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity .12s; z-index: 30; }
+  .dtip.tip-l::after { left: 0; transform: none; }
+  .dtip.tip-r::after { left: auto; right: 0; transform: none; }
+  .dtip.tip-on::after { opacity: 1; }
+  .chart-touch { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
   .card-headline { border-left: 3px solid var(--brand); padding-left: 10px; font-size: 0.72rem; color: var(--text); font-weight: 700; letter-spacing: 0.2px; }
   .chard { font-size: .82rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .chard-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--brand-tint); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
@@ -688,9 +703,7 @@
     <div style="position:relative;height:95px;margin-bottom:6px">
       <div style="display:flex;gap:3px;height:100%">
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             76<span style="color:var(--muted)"> / 221</span>
           </span>
@@ -708,9 +721,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             106<span style="color:var(--muted)"> / 28</span>
           </span>
@@ -728,9 +739,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             296<span style="color:var(--muted)"> / 105</span>
           </span>
@@ -748,9 +757,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             248<span style="color:var(--muted)"> / 105</span>
           </span>
@@ -768,9 +775,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             324<span style="color:var(--muted)"> / 261</span>
           </span>
@@ -788,9 +793,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             224<span style="color:var(--muted)"> / 265</span>
           </span>
@@ -808,9 +811,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             214<span style="color:var(--muted)"> / 177</span>
           </span>
@@ -828,9 +829,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">
             189<span style="color:var(--muted)"> / 294</span>
           </span>
@@ -1180,9 +1179,7 @@
     <div style="position:relative;height:100px;margin-bottom:6px">
       <div style="display:flex;gap:3px;height:100%">
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">11</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:50%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1196,9 +1193,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">12</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:62%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1212,9 +1207,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">5</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:68%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1228,9 +1221,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap"></span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:54%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1244,9 +1235,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap"></span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:45%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1260,9 +1249,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">9</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:33%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1276,9 +1263,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">10</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:55%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1292,9 +1277,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">18</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:60%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1308,9 +1291,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">8</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:91%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1324,9 +1305,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">8</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:65%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1340,9 +1319,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">14</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:63%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1356,9 +1333,7 @@
           </div>
         </div>
         
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer"
-             onmouseenter="this.querySelector('.tw').style.opacity='1'"
-             onmouseleave="this.querySelector('.tw').style.opacity='0'">
+        <div class="tip-host" style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;position:relative;cursor:pointer">
           <span style="font-size:0.46rem;color:var(--text2);height:12px;line-height:12px;white-space:nowrap">11</span>
           <div style="flex:1;width:100%;display:flex;align-items:flex-end;position:relative">
             <div style="position:absolute;left:-1px;right:-1px;bottom:74%;border-top:1.5px dashed var(--muted);opacity:0.7;z-index:2"></div>
@@ -1409,39 +1384,39 @@
         <path d="M20.0,41.8 L31.7,40.0 L38.3,31.1 L55.0,29.3 L75.0,30.2 L83.3,31.1 L166.7,34.7 L191.7,39.1 L238.3,48.9 L241.7,56.9 L258.3,62.2 L263.3,61.3 L271.7,52.4 L283.3,40.0 L290.0,28.4 L293.3,23.1 L296.7,16.0" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
       
-      <span class="hf-dot tip-l" tabindex="0" style="left:6.7%;top:52.2%" data-tip="29.04. · 7:31/km" aria-label="29.04. · 7:31/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:6.7%;top:52.2%" data-tip="29.04. · 7:31/km" aria-label="29.04. · 7:31/km"></span>
       
-      <span class="hf-dot tip-l" tabindex="0" style="left:10.6%;top:47.8%" data-tip="06.05. · 7:27/km" aria-label="06.05. · 7:27/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:10.6%;top:47.8%" data-tip="06.05. · 7:27/km" aria-label="06.05. · 7:27/km"></span>
       
-      <span class="hf-dot tip-l" tabindex="0" style="left:12.8%;top:16.6%" data-tip="10.05. · 6:59/km" aria-label="10.05. · 6:59/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:12.8%;top:16.6%" data-tip="10.05. · 6:59/km" aria-label="10.05. · 6:59/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:18.3%;top:44.5%" data-tip="20.05. · 7:24/km" aria-label="20.05. · 7:24/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:18.3%;top:44.5%" data-tip="20.05. · 7:24/km" aria-label="20.05. · 7:24/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:25.0%;top:52.2%" data-tip="01.06. · 7:31/km" aria-label="01.06. · 7:31/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:25.0%;top:52.2%" data-tip="01.06. · 7:31/km" aria-label="01.06. · 7:31/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:27.8%;top:20.0%" data-tip="06.06. · 7:02/km" aria-label="06.06. · 7:02/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:27.8%;top:20.0%" data-tip="06.06. · 7:02/km" aria-label="06.06. · 7:02/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:55.6%;top:58.9%" data-tip="26.07. · 7:37/km" aria-label="26.07. · 7:37/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:55.6%;top:58.9%" data-tip="26.07. · 7:37/km" aria-label="26.07. · 7:37/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:63.9%;top:66.6%" data-tip="10.08. · 7:44/km" aria-label="10.08. · 7:44/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:63.9%;top:66.6%" data-tip="10.08. · 7:44/km" aria-label="10.08. · 7:44/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:79.4%;top:58.9%" data-tip="07.09. · 7:37/km" aria-label="07.09. · 7:37/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:79.4%;top:58.9%" data-tip="07.09. · 7:37/km" aria-label="07.09. · 7:37/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:80.6%;top:86.6%" data-tip="09.09. · 8:02/km" aria-label="09.09. · 8:02/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:80.6%;top:86.6%" data-tip="09.09. · 8:02/km" aria-label="09.09. · 8:02/km"></span>
       
-      <span class="hf-dot" tabindex="0" style="left:86.1%;top:88.9%" data-tip="19.09. · 8:04/km" aria-label="19.09. · 8:04/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:86.1%;top:88.9%" data-tip="19.09. · 8:04/km" aria-label="19.09. · 8:04/km"></span>
       
-      <span class="hf-dot tip-r" tabindex="0" style="left:87.8%;top:54.5%" data-tip="22.09. · 7:33/km" aria-label="22.09. · 7:33/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:87.8%;top:54.5%" data-tip="22.09. · 7:33/km" aria-label="22.09. · 7:33/km"></span>
       
-      <span class="hf-dot tip-r" tabindex="0" style="left:90.6%;top:52.2%" data-tip="27.09. · 7:31/km" aria-label="27.09. · 7:31/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:90.6%;top:52.2%" data-tip="27.09. · 7:31/km" aria-label="27.09. · 7:31/km"></span>
       
-      <span class="hf-dot tip-r" tabindex="0" style="left:94.4%;top:42.2%" data-tip="04.10. · 7:22/km" aria-label="04.10. · 7:22/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:94.4%;top:42.2%" data-tip="04.10. · 7:22/km" aria-label="04.10. · 7:22/km"></span>
       
-      <span class="hf-dot tip-r" tabindex="0" style="left:96.7%;top:11.1%" data-tip="08.10. · 6:54/km" aria-label="08.10. · 6:54/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:96.7%;top:11.1%" data-tip="08.10. · 6:54/km" aria-label="08.10. · 6:54/km"></span>
       
-      <span class="hf-dot tip-r" tabindex="0" style="left:97.8%;top:34.5%" data-tip="10.10. · 7:15/km" aria-label="10.10. · 7:15/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:97.8%;top:34.5%" data-tip="10.10. · 7:15/km" aria-label="10.10. · 7:15/km"></span>
       
-      <span class="hf-dot tip-r" tabindex="0" style="left:98.9%;top:13.4%" data-tip="12.10. · 6:56/km" aria-label="12.10. · 6:56/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:98.9%;top:13.4%" data-tip="12.10. · 6:56/km" aria-label="12.10. · 6:56/km"></span>
       
       <span style="position:absolute;right:0;top:calc(51.1% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
       <div style="position:absolute;bottom:-20px;left:0;right:0">
@@ -1489,7 +1464,7 @@
       <div class="card-headline">CTL-Verlauf · 6 Monate</div>
     </div>
     
-    <div id="ctl-wrap" style="position:relative;width:100%;height:90px;margin-bottom:30px;cursor:crosshair">
+    <div id="ctl-wrap" class="chart-touch" style="position:relative;width:100%;height:90px;margin-bottom:30px;cursor:crosshair">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="ctlGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -1545,47 +1520,40 @@
     <div style="display:flex;align-items:flex-end;gap:2px;height:28px">
       
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip tip-l" data-tip="Mo · 54 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:71%;
                   background:var(--brand);
-                  opacity:0.75"
-           title="54 TSS"></div>
+                  opacity:0.75"></div>
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip" data-tip="Di · 0 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:5%;
                   background:var(--track);
-                  opacity:0.75"
-           title="0 TSS"></div>
+                  opacity:0.75"></div>
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip" data-tip="Mi · 43 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:57%;
                   background:var(--brand);
-                  opacity:0.75"
-           title="43 TSS"></div>
+                  opacity:0.75"></div>
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip" data-tip="Do · 74 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:97%;
                   background:var(--brand);
-                  opacity:0.75"
-           title="74 TSS"></div>
+                  opacity:0.75"></div>
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip" data-tip="Fr · 58 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:76%;
                   background:var(--brand);
-                  opacity:0.75"
-           title="58 TSS"></div>
+                  opacity:0.75"></div>
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip" data-tip="Sa · 76 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:100%;
                   background:var(--brand);
-                  opacity:0.75"
-           title="76 TSS"></div>
+                  opacity:0.75"></div>
       
-      <div style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
+      <div class="tip-host dtip tip-r" data-tip="So · 55 TSS" style="flex:1;border-radius:2px 2px 0 0;min-height:2px;
                   height:72%;
                   background:var(--brand);
-                  opacity:0.75"
-           title="55 TSS"></div>
+                  opacity:0.75"></div>
       
     </div>
   </div>
@@ -1596,7 +1564,7 @@
       <div class="card-headline"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M20 14.3A8 8 0 1 1 9.7 4a6.4 6.4 0 0 0 10.3 10.3Z"/></svg>Schlaf-Verlauf · 30 Tage</div>
     </div>
     
-    <div id="sl-wrap" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
+    <div id="sl-wrap" class="chart-touch" style="position:relative;width:100%;height:80px;margin-bottom:8px;cursor:crosshair">
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs>
           <linearGradient id="sleepGradFill" x1="0" y1="0" x2="0" y2="1">
@@ -1670,9 +1638,7 @@
           
         </svg>
         
-        <div style="position:absolute;left:calc(0.0% - 12px);top:calc(83.6% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(0.0% - 12px);top:calc(83.6% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px">271W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1683,9 +1649,7 @@
           </div>
         </div>
         
-        <div style="position:absolute;left:calc(10.0% - 12px);top:calc(56.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(10.0% - 12px);top:calc(56.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">300W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1696,9 +1660,7 @@
           </div>
         </div>
         
-        <div style="position:absolute;left:calc(29.4% - 12px);top:calc(69.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(29.4% - 12px);top:calc(69.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">286W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1709,9 +1671,7 @@
           </div>
         </div>
         
-        <div style="position:absolute;left:calc(37.7% - 12px);top:calc(55.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(37.7% - 12px);top:calc(55.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">301W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1722,9 +1682,7 @@
           </div>
         </div>
         
-        <div style="position:absolute;left:calc(50.2% - 12px);top:calc(33.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(50.2% - 12px);top:calc(33.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">324W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1735,9 +1693,7 @@
           </div>
         </div>
         
-        <div style="position:absolute;left:calc(80.8% - 12px);top:calc(51.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(80.8% - 12px);top:calc(51.4% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             left:12px;transform:translateX(-50%)">305W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1748,9 +1704,7 @@
           </div>
         </div>
         
-        <div style="position:absolute;left:calc(97.3% - 12px);top:calc(56.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10"
-             onmouseenter="this.querySelector('.ftp-tt').style.opacity='1'"
-             onmouseleave="this.querySelector('.ftp-tt').style.opacity='0'">
+        <div class="tip-host" style="position:absolute;left:calc(97.3% - 12px);top:calc(56.1% - 12px);width:24px;height:24px;cursor:pointer;z-index:10">
           <span style="position:absolute;bottom:100%;margin-bottom:2px;white-space:nowrap;pointer-events:none;line-height:1;font-size:0.58rem;color:var(--brand);font-weight:700;
             right:12px">300W</span>
           <div class="ftp-tt" style="opacity:0;transition:opacity 0.12s;position:absolute;bottom:calc(100% + 6px);white-space:nowrap;pointer-events:none;z-index:20;
@@ -1783,7 +1737,7 @@
       <div class="card-headline"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M7.5 3.5c1.9 0 2.8 2.2 2.6 4.7-.2 2.1-1 3.6-1 5.3H5.6C5.3 11.6 4.8 10 4.8 8c0-2.6 1-4.5 2.7-4.5ZM5.8 16.5h3.4v1.2a1.7 1.7 0 0 1-3.4 0ZM16.5 7.5c1.7 0 2.7 1.9 2.7 4.5 0 2-.5 3.6-.8 5.5h-3.5c0-1.7-.8-3.2-1-5.3-.2-2.5.7-4.7 2.6-4.7ZM14.8 20.5h3.4v1.2a1.7 1.7 0 0 1-3.4 0Z"/></svg>Schritte · 30 Tage</div>
       <span class="kw-pill" style="margin-left:auto">nicht im TSS</span>
     </div>
-    <div id="st-wrap" style="position:relative;width:100%;height:80px;margin-bottom:4px;cursor:crosshair">
+    <div id="st-wrap" class="chart-touch" style="position:relative;width:100%;height:80px;margin-bottom:4px;cursor:crosshair">
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         
         <rect x="1.5" y="66.1" width="7.0" height="13.9" rx="1"
@@ -2269,7 +2223,7 @@
   function bindChartHover(wrId, chId, ttId, pts, color, fmtVal) {
     var wr = document.getElementById(wrId);
     if (!wr || !pts.length) return;
-    wr.addEventListener('mousemove', function(e) {
+    function show(e) {
       var r = wr.getBoundingClientRect();
       var xp = (e.clientX - r.left) / r.width * 100;
       var pt = nearestPt(pts, xp);
@@ -2282,12 +2236,35 @@
       tt.style.display = 'block';
       if (pt.x < 70) { tt.style.left = 'calc(' + pt.x + '% + 8px)'; tt.style.right = ''; }
       else            { tt.style.right = 'calc(' + (100 - pt.x) + '% + 8px)'; tt.style.left = ''; }
-    });
-    wr.addEventListener('mouseleave', function() {
+    }
+    function hide() {
       document.getElementById(chId).style.display = 'none';
       document.getElementById(ttId).style.display = 'none';
-    });
+    }
+    // Maus: Hover · Touch: Tippen oder waagerecht wischen, Tooltip bleibt bis zum Tippen daneben
+    wr.addEventListener('pointerdown', show);
+    wr.addEventListener('pointermove', function(e) { if (e.pointerType === 'mouse' || e.buttons) show(e); });
+    wr.addEventListener('pointerleave', function(e) { if (e.pointerType === 'mouse') hide(); });
+    document.addEventListener('pointerdown', function(e) { if (e.pointerType !== 'mouse' && !wr.contains(e.target)) hide(); });
   }
+
+  // Tooltips an Balken/Punkten: Hover am Laptop, Tippen am Handy (erneut tippen oder daneben = zu)
+  var hosts = document.querySelectorAll('.tip-host');
+  function closeAll(except) {
+    for (var i = 0; i < hosts.length; i++) if (hosts[i] !== except) hosts[i].classList.remove('tip-on');
+  }
+  for (var i = 0; i < hosts.length; i++) (function(h) {
+    h.addEventListener('pointerenter', function(e) { if (e.pointerType === 'mouse') h.classList.add('tip-on'); });
+    h.addEventListener('pointerleave', function(e) { if (e.pointerType === 'mouse') h.classList.remove('tip-on'); });
+    h.addEventListener('pointerup', function(e) {
+      if (e.pointerType === 'mouse') return;
+      closeAll(h);
+      h.classList.toggle('tip-on');
+    });
+  })(hosts[i]);
+  document.addEventListener('pointerup', function(e) {
+    if (e.pointerType !== 'mouse' && !(e.target.closest && e.target.closest('.tip-host'))) closeAll(null);
+  });
 
   
   var ctlPts = [{"x":0.0,"d":"15.04.26","v":39.8},{"x":0.5,"d":"16.04.26","v":38.8},{"x":1.1,"d":"17.04.26","v":37.9},{"x":1.6,"d":"18.04.26","v":37.0},{"x":2.2,"d":"19.04.26","v":36.1},{"x":2.7,"d":"20.04.26","v":35.3},{"x":3.3,"d":"21.04.26","v":34.5},{"x":3.8,"d":"22.04.26","v":33.7},{"x":4.4,"d":"23.04.26","v":32.9},{"x":4.9,"d":"24.04.26","v":32.1},{"x":5.5,"d":"25.04.26","v":33.3},{"x":6.0,"d":"26.04.26","v":34.3},{"x":6.6,"d":"27.04.26","v":33.5},{"x":7.1,"d":"28.04.26","v":35.4},{"x":7.7,"d":"29.04.26","v":35.4},{"x":8.2,"d":"30.04.26","v":34.6},{"x":8.8,"d":"01.05.26","v":37.5},{"x":9.3,"d":"02.05.26","v":42.1},{"x":9.9,"d":"03.05.26","v":41.1},{"x":10.4,"d":"04.05.26","v":40.1},{"x":11.0,"d":"05.05.26","v":40.0},{"x":11.5,"d":"06.05.26","v":40.2},{"x":12.1,"d":"07.05.26","v":39.2},{"x":12.6,"d":"08.05.26","v":39.5},{"x":13.2,"d":"09.05.26","v":39.9},{"x":13.7,"d":"10.05.26","v":40.2},{"x":14.3,"d":"11.05.26","v":40.0},{"x":14.8,"d":"12.05.26","v":41.2},{"x":15.4,"d":"13.05.26","v":41.6},{"x":15.9,"d":"14.05.26","v":43.8},{"x":16.5,"d":"15.05.26","v":42.7},{"x":17.0,"d":"16.05.26","v":41.7},{"x":17.6,"d":"17.05.26","v":40.8},{"x":18.1,"d":"18.05.26","v":40.5},{"x":18.7,"d":"19.05.26","v":41.6},{"x":19.2,"d":"20.05.26","v":41.7},{"x":19.8,"d":"21.05.26","v":42.8},{"x":20.3,"d":"22.05.26","v":41.8},{"x":20.9,"d":"23.05.26","v":43.4},{"x":21.4,"d":"24.05.26","v":42.4},{"x":22.0,"d":"25.05.26","v":44.3},{"x":22.5,"d":"26.05.26","v":46.2},{"x":23.1,"d":"27.05.26","v":45.1},{"x":23.6,"d":"28.05.26","v":48.0},{"x":24.2,"d":"29.05.26","v":49.5},{"x":24.7,"d":"30.05.26","v":48.4},{"x":25.3,"d":"31.05.26","v":48.9},{"x":25.8,"d":"01.06.26","v":48.4},{"x":26.4,"d":"02.06.26","v":47.9},{"x":26.9,"d":"03.06.26","v":46.8},{"x":27.5,"d":"04.06.26","v":47.3},{"x":28.0,"d":"05.06.26","v":46.9},{"x":28.6,"d":"06.06.26","v":46.5},{"x":29.1,"d":"07.06.26","v":46.1},{"x":29.7,"d":"08.06.26","v":45.8},{"x":30.2,"d":"09.06.26","v":44.7},{"x":30.8,"d":"10.06.26","v":44.4},{"x":31.3,"d":"11.06.26","v":43.3},{"x":31.9,"d":"12.06.26","v":43.6},{"x":32.4,"d":"13.06.26","v":44.8},{"x":33.0,"d":"14.06.26","v":51.0},{"x":33.5,"d":"15.06.26","v":49.8},{"x":34.1,"d":"16.06.26","v":48.6},{"x":34.6,"d":"17.06.26","v":48.2},{"x":35.2,"d":"18.06.26","v":47.1},{"x":35.7,"d":"19.06.26","v":47.7},{"x":36.3,"d":"20.06.26","v":48.3},{"x":36.8,"d":"21.06.26","v":47.2},{"x":37.4,"d":"22.06.26","v":46.1},{"x":37.9,"d":"23.06.26","v":45.8},{"x":38.5,"d":"24.06.26","v":44.8},{"x":39.0,"d":"25.06.26","v":44.9},{"x":39.6,"d":"26.06.26","v":43.8},{"x":40.1,"d":"27.06.26","v":44.5},{"x":40.7,"d":"28.06.26","v":45.7},{"x":41.2,"d":"29.06.26","v":44.6},{"x":41.8,"d":"30.06.26","v":43.5},{"x":42.3,"d":"01.07.26","v":42.5},{"x":42.9,"d":"02.07.26","v":41.5},{"x":43.4,"d":"03.07.26","v":40.5},{"x":44.0,"d":"04.07.26","v":39.6},{"x":44.5,"d":"05.07.26","v":38.6},{"x":45.1,"d":"06.07.26","v":37.7},{"x":45.6,"d":"07.07.26","v":36.8},{"x":46.2,"d":"08.07.26","v":36.0},{"x":46.7,"d":"09.07.26","v":35.1},{"x":47.3,"d":"10.07.26","v":34.3},{"x":47.8,"d":"11.07.26","v":33.5},{"x":48.4,"d":"12.07.26","v":32.7},{"x":48.9,"d":"13.07.26","v":31.9},{"x":49.5,"d":"14.07.26","v":31.2},{"x":50.0,"d":"15.07.26","v":30.5},{"x":50.5,"d":"16.07.26","v":29.7},{"x":51.1,"d":"17.07.26","v":29.0},{"x":51.6,"d":"18.07.26","v":28.4},{"x":52.2,"d":"19.07.26","v":27.7},{"x":52.7,"d":"20.07.26","v":27.0},{"x":53.3,"d":"21.07.26","v":26.4},{"x":53.8,"d":"22.07.26","v":25.8},{"x":54.4,"d":"23.07.26","v":25.2},{"x":54.9,"d":"24.07.26","v":25.3},{"x":55.5,"d":"25.07.26","v":24.7},{"x":56.0,"d":"26.07.26","v":24.9},{"x":56.6,"d":"27.07.26","v":24.3},{"x":57.1,"d":"28.07.26","v":23.8},{"x":57.7,"d":"29.07.26","v":24.1},{"x":58.2,"d":"30.07.26","v":23.6},{"x":58.8,"d":"31.07.26","v":24.2},{"x":59.3,"d":"01.08.26","v":25.5},{"x":59.9,"d":"02.08.26","v":24.9},{"x":60.4,"d":"03.08.26","v":24.3},{"x":61.0,"d":"04.08.26","v":23.7},{"x":61.5,"d":"05.08.26","v":24.1},{"x":62.1,"d":"06.08.26","v":24.9},{"x":62.6,"d":"07.08.26","v":24.3},{"x":63.2,"d":"08.08.26","v":23.7},{"x":63.7,"d":"09.08.26","v":23.2},{"x":64.3,"d":"10.08.26","v":23.7},{"x":64.8,"d":"11.08.26","v":23.1},{"x":65.4,"d":"12.08.26","v":22.6},{"x":65.9,"d":"13.08.26","v":22.0},{"x":66.5,"d":"14.08.26","v":21.5},{"x":67.0,"d":"15.08.26","v":21.0},{"x":67.6,"d":"16.08.26","v":20.5},{"x":68.1,"d":"17.08.26","v":20.0},{"x":68.7,"d":"18.08.26","v":19.6},{"x":69.2,"d":"19.08.26","v":19.1},{"x":69.8,"d":"20.08.26","v":18.7},{"x":70.3,"d":"21.08.26","v":18.3},{"x":70.9,"d":"22.08.26","v":17.8},{"x":71.4,"d":"23.08.26","v":19.5},{"x":72.0,"d":"24.08.26","v":19.0},{"x":72.5,"d":"25.08.26","v":18.5},{"x":73.1,"d":"26.08.26","v":18.1},{"x":73.6,"d":"27.08.26","v":17.7},{"x":74.2,"d":"28.08.26","v":18.5},{"x":74.7,"d":"29.08.26","v":18.1},{"x":75.3,"d":"30.08.26","v":17.7},{"x":75.8,"d":"31.08.26","v":17.2},{"x":76.4,"d":"01.09.26","v":16.8},{"x":76.9,"d":"02.09.26","v":16.4},{"x":77.5,"d":"03.09.26","v":16.0},{"x":78.0,"d":"04.09.26","v":16.6},{"x":78.6,"d":"05.09.26","v":16.2},{"x":79.1,"d":"06.09.26","v":16.8},{"x":79.7,"d":"07.09.26","v":17.0},{"x":80.2,"d":"08.09.26","v":16.6},{"x":80.8,"d":"09.09.26","v":17.6},{"x":81.3,"d":"10.09.26","v":17.2},{"x":81.9,"d":"11.09.26","v":16.8},{"x":82.4,"d":"12.09.26","v":21.3},{"x":83.0,"d":"13.09.26","v":20.8},{"x":83.5,"d":"14.09.26","v":21.2},{"x":84.1,"d":"15.09.26","v":22.7},{"x":84.6,"d":"16.09.26","v":22.2},{"x":85.2,"d":"17.09.26","v":21.7},{"x":85.7,"d":"18.09.26","v":22.0},{"x":86.3,"d":"19.09.26","v":22.2},{"x":86.8,"d":"20.09.26","v":23.9},{"x":87.4,"d":"21.09.26","v":23.3},{"x":87.9,"d":"22.09.26","v":23.7},{"x":88.5,"d":"23.09.26","v":24.7},{"x":89.0,"d":"24.09.26","v":26.3},{"x":89.6,"d":"25.09.26","v":27.6},{"x":90.1,"d":"26.09.26","v":26.9},{"x":90.7,"d":"27.09.26","v":27.1},{"x":91.2,"d":"28.09.26","v":27.3},{"x":91.8,"d":"29.09.26","v":27.4},{"x":92.3,"d":"30.09.26","v":27.5},{"x":92.9,"d":"01.10.26","v":28.0},{"x":93.4,"d":"02.10.26","v":27.3},{"x":94.0,"d":"03.10.26","v":27.5},{"x":94.5,"d":"04.10.26","v":27.8},{"x":95.1,"d":"05.10.26","v":27.1},{"x":95.6,"d":"06.10.26","v":27.5},{"x":96.2,"d":"07.10.26","v":26.9},{"x":96.7,"d":"08.10.26","v":27.5},{"x":97.3,"d":"09.10.26","v":26.9},{"x":97.8,"d":"10.10.26","v":27.2},{"x":98.4,"d":"11.10.26","v":28.3},{"x":98.9,"d":"12.10.26","v":28.9},{"x":99.5,"d":"13.10.26","v":30.0},{"x":100.0,"d":"14.10.26","v":30.5}];
