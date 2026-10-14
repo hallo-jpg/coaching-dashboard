@@ -1,6 +1,14 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 12. Oktober 2026*
+*Letzte Aktualisierung: 14. Oktober 2026*
+
+---
+
+## 14. Oktober 2026 – KW42 Mi: Easy + Steigerungen, HF höher
+
+**Stefan:** HF höher als sonst – Ermüdung von gestern oder zu schnell angegangen? Verbesserung im HF-160-Chart sichtbar.
+**Streams:** 40min / 5,6 km · Easy-Teil (0–32 min) ~7:25/km @ HF 159–169, Kadenz 165–167 · Steigerungen 6×~20s @ 4:47–5:39, 171–179 spm, HF-Peaks 182–187 → Ø HF 166 ist durch die Steigerungen hochgezogen. Mo zum Vergleich: ~7:00 @ 160–165.
+**Coach:** Nicht zu schnell angegangen (Start 7:11 @ 147, Easy-Teil langsamer als Mo). Plausibel ist der Vortag: erste SwSp-Einheit, HRV heute 43 (−1,9 SD), RP 57 (+2), TSB −14,8, Readiness 68 🟡. Ein Datenpunkt mit Confounder → keine Fitnessaussage, nicht gegen den HF-160-Trend werten. Do Ruhetag passt, Fr Easy 45 (🎯 Kern) wie geplant. Lauf-km KW42: 10,6 von max. ~16,5.
 
 ---
 
