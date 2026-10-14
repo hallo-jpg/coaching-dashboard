@@ -90,6 +90,8 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 
 - **`COACH_MEMORY.md` vor jeder Coaching-Antwort lesen und befolgen.** Neue Korrekturen oder Erkenntnisse aus einer Session dort ergänzen (nicht nur im Chat bestätigen) – das ist die einzige Quelle, die alle Sessions teilen.
 
+- **Dashboard-Features und -Anpassungen immer mit den Superpowers-Skills** (Stefan, 14.10.2026): vor dem Bauen `superpowers:brainstorming` (erst fragen, dann bauen – nichts ersetzen oder entfernen ohne Stefans Okay), dann testgetrieben (`superpowers:test-driven-development`) und vor „fertig“ `superpowers:verification-before-completion`. Unsicher, ob es ein Dashboard-Thema ist (z.B. reine Plan-/Coaching-Frage) → kurz fragen, ob Superpowers genutzt werden soll.
+
 - **Vor jedem Commit an `planung/kw*.md`: `python3 validate_plans.py` ausführen.** Prüft alle Wochenpläne gegen den echten Dashboard-Parser. Tag-Spalte muss exakt `Mo`/`Di`/… sein – **kein Datum** (`Mo 7.9.` bricht den Parser lautlos, das Dashboard bleibt dann leer). Pflichtformat: 6 Spalten + `**Total**`-Zeile.
 
 - Alle Workouts laufen auf **%FTP** → .zwo Dateien skalieren automatisch
