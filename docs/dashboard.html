@@ -289,6 +289,12 @@
   .sick-notice strong { font-weight: 700; }
   .day-sick .day-workout { text-decoration: line-through; color: var(--subtle); }
   .day-missed .day-workout { text-decoration: line-through; color: var(--subtle); }
+  /* Erledigt: gruene Flaeche bis zum Kartenrand, Plan tritt zurueck, Ist-Werte bleiben lesbar */
+  .day-row.day-done { background: rgba(91,143,58,0.08); box-shadow: inset 3px 0 0 var(--green-mark);
+              margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+  .day-done .day-name, .day-done .day-dot, .day-done .day-workout,
+  .day-done .bonus-activity { opacity: 0.5; }
+  .day-done .day-workout { font-weight: 500; }
   .badge-missed { font-size: 0.65rem; font-weight: 700; color: var(--muted); background: var(--track); border: 1px solid var(--border); border-radius: 10px; padding: 1px 7px; white-space: nowrap; }
   .bonus-activity { display: flex; align-items: center; gap: 6px; margin-top: 5px; padding-top: 5px; border-top: 1px dashed var(--border); }
   .badge-bonus { font-size: 0.58rem; font-weight: 800; color: var(--orange); background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.25); border-radius: 5px; padding: 1px 5px; flex-shrink: 0; }
@@ -951,7 +957,7 @@
     
 
     
-    <div class="day-row ">
+    <div class="day-row day-done">
       <span class="day-name">Mo</span>
       <span class="day-dot dot-run"></span>
       <div>
@@ -987,7 +993,7 @@
       
     </div>
     
-    <div class="day-row ">
+    <div class="day-row day-done">
       <span class="day-name">Di</span>
       <span class="day-dot dot-key"></span>
       <div>
@@ -1023,7 +1029,7 @@
       
     </div>
     
-    <div class="day-row ">
+    <div class="day-row day-done">
       <span class="day-name">Mi</span>
       <span class="day-dot dot-run"></span>
       <div>
