@@ -900,6 +900,8 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
         missed = not rest and not done and _is_past(tag)
         if missed:
             row_class = "day-missed"
+        elif done and not rest:
+            row_class = "day-done"
         else:
             row_class = ""
 

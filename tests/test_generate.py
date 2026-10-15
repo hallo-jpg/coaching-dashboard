@@ -225,6 +225,31 @@ def test_build_day_rows():
     assert mo["rest"] is False
 
 
+
+def test_build_day_rows_row_class_done_vs_missed():
+    """Erledigt -> day-done (gruene Flaeche), ausgefallen bleibt day-missed,
+    Ruhetag und offene Tage bekommen keine Zeilen-Klasse."""
+    monday = date(2026, 4, 13)
+    matched = match_activities(SAMPLE_ACTIVITIES, SAMPLE_PLAN_DAYS, monday)
+    with patch("generate._is_past", side_effect=lambda tag: tag in ("Mo", "Di", "Mi")):
+        rows = {r["tag"]: r for r in build_day_rows(SAMPLE_PLAN_DAYS, matched)}
+    assert rows["Mo"]["row_class"] == "day-done"      # erledigt, vergangen
+    assert rows["Di"]["row_class"] == "day-missed"    # nicht erledigt, vergangen
+    assert rows["Mi"]["row_class"] == ""              # Ruhetag
+    assert rows["Do"]["row_class"] == "day-done"      # heute schon erledigt
+
+
+def test_build_day_rows_rest_day_with_bonus_not_done_class():
+    """Ruhetag mit Bonus-Einheit bleibt ohne day-done (eigene Darstellung)."""
+    monday = date(2026, 4, 13)
+    acts = [{"start_date_local": "2026-04-15T09:00:00", "type": "Ride",
+             "icu_training_load": 30, "name": "Spontan"}]
+    matched = match_activities(acts, SAMPLE_PLAN_DAYS, monday)
+    with patch("generate._is_past", return_value=True):
+        rows = {r["tag"]: r for r in build_day_rows(SAMPLE_PLAN_DAYS, matched)}
+    assert rows["Mi"]["row_class"] == ""
+
+
 MOCK_WELLNESS_NO_HRV = [
     {"id": "2026-04-12", "hrv": None, "sleepSecs": None, "ctl": 42.0, "atl": 38.0, "restingHR": None},
     {"id": "2026-04-13", "hrv": None, "sleepSecs": None, "ctl": 42.5, "atl": 37.0, "restingHR": None},
