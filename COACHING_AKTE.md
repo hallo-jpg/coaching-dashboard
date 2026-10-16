@@ -1,6 +1,15 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 14. Oktober 2026*
+*Letzte Aktualisierung: 16. Oktober 2026*
+
+---
+
+## 16. Oktober 2026 – KW42 Fr kränklich, Lauf auf So
+
+**Stefan:** Fühlt sich heute (Tag 1) diffus kränklich, „nicht bereit, will nichts riskieren“. Kein Fieber genannt, keine konkreten Symptome.
+**Daten:** Readiness 80 🟢 · HRV 52 (Normal 47–56) · RP 54 → objektiv unauffällig, eher Frühphase oder nur leicht.
+**Entscheidung (Stefan):** Fr Easy 45 Kern → **So vor dem Biathlon, optional** · Sa LIT 2h15 bleibt stehen · Kraft B entfällt ersatzlos (flexibel). Kein voller Krank-Modus, solange es diffus bleibt.
+**Coach:** Sa nur fahren, wenn es nicht schlechter wird (kein Fieber, nichts unterhalb des Halses) – sonst Sa Ruhe und melden, dann Krank-Modus mit Rampe. Lauf-Budget unverändert (~16 km). intervals.icu: Fr-Lauf + Kraft B gelöscht, So-Lauf neu angelegt.
 
 ---
 

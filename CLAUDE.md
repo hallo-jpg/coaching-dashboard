@@ -11,7 +11,7 @@
 | **Beschwerden** | **keine** – Planung geht von beschwerdefrei aus, Stefan meldet sich selbst (28.9.) · keine Abbruchregeln in Pläne · Randnotiz: Halswirbelfraktur 28.6. ausgeheilt, Wade (MTSS-Verdacht 8/2026) wieder okay |
 | **FTP** | **300W** (Baseline 1.10.2026, XCadey · 10min geschätzt) · 3,21 W/kg · **93,6 kg** (Ø 30d aus intervals.icu, Stand 20.9.) · Zonen trainingsleitend · Offset Tacx ÷ XCadey ≈ **1,0** · vorher 305W (4iiii) |
 | **Events** | **aktuell keine geplant** · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
-| **Aktuelle KW** | KW42 (12. – 18. Oktober 2026) · Rad komplett Rolle (Wetter) · **So 18.10. kein Training** (Biathlon) · Do Ruhetag |
+| **Aktuelle KW** | KW42 (12. – 18. Oktober 2026) · Rad komplett Rolle (Wetter) · Do Ruhetag · **Fr 16.10. kränklich** → Lauf optional auf So vor dem Biathlon, Kraft B entfällt |
 | **Aktuelle Phase** | Rampe Woche 2 · 🎯 Kern: Di SwSp 3×10 @ 267W · Fr Easy 45min Kadenz 165 · Sa LIT 2h15 · Lauf max. ~16,5 km · Kraft A Mo / B Fr · KW41 Retro 🟢 (Kern 2/2, 13,5 km, Kadenz 164) |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
 | **Nächste Phase** | KW43 Rampe Woche 3 (SwSp 3×12, Laufen Easy + Kadenz) · KW44 Entlastung + HF-160-Check · ab KW45 Block 1 Schwelle |
