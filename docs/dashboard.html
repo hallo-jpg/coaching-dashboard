@@ -470,11 +470,11 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="65.7"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="55.3"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#46702c">81</span>
+        <span class="ring-num" style="color:#46702c">84</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
@@ -565,22 +565,35 @@
     <!-- Datenquellen heute: grün = für heute geliefert, rot = fehlt noch -->
     <div style="position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;align-items:stretch">
       
-      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--red-mark)">COROS</span>
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">COROS</span>
       
-      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--red-mark)">intervals</span>
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">intervals</span>
       
     </div>
     <div class="chard"><div class="chard-icon"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 20C7 16.5 4 13.7 4 10.3A4.3 4.3 0 0 1 12 7.8 4.3 4.3 0 0 1 20 10.3C20 13.7 17 16.5 12 20Z"/></svg></div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:#46702c">81</div>
+      <div class="readiness-score" style="color:#46702c">84</div>
       <div class="readiness-tag" style="color:#46702c">🟢 Voll trainieren</div>
       
     </div>
 
     
 
+    
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">81</div>
+        <div style="font-size:0.55rem;color:var(--muted)">HRV · Puls · Schlaf</div>
+      </div>
+      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">91</div>
+        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
+      </div>
+    </div>
     
 
     <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--green);border-color:var(--green);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--green) 35%,transparent)">
@@ -597,7 +610,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">9.3h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">8.5h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
@@ -618,6 +631,62 @@
     </div>
 
     
+    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Durchschn. (2/4)</span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#fab219;width:74%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
+          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+      
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
+          <span style="font-size:0.62rem;color:var(--text2)">
+            Keine ✅ (1/4)
+            
+          </span>
+        </div>
+        <div style="background:var(--track);border-radius:3px;height:4px">
+          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
+        </div>
+      </div>
+      
+
+    </div>
+    
 
     <div class="sparkline-wrap">
       <div class="spark-label">Readiness · 7 Tage</div>
@@ -635,7 +704,7 @@
         
         <div class="spark-bar " style="height:85%;background:#5b8f3a"></div>
         
-        <div class="spark-bar spark-today" style="height:81%;background:#5b8f3a"></div>
+        <div class="spark-bar spark-today" style="height:84%;background:#5b8f3a"></div>
         
       </div>
     </div>
@@ -1485,10 +1554,10 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,26.9 L10.0,11.7 L20.0,11.1 L30.0,11.9 L40.0,4.0 L50.0,12.3 L60.0,4.0 L70.0,7.9 L80.0,10.5 L90.0,18.9 L100.0,6.1 L110.0,24.5 L120.0,11.2 L130.0,22.7 L140.0,23.2 L150.0,21.7 L160.0,12.7 L170.0,14.9 L180.0,12.8 L190.0,18.8 L200.0,21.7 L210.0,20.5 L220.0,13.3 L230.0,20.0 L240.0,8.0 L250.0,9.3 L260.0,19.2 L270.0,12.3 L280.0,20.7 L290.0,0.0 L300.0,5.5 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,26.9 L10.0,11.7 L20.0,11.1 L30.0,11.9 L40.0,4.0 L50.0,12.3 L60.0,4.0 L70.0,7.9 L80.0,10.5 L90.0,18.9 L100.0,6.1 L110.0,24.5 L120.0,11.2 L130.0,22.7 L140.0,23.2 L150.0,21.7 L160.0,12.7 L170.0,14.9 L180.0,12.8 L190.0,18.8 L200.0,21.7 L210.0,20.5 L220.0,13.3 L230.0,20.0 L240.0,8.0 L250.0,9.3 L260.0,19.2 L270.0,12.3 L280.0,20.7 L290.0,0.0 L300.0,5.5" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="5.5" r="3" fill="#57504c"/>
-        <circle cx="300" cy="5.5" r="5" fill="#57504c" opacity="0.2"/>
+        <path d="M0.0,26.9 L10.0,11.7 L20.0,11.1 L30.0,11.9 L40.0,4.0 L50.0,12.3 L60.0,4.0 L70.0,7.9 L80.0,10.5 L90.0,18.9 L100.0,6.1 L110.0,24.5 L120.0,11.2 L130.0,22.7 L140.0,23.2 L150.0,21.7 L160.0,12.7 L170.0,14.9 L180.0,12.8 L190.0,18.8 L200.0,21.7 L210.0,20.5 L220.0,13.3 L230.0,20.0 L240.0,8.0 L250.0,9.3 L260.0,19.2 L270.0,12.3 L280.0,20.7 L290.0,0.0 L300.0,11.9 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,26.9 L10.0,11.7 L20.0,11.1 L30.0,11.9 L40.0,4.0 L50.0,12.3 L60.0,4.0 L70.0,7.9 L80.0,10.5 L90.0,18.9 L100.0,6.1 L110.0,24.5 L120.0,11.2 L130.0,22.7 L140.0,23.2 L150.0,21.7 L160.0,12.7 L170.0,14.9 L180.0,12.8 L190.0,18.8 L200.0,21.7 L210.0,20.5 L220.0,13.3 L230.0,20.0 L240.0,8.0 L250.0,9.3 L260.0,19.2 L270.0,12.3 L280.0,20.7 L290.0,0.0 L300.0,11.9" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="11.9" r="3" fill="#57504c"/>
+        <circle cx="300" cy="11.9" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
         <text x="296" y="13" font-size="7" fill="#8b837e" opacity="0.8" text-anchor="end">8h</text>
       </svg>
@@ -1498,9 +1567,9 @@
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
         <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">
-          9.3h
+          8.5h
         </div>
-        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
+        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf (COROS, 9.3h im Bett)</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
@@ -1508,6 +1577,9 @@
         <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
       </div>
     </div>
+    
+    <div style="font-size:0.65rem;color:var(--muted);margin-top:8px">Score 88 · Tief 17 % · REM 22 % · 48 min wach</div>
+    <div style="font-size:0.65rem;color:var(--orange);margin-top:4px">HRV erste 2h 40 ms, danach 56 ms – Vorabend-Muster (spät, Essen, Alkohol?)</div>
     
     
   </div>
@@ -2192,7 +2264,7 @@
   
 
   
-  var slPts = [{"x":0.0,"d":"18.09.26","v":6.6},{"x":3.3,"d":"19.09.26","v":8.5},{"x":6.7,"d":"20.09.26","v":8.6},{"x":10.0,"d":"21.09.26","v":8.5},{"x":13.3,"d":"22.09.26","v":9.5},{"x":16.7,"d":"23.09.26","v":8.5},{"x":20.0,"d":"24.09.26","v":9.5},{"x":23.3,"d":"25.09.26","v":9.0},{"x":26.7,"d":"26.09.26","v":8.7},{"x":30.0,"d":"27.09.26","v":7.6},{"x":33.3,"d":"28.09.26","v":9.2},{"x":36.7,"d":"29.09.26","v":6.9},{"x":40.0,"d":"30.09.26","v":8.6},{"x":43.3,"d":"01.10.26","v":7.2},{"x":46.7,"d":"02.10.26","v":7.1},{"x":50.0,"d":"03.10.26","v":7.3},{"x":53.3,"d":"04.10.26","v":8.4},{"x":56.7,"d":"05.10.26","v":8.1},{"x":60.0,"d":"06.10.26","v":8.4},{"x":63.3,"d":"07.10.26","v":7.7},{"x":66.7,"d":"08.10.26","v":7.3},{"x":70.0,"d":"09.10.26","v":7.4},{"x":73.3,"d":"10.10.26","v":8.3},{"x":76.7,"d":"11.10.26","v":7.5},{"x":80.0,"d":"12.10.26","v":9.0},{"x":83.3,"d":"13.10.26","v":8.8},{"x":86.7,"d":"14.10.26","v":7.6},{"x":90.0,"d":"15.10.26","v":8.5},{"x":93.3,"d":"16.10.26","v":7.4},{"x":96.7,"d":"17.10.26","v":10.2},{"x":100.0,"d":"18.10.26","v":9.3}];
+  var slPts = [{"x":0.0,"d":"18.09.26","v":6.6},{"x":3.3,"d":"19.09.26","v":8.5},{"x":6.7,"d":"20.09.26","v":8.6},{"x":10.0,"d":"21.09.26","v":8.5},{"x":13.3,"d":"22.09.26","v":9.5},{"x":16.7,"d":"23.09.26","v":8.5},{"x":20.0,"d":"24.09.26","v":9.5},{"x":23.3,"d":"25.09.26","v":9.0},{"x":26.7,"d":"26.09.26","v":8.7},{"x":30.0,"d":"27.09.26","v":7.6},{"x":33.3,"d":"28.09.26","v":9.2},{"x":36.7,"d":"29.09.26","v":6.9},{"x":40.0,"d":"30.09.26","v":8.6},{"x":43.3,"d":"01.10.26","v":7.2},{"x":46.7,"d":"02.10.26","v":7.1},{"x":50.0,"d":"03.10.26","v":7.3},{"x":53.3,"d":"04.10.26","v":8.4},{"x":56.7,"d":"05.10.26","v":8.1},{"x":60.0,"d":"06.10.26","v":8.4},{"x":63.3,"d":"07.10.26","v":7.7},{"x":66.7,"d":"08.10.26","v":7.3},{"x":70.0,"d":"09.10.26","v":7.4},{"x":73.3,"d":"10.10.26","v":8.3},{"x":76.7,"d":"11.10.26","v":7.5},{"x":80.0,"d":"12.10.26","v":9.0},{"x":83.3,"d":"13.10.26","v":8.8},{"x":86.7,"d":"14.10.26","v":7.6},{"x":90.0,"d":"15.10.26","v":8.5},{"x":93.3,"d":"16.10.26","v":7.4},{"x":96.7,"d":"17.10.26","v":10.2},{"x":100.0,"d":"18.10.26","v":8.5}];
   bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
