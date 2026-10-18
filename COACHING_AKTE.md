@@ -4,6 +4,12 @@
 
 ---
 
+## 18. Oktober 2026 – Indoor-App: MyWhoosh statt Tacx-App
+
+**Stefan:** Tacx-App ist zu oft abgebrochen (u.a. KW42 Di SwSp) → fährt seit Sa 17.10. mit MyWhoosh. COACH_MEMORY (Geräte, FTP-Liste, Zustellung) und `athlete/profil.md` nachgezogen. Tacx-Regeln für Workoutnamen/Zeile 1 gelten vorsichtshalber weiter.
+
+---
+
 ## 18. Oktober 2026 – KW42 Retro + KW43 geplant
 
 🟡 Kern 2/3 · Lauf 10,6 km (Grenze 16,5) · längster 5,6 km · Kadenz Easy ~165 · Kraft 1/2 · Fr-Lauf, Kraft B und der auf So verschobene Lauf wegen Kränkeln ausgefallen – SwSp 3×10 @ 267W und Sa LIT 2h12 (186W, HF 145, IF 0,62) sauber.

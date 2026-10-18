@@ -256,12 +256,12 @@ Ermüdung/Infekt. Zeitstempel: `timezone` in 15-min-Einheiten (4 = UTC+1, 8 = UT
 | Rad outdoor | **S-Works Tarmac SL8** · Cybrei-Kurbel · **XCadey Spindle** = Referenz-Powermeter |
 | Radcomputer | **COROS DURA** (kein Wahoo, der ELEMNT ROAM ist weg – **nie wieder vorschlagen**) |
 | Rad indoor | **Canyon Aeroad ohne Powermeter und ohne Schaltung** auf **Tacx Flux S** → immer ERG |
-| Indoor-App | **nur Tacx-App** (MyWhoosh nicht mehr genutzt, Stefan 1.10.2026 – nicht mehr vorschlagen) · max. 4h am Stück · kein Laufband |
+| Indoor-App | **MyWhoosh** (seit 17.10.2026 – die Tacx-App ist zu oft abgebrochen, Stefan 18.10.) · Tacx-App nicht mehr vorschlagen · max. 4h am Stück · kein Laufband |
 | Kraft | 2 Kurzhanteln bis 10 kg · Widerstandsbänder · Outdoor-Klimmzugstange in der Nähe · kein Kraftraum |
 
 ### Indoor: ERG ist kein Einschränkungsgrund
 Stefan fährt seit Jahren alle strukturierten Formate in ERG, **30/30er inklusive**. Keine Sonderregeln für
-Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahren + Spindown in der Tacx-App.
+Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahren + Spindown (Flux).
 
 ### Zwei Radleistungsquellen – nie gegeneinander rechnen
 Outdoor = Tarmac + XCadey · Indoor = Aeroad auf Tacx (Rollenleistung). Realistisch 5–15% Versatz
@@ -279,9 +279,10 @@ Tarmac. Ergebnis aus einer Einheit:
   Warmfahrens (zeigt, ob der Versatz mit der Intensität schwankt). Gilt dann für die Aeroad-Einheiten.
 - **Protokoll (Stand 30.9.):** 20min Stufen 50/60/70/80% · 3min locker · 3min All-Out · **10min Pause** · 10min All-Out · 10min aus (~58min). Alle Wintertests identisch – Details `modules/ftp-test.md`.
 - **Doppelzählung vermeiden:** Tacx-Datei in intervals.icu löschen oder von der Belastung ausnehmen.
-- Danach neue FTP setzen in **intervals.icu, COROS DURA (outdoor) und Tacx-App (indoor)** – Stefan macht das selbst (KW40: 300W überall gesetzt, 1.10.2026).
+- Danach neue FTP setzen in **intervals.icu, COROS DURA (outdoor) und MyWhoosh (indoor)** – Stefan macht das selbst (KW40: 300W überall gesetzt, 1.10.2026).
 
-### Workout-Zustellung (verifiziert 21.9.2026)
+### Workout-Zustellung (verifiziert 21.9.2026 – Indoor-Teil seit 18.10. offen)
+**Seit 17.10.2026 fährt Stefan indoor mit MyWhoosh** – der geplante Sa-Workout kam dort als „MyWhoosh – LIT 2h15 – Grundlage“ an, der Weg intervals.icu → MyWhoosh funktioniert also. Die Tacx-Regeln unten (Emojis, Zeile 1) gelten vorsichtshalber weiter, bis klar ist, was MyWhoosh anzeigt. Für Stefan „eigentlich egal“ – nicht ausführlich nachfragen.
 intervals.icu → **Garmin Connect → Tacx-App** (Schritte, Balkengrafik, Startknopf kommen an) und
 intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 1. **Keine Emojis in intervals.icu-Workoutnamen** (Tacx zeigt `������`). Umlaute, `×`, `–` gehen.
