@@ -25,6 +25,7 @@
 | Datei | Dauer | TSS ca. | Einsatz-Phase |
 |---|---|---|---|
 | SwSp_3x10.zwo | 1:30h | 72 | KW15 – SwSp Einstieg |
+| 🤖 SwSp 3×12min – 267W · Coach (Description-Route) | 1:30h | ~86 | KW43 – SwSp_3x10 mit 12-min-Blöcken, Ausfahren 13min |
 | 3x8min.SwSp.zwo | 1:30h | 68 | KW15 – kurze SwSp |
 | SwSp_2x10.zwo | 2:00h | 85 | KW15–16 – mit Antritt-Stimulus |
 | SwSp_3x15.zwo | 2:15h | 88 | KW16 – Schwellenausdauer aufbauen |

@@ -11,12 +11,12 @@
 | **Beschwerden** | **keine** – Planung geht von beschwerdefrei aus, Stefan meldet sich selbst (28.9.) · keine Abbruchregeln in Pläne · Randnotiz: Halswirbelfraktur 28.6. ausgeheilt, Wade (MTSS-Verdacht 8/2026) wieder okay |
 | **FTP** | **300W** (Baseline 1.10.2026, XCadey · 10min geschätzt) · 3,21 W/kg · **93,6 kg** (Ø 30d aus intervals.icu, Stand 20.9.) · Zonen trainingsleitend · Offset Tacx ÷ XCadey ≈ **1,0** · vorher 305W (4iiii) |
 | **Events** | **aktuell keine geplant** · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
-| **Aktuelle KW** | KW42 (12. – 18. Oktober 2026) · Rad komplett Rolle (Wetter) · Do Ruhetag · **Fr 16.10. kränklich** → Lauf optional auf So vor dem Biathlon, Kraft B entfällt |
-| **Aktuelle Phase** | Rampe Woche 2 · 🎯 Kern: Di SwSp 3×10 @ 267W · Fr Easy 45min Kadenz 165 · Sa LIT 2h15 · Lauf max. ~16,5 km · Kraft A Mo / B Fr · KW41 Retro 🟢 (Kern 2/2, 13,5 km, Kadenz 164) |
+| **Aktuelle KW** | KW43 (19. – 25. Oktober 2026) · Rad komplett Rolle · **Mo Ruhetag** (abends keine Zeit) · Di nur kurz (Kraft A) · SwSp auf **Mi** |
+| **Aktuelle Phase** | Rampe Woche 3 · 🎯 Kern: Mi SwSp 3×12 @ 267W · Fr Easy 45min Kadenz 165 · Sa LIT 2h30 · Lauf max. ~13,6 km, längster ≤ 6,2 km · Kraft A Di / B Fr · KW42 Retro 🟡 (Kern 2/3, Kraft 1/2 – Kränkeln, 10,6 km, Kadenz ~165) |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
-| **Nächste Phase** | KW43 Rampe Woche 3 (SwSp 3×12, Laufen Easy + Kadenz) · KW44 Entlastung + HF-160-Check · ab KW45 Block 1 Schwelle |
+| **Nächste Phase** | KW44 Entlastung + HF-160-Check · ab KW45 Block 1 Schwelle (SwSp 3×15, erster Lauf-Schwellenreiz) |
 | **Fixpunkte** | FTP-Baseline KW40 ✅ 300W · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 · **Tests nur am Wochenende** |
-| **CTL** | 28,3 (11.10.) · ATL 35,9 · TSB −7,6 · Readiness 72 🟡 (HRV 52, 7d-Ø 49,7, RP 55, Schlaf 7,6h) · Muster normal, HRV-Delle London 7.–10.10. |
+| **CTL** | 30,9 (18.10.) · ATL 41,9 · TSB −11,0 · Readiness 84 🟢 (HRV 52, 7d-Ø 50,0, RP 56, Schlaf 8,6h) · Muster normal, Kränkeln 16.–18.10. ohne Spur in HRV/RP |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
 | **Lauf-Schwellenwerte** | **Schwellenpace 6:28/km · LTHR 185** (aktualisiert 20.9. aus dem Wettkampf) · Zonen: Z1 7:25–8:40 · Z2 6:55–7:25 · Z3 6:10–6:40 · Z4 5:25–6:10 · ✅ in intervals.icu übernommen (Schwellentempo 6:28, Schwellen-HF 185, HFmax 205) |
 | **⚠️ Referenzwerte** | Lauf 4.9. war Kreta/nüchtern/früh → **nicht als Tempo-Referenz nutzen**. Bedingungen immer miterfassen. |

@@ -1,6 +1,18 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 16. Oktober 2026*
+*Letzte Aktualisierung: 18. Oktober 2026*
+
+---
+
+## 18. Oktober 2026 – KW42 Retro + KW43 geplant
+
+🟡 Kern 2/3 · Lauf 10,6 km (Grenze 16,5) · längster 5,6 km · Kadenz Easy ~165 · Kraft 1/2 · Fr-Lauf, Kraft B und der auf So verschobene Lauf wegen Kränkeln ausgefallen – SwSp 3×10 @ 267W und Sa LIT 2h12 (186W, HF 145, IF 0,62) sauber.
+
+**Stefan:** So-Lauf entfällt, noch leicht kränklich, „nichts wildes“ → KW43 wie geplant. Mo Abend keine Zeit · Di nur kurz/ab ~21 Uhr · Mi–Fr normal · Sa 2–2,5h indoor · So wahrscheinlich.
+**Daten:** Readiness 84 🟢 (HRV 52, 7d-Ø 50,0, Normal 47–56 · RP 56 · Schlaf 8,6h) · CTL 30,9 · ATL 41,9 · TSB −11,0 · ACWR 1,36 · Gewicht 30d 93,8 (kein Update). Kein Deload-Signal, objektiv kein Infektmuster → kein Krank-Modus.
+**KW43:** Mo Ruhetag · Di Kraft A ohne Beine · **Mi SwSp 3×12 @ 267W** (🎯, von Di) · Do Easy 40 + 6 Steigerungen · **Fr Easy 45 Kadenz** (🎯) + Kraft B · **Sa LIT 2h30** (🎯, statt 2h45 – Stefans Zeitfenster) · So LIT 1h optional → ~305 TSS (+11% ggü. Ist 274).
+**Lauf-Budget neu gerechnet:** aus dem Ist 10,6 km → Grenze ~13,6 km (Dashboard-Formel). Ab 21.10. fällt der Seelauf aus dem 30-Tage-Fenster → längster Lauf max. ~6,2 km. Der Vorentwurf (3 Läufe, ~18 km, längster ~7 km) hätte beides gerissen → 2 Läufe, ~11,8 km; der Mo-Lauf entfällt ersatzlos.
+intervals.icu: So-Lauf 145177029 gelöscht · 145801180 (Kraft A) · 145801181 (SwSp 3×12, Description-Route + Fueling) · 145801183 (Do) · 145801184 (Fr Lauf) · 145801185 (Kraft B) · 145801187 (Sa LIT 2h30 + Fueling) · 145801190 (So LIT 1h). Description-Route-Workouts brauchen einmal Öffnen in intervals.icu → ICU-TSS danach in kw43.md übernehmen (bisher Schätzwerte).
 
 ---
 
