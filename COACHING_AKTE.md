@@ -1,6 +1,13 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 18. Oktober 2026*
+*Letzte Aktualisierung: 20. Oktober 2026*
+
+---
+
+## 20. Oktober 2026 – KW43 Kraft A auf So
+
+**Stefan:** Di keine Zeit für Kraft, will es diese Woche nachholen.
+**Coach:** Kraft B bleibt Fr nach dem Easy-Lauf, Kraft A wandert auf So (≥ 48h Abstand, Beinübungen wieder drin, Mo Ruhetag). Do wäre nur 24h vor B gewesen. intervals.icu 145801180 auf 25.10. verschoben.
 
 ---
 
