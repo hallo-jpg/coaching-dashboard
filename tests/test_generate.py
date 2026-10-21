@@ -897,3 +897,22 @@ def test_planned_week_without_icu_keeps_md_total():
     with patch("generate._api_get", return_value=[]):
         plan = planned_week(40, date(2026, 9, 28))
     assert plan["tss_plan"] == parse_kw_plan(40)["tss_plan"]
+
+
+def _plan_days(statuses: dict) -> list:
+    return [{"tag": t, "status": statuses.get(t, "⬜")}
+            for t in ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]]
+
+
+def test_sick_notice_not_inferred_from_missed_day():
+    """Ein verpasster Tag ist kein Kranksein – ohne 🤒 im Plan kein Hinweis."""
+    from generate import sick_notice_for
+    assert sick_notice_for(_plan_days({"Di": "↪"}), 43) == ""
+    assert sick_notice_for(_plan_days({"Di": "❌"}), 43) == ""
+
+
+def test_sick_notice_from_explicit_marker():
+    from generate import sick_notice_for
+    notice = sick_notice_for(_plan_days({"Mi": "🤒", "Do": "🤒"}), 43)
+    assert "Krank" in notice
+    assert "kw43.md" in notice

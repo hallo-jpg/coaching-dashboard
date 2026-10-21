@@ -932,6 +932,16 @@ def build_day_rows(plan_days: list, matched: dict) -> list:
     return rows
 
 
+def sick_notice_for(plan_days: list, kw: int) -> str:
+    """Krank-Hinweis nur, wenn kw*.md einen Tag ausdrücklich mit 🤒 markiert.
+
+    Verpasste Einheiten allein heißen nicht krank – das wird nicht geraten.
+    """
+    if any("🤒" in d.get("status", "") for d in plan_days):
+        return f"Krank – Details in kw{kw}.md"
+    return ""
+
+
 def _is_past(tag: str) -> bool:
     today_tag = DAY_ORDER[date.today().weekday()]
     return DAY_ORDER.index(tag) < DAY_ORDER.index(today_tag)
@@ -1318,10 +1328,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
                             else "var(--yellow)" if tss_compliance_pct >= 40
                             else "var(--accent)")
 
-    sick_days   = [d for d in days if not d["done"] and not d["rest"] and _is_past(d["tag"])]
-    sick_notice = ""
-    if sick_days and all(not d["done"] for d in days if not d["rest"]):
-        sick_notice = f"Krank – alle Einheiten ausgefallen (Details in kw{kw}.md)"
+    sick_notice = sick_notice_for(plan["days"], kw)
 
     def bar_color(pct: int) -> str:
         return "var(--green-mark)" if pct >= 75 else "var(--yellow-mark)" if pct >= 50 else "var(--red-mark)"

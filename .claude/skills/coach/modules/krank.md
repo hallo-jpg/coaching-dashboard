@@ -40,7 +40,7 @@ eigenen Abschluss (periodisierung.md).
 
 ## Dateien
 
-1. `planung/kw[N].md`: Einheiten bis zum Tag vor Rückkehr → Status `❌` + Notiz „krank", TSS Ist 0 · Resttage
+1. `planung/kw[N].md`: Einheiten bis zum Tag vor Rückkehr → Status `🤒` + Notiz „krank" (nur 🤒 zeigt im Dashboard den Krank-Hinweis – ❌ allein heißt nur ausgefallen), TSS Ist 0 · Resttage
    durch die Rampe ersetzen · Total-Zeile bleibt (Parser!), TSS-Wert an die Rampe anpassen · darunter
    `> **Krankheitswoche** – Rückkehrtag [Datum], Rampe bis [Datum +5].`
 2. Geplante intervals.icu-Workouts der Ausfalltage mit `delete_event` löschen, Rampe neu anlegen.
