@@ -916,3 +916,12 @@ def test_sick_notice_from_explicit_marker():
     notice = sick_notice_for(_plan_days({"Mi": "🤒", "Do": "🤒"}), 43)
     assert "Krank" in notice
     assert "kw43.md" in notice
+
+
+def test_countdown_shows_etape_2027_as_main_event():
+    from generate import _build_countdown
+    cd = _build_countdown(date(2026, 10, 23))
+    assert cd["main"] is not None
+    assert cd["main"]["id"] == "etape2027"
+    assert cd["main"]["date_iso"] == "2027-07-11"
+    assert cd["main"]["days_until"] == 261

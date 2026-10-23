@@ -1202,6 +1202,15 @@ RACE_EVENTS = [
         "kw":     38,
         "color":  "#d1450f",
     },
+    {
+        "id":     "etape2027",
+        "name":   "L'Étape du Tour",
+        "flag":   "🏔️",
+        "date":   date(2027, 7, 11),
+        "detail": "So 11. Juli 2027 · KW27 · Cluses → Les Saisies · 154 km · 4.850 Hm",
+        "kw":     27,
+        "color":  None,
+    },
 ]
 
 

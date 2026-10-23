@@ -273,4 +273,4 @@ git add [Dateien] && git commit -m "plan: KW[N] [Kurzbeschreibung]" && git pull 
   (Kern-Einheiten werden verschoben, nicht gestrichen).
 - Stefan ist kein Profi – bestmöglich, nicht um jeden Preis. Immer erklären **warum**, nicht nur was.
 - Bei Ausstattung, Gewohnheiten, Praxis: **fragen statt annehmen** (COACH_MEMORY Abschnitt 5).
-- Neues Event genannt → sofort in `athlete/profil.md` → Event-Kalender, sonst nirgends autoritativ.
+- Neues Event genannt → sofort in `athlete/profil.md` → Event-Kalender (autoritativ) **und** in `generate.py` → `RACE_EVENTS` (Countdown-Kachel im Dashboard).
