@@ -115,10 +115,10 @@
     padding: 18px 22px;
     display: flex; gap: 20px; align-items: center;
   }
-  .cd-main-left { flex: 1; }
+  .cd-main-left { flex: 0 1 auto; min-width: 0; }
   .cd-flag { font-size: 1.4rem; margin-bottom: 6px; }
   .cd-race-name { font-size: 0.92rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
-  .cd-profile { display: block; width: 100%; max-width: 320px; height: 40px; margin-top: 10px; }
+  .cd-profile { display: block; flex: 1 1 0; min-width: 160px; max-width: 560px; height: 64px; margin: 0 auto; }
 
   .cd-days { display: flex; flex-direction: column; gap: 5px; }
   .cd-day-row { display: flex; align-items: center; gap: 8px; }
@@ -140,6 +140,7 @@
     display: flex; flex-direction: column; justify-content: center;
     align-items: flex-end; gap: 8px; flex-shrink: 0;
     border-left: 1px solid var(--border); padding-left: 20px;
+    margin-left: auto;
   }
   .cd-item { text-align: center; }
   .cd-num { font-size: 2.7rem; font-weight: 900; line-height: 1; color: var(--yellow); letter-spacing: -2px; }
@@ -232,6 +233,12 @@
   .chart-touch { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
   .fc-top { position: relative; height: 130px; }
   @media (min-width: 900px) { .fc-top { height: 170px; } }
+  /* Höhenprofil: unter 900px eigene Zeile unter dem Text */
+  @media (max-width: 899px) {
+    .countdown-card-main { flex-wrap: wrap; row-gap: 12px; }
+    .cd-main-left { flex: 1 1 0; }
+    .cd-profile { order: 3; flex: 1 1 100%; max-width: none; height: 44px; }
+  }
   .fc-stats { display: flex; gap: 18px; margin-bottom: 8px; }
   .fc-stats div { font-size: 0.6rem; color: var(--muted); }
   .fc-stats b { display: block; font-size: 1.05rem; font-weight: 800; }
@@ -442,16 +449,16 @@
       <div class="cd-flag">{{ countdown_main.flag }}</div>
       <div class="cd-race-name">{{ countdown_main.name }}</div>
       <div style="font-size:0.72rem;color:#64748b;margin-top:6px">{{ countdown_main.detail }}</div>
-      {% if countdown_main.profile_path %}
-      <svg class="cd-profile" viewBox="0 0 240 48" preserveAspectRatio="none" aria-hidden="true">
-        <path d="{{ countdown_main.profile_path }}" fill="var(--brand-tint)"/>
-        <path d="{{ countdown_main.profile_line }}" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-      </svg>
-      {% endif %}
       {% if countdown_main.raceplan %}
       <a class="cd-raceplan-btn" href="{{ countdown_main.raceplan }}">📋 Race Plan</a>
       {% endif %}
     </div>
+    {% if countdown_main.profile_path %}
+    <svg class="cd-profile" viewBox="0 0 240 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="{{ countdown_main.profile_path }}" fill="var(--brand-tint)"/>
+      <path d="{{ countdown_main.profile_line }}" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    </svg>
+    {% endif %}
     <div class="cd-main-right">
       <div class="cd-item">
         <div class="cd-num" id="cd-main-days">{{ countdown_main.days_until }}</div>
