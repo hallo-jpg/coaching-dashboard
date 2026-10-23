@@ -316,7 +316,7 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 
 | Thema | Stand |
 |---|---|
-| **Events** | „**aktuell keine geplant**" (Stefans Formulierung) – es wird etwas kommen. Nicht danach suchen, nicht nachfassen; ein genanntes Event sofort in `athlete/profil.md` eintragen. Benchmarks bis dahin als eigene Zeitläufe auf Standardstrecke. |
+| **Events** | **Hauptevent 2027: L'Étape du Tour, So 11.7.2027** (Cluses → Les Saisies, 154 km / ~4.850 Hm), angemeldet (Stefan, 23.10.2026). Ötztaler 2027 nur Verlosung – erst einplanen, wenn Stefan gezogen wird. Details nur in `athlete/profil.md` → Event-Kalender. Lauf-Benchmarks bleiben eigene Zeitläufe auf Standardstrecke. |
 | **Kraft** | 2× Kraft A/B mit Oberkörper-Schwerpunkt (28.9.2026, s. Abschnitt 2) · **kein Lauf-ABC** (Stefan, 28.9.2026: gefällt ihm nicht – nicht wieder vorschlagen) · KA auf der Rolle bleibt der Kraftreiz fürs Rad |
 | **Laufschuhe** | zwei Paar, reichlich Reserve – nicht ungefragt ansprechen |
 | **Vitamin D** | Messung von Stefan verneint – erledigt |

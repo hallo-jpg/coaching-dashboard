@@ -142,6 +142,32 @@ Quelle gegen sich selbst.
 
 ---
 
+## Saison 2027: Étape du Tour (A-Event, 11.7.2027)
+
+*Eingetragen 23.10.2026 · Rahmen, kein Detailplan – der Frühjahrsplan entsteht nach KW09 mit Stefan.*
+
+**Anforderung:** 154 km, ~4.850 Hm, fünf Anstiege, davon drei lange (Colombière 15,9 km @ 7 % · Col du Pré
+12,6 km @ 7,8 % · Bisanne 12,4 km @ 8,3 % als Bergankunft). Grob geschätzt **7–8,5 h** Fahrzeit, davon
+**~3,5–4 h bergauf** bei 75–85 % FTP. Entscheidend sind damit **(1) Schwellenleistung pro kg**, **(2) Durability**
+– die Bisanne kommt nach ~6 h – und **(3) Fueling über 8 h** (Sektion 10). Profil ähnelt dem Ötztaler 2025, ist
+aber ~70 km kürzer.
+
+**Rückwärtsrechnung (Richtwert):**
+
+| Phase | KW 2027 | Inhalt |
+|---|---|---|
+| Winterbasis | KW40/26–KW09 | **läuft unverändert** – FTP +8–12 %, CTL 60–68, Laufaufbau. Alles davon zahlt auf die Étape ein |
+| Frühjahrsaufbau | KW10–17 | Rad-Schwerpunkt: SwSp → Schwelle, KA/Low-Cadence (lange Anstiege bei 60–70 rpm), lange WE-Fahrten 4–5 h, erste Outdoor-Höhenmeter |
+| Spezifik | KW18–24 | Schwellen-Intervalle 15–25 min (Anstiegsdauer), Back-to-back-Wochenenden, 1–2 lange Bergtage (5–6 h, 2.500+ Hm), Fueling 90 g/h im Training üben · optional Alpen-Trainingswochenende |
+| Peak/Taper | KW25–26 | letzte lange Einheit ~T-14, dann Taper (`modules/event.md`) |
+| 🏔️ Event | **KW27** | So 11.7.2027 |
+| ggf. Ötztaler | KW28–34 | nur bei Losglück: 1 Woche Erholung, 3–4 Wochen Aufbau, Taper |
+
+**Laufen 2027:** Das 10km-sub-60-Ziel (KW09) bleibt. Ab KW10 wird Laufen auf Erhalt (2×/Woche) zurückgenommen,
+damit die langen Radtage Platz haben – Rad:Lauf im Frühjahr Richtung 75:25 (Vorschlag, mit Stefan festlegen).
+
+---
+
 ## Jahreszyklus-Modell (wiederholt sich jährlich)
 
 Unabhängig von konkreten Rennterminen. Rennen werden in dieses Rahmenwerk eingepasst, nicht umgekehrt.
@@ -181,7 +207,7 @@ Unabhängig von konkreten Rennterminen. Rennen werden in dieses Rahmenwerk einge
 |---|---|---|
 | Sept 2026 (Ist) | ~3,2h | nach Rennen und Verletzungsjahr |
 | **Winter 26/27 (Ziel)** | **9–10h** | in 8–10 Wochen aufgebaut, nicht sofort |
-| 2027 | 9–11h | Peak-Wochen 13–15h |
+| 2027 | 9–11h | Peak-Wochen 13–15h (Mai/Juni, Étape-Spezifik) |
 | 2028+ | 10–12h | Vollzeit-Amateur-Grenze |
 
 **Rampe ist wichtiger als Zielwert.** Von 3 auf 9–10h ist eine Verdreifachung — max. +10–15% Volumen pro Woche, jede vierte Woche runter. Wer die Rampe überspringt, landet im Infekt (Muster 2026).

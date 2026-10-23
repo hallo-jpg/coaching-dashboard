@@ -1,6 +1,13 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 20. Oktober 2026*
+*Letzte Aktualisierung: 23. Oktober 2026*
+
+---
+
+## 23. Oktober 2026 – Hauptevent 2027: L'Étape du Tour
+
+**Stefan:** angemeldet für die **Étape du Tour 2027, So 11.7.2027** (Cluses → Les Saisies, 154 km, ~4.850 Hm) – Hauptevent 2027. Ötztaler-Verlosung folgt, Ausgang offen.
+**Coach:** Event in `athlete/profil.md` (Event-Kalender, autoritativ), `CLAUDE.md`, `COACH_MEMORY.md` (Abschnitt 7) eingetragen · Rückwärtsrechnung als Rahmen in `planung/langfristplan.md` → „Saison 2027". Winterplan bis KW09 bleibt unverändert – FTP, CTL und Laufaufbau zahlen direkt auf die Étape ein. `periodisierung.md` nicht angefasst (Zustimmung nötig): die Zeilen „kein Zielrennen" / „Events: keine geplant" sind veraltet, die Anpassung ist Stefan vorgeschlagen. Ötztaler erst einplanen, wenn gezogen.
 
 ---
 

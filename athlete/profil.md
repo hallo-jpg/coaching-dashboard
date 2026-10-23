@@ -63,12 +63,16 @@ Saisonplan → `planung/periodisierung.md`
 | ~~RadRace 120 – Zeitfahren~~ ✅ | 2026-06-13 | TT + Rennen | abgeschlossen |
 | ~~Rosenheimer Radmarathon~~ ⚠️ | 2026-06-28 | nach 45,8km Unfall, abgebrochen | – |
 | ~~Karlsfelder Seelauf~~ ✅ | 2026-09-20 | 10km Lauf | **Ergebnis 1:05:08 / 6:31 pro km** |
+| 🏔️ **L'Étape du Tour de France 2027** – **A-Event 2027** | **2027-07-11** (So, KW27) | Rad-Marathon Alpen · Cluses → Les Saisies · **154 km / ~4.850 Hm** · 5 Anstiege: Colombière 15,9 km @ 7 % · Croix Fry 7,2 km @ 5,5 % · Forclaz de Queige 5,1 km @ 8,2 % · Col du Pré 12,6 km @ 7,8 % (+ Méraillet) · Montée de Bisanne 12,4 km @ 8,3 % (Bergankunft 1.650 m) | KW26 (ab 28.6.) · **angemeldet** (Stefan, 23.10.2026) |
+| ❓ Ötztaler Radmarathon 2027 | Ende August 2027 (Termin prüfen) | 227 km / ~5.500 Hm | **nur Verlosung** – gilt erst, wenn Stefan gezogen wird; dann als B-Event ~7 Wochen nach der Étape |
 
-**Aktuell kein Event gesetzt.** Die Wintersaison läuft ohne Zielrennen — Taktgeber sind die Testfenster
-(FTP KW40 · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27). Events sind Zwischenziele und werden
-eingehängt, sobald Stefan eines nennt — dann **sofort hier eintragen**, nicht nur in der Akte.
+**Hauptevent 2027 = Étape du Tour (11.7.2027).** Der Winter 26/27 läuft unverändert als Basis (FTP, CTL,
+Laufaufbau) – Taktgeber bis KW09 bleiben die Testfenster (FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27).
+Ab KW10 wird der Frühjahrsplan **rückwärts von der Étape** gerechnet (Rahmen: `planung/langfristplan.md` →
+„Saison 2027"). Neue Events **sofort hier eintragen**, nicht nur in der Akte.
 
 ### Weitere Ziele
+- 🏔️ **Étape du Tour 11.7.2027:** 154 km / ~4.850 Hm gesund und mit gleichmäßigem Pacing durchfahren, Bisanne als letzter Anstieg noch kontrolliert – Zielzeit wird im Frühjahr aus FTP/Gewicht abgeleitet
 - ~~**Karlsfelder Seelauf 20.9.2026:** 10km – maximale Pace~~ ✅ **1:05:08 (6:31/km)**, Ø HF 183 · alter Bestwert 1:11:28
 - Laufkadenz-Projekt 140 → 165–170: wichtigstes Laufthema der nächsten 6–8 Wochen (Ökonomie **und** orthopädisches Budget)
 - Kein Profi-Fokus: bestmöglich performen, nicht um jeden Preis

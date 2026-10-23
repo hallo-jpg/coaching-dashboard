@@ -10,10 +10,10 @@
 | **Zeitzone** | Europe/Berlin (München) · Sommer: UTC+2 (CEST) |
 | **Beschwerden** | **keine** – Planung geht von beschwerdefrei aus, Stefan meldet sich selbst (28.9.) · keine Abbruchregeln in Pläne · Randnotiz: Halswirbelfraktur 28.6. ausgeheilt, Wade (MTSS-Verdacht 8/2026) wieder okay |
 | **FTP** | **300W** (Baseline 1.10.2026, XCadey · 10min geschätzt) · 3,21 W/kg · **93,6 kg** (Ø 30d aus intervals.icu, Stand 20.9.) · Zonen trainingsleitend · Offset Tacx ÷ XCadey ≈ **1,0** · vorher 305W (4iiii) |
-| **Events** | **aktuell keine geplant** · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
+| **Events** | 🏔️ **Hauptevent 2027: L'Étape du Tour, So 11.7.2027 (KW27)** · Cluses → Les Saisies · 154 km / ~4.850 Hm · angemeldet · ❓ Ötztaler 2027 nur Verlosung · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
 | **Aktuelle KW** | KW43 (19. – 25. Oktober 2026) · Rad komplett Rolle · **Mo Ruhetag** (abends keine Zeit) · Di nur kurz (Kraft A) · SwSp auf **Mi** |
 | **Aktuelle Phase** | Rampe Woche 3 · 🎯 Kern: Mi SwSp 3×12 @ 267W · Fr Easy 45min Kadenz 165 · Sa LIT 2h30 · Lauf max. ~13,6 km, längster ≤ 6,2 km · Kraft B Fr / A So (von Di verschoben) · KW42 Retro 🟡 (Kern 2/3, Kraft 1/2 – Kränkeln, 10,6 km, Kadenz ~165) |
-| **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · kein Zielrennen · Plan: `planung/periodisierung.md` |
+| **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · Winter ohne Zielrennen, danach Frühjahrsplan rückwärts von der **Étape 11.7.2027** · Plan: `planung/periodisierung.md` |
 | **Nächste Phase** | KW44 Entlastung + HF-160-Check · ab KW45 Block 1 Schwelle (SwSp 3×15, erster Lauf-Schwellenreiz) |
 | **Fixpunkte** | FTP-Baseline KW40 ✅ 300W · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 · **Tests nur am Wochenende** |
 | **CTL** | 30,9 (18.10.) · ATL 41,9 · TSB −11,0 · Readiness 84 🟢 (HRV 52, 7d-Ø 50,0, RP 56, Schlaf 8,6h) · Muster normal, Kränkeln 16.–18.10. ohne Spur in HRV/RP |
