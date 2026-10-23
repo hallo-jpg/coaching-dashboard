@@ -1,12 +1,12 @@
 # Saisonplan – Winter 2026/27
 
 *Gültig: KW40 2026 – KW09 2027 (28. September – 7. März)*
-*Kein Zielrennen. Taktgeber ist der Fortschritt selbst, überprüft in festen Tests.*
-*Langfristrahmen → `planung/langfristplan.md` · Nach KW09/2027 → Frühjahrsplan erstellen*
+*Kein Zielrennen im Winter. Taktgeber ist der Fortschritt selbst, überprüft in festen Tests. Der Winter ist die Basis für das Hauptevent 2027: **L'Étape du Tour, So 11.7.2027** (154 km / ~4.850 Hm).*
+*Langfristrahmen → `planung/langfristplan.md` · Nach KW09/2027 → Frühjahrsplan rückwärts von der Étape erstellen (Rahmen: langfristplan.md → „Saison 2027“)*
 
 ## Auftrag dieser Saison
 
-**Beides steigern: FTP und Laufleistung.** Keine Spezialisierung, keine Event-Rückwärtsrechnung.
+**Beides steigern: FTP und Laufleistung.** Keine Spezialisierung, keine Event-Rückwärtsrechnung im Winter – FTP, CTL und Laufaufbau zahlen direkt auf die Étape ein.
 Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — im Frühjahr zwingt jedes Rennen zu einer Wahl.
 
 | Ziel | Startwert (21.9.2026) | Ziel März 2027 |
@@ -95,7 +95,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | 🔬 5km-Zeitfahren | **KW01/27** · Sa 9. oder So 10.1. | Zwischenstand Laufen · Ziel <28:30 |
 | 🔬 FTP #2 | **KW01/27** · Sa 9. oder So 10.1. | nach 11 Wochen Aufbau · erwarteter Zuwachs +5–8% → ~315–325W |
 | 🔬 FTP #3 | **KW09/27** · Sa 6. oder So 7.3. | Abschluss Winter · Ziel +8–12% über Baseline → ~325–335W |
-| 🏁 10km-Benchmark | **KW09/27** | Ziel sub-60 · **als eigener Zeitlauf auf Standardstrecke** (vorerst keine Events gewünscht) |
+| 🏁 10km-Benchmark | **KW09/27** | Ziel sub-60 · **als eigener Zeitlauf auf Standardstrecke** (kein Lauf-Event geplant) |
 | 🔬 HF-160-Check | **monatlich** | gleiche Strecke, morgens, gefrühstückt, ≥48h nach hart, 30min @ HF 160 → Pace |
 
 ## Was den Plan kippen darf (und was nicht)
@@ -110,7 +110,7 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 
 | | |
 |---|---|
-| **Events** | **aktuell keine geplant** — es wird sicher etwas kommen, steht nur noch nicht fest. Bis dahin laufen Benchmarks als eigene Zeitläufe; ein Event wird eingehängt, sobald Stefan eines nennt |
+| **Events** | 🏔️ **Hauptevent 2027: L'Étape du Tour, So 11.7.2027** (angemeldet, 23.10.2026) · Ötztaler 2027 nur Verlosung · Winter bleibt ohne Zielrennen, Lauf-Benchmarks als eigene Zeitläufe · Details `athlete/profil.md` → Event-Kalender |
 | **Kraft** | 2 KH bis 10 kg, Bänder, Klimmzugstange draußen · **2× Kraft A/B, Ziel Oberkörper-Aufbau** (Stefan, 28.9.) |
 | **Schuhe** | zwei Paar im Wechsel, je ~200 km · reichlich Reserve (bei 94 kg ~500–700 km pro Paar) |
 | **Indoor** | Canyon **ohne Schaltung → ERG**. **Nur noch Tacx-App** (seit 1.10.2026). Strukturierte Intervalle inkl. 30/30 laufen dort seit Jahren — keine Sonderregeln bei den Workout-Formaten. **Max. 4h am Stück.** |

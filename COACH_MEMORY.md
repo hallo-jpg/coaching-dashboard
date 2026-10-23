@@ -322,7 +322,7 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 | **Vitamin D** | Messung von Stefan verneint – erledigt |
 | **Infekt-Muster** | keins erkennbar → nur strukturelle Prävention (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol), Protokoll in `planung/langfristplan.md` |
 | **Wade/Nacken** | beschwerdefrei ist der Standard (28.9.2026, s. Abschnitt 2) · kein Wellness-Feld · Stefan meldet sich selbst · keine Abbruchregeln in Plänen |
-| **Rad:Lauf-Split** | dynamisch: Okt 70:30 → Nov 65:35 → ab Dez 60:40. Argument, das gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5. Laufstunde entscheidet über sub-60 |
+| **Rad:Lauf-Split** | dynamisch: Okt 70:30 → Nov 65:35 → ab Dez 60:40. Argument, das gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5. Laufstunde entscheidet über sub-60 · **2027 (Stefan, 23.10.2026):** Laufen bleibt trotz Étape ein eigenes Entwicklungsziel („Spaß am Laufen“) – KW10–17 ~65:35 mit 3 Läufen, erst ab der Spezifik KW18 auf ~75:25 mit 2–3 Läufen und 1 Qualität. Nicht ab März auf „Erhalt“ zurückfahren |
 | **Rampe** | Ausgangslage ~3,2h/Woche → 9–10h. Die Rampe (+10–15%/Woche, jede 4. Woche −45%) ist wichtiger als der Zielwert |
 
 ---

@@ -4,6 +4,13 @@
 
 ---
 
+## 23. Oktober 2026 – Étape: Saisonplan + Laufen 2027
+
+**Stefan:** (1) `periodisierung.md` auf die Étape anpassen: ja. (2) Laufen: „finde langsam Spaß am Laufen“, will kontinuierlich besser werden – in der Event-Vorbereitung zurückfahren ok, aber März ist zu früh.
+**Coach:** `periodisierung.md` – nur Kopf, Auftrag, Events-Zeile, 10km-Benchmark-Text; Blöcke unverändert. `langfristplan.md` → Laufen 2027: KW10–17 weiter 3 Läufe/~28–32 km/~65:35, erst KW18–26 auf 2–3 Läufe/~20–25 km/~75:25 mit 1 Qualität, ab KW28 wieder hoch. COACH_MEMORY Abschnitt 7 (Rad:Lauf-Split) ergänzt.
+
+---
+
 ## 23. Oktober 2026 – Hauptevent 2027: L'Étape du Tour
 
 **Stefan:** angemeldet für die **Étape du Tour 2027, So 11.7.2027** (Cluses → Les Saisies, 154 km, ~4.850 Hm) – Hauptevent 2027. Ötztaler-Verlosung folgt, Ausgang offen.

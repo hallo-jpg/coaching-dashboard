@@ -163,8 +163,13 @@ aber ~70 km kürzer.
 | 🏔️ Event | **KW27** | So 11.7.2027 |
 | ggf. Ötztaler | KW28–34 | nur bei Losglück: 1 Woche Erholung, 3–4 Wochen Aufbau, Taper |
 
-**Laufen 2027:** Das 10km-sub-60-Ziel (KW09) bleibt. Ab KW10 wird Laufen auf Erhalt (2×/Woche) zurückgenommen,
-damit die langen Radtage Platz haben – Rad:Lauf im Frühjahr Richtung 75:25 (Vorschlag, mit Stefan festlegen).
+**Laufen 2027 (Stefan, 23.10.2026: „finde langsam Spaß am Laufen, will kontinuierlich besser werden“):**
+Laufen bleibt ein eigenes Entwicklungsziel, kein Erhalt. Zurückgenommen wird **erst in der Spezifik**, nicht ab März.
+- **KW10–17 Frühjahrsaufbau:** Laufen läuft weiter wie im Winter – 3 Läufe/Woche, 1 Qualität, Volumen ~28–32 km
+  halten, Rad:Lauf ~65:35. Platz für längere WE-Radtage schafft das Rad-Volumen unter der Woche, nicht das Laufen.
+- **KW18–26 Spezifik + Taper:** Laufen auf 2–3 Läufe/Woche (~20–25 km), **1 Qualitätslauf bleibt**, Rad:Lauf ~75:25.
+  Kein Longrun am Tag nach einem langen Bergtag.
+- **Ab KW28:** Laufen wieder hochfahren (Herbst-Laufziel 2027, z.B. 10 km < 57:00 oder erster Halbmarathon).
 
 ---
 
