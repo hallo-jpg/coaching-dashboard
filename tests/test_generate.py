@@ -925,3 +925,25 @@ def test_countdown_shows_etape_2027_as_main_event():
     assert cd["main"]["id"] == "etape2027"
     assert cd["main"]["date_iso"] == "2027-07-11"
     assert cd["main"]["days_until"] == 261
+
+
+def test_profile_path_scales_route_into_box():
+    from generate import _profile_path
+    d = _profile_path([(0, 500), (50, 1500), (100, 1000)], w=200, h=50)
+    assert d.startswith("M0,50 L0,")
+    assert d.endswith("L200,50 Z")
+    # höchster Punkt ganz oben, tiefster bei 80 % der Höhe (Fläche bleibt sichtbar)
+    assert d == "M0,50 L0,40 L100,0 L200,20 L200,50 Z"
+
+
+def test_countdown_main_carries_etape_profile_path():
+    from generate import _build_countdown
+    cd = _build_countdown(date(2026, 10, 23))
+    assert cd["main"]["profile_path"].startswith("M0,")
+
+
+def test_countdown_main_profile_line_is_open_ridge():
+    from generate import _build_countdown
+    line = _build_countdown(date(2026, 10, 23))["main"]["profile_line"]
+    assert line.startswith("M0,")
+    assert "Z" not in line

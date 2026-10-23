@@ -1210,8 +1210,30 @@ RACE_EVENTS = [
         "detail": "So 11. Juli 2027 · KW27 · Cluses → Les Saisies · 154 km · 4.850 Hm",
         "kw":     27,
         "color":  None,
+        # Höhenprofil (km, m) – Stützpunkte aus dem offiziellen Profilbild, nur Optik
+        "profile": [(0, 506), (19.5, 1618), (31, 1003), (37, 1040), (44, 1477),
+                    (55.5, 656), (63, 790), (71, 532), (80, 422), (89, 853),
+                    (95, 560), (103.5, 726), (117, 1748), (121.5, 1605),
+                    (134, 761), (138, 711), (150, 1723), (154, 1650)],
     },
 ]
+
+
+def _profile_path(points, w: int = 240, h: int = 48) -> str:
+    """SVG-Pfad (gefüllte Fläche) eines Höhenprofils in einer w×h-Box.
+    Höchster Punkt oben (y=0), tiefster bei 80 % der Höhe."""
+    km_max = points[-1][0]
+    lo = min(e for _, e in points)
+    hi = max(e for _, e in points)
+    span = (hi - lo) or 1
+
+    def fmt(v):
+        return f"{v:.1f}".rstrip("0").rstrip(".")
+
+    line = " ".join(
+        f"L{fmt(km / km_max * w)},{fmt((hi - e) / span * h * 0.8)}" for km, e in points
+    )
+    return f"M0,{h} {line} L{w},{h} Z"
 
 
 def _build_countdown(today: date) -> dict:
@@ -1223,6 +1245,10 @@ def _build_countdown(today: date) -> dict:
         if ev["date"] >= today:
             e = dict(ev)
             e.setdefault("raceplan", None)
+            e["profile_path"] = _profile_path(ev["profile"]) if ev.get("profile") else None
+            # nur die Kammlinie: Fläche ohne Boden- und Seitenkanten
+            e["profile_line"] = ("M" + e["profile_path"].split(" ", 1)[1][1:].rsplit(" L", 1)[0]
+                                 if e["profile_path"] else None)
             e["days_until"] = (ev["date"] - today).days
             e["weeks_until"] = e["days_until"] // 7
             e["date_iso"]    = ev["date"].isoformat()
