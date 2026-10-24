@@ -459,7 +459,7 @@
     
     <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-num" id="cd-main-days">260</div>
+        <div class="cd-num" id="cd-main-days">259</div>
         <div class="cd-label">Tage <span id="cd-main-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
@@ -505,18 +505,15 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="96.8"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#a4540b">72</span>
+        <span class="ring-num" style="color:var(--muted)">–</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
-      
-      <div class="ring-status-tag">🟡 Normal trainieren</div>
-      <div class="ring-status-sub">HRV unter Schnitt · Puls erhöht</div>
       
     </div>
   </div>
@@ -538,15 +535,15 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-pu)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="220.3"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="220.2"
                 transform="rotate(-90 65 65)"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="#ecebe7" stroke-width="8"/>
         <circle cx="65" cy="65" r="41" fill="none" stroke="url(#g-re)" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="51.2"
+                stroke-linecap="round" stroke-dasharray="257.6" stroke-dashoffset="59.3"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:#c2321a;font-size:1.8rem">-15</span>
+        <span class="ring-num" style="color:#c2321a;font-size:1.8rem">-14</span>
         <span class="ring-sub">TSB</span>
       </div>
     </div>
@@ -554,12 +551,12 @@
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:var(--ctl)"></div>
         <span class="dl-name">CTL · Fitness</span>
-        <span class="dl-val" style="color:var(--text)">32.6 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
+        <span class="dl-val" style="color:var(--text)">32.7 <span style="font-size:.5rem;color:var(--muted)">/ 90</span></span>
       </div>
       <div class="dual-legend-item">
         <div class="dl-dot" style="background:var(--atl)"></div>
         <span class="dl-name">ATL · Fatigue</span>
-        <span class="dl-val" style="color:var(--text)">48.1</span>
+        <span class="dl-val" style="color:var(--text)">46.2</span>
       </div>
     </div>
   </div>
@@ -600,134 +597,66 @@
     <!-- Datenquellen heute: grün = für heute geliefert, rot = fehlt noch -->
     <div style="position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;align-items:stretch">
       
-      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">COROS</span>
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--red-mark)">COROS</span>
       
-      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">intervals</span>
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--red-mark)">intervals</span>
       
     </div>
     <div class="chard"><div class="chard-icon"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 20C7 16.5 4 13.7 4 10.3A4.3 4.3 0 0 1 12 7.8 4.3 4.3 0 0 1 20 10.3C20 13.7 17 16.5 12 20Z"/></svg></div>Readiness Score</div>
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:#a4540b">72</div>
-      <div class="readiness-tag" style="color:#a4540b">🟡 Normal trainieren</div>
+      <div class="readiness-score" style="color:var(--muted)">–</div>
       
     </div>
 
     
-
-    
-    <div style="display:flex;gap:8px;margin-bottom:12px">
-      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">70</div>
-        <div style="font-size:0.55rem;color:var(--muted)">HRV · Puls · Schlaf</div>
-      </div>
-      <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
-        <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Gefühl</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">78</div>
-        <div style="font-size:0.55rem;color:var(--muted)">Ermüdung · Kater · Stress</div>
-      </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:var(--muted);text-align:center;margin-bottom:10px">
+      ⏳ Uhr noch nicht synchronisiert – Werte folgen
     </div>
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--orange);border-color:var(--orange);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--orange) 35%,transparent)">
+    
+
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">44 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--orange);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Reduziert</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
         <div class="rbar-lbl">Normalber. 46–55 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">8.0h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">0.0h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">TSB</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">-15</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">-14</div>
         <div class="rbar-lbl">Form</div>
         
-        <div style="font-size:0.6rem;font-weight:700;color:var(--yellow);margin-top:2px">
-          ATL +7.2 ⚠️
+        <div style="font-size:0.6rem;font-weight:700;color:var(--accent);margin-top:2px">
+          ATL +10.8 ⚠️
         </div>
         
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">57 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
 
     
-    <div style="font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px">── Gefühl</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Ermüdung</span>
-          <span style="font-size:0.62rem;color:var(--text2)">Durchschn. (2/4)</span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#fab219;width:74%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Muskelkater</span>
-          <span style="font-size:0.62rem;color:var(--text2)">Hoch (3/4)</span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#d03b3b;width:48%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Stress</span>
-          <span style="font-size:0.62rem;color:var(--text2)">Niedrig (1/4)</span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-      
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
-          <span style="font-size:0.62rem;color:var(--muted)">Verletzung</span>
-          <span style="font-size:0.62rem;color:var(--text2)">
-            Keine ✅ (1/4)
-            
-          </span>
-        </div>
-        <div style="background:var(--track);border-radius:3px;height:4px">
-          <div style="background:#5b8f3a;width:100%;height:4px;border-radius:3px"></div>
-        </div>
-      </div>
-      
-
-    </div>
-    
 
     <div class="sparkline-wrap">
       <div class="spark-label">Readiness · 7 Tage</div>
       <div class="sparkline">
-        
-        <div class="spark-bar " style="height:84%;background:#5b8f3a"></div>
         
         <div class="spark-bar " style="height:87%;background:#5b8f3a"></div>
         
@@ -739,7 +668,9 @@
         
         <div class="spark-bar " style="height:86%;background:#5b8f3a"></div>
         
-        <div class="spark-bar spark-today" style="height:72%;background:#fab219"></div>
+        <div class="spark-bar " style="height:72%;background:#fab219"></div>
+        
+        <div class="spark-bar spark-today" style="height:79%;background:#fab219"></div>
         
       </div>
     </div>
@@ -1237,36 +1168,36 @@
   <div class="card-headline" style="margin-bottom:12px">Fitness &amp; Form · 6 Monate</div>
   <div class="fc-stats">
     <div>Fitness<b style="color:var(--ctl)">33</b></div>
-    <div>Ermüdung<b style="color:var(--atl)">48</b></div>
-    <div>Form<b style="color:var(--text)">-15 <span class="fc-zone">Optimal</span></b></div>
+    <div>Ermüdung<b style="color:var(--atl)">46</b></div>
+    <div>Form<b style="color:var(--text)">-14 <span class="fc-zone">Optimal</span></b></div>
   </div>
   <div class="fc-proj">Prognose 1.11. aus dem Plan: <b>CTL 32 · Form -3</b> (Grauzone)</div>
   <div id="fc-wrap" class="chart-touch" style="position:relative;cursor:crosshair">
     <div class="fc-top">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none">
         <defs><linearGradient id="fcGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d1450f" stop-opacity="0.18"/><stop offset="100%" stop-color="#d1450f" stop-opacity="0.02"/></linearGradient></defs>
-        <rect x="287.37" y="0" width="12.629999999999995" height="80" fill="var(--track)" opacity="0.5"/>
-        <path d="M0.0,48.4 L1.58,47.47 L3.16,48.23 L4.74,46.43 L6.32,46.37 L7.89,47.17 L9.47,44.36 L11.05,40.04 L12.63,40.98 L14.21,41.9 L15.79,41.99 L17.37,41.86 L18.95,42.76 L20.53,42.54 L22.11,42.1 L23.68,41.81 L25.26,42.02 L26.84,40.92 L28.42,40.52 L30.0,38.44 L31.58,39.42 L33.16,40.37 L34.74,41.3 L36.32,41.54 L37.89,40.55 L39.47,40.38 L41.05,39.33 L42.63,40.28 L44.21,38.81 L45.79,39.78 L47.37,37.93 L48.95,36.15 L50.53,37.18 L52.11,34.44 L53.68,32.98 L55.26,34.09 L56.84,33.56 L58.42,34.07 L60.0,34.48 L61.58,35.56 L63.16,35.08 L64.74,35.47 L66.32,35.85 L67.89,36.22 L69.47,36.51 L71.05,37.53 L72.63,37.86 L74.21,38.85 L75.79,38.61 L77.37,37.44 L78.95,31.57 L80.53,32.7 L82.11,33.82 L83.68,34.23 L85.26,35.31 L86.84,34.71 L88.42,34.1 L90.0,35.18 L91.58,36.23 L93.16,36.48 L94.74,37.51 L96.32,37.39 L97.89,38.39 L99.47,37.78 L101.05,36.66 L102.63,37.68 L104.21,38.67 L105.79,39.64 L107.37,40.59 L108.95,41.52 L110.53,42.43 L112.11,43.31 L113.68,44.17 L115.26,45.02 L116.84,45.84 L118.42,46.64 L120.0,47.43 L121.58,48.19 L123.16,48.94 L124.74,49.67 L126.32,50.39 L127.89,51.08 L129.47,51.76 L131.05,52.43 L132.63,53.08 L134.21,53.71 L135.79,54.33 L137.37,54.93 L138.95,55.52 L140.53,56.1 L142.11,56.01 L143.68,56.58 L145.26,56.35 L146.84,56.9 L148.42,57.45 L150.0,57.08 L151.58,57.62 L153.16,57.06 L154.74,55.83 L156.32,56.4 L157.89,56.95 L159.47,57.5 L161.05,57.11 L162.63,56.38 L164.21,56.93 L165.79,57.47 L167.37,58.0 L168.95,57.54 L170.53,58.07 L172.11,58.58 L173.68,59.09 L175.26,59.58 L176.84,60.06 L178.42,60.53 L180.0,60.99 L181.58,61.43 L183.16,61.87 L184.74,62.23 L186.32,62.65 L187.89,63.06 L189.47,61.53 L191.05,61.97 L192.63,62.39 L194.21,62.81 L195.79,63.21 L197.37,62.42 L198.95,62.84 L200.53,63.24 L202.11,63.64 L203.68,64.02 L205.26,64.4 L206.84,64.76 L208.42,64.25 L210.0,64.62 L211.58,64.07 L213.16,63.84 L214.74,64.22 L216.32,63.27 L217.89,63.67 L219.47,64.05 L221.05,59.74 L222.63,60.21 L224.21,59.83 L225.79,58.4 L227.37,58.91 L228.95,59.41 L230.53,59.11 L232.11,58.93 L233.68,57.31 L235.26,57.84 L236.84,57.51 L238.42,56.55 L240.0,55.06 L241.58,53.84 L243.16,54.46 L244.74,54.23 L246.32,54.08 L247.89,53.95 L249.47,53.94 L251.05,53.44 L252.63,54.06 L254.21,53.89 L255.79,53.61 L257.37,54.23 L258.95,53.88 L260.53,54.49 L262.11,53.89 L263.68,54.5 L265.26,54.14 L266.84,53.09 L268.42,52.61 L270.0,51.56 L271.58,51.0 L273.16,51.68 L274.74,52.35 L276.32,51.1 L277.89,51.78 L279.47,52.44 L281.05,53.09 L282.63,51.76 L284.21,51.13 L285.79,50.36 L287.37,49.02 L287.37,80 L0,80 Z" fill="url(#fcGrad)"/>
-        <path d="M0.0,66.27 L1.58,58.62 L3.16,61.47 L4.74,49.53 L6.32,48.78 L7.89,52.94 L9.47,36.32 L11.05,12.94 L12.63,21.87 L14.21,29.61 L15.79,31.76 L17.37,32.37 L18.95,38.71 L20.53,38.02 L22.11,36.15 L23.68,35.29 L25.26,37.32 L26.84,31.76 L28.42,30.72 L30.0,20.22 L31.58,28.18 L33.16,35.08 L34.74,41.06 L36.32,42.45 L37.89,36.71 L39.47,36.28 L41.05,30.85 L42.63,37.39 L44.21,29.42 L45.79,36.15 L47.37,26.19 L48.95,17.68 L50.53,25.98 L52.11,11.94 L53.68,6.72 L55.26,16.47 L56.84,15.83 L58.42,21.09 L60.0,25.14 L61.58,32.44 L63.16,30.18 L64.74,33.02 L66.32,35.48 L67.89,37.62 L69.47,39.09 L71.05,44.53 L72.63,45.46 L74.21,50.06 L75.79,47.22 L77.37,39.45 L78.95,5.93 L80.53,15.79 L82.11,24.34 L83.68,27.95 L85.26,34.88 L86.84,31.54 L88.42,28.51 L90.0,35.36 L91.58,41.31 L93.16,42.03 L94.74,47.09 L96.32,45.15 L97.89,49.79 L99.47,44.84 L101.05,37.51 L102.63,43.17 L104.21,48.07 L105.79,52.32 L107.37,56.01 L108.95,59.2 L110.53,61.97 L112.11,64.37 L113.68,66.45 L115.26,68.25 L116.84,69.82 L118.42,71.17 L120.0,72.35 L121.58,73.37 L123.16,74.25 L124.74,75.02 L126.32,75.68 L127.89,76.25 L129.47,76.75 L131.05,77.19 L132.63,77.56 L134.21,77.88 L135.79,78.17 L137.37,78.41 L138.95,78.62 L140.53,78.81 L142.11,75.3 L143.68,75.93 L145.26,72.04 L146.84,73.1 L148.42,74.02 L150.0,69.76 L151.58,71.12 L153.16,66.11 L154.74,57.98 L156.32,60.91 L157.89,63.45 L159.47,65.65 L161.05,62.38 L162.63,57.52 L164.21,60.52 L165.79,63.11 L167.37,65.36 L168.95,61.75 L170.53,64.18 L172.11,66.28 L173.68,68.11 L175.26,69.69 L176.84,71.06 L178.42,72.25 L180.0,73.28 L181.58,74.18 L183.16,74.95 L184.74,75.25 L186.32,75.88 L187.89,76.43 L189.47,66.03 L191.05,67.89 L192.63,69.51 L194.21,70.9 L195.79,72.11 L197.37,66.47 L198.95,65.36 L200.53,67.31 L202.11,69.0 L203.68,70.46 L205.26,71.73 L206.84,69.55 L208.42,66.01 L210.0,67.87 L211.58,64.31 L213.16,62.98 L214.74,65.25 L216.32,59.76 L217.89,62.45 L219.47,64.79 L221.05,40.27 L222.63,45.56 L224.21,45.34 L225.79,39.21 L227.37,44.64 L228.95,49.35 L230.53,49.01 L232.11,49.34 L233.68,41.42 L235.26,46.55 L236.84,46.2 L238.42,42.23 L240.0,35.76 L241.58,31.41 L243.16,37.88 L244.74,36.16 L246.32,37.19 L247.89,38.72 L249.47,40.68 L251.05,39.59 L252.63,44.97 L254.21,45.21 L255.79,44.79 L257.37,49.47 L258.95,48.1 L260.53,52.35 L262.11,49.21 L263.68,53.31 L265.26,51.42 L266.84,45.88 L268.42,43.09 L270.0,38.4 L271.58,36.99 L273.16,42.71 L274.74,47.68 L276.32,41.24 L277.89,46.4 L279.47,50.87 L281.05,54.75 L282.63,46.99 L284.21,44.05 L285.79,40.62 L287.37,34.36" fill="none" stroke="var(--atl)" stroke-width="1" opacity="0.75" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <path d="M287.37,34.36 L288.95,36.27 L290.53,37.37 L292.11,38.71 L293.68,44.61 L295.26,44.92 L296.84,49.93 L298.42,47.04 L300.0,47.27" fill="none" stroke="var(--atl)" stroke-width="1" stroke-dasharray="3,3" opacity="0.75" vector-effect="non-scaling-stroke"/>
-        <path d="M0.0,48.4 L1.58,47.47 L3.16,48.23 L4.74,46.43 L6.32,46.37 L7.89,47.17 L9.47,44.36 L11.05,40.04 L12.63,40.98 L14.21,41.9 L15.79,41.99 L17.37,41.86 L18.95,42.76 L20.53,42.54 L22.11,42.1 L23.68,41.81 L25.26,42.02 L26.84,40.92 L28.42,40.52 L30.0,38.44 L31.58,39.42 L33.16,40.37 L34.74,41.3 L36.32,41.54 L37.89,40.55 L39.47,40.38 L41.05,39.33 L42.63,40.28 L44.21,38.81 L45.79,39.78 L47.37,37.93 L48.95,36.15 L50.53,37.18 L52.11,34.44 L53.68,32.98 L55.26,34.09 L56.84,33.56 L58.42,34.07 L60.0,34.48 L61.58,35.56 L63.16,35.08 L64.74,35.47 L66.32,35.85 L67.89,36.22 L69.47,36.51 L71.05,37.53 L72.63,37.86 L74.21,38.85 L75.79,38.61 L77.37,37.44 L78.95,31.57 L80.53,32.7 L82.11,33.82 L83.68,34.23 L85.26,35.31 L86.84,34.71 L88.42,34.1 L90.0,35.18 L91.58,36.23 L93.16,36.48 L94.74,37.51 L96.32,37.39 L97.89,38.39 L99.47,37.78 L101.05,36.66 L102.63,37.68 L104.21,38.67 L105.79,39.64 L107.37,40.59 L108.95,41.52 L110.53,42.43 L112.11,43.31 L113.68,44.17 L115.26,45.02 L116.84,45.84 L118.42,46.64 L120.0,47.43 L121.58,48.19 L123.16,48.94 L124.74,49.67 L126.32,50.39 L127.89,51.08 L129.47,51.76 L131.05,52.43 L132.63,53.08 L134.21,53.71 L135.79,54.33 L137.37,54.93 L138.95,55.52 L140.53,56.1 L142.11,56.01 L143.68,56.58 L145.26,56.35 L146.84,56.9 L148.42,57.45 L150.0,57.08 L151.58,57.62 L153.16,57.06 L154.74,55.83 L156.32,56.4 L157.89,56.95 L159.47,57.5 L161.05,57.11 L162.63,56.38 L164.21,56.93 L165.79,57.47 L167.37,58.0 L168.95,57.54 L170.53,58.07 L172.11,58.58 L173.68,59.09 L175.26,59.58 L176.84,60.06 L178.42,60.53 L180.0,60.99 L181.58,61.43 L183.16,61.87 L184.74,62.23 L186.32,62.65 L187.89,63.06 L189.47,61.53 L191.05,61.97 L192.63,62.39 L194.21,62.81 L195.79,63.21 L197.37,62.42 L198.95,62.84 L200.53,63.24 L202.11,63.64 L203.68,64.02 L205.26,64.4 L206.84,64.76 L208.42,64.25 L210.0,64.62 L211.58,64.07 L213.16,63.84 L214.74,64.22 L216.32,63.27 L217.89,63.67 L219.47,64.05 L221.05,59.74 L222.63,60.21 L224.21,59.83 L225.79,58.4 L227.37,58.91 L228.95,59.41 L230.53,59.11 L232.11,58.93 L233.68,57.31 L235.26,57.84 L236.84,57.51 L238.42,56.55 L240.0,55.06 L241.58,53.84 L243.16,54.46 L244.74,54.23 L246.32,54.08 L247.89,53.95 L249.47,53.94 L251.05,53.44 L252.63,54.06 L254.21,53.89 L255.79,53.61 L257.37,54.23 L258.95,53.88 L260.53,54.49 L262.11,53.89 L263.68,54.5 L265.26,54.14 L266.84,53.09 L268.42,52.61 L270.0,51.56 L271.58,51.0 L273.16,51.68 L274.74,52.35 L276.32,51.1 L277.89,51.78 L279.47,52.44 L281.05,53.09 L282.63,51.76 L284.21,51.13 L285.79,50.36 L287.37,49.02" fill="none" stroke="var(--ctl)" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <path d="M287.37,49.02 L288.95,48.99 L290.53,48.87 L292.11,48.82 L293.68,49.56 L295.26,49.49 L296.84,50.22 L298.42,49.73 L300.0,49.71" fill="none" stroke="var(--ctl)" stroke-width="2" stroke-dasharray="4,3" vector-effect="non-scaling-stroke"/>
+        <rect x="288.89" y="0" width="11.110000000000014" height="80" fill="var(--track)" opacity="0.5"/>
+        <path d="M0.0,47.47 L1.59,48.23 L3.17,46.43 L4.76,46.37 L6.35,47.17 L7.94,44.36 L9.52,40.04 L11.11,40.98 L12.7,41.9 L14.29,41.99 L15.87,41.86 L17.46,42.76 L19.05,42.54 L20.63,42.1 L22.22,41.81 L23.81,42.02 L25.4,40.92 L26.98,40.52 L28.57,38.44 L30.16,39.42 L31.75,40.37 L33.33,41.3 L34.92,41.54 L36.51,40.55 L38.1,40.38 L39.68,39.33 L41.27,40.28 L42.86,38.81 L44.44,39.78 L46.03,37.93 L47.62,36.15 L49.21,37.18 L50.79,34.44 L52.38,32.98 L53.97,34.09 L55.56,33.56 L57.14,34.07 L58.73,34.48 L60.32,35.56 L61.9,35.08 L63.49,35.47 L65.08,35.85 L66.67,36.22 L68.25,36.51 L69.84,37.53 L71.43,37.86 L73.02,38.85 L74.6,38.61 L76.19,37.44 L77.78,31.57 L79.37,32.7 L80.95,33.82 L82.54,34.23 L84.13,35.31 L85.71,34.71 L87.3,34.1 L88.89,35.18 L90.48,36.23 L92.06,36.48 L93.65,37.51 L95.24,37.39 L96.83,38.39 L98.41,37.78 L100.0,36.66 L101.59,37.68 L103.17,38.67 L104.76,39.64 L106.35,40.59 L107.94,41.52 L109.52,42.43 L111.11,43.31 L112.7,44.17 L114.29,45.02 L115.87,45.84 L117.46,46.64 L119.05,47.43 L120.63,48.19 L122.22,48.94 L123.81,49.67 L125.4,50.39 L126.98,51.08 L128.57,51.76 L130.16,52.43 L131.75,53.08 L133.33,53.71 L134.92,54.33 L136.51,54.93 L138.1,55.52 L139.68,56.1 L141.27,56.01 L142.86,56.58 L144.44,56.35 L146.03,56.9 L147.62,57.45 L149.21,57.08 L150.79,57.62 L152.38,57.06 L153.97,55.83 L155.56,56.4 L157.14,56.95 L158.73,57.5 L160.32,57.11 L161.9,56.38 L163.49,56.93 L165.08,57.47 L166.67,58.0 L168.25,57.54 L169.84,58.07 L171.43,58.58 L173.02,59.09 L174.6,59.58 L176.19,60.06 L177.78,60.53 L179.37,60.99 L180.95,61.43 L182.54,61.87 L184.13,62.23 L185.71,62.65 L187.3,63.06 L188.89,61.53 L190.48,61.97 L192.06,62.39 L193.65,62.81 L195.24,63.21 L196.83,62.42 L198.41,62.84 L200.0,63.24 L201.59,63.64 L203.17,64.02 L204.76,64.4 L206.35,64.76 L207.94,64.25 L209.52,64.62 L211.11,64.07 L212.7,63.84 L214.29,64.22 L215.87,63.27 L217.46,63.67 L219.05,64.05 L220.63,59.74 L222.22,60.21 L223.81,59.83 L225.4,58.4 L226.98,58.91 L228.57,59.41 L230.16,59.11 L231.75,58.93 L233.33,57.31 L234.92,57.84 L236.51,57.51 L238.1,56.55 L239.68,55.06 L241.27,53.84 L242.86,54.46 L244.44,54.23 L246.03,54.08 L247.62,53.95 L249.21,53.94 L250.79,53.44 L252.38,54.06 L253.97,53.89 L255.56,53.61 L257.14,54.23 L258.73,53.88 L260.32,54.49 L261.9,53.89 L263.49,54.5 L265.08,54.14 L266.67,53.09 L268.25,52.61 L269.84,51.56 L271.43,51.0 L273.02,51.68 L274.6,52.35 L276.19,51.1 L277.78,51.78 L279.37,52.44 L280.95,53.09 L282.54,51.76 L284.13,51.13 L285.71,50.36 L287.3,49.02 L288.89,48.99 L288.89,80 L0,80 Z" fill="url(#fcGrad)"/>
+        <path d="M0.0,58.62 L1.59,61.47 L3.17,49.53 L4.76,48.78 L6.35,52.94 L7.94,36.32 L9.52,12.94 L11.11,21.87 L12.7,29.61 L14.29,31.76 L15.87,32.37 L17.46,38.71 L19.05,38.02 L20.63,36.15 L22.22,35.29 L23.81,37.32 L25.4,31.76 L26.98,30.72 L28.57,20.22 L30.16,28.18 L31.75,35.08 L33.33,41.06 L34.92,42.45 L36.51,36.71 L38.1,36.28 L39.68,30.85 L41.27,37.39 L42.86,29.42 L44.44,36.15 L46.03,26.19 L47.62,17.68 L49.21,25.98 L50.79,11.94 L52.38,6.72 L53.97,16.47 L55.56,15.83 L57.14,21.09 L58.73,25.14 L60.32,32.44 L61.9,30.18 L63.49,33.02 L65.08,35.48 L66.67,37.62 L68.25,39.09 L69.84,44.53 L71.43,45.46 L73.02,50.06 L74.6,47.22 L76.19,39.45 L77.78,5.93 L79.37,15.79 L80.95,24.34 L82.54,27.95 L84.13,34.88 L85.71,31.54 L87.3,28.51 L88.89,35.36 L90.48,41.31 L92.06,42.03 L93.65,47.09 L95.24,45.15 L96.83,49.79 L98.41,44.84 L100.0,37.51 L101.59,43.17 L103.17,48.07 L104.76,52.32 L106.35,56.01 L107.94,59.2 L109.52,61.97 L111.11,64.37 L112.7,66.45 L114.29,68.25 L115.87,69.82 L117.46,71.17 L119.05,72.35 L120.63,73.37 L122.22,74.25 L123.81,75.02 L125.4,75.68 L126.98,76.25 L128.57,76.75 L130.16,77.19 L131.75,77.56 L133.33,77.88 L134.92,78.17 L136.51,78.41 L138.1,78.62 L139.68,78.81 L141.27,75.3 L142.86,75.93 L144.44,72.04 L146.03,73.1 L147.62,74.02 L149.21,69.76 L150.79,71.12 L152.38,66.11 L153.97,57.98 L155.56,60.91 L157.14,63.45 L158.73,65.65 L160.32,62.38 L161.9,57.52 L163.49,60.52 L165.08,63.11 L166.67,65.36 L168.25,61.75 L169.84,64.18 L171.43,66.28 L173.02,68.11 L174.6,69.69 L176.19,71.06 L177.78,72.25 L179.37,73.28 L180.95,74.18 L182.54,74.95 L184.13,75.25 L185.71,75.88 L187.3,76.43 L188.89,66.03 L190.48,67.89 L192.06,69.51 L193.65,70.9 L195.24,72.11 L196.83,66.47 L198.41,65.36 L200.0,67.31 L201.59,69.0 L203.17,70.46 L204.76,71.73 L206.35,69.55 L207.94,66.01 L209.52,67.87 L211.11,64.31 L212.7,62.98 L214.29,65.25 L215.87,59.76 L217.46,62.45 L219.05,64.79 L220.63,40.27 L222.22,45.56 L223.81,45.34 L225.4,39.21 L226.98,44.64 L228.57,49.35 L230.16,49.01 L231.75,49.34 L233.33,41.42 L234.92,46.55 L236.51,46.2 L238.1,42.23 L239.68,35.76 L241.27,31.41 L242.86,37.88 L244.44,36.16 L246.03,37.19 L247.62,38.72 L249.21,40.68 L250.79,39.59 L252.38,44.97 L253.97,45.21 L255.56,44.79 L257.14,49.47 L258.73,48.1 L260.32,52.35 L261.9,49.21 L263.49,53.31 L265.08,51.42 L266.67,45.88 L268.25,43.09 L269.84,38.4 L271.43,36.99 L273.02,42.71 L274.6,47.68 L276.19,41.24 L277.78,46.4 L279.37,50.87 L280.95,54.75 L282.54,46.99 L284.13,44.05 L285.71,40.62 L287.3,34.36 L288.89,36.14" fill="none" stroke="var(--atl)" stroke-width="1" opacity="0.75" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        <path d="M288.89,36.14 L290.48,37.25 L292.06,38.61 L293.65,44.53 L295.24,44.85 L296.83,49.87 L298.41,46.99 L300.0,47.23" fill="none" stroke="var(--atl)" stroke-width="1" stroke-dasharray="3,3" opacity="0.75" vector-effect="non-scaling-stroke"/>
+        <path d="M0.0,47.47 L1.59,48.23 L3.17,46.43 L4.76,46.37 L6.35,47.17 L7.94,44.36 L9.52,40.04 L11.11,40.98 L12.7,41.9 L14.29,41.99 L15.87,41.86 L17.46,42.76 L19.05,42.54 L20.63,42.1 L22.22,41.81 L23.81,42.02 L25.4,40.92 L26.98,40.52 L28.57,38.44 L30.16,39.42 L31.75,40.37 L33.33,41.3 L34.92,41.54 L36.51,40.55 L38.1,40.38 L39.68,39.33 L41.27,40.28 L42.86,38.81 L44.44,39.78 L46.03,37.93 L47.62,36.15 L49.21,37.18 L50.79,34.44 L52.38,32.98 L53.97,34.09 L55.56,33.56 L57.14,34.07 L58.73,34.48 L60.32,35.56 L61.9,35.08 L63.49,35.47 L65.08,35.85 L66.67,36.22 L68.25,36.51 L69.84,37.53 L71.43,37.86 L73.02,38.85 L74.6,38.61 L76.19,37.44 L77.78,31.57 L79.37,32.7 L80.95,33.82 L82.54,34.23 L84.13,35.31 L85.71,34.71 L87.3,34.1 L88.89,35.18 L90.48,36.23 L92.06,36.48 L93.65,37.51 L95.24,37.39 L96.83,38.39 L98.41,37.78 L100.0,36.66 L101.59,37.68 L103.17,38.67 L104.76,39.64 L106.35,40.59 L107.94,41.52 L109.52,42.43 L111.11,43.31 L112.7,44.17 L114.29,45.02 L115.87,45.84 L117.46,46.64 L119.05,47.43 L120.63,48.19 L122.22,48.94 L123.81,49.67 L125.4,50.39 L126.98,51.08 L128.57,51.76 L130.16,52.43 L131.75,53.08 L133.33,53.71 L134.92,54.33 L136.51,54.93 L138.1,55.52 L139.68,56.1 L141.27,56.01 L142.86,56.58 L144.44,56.35 L146.03,56.9 L147.62,57.45 L149.21,57.08 L150.79,57.62 L152.38,57.06 L153.97,55.83 L155.56,56.4 L157.14,56.95 L158.73,57.5 L160.32,57.11 L161.9,56.38 L163.49,56.93 L165.08,57.47 L166.67,58.0 L168.25,57.54 L169.84,58.07 L171.43,58.58 L173.02,59.09 L174.6,59.58 L176.19,60.06 L177.78,60.53 L179.37,60.99 L180.95,61.43 L182.54,61.87 L184.13,62.23 L185.71,62.65 L187.3,63.06 L188.89,61.53 L190.48,61.97 L192.06,62.39 L193.65,62.81 L195.24,63.21 L196.83,62.42 L198.41,62.84 L200.0,63.24 L201.59,63.64 L203.17,64.02 L204.76,64.4 L206.35,64.76 L207.94,64.25 L209.52,64.62 L211.11,64.07 L212.7,63.84 L214.29,64.22 L215.87,63.27 L217.46,63.67 L219.05,64.05 L220.63,59.74 L222.22,60.21 L223.81,59.83 L225.4,58.4 L226.98,58.91 L228.57,59.41 L230.16,59.11 L231.75,58.93 L233.33,57.31 L234.92,57.84 L236.51,57.51 L238.1,56.55 L239.68,55.06 L241.27,53.84 L242.86,54.46 L244.44,54.23 L246.03,54.08 L247.62,53.95 L249.21,53.94 L250.79,53.44 L252.38,54.06 L253.97,53.89 L255.56,53.61 L257.14,54.23 L258.73,53.88 L260.32,54.49 L261.9,53.89 L263.49,54.5 L265.08,54.14 L266.67,53.09 L268.25,52.61 L269.84,51.56 L271.43,51.0 L273.02,51.68 L274.6,52.35 L276.19,51.1 L277.78,51.78 L279.37,52.44 L280.95,53.09 L282.54,51.76 L284.13,51.13 L285.71,50.36 L287.3,49.02 L288.89,48.99" fill="none" stroke="var(--ctl)" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        <path d="M288.89,48.99 L290.48,48.87 L292.06,48.82 L293.65,49.56 L295.24,49.49 L296.83,50.22 L298.41,49.73 L300.0,49.71" fill="none" stroke="var(--ctl)" stroke-width="2" stroke-dasharray="4,3" vector-effect="non-scaling-stroke"/>
       </svg>
     </div>
     <div style="position:relative;height:64px;margin-top:6px">
       <svg width="100%" height="100%" viewBox="0 0 300 44" preserveAspectRatio="none">
         <rect x="0" y="0.0" width="300" height="3.14" fill="rgba(250,178,25,0.16)"/><rect x="0" y="3.14" width="300" height="12.57" fill="rgba(70,120,190,0.12)"/><rect x="0" y="15.71" width="300" height="9.43" fill="rgba(139,131,126,0.10)"/><rect x="0" y="25.14" width="300" height="12.57" fill="rgba(91,143,58,0.16)"/><rect x="0" y="37.71" width="300" height="6.29" fill="rgba(208,59,59,0.14)"/>
         <line x1="0" y1="18.86" x2="300" y2="18.86" stroke="var(--muted)" stroke-width="0.6" stroke-dasharray="2,2" vector-effect="non-scaling-stroke"/>
-        <path d="M0.0,7.02 L1.58,11.47 L3.16,10.09 L4.74,16.81 L6.32,17.26 L7.89,15.04 L9.47,24.18 L11.05,36.8 L12.63,31.51 L14.21,27.0 L15.79,25.63 L17.37,25.14 L18.95,21.54 L20.53,21.85 L22.11,22.8 L23.68,23.18 L25.26,21.97 L26.84,24.93 L28.42,25.35 L30.0,30.92 L31.58,26.3 L33.16,22.36 L34.74,19.02 L36.32,18.26 L37.89,21.4 L39.47,21.58 L41.05,24.47 L42.63,20.77 L44.21,25.07 L45.79,21.26 L47.37,26.63 L48.95,31.08 L50.53,26.28 L52.11,33.75 L53.68,36.25 L55.26,30.52 L56.84,30.6 L58.42,27.46 L60.0,25.05 L61.58,20.92 L63.16,22.1 L64.74,20.48 L66.32,19.1 L67.89,17.93 L69.47,17.15 L71.05,14.22 L72.63,13.82 L74.21,11.44 L75.79,13.16 L77.37,17.53 L78.95,35.83 L80.53,30.06 L82.11,25.14 L83.68,23.02 L85.26,19.14 L86.84,20.96 L88.42,22.56 L90.0,18.74 L91.58,15.5 L93.16,15.18 L94.74,12.51 L96.32,13.72 L97.89,11.31 L99.47,14.19 L101.05,18.29 L102.63,15.22 L104.21,12.63 L105.79,10.46 L107.37,8.65 L108.95,7.15 L110.53,5.92 L112.11,4.91 L113.68,4.11 L115.26,3.47 L116.84,2.98 L118.42,2.62 L120.0,2.36 L121.58,2.19 L123.16,2.1 L124.74,2.08 L126.32,2.11 L127.89,2.19 L129.47,2.31 L131.05,2.47 L132.63,2.65 L134.21,2.85 L135.79,3.07 L137.37,3.31 L138.95,3.56 L140.53,3.82 L142.11,6.09 L143.68,6.05 L145.26,8.46 L146.84,8.13 L148.42,7.88 L150.0,10.46 L151.58,9.92 L153.16,12.86 L154.74,17.44 L156.32,15.87 L157.89,14.56 L159.47,13.46 L161.05,15.37 L162.63,18.1 L164.21,16.48 L165.79,15.13 L167.37,13.99 L168.95,16.07 L170.53,14.81 L172.11,13.76 L173.68,12.88 L175.26,12.16 L176.84,11.57 L178.42,11.09 L180.0,10.71 L181.58,10.42 L183.16,10.2 L184.74,10.24 L186.32,10.1 L187.89,10.0 L189.47,15.88 L191.05,14.93 L192.63,14.15 L194.21,13.5 L195.79,12.96 L197.37,16.18 L198.95,17.19 L200.53,16.16 L202.11,15.31 L203.68,14.59 L205.26,14.0 L206.84,15.69 L208.42,17.69 L210.0,16.7 L211.58,18.7 L213.16,19.42 L214.74,18.18 L216.32,21.19 L217.89,19.66 L219.47,18.37 L221.05,31.74 L222.63,28.56 L224.21,28.45 L225.79,31.56 L227.37,28.3 L228.95,25.52 L230.53,25.55 L232.11,25.21 L233.68,29.38 L235.26,26.33 L236.84,26.35 L238.42,28.33 L240.0,31.64 L241.58,33.71 L243.16,29.83 L244.74,30.82 L246.32,30.04 L247.89,28.94 L249.47,27.64 L251.05,28.02 L252.63,24.87 L254.21,24.6 L255.79,24.7 L257.37,22.01 L258.95,22.68 L260.53,20.27 L262.11,21.96 L263.68,19.65 L265.26,20.65 L266.84,23.64 L268.42,25.16 L270.0,27.57 L271.58,28.14 L273.16,24.8 L274.74,21.95 L276.32,25.39 L277.89,22.42 L279.47,19.9 L281.05,17.76 L282.63,22.02 L284.21,23.54 L285.79,25.3 L287.37,28.56" fill="none" stroke="var(--text2)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <path d="M287.37,28.56 L288.95,27.28 L290.53,26.47 L292.11,25.55 L293.68,22.14 L295.26,21.89 L296.84,19.05 L298.42,20.64 L300.0,20.47" fill="none" stroke="var(--text2)" stroke-width="1.5" stroke-dasharray="3,3" vector-effect="non-scaling-stroke"/>
+        <path d="M0.0,11.47 L1.59,10.09 L3.17,16.81 L4.76,17.26 L6.35,15.04 L7.94,24.18 L9.52,36.8 L11.11,31.51 L12.7,27.0 L14.29,25.63 L15.87,25.14 L17.46,21.54 L19.05,21.85 L20.63,22.8 L22.22,23.18 L23.81,21.97 L25.4,24.93 L26.98,25.35 L28.57,30.92 L30.16,26.3 L31.75,22.36 L33.33,19.02 L34.92,18.26 L36.51,21.4 L38.1,21.58 L39.68,24.47 L41.27,20.77 L42.86,25.07 L44.44,21.26 L46.03,26.63 L47.62,31.08 L49.21,26.28 L50.79,33.75 L52.38,36.25 L53.97,30.52 L55.56,30.6 L57.14,27.46 L58.73,25.05 L60.32,20.92 L61.9,22.1 L63.49,20.48 L65.08,19.1 L66.67,17.93 L68.25,17.15 L69.84,14.22 L71.43,13.82 L73.02,11.44 L74.6,13.16 L76.19,17.53 L77.78,35.83 L79.37,30.06 L80.95,25.14 L82.54,23.02 L84.13,19.14 L85.71,20.96 L87.3,22.56 L88.89,18.74 L90.48,15.5 L92.06,15.18 L93.65,12.51 L95.24,13.72 L96.83,11.31 L98.41,14.19 L100.0,18.29 L101.59,15.22 L103.17,12.63 L104.76,10.46 L106.35,8.65 L107.94,7.15 L109.52,5.92 L111.11,4.91 L112.7,4.11 L114.29,3.47 L115.87,2.98 L117.46,2.62 L119.05,2.36 L120.63,2.19 L122.22,2.1 L123.81,2.08 L125.4,2.11 L126.98,2.19 L128.57,2.31 L130.16,2.47 L131.75,2.65 L133.33,2.85 L134.92,3.07 L136.51,3.31 L138.1,3.56 L139.68,3.82 L141.27,6.09 L142.86,6.05 L144.44,8.46 L146.03,8.13 L147.62,7.88 L149.21,10.46 L150.79,9.92 L152.38,12.86 L153.97,17.44 L155.56,15.87 L157.14,14.56 L158.73,13.46 L160.32,15.37 L161.9,18.1 L163.49,16.48 L165.08,15.13 L166.67,13.99 L168.25,16.07 L169.84,14.81 L171.43,13.76 L173.02,12.88 L174.6,12.16 L176.19,11.57 L177.78,11.09 L179.37,10.71 L180.95,10.42 L182.54,10.2 L184.13,10.24 L185.71,10.1 L187.3,10.0 L188.89,15.88 L190.48,14.93 L192.06,14.15 L193.65,13.5 L195.24,12.96 L196.83,16.18 L198.41,17.19 L200.0,16.16 L201.59,15.31 L203.17,14.59 L204.76,14.0 L206.35,15.69 L207.94,17.69 L209.52,16.7 L211.11,18.7 L212.7,19.42 L214.29,18.18 L215.87,21.19 L217.46,19.66 L219.05,18.37 L220.63,31.74 L222.22,28.56 L223.81,28.45 L225.4,31.56 L226.98,28.3 L228.57,25.52 L230.16,25.55 L231.75,25.21 L233.33,29.38 L234.92,26.33 L236.51,26.35 L238.1,28.33 L239.68,31.64 L241.27,33.71 L242.86,29.83 L244.44,30.82 L246.03,30.04 L247.62,28.94 L249.21,27.64 L250.79,28.02 L252.38,24.87 L253.97,24.6 L255.56,24.7 L257.14,22.01 L258.73,22.68 L260.32,20.27 L261.9,21.96 L263.49,19.65 L265.08,20.65 L266.67,23.64 L268.25,25.16 L269.84,27.57 L271.43,28.14 L273.02,24.8 L274.6,21.95 L276.19,25.39 L277.78,22.42 L279.37,19.9 L280.95,17.76 L282.54,22.02 L284.13,23.54 L285.71,25.3 L287.3,28.56 L288.89,27.36" fill="none" stroke="var(--text2)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        <path d="M288.89,27.36 L290.48,26.55 L292.06,25.61 L293.65,22.19 L295.24,21.93 L296.83,19.09 L298.41,20.68 L300.0,20.5" fill="none" stroke="var(--text2)" stroke-width="1.5" stroke-dasharray="3,3" vector-effect="non-scaling-stroke"/>
       </svg>
     </div>
-    <div style="position:absolute;top:0;bottom:0;left:95.79%;border-left:1px dashed var(--muted);opacity:.6;pointer-events:none"></div>
+    <div style="position:absolute;top:0;bottom:0;left:96.3%;border-left:1px dashed var(--muted);opacity:.6;pointer-events:none"></div>
     <div id="fc-ch" style="display:none;position:absolute;top:0;bottom:0;width:1px;background:rgba(22,17,15,0.3);pointer-events:none;z-index:5"></div>
     <div id="fc-tt" style="display:none;position:absolute;top:2px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 8px;white-space:nowrap;pointer-events:none;z-index:20;box-shadow:0 4px 14px rgba(22,17,15,0.14);font-size:0.65rem;line-height:1.45"></div>
   </div>
   <div style="position:relative;height:14px;margin-top:4px">
-    <span style="position:absolute;left:3.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span><span style="position:absolute;left:19.5%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span><span style="position:absolute;left:35.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span><span style="position:absolute;left:51.6%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span><span style="position:absolute;left:67.9%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span><span style="position:absolute;left:83.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Okt</span><span style="position:absolute;left:100.0%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Nov</span>
+    <span style="position:absolute;left:2.6%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span><span style="position:absolute;left:19.0%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span><span style="position:absolute;left:34.9%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span><span style="position:absolute;left:51.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span><span style="position:absolute;left:67.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span><span style="position:absolute;left:83.6%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Okt</span><span style="position:absolute;left:100.0%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Nov</span>
   </div>
   <div class="fc-legend">
     <span><i style="border-top:2px solid var(--ctl)"></i>Fitness (CTL)</span>
@@ -1495,61 +1426,61 @@
     <div style="position:relative;width:100%;height:90px;margin-bottom:38px">
       <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none" overflow="visible">
         <line x1="0" y1="40.9" x2="300" y2="40.9" stroke="var(--muted)" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6" vector-effect="non-scaling-stroke"/>
-        <path d="M3.3,41.8 L15.0,40.0 L21.7,31.1 L38.3,29.3 L58.3,30.2 L66.7,31.1 L150.0,34.7 L175.0,39.1 L221.7,48.9 L225.0,56.9 L241.7,62.2 L246.7,61.3 L255.0,52.4 L266.7,40.0 L273.3,28.4 L276.7,23.1 L280.0,16.0 L296.7,19.6 L298.3,16.0" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        <path d="M1.7,41.8 L13.3,40.0 L20.0,31.1 L36.7,29.3 L56.7,30.2 L65.0,31.1 L148.3,34.7 L173.3,39.1 L220.0,48.9 L223.3,56.9 L240.0,62.2 L245.0,61.3 L253.3,52.4 L265.0,40.0 L271.7,28.4 L275.0,23.1 L278.3,16.0 L295.0,19.6 L296.7,16.0" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
       
-      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:1.1%;top:52.2%" data-tip="29.04. · 7:31/km" aria-label="29.04. · 7:31/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:0.6%;top:52.2%" data-tip="29.04. · 7:31/km" aria-label="29.04. · 7:31/km"></span>
       
-      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:5.0%;top:47.8%" data-tip="06.05. · 7:27/km" aria-label="06.05. · 7:27/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:4.4%;top:47.8%" data-tip="06.05. · 7:27/km" aria-label="06.05. · 7:27/km"></span>
       
-      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:7.2%;top:16.6%" data-tip="10.05. · 6:59/km" aria-label="10.05. · 6:59/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:6.7%;top:16.6%" data-tip="10.05. · 6:59/km" aria-label="10.05. · 6:59/km"></span>
       
-      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:12.8%;top:44.5%" data-tip="20.05. · 7:24/km" aria-label="20.05. · 7:24/km"></span>
+      <span class="tip-host hf-dot tip-l" tabindex="0" style="left:12.2%;top:44.5%" data-tip="20.05. · 7:24/km" aria-label="20.05. · 7:24/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:19.4%;top:52.2%" data-tip="01.06. · 7:31/km" aria-label="01.06. · 7:31/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:18.9%;top:52.2%" data-tip="01.06. · 7:31/km" aria-label="01.06. · 7:31/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:22.2%;top:20.0%" data-tip="06.06. · 7:02/km" aria-label="06.06. · 7:02/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:21.7%;top:20.0%" data-tip="06.06. · 7:02/km" aria-label="06.06. · 7:02/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:50.0%;top:58.9%" data-tip="26.07. · 7:37/km" aria-label="26.07. · 7:37/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:49.4%;top:58.9%" data-tip="26.07. · 7:37/km" aria-label="26.07. · 7:37/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:58.3%;top:66.6%" data-tip="10.08. · 7:44/km" aria-label="10.08. · 7:44/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:57.8%;top:66.6%" data-tip="10.08. · 7:44/km" aria-label="10.08. · 7:44/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:73.9%;top:58.9%" data-tip="07.09. · 7:37/km" aria-label="07.09. · 7:37/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:73.3%;top:58.9%" data-tip="07.09. · 7:37/km" aria-label="07.09. · 7:37/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:75.0%;top:86.6%" data-tip="09.09. · 8:02/km" aria-label="09.09. · 8:02/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:74.4%;top:86.6%" data-tip="09.09. · 8:02/km" aria-label="09.09. · 8:02/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:80.6%;top:88.9%" data-tip="19.09. · 8:04/km" aria-label="19.09. · 8:04/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:80.0%;top:88.9%" data-tip="19.09. · 8:04/km" aria-label="19.09. · 8:04/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:82.2%;top:54.5%" data-tip="22.09. · 7:33/km" aria-label="22.09. · 7:33/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:81.7%;top:54.5%" data-tip="22.09. · 7:33/km" aria-label="22.09. · 7:33/km"></span>
       
-      <span class="tip-host hf-dot" tabindex="0" style="left:85.0%;top:52.2%" data-tip="27.09. · 7:31/km" aria-label="27.09. · 7:31/km"></span>
+      <span class="tip-host hf-dot" tabindex="0" style="left:84.4%;top:52.2%" data-tip="27.09. · 7:31/km" aria-label="27.09. · 7:31/km"></span>
       
-      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:88.9%;top:42.2%" data-tip="04.10. · 7:22/km" aria-label="04.10. · 7:22/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:88.3%;top:42.2%" data-tip="04.10. · 7:22/km" aria-label="04.10. · 7:22/km"></span>
       
-      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:91.1%;top:11.1%" data-tip="08.10. · 6:54/km" aria-label="08.10. · 6:54/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:90.6%;top:11.1%" data-tip="08.10. · 6:54/km" aria-label="08.10. · 6:54/km"></span>
       
-      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:92.2%;top:34.5%" data-tip="10.10. · 7:15/km" aria-label="10.10. · 7:15/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:91.7%;top:34.5%" data-tip="10.10. · 7:15/km" aria-label="10.10. · 7:15/km"></span>
       
-      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:93.3%;top:13.4%" data-tip="12.10. · 6:56/km" aria-label="12.10. · 6:56/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:92.8%;top:13.4%" data-tip="12.10. · 6:56/km" aria-label="12.10. · 6:56/km"></span>
       
-      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:98.9%;top:24.5%" data-tip="22.10. · 7:06/km" aria-label="22.10. · 7:06/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:98.3%;top:24.5%" data-tip="22.10. · 7:06/km" aria-label="22.10. · 7:06/km"></span>
       
-      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:99.4%;top:21.1%" data-tip="23.10. · 7:03/km" aria-label="23.10. · 7:03/km"></span>
+      <span class="tip-host hf-dot tip-r" tabindex="0" style="left:98.9%;top:21.1%" data-tip="23.10. · 7:03/km" aria-label="23.10. · 7:03/km"></span>
       
       <span style="position:absolute;right:0;top:calc(51.1% - 13px);font-size:0.5rem;color:var(--muted)">7:30 Ref.</span>
       <div style="position:absolute;bottom:-20px;left:0;right:0">
         
-        <span style="position:absolute;left:2.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
+        <span style="position:absolute;left:1.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Mai</span>
         
-        <span style="position:absolute;left:19.4%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
+        <span style="position:absolute;left:18.9%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jun</span>
         
-        <span style="position:absolute;left:36.1%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
+        <span style="position:absolute;left:35.6%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Jul</span>
         
-        <span style="position:absolute;left:53.3%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
+        <span style="position:absolute;left:52.8%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Aug</span>
         
-        <span style="position:absolute;left:70.6%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
+        <span style="position:absolute;left:70.0%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Sep</span>
         
-        <span style="position:absolute;left:87.2%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Okt</span>
+        <span style="position:absolute;left:86.7%;transform:translateX(-50%);font-size:0.55rem;color:var(--muted)">Okt</span>
         
       </div>
     </div>
@@ -1592,8 +1523,8 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,4.0 L10.0,7.9 L20.0,10.5 L30.0,18.9 L40.0,6.1 L50.0,24.5 L60.0,11.2 L70.0,22.7 L80.0,23.2 L90.0,21.7 L100.0,12.7 L110.0,14.9 L120.0,12.8 L130.0,18.8 L140.0,21.7 L150.0,20.5 L160.0,13.3 L170.0,20.0 L180.0,8.0 L190.0,9.3 L200.0,19.2 L210.0,12.3 L220.0,20.7 L230.0,0.0 L240.0,11.9 L250.0,8.3 L260.0,25.1 L270.0,18.4 L280.0,11.6 L290.0,8.7 L300.0,15.7 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,4.0 L10.0,7.9 L20.0,10.5 L30.0,18.9 L40.0,6.1 L50.0,24.5 L60.0,11.2 L70.0,22.7 L80.0,23.2 L90.0,21.7 L100.0,12.7 L110.0,14.9 L120.0,12.8 L130.0,18.8 L140.0,21.7 L150.0,20.5 L160.0,13.3 L170.0,20.0 L180.0,8.0 L190.0,9.3 L200.0,19.2 L210.0,12.3 L220.0,20.7 L230.0,0.0 L240.0,11.9 L250.0,8.3 L260.0,25.1 L270.0,18.4 L280.0,11.6 L290.0,8.7 L300.0,15.7" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M0.0,7.9 L10.0,10.5 L20.0,18.9 L30.0,6.1 L40.0,24.5 L50.0,11.2 L60.0,22.7 L70.0,23.2 L80.0,21.7 L90.0,12.7 L100.0,14.9 L110.0,12.8 L120.0,18.8 L130.0,21.7 L140.0,20.5 L150.0,13.3 L160.0,20.0 L170.0,8.0 L180.0,9.3 L190.0,19.2 L200.0,12.3 L210.0,20.7 L220.0,0.0 L230.0,11.9 L240.0,8.3 L250.0,25.1 L260.0,18.4 L270.0,11.6 L280.0,8.7 L290.0,15.7 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,7.9 L10.0,10.5 L20.0,18.9 L30.0,6.1 L40.0,24.5 L50.0,11.2 L60.0,22.7 L70.0,23.2 L80.0,21.7 L90.0,12.7 L100.0,14.9 L110.0,12.8 L120.0,18.8 L130.0,21.7 L140.0,20.5 L150.0,13.3 L160.0,20.0 L170.0,8.0 L180.0,9.3 L190.0,19.2 L200.0,12.3 L210.0,20.7 L220.0,0.0 L230.0,11.9 L240.0,8.3 L250.0,25.1 L260.0,18.4 L270.0,11.6 L280.0,8.7 L290.0,15.7" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="300" cy="15.7" r="3" fill="#57504c"/>
         <circle cx="300" cy="15.7" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
@@ -1607,17 +1538,14 @@
         <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">
           8.0h
         </div>
-        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf (COROS, 8.2h im Bett)</div>
+        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.2h</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.1h</div>
         <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
       </div>
     </div>
-    
-    <div style="font-size:0.65rem;color:var(--muted);margin-top:8px">Score 75 · Tief 30 % · REM 5 % · 11 min wach</div>
-    
     
     
   </div>
@@ -1758,94 +1686,91 @@
     <div id="st-wrap" class="chart-touch" style="position:relative;width:100%;height:80px;margin-bottom:4px;cursor:crosshair">
       <svg width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none">
         
-        <rect x="1.5" y="52.2" width="7.0" height="27.8" rx="1"
+        <rect x="1.5" y="60.6" width="7.0" height="19.4" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="11.5" y="60.6" width="7.0" height="19.4" rx="1"
+        <rect x="11.5" y="54.0" width="7.0" height="26.0" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="21.5" y="54.0" width="7.0" height="26.0" rx="1"
+        <rect x="21.5" y="53.6" width="7.0" height="26.4" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="31.5" y="53.6" width="7.0" height="26.4" rx="1"
+        <rect x="31.5" y="72.3" width="7.0" height="7.7" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="41.5" y="72.3" width="7.0" height="7.7" rx="1"
+        <rect x="41.5" y="74.1" width="7.0" height="5.9" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="51.5" y="74.1" width="7.0" height="5.9" rx="1"
+        <rect x="51.5" y="73.2" width="7.0" height="6.8" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
         <rect x="61.5" y="73.2" width="7.0" height="6.8" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="71.5" y="73.2" width="7.0" height="6.8" rx="1"
+        <rect x="71.5" y="62.0" width="7.0" height="18.0" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="81.5" y="62.0" width="7.0" height="18.0" rx="1"
-              fill="#8b837e" opacity="0.45"/>
-        
-        <rect x="91.5" y="2.9" width="7.0" height="77.1" rx="1"
+        <rect x="81.5" y="2.9" width="7.0" height="77.1" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="101.5" y="16.5" width="7.0" height="63.5" rx="1"
+        <rect x="91.5" y="16.5" width="7.0" height="63.5" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="111.5" y="4.8" width="7.0" height="75.2" rx="1"
+        <rect x="101.5" y="4.8" width="7.0" height="75.2" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="121.5" y="31.4" width="7.0" height="48.6" rx="1"
+        <rect x="111.5" y="31.4" width="7.0" height="48.6" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="131.5" y="18.8" width="7.0" height="61.2" rx="1"
+        <rect x="121.5" y="18.8" width="7.0" height="61.2" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="141.5" y="36.8" width="7.0" height="43.2" rx="1"
+        <rect x="131.5" y="36.8" width="7.0" height="43.2" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="151.5" y="49.1" width="7.0" height="30.9" rx="1"
+        <rect x="141.5" y="49.1" width="7.0" height="30.9" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="161.5" y="74.6" width="7.0" height="5.4" rx="1"
+        <rect x="151.5" y="74.6" width="7.0" height="5.4" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="171.5" y="48.5" width="7.0" height="31.5" rx="1"
+        <rect x="161.5" y="48.5" width="7.0" height="31.5" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="181.5" y="60.7" width="7.0" height="19.3" rx="1"
+        <rect x="171.5" y="60.7" width="7.0" height="19.3" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="191.5" y="46.2" width="7.0" height="33.8" rx="1"
+        <rect x="181.5" y="46.2" width="7.0" height="33.8" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="201.5" y="74.0" width="7.0" height="6.0" rx="1"
+        <rect x="191.5" y="74.0" width="7.0" height="6.0" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="211.5" y="72.7" width="7.0" height="7.3" rx="1"
+        <rect x="201.5" y="72.7" width="7.0" height="7.3" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="221.5" y="73.0" width="7.0" height="7.0" rx="1"
+        <rect x="211.5" y="73.0" width="7.0" height="7.0" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="231.5" y="45.1" width="7.0" height="34.9" rx="1"
+        <rect x="221.5" y="45.1" width="7.0" height="34.9" rx="1"
               fill="var(--brand)" opacity="0.75"/>
         
-        <rect x="241.5" y="67.3" width="7.0" height="12.7" rx="1"
+        <rect x="231.5" y="67.3" width="7.0" height="12.7" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="251.5" y="59.3" width="7.0" height="20.7" rx="1"
+        <rect x="241.5" y="59.3" width="7.0" height="20.7" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="261.5" y="65.4" width="7.0" height="14.6" rx="1"
+        <rect x="251.5" y="65.4" width="7.0" height="14.6" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="271.5" y="54.5" width="7.0" height="25.5" rx="1"
+        <rect x="261.5" y="54.5" width="7.0" height="25.5" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="281.5" y="48.9" width="7.0" height="31.1" rx="1"
+        <rect x="271.5" y="48.9" width="7.0" height="31.1" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="291.5" y="66.7" width="7.0" height="13.3" rx="1"
+        <rect x="281.5" y="66.7" width="7.0" height="13.3" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
         <line x1="0" y1="48.0" x2="300" y2="48.0" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
@@ -1856,27 +1781,27 @@
     </div>
     <div style="position:relative;height:14px;margin-bottom:6px">
       
-      <span style="position:absolute;left:0.0%;font-size:0.55rem;color:var(--muted);white-space:nowrap">25. Sep</span>
+      <span style="position:absolute;left:0.0%;font-size:0.55rem;color:var(--muted);white-space:nowrap">26. Sep</span>
       
-      <span style="position:absolute;left:23.3%;font-size:0.55rem;color:var(--muted);white-space:nowrap">2. Okt</span>
+      <span style="position:absolute;left:23.3%;font-size:0.55rem;color:var(--muted);white-space:nowrap">3. Okt</span>
       
-      <span style="position:absolute;left:46.7%;font-size:0.55rem;color:var(--muted);white-space:nowrap">9. Okt</span>
+      <span style="position:absolute;left:46.7%;font-size:0.55rem;color:var(--muted);white-space:nowrap">10. Okt</span>
       
-      <span style="position:absolute;left:70.0%;font-size:0.55rem;color:var(--muted);white-space:nowrap">16. Okt</span>
+      <span style="position:absolute;left:70.0%;font-size:0.55rem;color:var(--muted);white-space:nowrap">17. Okt</span>
       
     </div>
     <div style="display:flex;align-items:center;gap:8px">
       <div>
         <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">4.157</div>
-        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schritte</div>
+        <div style="font-size:0.6rem;color:var(--muted)">Gestern · Schritte</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--text)">Ø 6.817</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text)">Ø 6.138</div>
         <div style="font-size:0.6rem;color:var(--muted)">7 Tage</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--muted)">Ø 8.410</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--muted)">Ø 8.400</div>
         <div style="font-size:0.6rem;color:var(--muted)">30 Tage</div>
       </div>
     </div>
@@ -2290,7 +2215,7 @@
   });
 
   
-  var fcPts = [{"a": 14.5, "c": 33.3, "d": "25.04.", "f": 18.8, "p": 0, "x": 0.0, "z": "Frisch"}, {"a": 22.5, "c": 34.3, "d": "26.04.", "f": 11.8, "p": 0, "x": 0.53, "z": "Frisch"}, {"a": 19.5, "c": 33.5, "d": "27.04.", "f": 13.9, "p": 0, "x": 1.05, "z": "Frisch"}, {"a": 32.1, "c": 35.4, "d": "28.04.", "f": 3.3, "p": 0, "x": 1.58, "z": "Grauzone"}, {"a": 32.9, "c": 35.4, "d": "29.04.", "f": 2.5, "p": 0, "x": 2.11, "z": "Grauzone"}, {"a": 28.5, "c": 34.6, "d": "30.04.", "f": 6.1, "p": 0, "x": 2.63, "z": "Frisch"}, {"a": 46.0, "c": 37.5, "d": "01.05.", "f": -8.5, "p": 0, "x": 3.16, "z": "Grauzone"}, {"a": 70.6, "c": 42.1, "d": "02.05.", "f": -28.5, "p": 0, "x": 3.68, "z": "Optimal"}, {"a": 61.2, "c": 41.1, "d": "03.05.", "f": -20.1, "p": 0, "x": 4.21, "z": "Optimal"}, {"a": 53.1, "c": 40.1, "d": "04.05.", "f": -13.0, "p": 0, "x": 4.74, "z": "Optimal"}, {"a": 50.8, "c": 40.0, "d": "05.05.", "f": -10.8, "p": 0, "x": 5.26, "z": "Optimal"}, {"a": 50.2, "c": 40.2, "d": "06.05.", "f": -10.0, "p": 0, "x": 5.79, "z": "Grauzone"}, {"a": 43.5, "c": 39.2, "d": "07.05.", "f": -4.3, "p": 0, "x": 6.32, "z": "Grauzone"}, {"a": 44.2, "c": 39.5, "d": "08.05.", "f": -4.8, "p": 0, "x": 6.84, "z": "Grauzone"}, {"a": 46.2, "c": 39.9, "d": "09.05.", "f": -6.3, "p": 0, "x": 7.37, "z": "Grauzone"}, {"a": 47.1, "c": 40.2, "d": "10.05.", "f": -6.9, "p": 0, "x": 7.89, "z": "Grauzone"}, {"a": 45.0, "c": 40.0, "d": "11.05.", "f": -4.9, "p": 0, "x": 8.42, "z": "Grauzone"}, {"a": 50.8, "c": 41.2, "d": "12.05.", "f": -9.7, "p": 0, "x": 8.95, "z": "Grauzone"}, {"a": 51.9, "c": 41.6, "d": "13.05.", "f": -10.3, "p": 0, "x": 9.47, "z": "Optimal"}, {"a": 63.0, "c": 43.8, "d": "14.05.", "f": -19.2, "p": 0, "x": 10.0, "z": "Optimal"}, {"a": 54.6, "c": 42.7, "d": "15.05.", "f": -11.8, "p": 0, "x": 10.53, "z": "Optimal"}, {"a": 47.3, "c": 41.7, "d": "16.05.", "f": -5.6, "p": 0, "x": 11.05, "z": "Grauzone"}, {"a": 41.0, "c": 40.8, "d": "17.05.", "f": -0.3, "p": 0, "x": 11.58, "z": "Grauzone"}, {"a": 39.6, "c": 40.5, "d": "18.05.", "f": 1.0, "p": 0, "x": 12.11, "z": "Grauzone"}, {"a": 45.6, "c": 41.6, "d": "19.05.", "f": -4.0, "p": 0, "x": 12.63, "z": "Grauzone"}, {"a": 46.1, "c": 41.7, "d": "20.05.", "f": -4.3, "p": 0, "x": 13.16, "z": "Grauzone"}, {"a": 51.8, "c": 42.8, "d": "21.05.", "f": -8.9, "p": 0, "x": 13.68, "z": "Grauzone"}, {"a": 44.9, "c": 41.8, "d": "22.05.", "f": -3.0, "p": 0, "x": 14.21, "z": "Grauzone"}, {"a": 53.3, "c": 43.4, "d": "23.05.", "f": -9.9, "p": 0, "x": 14.74, "z": "Grauzone"}, {"a": 46.2, "c": 42.4, "d": "24.05.", "f": -3.8, "p": 0, "x": 15.26, "z": "Grauzone"}, {"a": 56.7, "c": 44.3, "d": "25.05.", "f": -12.4, "p": 0, "x": 15.79, "z": "Optimal"}, {"a": 65.6, "c": 46.2, "d": "26.05.", "f": -19.5, "p": 0, "x": 16.32, "z": "Optimal"}, {"a": 56.9, "c": 45.1, "d": "27.05.", "f": -11.8, "p": 0, "x": 16.84, "z": "Optimal"}, {"a": 71.7, "c": 48.0, "d": "28.05.", "f": -23.7, "p": 0, "x": 17.37, "z": "Optimal"}, {"a": 77.2, "c": 49.5, "d": "29.05.", "f": -27.7, "p": 0, "x": 17.89, "z": "Optimal"}, {"a": 66.9, "c": 48.4, "d": "30.05.", "f": -18.6, "p": 0, "x": 18.42, "z": "Optimal"}, {"a": 67.6, "c": 48.9, "d": "31.05.", "f": -18.7, "p": 0, "x": 18.95, "z": "Optimal"}, {"a": 62.1, "c": 48.4, "d": "01.06.", "f": -13.7, "p": 0, "x": 19.47, "z": "Optimal"}, {"a": 57.8, "c": 47.9, "d": "02.06.", "f": -9.8, "p": 0, "x": 20.0, "z": "Grauzone"}, {"a": 50.1, "c": 46.8, "d": "03.06.", "f": -3.3, "p": 0, "x": 20.53, "z": "Grauzone"}, {"a": 52.5, "c": 47.3, "d": "04.06.", "f": -5.2, "p": 0, "x": 21.05, "z": "Grauzone"}, {"a": 49.5, "c": 46.9, "d": "05.06.", "f": -2.6, "p": 0, "x": 21.58, "z": "Grauzone"}, {"a": 46.9, "c": 46.5, "d": "06.06.", "f": -0.4, "p": 0, "x": 22.11, "z": "Grauzone"}, {"a": 44.6, "c": 46.1, "d": "07.06.", "f": 1.5, "p": 0, "x": 22.63, "z": "Grauzone"}, {"a": 43.1, "c": 45.8, "d": "08.06.", "f": 2.7, "p": 0, "x": 23.16, "z": "Grauzone"}, {"a": 37.4, "c": 44.7, "d": "09.06.", "f": 7.4, "p": 0, "x": 23.68, "z": "Frisch"}, {"a": 36.4, "c": 44.4, "d": "10.06.", "f": 8.0, "p": 0, "x": 24.21, "z": "Frisch"}, {"a": 31.5, "c": 43.3, "d": "11.06.", "f": 11.8, "p": 0, "x": 24.74, "z": "Frisch"}, {"a": 34.5, "c": 43.6, "d": "12.06.", "f": 9.1, "p": 0, "x": 25.26, "z": "Frisch"}, {"a": 42.7, "c": 44.8, "d": "13.06.", "f": 2.1, "p": 0, "x": 25.79, "z": "Grauzone"}, {"a": 78.0, "c": 51.0, "d": "14.06.", "f": -27.0, "p": 0, "x": 26.32, "z": "Optimal"}, {"a": 67.6, "c": 49.8, "d": "15.06.", "f": -17.8, "p": 0, "x": 26.84, "z": "Optimal"}, {"a": 58.6, "c": 48.6, "d": "16.06.", "f": -10.0, "p": 0, "x": 27.37, "z": "Grauzone"}, {"a": 54.8, "c": 48.2, "d": "17.06.", "f": -6.6, "p": 0, "x": 27.89, "z": "Grauzone"}, {"a": 47.5, "c": 47.1, "d": "18.06.", "f": -0.5, "p": 0, "x": 28.42, "z": "Grauzone"}, {"a": 51.0, "c": 47.7, "d": "19.06.", "f": -3.3, "p": 0, "x": 28.95, "z": "Grauzone"}, {"a": 54.2, "c": 48.3, "d": "20.06.", "f": -5.9, "p": 0, "x": 29.47, "z": "Grauzone"}, {"a": 47.0, "c": 47.2, "d": "21.06.", "f": 0.2, "p": 0, "x": 30.0, "z": "Grauzone"}, {"a": 40.8, "c": 46.1, "d": "22.06.", "f": 5.3, "p": 0, "x": 30.53, "z": "Frisch"}, {"a": 40.0, "c": 45.8, "d": "23.06.", "f": 5.8, "p": 0, "x": 31.05, "z": "Frisch"}, {"a": 34.7, "c": 44.8, "d": "24.06.", "f": 10.1, "p": 0, "x": 31.58, "z": "Frisch"}, {"a": 36.7, "c": 44.9, "d": "25.06.", "f": 8.2, "p": 0, "x": 32.11, "z": "Frisch"}, {"a": 31.8, "c": 43.8, "d": "26.06.", "f": 12.0, "p": 0, "x": 32.63, "z": "Frisch"}, {"a": 37.0, "c": 44.5, "d": "27.06.", "f": 7.4, "p": 0, "x": 33.16, "z": "Frisch"}, {"a": 44.8, "c": 45.7, "d": "28.06.", "f": 0.9, "p": 0, "x": 33.68, "z": "Grauzone"}, {"a": 38.8, "c": 44.6, "d": "29.06.", "f": 5.8, "p": 0, "x": 34.21, "z": "Frisch"}, {"a": 33.6, "c": 43.5, "d": "30.06.", "f": 9.9, "p": 0, "x": 34.74, "z": "Frisch"}, {"a": 29.2, "c": 42.5, "d": "01.07.", "f": 13.4, "p": 0, "x": 35.26, "z": "Frisch"}, {"a": 25.3, "c": 41.5, "d": "02.07.", "f": 16.2, "p": 0, "x": 35.79, "z": "Frisch"}, {"a": 21.9, "c": 40.5, "d": "03.07.", "f": 18.6, "p": 0, "x": 36.32, "z": "Frisch"}, {"a": 19.0, "c": 39.6, "d": "04.07.", "f": 20.6, "p": 0, "x": 36.84, "z": "Frisch"}, {"a": 16.5, "c": 38.6, "d": "05.07.", "f": 22.2, "p": 0, "x": 37.37, "z": "Frisch"}, {"a": 14.3, "c": 37.7, "d": "06.07.", "f": 23.5, "p": 0, "x": 37.89, "z": "Frisch"}, {"a": 12.4, "c": 36.8, "d": "07.07.", "f": 24.5, "p": 0, "x": 38.42, "z": "Frisch"}, {"a": 10.7, "c": 36.0, "d": "08.07.", "f": 25.3, "p": 0, "x": 38.95, "z": "\u00dcbergang"}, {"a": 9.3, "c": 35.1, "d": "09.07.", "f": 25.8, "p": 0, "x": 39.47, "z": "\u00dcbergang"}, {"a": 8.1, "c": 34.3, "d": "10.07.", "f": 26.2, "p": 0, "x": 40.0, "z": "\u00dcbergang"}, {"a": 7.0, "c": 33.5, "d": "11.07.", "f": 26.5, "p": 0, "x": 40.53, "z": "\u00dcbergang"}, {"a": 6.1, "c": 32.7, "d": "12.07.", "f": 26.7, "p": 0, "x": 41.05, "z": "\u00dcbergang"}, {"a": 5.3, "c": 31.9, "d": "13.07.", "f": 26.7, "p": 0, "x": 41.58, "z": "\u00dcbergang"}, {"a": 4.6, "c": 31.2, "d": "14.07.", "f": 26.6, "p": 0, "x": 42.11, "z": "\u00dcbergang"}, {"a": 3.9, "c": 30.5, "d": "15.07.", "f": 26.5, "p": 0, "x": 42.63, "z": "\u00dcbergang"}, {"a": 3.4, "c": 29.7, "d": "16.07.", "f": 26.3, "p": 0, "x": 43.16, "z": "\u00dcbergang"}, {"a": 3.0, "c": 29.0, "d": "17.07.", "f": 26.1, "p": 0, "x": 43.68, "z": "\u00dcbergang"}, {"a": 2.6, "c": 28.4, "d": "18.07.", "f": 25.8, "p": 0, "x": 44.21, "z": "\u00dcbergang"}, {"a": 2.2, "c": 27.7, "d": "19.07.", "f": 25.5, "p": 0, "x": 44.74, "z": "\u00dcbergang"}, {"a": 1.9, "c": 27.0, "d": "20.07.", "f": 25.1, "p": 0, "x": 45.26, "z": "\u00dcbergang"}, {"a": 1.7, "c": 26.4, "d": "21.07.", "f": 24.7, "p": 0, "x": 45.79, "z": "Frisch"}, {"a": 1.5, "c": 25.8, "d": "22.07.", "f": 24.3, "p": 0, "x": 46.32, "z": "Frisch"}, {"a": 1.3, "c": 25.2, "d": "23.07.", "f": 23.9, "p": 0, "x": 46.84, "z": "Frisch"}, {"a": 5.0, "c": 25.3, "d": "24.07.", "f": 20.3, "p": 0, "x": 47.37, "z": "Frisch"}, {"a": 4.3, "c": 24.7, "d": "25.07.", "f": 20.4, "p": 0, "x": 47.89, "z": "Frisch"}, {"a": 8.4, "c": 24.9, "d": "26.07.", "f": 16.5, "p": 0, "x": 48.42, "z": "Frisch"}, {"a": 7.3, "c": 24.3, "d": "27.07.", "f": 17.1, "p": 0, "x": 48.95, "z": "Frisch"}, {"a": 6.3, "c": 23.8, "d": "28.07.", "f": 17.5, "p": 0, "x": 49.47, "z": "Frisch"}, {"a": 10.8, "c": 24.1, "d": "29.07.", "f": 13.4, "p": 0, "x": 50.0, "z": "Frisch"}, {"a": 9.3, "c": 23.6, "d": "30.07.", "f": 14.2, "p": 0, "x": 50.53, "z": "Frisch"}, {"a": 14.6, "c": 24.2, "d": "31.07.", "f": 9.5, "p": 0, "x": 51.05, "z": "Frisch"}, {"a": 23.2, "c": 25.5, "d": "01.08.", "f": 2.3, "p": 0, "x": 51.58, "z": "Grauzone"}, {"a": 20.1, "c": 24.9, "d": "02.08.", "f": 4.8, "p": 0, "x": 52.11, "z": "Grauzone"}, {"a": 17.4, "c": 24.3, "d": "03.08.", "f": 6.8, "p": 0, "x": 52.63, "z": "Frisch"}, {"a": 15.1, "c": 23.7, "d": "04.08.", "f": 8.6, "p": 0, "x": 53.16, "z": "Frisch"}, {"a": 18.6, "c": 24.1, "d": "05.08.", "f": 5.6, "p": 0, "x": 53.68, "z": "Frisch"}, {"a": 23.7, "c": 24.9, "d": "06.08.", "f": 1.2, "p": 0, "x": 54.21, "z": "Grauzone"}, {"a": 20.5, "c": 24.3, "d": "07.08.", "f": 3.8, "p": 0, "x": 54.74, "z": "Grauzone"}, {"a": 17.8, "c": 23.7, "d": "08.08.", "f": 5.9, "p": 0, "x": 55.26, "z": "Frisch"}, {"a": 15.4, "c": 23.2, "d": "09.08.", "f": 7.7, "p": 0, "x": 55.79, "z": "Frisch"}, {"a": 19.2, "c": 23.7, "d": "10.08.", "f": 4.4, "p": 0, "x": 56.32, "z": "Grauzone"}, {"a": 16.7, "c": 23.1, "d": "11.08.", "f": 6.4, "p": 0, "x": 56.84, "z": "Frisch"}, {"a": 14.4, "c": 22.6, "d": "12.08.", "f": 8.1, "p": 0, "x": 57.37, "z": "Frisch"}, {"a": 12.5, "c": 22.0, "d": "13.08.", "f": 9.5, "p": 0, "x": 57.89, "z": "Frisch"}, {"a": 10.9, "c": 21.5, "d": "14.08.", "f": 10.7, "p": 0, "x": 58.42, "z": "Frisch"}, {"a": 9.4, "c": 21.0, "d": "15.08.", "f": 11.6, "p": 0, "x": 58.95, "z": "Frisch"}, {"a": 8.2, "c": 20.5, "d": "16.08.", "f": 12.4, "p": 0, "x": 59.47, "z": "Frisch"}, {"a": 7.1, "c": 20.0, "d": "17.08.", "f": 13.0, "p": 0, "x": 60.0, "z": "Frisch"}, {"a": 6.1, "c": 19.6, "d": "18.08.", "f": 13.4, "p": 0, "x": 60.53, "z": "Frisch"}, {"a": 5.3, "c": 19.1, "d": "19.08.", "f": 13.8, "p": 0, "x": 61.05, "z": "Frisch"}, {"a": 5.0, "c": 18.7, "d": "20.08.", "f": 13.7, "p": 0, "x": 61.58, "z": "Frisch"}, {"a": 4.3, "c": 18.3, "d": "21.08.", "f": 13.9, "p": 0, "x": 62.11, "z": "Frisch"}, {"a": 3.8, "c": 17.8, "d": "22.08.", "f": 14.1, "p": 0, "x": 62.63, "z": "Frisch"}, {"a": 14.7, "c": 19.5, "d": "23.08.", "f": 4.7, "p": 0, "x": 63.16, "z": "Grauzone"}, {"a": 12.8, "c": 19.0, "d": "24.08.", "f": 6.2, "p": 0, "x": 63.68, "z": "Frisch"}, {"a": 11.1, "c": 18.5, "d": "25.08.", "f": 7.5, "p": 0, "x": 64.21, "z": "Frisch"}, {"a": 9.6, "c": 18.1, "d": "26.08.", "f": 8.5, "p": 0, "x": 64.74, "z": "Frisch"}, {"a": 8.3, "c": 17.7, "d": "27.08.", "f": 9.4, "p": 0, "x": 65.26, "z": "Frisch"}, {"a": 14.3, "c": 18.5, "d": "28.08.", "f": 4.3, "p": 0, "x": 65.79, "z": "Grauzone"}, {"a": 15.4, "c": 18.1, "d": "29.08.", "f": 2.7, "p": 0, "x": 66.32, "z": "Grauzone"}, {"a": 13.4, "c": 17.7, "d": "30.08.", "f": 4.3, "p": 0, "x": 66.84, "z": "Grauzone"}, {"a": 11.6, "c": 17.2, "d": "31.08.", "f": 5.6, "p": 0, "x": 67.37, "z": "Frisch"}, {"a": 10.0, "c": 16.8, "d": "01.09.", "f": 6.8, "p": 0, "x": 67.89, "z": "Frisch"}, {"a": 8.7, "c": 16.4, "d": "02.09.", "f": 7.7, "p": 0, "x": 68.42, "z": "Frisch"}, {"a": 11.0, "c": 16.0, "d": "03.09.", "f": 5.0, "p": 0, "x": 68.95, "z": "Frisch"}, {"a": 14.7, "c": 16.6, "d": "04.09.", "f": 1.9, "p": 0, "x": 69.47, "z": "Grauzone"}, {"a": 12.8, "c": 16.2, "d": "05.09.", "f": 3.4, "p": 0, "x": 70.0, "z": "Grauzone"}, {"a": 16.5, "c": 16.8, "d": "06.09.", "f": 0.3, "p": 0, "x": 70.53, "z": "Grauzone"}, {"a": 17.9, "c": 17.0, "d": "07.09.", "f": -0.9, "p": 0, "x": 71.05, "z": "Grauzone"}, {"a": 15.5, "c": 16.6, "d": "08.09.", "f": 1.1, "p": 0, "x": 71.58, "z": "Grauzone"}, {"a": 21.3, "c": 17.6, "d": "09.09.", "f": -3.7, "p": 0, "x": 72.11, "z": "Grauzone"}, {"a": 18.5, "c": 17.2, "d": "10.09.", "f": -1.3, "p": 0, "x": 72.63, "z": "Grauzone"}, {"a": 16.0, "c": 16.8, "d": "11.09.", "f": 0.8, "p": 0, "x": 73.16, "z": "Grauzone"}, {"a": 41.8, "c": 21.3, "d": "12.09.", "f": -20.5, "p": 0, "x": 73.68, "z": "Optimal"}, {"a": 36.3, "c": 20.8, "d": "13.09.", "f": -15.4, "p": 0, "x": 74.21, "z": "Optimal"}, {"a": 36.5, "c": 21.2, "d": "14.09.", "f": -15.3, "p": 0, "x": 74.74, "z": "Optimal"}, {"a": 43.0, "c": 22.7, "d": "15.09.", "f": -20.2, "p": 0, "x": 75.26, "z": "Optimal"}, {"a": 37.2, "c": 22.2, "d": "16.09.", "f": -15.0, "p": 0, "x": 75.79, "z": "Optimal"}, {"a": 32.3, "c": 21.7, "d": "17.09.", "f": -10.6, "p": 0, "x": 76.32, "z": "Optimal"}, {"a": 32.6, "c": 22.0, "d": "18.09.", "f": -10.6, "p": 0, "x": 76.84, "z": "Optimal"}, {"a": 32.3, "c": 22.2, "d": "19.09.", "f": -10.1, "p": 0, "x": 77.37, "z": "Optimal"}, {"a": 40.6, "c": 23.9, "d": "20.09.", "f": -16.7, "p": 0, "x": 77.89, "z": "Optimal"}, {"a": 35.2, "c": 23.3, "d": "21.09.", "f": -11.9, "p": 0, "x": 78.42, "z": "Optimal"}, {"a": 35.6, "c": 23.7, "d": "22.09.", "f": -11.9, "p": 0, "x": 78.95, "z": "Optimal"}, {"a": 39.8, "c": 24.7, "d": "23.09.", "f": -15.1, "p": 0, "x": 79.47, "z": "Optimal"}, {"a": 46.6, "c": 26.3, "d": "24.09.", "f": -20.3, "p": 0, "x": 80.0, "z": "Optimal"}, {"a": 51.2, "c": 27.6, "d": "25.09.", "f": -23.6, "p": 0, "x": 80.53, "z": "Optimal"}, {"a": 44.4, "c": 26.9, "d": "26.09.", "f": -17.5, "p": 0, "x": 81.05, "z": "Optimal"}, {"a": 46.2, "c": 27.1, "d": "27.09.", "f": -19.0, "p": 0, "x": 81.58, "z": "Optimal"}, {"a": 45.1, "c": 27.3, "d": "28.09.", "f": -17.8, "p": 0, "x": 82.11, "z": "Optimal"}, {"a": 43.5, "c": 27.4, "d": "29.09.", "f": -16.0, "p": 0, "x": 82.63, "z": "Optimal"}, {"a": 41.4, "c": 27.5, "d": "30.09.", "f": -14.0, "p": 0, "x": 83.16, "z": "Optimal"}, {"a": 42.6, "c": 28.0, "d": "01.10.", "f": -14.6, "p": 0, "x": 83.68, "z": "Optimal"}, {"a": 36.9, "c": 27.3, "d": "02.10.", "f": -9.6, "p": 0, "x": 84.21, "z": "Grauzone"}, {"a": 36.6, "c": 27.5, "d": "03.10.", "f": -9.1, "p": 0, "x": 84.74, "z": "Grauzone"}, {"a": 37.1, "c": 27.8, "d": "04.10.", "f": -9.3, "p": 0, "x": 85.26, "z": "Grauzone"}, {"a": 32.2, "c": 27.1, "d": "05.10.", "f": -5.0, "p": 0, "x": 85.79, "z": "Grauzone"}, {"a": 33.6, "c": 27.5, "d": "06.10.", "f": -6.1, "p": 0, "x": 86.32, "z": "Grauzone"}, {"a": 29.1, "c": 26.9, "d": "07.10.", "f": -2.3, "p": 0, "x": 86.84, "z": "Grauzone"}, {"a": 32.4, "c": 27.5, "d": "08.10.", "f": -4.9, "p": 0, "x": 87.37, "z": "Grauzone"}, {"a": 28.1, "c": 26.9, "d": "09.10.", "f": -1.3, "p": 0, "x": 87.89, "z": "Grauzone"}, {"a": 30.1, "c": 27.2, "d": "10.10.", "f": -2.9, "p": 0, "x": 88.42, "z": "Grauzone"}, {"a": 35.9, "c": 28.3, "d": "11.10.", "f": -7.6, "p": 0, "x": 88.95, "z": "Grauzone"}, {"a": 38.9, "c": 28.9, "d": "12.10.", "f": -10.0, "p": 0, "x": 89.47, "z": "Optimal"}, {"a": 43.8, "c": 30.0, "d": "13.10.", "f": -13.9, "p": 0, "x": 90.0, "z": "Optimal"}, {"a": 45.3, "c": 30.5, "d": "14.10.", "f": -14.8, "p": 0, "x": 90.53, "z": "Optimal"}, {"a": 39.3, "c": 29.8, "d": "15.10.", "f": -9.4, "p": 0, "x": 91.05, "z": "Grauzone"}, {"a": 34.0, "c": 29.1, "d": "16.10.", "f": -4.9, "p": 0, "x": 91.58, "z": "Grauzone"}, {"a": 40.8, "c": 30.4, "d": "17.10.", "f": -10.4, "p": 0, "x": 92.11, "z": "Optimal"}, {"a": 35.4, "c": 29.7, "d": "18.10.", "f": -5.7, "p": 0, "x": 92.63, "z": "Grauzone"}, {"a": 30.7, "c": 29.0, "d": "19.10.", "f": -1.7, "p": 0, "x": 93.16, "z": "Grauzone"}, {"a": 26.6, "c": 28.3, "d": "20.10.", "f": 1.7, "p": 0, "x": 93.68, "z": "Grauzone"}, {"a": 34.8, "c": 29.7, "d": "21.10.", "f": -5.0, "p": 0, "x": 94.21, "z": "Grauzone"}, {"a": 37.9, "c": 30.4, "d": "22.10.", "f": -7.5, "p": 0, "x": 94.74, "z": "Grauzone"}, {"a": 41.5, "c": 31.2, "d": "23.10.", "f": -10.3, "p": 0, "x": 95.26, "z": "Optimal"}, {"a": 48.1, "c": 32.6, "d": "24.10.", "f": -15.4, "p": 0, "x": 95.79, "z": "Optimal"}, {"a": 46.1, "c": 32.7, "d": "25.10.", "f": -13.4, "p": 1, "x": 96.32, "z": "Optimal"}, {"a": 44.9, "c": 32.8, "d": "26.10.", "f": -12.1, "p": 1, "x": 96.84, "z": "Optimal"}, {"a": 43.5, "c": 32.8, "d": "27.10.", "f": -10.6, "p": 1, "x": 97.37, "z": "Optimal"}, {"a": 37.3, "c": 32.1, "d": "28.10.", "f": -5.2, "p": 1, "x": 97.89, "z": "Grauzone"}, {"a": 37.0, "c": 32.1, "d": "29.10.", "f": -4.8, "p": 1, "x": 98.42, "z": "Grauzone"}, {"a": 31.7, "c": 31.4, "d": "30.10.", "f": -0.3, "p": 1, "x": 98.95, "z": "Grauzone"}, {"a": 34.7, "c": 31.9, "d": "31.10.", "f": -2.8, "p": 1, "x": 99.47, "z": "Grauzone"}, {"a": 34.5, "c": 31.9, "d": "01.11.", "f": -2.6, "p": 1, "x": 100.0, "z": "Grauzone"}];
+  var fcPts = [{"a": 22.5, "c": 34.3, "d": "26.04.", "f": 11.8, "p": 0, "x": 0.0, "z": "Frisch"}, {"a": 19.5, "c": 33.5, "d": "27.04.", "f": 13.9, "p": 0, "x": 0.53, "z": "Frisch"}, {"a": 32.1, "c": 35.4, "d": "28.04.", "f": 3.3, "p": 0, "x": 1.06, "z": "Grauzone"}, {"a": 32.9, "c": 35.4, "d": "29.04.", "f": 2.5, "p": 0, "x": 1.59, "z": "Grauzone"}, {"a": 28.5, "c": 34.6, "d": "30.04.", "f": 6.1, "p": 0, "x": 2.12, "z": "Frisch"}, {"a": 46.0, "c": 37.5, "d": "01.05.", "f": -8.5, "p": 0, "x": 2.65, "z": "Grauzone"}, {"a": 70.6, "c": 42.1, "d": "02.05.", "f": -28.5, "p": 0, "x": 3.17, "z": "Optimal"}, {"a": 61.2, "c": 41.1, "d": "03.05.", "f": -20.1, "p": 0, "x": 3.7, "z": "Optimal"}, {"a": 53.1, "c": 40.1, "d": "04.05.", "f": -13.0, "p": 0, "x": 4.23, "z": "Optimal"}, {"a": 50.8, "c": 40.0, "d": "05.05.", "f": -10.8, "p": 0, "x": 4.76, "z": "Optimal"}, {"a": 50.2, "c": 40.2, "d": "06.05.", "f": -10.0, "p": 0, "x": 5.29, "z": "Grauzone"}, {"a": 43.5, "c": 39.2, "d": "07.05.", "f": -4.3, "p": 0, "x": 5.82, "z": "Grauzone"}, {"a": 44.2, "c": 39.5, "d": "08.05.", "f": -4.8, "p": 0, "x": 6.35, "z": "Grauzone"}, {"a": 46.2, "c": 39.9, "d": "09.05.", "f": -6.3, "p": 0, "x": 6.88, "z": "Grauzone"}, {"a": 47.1, "c": 40.2, "d": "10.05.", "f": -6.9, "p": 0, "x": 7.41, "z": "Grauzone"}, {"a": 45.0, "c": 40.0, "d": "11.05.", "f": -4.9, "p": 0, "x": 7.94, "z": "Grauzone"}, {"a": 50.8, "c": 41.2, "d": "12.05.", "f": -9.7, "p": 0, "x": 8.47, "z": "Grauzone"}, {"a": 51.9, "c": 41.6, "d": "13.05.", "f": -10.3, "p": 0, "x": 8.99, "z": "Optimal"}, {"a": 63.0, "c": 43.8, "d": "14.05.", "f": -19.2, "p": 0, "x": 9.52, "z": "Optimal"}, {"a": 54.6, "c": 42.7, "d": "15.05.", "f": -11.8, "p": 0, "x": 10.05, "z": "Optimal"}, {"a": 47.3, "c": 41.7, "d": "16.05.", "f": -5.6, "p": 0, "x": 10.58, "z": "Grauzone"}, {"a": 41.0, "c": 40.8, "d": "17.05.", "f": -0.3, "p": 0, "x": 11.11, "z": "Grauzone"}, {"a": 39.6, "c": 40.5, "d": "18.05.", "f": 1.0, "p": 0, "x": 11.64, "z": "Grauzone"}, {"a": 45.6, "c": 41.6, "d": "19.05.", "f": -4.0, "p": 0, "x": 12.17, "z": "Grauzone"}, {"a": 46.1, "c": 41.7, "d": "20.05.", "f": -4.3, "p": 0, "x": 12.7, "z": "Grauzone"}, {"a": 51.8, "c": 42.8, "d": "21.05.", "f": -8.9, "p": 0, "x": 13.23, "z": "Grauzone"}, {"a": 44.9, "c": 41.8, "d": "22.05.", "f": -3.0, "p": 0, "x": 13.76, "z": "Grauzone"}, {"a": 53.3, "c": 43.4, "d": "23.05.", "f": -9.9, "p": 0, "x": 14.29, "z": "Grauzone"}, {"a": 46.2, "c": 42.4, "d": "24.05.", "f": -3.8, "p": 0, "x": 14.81, "z": "Grauzone"}, {"a": 56.7, "c": 44.3, "d": "25.05.", "f": -12.4, "p": 0, "x": 15.34, "z": "Optimal"}, {"a": 65.6, "c": 46.2, "d": "26.05.", "f": -19.5, "p": 0, "x": 15.87, "z": "Optimal"}, {"a": 56.9, "c": 45.1, "d": "27.05.", "f": -11.8, "p": 0, "x": 16.4, "z": "Optimal"}, {"a": 71.7, "c": 48.0, "d": "28.05.", "f": -23.7, "p": 0, "x": 16.93, "z": "Optimal"}, {"a": 77.2, "c": 49.5, "d": "29.05.", "f": -27.7, "p": 0, "x": 17.46, "z": "Optimal"}, {"a": 66.9, "c": 48.4, "d": "30.05.", "f": -18.6, "p": 0, "x": 17.99, "z": "Optimal"}, {"a": 67.6, "c": 48.9, "d": "31.05.", "f": -18.7, "p": 0, "x": 18.52, "z": "Optimal"}, {"a": 62.1, "c": 48.4, "d": "01.06.", "f": -13.7, "p": 0, "x": 19.05, "z": "Optimal"}, {"a": 57.8, "c": 47.9, "d": "02.06.", "f": -9.8, "p": 0, "x": 19.58, "z": "Grauzone"}, {"a": 50.1, "c": 46.8, "d": "03.06.", "f": -3.3, "p": 0, "x": 20.11, "z": "Grauzone"}, {"a": 52.5, "c": 47.3, "d": "04.06.", "f": -5.2, "p": 0, "x": 20.63, "z": "Grauzone"}, {"a": 49.5, "c": 46.9, "d": "05.06.", "f": -2.6, "p": 0, "x": 21.16, "z": "Grauzone"}, {"a": 46.9, "c": 46.5, "d": "06.06.", "f": -0.4, "p": 0, "x": 21.69, "z": "Grauzone"}, {"a": 44.6, "c": 46.1, "d": "07.06.", "f": 1.5, "p": 0, "x": 22.22, "z": "Grauzone"}, {"a": 43.1, "c": 45.8, "d": "08.06.", "f": 2.7, "p": 0, "x": 22.75, "z": "Grauzone"}, {"a": 37.4, "c": 44.7, "d": "09.06.", "f": 7.4, "p": 0, "x": 23.28, "z": "Frisch"}, {"a": 36.4, "c": 44.4, "d": "10.06.", "f": 8.0, "p": 0, "x": 23.81, "z": "Frisch"}, {"a": 31.5, "c": 43.3, "d": "11.06.", "f": 11.8, "p": 0, "x": 24.34, "z": "Frisch"}, {"a": 34.5, "c": 43.6, "d": "12.06.", "f": 9.1, "p": 0, "x": 24.87, "z": "Frisch"}, {"a": 42.7, "c": 44.8, "d": "13.06.", "f": 2.1, "p": 0, "x": 25.4, "z": "Grauzone"}, {"a": 78.0, "c": 51.0, "d": "14.06.", "f": -27.0, "p": 0, "x": 25.93, "z": "Optimal"}, {"a": 67.6, "c": 49.8, "d": "15.06.", "f": -17.8, "p": 0, "x": 26.46, "z": "Optimal"}, {"a": 58.6, "c": 48.6, "d": "16.06.", "f": -10.0, "p": 0, "x": 26.98, "z": "Grauzone"}, {"a": 54.8, "c": 48.2, "d": "17.06.", "f": -6.6, "p": 0, "x": 27.51, "z": "Grauzone"}, {"a": 47.5, "c": 47.1, "d": "18.06.", "f": -0.5, "p": 0, "x": 28.04, "z": "Grauzone"}, {"a": 51.0, "c": 47.7, "d": "19.06.", "f": -3.3, "p": 0, "x": 28.57, "z": "Grauzone"}, {"a": 54.2, "c": 48.3, "d": "20.06.", "f": -5.9, "p": 0, "x": 29.1, "z": "Grauzone"}, {"a": 47.0, "c": 47.2, "d": "21.06.", "f": 0.2, "p": 0, "x": 29.63, "z": "Grauzone"}, {"a": 40.8, "c": 46.1, "d": "22.06.", "f": 5.3, "p": 0, "x": 30.16, "z": "Frisch"}, {"a": 40.0, "c": 45.8, "d": "23.06.", "f": 5.8, "p": 0, "x": 30.69, "z": "Frisch"}, {"a": 34.7, "c": 44.8, "d": "24.06.", "f": 10.1, "p": 0, "x": 31.22, "z": "Frisch"}, {"a": 36.7, "c": 44.9, "d": "25.06.", "f": 8.2, "p": 0, "x": 31.75, "z": "Frisch"}, {"a": 31.8, "c": 43.8, "d": "26.06.", "f": 12.0, "p": 0, "x": 32.28, "z": "Frisch"}, {"a": 37.0, "c": 44.5, "d": "27.06.", "f": 7.4, "p": 0, "x": 32.8, "z": "Frisch"}, {"a": 44.8, "c": 45.7, "d": "28.06.", "f": 0.9, "p": 0, "x": 33.33, "z": "Grauzone"}, {"a": 38.8, "c": 44.6, "d": "29.06.", "f": 5.8, "p": 0, "x": 33.86, "z": "Frisch"}, {"a": 33.6, "c": 43.5, "d": "30.06.", "f": 9.9, "p": 0, "x": 34.39, "z": "Frisch"}, {"a": 29.2, "c": 42.5, "d": "01.07.", "f": 13.4, "p": 0, "x": 34.92, "z": "Frisch"}, {"a": 25.3, "c": 41.5, "d": "02.07.", "f": 16.2, "p": 0, "x": 35.45, "z": "Frisch"}, {"a": 21.9, "c": 40.5, "d": "03.07.", "f": 18.6, "p": 0, "x": 35.98, "z": "Frisch"}, {"a": 19.0, "c": 39.6, "d": "04.07.", "f": 20.6, "p": 0, "x": 36.51, "z": "Frisch"}, {"a": 16.5, "c": 38.6, "d": "05.07.", "f": 22.2, "p": 0, "x": 37.04, "z": "Frisch"}, {"a": 14.3, "c": 37.7, "d": "06.07.", "f": 23.5, "p": 0, "x": 37.57, "z": "Frisch"}, {"a": 12.4, "c": 36.8, "d": "07.07.", "f": 24.5, "p": 0, "x": 38.1, "z": "Frisch"}, {"a": 10.7, "c": 36.0, "d": "08.07.", "f": 25.3, "p": 0, "x": 38.62, "z": "\u00dcbergang"}, {"a": 9.3, "c": 35.1, "d": "09.07.", "f": 25.8, "p": 0, "x": 39.15, "z": "\u00dcbergang"}, {"a": 8.1, "c": 34.3, "d": "10.07.", "f": 26.2, "p": 0, "x": 39.68, "z": "\u00dcbergang"}, {"a": 7.0, "c": 33.5, "d": "11.07.", "f": 26.5, "p": 0, "x": 40.21, "z": "\u00dcbergang"}, {"a": 6.1, "c": 32.7, "d": "12.07.", "f": 26.7, "p": 0, "x": 40.74, "z": "\u00dcbergang"}, {"a": 5.3, "c": 31.9, "d": "13.07.", "f": 26.7, "p": 0, "x": 41.27, "z": "\u00dcbergang"}, {"a": 4.6, "c": 31.2, "d": "14.07.", "f": 26.6, "p": 0, "x": 41.8, "z": "\u00dcbergang"}, {"a": 3.9, "c": 30.5, "d": "15.07.", "f": 26.5, "p": 0, "x": 42.33, "z": "\u00dcbergang"}, {"a": 3.4, "c": 29.7, "d": "16.07.", "f": 26.3, "p": 0, "x": 42.86, "z": "\u00dcbergang"}, {"a": 3.0, "c": 29.0, "d": "17.07.", "f": 26.1, "p": 0, "x": 43.39, "z": "\u00dcbergang"}, {"a": 2.6, "c": 28.4, "d": "18.07.", "f": 25.8, "p": 0, "x": 43.92, "z": "\u00dcbergang"}, {"a": 2.2, "c": 27.7, "d": "19.07.", "f": 25.5, "p": 0, "x": 44.44, "z": "\u00dcbergang"}, {"a": 1.9, "c": 27.0, "d": "20.07.", "f": 25.1, "p": 0, "x": 44.97, "z": "\u00dcbergang"}, {"a": 1.7, "c": 26.4, "d": "21.07.", "f": 24.7, "p": 0, "x": 45.5, "z": "Frisch"}, {"a": 1.5, "c": 25.8, "d": "22.07.", "f": 24.3, "p": 0, "x": 46.03, "z": "Frisch"}, {"a": 1.3, "c": 25.2, "d": "23.07.", "f": 23.9, "p": 0, "x": 46.56, "z": "Frisch"}, {"a": 5.0, "c": 25.3, "d": "24.07.", "f": 20.3, "p": 0, "x": 47.09, "z": "Frisch"}, {"a": 4.3, "c": 24.7, "d": "25.07.", "f": 20.4, "p": 0, "x": 47.62, "z": "Frisch"}, {"a": 8.4, "c": 24.9, "d": "26.07.", "f": 16.5, "p": 0, "x": 48.15, "z": "Frisch"}, {"a": 7.3, "c": 24.3, "d": "27.07.", "f": 17.1, "p": 0, "x": 48.68, "z": "Frisch"}, {"a": 6.3, "c": 23.8, "d": "28.07.", "f": 17.5, "p": 0, "x": 49.21, "z": "Frisch"}, {"a": 10.8, "c": 24.1, "d": "29.07.", "f": 13.4, "p": 0, "x": 49.74, "z": "Frisch"}, {"a": 9.3, "c": 23.6, "d": "30.07.", "f": 14.2, "p": 0, "x": 50.26, "z": "Frisch"}, {"a": 14.6, "c": 24.2, "d": "31.07.", "f": 9.5, "p": 0, "x": 50.79, "z": "Frisch"}, {"a": 23.2, "c": 25.5, "d": "01.08.", "f": 2.3, "p": 0, "x": 51.32, "z": "Grauzone"}, {"a": 20.1, "c": 24.9, "d": "02.08.", "f": 4.8, "p": 0, "x": 51.85, "z": "Grauzone"}, {"a": 17.4, "c": 24.3, "d": "03.08.", "f": 6.8, "p": 0, "x": 52.38, "z": "Frisch"}, {"a": 15.1, "c": 23.7, "d": "04.08.", "f": 8.6, "p": 0, "x": 52.91, "z": "Frisch"}, {"a": 18.6, "c": 24.1, "d": "05.08.", "f": 5.6, "p": 0, "x": 53.44, "z": "Frisch"}, {"a": 23.7, "c": 24.9, "d": "06.08.", "f": 1.2, "p": 0, "x": 53.97, "z": "Grauzone"}, {"a": 20.5, "c": 24.3, "d": "07.08.", "f": 3.8, "p": 0, "x": 54.5, "z": "Grauzone"}, {"a": 17.8, "c": 23.7, "d": "08.08.", "f": 5.9, "p": 0, "x": 55.03, "z": "Frisch"}, {"a": 15.4, "c": 23.2, "d": "09.08.", "f": 7.7, "p": 0, "x": 55.56, "z": "Frisch"}, {"a": 19.2, "c": 23.7, "d": "10.08.", "f": 4.4, "p": 0, "x": 56.08, "z": "Grauzone"}, {"a": 16.7, "c": 23.1, "d": "11.08.", "f": 6.4, "p": 0, "x": 56.61, "z": "Frisch"}, {"a": 14.4, "c": 22.6, "d": "12.08.", "f": 8.1, "p": 0, "x": 57.14, "z": "Frisch"}, {"a": 12.5, "c": 22.0, "d": "13.08.", "f": 9.5, "p": 0, "x": 57.67, "z": "Frisch"}, {"a": 10.9, "c": 21.5, "d": "14.08.", "f": 10.7, "p": 0, "x": 58.2, "z": "Frisch"}, {"a": 9.4, "c": 21.0, "d": "15.08.", "f": 11.6, "p": 0, "x": 58.73, "z": "Frisch"}, {"a": 8.2, "c": 20.5, "d": "16.08.", "f": 12.4, "p": 0, "x": 59.26, "z": "Frisch"}, {"a": 7.1, "c": 20.0, "d": "17.08.", "f": 13.0, "p": 0, "x": 59.79, "z": "Frisch"}, {"a": 6.1, "c": 19.6, "d": "18.08.", "f": 13.4, "p": 0, "x": 60.32, "z": "Frisch"}, {"a": 5.3, "c": 19.1, "d": "19.08.", "f": 13.8, "p": 0, "x": 60.85, "z": "Frisch"}, {"a": 5.0, "c": 18.7, "d": "20.08.", "f": 13.7, "p": 0, "x": 61.38, "z": "Frisch"}, {"a": 4.3, "c": 18.3, "d": "21.08.", "f": 13.9, "p": 0, "x": 61.9, "z": "Frisch"}, {"a": 3.8, "c": 17.8, "d": "22.08.", "f": 14.1, "p": 0, "x": 62.43, "z": "Frisch"}, {"a": 14.7, "c": 19.5, "d": "23.08.", "f": 4.7, "p": 0, "x": 62.96, "z": "Grauzone"}, {"a": 12.8, "c": 19.0, "d": "24.08.", "f": 6.2, "p": 0, "x": 63.49, "z": "Frisch"}, {"a": 11.1, "c": 18.5, "d": "25.08.", "f": 7.5, "p": 0, "x": 64.02, "z": "Frisch"}, {"a": 9.6, "c": 18.1, "d": "26.08.", "f": 8.5, "p": 0, "x": 64.55, "z": "Frisch"}, {"a": 8.3, "c": 17.7, "d": "27.08.", "f": 9.4, "p": 0, "x": 65.08, "z": "Frisch"}, {"a": 14.3, "c": 18.5, "d": "28.08.", "f": 4.3, "p": 0, "x": 65.61, "z": "Grauzone"}, {"a": 15.4, "c": 18.1, "d": "29.08.", "f": 2.7, "p": 0, "x": 66.14, "z": "Grauzone"}, {"a": 13.4, "c": 17.7, "d": "30.08.", "f": 4.3, "p": 0, "x": 66.67, "z": "Grauzone"}, {"a": 11.6, "c": 17.2, "d": "31.08.", "f": 5.6, "p": 0, "x": 67.2, "z": "Frisch"}, {"a": 10.0, "c": 16.8, "d": "01.09.", "f": 6.8, "p": 0, "x": 67.72, "z": "Frisch"}, {"a": 8.7, "c": 16.4, "d": "02.09.", "f": 7.7, "p": 0, "x": 68.25, "z": "Frisch"}, {"a": 11.0, "c": 16.0, "d": "03.09.", "f": 5.0, "p": 0, "x": 68.78, "z": "Frisch"}, {"a": 14.7, "c": 16.6, "d": "04.09.", "f": 1.9, "p": 0, "x": 69.31, "z": "Grauzone"}, {"a": 12.8, "c": 16.2, "d": "05.09.", "f": 3.4, "p": 0, "x": 69.84, "z": "Grauzone"}, {"a": 16.5, "c": 16.8, "d": "06.09.", "f": 0.3, "p": 0, "x": 70.37, "z": "Grauzone"}, {"a": 17.9, "c": 17.0, "d": "07.09.", "f": -0.9, "p": 0, "x": 70.9, "z": "Grauzone"}, {"a": 15.5, "c": 16.6, "d": "08.09.", "f": 1.1, "p": 0, "x": 71.43, "z": "Grauzone"}, {"a": 21.3, "c": 17.6, "d": "09.09.", "f": -3.7, "p": 0, "x": 71.96, "z": "Grauzone"}, {"a": 18.5, "c": 17.2, "d": "10.09.", "f": -1.3, "p": 0, "x": 72.49, "z": "Grauzone"}, {"a": 16.0, "c": 16.8, "d": "11.09.", "f": 0.8, "p": 0, "x": 73.02, "z": "Grauzone"}, {"a": 41.8, "c": 21.3, "d": "12.09.", "f": -20.5, "p": 0, "x": 73.54, "z": "Optimal"}, {"a": 36.3, "c": 20.8, "d": "13.09.", "f": -15.4, "p": 0, "x": 74.07, "z": "Optimal"}, {"a": 36.5, "c": 21.2, "d": "14.09.", "f": -15.3, "p": 0, "x": 74.6, "z": "Optimal"}, {"a": 43.0, "c": 22.7, "d": "15.09.", "f": -20.2, "p": 0, "x": 75.13, "z": "Optimal"}, {"a": 37.2, "c": 22.2, "d": "16.09.", "f": -15.0, "p": 0, "x": 75.66, "z": "Optimal"}, {"a": 32.3, "c": 21.7, "d": "17.09.", "f": -10.6, "p": 0, "x": 76.19, "z": "Optimal"}, {"a": 32.6, "c": 22.0, "d": "18.09.", "f": -10.6, "p": 0, "x": 76.72, "z": "Optimal"}, {"a": 32.3, "c": 22.2, "d": "19.09.", "f": -10.1, "p": 0, "x": 77.25, "z": "Optimal"}, {"a": 40.6, "c": 23.9, "d": "20.09.", "f": -16.7, "p": 0, "x": 77.78, "z": "Optimal"}, {"a": 35.2, "c": 23.3, "d": "21.09.", "f": -11.9, "p": 0, "x": 78.31, "z": "Optimal"}, {"a": 35.6, "c": 23.7, "d": "22.09.", "f": -11.9, "p": 0, "x": 78.84, "z": "Optimal"}, {"a": 39.8, "c": 24.7, "d": "23.09.", "f": -15.1, "p": 0, "x": 79.37, "z": "Optimal"}, {"a": 46.6, "c": 26.3, "d": "24.09.", "f": -20.3, "p": 0, "x": 79.89, "z": "Optimal"}, {"a": 51.2, "c": 27.6, "d": "25.09.", "f": -23.6, "p": 0, "x": 80.42, "z": "Optimal"}, {"a": 44.4, "c": 26.9, "d": "26.09.", "f": -17.5, "p": 0, "x": 80.95, "z": "Optimal"}, {"a": 46.2, "c": 27.1, "d": "27.09.", "f": -19.0, "p": 0, "x": 81.48, "z": "Optimal"}, {"a": 45.1, "c": 27.3, "d": "28.09.", "f": -17.8, "p": 0, "x": 82.01, "z": "Optimal"}, {"a": 43.5, "c": 27.4, "d": "29.09.", "f": -16.0, "p": 0, "x": 82.54, "z": "Optimal"}, {"a": 41.4, "c": 27.5, "d": "30.09.", "f": -14.0, "p": 0, "x": 83.07, "z": "Optimal"}, {"a": 42.6, "c": 28.0, "d": "01.10.", "f": -14.6, "p": 0, "x": 83.6, "z": "Optimal"}, {"a": 36.9, "c": 27.3, "d": "02.10.", "f": -9.6, "p": 0, "x": 84.13, "z": "Grauzone"}, {"a": 36.6, "c": 27.5, "d": "03.10.", "f": -9.1, "p": 0, "x": 84.66, "z": "Grauzone"}, {"a": 37.1, "c": 27.8, "d": "04.10.", "f": -9.3, "p": 0, "x": 85.19, "z": "Grauzone"}, {"a": 32.2, "c": 27.1, "d": "05.10.", "f": -5.0, "p": 0, "x": 85.71, "z": "Grauzone"}, {"a": 33.6, "c": 27.5, "d": "06.10.", "f": -6.1, "p": 0, "x": 86.24, "z": "Grauzone"}, {"a": 29.1, "c": 26.9, "d": "07.10.", "f": -2.3, "p": 0, "x": 86.77, "z": "Grauzone"}, {"a": 32.4, "c": 27.5, "d": "08.10.", "f": -4.9, "p": 0, "x": 87.3, "z": "Grauzone"}, {"a": 28.1, "c": 26.9, "d": "09.10.", "f": -1.3, "p": 0, "x": 87.83, "z": "Grauzone"}, {"a": 30.1, "c": 27.2, "d": "10.10.", "f": -2.9, "p": 0, "x": 88.36, "z": "Grauzone"}, {"a": 35.9, "c": 28.3, "d": "11.10.", "f": -7.6, "p": 0, "x": 88.89, "z": "Grauzone"}, {"a": 38.9, "c": 28.9, "d": "12.10.", "f": -10.0, "p": 0, "x": 89.42, "z": "Optimal"}, {"a": 43.8, "c": 30.0, "d": "13.10.", "f": -13.9, "p": 0, "x": 89.95, "z": "Optimal"}, {"a": 45.3, "c": 30.5, "d": "14.10.", "f": -14.8, "p": 0, "x": 90.48, "z": "Optimal"}, {"a": 39.3, "c": 29.8, "d": "15.10.", "f": -9.4, "p": 0, "x": 91.01, "z": "Grauzone"}, {"a": 34.0, "c": 29.1, "d": "16.10.", "f": -4.9, "p": 0, "x": 91.53, "z": "Grauzone"}, {"a": 40.8, "c": 30.4, "d": "17.10.", "f": -10.4, "p": 0, "x": 92.06, "z": "Optimal"}, {"a": 35.4, "c": 29.7, "d": "18.10.", "f": -5.7, "p": 0, "x": 92.59, "z": "Grauzone"}, {"a": 30.7, "c": 29.0, "d": "19.10.", "f": -1.7, "p": 0, "x": 93.12, "z": "Grauzone"}, {"a": 26.6, "c": 28.3, "d": "20.10.", "f": 1.7, "p": 0, "x": 93.65, "z": "Grauzone"}, {"a": 34.8, "c": 29.7, "d": "21.10.", "f": -5.0, "p": 0, "x": 94.18, "z": "Grauzone"}, {"a": 37.9, "c": 30.4, "d": "22.10.", "f": -7.5, "p": 0, "x": 94.71, "z": "Grauzone"}, {"a": 41.5, "c": 31.2, "d": "23.10.", "f": -10.3, "p": 0, "x": 95.24, "z": "Optimal"}, {"a": 48.1, "c": 32.6, "d": "24.10.", "f": -15.4, "p": 0, "x": 95.77, "z": "Optimal"}, {"a": 46.2, "c": 32.7, "d": "25.10.", "f": -13.5, "p": 0, "x": 96.3, "z": "Optimal"}, {"a": 45.0, "c": 32.8, "d": "26.10.", "f": -12.2, "p": 1, "x": 96.83, "z": "Optimal"}, {"a": 43.6, "c": 32.8, "d": "27.10.", "f": -10.7, "p": 1, "x": 97.35, "z": "Optimal"}, {"a": 37.4, "c": 32.1, "d": "28.10.", "f": -5.3, "p": 1, "x": 97.88, "z": "Grauzone"}, {"a": 37.0, "c": 32.1, "d": "29.10.", "f": -4.9, "p": 1, "x": 98.41, "z": "Grauzone"}, {"a": 31.7, "c": 31.4, "d": "30.10.", "f": -0.4, "p": 1, "x": 98.94, "z": "Grauzone"}, {"a": 34.8, "c": 31.9, "d": "31.10.", "f": -2.9, "p": 1, "x": 99.47, "z": "Grauzone"}, {"a": 34.5, "c": 31.9, "d": "01.11.", "f": -2.6, "p": 1, "x": 100.0, "z": "Grauzone"}];
   bindChartHover('fc-wrap','fc-ch','fc-tt', fcPts, 'var(--text)', function(p){
     return (p.p ? 'Prognose · ' : '') + '<span style="color:var(--ctl)">Fitness ' + p.c + '</span> · <span style="color:var(--atl)">Ermüdung ' + p.a + '</span>'
          + '<br><span style="font-weight:600">Form ' + (p.f > 0 ? '+' : '') + p.f + ' · ' + p.z + '</span>';
@@ -2298,14 +2223,14 @@
   
 
   
-  var stPts = [{"x":1.7,"d":"25.09.26","v":8692},{"x":5.0,"d":"26.09.26","v":6068},{"x":8.3,"d":"27.09.26","v":8110},{"x":11.7,"d":"28.09.26","v":8258},{"x":15.0,"d":"29.09.26","v":2398},{"x":18.3,"d":"30.09.26","v":1833},{"x":21.7,"d":"01.10.26","v":2118},{"x":25.0,"d":"02.10.26","v":2116},{"x":28.3,"d":"03.10.26","v":5635},{"x":31.7,"d":"04.10.26","v":24094},{"x":35.0,"d":"05.10.26","v":19840},{"x":38.3,"d":"06.10.26","v":23505},{"x":41.7,"d":"07.10.26","v":15176},{"x":45.0,"d":"08.10.26","v":19124},{"x":48.3,"d":"09.10.26","v":13502},{"x":51.7,"d":"10.10.26","v":9643},{"x":55.0,"d":"11.10.26","v":1689},{"x":58.3,"d":"12.10.26","v":9832},{"x":61.7,"d":"13.10.26","v":6038},{"x":65.0,"d":"14.10.26","v":10571},{"x":68.3,"d":"15.10.26","v":1878},{"x":71.7,"d":"16.10.26","v":2279},{"x":75.0,"d":"17.10.26","v":2172},{"x":78.3,"d":"18.10.26","v":10893},{"x":81.7,"d":"19.10.26","v":3976},{"x":85.0,"d":"20.10.26","v":6458},{"x":88.3,"d":"21.10.26","v":4552},{"x":91.7,"d":"22.10.26","v":7977},{"x":95.0,"d":"23.10.26","v":9706},{"x":98.3,"d":"24.10.26","v":4157}];
+  var stPts = [{"x":1.7,"d":"26.09.26","v":6068},{"x":5.0,"d":"27.09.26","v":8110},{"x":8.3,"d":"28.09.26","v":8258},{"x":11.7,"d":"29.09.26","v":2398},{"x":15.0,"d":"30.09.26","v":1833},{"x":18.3,"d":"01.10.26","v":2118},{"x":21.7,"d":"02.10.26","v":2116},{"x":25.0,"d":"03.10.26","v":5635},{"x":28.3,"d":"04.10.26","v":24094},{"x":31.7,"d":"05.10.26","v":19840},{"x":35.0,"d":"06.10.26","v":23505},{"x":38.3,"d":"07.10.26","v":15176},{"x":41.7,"d":"08.10.26","v":19124},{"x":45.0,"d":"09.10.26","v":13502},{"x":48.3,"d":"10.10.26","v":9643},{"x":51.7,"d":"11.10.26","v":1689},{"x":55.0,"d":"12.10.26","v":9832},{"x":58.3,"d":"13.10.26","v":6038},{"x":61.7,"d":"14.10.26","v":10571},{"x":65.0,"d":"15.10.26","v":1878},{"x":68.3,"d":"16.10.26","v":2279},{"x":71.7,"d":"17.10.26","v":2172},{"x":75.0,"d":"18.10.26","v":10893},{"x":78.3,"d":"19.10.26","v":3976},{"x":81.7,"d":"20.10.26","v":6458},{"x":85.0,"d":"21.10.26","v":4552},{"x":88.3,"d":"22.10.26","v":7977},{"x":91.7,"d":"23.10.26","v":9706},{"x":95.0,"d":"24.10.26","v":4157}];
   bindChartHover('st-wrap','st-ch','st-tt', stPts, '#d1450f', function(p){
     return p.v.toLocaleString('de-DE') + ' Schritte';
   });
   
 
   
-  var slPts = [{"x":0.0,"d":"24.09.26","v":9.5},{"x":3.3,"d":"25.09.26","v":9.0},{"x":6.7,"d":"26.09.26","v":8.7},{"x":10.0,"d":"27.09.26","v":7.6},{"x":13.3,"d":"28.09.26","v":9.2},{"x":16.7,"d":"29.09.26","v":6.9},{"x":20.0,"d":"30.09.26","v":8.6},{"x":23.3,"d":"01.10.26","v":7.2},{"x":26.7,"d":"02.10.26","v":7.1},{"x":30.0,"d":"03.10.26","v":7.3},{"x":33.3,"d":"04.10.26","v":8.4},{"x":36.7,"d":"05.10.26","v":8.1},{"x":40.0,"d":"06.10.26","v":8.4},{"x":43.3,"d":"07.10.26","v":7.7},{"x":46.7,"d":"08.10.26","v":7.3},{"x":50.0,"d":"09.10.26","v":7.4},{"x":53.3,"d":"10.10.26","v":8.3},{"x":56.7,"d":"11.10.26","v":7.5},{"x":60.0,"d":"12.10.26","v":9.0},{"x":63.3,"d":"13.10.26","v":8.8},{"x":66.7,"d":"14.10.26","v":7.6},{"x":70.0,"d":"15.10.26","v":8.5},{"x":73.3,"d":"16.10.26","v":7.4},{"x":76.7,"d":"17.10.26","v":10.2},{"x":80.0,"d":"18.10.26","v":8.5},{"x":83.3,"d":"19.10.26","v":9.0},{"x":86.7,"d":"20.10.26","v":6.9},{"x":90.0,"d":"21.10.26","v":7.7},{"x":93.3,"d":"22.10.26","v":8.6},{"x":96.7,"d":"23.10.26","v":8.9},{"x":100.0,"d":"24.10.26","v":8.0}];
+  var slPts = [{"x":0.0,"d":"25.09.26","v":9.0},{"x":3.3,"d":"26.09.26","v":8.7},{"x":6.7,"d":"27.09.26","v":7.6},{"x":10.0,"d":"28.09.26","v":9.2},{"x":13.3,"d":"29.09.26","v":6.9},{"x":16.7,"d":"30.09.26","v":8.6},{"x":20.0,"d":"01.10.26","v":7.2},{"x":23.3,"d":"02.10.26","v":7.1},{"x":26.7,"d":"03.10.26","v":7.3},{"x":30.0,"d":"04.10.26","v":8.4},{"x":33.3,"d":"05.10.26","v":8.1},{"x":36.7,"d":"06.10.26","v":8.4},{"x":40.0,"d":"07.10.26","v":7.7},{"x":43.3,"d":"08.10.26","v":7.3},{"x":46.7,"d":"09.10.26","v":7.4},{"x":50.0,"d":"10.10.26","v":8.3},{"x":53.3,"d":"11.10.26","v":7.5},{"x":56.7,"d":"12.10.26","v":9.0},{"x":60.0,"d":"13.10.26","v":8.8},{"x":63.3,"d":"14.10.26","v":7.6},{"x":66.7,"d":"15.10.26","v":8.5},{"x":70.0,"d":"16.10.26","v":7.4},{"x":73.3,"d":"17.10.26","v":10.2},{"x":76.7,"d":"18.10.26","v":8.5},{"x":80.0,"d":"19.10.26","v":9.0},{"x":83.3,"d":"20.10.26","v":6.9},{"x":86.7,"d":"21.10.26","v":7.7},{"x":90.0,"d":"22.10.26","v":8.6},{"x":93.3,"d":"23.10.26","v":8.9},{"x":96.7,"d":"24.10.26","v":8.0}];
   bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
