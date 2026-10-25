@@ -1,6 +1,17 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 23. Oktober 2026*
+*Letzte Aktualisierung: 25. Oktober 2026*
+
+---
+
+## 25. Oktober 2026 – KW43 Retro + KW44 geplant
+
+🟡 Kern 3/3 · Lauf 12,3 km (+16%, Grenze 13,6) · längster 6,7 km (+20%, geplant 6,2) · Kadenz Easy 165 · Kraft 0/2 · SwSp 3×12 @ 267W mit RPE 5, Sa LIT 2h30 IF 0,60 – Kern und Kadenz sitzen, Kraft fiel komplett aus (Fr nach dem Lauf, So „kein Training mehr“).
+
+**Stefan:** So nur Spaziergang · KW44 keine zeitliche Einschränkung · am WE Umzugshilfe, Tag noch offen.
+**Daten:** Readiness 88 🟢 (HRV 60, 7d-Ø 51,0, Normal 46–55 · RP 55 · Schlaf 10,1h) · CTL 32,7 · ATL 46,2 · TSB −13,5 · ACWR 1,41 (CTL < 35, Readiness grün → kein Deload-Signal, Entlastung ist ohnehin geplant) · Gewicht 30d 93,8 (kein Update).
+**KW44 (Entlastung, ~165 TSS = −45% ggü. 302):** Mo Easy 30 + 4 Steigerungen + Kraft A (2 Sätze) · Di LIT 1h · Mi Ruhetag · **Do HF-160-Check** (🎯, aus dem So-Stub vorgezogen – nach einem Umzugstag wäre er nicht vergleichbar) + Kraft B (2 Sätze) · Fr Ruhetag · **Sa LIT 1h30** (🎯, rutscht auf den umzugsfreien Tag, bei zwei Umzugstagen ersatzlos) · So Umzug/frei. Lauf ~9,5 km. Kraft bewusst an Laufeinheiten unter der Woche gehängt.
+intervals.icu: 147957027 (Mo Lauf) · 147957030 (Kraft A) · 147957032 (Di LIT 1h) · 147957036 (Do HF-160-Check, 30min @ 86–87% LTHR) · 147957037 (Kraft B) · 147957039 (Sa LIT 1h30) + Fueling-Note. Alle Description-Route → einmal öffnen. Stubs KW46/47 angelegt (Standardwoche als Rahmen – reine `–`-Tage bricht der Parser).
 
 ---
 

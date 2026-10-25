@@ -250,7 +250,7 @@ Nächste Woche in 1–2 Sätzen konkret, danach je KW eine Zeile Blockstruktur (
 | **Total** | | **~[TSS]** | | | |
 ```
    Tag-Spalte exakt `Mo`…`So`, **kein Datum**. Emojis im Workout-Text sind hier erwünscht (Dashboard).
-3. **Stubs** `planung/kw[N+1..N+3].md`, falls nicht vorhanden: gleiches Format, Tage mit `–`, Titel = Phase,
+3. **Stubs** `planung/kw[N+1..N+3].md`, falls nicht vorhanden: gleiches Format, Tage mit der Standardwoche als Rahmen (reine `–`-Tage bricht der Parser, `validate_plans.py` meldet „KEIN Tag geparst“), Titel = Phase,
    Total = Ziel-TSS aus `periodisierung.md`. Bestehende Dateien nicht überschreiben.
 4. **`COACHING_AKTE.md`** – neuer Eintrag **oben** (neueste zuerst): Datum, was geplant/geändert wurde, warum.
 5. `athlete/profil.md` / `fortschritt.md` / `generate.py` (`get_zone_data()`) nur bei FTP-, Schwellen- oder
