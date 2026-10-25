@@ -505,15 +505,18 @@
         </defs>
         <circle cx="65" cy="65" r="55" fill="none" stroke="#ecebe7" stroke-width="9"/>
         <circle cx="65" cy="65" r="55" fill="none" stroke="url(#g-gr)" stroke-width="9"
-                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="345.6"
+                stroke-linecap="round" stroke-dasharray="345.4" stroke-dashoffset="41.5"
                 transform="rotate(-90 65 65)"/>
       </svg>
       <div class="ring-center">
-        <span class="ring-num" style="color:var(--muted)">–</span>
+        <span class="ring-num" style="color:#46702c">88</span>
         <span class="ring-sub">/ 100</span>
       </div>
     </div>
     <div class="ring-status">
+      
+      <div class="ring-status-tag">🟢 Voll trainieren</div>
+      <div class="ring-status-sub">HRV über Schnitt · Trend: ↑</div>
       
     </div>
   </div>
@@ -597,7 +600,7 @@
     <!-- Datenquellen heute: grün = für heute geliefert, rot = fehlt noch -->
     <div style="position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;align-items:stretch">
       
-      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--red-mark)">COROS</span>
+      <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">COROS</span>
       
       <span style="font-size:0.55rem;font-weight:800;letter-spacing:.04em;text-align:center;padding:2px 7px;border-radius:6px;color:#fff;background:var(--green-mark)">intervals</span>
       
@@ -606,21 +609,18 @@
 
     <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px">
       
-      <div class="readiness-score" style="color:var(--muted)">–</div>
+      <div class="readiness-score" style="color:#46702c">88</div>
+      <div class="readiness-tag" style="color:#46702c">🟢 Voll trainieren</div>
       
     </div>
 
-    
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:0.65rem;color:var(--muted);text-align:center;margin-bottom:10px">
-      ⏳ Uhr noch nicht synchronisiert – Werte folgen
-    </div>
     
 
     
     <div style="display:flex;gap:8px;margin-bottom:12px">
       <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
         <div style="font-size:0.58rem;color:var(--muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em">Körper</div>
-        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">79</div>
+        <div style="font-size:1.2rem;font-weight:900;color:var(--text)">89</div>
         <div style="font-size:0.55rem;color:var(--muted)">HRV · Puls · Schlaf</div>
       </div>
       <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">
@@ -631,21 +631,21 @@
     </div>
     
 
-    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--red);border-color:var(--red);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--red) 35%,transparent);opacity:0.15">
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--surface);border:1px solid var(--yellow);border-color:var(--yellow);opacity-border:0.3;border-radius:10px;margin-bottom:10px;border-color:color-mix(in srgb,var(--yellow) 35%,transparent)">
       <div>
         <div class="rbar-lbl" style="margin-bottom:3px">Nächtliche HRV (RMSSD)</div>
-        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">0 ms</div>
+        <div style="font-size:1.4rem;font-weight:900;color:var(--text);line-height:1">60 ms</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div style="font-size:0.6rem;font-weight:700;color:var(--red);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Niedrig</div>
+        <div style="font-size:0.6rem;font-weight:700;color:var(--yellow);background:var(--track);padding:3px 8px;border-radius:12px;margin-bottom:4px">● Erhöht</div>
         <div class="rbar-lbl">Normalber. 46–55 ms</div>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Schlaf</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--red-mark)">0.0h</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--green-mark)">11.0h</div>
         <div class="rbar-lbl">/ 8h</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
@@ -658,9 +658,9 @@
         </div>
         
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center;opacity:0.15">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px;text-align:center">
         <div class="rbar-lbl" style="margin-bottom:3px">Ruhepuls</div>
-        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">0 bpm</div>
+        <div style="font-size:0.85rem;font-weight:800;color:var(--text)">55 bpm</div>
         <div class="rbar-lbl">bpm</div>
       </div>
     </div>
@@ -739,7 +739,7 @@
         
         <div class="spark-bar " style="height:72%;background:#fab219"></div>
         
-        <div class="spark-bar spark-today" style="height:81%;background:#5b8f3a"></div>
+        <div class="spark-bar spark-today" style="height:88%;background:#5b8f3a"></div>
         
       </div>
     </div>
@@ -1592,10 +1592,10 @@
         </defs>
         <!-- 8h Ziel-Linie: fixed axis 0–10h → y = 80-(8/10)*80 = 16 -->
         <line x1="0" y1="16" x2="300" y2="16" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
-        <path d="M0.0,7.9 L10.0,10.5 L20.0,18.9 L30.0,6.1 L40.0,24.5 L50.0,11.2 L60.0,22.7 L70.0,23.2 L80.0,21.7 L90.0,12.7 L100.0,14.9 L110.0,12.8 L120.0,18.8 L130.0,21.7 L140.0,20.5 L150.0,13.3 L160.0,20.0 L170.0,8.0 L180.0,9.3 L190.0,19.2 L200.0,12.3 L210.0,20.7 L220.0,0.0 L230.0,11.9 L240.0,8.3 L250.0,25.1 L260.0,18.4 L270.0,11.6 L280.0,8.7 L290.0,15.7 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
-        <path d="M0.0,7.9 L10.0,10.5 L20.0,18.9 L30.0,6.1 L40.0,24.5 L50.0,11.2 L60.0,22.7 L70.0,23.2 L80.0,21.7 L90.0,12.7 L100.0,14.9 L110.0,12.8 L120.0,18.8 L130.0,21.7 L140.0,20.5 L150.0,13.3 L160.0,20.0 L170.0,8.0 L180.0,9.3 L190.0,19.2 L200.0,12.3 L210.0,20.7 L220.0,0.0 L230.0,11.9 L240.0,8.3 L250.0,25.1 L260.0,18.4 L270.0,11.6 L280.0,8.7 L290.0,15.7" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-        <circle cx="300" cy="15.7" r="3" fill="#57504c"/>
-        <circle cx="300" cy="15.7" r="5" fill="#57504c" opacity="0.2"/>
+        <path d="M0.0,7.9 L10.0,10.5 L20.0,18.9 L30.0,6.1 L40.0,24.5 L50.0,11.2 L60.0,22.7 L70.0,23.2 L80.0,21.7 L90.0,12.7 L100.0,14.9 L110.0,12.8 L120.0,18.8 L130.0,21.7 L140.0,20.5 L150.0,13.3 L160.0,20.0 L170.0,8.0 L180.0,9.3 L190.0,19.2 L200.0,12.3 L210.0,20.7 L220.0,0.0 L230.0,11.9 L240.0,8.3 L250.0,25.1 L260.0,18.4 L270.0,11.6 L280.0,8.7 L290.0,15.7 L300.0,0.0 L300,80 L0,80 Z" fill="url(#sleepGradFill)"/>
+        <path d="M0.0,7.9 L10.0,10.5 L20.0,18.9 L30.0,6.1 L40.0,24.5 L50.0,11.2 L60.0,22.7 L70.0,23.2 L80.0,21.7 L90.0,12.7 L100.0,14.9 L110.0,12.8 L120.0,18.8 L130.0,21.7 L140.0,20.5 L150.0,13.3 L160.0,20.0 L170.0,8.0 L180.0,9.3 L190.0,19.2 L200.0,12.3 L210.0,20.7 L220.0,0.0 L230.0,11.9 L240.0,8.3 L250.0,25.1 L260.0,18.4 L270.0,11.6 L280.0,8.7 L290.0,15.7 L300.0,0.0" fill="none" stroke="#57504c" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="0.0" r="3" fill="#57504c"/>
+        <circle cx="300" cy="0.0" r="5" fill="#57504c" opacity="0.2"/>
         <!-- 8h label nach den Pfaden → immer sichtbar -->
         <text x="296" y="13" font-size="7" fill="#8b837e" opacity="0.8" text-anchor="end">8h</text>
       </svg>
@@ -1605,16 +1605,19 @@
     <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
       <div>
         <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">
-          8.0h
+          11.0h
         </div>
-        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf</div>
+        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schlaf (COROS, 11.5h im Bett)</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.1h</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--green)">Ø 8.2h</div>
         <div style="font-size:0.6rem;color:var(--muted)">30-Tage Schnitt</div>
       </div>
     </div>
+    
+    <div style="font-size:0.65rem;color:var(--muted);margin-top:8px">Score 88 · Tief 23 % · REM 19 % · 30 min wach</div>
+    <div style="font-size:0.65rem;color:var(--orange);margin-top:4px">HRV erste 2h 49 ms, danach 63 ms – Vorabend-Muster (spät, Essen, Alkohol?)</div>
     
     
   </div>
@@ -1839,7 +1842,10 @@
         <rect x="271.5" y="48.9" width="7.0" height="31.1" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
-        <rect x="281.5" y="66.7" width="7.0" height="13.3" rx="1"
+        <rect x="281.5" y="66.0" width="7.0" height="14.0" rx="1"
+              fill="#8b837e" opacity="0.45"/>
+        
+        <rect x="291.5" y="79.8" width="7.0" height="0.2" rx="1"
               fill="#8b837e" opacity="0.45"/>
         
         <line x1="0" y1="48.0" x2="300" y2="48.0" stroke="#8b837e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
@@ -1861,16 +1867,16 @@
     </div>
     <div style="display:flex;align-items:center;gap:8px">
       <div>
-        <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">4.157</div>
-        <div style="font-size:0.6rem;color:var(--muted)">Gestern · Schritte</div>
+        <div style="font-size:1.1rem;font-weight:900;color:var(--text);line-height:1">53</div>
+        <div style="font-size:0.6rem;color:var(--muted)">Heute · Schritte</div>
       </div>
       <div style="flex:1;height:1px;background:var(--border)"></div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--text)">Ø 6.138</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--text)">Ø 5.301</div>
         <div style="font-size:0.6rem;color:var(--muted)">7 Tage</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--muted)">Ø 8.400</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--muted)">Ø 8.129</div>
         <div style="font-size:0.6rem;color:var(--muted)">30 Tage</div>
       </div>
     </div>
@@ -2292,14 +2298,14 @@
   
 
   
-  var stPts = [{"x":1.7,"d":"26.09.26","v":6068},{"x":5.0,"d":"27.09.26","v":8110},{"x":8.3,"d":"28.09.26","v":8258},{"x":11.7,"d":"29.09.26","v":2398},{"x":15.0,"d":"30.09.26","v":1833},{"x":18.3,"d":"01.10.26","v":2118},{"x":21.7,"d":"02.10.26","v":2116},{"x":25.0,"d":"03.10.26","v":5635},{"x":28.3,"d":"04.10.26","v":24094},{"x":31.7,"d":"05.10.26","v":19840},{"x":35.0,"d":"06.10.26","v":23505},{"x":38.3,"d":"07.10.26","v":15176},{"x":41.7,"d":"08.10.26","v":19124},{"x":45.0,"d":"09.10.26","v":13502},{"x":48.3,"d":"10.10.26","v":9643},{"x":51.7,"d":"11.10.26","v":1689},{"x":55.0,"d":"12.10.26","v":9832},{"x":58.3,"d":"13.10.26","v":6038},{"x":61.7,"d":"14.10.26","v":10571},{"x":65.0,"d":"15.10.26","v":1878},{"x":68.3,"d":"16.10.26","v":2279},{"x":71.7,"d":"17.10.26","v":2172},{"x":75.0,"d":"18.10.26","v":10893},{"x":78.3,"d":"19.10.26","v":3976},{"x":81.7,"d":"20.10.26","v":6458},{"x":85.0,"d":"21.10.26","v":4552},{"x":88.3,"d":"22.10.26","v":7977},{"x":91.7,"d":"23.10.26","v":9706},{"x":95.0,"d":"24.10.26","v":4157}];
+  var stPts = [{"x":1.7,"d":"26.09.26","v":6068},{"x":5.0,"d":"27.09.26","v":8110},{"x":8.3,"d":"28.09.26","v":8258},{"x":11.7,"d":"29.09.26","v":2398},{"x":15.0,"d":"30.09.26","v":1833},{"x":18.3,"d":"01.10.26","v":2118},{"x":21.7,"d":"02.10.26","v":2116},{"x":25.0,"d":"03.10.26","v":5635},{"x":28.3,"d":"04.10.26","v":24094},{"x":31.7,"d":"05.10.26","v":19840},{"x":35.0,"d":"06.10.26","v":23505},{"x":38.3,"d":"07.10.26","v":15176},{"x":41.7,"d":"08.10.26","v":19124},{"x":45.0,"d":"09.10.26","v":13502},{"x":48.3,"d":"10.10.26","v":9643},{"x":51.7,"d":"11.10.26","v":1689},{"x":55.0,"d":"12.10.26","v":9832},{"x":58.3,"d":"13.10.26","v":6038},{"x":61.7,"d":"14.10.26","v":10571},{"x":65.0,"d":"15.10.26","v":1878},{"x":68.3,"d":"16.10.26","v":2279},{"x":71.7,"d":"17.10.26","v":2172},{"x":75.0,"d":"18.10.26","v":10893},{"x":78.3,"d":"19.10.26","v":3976},{"x":81.7,"d":"20.10.26","v":6458},{"x":85.0,"d":"21.10.26","v":4552},{"x":88.3,"d":"22.10.26","v":7977},{"x":91.7,"d":"23.10.26","v":9706},{"x":95.0,"d":"24.10.26","v":4384},{"x":98.3,"d":"25.10.26","v":53}];
   bindChartHover('st-wrap','st-ch','st-tt', stPts, '#d1450f', function(p){
     return p.v.toLocaleString('de-DE') + ' Schritte';
   });
   
 
   
-  var slPts = [{"x":0.0,"d":"25.09.26","v":9.0},{"x":3.3,"d":"26.09.26","v":8.7},{"x":6.7,"d":"27.09.26","v":7.6},{"x":10.0,"d":"28.09.26","v":9.2},{"x":13.3,"d":"29.09.26","v":6.9},{"x":16.7,"d":"30.09.26","v":8.6},{"x":20.0,"d":"01.10.26","v":7.2},{"x":23.3,"d":"02.10.26","v":7.1},{"x":26.7,"d":"03.10.26","v":7.3},{"x":30.0,"d":"04.10.26","v":8.4},{"x":33.3,"d":"05.10.26","v":8.1},{"x":36.7,"d":"06.10.26","v":8.4},{"x":40.0,"d":"07.10.26","v":7.7},{"x":43.3,"d":"08.10.26","v":7.3},{"x":46.7,"d":"09.10.26","v":7.4},{"x":50.0,"d":"10.10.26","v":8.3},{"x":53.3,"d":"11.10.26","v":7.5},{"x":56.7,"d":"12.10.26","v":9.0},{"x":60.0,"d":"13.10.26","v":8.8},{"x":63.3,"d":"14.10.26","v":7.6},{"x":66.7,"d":"15.10.26","v":8.5},{"x":70.0,"d":"16.10.26","v":7.4},{"x":73.3,"d":"17.10.26","v":10.2},{"x":76.7,"d":"18.10.26","v":8.5},{"x":80.0,"d":"19.10.26","v":9.0},{"x":83.3,"d":"20.10.26","v":6.9},{"x":86.7,"d":"21.10.26","v":7.7},{"x":90.0,"d":"22.10.26","v":8.6},{"x":93.3,"d":"23.10.26","v":8.9},{"x":96.7,"d":"24.10.26","v":8.0}];
+  var slPts = [{"x":0.0,"d":"25.09.26","v":9.0},{"x":3.3,"d":"26.09.26","v":8.7},{"x":6.7,"d":"27.09.26","v":7.6},{"x":10.0,"d":"28.09.26","v":9.2},{"x":13.3,"d":"29.09.26","v":6.9},{"x":16.7,"d":"30.09.26","v":8.6},{"x":20.0,"d":"01.10.26","v":7.2},{"x":23.3,"d":"02.10.26","v":7.1},{"x":26.7,"d":"03.10.26","v":7.3},{"x":30.0,"d":"04.10.26","v":8.4},{"x":33.3,"d":"05.10.26","v":8.1},{"x":36.7,"d":"06.10.26","v":8.4},{"x":40.0,"d":"07.10.26","v":7.7},{"x":43.3,"d":"08.10.26","v":7.3},{"x":46.7,"d":"09.10.26","v":7.4},{"x":50.0,"d":"10.10.26","v":8.3},{"x":53.3,"d":"11.10.26","v":7.5},{"x":56.7,"d":"12.10.26","v":9.0},{"x":60.0,"d":"13.10.26","v":8.8},{"x":63.3,"d":"14.10.26","v":7.6},{"x":66.7,"d":"15.10.26","v":8.5},{"x":70.0,"d":"16.10.26","v":7.4},{"x":73.3,"d":"17.10.26","v":10.2},{"x":76.7,"d":"18.10.26","v":8.5},{"x":80.0,"d":"19.10.26","v":9.0},{"x":83.3,"d":"20.10.26","v":6.9},{"x":86.7,"d":"21.10.26","v":7.7},{"x":90.0,"d":"22.10.26","v":8.6},{"x":93.3,"d":"23.10.26","v":8.9},{"x":96.7,"d":"24.10.26","v":8.0},{"x":100.0,"d":"25.10.26","v":11.0}];
   bindChartHover('sl-wrap','sl-ch','sl-tt', slPts, '#57504c', function(p){
     return p.v + 'h ' + (p.v < 7 ? '\u{1F62C}' : p.v >= 8 ? '\u{1F634}' : '');
   });
