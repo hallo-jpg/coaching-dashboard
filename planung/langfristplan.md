@@ -13,7 +13,7 @@ Bis September 2026 war Laufen die zweite Sportart, die nebenher lief. Ab Winter 
 
 **Messgrößen:**
 - **Rad:** FTP nach formalem Test (3+10min, Tarmac mit XCadey auf der Rolle, kein ERG). Keine spekulativen Anpassungen.
-- **Lauf:** 10km-Wettkampfzeit + monatlicher HF-160-Standardcheck (Pace bei HF 160).
+- **Lauf:** 5km-/10km-Zeitläufe all-out + Trend „Pace bei HF 160“ aus allen Easy-Läufen (Dashboard-Chart).
 
 ---
 
@@ -271,7 +271,7 @@ Radvolumen auf Erhalt (1–2×/Woche, weniger Sätze) herunterfahren.
 
 | Test | Rhythmus | Protokoll |
 |---|---|---|
-| **HF-160-Standardcheck** | monatlich | gleiche Strecke, morgens, gefrühstückt, ≥48h nach harter Einheit, 30min @ HF 160 → Pace |
+| **Pace bei HF 160** | laufend | kein eigener Test (seit 26.10.2026) – Dashboard-Chart aus allen Easy-Läufen |
 | **5km-Zeitfahren** | alle ~8 Wochen | flach, gleiche Strecke |
 | **10km-Benchmark** | 2×/Jahr | eigener Zeitlauf auf Standardstrecke (solange keine Events geplant sind) |
 

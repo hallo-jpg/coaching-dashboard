@@ -186,7 +186,7 @@ Nach ernüchternden Einheiten (Auslöser meist hohe absolute HF bei moderater Le
 **Realitätscheck, keinen Zuspruch**.
 **Anwenden:** Mit Langzeitzahlen aus `athlete/fortschritt.md` antworten (FTP 271W 11/2023 → 305–317W 2026,
 VO2max 59, Ötztaler). HF als **HFmax-Frage** reframen. Confounder benennen (nüchtern, nach Pause, nach langer
-Radtour) statt Fitness zu diagnostizieren. Lauf-Fortschritt nur über den standardisierten HF-160-Check.
+Radtour) statt Fitness zu diagnostizieren. Lauf-Fortschritt über den Trend im Dashboard-Chart „Pace bei HF 160“ (viele Easy-Läufe) und die 5km-/10km-Zeitläufe – nie über einen Einzellauf.
 
 ### Gewicht
 - **Quelle:** intervals.icu-Wellness, nie nachfragen. `get_current_fitness` liefert `Gewicht_schnitt_30d_kg`.
@@ -323,6 +323,7 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 | **Infekt-Muster** | keins erkennbar → nur strukturelle Prävention (Entlastungswochen, HRV-Gate, Reise-/Schlafregel, Fueling, Alkohol), Protokoll in `planung/langfristplan.md` |
 | **Wade/Nacken** | beschwerdefrei ist der Standard (28.9.2026, s. Abschnitt 2) · kein Wellness-Feld · Stefan meldet sich selbst · keine Abbruchregeln in Plänen |
 | **Rad:Lauf-Split** | dynamisch: Okt 70:30 → Nov 65:35 → ab Dez 60:40. Argument, das gezogen hat: die 7. Radstunde bringt fast nichts, die 3,5. Laufstunde entscheidet über sub-60 · **2027 (Stefan, 23.10.2026):** Laufen bleibt trotz Étape ein eigenes Entwicklungsziel („Spaß am Laufen“) – KW10–17 ~65:35 mit 3 Läufen, erst ab der Spezifik KW18 auf ~75:25 mit 2–3 Läufen und 1 Qualität. Nicht ab März auf „Erhalt“ zurückfahren |
+| **HF-160-Check** | gestrichen (Stefan, 26.10.2026) – das Dashboard-Chart „Pace bei HF 160“ wertet jeden Easy-Lauf aus, viele Punkte schlagen einen Einzeltest. Echte Lauf-Tests = 5km (KW01) und 10km (KW09) all-out am Wochenende. Nicht wieder als eigene Einheit einplanen |
 | **Rampe** | Ausgangslage ~3,2h/Woche → 9–10h. Die Rampe (+10–15%/Woche, jede 4. Woche −45%) ist wichtiger als der Zielwert |
 
 ---

@@ -152,7 +152,7 @@ Antwort in der Akte dokumentieren (`→ periodisierung.md angepasst: …` bzw. `
 |---|---|---|---|
 | Laufvolumen 28–32 km/Woche | 6,5 | [Ø letzte 4 Wochen] | ↗/→/↘ |
 | Kadenz 165–170 | 154 (Rennen) | [Ø Easy] | |
-| Pace @ HF 160 | 7:30 | [aus HF-160-Check] | |
+| Pace @ HF 160 | 7:30 | [Dashboard-Chart, Trend letzte 4 Wochen] | |
 | FTP +8–12% | [Baseline KW40] | [letzter Test/Indikator] | |
 | CTL 60–68 | 23 | [aktuell] | |
 

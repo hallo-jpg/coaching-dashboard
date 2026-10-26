@@ -8,7 +8,7 @@ in dieser Reihenfolge: D (Deload) → A (Test-Ankündigung) → B (Power-PR) →
 
 ## Check A: Test-Ankündigung (FTP und Lauf-Benchmarks)
 
-**Quelle:** `planung/periodisierung.md` → Tabelle „Testfenster" (FTP #1–#3, 5km, 10km-Benchmark, HF-160-Check).
+**Quelle:** `planung/periodisierung.md` → Tabelle „Testfenster" (FTP #1–#3, 5km, 10km-Benchmark).
 
 1. Für jedes Testfenster: `tage_bis_test = Testtag − heute` (Testtag = der genannte Tag, sonst Do der KW).
 2. Falls `14 < tage_bis_test ≤ 21` → Ankündigung:
@@ -22,9 +22,8 @@ Soll ich die Testwoche jetzt vorplanen? → [ja] / [verschieben auf KW[N+1]]
 - **verschieben** → Testfenster in `periodisierung.md` um 7 Tage verschieben (Zustimmung liegt mit der
   Antwort vor), Akte-Eintrag `→ [Test] KW[N] auf KW[N+1] verschoben`.
 
-**HF-160-Check (monatlich):** Einmal pro Monat in eine Woche ohne Qualität am Vortag legen. Protokoll: gleiche
-Strecke, morgens, gefrühstückt, ≥48h nach hart, 10min einlaufen + 30min @ HF 160 → Ø Pace notieren
-(Referenz 7:30/km @ 163 bei CTL 40). Ergebnis in `athlete/fortschritt.md` → Lauf-Entwicklung.
+**Kein HF-160-Check mehr** (Stefan, 26.10.2026): Die Lauf-Aerobie misst das Dashboard-Chart „Pace bei HF 160“
+aus allen Easy-Läufen – nicht als eigene Einheit einplanen. Lauf-Leistung messen die 5km-/10km-Zeitläufe.
 
 ---
 

@@ -4,6 +4,14 @@
 
 ---
 
+## 26. Oktober 2026 – HF-160-Check gestrichen
+
+**Stefan:** Ein Einzellauf an einem Tag zeigt die Entwicklung schlechter als das Dashboard-Chart über viele Läufe; echte Testwerte wären 5/10 km all-out.
+**Coach:** Zugestimmt – das Chart (HF 157–163, ab Min 10, ohne Pendelläufe) macht jeden Easy-Lauf zum Mini-Check, ein Einzeltest streut ±10 s/km mit der Tagesform. HF 160 misst Ökonomie, 5/10 km die Schwellenleistung – beide Zeitläufe stehen schon (KW01, KW09). Kein zusätzlicher All-out in der Entlastungswoche.
+**Mit Zustimmung geändert:** `periodisierung.md` (KW44-Zeile, Testfenster) · `langfristplan.md` (Messgrößen, Lauftests) · `modules/checks.md` · `modules/retro.md` · COACH_MEMORY (Realitätscheck, Abschnitt 7). KW44 Do → Easy 40min Kadenz 165 + Kraft B (icu 147957036 umbenannt/umgebaut).
+
+---
+
 ## 26. Oktober 2026 – KW44 LIT 1h30 auf So
 
 **Stefan:** Umzug ist Sa Nachmittag, schnell erledigt → Einheit auf So.
