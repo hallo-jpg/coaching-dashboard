@@ -1,6 +1,13 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 25. Oktober 2026*
+*Letzte Aktualisierung: 26. Oktober 2026*
+
+---
+
+## 26. Oktober 2026 – KW44 LIT 1h30 auf So
+
+**Stefan:** Umzug ist Sa Nachmittag, schnell erledigt → Einheit auf So.
+**Coach:** LIT 1h30 (147957039) + Fueling-Note (147957045) per API auf 1.11. verschoben, Beschreibung angepasst. Sa kein Training.
 
 ---
 
