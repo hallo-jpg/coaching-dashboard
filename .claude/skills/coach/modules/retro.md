@@ -68,8 +68,10 @@ Nicht nur Ø-Werte bewerten, sondern jedes Intervall gegen den Plan prüfen (Ste
    100000 = 1 km · `avgPace` in s/km). Gruppe `type: 10` = Auto-km bzw. -Splits.
 3. Je Intervall Soll vs. Ist: Watt bzw. Pace, Dauer/Distanz, HF-Verlauf (Drift über die Wiederholungen),
    Kadenz, Anzahl Wiederholungen. Bewertung wie Tabelle oben, Abweichung je Intervall nennen.
-4. Fehlt die Einheit auf COROS (z.B. MyWhoosh-Fahrt ohne Uhr): nur Ø-Werte aus intervals.icu, im Output
-   „ohne Intervall-Daten" vermerken.
+   MyWhoosh-Fahrten landen auch ohne Uhr auf COROS (Ort = MyWhoosh-Welt, z.B. „al-'Ula Indoor Rad"),
+   kommen aber teils verzögert/gesammelt an.
+4. Fehlt die Einheit auf COROS: einmal mit erweitertem Datumsbereich suchen, sonst nur Ø-Werte aus
+   intervals.icu nehmen und im Output „Intervall-Daten fehlen (nicht auf COROS)" vermerken.
 
 Ausgabe in der Retro als kleine Tabelle pro Qualitätseinheit (Intervall · Soll · Ist · HF · ✅/⚠️/❌).
 
