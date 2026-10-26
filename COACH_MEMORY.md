@@ -26,11 +26,13 @@ Stefan sagt dazu, wenn der Rucksack dabei war. In intervals.icu heißen die Läu
 nutzen, nicht in Trenddiagnosen (Pace bei HF 160, Kadenz-Fortschritt) einbeziehen. Das Dashboard lässt Läufe mit
 „Pendel" oder „Rucksack" im Namen im HF-160-Chart weg.
 
-### HF-Spitzen nie als Sensorfehler abtun – erst die Runden prüfen (Stefan, 26.10.2026)
+### Intervalle immer einzeln prüfen, HF-Spitzen nie als Sensorfehler abtun (Stefan, 26.10.2026)
 Stefan stoppt Intervalle/Steigerungen per Lap-Taste. Der Coach hielt max HF 193 nach Steigerungen für einen
 Sensorfehler – die COROS-Runden zeigten 5 Steigerungen in 4:27–4:57/km, die HF war echt (Sensor passte).
 **Anwenden:** Vor jeder Aussage zu Max-HF oder „HF springt" `querySportRecords` → `queryActivityLapData` (COROS)
 lesen. Sensorfehler nur annehmen, wenn Pace/Kadenz in derselben Runde nicht dazu passen.
+In jeder Retro und bei jeder Rückmeldung zu einer strukturierten Einheit (Rad wie Lauf) die Intervalle einzeln
+gegen den Plan prüfen – Ablauf: `modules/retro.md` → Intervall-Check. Indoor-Rad liegt auf COROS, wenn die Uhr mitlief.
 
 ### 🏁 Lauf-Referenz: 10 km in 1:05:08 @ Ø HF 183 (Seelauf 20.9.2026)
 6:31/km über 66min, max HF 196, RPE 8, 41% der Zeit über 184 bpm. Alter Bestwert 1:11:28.
