@@ -63,15 +63,13 @@ Kein IF (Lauf) → Pace/HF/Kadenz. Kein RPE → nur Messwerte.
 
 **Intervall-Check (Pflicht bei jeder strukturierten Einheit – Rad-Qualität, Lauf-Qualität, Steigerungen):**
 Nicht nur Ø-Werte bewerten, sondern jedes Intervall gegen den Plan prüfen (Stefan, 26.10.2026).
-1. `querySportRecords` (COROS, Zeitraum der Woche) → `labelId` + `sportType` (100 Lauf · 201 Indoor-Rad).
-2. `queryActivityLapData` → Gruppe `type: 2` = Workout-Schritte bzw. Stefans Lap-Taste (Distanz in **cm**:
-   100000 = 1 km · `avgPace` in s/km). Gruppe `type: 10` = Auto-km bzw. -Splits.
-3. Je Intervall Soll vs. Ist: Watt bzw. Pace, Dauer/Distanz, HF-Verlauf (Drift über die Wiederholungen),
+1. `get_activity_intervals(datum)` (intervals.icu) → je Intervall Dauer, Distanz, Watt/NP bzw. Pace, HF Ø/max,
+   Kadenz (Lauf spm, Rad rpm). Quelle sind die Workout-Schritte (MyWhoosh/Tacx) bzw. Stefans Lap-Taste (COROS) –
+   gilt auch für MyWhoosh-Fahrten ohne Uhr. Lauf-Laps sind dort alle als `WORK` markiert → über Dauer/Pace zuordnen.
+2. Je Intervall Soll vs. Ist: Watt bzw. Pace, Dauer/Distanz, HF-Verlauf (Drift über die Wiederholungen),
    Kadenz, Anzahl Wiederholungen. Bewertung wie Tabelle oben, Abweichung je Intervall nennen.
-   MyWhoosh-Fahrten landen auch ohne Uhr auf COROS (Ort = MyWhoosh-Welt, z.B. „al-'Ula Indoor Rad"),
-   kommen aber teils verzögert/gesammelt an.
-4. Fehlt die Einheit auf COROS: einmal mit erweitertem Datumsbereich suchen, sonst nur Ø-Werte aus
-   intervals.icu nehmen und im Output „Intervall-Daten fehlen (nicht auf COROS)" vermerken.
+3. Nur als Ersatz, wenn intervals.icu keine Intervalle hat: COROS `querySportRecords` → `queryActivityLapData`
+   (Gruppe `type: 2`, Distanz in cm). Sonst im Output „ohne Intervall-Daten" vermerken.
 
 Ausgabe in der Retro als kleine Tabelle pro Qualitätseinheit (Intervall · Soll · Ist · HF · ✅/⚠️/❌).
 

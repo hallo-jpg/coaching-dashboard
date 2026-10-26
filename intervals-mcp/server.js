@@ -76,6 +76,38 @@ function daysAgo(n) {
   return d.toISOString().split("T")[0];
 }
 
+// Intervalle einer Aktivität (/activity/{id}/intervals) kompakt aufbereiten.
+// Quelle sind die Workout-Schritte (MyWhoosh/Tacx) bzw. Stefans Lap-Taste (COROS).
+function formatIntervals(type, data) {
+  const isRun = type === "Run";
+  const mmss = s => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}`;
+  return (data.icu_intervals ?? []).map((i, idx) => {
+    const t = i.moving_time ?? i.elapsed_time ?? 0;
+    const row = {
+      nr: idx + 1,
+      typ: i.type,
+      label: i.label ?? null,
+      dauer: mmss(t),
+      dauer_s: t,
+      distanz_m: i.distance != null ? Math.round(i.distance) : null,
+      hf: i.average_heartrate != null ? Math.round(i.average_heartrate) : null,
+      hf_max: i.max_heartrate ?? null,
+      // Laufkadenz liefert intervals.icu in Doppelschritten/min -> x2 (wie get_recent_activities)
+      kadenz: i.average_cadence != null
+        ? Math.round(isRun ? i.average_cadence * 2 : i.average_cadence)
+        : null,
+    };
+    if (isRun) {
+      row.pace_min_km = i.distance && t ? mmss(t / (i.distance / 1000)) : null;
+    } else {
+      row.watt = i.average_watts != null ? Math.round(i.average_watts) : null;
+      row.np = i.weighted_average_watts != null ? Math.round(i.weighted_average_watts) : null;
+    }
+    return row;
+  });
+}
+// ── Ende formatIntervals
+
 // ────────────────────────────────────────────────────────────
 // MCP Server setup
 // ────────────────────────────────────────────────────────────
@@ -186,6 +218,36 @@ server.tool(
     return {
       content: [{ type: "text", text: JSON.stringify(activities, null, 2) }],
     };
+  }
+);
+
+// ── Tool 2b: Intervalle abgeschlossener Aktivitäten ─────────
+server.tool(
+  "get_activity_intervals",
+  "Intervalle/Runden abgeschlossener Aktivitäten eines Tages (Rad + Lauf, auch MyWhoosh ohne Uhr): je Intervall Dauer, Distanz, Watt/NP bzw. Pace, HF Ø/max, Kadenz (Lauf spm, Rad rpm). Für den Intervall-Check in Retro und Rückmeldungen.",
+  {
+    datum: z.string().describe("Datum YYYY-MM-DD"),
+    typ: z.string().optional().describe("Nur diesen Aktivitätstyp, z.B. Run, VirtualRide, Ride"),
+  },
+  async ({ datum, typ }) => {
+    const acts = (await apiFetch(`/activities?oldest=${datum}&newest=${datum}`))
+      .filter(a => !typ || a.type === typ);
+    if (!acts.length) return { content: [{ type: "text", text: `Keine Aktivität am ${datum}.` }] };
+
+    const API_ROOT = BASE_URL.replace(/\/athlete\/.*$/, "");
+    const result = [];
+    for (const a of acts) {
+      const res = await fetch(`${API_ROOT}/activity/${a.id}/intervals`, { headers: { Authorization: AUTH } });
+      if (!res.ok) throw new Error(`intervals.icu API error ${res.status}: ${await res.text()}`);
+      result.push({
+        id: a.id,
+        name: a.name,
+        typ: a.type,
+        quelle: a.device_name ?? a.source ?? null,
+        intervalle: formatIntervals(a.type, await res.json()),
+      });
+    }
+    return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
   }
 );
 
