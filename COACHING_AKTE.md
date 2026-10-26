@@ -4,6 +4,14 @@
 
 ---
 
+## 26. Oktober 2026 – KW44 Mo: Lauf zäh, Kraft A auf Di
+
+**Stefan:** Lauf direkt nach der Arbeit, hungrig, nur ein Cookie ~5min vorher · HF „all over the place“, auch bei gewohnten Paces · Kadenz ständig bewusst halten müssen · Workout vorher nicht in icu geöffnet → keine Intervalle auf der Uhr, nach App gelaufen · Kraft heute nicht mehr.
+**Daten:** 31min · 4,4 km · 7:07/km · Ø HF 168 / max 193 · Kadenz 165 · 44 TSS. Vergleich 14.10. (Easy 40 + 6 Steigerungen): 7:01 · Ø 166 / max 187 · 165 spm → im normalen Band, Ø +2 bpm. Confounder: nüchtern/Zucker kurz vorher, nach Arbeitstag, Steigerungen im Schnitt. Max 193 bei 20s-Steigerungen eher Sensor-Spitze als echte Last.
+**Coach:** Kein Fitnesssignal (Einzellauf mit Confoundern). Kadenz 165 trotz schlechtem Tag gehalten = Fortschritt. Kraft A (147957030 gelöscht) → Di nach LIT 1h (148593885), Kraft B Do bleibt (48h Abstand). Pre-Run-Snack-Tipp: 60–90min vorher etwas Kleines statt Zucker direkt davor.
+
+---
+
 ## 26. Oktober 2026 – HF-160-Check gestrichen
 
 **Stefan:** Ein Einzellauf an einem Tag zeigt die Entwicklung schlechter als das Dashboard-Chart über viele Läufe; echte Testwerte wären 5/10 km all-out.
