@@ -947,3 +947,88 @@ def test_countdown_main_profile_line_is_open_ridge():
     line = _build_countdown(date(2026, 10, 23))["main"]["profile_line"]
     assert line.startswith("M0,")
     assert "Z" not in line
+
+
+# ── Kombi-Tage: Ausdauer schlägt Kraft ───────────────────────────────────────
+# Stefan, 27.10.2026: An Tagen wie "🚴 LIT-1h locker + 💪 Kraft A" ist die
+# Ausdauer-Einheit die Haupteinheit. Vorher machte das 💪 den ganzen Tag zum
+# Kraft-Tag -> die Rolle landete als oranges "+" im Bonus und die 4-TSS-Kraft
+# galt als Plan-Erfüllung. Kraft gewinnt nur an reinen Kraft-Tagen.
+
+def _write_plan(tmp_path, monkeypatch, rows: str):
+    (tmp_path / "planung").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "planung" / "kw98.md").write_text(
+        "# KW98 – Test\n\n*Thema: Kombi*\n\n"
+        "## Wochenplan\n\n"
+        "| Tag | Workout | TSS ca. | TSS Ist | Status | Notiz |\n"
+        "|---|---|---|---|---|---|\n" + rows +
+        "| **Total** | | **~100** | | | |\n",
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(tmp_path)
+    return {d["tag"]: d for d in parse_kw_plan(98)["days"]}
+
+
+def test_parse_kombi_rad_kraft_ist_kein_kraft_tag(tmp_path, monkeypatch):
+    days = _write_plan(tmp_path, monkeypatch,
+                       "| Mo | 🚴 LIT-1h locker (Rolle) + 💪 Kraft A (2 Sätze) | 34 | – | ⬜ | |\n")
+    assert days["Mo"]["is_kraft"] is False, "Rad+Kraft ist ein Rad-Tag (Bike-Icon)"
+    assert days["Mo"]["is_run"] is False
+
+
+def test_parse_kombi_lauf_kraft_ist_kein_kraft_tag(tmp_path, monkeypatch):
+    days = _write_plan(tmp_path, monkeypatch,
+                       "| Mo | 🏃 Easy 40min – Kadenz 165 + 💪 Kraft B (2 Sätze) | 44 | – | ⬜ | |\n")
+    assert days["Mo"]["is_kraft"] is False
+    assert days["Mo"]["is_run"] is True
+
+
+def test_parse_reiner_krafttag_bleibt_kraft(tmp_path, monkeypatch):
+    days = _write_plan(tmp_path, monkeypatch,
+                       "| Mo | 💪 Kraft A – Drücken (ohne Beine) | 12 | – | ⬜ | |\n"
+                       "| Di | Kraft B | 12 | – | ⬜ | |\n")
+    assert days["Mo"]["is_kraft"] is True
+    assert days["Di"]["is_kraft"] is True
+
+
+def test_plan_sport_kombi_rad_kraft_ist_ride():
+    from generate import _plan_sport
+    assert _plan_sport({"is_run": False, "is_kraft": False}) == "ride"
+    assert _plan_sport({"is_run": False, "is_kraft": True}) == "strength"
+
+
+KOMBI_PLAN_DAYS = [
+    {"tag": "Mo", "workout": "LIT-1h locker (Rolle) + 💪 Kraft A (2 Sätze)",
+     "tss_plan": 34, "status": "⬜", "rest": False, "is_run": False, "is_kraft": False},
+]
+KOMBI_ACTIVITIES = [
+    {"start_date_local": "2026-04-13T06:54:14", "type": "VirtualRide",
+     "icu_training_load": 35, "name": "MyWhoosh - LIT 1h – locker"},
+    {"start_date_local": "2026-04-13T19:00:41", "type": "WeightTraining",
+     "icu_training_load": 4, "name": "Kraft A – Drücken"},
+]
+
+
+def test_match_kombi_tag_rad_ist_primaer():
+    matched = match_activities(KOMBI_ACTIVITIES, KOMBI_PLAN_DAYS, date(2026, 4, 13))
+    mo = matched["Mo"]
+    assert mo["primary"]["name"] == "MyWhoosh - LIT 1h – locker"
+    assert mo["primary"]["tss"] == 35
+    assert [b["name"] for b in mo["bonus"]] == ["Kraft A – Drücken"]
+    assert mo["tss_ist"] == 39
+    assert mo["done"] is True
+
+
+def test_match_kombi_tag_done_schon_ohne_kraft():
+    """Rolle allein (Kraft noch nicht hochgeladen) reicht für erledigt."""
+    matched = match_activities(KOMBI_ACTIVITIES[:1], KOMBI_PLAN_DAYS, date(2026, 4, 13))
+    assert matched["Mo"]["done"] is True
+    assert matched["Mo"]["bonus"] == []
+
+
+def test_build_day_rows_kombi_split_richtung():
+    matched = match_activities(KOMBI_ACTIVITIES, KOMBI_PLAN_DAYS, date(2026, 4, 13))
+    row = build_day_rows(KOMBI_PLAN_DAYS, matched)[0]
+    assert row["tss_primary"] == 35
+    assert row["tss_bonus"] == 4
+    assert row["is_kraft"] is False, "Bike-Icon statt Hantel"

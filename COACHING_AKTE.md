@@ -1,6 +1,14 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 26. Oktober 2026*
+*Letzte Aktualisierung: 27. Oktober 2026*
+
+---
+
+## 27. Oktober 2026 – Dashboard-Fix: Kombi-Tage (Ausdauer + Kraft)
+
+**Stefan:** Di beide Einheiten gemacht, Anzeige komisch – grauer Punkt, Rolle als oranges „+“.
+**Ursache:** Zwei Dinge. (1) Timing: Kraft A lag um 19:00:41 in icu, der Build lief 19:01:14 – 33 s zu knapp, die Kraft fehlte im Build. (2) Echter Bug in `generate.py`: `is_kraft` wurde schon wahr, sobald irgendwo ein 💪 im Text stand. Kombi-Tage („🚴 LIT-1h + 💪 Kraft A“) galten damit als reine Kraft-Tage → `_plan_sport()` suchte WeightTraining, die 1h-Rolle (35 TSS) landete als Bonus-„+“, die 26min-Kraft (4 TSS) als Plan-Erfüllung, Hantel-Icon statt Rad.
+**Fix (Stefans Entscheidung):** Ausdauer schlägt Kraft. Nur reine Kraft-Tage sind Kraft-Tage; an Kombi-Tagen ist Rad bzw. Lauf die Haupteinheit, die Kraft läuft als „+“ mit. Di jetzt: ✅ erledigt · Rad-Icon · Split 35 + 4. Betrifft auch alle Lauf+Kraft-Tage (Do). 7 neue Tests, Suite 131 grün.
 
 ---
 

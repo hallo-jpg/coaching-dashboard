@@ -733,7 +733,11 @@ def parse_kw_plan(kw: int) -> dict:
             tss_plan = int(m.group(1))
 
         is_run   = "🏃" in workout or "lauf" in workout.lower()
-        is_kraft = "💪" in workout or (workout.strip().lower().startswith("kraft") and "🚴" not in workout and "🏃" not in workout)
+        # Kombi-Tage ("🚴 LIT-1h + 💪 Kraft A") sind Ausdauer-Tage: die Rolle bzw.
+        # der Lauf ist die Haupteinheit, die Kraft läuft nebenher. Nur ein reiner
+        # Kraft-Tag zählt als Kraft-Tag (Hantel-Icon + Kraft-Matching).
+        _has_ausdauer = "🚴" in workout or is_run
+        is_kraft = ("💪" in workout or workout.strip().lower().startswith("kraft")) and not _has_ausdauer
         # "Ruhetag / Heimfahrt", "🚶 Ruhetag / Spaziergang", "Ruhetag (JGA)" … are rest days too
         is_rest  = workout.strip() in ("–", "") or bool(re.match(r"^\W*ruhetag", workout.strip(), re.I))
 
