@@ -12,7 +12,7 @@
 | **FTP** | **300W** (Baseline 1.10.2026, XCadey · 10min geschätzt) · 3,21 W/kg · **93,6 kg** (Ø 30d aus intervals.icu, Stand 20.9.) · Zonen trainingsleitend · Offset Tacx ÷ XCadey ≈ **1,0** · vorher 305W (4iiii) |
 | **Events** | 🏔️ **Hauptevent 2027: L'Étape du Tour, So 11.7.2027 (KW27)** · Cluses → Les Saisies · 154 km / ~4.850 Hm · angemeldet · ❓ Ötztaler 2027 nur Verlosung · 2026 abgeschlossen: RadRace 120 ✅ (KW24) · Rosenheimer ⚠️ (KW26, Unfall) · Karlsfelder Seelauf ✅ (KW38, 1:05:08) |
 | **Aktuelle KW** | KW44 (26. Oktober – 1. November 2026) · Entlastung · Rad komplett Rolle · Ruhetage Mi + Fr · **Sa Nachmittag Umzugshilfe** |
-| **Aktuelle Phase** | Entlastung KW44 · 🎯 Kern: Do Easy 40 Kadenz · So LIT 1h30 · Lauf ~9,5 km · Kraft A Mo / B Do (je 2 Sätze) · KW43 Retro 🟡 (Kern 3/3, Kraft 0/2, 12,3 km, längster 6,7 km, Kadenz 165) |
+| **Aktuelle Phase** | Entlastung KW44 · 🎯 Kern: Do Easy 40 Kadenz · So LIT 1h30 · Lauf ~9,5 km · Kraft A Di ✅ / B Fr (je 2 Sätze) · KW43 Retro 🟡 (Kern 3/3, Kraft 0/2, 12,3 km, längster 6,7 km, Kadenz 165) |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · Winter ohne Zielrennen, danach Frühjahrsplan rückwärts von der **Étape 11.7.2027** · Plan: `planung/periodisierung.md` |
 | **Nächste Phase** | ab KW45 Block 1 Schwelle (SwSp 3×15, erster Lauf-Schwellenreiz) · KW45–47 340/370/400 TSS |
 | **Fixpunkte** | FTP-Baseline KW40 ✅ 300W · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 · **Tests nur am Wochenende** |

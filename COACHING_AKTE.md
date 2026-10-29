@@ -1,6 +1,14 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 27. Oktober 2026*
+*Letzte Aktualisierung: 29. Oktober 2026*
+
+---
+
+## 29. Oktober 2026 – KW44 Do: Kern-Lauf ✅, Kraft B auf Fr
+
+**Stefan:** Nach dem Lauf zu müde, erst mal essen (großer Hunger) – Kraft B heute nicht mehr, morgen nachholen.
+**Daten:** 41min · 5,6 km · 7:20/km · Ø HF 162 / max 173 · Kadenz 165 · 53 TSS – sauber im Easy-Band, Kadenz-Ziel gehalten.
+**Coach:** Kraft B (147957037 gelöscht) → Fr (149720947), **ohne Beinübungen**: Sa Umzug liefert die Beinlast. Kraft A Di → Fr = 72h Abstand. Mi bleibt Ruhetag unter der Woche. Noch platt am Fr → ersatzlos streichen. Hunger nach dem Lauf am Nachmittag = zweites Mal diese Woche (Mo schon hungrig) → Snack 60–90min vor Nachmittagsläufen.
 
 ---
 
