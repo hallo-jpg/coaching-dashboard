@@ -439,7 +439,7 @@ def apply_coros(wellness: list[dict], days: dict) -> list[dict]:
     COROS ist Quelle für alles, was die Uhr misst: HRV, Ruhepuls, Schlaf (echte Schlafzeit –
     icu `sleepSecs` ist Zeit im Bett), Schritte. intervals.icu bleibt Quelle für Gefühl, Gewicht,
     CTL/ATL. Fehlt ein COROS-Wert, bleibt der icu-Wert (Fallback, wenn die Routine ausfällt).
-    Schritte: der höhere Wert – der heutige Tag ist um 8:50 bei COROS erst angezählt.
+    Schritte: der höhere Wert – der heutige Tag ist morgens bei COROS erst angezählt.
     """
     for w in wellness:
         day = days.get(w.get("id", "")[:10])

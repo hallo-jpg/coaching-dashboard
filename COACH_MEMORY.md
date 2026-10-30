@@ -245,7 +245,7 @@ Löschen/Verschieben geht über das MCP nicht). Nützlich: `querySleepOverview` 
 Schlaffenster, Nickerchen), `querySleepHrv` (Tages-Ø + Normalbereich + Kurve alle 5–10 min), Runden/FIT für Kadenz.
 **intervals.icu `sleepSecs` = Zeit im Bett inkl. Wachphasen**, nicht Schlaf (1.10.: icu 8,2h, geschlafen 7h10, 1h wach)
 → seit 9.10. ist **COROS Quelle für alle Uhrdaten** (HRV, Ruhepuls, Schlaf, Schritte) via `data/coros_wellness.json`
-(tägliche Routine 8:50, Fallback icu); intervals.icu nur noch Gefühl, Gewicht, CTL/ATL. COROS-Gewicht = statische
+(Routine stündlich ab 8:00, Fallback icu); intervals.icu nur noch Gefühl, Gewicht, CTL/ATL. COROS-Gewicht = statische
 Profilangabe, kein Verlauf → Gewicht bleibt icu. intervals.icu holt COROS-Wellness **mehrmals täglich, aber ohne festen Takt**
 (9.10.: Nacht erst um 11:13 in icu, COROS-MCP hatte sie vor 8:50). `updated` in icu zeigt nur die *letzte* Änderung
 (meist der finale Schrittstand nach Mitternacht) → taugt nicht, um den Sync-Zeitpunkt abzuleiten. HRV-Tageswert ist in beiden identisch.
