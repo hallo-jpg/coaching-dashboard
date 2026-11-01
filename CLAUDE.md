@@ -55,6 +55,7 @@ plane mir die nächste Woche
 | `planung/periodisierung.md` | Aktueller Saisonplan **Winter 26/27 (KW40–KW09)** – wird nach KW09/2027 ersetzt | Skill (mit Zustimmung) |
 | `planung/kw[N].md` | Aktuelle Wochenplanung | Skill |
 | `planung/archiv/` | Abgeschlossene Wochen (Plan + Ist + Feedback) | Skill (nach Wochenabschluss) |
+| `planung/checkins/kw[N].md` | **Tägliche Morgen-Check-ins** (Bewertung gestern + Nacht, Stefans Antwort, Vorschläge) – Format in `planung/checkins/README.md` | Routine „Morgen-Check-in“ (`checkin.py`) |
 | `.claude/skills/coach/SKILL.md` | Coach-Skill (Kern) – lädt je nach Situation die Module in `modules/` (retro, checks, krank, ftp-test, event) | Manuell |
 | `planung/workout_index.md` | Kompakter Workout-Index (55 Workouts) | Manuell |
 | `coaching_science.md` | Wissenschaftliche Referenz (Rønnestad et al.) | Manuell |
@@ -72,6 +73,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 | **Generator** | `generate.py` + `dashboard.template.html` → `docs/dashboard.html` |
 | **Datenquellen** | **Uhrdaten von COROS** (`data/coros_wellness.json`): HRV, Ruhepuls, echte Schlafzeit + Phasen + HRV-Nachtkurve, Schritte · **intervals.icu** nur noch: Gefühl (Ermüdung, Muskelkater, Stress, Verletzung, Schlafqualität), Gewicht, CTL/ATL/TSB, Activities, Power-/Pace-Curves · Wochenplan aus `planung/kw[N].md` |
 | **COROS-Routine** | stündlich ab 8:00 bis 13:00 (Berlin), bis die heutige Nacht **von einem zweiten Abruf bestätigt** ist (`coros_wellness.py --has-today`: Exit 0 erst, wenn zwei Abrufe identische Werte liefern – COROS korrigiert eine Nacht nachträglich, wenn man wieder einschläft), holt eine Claude-Routine Schlaf, Schlaf-HRV, Ruhepuls, Tageswerte per COROS-MCP → `python3 coros_wellness.py` → Commit auf `main`. Fehlt ein COROS-Wert, gilt der intervals.icu-Wert |
+| **Morgen-Check-in** | stündlich 8:20–13:20 (Berlin), startet erst, wenn `python3 checkin.py --gate` grünes Licht gibt (COROS-Nacht bestätigt + gestrige Einheit in intervals.icu, ab 13:20 auch mit Lücken) · Coach bewertet gestern + Nacht, stellt max. 3 Fragen, Push aufs Handy · Stefan antwortet in derselben Session · **Planänderungen nur als Vorschlag, umgesetzt erst nach Stefans „ok“** · Log: `planung/checkins/` |
 
 **Karten im Dashboard (alle auto-generiert):**
 - Recovery-Ring (Readiness Score), Trainingsform-Ring (CTL/ATL/TSB), Wochenziel-Ring (TSS-Compliance)

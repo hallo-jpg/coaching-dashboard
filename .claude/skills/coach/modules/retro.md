@@ -17,6 +17,9 @@
    (Lauf bereits in **spm**, nicht verdoppeln), `pace_min_km`, `intensity_if`, `rpe`, `avg_hf`, `tss`.
 2. `get_weekly_review(week_start: Montag der Vorwoche)` → Zonenzeiten pro Tag, HRV-Verlauf.
 3. `planung/kw[N-1].md` → welche Einheiten waren `🎯 Kern`, welche flexibel, wo standen Kraft A/B.
+4. `planung/checkins/kw[N-1].md` (falls vorhanden) → tägliche Morgen-Check-ins: RPE, Gefühl, Stress,
+   Zwicken, verworfene/umgesetzte Vorschläge. Stefans Antworten dort sind **seine Meldungen** (zählen z.B. für
+   Kennzahl 6 Beschwerden) – nicht noch einmal abfragen, was dort schon steht.
 
 Leere Aktivitäten (alle Felder `null`) sind Strava-Hüllen → nicht als fehlende Einheit werten, Stefan fragen.
 
