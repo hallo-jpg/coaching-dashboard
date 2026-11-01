@@ -4,6 +4,17 @@
 
 ---
 
+## 1. November 2026 – KW45 korrigiert: LIT 180W, Di-Intervalle, Mi ohne Rad
+
+**Stefan:** LIT gerne höher · „Ein Problem mit Dienstag, es kommt nur ein Intervall an irgendwie in intervals.icu?"
+**Ursache Di:** Coach-Fehler in der Description-Route. Eine Leerzeile **zwischen** `3x` und dem ersten Wiederholungs-Schritt – damit findet intervals.icu die Schritte des Blocks nicht und legt genau ein Intervall an. COACH_MEMORY kannte nur den umgekehrten Fehler (fehlende Leerzeile **vor** dem `6x`, KW42) und war mit „Leerzeile davor und danach" zu unscharf formuliert – jetzt präzisiert, inkl. der Konsequenz, dass sich die Description-Route gar nicht gegenprüfen lässt (`workout_doc` bleibt leer, bis Stefan öffnet).
+**Fix Di:** Neu angelegt über `workout_steps` mit `reps: 3` (ID 150663673), per API verifiziert: `WIEDERHOLUNG 3x → 900s @ 270W / 300s @ 165W`, Dauer 5400s, ICU-Load 91. Preis ist der Wattkorridor (fest 270W statt 265–275W) – indoor in ERG irrelevant, outdoor bleibt der Korridor Standard. Regel in COACH_MEMORY: Intervall-Workouts bevorzugt `workout_steps` + `reps`.
+**LIT 180W (Stefans Zustimmung):** Vorgabe von 55% (165W) auf **60% FTP = 180W** – das ist, was er real fährt (176–186W über sechs Rolleneinheiten). Sa 2h30 neu angelegt (ID 150663346, Load 90 statt 76). Neuer Eintrag in COACH_MEMORY, Abschnitt 6. Die `.zwo`-Dateien bleiben bei 55% und müssen bei Verwendung angepasst werden.
+**Mi ohne Rad:** Mit dem ehrlichen LIT-Wert lag KW45 bei 365 TSS = +21% ggü. KW43 (302), über der Rampengrenze von +15%. Statt die lange Sa-Einheit zu kürzen entfällt die flexible 45-min-Rolle am Mi (ID 150663227 gelöscht); Kraft B bleibt am Mi auf einem Nicht-Lauftag, Do bleibt Ruhetag. **Woche jetzt 338 TSS = +12%**, Rad:Lauf 70:30 (vorher 74:26, Soll 65:35).
+**Gelöschte Events:** 150658444 (Di alt), 150658471 (Mi LIT), 150658582 (Sa 165W), 150663109 (Di Description-Route v2), 150663227 (Mi LIT 180W). Die beiden ⛽-Fueling-Notes für Di und Sa stehen unverändert.
+
+---
+
 ## 1. November 2026 – KW44 Retro + KW45 geplant (Block 1 Schwelle Woche 1)
 
 **KW44 Retro:** 🟢 Kern 2/2 · Lauf 10,0 km (−19% unter der Grenze) · längster 5,6 km · Kadenz Easy 165 · Kraft 1/2 · keine Beschwerden. TSS 191/167. Entlastung hat gewirkt: ATL 46 → 32, TSB −13,5 → −1,2, HRV stabil 46–51. Kraft B zweimal verschoben und dann gestrichen – beide Male hing sie an einem Lauftag (Do nach dem Lauf satt/müde, Fr noch platt). Intervall-Check Mo: 5 statt 4 Steigerungen in 4:27–4:57 statt ~5:20/km.

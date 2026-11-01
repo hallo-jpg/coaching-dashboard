@@ -282,6 +282,14 @@ wenn zwei Abrufe identische Werte liefern (`confirmed` in `data/coros_wellness.j
 Stefan fährt seit Jahren alle strukturierten Formate in ERG, **30/30er inklusive**. Keine Sonderregeln für
 Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahren + Spindown (Flux).
 
+### 🚴 LIT-Vorgabe auf der Rolle = 60% FTP / 180W (Stefan, 1.11.2026)
+Die `.zwo`-Bibliothek gibt LIT mit **55% = 165W** vor, Stefan fährt faktisch **176–186W** (3.10. 177 · 11.10. 181 ·
+17.10. 186 · 24.10. 181 · 27.10. 176 · 1.11. 181). Dadurch rechnete intervals.icu für geplante LIT-Einheiten
+~18% zu wenig Load (Sa 2h30: Soll 76 vs. real 91) – Plan, Dashboard-Soll und Realität liefen auseinander.
+**Anwenden:** LIT auf der Rolle mit **60% FTP = 180W** planen (obere Hälfte Z2, Zone endet bei 62% = 186W), nicht
+mit 55%. Die `.zwo`-Dateien in `Workout-Library/` sind unverändert bei 55% – bei Verwendung über `workout_steps`
+mit 60% ersetzen oder die Load-Abweichung im Plan benennen. Driftet die HF auf langen Einheiten über 150: 170W.
+
 ### Zwei Radleistungsquellen – nie gegeneinander rechnen
 Outdoor = Tarmac + XCadey · Indoor = Aeroad auf Tacx (Rollenleistung). Realistisch 5–15% Versatz
 (Antriebsstrang, Rollen-Toleranz ±3%, Sitzposition). Fortschritt immer Quelle gegen sich selbst.
@@ -321,9 +329,17 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 - **Strides/Antritte** über die Description-Route (`- 20s 120% Pace` gültig). Nie auf 60s strecken.
 - **Distanzen:** `m` heißt in intervals.icu **Minuten** → Distanz immer in km (`0.4km`) bzw. `distance_m`.
   Freitext nie mit `- ` beginnen (wird als Schritt geparst) → `·` benutzen.
-- **Wiederholungsblock (`6x`) braucht eine Leerzeile davor und danach** – sonst hängt intervals.icu das
-  `6x` als Text an den vorherigen Schritt und die Intervalle laufen nur 1× (KW42 Mi Steigerungen, 11.10.2026).
-  Nach dem Anlegen `workout_doc.steps` auf `reps` prüfen.
+- **Wiederholungsblock (`6x`): Leerzeile VOR dem `6x` und NACH dem letzten Schritt des Blocks – aber
+  **keine** zwischen `6x` und seinem ersten Schritt.** Beide Fehler brechen den Block, auf unterschiedliche Weise:
+  fehlt die Leerzeile davor, hängt intervals.icu das `6x` als Text an den vorherigen Schritt (KW42 Mi
+  Steigerungen, 11.10.2026); steht eine Leerzeile dahinter, findet der Block seine Schritte nicht und es kommt
+  **genau ein** Intervall an (KW45 Di SwSp 3×15, 1.11.2026 – Stefan hat es in icu gemerkt). Richtig:
+  `\n\n3x\n- 15m 88-91%\n- 5m 55%\n\n`.
+  **Verifikation geht bei der Description-Route nicht** – `workout_doc` bleibt leer, bis Stefan das Workout
+  öffnet, `reps` ist also nicht prüfbar. Deshalb: **Intervall-Workouts bevorzugt über `workout_steps` mit
+  `reps`** anlegen (Struktur sofort per API prüfbar, Balken auf Uhr/App, ICU rechnet die Load selbst). Indoor
+  ist der Korridor-Verlust egal (ERG hält ohnehin einen festen Wert) – die Description-Route bleibt für
+  **Outdoor**-Einheiten mit echtem Wattkorridor und für Schritte < 1 min.
 - `pace_pct` = % der Schwellen*geschwindigkeit*, **388 s/km (6:28) = 100%**: 75–87% = 8:40–7:25 (Easy),
   105% = 6:10, 119% = 5:25.
 - Nach jedem Anlegen `get_planned_events` prüfen (`workout_doc.steps`, `moving_time`), bevor „fertig" gemeldet wird.
