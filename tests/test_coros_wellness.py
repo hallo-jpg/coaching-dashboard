@@ -1,7 +1,8 @@
 import json
 from pathlib import Path
 
-from coros_wellness import _read, merge, parse_daily, parse_hrv, parse_overview, parse_rhr
+from coros_wellness import (_read, has_today, merge, parse_daily, parse_hrv, parse_overview,
+                            parse_rhr)
 from generate import apply_coros, coros_sleep_summary, sync_status
 
 FIX = Path(__file__).parent / "fixtures"
@@ -84,3 +85,37 @@ def test_sync_status_chips():
     assert sync_status(rows[1]) == {"coros": True, "icu": False}   # Uhrdaten in icu ≠ Gefühl eingetragen
     assert sync_status(rows[2])["icu"] is True                      # Gefühl zählt als intervals
     assert sync_status(None) == {"coros": False, "icu": False}
+
+
+def test_merge_marks_new_day_unconfirmed():
+    store = merge({}, *_parsed())
+    assert store["days"]["2026-10-08"]["confirmed"] is False
+
+
+def test_merge_confirms_day_on_identical_second_fetch():
+    store = merge(merge({}, *_parsed()), *_parsed())
+    assert store["days"]["2026-10-08"]["confirmed"] is True
+
+
+def test_merge_unconfirms_day_when_night_grew():
+    """1.11.2026: Uhr meldete erst 5h55, nach dem Wiedereinschlafen 8h13."""
+    store = merge(merge({}, *_parsed()), *_parsed())
+    overview, hrv_days, points, rhr, daily = _parsed()
+    overview["2026-10-08"].update(asleep_min=493, wake="2026-10-08T08:09")
+    merge(store, overview, hrv_days, points, rhr, daily)
+    day = store["days"]["2026-10-08"]
+    assert day["asleep_min"] == 493 and day["confirmed"] is False
+
+
+def test_has_today_false_when_night_missing():
+    assert has_today({"days": {}}, "2026-11-01") is False
+
+
+def test_has_today_false_while_night_unconfirmed():
+    store = {"days": {"2026-11-01": {"hrv": 42, "confirmed": False}}}
+    assert has_today(store, "2026-11-01") is False
+
+
+def test_has_today_true_once_night_confirmed():
+    store = {"days": {"2026-11-01": {"hrv": 48, "confirmed": True}}}
+    assert has_today(store, "2026-11-01") is True

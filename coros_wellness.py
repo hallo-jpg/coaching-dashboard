@@ -20,6 +20,7 @@ from zoneinfo import ZoneInfo
 DATA_FILE = Path(__file__).parent / "data" / "coros_wellness.json"
 KEEP_DAYS = 120
 EARLY_MIN = 120   # „erste Nachthälfte" für das Vorabend-Muster: die ersten 2h nach dem Einschlafen
+META = ("fetched", "confirmed")   # Steuerfelder, die nicht zu den Messwerten zählen
 
 _DATE = re.compile(r"^(\d{4}-\d{2}-\d{2}):?\s*$")
 
@@ -134,15 +135,37 @@ def night_split(night: dict, points: list) -> dict:
     return {"hrv_early": round(sum(early) / len(early)), "hrv_late": round(sum(late) / len(late))}
 
 
+def _values(day: dict) -> dict:
+    """Messwerte des Tages ohne Steuerfelder – Grundlage des Änderungsvergleichs."""
+    return {k: v for k, v in day.items() if k not in META}
+
+
+def has_today(store: dict, today: str) -> bool:
+    """Ist die heutige Nacht gespeichert *und* von einem zweiten Abruf bestätigt?
+
+    COROS korrigiert eine Nacht nachträglich, wenn man nach dem ersten Aufwachen
+    noch einmal einschläft (1.11.2026: erst 5h55, dann 8h13). Ein einzelner Abruf
+    beweist darum nichts – erst zwei Abrufe mit identischen Werten tun das.
+    """
+    day = store.get("days", {}).get(today, {})
+    return bool(day.get("hrv")) and day.get("confirmed", False)
+
+
 def merge(store: dict, overview: dict, hrv_days: dict, points: list, *extra: dict) -> dict:
     days = store.setdefault("days", {})
     fetched = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    incoming: dict = {}
     for source in (overview, hrv_days, *extra):
         for d, vals in source.items():
             if vals:   # „not available yet" → keinen leeren Tag anlegen
-                days.setdefault(d, {}).update(vals, fetched=fetched)
-    for day in days.values():
+                incoming.setdefault(d, {}).update(vals)
+    for d, vals in incoming.items():
+        before = _values(days.get(d, {}))
+        day = days.setdefault(d, {})
+        day.update(vals, fetched=fetched)
         day.update(night_split(day, points))
+        # bestätigt = der Tag war schon gespeichert und kein Messwert hat sich geändert
+        day["confirmed"] = bool(before) and _values(day) == before
     cutoff = (datetime.now() - timedelta(days=KEEP_DAYS)).date().isoformat()
     store["days"] = {d: days[d] for d in sorted(days) if d >= cutoff}
     store["updated"] = fetched
@@ -157,15 +180,17 @@ def main() -> None:
     ap.add_argument("--daily", help="Ausgabe von queryDailyHealthData")
     ap.add_argument("--out", default=str(DATA_FILE))
     ap.add_argument("--has-today", action="store_true",
-                    help="nur prüfen: Exit 0, wenn die heutige Nacht (HRV) schon gespeichert ist, sonst 1")
+                    help="nur prüfen: Exit 0, wenn die heutige Nacht gespeichert und von einem "
+                         "zweiten Abruf bestätigt ist, sonst 1")
     args = ap.parse_args()
 
     if args.has_today:
         out = Path(args.out)
         today = datetime.now(ZoneInfo("Europe/Berlin")).date().isoformat()
-        days = json.loads(out.read_text()).get("days", {}) if out.exists() else {}
-        has = bool(days.get(today, {}).get("hrv"))
-        print(f"{today}: {'vorhanden' if has else 'fehlt'}")
+        store = json.loads(out.read_text()) if out.exists() else {}
+        has = has_today(store, today)
+        day = store.get("days", {}).get(today, {})
+        print(f"{today}: {'bestätigt' if has else 'unbestätigt' if day.get('hrv') else 'fehlt'}")
         raise SystemExit(0 if has else 1)
 
     overview = parse_overview(_read(args.overview)) if args.overview else {}

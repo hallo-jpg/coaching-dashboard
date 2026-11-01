@@ -253,6 +253,16 @@ Profilangabe, kein Verlauf → Gewicht bleibt icu. intervals.icu holt COROS-Well
 (Alkohol, spätes Essen, späte Belastung) → nachfragen, nicht als Ermüdung werten. Durchgehend niedrig = echte
 Ermüdung/Infekt. Zeitstempel: `timezone` in 15-min-Einheiten (4 = UTC+1, 8 = UTC+2). Schlafphasen nur als Trend.
 
+### ⌚ COROS-Nächte sind erst nach dem zweiten Abruf verlässlich (1.11.2026)
+Schläft Stefan nach dem ersten Aufwachen noch einmal ein, **korrigiert COROS die Nacht nachträglich** und zieht
+die zweite Phase in die Hauptschlafphase. Am 1.11. stand um 7:02 noch 23:29–05:35 / 5h55 / Score 66 / HRV 42
+(„Below normal"), um 7:26 dann 23:29–08:09 / 8h13 / Score 84 / HRV 48 („Normal") – aus einer scheinbar schlechten
+Nacht wurde eine völlig normale.
+**Anwenden:** Einen einzelnen Frühabruf nie als fertige Nacht lesen. Ein auffällig kurzes Schlaffenster mit früher
+Wachzeit vor 6:00 und abgesenkter HRV ist zuerst ein Verdacht auf eine unfertige Messung, nicht auf schlechte
+Erholung – nachfragen oder später erneut abrufen. Die Routine prüft das selbst: `--has-today` gibt Exit 0 erst,
+wenn zwei Abrufe identische Werte liefern (`confirmed` in `data/coros_wellness.json`), vorher wird weiter geholt.
+
 ---
 
 ## 6. Ausstattung & Setup
