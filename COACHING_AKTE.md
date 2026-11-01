@@ -1,6 +1,16 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 29. Oktober 2026*
+*Letzte Aktualisierung: 1. November 2026*
+
+---
+
+## 1. November 2026 – KW44 Retro + KW45 geplant (Block 1 Schwelle Woche 1)
+
+**KW44 Retro:** 🟢 Kern 2/2 · Lauf 10,0 km (−19% unter der Grenze) · längster 5,6 km · Kadenz Easy 165 · Kraft 1/2 · keine Beschwerden. TSS 191/167. Entlastung hat gewirkt: ATL 46 → 32, TSB −13,5 → −1,2, HRV stabil 46–51. Kraft B zweimal verschoben und dann gestrichen – beide Male hing sie an einem Lauftag (Do nach dem Lauf satt/müde, Fr noch platt). Intervall-Check Mo: 5 statt 4 Steigerungen in 4:27–4:57 statt ~5:20/km.
+**KW45 geplant:** Mo Easy 30min Kadenz 167 + Kraft A (ohne Beine) · Di 🎯 SwSp 3×15min 265–275W (Description-Route, einmal in icu öffnen) · Mi LIT 45min + Kraft B (komplett) · Do Ruhetag · Fr 🎯 Lauf-Schwelle 3×6min 6:30–6:45 (erster Schwellenreiz des Winters, HF bis 175–180) · Sa 🎯 LIT 2h30 · So Easy 30min. ICU-Soll 324, real erwartet ~340 (+13% ggü. KW43 302).
+**Entscheidungen:** (1) Kraft an die Rolle statt an Lauftage – B liegt jetzt Mi, A/B 48h auseinander, A ohne Beine wegen Di-Qualität. (2) Lauf-Budget erlaubt nur 3 Läufe à 13,9 km → der Longrun wächst erst ab KW46; Rad:Lauf landet bei ~75:25 statt der geplanten 65:35, weil die km-Grenze schlägt. Das ist gewollt, nicht vergessen. (3) Kadenz-Ziel von 165 auf 167 angehoben (4 Wochen stabil auf 165). (4) Keine Steigerungen in KW45 – ab KW46 wieder, dann mit Tempovorgabe.
+**Offen für Stefan:** LIT-Wattvorgabe generell von 55% (165W) auf 60% (180W) ziehen? Er fährt LIT faktisch bei 176–186W, dadurch rechnet ICU für die Sa-Einheit nur 76 statt der realen ~91 TSS – Plan und Dashboard-Soll liegen systematisch zu tief. Löschen/Ändern des bestehenden Sa-Workouts war in dieser Session nicht erlaubt (Berechtigung), die Einheit steht noch mit 165W.
+**KW48-Stub** angelegt (Entlastung −50%, ~200 TSS).
 
 ---
 

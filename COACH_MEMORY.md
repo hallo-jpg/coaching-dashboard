@@ -1,7 +1,7 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 1. Oktober 2026.*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 1. November 2026.*
 
 **Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
 zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
@@ -127,6 +127,7 @@ mehr Muskelmasse am OK") – nicht nur Beine + Core. Die „Lauf-Athletik 2×15m
 auch leichtes Gewicht), ~10 harte Sätze pro Muskelgruppe/Woche, Läufer-Beinübungen am Ende jeder Einheit.
 Equipment: 2 KH bis 10 kg, Bänder, Outdoor-Klimmzugstange in der Nähe. Nebenziel: erster Klimmzug bis KW09/27.
 **Anwenden:** A/B aktiv einplanen (flexibel, kein Kern), Übungen nur aus `athlete/profil.md` → Krafttraining.
+**Kraft nicht an Lauftage hängen (1.11.2026):** Kraft B fiel in KW42 und KW44 beide Male aus, weil sie an einem Easy-Lauf hing – nach einem Lauf am Nachmittag ist Stefan hungrig und müde und isst erst. An einer lockeren Rolleneinheit passiert das nicht (Kraft A nach LIT 1h: erledigt). Kraft deshalb an Radtage legen, A und B ≥48h auseinander, und am Vortag einer Qualitätseinheit ohne Beinübungen.
 Zustellung: als `WeightTraining`-Einheit mit Übungsliste als **Text** in intervals.icu – Stefan liest dort nach.
 Keine COROS-Kraft-Workouts vorschlagen (28.9.2026: „nicht so wichtig").
 Ehrlich bleiben: FTP und 10-km-Zeit bewegt das kaum – es ist Stefans eigenes Ziel und wird so behandelt.
