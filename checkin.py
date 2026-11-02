@@ -58,6 +58,138 @@ def gate(today: date, hour: int, coros_days: dict, log_text: str,
     return False, "warten: " + "; ".join(missing)
 
 
+# ── Intervall-Qualität (Soll aus dem geplanten Workout, Ist aus icu_intervals) ──
+
+QUALITY_MIN = {"Ride": 80, "Run": 90}   # % FTP bzw. % Schwellenpace – darunter keine Qualitätsarbeit
+SINGLE_BAND = 0.02                      # Einzelwert-Ziel (z.B. 89 % FTP) → ±2 % Zielbereich
+SLACK = 0.01                            # Rundung/Sensor: 1 % Luft am Rand, bevor ⬇️/⬆️
+
+
+def _sport(t: str) -> str:
+    return "Run" if "Run" in (t or "") else "Ride"
+
+
+def _intensity(step: dict, sport: str):
+    tgt = step.get("power") if sport == "Ride" else step.get("pace")
+    if not tgt:
+        return None
+    if "value" in tgt:
+        return tgt["value"], tgt["value"], tgt.get("units")
+    return tgt.get("start"), tgt.get("end"), tgt.get("units")
+
+
+def _to_abs(pct: float, units: str, sport: str, ftp: float, thr: float) -> float:
+    if sport == "Ride":
+        return ftp * pct / 100 if units == "%ftp" else pct
+    return thr * pct / 100          # %pace: 100 % = Schwellentempo (als m/s)
+
+
+def work_targets(doc: dict, sport: str, ftp: float, thr: float) -> list[dict]:
+    """Arbeits-Intervalle des geplanten Workouts, ausgerollt, mit absolutem Zielbereich.
+
+    Mit reps-Block: der intensivste Schritt je Block (Warmup-Opener zählen nicht).
+    Ohne reps-Block: Schritte ab QUALITY_MIN, mind. 60 s, nicht Warmup/Cooldown, und
+    mindestens halb so lang wie der längste davon (filtert kurze Opener).
+    """
+    sport = _sport(sport)
+    steps = (doc or {}).get("steps") or []
+    out = []
+    blocks = [s for s in steps if s.get("reps") and s.get("steps")]
+    if blocks:
+        for b in blocks:
+            inner = [(st, _intensity(st, sport)) for st in b["steps"]]
+            inner = [(st, i) for st, i in inner if i and i[0] is not None]
+            if not inner:
+                continue
+            top = max(i[1] for _, i in inner)
+            if top < QUALITY_MIN[sport]:
+                continue
+            for _ in range(b["reps"]):
+                for st, i in inner:
+                    if i[1] == top:
+                        out.append((st, i))
+    else:
+        cand = []
+        for st in steps:
+            i = _intensity(st, sport)
+            if (i and i[0] is not None and min(i[0], i[1]) >= QUALITY_MIN[sport]
+                    and st.get("duration", 0) >= 60 and not st.get("warmup") and not st.get("cooldown")):
+                cand.append((st, i))
+        longest = max((st["duration"] for st, _ in cand), default=0)
+        out = [(st, i) for st, i in cand if st["duration"] >= longest / 2]
+
+    targets = []
+    for st, (a, b, units) in out:
+        lo, hi = sorted((_to_abs(a, units, sport, ftp, thr), _to_abs(b, units, sport, ftp, thr)))
+        if lo == hi:
+            lo, hi = lo * (1 - SINGLE_BAND), hi * (1 + SINGLE_BAND)
+        targets.append({"duration": st.get("duration", 0), "lo": lo, "hi": hi})
+    return targets
+
+
+def _pace(speed: float) -> str:
+    s = round(1000 / speed)
+    return f"{s // 60}:{s % 60:02d}"
+
+
+def run_cadence_spm(a: dict):
+    """intervals.icu liefert Laufkadenz in Doppelschritten/min → ×2."""
+    if "Run" in (a.get("type") or "") and a.get("average_cadence"):
+        return round(a["average_cadence"] * 2)
+    return None
+
+
+def quality_report(sport: str, doc: dict, intervals: list[dict], ftp: float, thr: float):
+    """Soll/Ist je Arbeits-Intervall + Abfall erstes → letztes. None bei Einheiten ohne Qualitätsarbeit."""
+    sport = _sport(sport)
+    targets = work_targets(doc, sport, ftp, thr)
+    if not targets:
+        return None
+    work = [iv for iv in intervals if iv.get("type") == "WORK"]
+    key = "average_watts" if sport == "Ride" else "average_speed"
+    rows, matched, pos = [], [], 0
+    for t in targets:
+        tol = max(0.2 * t["duration"], 30)
+        hit = None
+        for j in range(pos, len(work)):
+            if abs(work[j].get("moving_time", 0) - t["duration"]) <= tol:
+                hit, pos = work[j], j + 1
+                break
+        if sport == "Ride":
+            soll = f"{round(t['lo'])}–{round(t['hi'])} W"
+        else:
+            soll = f"{_pace(t['hi'])}–{_pace(t['lo'])}/km"
+        if hit is None or not hit.get(key):
+            rows.append({"soll": soll, "ist": None, "urteil": "❌ fehlt"})
+            continue
+        val = hit[key]
+        if val < t["lo"] * (1 - SLACK):
+            urteil = "⬇️"
+        elif val > t["hi"] * (1 + SLACK):
+            urteil = "⬆️"
+        else:
+            urteil = "✅"
+        row = {"soll": soll, "ist": f"{round(val)} W" if sport == "Ride" else f"{_pace(val)}/km",
+               "urteil": urteil, "dauer_s": hit.get("moving_time"),
+               "hf_avg": hit.get("average_heartrate"), "hf_max": hit.get("max_heartrate")}
+        cad = hit.get("average_cadence")
+        if cad:
+            row["kadenz"] = round(cad * 2) if sport == "Run" else round(cad)
+        rows.append(row)
+        matched.append(hit)
+
+    report = {"intervalle": rows,
+              "erfuellt": f"{sum(r['urteil'] == '✅' for r in rows)}/{len(rows)}"}
+    if len(matched) >= 2:
+        first, last = matched[0], matched[-1]
+        report["abfall"] = {
+            "leistung_pct": round((last[key] - first[key]) / first[key] * 100, 1),
+            "hf_max": (last.get("max_heartrate") or 0) - (first.get("max_heartrate") or 0)
+                      if first.get("max_heartrate") and last.get("max_heartrate") else None,
+        }
+    return report
+
+
 # ── Datenabruf (intervals.icu + data/coros_wellness.json) ─────────────────────
 
 def _plan_day(day: date) -> dict:
@@ -84,9 +216,48 @@ def _activity_summary(a: dict) -> dict:
     out = {k: a.get(k) for k in keys if a.get(k) not in (None, "")}
     if a.get("moving_time"):
         out["moving_min"] = round(a["moving_time"] / 60)
+    if run_cadence_spm(a):
+        out["kadenz_spm"] = run_cadence_spm(a)
+        out.pop("average_cadence", None)   # Rohwert = Doppelschritte, nicht melden
     if a.get("type") in ("Run", "TrailRun") and a.get("distance") and a.get("moving_time"):
         s = a["moving_time"] / (a["distance"] / 1000)
         out["pace_min_km"] = f"{int(s // 60)}:{int(s % 60):02d}"
+    return out
+
+
+def _thresholds() -> tuple[float, float]:
+    """FTP (W) und Schwellentempo (m/s) aus den intervals.icu-Sporteinstellungen."""
+    from generate import _api_get
+    ftp, thr = 300.0, 1000 / 388   # Fallback: 300 W · 6:28/km
+    for st in _api_get("").get("sportSettings", []):
+        types = st.get("types") or []
+        if "Ride" in types and st.get("ftp"):
+            ftp = st["ftp"]
+        if "Run" in types and st.get("threshold_pace"):
+            thr = st["threshold_pace"]
+    return ftp, thr
+
+
+def _quality(acts: list[dict]) -> list[dict]:
+    """Intervall-Auswertung für jede gestrige Aktivität mit gekoppeltem Plan-Workout."""
+    from generate import _api_get, _api_get_activity
+    out, th = [], None
+    for a in acts:
+        if not a.get("paired_event_id") or a.get("type") == "WeightTraining":
+            continue
+        try:
+            ev = _api_get(f"/events/{a['paired_event_id']}")
+            doc = ev.get("workout_doc")
+            if not doc:
+                continue
+            th = th or _thresholds()
+            ivs = _api_get_activity(f"/{a['id']}/intervals").get("icu_intervals", [])
+            rep = quality_report(a.get("type", ""), doc, ivs, *th)
+        except Exception as e:  # Auswertung darf den Check-in nie blockieren
+            out.append({"aktivitaet": a.get("name"), "fehler": str(e)})
+            continue
+        if rep:
+            out.append({"aktivitaet": a.get("name"), "workout": ev.get("name"), **rep})
     return out
 
 
@@ -100,7 +271,8 @@ def collect(today: date) -> dict:
     return {
         "heute": today.isoformat(),
         "gestern": {"plan": yplan, "aktivitaeten": [_activity_summary(a) for a in acts],
-                    "erledigt": ymatched.get("done")},
+                    "erledigt": ymatched.get("done"),
+                    "qualitaet": _quality(acts)},
         "nacht_coros": load_coros().get(today.isoformat()),
         "readiness": {"score": rb["score"], "teile": rb["parts"], "flag": rb["flag"]},
         "form": {"ctl": t.get("ctl"), "atl": t.get("atl"),

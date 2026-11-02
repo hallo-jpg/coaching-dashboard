@@ -20,6 +20,11 @@
 4. `planung/checkins/kw[N-1].md` (falls vorhanden) → tägliche Morgen-Check-ins: RPE, Gefühl, Stress,
    Zwicken, verworfene/umgesetzte Vorschläge. Stefans Antworten dort sind **seine Meldungen** (zählen z.B. für
    Kennzahl 6 Beschwerden) – nicht noch einmal abfragen, was dort schon steht.
+   **Aufgabenteilung:** Der Daily bewertet die Einzel-Einheit (Zeile **Qualität**: Intervall-Erfüllung, Abfall,
+   HF-Anstieg). Die Retro wertet diese Intervalle **nicht neu** aus, sondern nutzt die Qualität-Zeilen und
+   **Coach**-Fazits als Grundlage und schaut auf die Wochen-Kennzahlen und den Trend über die Woche
+   (z.B. SwSp Di 3/3 → Sa LIT mit erhöhter HF = Ermüdung trägt sich durch). Fehlt ein Check-in, die Einheit
+   wie bisher selbst prüfen.
 
 Leere Aktivitäten (alle Felder `null`) sind Strava-Hüllen → nicht als fehlende Einheit werten, Stefan fragen.
 
