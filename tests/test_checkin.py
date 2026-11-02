@@ -30,11 +30,15 @@ def test_ready_when_coros_confirmed_and_yesterday_done():
     assert ok
 
 
-def test_waits_for_coros_confirmation():
-    ok, reason = gate(TODAY, 8, COROS_UNCONFIRMED, "", PLAN_RUN, DONE)
+def test_unconfirmed_night_is_enough():
+    # Stefan, 2.11.: Daily um 8 – Nachschlafen ist die Ausnahme, das sagt er im Check-in
+    ok, _ = gate(TODAY, 8, COROS_UNCONFIRMED, "", PLAN_RUN, DONE)
+    assert ok
+
+
+def test_waits_for_coros_night():
+    ok, reason = gate(TODAY, 8, {}, "", PLAN_RUN, DONE)
     assert not ok and "COROS" in reason
-    ok, _ = gate(TODAY, 9, {}, "", PLAN_RUN, DONE)
-    assert not ok
 
 
 def test_waits_for_yesterdays_activity_sync():
@@ -53,7 +57,7 @@ def test_skips_when_already_done_today():
 
 
 def test_last_run_goes_ahead_with_notes():
-    ok, reason = gate(TODAY, 13, COROS_UNCONFIRMED, "", PLAN_RUN, NOT_DONE)
+    ok, reason = gate(TODAY, 13, {}, "", PLAN_RUN, NOT_DONE)
     assert ok
     assert "COROS" in reason and "fehlt" in reason
 

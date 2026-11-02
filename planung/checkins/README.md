@@ -1,7 +1,7 @@
 # Morgen-Check-ins
 
-Ein Eintrag pro Tag von der Routine „Morgen-Check-in“ (`checkin.py`, stündlich 8:20–13:20 Berlin,
-sobald COROS die Nacht bestätigt hat und die gestrige Einheit in intervals.icu ist).
+Ein Eintrag pro Tag von der Routine „Morgen-Check-in“ (`checkin.py`, stündlich 8:10–13:10 Berlin,
+sobald die COROS-Nacht da ist und die gestrige Einheit in intervals.icu ist).
 
 - **Datei = KW des bewerteten Tages** (gestern): der Montags-Check-in über den Sonntag steht noch in der
   Vorwochen-Datei, damit die Wochen-Retro ihn sieht.

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Daten und Startsignal für den täglichen Morgen-Check-in des Coaches.
 
-Die Routine „Morgen-Check-in“ läuft stündlich 8:20–13:20 (Berlin), 20 min nach dem COROS-Abruf.
+Die Routine „Morgen-Check-in“ läuft stündlich 8:10–13:10 (Berlin), 10 min nach dem COROS-Abruf.
 
   python3 checkin.py --gate   Exit 0, wenn der Check-in jetzt laufen soll, sonst 1 (Grund auf stdout)
   python3 checkin.py          Datenpaket für den Coach (gestern Soll/Ist, Nacht, Form, heute/morgen)
 
-Startsignal: COROS hat die heutige Nacht bestätigt, die gestrige Einheit ist bei intervals.icu
+Startsignal: die heutige COROS-Nacht ist da (Bestätigung durch einen zweiten Abruf wird nicht
+abgewartet – Nachschlafen nach 8 Uhr ist die Ausnahme, Stefan sagt es dann im Check-in), die gestrige Einheit ist bei intervals.icu
 angekommen und heute gab es noch keinen Check-in. Ab dem letzten Lauf (13 Uhr) geht es auch mit
 fehlenden Daten los – dann mit Hinweis, was fehlt.
 """
@@ -44,8 +45,9 @@ def gate(today: date, hour: int, coros_days: dict, log_text: str,
         return False, "Check-in heute bereits erledigt"
 
     missing = []
-    if not (coros_days.get(today.isoformat()) or {}).get("confirmed"):
-        missing.append("COROS-Nacht noch nicht bestätigt")
+    night = coros_days.get(today.isoformat()) or {}
+    if not (night.get("hrv") or night.get("asleep_min")):
+        missing.append("COROS-Nacht noch nicht da")
     is_training = (yday_plan.get("tss_plan", 0) > 0 or yday_plan.get("is_run")
                    or yday_plan.get("is_kraft"))
     if not yday_plan.get("rest") and is_training and not yday_matched.get("done"):
