@@ -25,7 +25,7 @@ def test_build_context_keys(mock_act, mock_well):
         "biometrics_pending",
         "fitness_chart",
         "ramprate", "ramprate_color",
-        "countdown_main", "countdown_secondary",
+        "countdown_mains", "countdown_secondary",
     ]
     for key in required_keys:
         assert key in ctx, f"Missing key: {key}"
@@ -918,13 +918,36 @@ def test_sick_notice_from_explicit_marker():
     assert "kw43.md" in notice
 
 
-def test_countdown_shows_etape_2027_as_main_event():
+def test_countdown_shows_next_two_events_side_by_side():
+    """Stefan, 3.11.2026: die beiden nächsten Events teilen sich den Header 50/50."""
     from generate import _build_countdown
-    cd = _build_countdown(date(2026, 10, 23))
-    assert cd["main"] is not None
-    assert cd["main"]["id"] == "etape2027"
-    assert cd["main"]["date_iso"] == "2027-07-11"
-    assert cd["main"]["days_until"] == 261
+    cd = _build_countdown(date(2026, 11, 3))
+    assert [e["id"] for e in cd["mains"]] == ["wfl2027", "etape2027"]
+    assert cd["mains"][1]["days_until"] == 250
+    assert cd["secondary"] == []
+
+
+def test_countdown_third_event_goes_to_secondary(monkeypatch):
+    import generate
+    extra = {"id": "x", "name": "X", "flag": "", "date": date(2027, 8, 30),
+             "detail": "", "kw": 35, "color": None}
+    monkeypatch.setattr(generate, "RACE_EVENTS", generate.RACE_EVENTS + [extra])
+    cd = generate._build_countdown(date(2026, 11, 3))
+    assert len(cd["mains"]) == 2
+    assert [e["id"] for e in cd["secondary"]] == ["x"]
+
+
+def test_countdown_renders_two_equal_main_cards():
+    from generate import _build_countdown
+    from jinja2 import Environment, FileSystemLoader
+    cd = _build_countdown(date(2026, 11, 3))
+    env = Environment(loader=FileSystemLoader("."))
+    src = env.loader.get_source(env, "dashboard.template.html")[0]
+    block = src[src.index("<!-- COUNTDOWN -->"):src.index("<!-- PHASE BAR -->")]
+    html = env.from_string(block).render(countdown_mains=cd["mains"], countdown_secondary=cd["secondary"])
+    assert html.count('class="countdown-card-main"') == 2
+    assert 'id="cd-wfl2027-days"' in html and 'id="cd-etape2027-days"' in html
+    assert "countdown-card-secondary" not in html
 
 
 def test_profile_path_scales_route_into_box():
@@ -938,13 +961,13 @@ def test_profile_path_scales_route_into_box():
 
 def test_countdown_main_carries_etape_profile_path():
     from generate import _build_countdown
-    cd = _build_countdown(date(2026, 10, 23))
-    assert cd["main"]["profile_path"].startswith("M0,")
+    etape = _build_countdown(date(2026, 11, 3))["mains"][1]
+    assert etape["profile_path"].startswith("M0,")
 
 
 def test_countdown_main_profile_line_is_open_ridge():
     from generate import _build_countdown
-    line = _build_countdown(date(2026, 10, 23))["main"]["profile_line"]
+    line = _build_countdown(date(2026, 11, 3))["mains"][1]["profile_line"]
     assert line.startswith("M0,")
     assert "Z" not in line
 

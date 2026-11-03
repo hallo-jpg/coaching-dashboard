@@ -111,7 +111,7 @@
   .countdown-row { display: flex; gap: 10px; margin-bottom: 22px; }
 
   .countdown-card-main {
-    flex: 1;
+    flex: 1 1 0; min-width: 0;
     padding: 18px 22px;
     display: flex; gap: 20px; align-items: center;
   }
@@ -441,31 +441,33 @@
 </div>
 
 <!-- COUNTDOWN -->
-{% if countdown_main %}
+{% if countdown_mains %}
 <div class="countdown-row">
 
+  {% for ev in countdown_mains %}
   <div class="countdown-card-main">
     <div class="cd-main-left">
-      <div class="cd-flag">{{ countdown_main.flag }}</div>
-      <div class="cd-race-name">{{ countdown_main.name }}</div>
-      <div style="font-size:0.72rem;color:#64748b;margin-top:6px">{{ countdown_main.detail }}</div>
-      {% if countdown_main.raceplan %}
-      <a class="cd-raceplan-btn" href="{{ countdown_main.raceplan }}">📋 Race Plan</a>
+      <div class="cd-flag">{{ ev.flag }}</div>
+      <div class="cd-race-name">{{ ev.name }}</div>
+      <div style="font-size:0.72rem;color:#64748b;margin-top:6px">{{ ev.detail }}</div>
+      {% if ev.raceplan %}
+      <a class="cd-raceplan-btn" href="{{ ev.raceplan }}">📋 Race Plan</a>
       {% endif %}
     </div>
-    {% if countdown_main.profile_path %}
+    {% if ev.profile_path %}
     <svg class="cd-profile" viewBox="0 0 240 48" preserveAspectRatio="none" aria-hidden="true">
-      <path d="{{ countdown_main.profile_path }}" fill="var(--brand-tint)"/>
-      <path d="{{ countdown_main.profile_line }}" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <path d="{{ ev.profile_path }}" fill="var(--brand-tint)"/>
+      <path d="{{ ev.profile_line }}" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
     </svg>
     {% endif %}
     <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-num" id="cd-main-days">{{ countdown_main.days_until }}</div>
-        <div class="cd-label">Tage <span id="cd-main-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
+        <div class="cd-num" id="cd-{{ ev.id }}-days">{{ ev.days_until }}</div>
+        <div class="cd-label">Tage <span id="cd-{{ ev.id }}-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
+  {% endfor %}
 
   {% for ev in countdown_secondary %}
   <div class="countdown-card-secondary">
@@ -1404,9 +1406,8 @@
       if (el) el.textContent = d;
       if (wk) wk.textContent = d > 6 ? '(' + Math.floor(d / 7) + ' Wo.)' : '';
     }
-    {% if countdown_main %}
-    setCountdown('cd-main-days', 'cd-main-weeks', '{{ countdown_main.date_iso }}');
-    {% for ev in countdown_secondary %}
+    {% if countdown_mains %}
+    {% for ev in countdown_mains + countdown_secondary %}
     setCountdown('cd-{{ ev.id }}-days', 'cd-{{ ev.id }}-weeks', '{{ ev.date_iso }}');
     {% endfor %}
     {% endif %}

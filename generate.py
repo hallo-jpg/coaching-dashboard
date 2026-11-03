@@ -1250,7 +1250,8 @@ def _profile_path(points, w: int = 240, h: int = 48) -> str:
 
 
 def _build_countdown(today: date) -> dict:
-    """Return {main, secondary[]} with only future events (date >= today), sorted by date."""
+    """Return {mains[], secondary[]} with only future events (date >= today), sorted by date.
+    Die zwei nächsten Events teilen sich den Header 50/50 (Stefan, 3.11.2026), weitere als schmale Kacheln."""
     future = []
     for ev in RACE_EVENTS:
         if ev.get("done"):
@@ -1267,9 +1268,7 @@ def _build_countdown(today: date) -> dict:
             e["date_iso"]    = ev["date"].isoformat()
             future.append(e)
     future.sort(key=lambda e: e["date"])
-    if not future:
-        return {"main": None, "secondary": []}
-    return {"main": future[0], "secondary": future[1:]}
+    return {"mains": future[:2], "secondary": future[2:]}
 
 
 MONTH_DE = ["", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
@@ -1498,7 +1497,7 @@ def build_context(kw: int, monday: date, sunday: date) -> dict:
         "ramprate":        ramprate,
         "ramprate_color":  ramprate_color,
         "ramprate_icon":   ramprate_icon,
-        "countdown_main":      _countdown["main"],
+        "countdown_mains":     _countdown["mains"],
         "countdown_secondary": _countdown["secondary"],
 
     }
