@@ -64,6 +64,7 @@ Saisonplan → `planung/periodisierung.md`
 | ~~Rosenheimer Radmarathon~~ ⚠️ | 2026-06-28 | nach 45,8km Unfall, abgebrochen | – |
 | ~~Karlsfelder Seelauf~~ ✅ | 2026-09-20 | 10km Lauf | **Ergebnis 1:05:08 / 6:31 pro km** |
 | 🏔️ **L'Étape du Tour de France 2027** – **A-Event 2027** | **2027-07-11** (So, KW27) | Rad-Marathon Alpen · Cluses → Les Saisies · **154 km / ~4.850 Hm** · 5 Anstiege: Colombière 15,9 km @ 7 % · Croix Fry 7,2 km @ 5,5 % · Forclaz de Queige 5,1 km @ 8,2 % · Col du Pré 12,6 km @ 7,8 % (+ Méraillet) · Montée de Bisanne 12,4 km @ 8,3 % (Bergankunft 1.650 m) | KW26 (ab 28.6.) · **angemeldet** (Stefan, 23.10.2026) |
+| 🏃 **Wings for Life World Run München** – B-Event Laufen | **2027-05-09** (So, KW18) | Lauf ohne feste Distanz · Catcher Car startet 30 min nach dem Start mit 14 km/h und wird schneller · Olympiapark (Start 2026: 13 Uhr, 2027 noch offen) · Prognose 15–16 km @ 6:05–6:15/km (Stand 3.11.2026) | Mini-Taper ab Mi KW18 (kein Rad-Taper, Étape-Aufbau läuft weiter) · **Anmeldung ab 4.11.2026, 11 Uhr** – Stefan meldet sich an |
 | ❓ Ötztaler Radmarathon 2027 | Ende August 2027 (Termin prüfen) | 227 km / ~5.500 Hm | **nur Verlosung** – gilt erst, wenn Stefan gezogen wird; dann als B-Event ~7 Wochen nach der Étape |
 
 **Hauptevent 2027 = Étape du Tour (11.7.2027).** Der Winter 26/27 läuft unverändert als Basis (FTP, CTL,

@@ -1207,6 +1207,15 @@ RACE_EVENTS = [
         "color":  "#d1450f",
     },
     {
+        "id":     "wfl2027",
+        "name":   "Wings for Life World Run",
+        "flag":   "🏃",
+        "date":   date(2027, 5, 9),
+        "detail": "So 9. Mai 2027 · KW18 · München · Catcher Car",
+        "kw":     18,
+        "color":  "#d1450f",
+    },
+    {
         "id":     "etape2027",
         "name":   "L'Étape du Tour",
         "flag":   "🏔️",

@@ -158,6 +158,7 @@ aber ~70 km kürzer.
 |---|---|---|
 | Winterbasis | KW40/26–KW09 | **läuft unverändert** – FTP +8–12 %, CTL 60–68, Laufaufbau. Alles davon zahlt auf die Étape ein |
 | Frühjahrsaufbau | KW10–17 | Rad-Schwerpunkt: SwSp → Schwelle, KA/Low-Cadence (lange Anstiege bei 60–70 rpm), lange WE-Fahrten 4–5 h, erste Outdoor-Höhenmeter |
+| 🏃 Wings for Life Run | **KW18** | So 9.5.2027 München · B-Event Laufen · Mini-Taper nur im Laufen, Rad-Aufbau läuft weiter · Voraussetzung: Longrun 16–18 km bis Mitte April |
 | Spezifik | KW18–24 | Schwellen-Intervalle 15–25 min (Anstiegsdauer), Back-to-back-Wochenenden, 1–2 lange Bergtage (5–6 h, 2.500+ Hm), Fueling 90 g/h im Training üben · optional Alpen-Trainingswochenende |
 | Peak/Taper | KW25–26 | letzte lange Einheit ~T-14, dann Taper (`modules/event.md`) |
 | 🏔️ Event | **KW27** | So 11.7.2027 |

@@ -1,6 +1,15 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 1. November 2026*
+*Letzte Aktualisierung: 3. November 2026*
+
+---
+
+## 3. November 2026 – Neues Event: Wings for Life World Run München (9.5.2027)
+
+**Stefan:** will sich für den Wings for Life Run in München anmelden – als Event vermerken, was ist realistisch, welche Pace?
+**Eingetragen:** So 9.5.2027 (KW18) als B-Event Laufen in `profil.md` (Event-Kalender), `generate.py` → `RACE_EVENTS`, CLAUDE.md, COACH_MEMORY Abschnitt 7, `langfristplan.md` (Saison 2027). Anmeldung öffnet 4.11.2026, 11 Uhr.
+**Prognose (Stand 3.11.):** Anker 10 km 1:05:08 (6:31). Gehen wir vom Winterziel sub-60 im März aus, plus 8 Wochen Frühjahr: 10 km ~57–59 min im Mai → Wings-Pace (Dauer ~1:35–1:45 h) ~6:05–6:15/km → **eingeholt bei ~15–16 km**. Konservativ (Laufaufbau stockt) 6:25 → ~14 km · ambitioniert (10 km ~57) ~5:55 → ~17,5 km. Catcher Car-Modell: Start nach 30 min mit 14 km/h, ab 1:30 Rennzeit 15 km/h (Staffel 2027 nicht offiziell bestätigt, ±0,5 km).
+**Konsequenz für den Plan:** Kein Eingriff in den Winter. Im Frühjahrsplan (ab KW10) braucht es einen Longrun von 16–18 km bis Mitte April; KW18 bekommt einen Mini-Taper nur im Laufen (Rad-Aufbau für die Étape läuft weiter). Prognose nach 5-km-Test KW01 und 10-km-Benchmark KW09 neu rechnen.
 
 ---
 
