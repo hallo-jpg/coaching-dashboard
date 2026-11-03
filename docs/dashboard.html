@@ -111,7 +111,7 @@
   .countdown-row { display: flex; gap: 10px; margin-bottom: 22px; }
 
   .countdown-card-main {
-    flex: 1;
+    flex: 1 1 0; min-width: 0;
     padding: 18px 22px;
     display: flex; gap: 20px; align-items: center;
   }
@@ -444,6 +444,7 @@
 
 <div class="countdown-row">
 
+  
   <div class="countdown-card-main">
     <div class="cd-main-left">
       <div class="cd-flag">🏃</div>
@@ -454,27 +455,34 @@
     
     <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-num" id="cd-main-days">187</div>
-        <div class="cd-label">Tage <span id="cd-main-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
+        <div class="cd-num" id="cd-wfl2027-days">187</div>
+        <div class="cd-label">Tage <span id="cd-wfl2027-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
-
   
-  <div class="countdown-card-secondary">
-    <div>
-      <div class="cd-sec-flag">🏔️</div>
-      <div class="cd-sec-name">L'Étape du Tour</div>
-      <div class="cd-sec-detail">So 11. Juli 2027 · KW27 · Cluses → Les Saisies · 154 km · 4.850 Hm</div>
+  <div class="countdown-card-main">
+    <div class="cd-main-left">
+      <div class="cd-flag">🏔️</div>
+      <div class="cd-race-name">L'Étape du Tour</div>
+      <div style="font-size:0.72rem;color:#64748b;margin-top:6px">So 11. Juli 2027 · KW27 · Cluses → Les Saisies · 154 km · 4.850 Hm</div>
       
     </div>
-    <div class="cd-sec-bottom">
+    
+    <svg class="cd-profile" viewBox="0 0 240 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,48 L0,36 L30.4,3.8 L48.3,21.6 L57.7,20.5 L68.6,7.8 L86.5,31.6 L98.2,27.7 L110.6,35.2 L124.7,38.4 L138.7,25.9 L148.1,34.4 L161.3,29.6 L182.3,0 L189.4,4.1 L208.8,28.6 L215.1,30 L233.8,0.7 L240,2.8 L240,48 Z" fill="var(--brand-tint)"/>
+      <path d="M0,36 L30.4,3.8 L48.3,21.6 L57.7,20.5 L68.6,7.8 L86.5,31.6 L98.2,27.7 L110.6,35.2 L124.7,38.4 L138.7,25.9 L148.1,34.4 L161.3,29.6 L182.3,0 L189.4,4.1 L208.8,28.6 L215.1,30 L233.8,0.7 L240,2.8" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    </svg>
+    
+    <div class="cd-main-right">
       <div class="cd-item">
-        <div class="cd-sec-num" id="cd-etape2027-days">250</div>
-        <div class="cd-sec-lbl">Tage <span id="cd-etape2027-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
+        <div class="cd-num" id="cd-etape2027-days">250</div>
+        <div class="cd-label">Tage <span id="cd-etape2027-weeks" style="font-size:0.7em;opacity:0.6;font-weight:400"></span></div>
       </div>
     </div>
   </div>
+  
+
   
 
 </div>
@@ -2170,7 +2178,8 @@
       if (wk) wk.textContent = d > 6 ? '(' + Math.floor(d / 7) + ' Wo.)' : '';
     }
     
-    setCountdown('cd-main-days', 'cd-main-weeks', '2027-05-09');
+    
+    setCountdown('cd-wfl2027-days', 'cd-wfl2027-weeks', '2027-05-09');
     
     setCountdown('cd-etape2027-days', 'cd-etape2027-weeks', '2027-07-11');
     
