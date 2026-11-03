@@ -8,7 +8,7 @@
 
 **Stefan:** will sich für den Wings for Life Run in München anmelden – als Event vermerken, was ist realistisch, welche Pace?
 **Eingetragen:** So 9.5.2027 (KW18) als B-Event Laufen in `profil.md` (Event-Kalender), `generate.py` → `RACE_EVENTS`, CLAUDE.md, COACH_MEMORY Abschnitt 7, `langfristplan.md` (Saison 2027). Anmeldung öffnet 4.11.2026, 11 Uhr.
-**Prognose (Stand 3.11.):** Anker 10 km 1:05:08 (6:31). Gehen wir vom Winterziel sub-60 im März aus, plus 8 Wochen Frühjahr: 10 km ~57–59 min im Mai → Wings-Pace (Dauer ~1:35–1:45 h) ~6:05–6:15/km → **eingeholt bei ~15–16 km**. Konservativ (Laufaufbau stockt) 6:25 → ~14 km · ambitioniert (10 km ~57) ~5:55 → ~17,5 km. Catcher Car-Modell: Start nach 30 min mit 14 km/h, ab 1:30 Rennzeit 15 km/h (Staffel 2027 nicht offiziell bestätigt, ±0,5 km).
+**Prognose (Stand 3.11., korrigiert am offiziellen Rechner):** Das Catcher Car fährt ab 0:30 mit 14 km/h und wird alle 30 min um 1 km/h schneller. Mein erstes Modell (15 km/h erst ab 1:30) war zu langsam und lag ~1 km zu optimistisch. Stefans Screenshot vom offiziellen Rechner (5:31/km → 20 km in 1:50:37) bestätigt das neue Modell exakt. Anker 10 km in 1:05:08. Ziel unter 60 Minuten im März, im Mai ~57–59 min → Wings-Pace (~1:30 h Dauer) ~6:05/km → **eingeholt bei ~15 km**. Spanne: 6:15 → 14,2 km · 6:10 → 14,7 · 6:05 → 15,3 · 6:00 → 15,8 · 5:55 → 16,4 · konservativ 6:25 → 13,2 km.
 **Konsequenz für den Plan:** Kein Eingriff in den Winter. Im Frühjahrsplan (ab KW10) braucht es einen Longrun von 16–18 km bis Mitte April; KW18 bekommt einen Mini-Taper nur im Laufen (Rad-Aufbau für die Étape läuft weiter). Prognose nach 5-km-Test KW01 und 10-km-Benchmark KW09 neu rechnen.
 
 ---
