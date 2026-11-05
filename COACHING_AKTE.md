@@ -1,6 +1,12 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 3. November 2026*
+*Letzte Aktualisierung: 5. November 2026*
+
+---
+
+## 5. November 2026 – Wings for Life: angemeldet ✅
+
+**Stefan:** Startplatz ist fix, angemeldet. Status in `profil.md`, CLAUDE.md und COACH_MEMORY nachgezogen. Ziel bleibt Halbmarathon (21,1 km = 5:26/km), Realitätscheck KW01 (5 km < 26:00) und KW09 (10 km < 55:00).
 
 ---
 
