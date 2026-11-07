@@ -1,7 +1,7 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 1. November 2026.*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 7. November 2026.*
 
 **Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
 zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
@@ -264,6 +264,17 @@ Nacht wurde eine völlig normale.
 Wachzeit vor 6:00 und abgesenkter HRV ist zuerst ein Verdacht auf eine unfertige Messung, nicht auf schlechte
 Erholung – nachfragen oder später erneut abrufen. Die Routine prüft das selbst: `--has-today` gibt Exit 0 erst,
 wenn zwei Abrufe identische Werte liefern (`confirmed` in `data/coros_wellness.json`), vorher wird weiter geholt.
+
+### 📐 Zeit-/Leistungsprognosen immer rechnen, nie pauschal übernehmen (7.11.2026)
+Die Étape-Fahrzeit stand mit „7–8,5 h, davon 3,5–4 h bergauf" im Langfristplan – eine pauschale
+Teilnehmer-Fahrzeit ohne Rechenweg. Aus Stefans Werten gerechnet verlangen 3,5–4 h für 4.850 Hm ~1.250 m/h
+≈ 390W Steigleistung; realistisch sind ~5:55 h bergauf und 8,5–9 h gesamt. Derselbe Fehlertyp wie beim ersten
+Wings-for-Life-Modell (3.11.) – Stefan hat beide bemerkt.
+**Anwenden:** Jede Zeit-, Pace- oder Höhenmeter-Prognose wird **aus Stefans Zahlen gerechnet** (FTP, Gewicht +
+~8 kg Systemgewicht, W/kg, Schwellenpace) und der **Rechenweg kommt mit in die Datei**, damit er nachprüfbar
+ist. Faustformel Rad: VAM ≈ 322,6 × Steigleistung ÷ Systemgewicht (88 % der Leistung gehen in die Höhe).
+Pauschalwerte aus Rennberichten, Veranstalterangaben oder „typische Finisher-Zeiten" sind Plausibilitätscheck,
+nie die Quelle. Keine Prognose ohne Rechenweg in einen Plan schreiben.
 
 ---
 

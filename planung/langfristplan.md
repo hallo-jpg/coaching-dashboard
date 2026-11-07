@@ -144,13 +144,38 @@ Quelle gegen sich selbst.
 
 ## Saison 2027: Étape du Tour (A-Event, 11.7.2027)
 
-*Eingetragen 23.10.2026 · Rahmen, kein Detailplan – der Frühjahrsplan entsteht nach KW09 mit Stefan.*
+*Eingetragen 23.10.2026 · Zeitschätzung + FTP-Zielwert korrigiert 7.11.2026 · Rahmen, kein Detailplan – der Frühjahrsplan entsteht nach KW09 mit Stefan.*
 
 **Anforderung:** 154 km, ~4.850 Hm, fünf Anstiege, davon drei lange (Colombière 15,9 km @ 7 % · Col du Pré
-12,6 km @ 7,8 % · Bisanne 12,4 km @ 8,3 % als Bergankunft). Grob geschätzt **7–8,5 h** Fahrzeit, davon
-**~3,5–4 h bergauf** bei 75–85 % FTP. Entscheidend sind damit **(1) Schwellenleistung pro kg**, **(2) Durability**
-– die Bisanne kommt nach ~6 h – und **(3) Fueling über 8 h** (Sektion 10). Profil ähnelt dem Ötztaler 2025, ist
-aber ~70 km kürzer.
+12,6 km @ 7,8 % · Bisanne 12,4 km @ 8,3 % als Bergankunft). Profil ähnelt dem Ötztaler 2025, ist aber ~70 km
+kürzer. Entscheidend sind **(1) Schwellenleistung pro kg**, **(2) Durability** – die Bisanne kommt nach ~6 h –
+und **(3) Fueling über 9 h** (Sektion 10).
+
+**FTP-Zielwert für den Renntag (7.11.2026):** **330W / ~3,6 W/kg** als Planwert. Korridor: konservativ
+315–320W (wenn 2–3 Wochen durch Infekt/Reise verloren gehen) · realistisch **325–335W** (Winterziel +8–12 %
+erreicht, Frühjahrsblock KW10–26 schärft) · gut gelaufen 340–345W (≤1 verlorene Woche). Über 345W ist 2027
+nicht realistisch (+15 % über Baseline in 9 Monaten bei 9–11 h/Woche). Die 300W der KW40-Baseline sind ein
+Formwert bei CTL 27 nach Unfall- und Infektjahr, nicht die Decke – historisch 317W (4iiii outdoor 4/2026),
+324W (2025). **Der KW09-Test entscheidet:** 325W+ → Juli-Ziel 335–340W · 310W → Étape mit ~320W und
+ruhigerer Pacing-Strategie planen.
+
+**Zeitprognose (korrigiert 7.11.2026, mit Rechenweg):**
+
+| Szenario | FTP / Gewicht | Steigleistung ~78 % FTP | VAM | 4.850 Hm bergauf | Gesamt inkl. Verpflegung |
+|---|---|---|---|---|---|
+| heute (11/2026) | 300W / 93 kg | ~234W | ~750 m/h | ~6:30 h | ~9,5–10 h |
+| realistisch | **330W / 92 kg** | ~257W | ~820 m/h | **~5:55 h** | **~8,5–9 h** |
+| gut gelaufen | 340W / 90 kg | ~265W | ~870 m/h | ~5:35 h | ~8–8,5 h |
+
+*Rechenweg:* VAM ≈ 322,6 × Steigleistung ÷ Systemgewicht (Fahrer + ~8 kg Rad/Flaschen; 88 % der Leistung
+gehen in die Höhe, der Rest in Roll-/Luftwiderstand). Restdistanz (~100 km flach/Abfahrt) mit ~30–35 km/h.
+**Größenordnung der Hebel:** +30W am Berg ≈ −35 min · −2 kg ≈ −10–15 min. Watt sind der größere Hebel,
+Gewicht der billigere (Gewicht bleibt Stefans Entscheidung, kein Coach-Ziel).
+
+⚠️ **Die ursprüngliche Schätzung „7–8,5 h, davon 3,5–4 h bergauf" war falsch** und ist ersetzt. 3,5–4 h für
+4.850 Hm verlangen ~1.250 m/h ≈ **390W Steigleistung** – das ist kein Wert, der aus Stefans Daten kommt. Die
+Zahl war eine pauschale Teilnehmer-Fahrzeit ohne Rechenweg (siehe `COACHING_AKTE.md`, 7.11.2026). Regel daraus
+in `COACH_MEMORY.md`, Abschnitt 5.
 
 **Rückwärtsrechnung (Richtwert):**
 

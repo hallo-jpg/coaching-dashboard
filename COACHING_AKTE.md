@@ -1,6 +1,17 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 5. November 2026*
+*Letzte Aktualisierung: 7. November 2026*
+
+---
+
+## 7. November 2026 – Étape: FTP-Zielwert 330W + Zeitschätzung korrigiert
+
+**Stefan:** „Was hältst Du für einen FTP für realistisch zum L'Étape Event?" – und nach dem Hinweis auf die zu optimistische Zeitschätzung: korrigieren, „wenn es so falsch ist, ist eh die Frage, woher das kam".
+**FTP-Einschätzung:** Planwert **330W / ~3,6 W/kg** zum 11.7.2027. Korridor 315–320W (konservativ, 2–3 verlorene Wochen) · 325–335W (realistisch, Winterziel +8–12 % erreicht) · 340–345W (gut gelaufen, ≤1 verlorene Woche). Über 345W nicht realistisch. Begründung: die 300W der KW40-Baseline sind ein Formwert bei CTL 27 nach Unfall-/Infektjahr, historisch standen 317W (4iiii outdoor 4/2026) und 324W (2025) – deshalb mehr Erwartung als die üblichen +3–5 %/Saison. Entscheidungspunkt ist der KW09-Test.
+**Woher die falsche Zeitschätzung kam:** Sie wurde am 23.10.2026 beim Eintragen des Events vom Coach als „grob geschätzt 7–8,5 h, davon ~3,5–4 h bergauf" in `langfristplan.md` geschrieben – **ohne Rechenweg und ohne Bezug zu Stefans Werten**, erkennbar eine pauschale Teilnehmer-Fahrzeit für die Étape. Im Akte-Eintrag vom 23.10. ist keine Herleitung dokumentiert, es gibt also keine Datenquelle, die verteidigt werden müsste. Gegenrechnung: 4.850 Hm in 3,5–4 h = ~1.250 m/h → bei 101 kg Systemgewicht ~390W Steigleistung. Nicht Stefans Bereich.
+**Korrigiert in `planung/langfristplan.md`** (Abschnitt Saison 2027): Szenario-Tabelle mit Rechenweg – heute 300W/93 kg → ~6:30 h bergauf, ~9,5–10 h gesamt · realistisch 330W/92 kg → ~5:55 h bergauf, **~8,5–9 h gesamt** · gut gelaufen 340W/90 kg → ~5:35 h bergauf, ~8–8,5 h gesamt. Formel VAM ≈ 322,6 × Steigleistung ÷ Systemgewicht. Hebel: +30W ≈ −35 min, −2 kg ≈ −10–15 min. Fueling-Hinweis von „über 8 h" auf „über 9 h" angepasst.
+**Regel daraus** in `COACH_MEMORY.md` Abschnitt 5: Prognosen immer aus Stefans Zahlen rechnen und den Rechenweg mit in die Datei schreiben; Pauschalwerte sind Plausibilitätscheck, nie Quelle. Zweiter Fall dieses Fehlertyps nach dem Wings-for-Life-Modell (3.11.).
+**Nicht geändert:** Winterplan und `periodisierung.md` bleiben unberührt – der FTP-Zielwert ist ein Rahmenwert für den Frühjahrsplan nach KW09.
 
 ---
 
