@@ -944,7 +944,7 @@
    "stress_avg": 30,
    "sleep_hr_avg": 55,
    "sleep_hr_min": 48,
-   "fetched": "2026-11-06T09:03:00+00:00",
+   "fetched": "2026-11-07T07:02:42+00:00",
    "hrv_early": 42,
    "hrv_late": 57,
    "confirmed": true
@@ -967,15 +967,42 @@
    "hrv_high": 54,
    "hrv_baseline": 50,
    "rhr": 56,
-   "steps": 44,
-   "stress_avg": 16,
+   "steps": 9185,
+   "stress_avg": 33,
    "sleep_hr_avg": 58,
    "sleep_hr_min": 51,
-   "fetched": "2026-11-06T09:03:00+00:00",
-   "hrv_early": 34,
+   "fetched": "2026-11-07T07:02:42+00:00",
+   "hrv_early": 33,
    "hrv_late": 50,
-   "confirmed": true
+   "confirmed": false
+  },
+  "2026-11-07": {
+   "score": 90,
+   "asleep_min": 493,
+   "in_bed_min": 504,
+   "deep_pct": 26,
+   "light_pct": 50,
+   "rem_pct": 22,
+   "awake_min": 11,
+   "awake_count": 0,
+   "bed": "2026-11-06T22:17",
+   "wake": "2026-11-07T06:41",
+   "nap_min": 0,
+   "hrv": 54,
+   "hrv_status": "Normal",
+   "hrv_low": 46,
+   "hrv_high": 54,
+   "hrv_baseline": 50,
+   "rhr": 55,
+   "steps": 0,
+   "stress_avg": 14,
+   "sleep_hr_avg": 55,
+   "sleep_hr_min": 43,
+   "fetched": "2026-11-07T07:02:42+00:00",
+   "hrv_early": 48,
+   "hrv_late": 57,
+   "confirmed": false
   }
  },
- "updated": "2026-11-06T09:03:00+00:00"
+ "updated": "2026-11-07T07:02:42+00:00"
 }
