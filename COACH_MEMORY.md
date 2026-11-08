@@ -44,6 +44,9 @@ HF-Obergrenzen in Rennplänen nie unter 185.
   deren Z3 · unser Z3 Schwelle = deren Z4+Z5a · unser Z4 VO2max = deren Z5b+Z5c.
 - **HF-Zonen dort (LTHR 185):** Z1 ≤156 · Z2 157–165 · Z3 166–174 · Z4 175–184 · Z5 185–189 · Z6 190–195 · Z7 196–205.
 
+### Lauf-Schwellenpace: beobachten statt sofort neu setzen (Stefan, 8.11.2026)
+Schwelle-Intervalle am 6.11. liefen 6:10–6:20 @ HF 175–177, RPE 5–6 – Stefan hält 6:28 für zu niedrig. Entscheidung: 6:28/LTHR 185 vorerst behalten, KW46–48 die Schwellenläufe beobachten (Pace/HF/RPE je Intervall); bleibt es zu leicht, **leicht nach oben** korrigieren, bis der echte Test (5 km KW01/27) die Werte setzt. Start der Intervalle trotzdem nicht schneller als Plan.
+
 ### Rennpace nie aus einem Intervalllauf mit Confoundern ableiten
 Vor dem Seelauf leitete der Coach aus 3×7min (mit Trabpausen, ACWR 1,7, TSB −15, 2 Tage nach 5,5h Rad) 6:50/km
 ab. Stefan lief 6:31 – der Coach lag 20 sek/km daneben.
