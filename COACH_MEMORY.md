@@ -309,15 +309,30 @@ nie die Quelle. Keine Prognose ohne Rechenweg in einen Plan schreiben.
 Stefan fährt seit Jahren alle strukturierten Formate in ERG, **30/30er inklusive**. Keine Sonderregeln für
 Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahren + Spindown (Flux).
 
-### ⛽ Fueling immer nach der echten Dauer der Einheit wählen, nicht nach ihrem Namen (Stefan, 8.11.2026)
-Für die SwSp 4×15 in KW46 (1h45) stand erst 45g/h im Plan. Fehler: aus `coaching_science.md` 10.3 wurde die
-Zeile „SwSp / MIT 60–90min" genommen (50–70g/h) und dann noch das Flaschenprotokoll „SwSp / MIT" (~45g/h)
-daruntergelegt – die Einheit gehört aber in „SwSp / MIT lang >90min" = **70–90g/h, 2:1 Malto:Fructose**.
-Stefan hat es sofort als zu wenig erkannt.
-**Anwenden:** Vor jeder Fueling-Angabe die **geplante Gesamtdauer** gegen die Dauerspalte der Tabelle 10.3
-legen, nicht gegen den Workout-Typ. Danach die passende Zeile aus 10.4 wählen, nicht die mit demselben Namen.
+### ⛽ Fueling: Intensität wählt die Zeile, Dauer wählt die Spalte (Stefan, 8.11.2026)
+Für die SwSp 4×15 in KW46 (1h45) stand erst 45g/h im Plan – zu niedrig. Fehler war die Dauer: aus
+`coaching_science.md` 10.3 wurde „SwSp / MIT 60–90min" genommen, richtig ist „SwSp / MIT **lang** >90min"
+= **70–90g/h, 2:1 Malto:Fructose**. Stefan hat das sofort erkannt – und danach zu Recht ergänzt, dass es
+**nicht nur nach Zeit** gehen kann. Beide Achsen zählen, und die erste Fassung dieser Regel („immer nach der
+echten Dauer") war einseitig.
+**Anwenden – zwei Achsen, in dieser Reihenfolge:**
+1. **Intensität** bestimmt die Zeilengruppe (LIT · KA · SwSp/MIT · HIT/VO2max · Rennen) und damit die
+   **Verbrennungsrate pro Stunde**. Höhere Intensität = höherer Kohlenhydratanteil und mehr Gramm pro Stunde.
+2. **Dauer** bestimmt innerhalb der Gruppe die Zeile und damit, **ob exogene Zufuhr überhaupt zählt**.
+   Unter ~90min reicht das Glykogen, darüber entscheidet die Zufuhr über die letzten Intervalle.
+Deshalb kommen gleiche g/h-Werte aus völlig verschiedenen Richtungen (LIT >180min und SwSp 60–90min stehen
+beide bei 50–70g/h) und gleiche Gesamtmengen aus verschiedenen Raten – KW46: Di 75g/h × 1,75h ≈ 130g,
+Sa 45g/h × 2,75h ≈ 125g.
+**Rechenweg zum Gegenprüfen** (Stefans Zahlen, nicht Pauschalwerte): Arbeit in kJ = Ø Watt × Sekunden ÷ 1000 ·
+metabolische Energie ≈ kJ ÷ 0,23 · KH-Anteil ≈ 70–80 % bei IF ≥ 0,78, ~45–55 % bei IF ≤ 0,62 ·
+Gramm KH = kcal × 0,24. Di KW46: 227W × 6300s = 1.430 kJ → ~1.490 kcal → ~75 % KH → **~280g Bedarf**, davon
+130g von außen. Sa KW46: 180W × 9900s = 1.782 kJ → ~1.850 kcal → ~48 % KH → ~220g Bedarf, davon 125g von außen.
+Die Rate folgt dem Bedarf **pro Stunde** (Di ~160 g/h Verbrennung, Sa ~80 g/h), die Zufuhr deckt davon
+grob die Hälfte – den Rest trägt das Glykogen.
+**Ausnahme KA:** trotz ~91 % FTP bewusst nur 40–60g/h. Das ist eine Adaptationsentscheidung (AMPK-Reiz bei
+niedrigem Glykogen, Burke 2011), kein Bedarfswert – die Tabelle mischt an dieser Stelle Absicht und Bedarf.
 Ab 75g/h gehört eine zusätzliche Flasche reines Wasser in die Note. Stefans Darm trägt bis 110g/h (Sommer 2025),
-nach oben ist also Luft – zu niedrig zu fuelen ist bei ihm der wahrscheinlichere Fehler.
+nach oben ist Luft – **zu niedrig zu fuelen ist bei ihm der wahrscheinlichere Fehler.**
 
 ### 🚴 LIT-Vorgabe auf der Rolle = 60% FTP / 180W (Stefan, 1.11.2026)
 Die `.zwo`-Bibliothek gibt LIT mit **55% = 165W** vor, Stefan fährt faktisch **176–186W** (3.10. 177 · 11.10. 181 ·

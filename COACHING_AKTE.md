@@ -11,7 +11,9 @@
 **Korrigiert:** **75g/h → ~130g gesamt**, 2:1 Malto:Fructose, Salz ~2g – 2 Flaschen à 500ml mit je 45g Malto + 22g Fructose + 1g Salz, plus dritte Flasche reines Wasser (Regel ab 75g/h aus 10.2). Stefans Darm trägt 110g/h (Sommer 2025), die Menge ist unkritisch.
 **Sa unverändert:** LIT 2h45 = 165min fällt in „LIT lang" (90–180min, 30–50g/h), 45g/h ist dort die obere Kante und bleibt.
 **Umsetzung:** Die Note liess sich per API nicht ändern (HTTP 403 auf PUT), daher Di-Workout + Note gelöscht (153145781, 153145788) und neu angelegt: **153454098** (Workout, Load unverändert 113, `4x`-Block per API verifiziert) + **153454100** (⛽-Note).
-**Regel daraus** in `COACH_MEMORY.md` Abschnitt 6: Fueling immer gegen die geplante **Gesamtdauer** der Einheit legen, nicht gegen den Workout-Typ; bei Stefan ist zu niedrig der wahrscheinlichere Fehler.
+**Regel daraus** in `COACH_MEMORY.md` Abschnitt 6 – erste Fassung war einseitig: „immer gegen die Gesamtdauer legen". **Stefans Nachfrage:** „Aber das sollte ja auch nach Intensität gehen, nicht nur nach Zeit oder nicht!?" – richtig. Regel neu gefasst als **zwei Achsen**: Intensität wählt die Zeilengruppe (= Verbrennungsrate pro Stunde), Dauer wählt die Zeile darin (= ob exogene Zufuhr überhaupt zählt). Mein Fehler lag auf der Dauer-Achse, die Regel durfte deshalb aber nicht die Intensitäts-Achse verschlucken.
+**Gegenrechnung aus Stefans Zahlen (neu im Memory als Rechenweg):** Di 227W × 6300s = 1.430 kJ → ~1.490 kcal → ~75 % KH = **~280g Bedarf** (~160 g/h Verbrennung), 130g von außen. Sa 180W × 9900s = 1.782 kJ → ~1.850 kcal → ~48 % KH = ~220g Bedarf (~80 g/h), 125g von außen. Gleiche Gesamtmenge, halbe Rate – genau der Punkt, den Stefan gemacht hat. Beide Vorgaben bleiben damit unverändert richtig.
+Ebenfalls notiert: **KA ist die Ausnahme** – 40–60g/h trotz 91 % FTP ist eine Adaptationsentscheidung (AMPK bei niedrigem Glykogen), kein Bedarfswert; Tabelle 10.3 mischt dort Absicht und Bedarf.
 
 ---
 
