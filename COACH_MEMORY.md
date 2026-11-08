@@ -1,7 +1,7 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 7. November 2026.*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 8. November 2026.*
 
 **Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
 zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
@@ -108,9 +108,12 @@ ausgeheilt.
   was im Wettkampf stehen soll. Daher **165–170 im Training**, damit im Wettkampf ~160 steht.
 - **Werkzeug (Stefan, 24.9.2026): nach Gefühl** – schneller laufen, bewusst kurze Schritte, hohe Frequenz.
   Kein Metronom, keine Musik, kein Kadenzalarm vorschreiben. Pläne nennen nur die Zielzahl.
+- **Stand KW45 (8.11.2026): Ø 170 spm auf den Easy-Läufen erreicht** (169–171 über drei Läufe, bei 7:08–7:16/km
+  und HF 158–164). Damit ist der Arbeitsbereich 165–170 ausgereizt.
 - **Anwenden:** In jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Nicht höher als 170
-  ansetzen (Zielwert wurde schon zweimal falsch kalibriert). Wenn 165 nach 10min verkrampft wirkt → lieber
-  konsequent 160 als verkrampft 170. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere
+  ansetzen (Zielwert wurde schon zweimal falsch kalibriert) – **ab KW46 geht es um Stabilität über längere
+  Dauer** (170 über 48min im Longrun halten), nicht um eine höhere Zahl. Wenn 165 nach 10min verkrampft wirkt
+  → lieber konsequent 160 als verkrampft 170. Im Wettkampf kein Zahlenjagen, aber ein Cue alle 2–3 km („kürzere
   Schritte, Fuß unter den Körper"). Umstellung braucht 6–8 Wochen – wichtigstes Laufprojekt Herbst 2026.
 
 ### 🦵 „Langsames Laufen ist orthopädisch teuer" – Stefan hat recht
@@ -172,6 +175,15 @@ intervals.icu bewertet dieselbe Woche ~20% höher als die rTSS-Schätzungen im S
 **Anwenden:** Rampe immer gegen die **ICU-Load der Vorwoche** rechnen (+10–15%), nicht gegen den Ziel-TSS im
 Saisonplan. Stubs und Folgewochen beim Planen auf dieselbe Skala ziehen. Der Saisonplan ist seit 14.10. auf ICU-Skala umgestellt. Richtwerte Lauf: 35min ~38 · 40min ~43 ·
 40min + Steigerungen ~45 · 45min ~49 · 50min ~54. Rad: SwSp 3×10/90min 81 · LIT 2h15 81 (~0,6 TSS/min).
+
+### 🏃 Bindet die km-Grenze, hat der Longrun Vorrang vor einem vierten Lauf (8.11.2026)
+Im Laufaufbau kollidieren regelmäßig zwei Ziele: 4 Läufe nach Standardwoche (inkl. Mi Easy + Steigerungen) und
+ein wachsender Longrun. Bei einer Wochengrenze von 17 km gehen beide nicht – 4 Läufe bedeuten Ø 4,3 km und
+einen Longrun, der nicht wächst.
+**Anwenden:** Solange die Wochen-km-Grenze bindet (Basis < ~25 km), hat die Reihenfolge Vorrang: 1. Lauf-Qualität
+(Kern) · 2. wachsender Longrun · 3. Easy-Lauf · 4. Steigerungen/vierter Lauf. Steigerungen werden dann durch ein
+briskes, progressives Longrun-Ende ersetzt – gleicher Reiz, keine zusätzlichen Kilometer. Das im Plan **benennen**,
+sonst sieht es aus wie vergessen (Steigerungen waren am 1.11. für KW46 angekündigt und entfielen am 8.11. genau so).
 
 ### 🔬 Tests nur am Wochenende (Stefan, 1.10.2026)
 Der KW40-Test am Donnerstag nach der Arbeit: 3min gut (441W), die 10min nach 2min abgebrochen – „mental zu

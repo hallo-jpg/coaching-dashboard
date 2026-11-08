@@ -1,6 +1,19 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 7. November 2026*
+*Letzte Aktualisierung: 8. November 2026*
+
+---
+
+## 8. November 2026 – KW45 Retro 🟢 + KW46 geplant (Block 1 Schwelle Woche 2)
+
+**KW45 Retro:** 🟢 Kern 3/3 · Lauf 14,1 km (genau an der Grenze) · längster 5,7 km · **Kadenz Easy 170** (Ziel 167) · Kraft 2/2 · keine Beschwerden. TSS 333/338, Polarisation Rad+Lauf LIT 82% / Grauzone 11% / HIT 7%. Erste Belastungswoche nach der Entlastung komplett durchgezogen, alle sieben Einheiten absolviert. Kadenz-Arbeitsziel 165–170 damit erreicht, nicht nur angetastet. Di SwSp 3/3 im Korridor (274/274/275W, RPE 7, HF-Drift +3 bpm) → Reserve vorhanden. LIT-Korrektur auf 180W bestätigt: Soll 90, real 88. Einziger Makel: Fr Schwelle 0/3 im Zielkorridor (6:10–6:20 statt 6:30–6:45) bei HF 175–177 und RPE 5–6 → die Vorgabe war zu langsam, nicht der Lauf zu hart.
+**KW46 geplant:** Mo Easy 30min Kadenz 170 + Kraft A (ohne Beine) · Di 🎯 SwSp 4×15min 270W (1h45, `workout_steps` + `reps: 4`, per API verifiziert) · Mi Kraft B komplett · Do Ruhetag · Fr 🎯 Lauf-Schwelle 3×8min 6:25–6:40 · Sa 🎯 LIT 2h45 180W · So Longrun 48min progressiv. **ICU-Soll 382 = +15% ggü. KW45 (333)**, Saisonplan-Ziel 370 – obere Kante der Rampe, bewusst gewählt, weil die Vorwoche ohne Ausfall und mit Reserve lief.
+**Entscheidungen:** (1) **Progression nur über Dauer, nicht über Intensität** – Rad 4×15 statt schnellere Watt, Lauf 3×8min statt schnellere Intervalle. Das ist die Antwort auf die Reserve aus KW45. (2) **Longrun startet** (So, 48min / 6,5 km, letzte 16min progressiv). Bis KW45 war der längste Lauf 6,7 km vom 23.10. – ab jetzt wächst er wöchentlich. (3) **Keine Steigerungen**, obwohl am 1.11. für KW46 angekündigt: das Lauf-Budget (Grenze 17,1 km) lässt bei wachsendem Longrun nur 3 Läufe zu, und das briske Longrun-Ende übernimmt die Rolle ohne zusätzliche km. (4) **Kadenz-Ziel bleibt 170** und wird nicht weiter angehoben (Obergrenze des Arbeitsbereichs, COACH_MEMORY) – ab jetzt Stabilität über längere Dauer statt höhere Zahl. (5) Rad:Lauf landet bei 69:31 statt 65:35, weil die km-Grenze bindet; löst sich ab KW47 mit dem Longrun von selbst.
+**Schwellenpace-Beobachtung (Stefans Variante vom 8.11.):** 6:28 / LTHR 185 bleiben. Fr ist Beobachtung 1 von 3 und als Entscheidungsexperiment gebaut: erstes Intervall bei 6:38 starten, erst bei HF < 178 nach 4min in Intervall 2+3 auf 6:25; Pace/HF/RPE je Intervall notieren. Entscheidung nach KW48, endgültig gesetzt vom 5-km-Test KW01/27. Regel in COACH_MEMORY, Abschnitt 1.
+**Gewicht:** 93,2 kg (Ø 30d, 16 Messungen) vs. 93,6 im Profil → 0,4 kg, unter der 0,5-kg-Schwelle, kein Update.
+**Checks:** kein Deload-Signal (TSB −9,1 · ACWR 1,28 · HRV 7d-Ø 49,7 im Normalbereich 46–54) · keine Test-Ankündigung (nächster Test 5km + FTP #2 in KW01/27, 62 Tage) · keine Power-/Lauf-PRs.
+**KW49-Stub** angelegt (Block 2 VO2max Woche 1, ~420 TSS).
+**Angelegte Events:** 153145630 (Mo Lauf) · 153145730 (Mo Kraft A) · 153145781 (Di SwSp) + 153145788 (⛽) · 153145946 (Mi Kraft B) · 153146031 (Fr Schwelle) · 153146085 (Sa LIT) + 153146087 (⛽) · 153146153 (So Longrun). Alle über `workout_steps`, Struktur per `get_planned_events` gegengeprüft – keine Description-Route, kein „einmal öffnen" nötig.
 
 ---
 
