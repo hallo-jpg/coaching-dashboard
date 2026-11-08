@@ -333,6 +333,15 @@ grob die Hälfte – den Rest trägt das Glykogen.
 niedrigem Glykogen, Burke 2011), kein Bedarfswert – die Tabelle mischt an dieser Stelle Absicht und Bedarf.
 Ab 75g/h gehört eine zusätzliche Flasche reines Wasser in die Note. Stefans Darm trägt bis 110g/h (Sommer 2025),
 nach oben ist Luft – **zu niedrig zu fuelen ist bei ihm der wahrscheinlichere Fehler.**
+**Maschinell abgesichert (8.11.2026, Stefans Wunsch):** `validate_plans.py` ruft `fueling_check.py` auf und
+**blockiert den Commit (Exit 1)**, wenn eine ⛽-Angabe nicht zu Dauer + Intensität des geplanten ICU-Workouts
+passt, ⛽ an einem Lauftag steht, ab 75g/h kein „Wasser" in Notiz oder ⛽-Note steht, oder an dem Tag kein
+Rad-Workout geplant ist. **Format in der Notiz-Spalte:** `⛽ 75g/h → ~130g` – ohne `⛽ <Zahl>g/h` sieht der
+Check nichts. **Bewusste Abweichung** (z.B. nüchtern über 90min): Begründung in Klammern **direkt** hinter
+g/h – `⛽ 0g/h (nüchtern, FatMax)`. Eine Klammer weiter hinten (`→ ~130g (2:1 Malto:Fructose)`) zählt nicht.
+Gruppe kommt aus dem Workout-**Namen** (LIT/Grundlage · KA · SwSp/MIT/Schwelle · HIT/VO2 · Rennen) – Rad-Workouts
+deshalb immer mit einem dieser Kürzel benennen, sonst Befund „Gruppe nicht erkennbar". Ohne intervals.icu
+(offline, Key fehlt) wird übersprungen, nicht blockiert – dann steht ein `[HINWEIS]` in der Ausgabe.
 
 ### 🚴 LIT-Vorgabe auf der Rolle = 60% FTP / 180W (Stefan, 1.11.2026)
 Die `.zwo`-Bibliothek gibt LIT mit **55% = 165W** vor, Stefan fährt faktisch **176–186W** (3.10. 177 · 11.10. 181 ·

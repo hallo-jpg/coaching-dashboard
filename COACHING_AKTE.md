@@ -4,6 +4,17 @@
 
 ---
 
+## 8. November 2026 – Fueling-Check in validate_plans.py
+
+**Stefan:** „Und wie willst du sicherstellen, dass das nicht noch einmal vorkommt?" – nach dem 45g/h-Fehler und der danach einseitig formulierten Regel.
+**Ehrliche Antwort:** Ein Memory-Eintrag allein reicht nicht – derselbe Fehlertyp (Prognose ohne Rechenweg) kam am 7.11. vier Tage nach der Regel vom 3.11. wieder. Was nachweislich funktioniert hat, ist `validate_plans.py`: seit es läuft, ist der Parser-Fehler nicht wiedergekommen. Deshalb zwei Antworten für zwei Fehlerarten: **falsche Zahl → maschinell prüfen**, **falsche Begründung → Rechenweg im Output zeigen** (nicht maschinell prüfbar).
+**Gebaut (mit Stefans Okay, Superpowers: brainstorming → TDD → Verifikation):** `fueling_check.py`, von `validate_plans.py` aufgerufen. Prüft je Tag mit ⛽ gegen das geplante ICU-Workout: Band aus `coaching_science.md` 10.3 (Gruppe aus dem Namen, Zeile aus `moving_time`), Name ↔ IF, ⛽ an Lauftagen, Wasserflasche ab 75g/h (auch in der ⛽-Note), kein Workout am Tag. **Blockiert mit Exit 1** (Stefans Wahl), bewusste Abweichungen über eine Begründung in Klammern direkt hinter g/h. Offline → Hinweis, kein Block.
+**Belege:** 31 neue Tests (Suite 158 → 189, alle grün) · 16 Mutationen am Code, alle von Tests gefangen · **live:** echter KW46-Plan grün; Di zurück auf 45g/h gesetzt → `[FEHLER] Fueling Di: 45g/h außerhalb 70–90g/h (swsp, 105min)`, Exit 1 · ohne API-Key → `[HINWEIS]`, Exit 0.
+**Unterwegs gefunden:** (1) Die erste Mutationsprobe war selbst fehlerhaft – Pythons Bytecode-Cache hat bei gleich langen Mutationen in derselben Sekunde den Code der vorherigen Mutation ausgeführt; mit `-B` wiederholt, sechs echte Lücken gefunden und mit Tests geschlossen. (2) Im Design stand „45g/h bei KA ohne Begründung → Befund" – falsch, 40–60g/h ist das KA-Band selbst. Test bildet die Tabelle ab.
+**Nebenbei:** lokaler Branch `claude/friendly-maxwell-8r2w3f` gelöscht, Session arbeitet auf `main`. Ursache der Hook-Meldungen war ein beim Sessionstart angelegter und dann stehengebliebener Remote-Branch gleichen Namens (meine frühere Aussage, es gebe ihn nicht, war falsch). Er und ~20 weitere alte `claude/*`-Branches liegen noch auf GitHub – nicht gelöscht, nicht verlangt.
+
+---
+
 ## 8. November 2026 – KW46 Di: Fueling auf 75g/h korrigiert
 
 **Stefan:** „Dienstag wirklich 45g/h? Erscheint mir wenig eigentlich" – zu Recht.

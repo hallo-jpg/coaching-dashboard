@@ -94,7 +94,7 @@ Das Coaching-Dashboard wird **automatisch** aus intervals.icu-Daten generiert �
 
 - **Dashboard-Features und -Anpassungen immer mit den Superpowers-Skills** (Stefan, 14.10.2026): vor dem Bauen `superpowers:brainstorming` (erst fragen, dann bauen – nichts ersetzen oder entfernen ohne Stefans Okay), dann testgetrieben (`superpowers:test-driven-development`) und vor „fertig“ `superpowers:verification-before-completion`. Unsicher, ob es ein Dashboard-Thema ist (z.B. reine Plan-/Coaching-Frage) → kurz fragen, ob Superpowers genutzt werden soll.
 
-- **Vor jedem Commit an `planung/kw*.md`: `python3 validate_plans.py` ausführen.** Prüft alle Wochenpläne gegen den echten Dashboard-Parser. Tag-Spalte muss exakt `Mo`/`Di`/… sein – **kein Datum** (`Mo 7.9.` bricht den Parser lautlos, das Dashboard bleibt dann leer). Pflichtformat: 6 Spalten + `**Total**`-Zeile.
+- **Vor jedem Commit an `planung/kw*.md`: `python3 validate_plans.py` ausführen.** Prüft alle Wochenpläne gegen den echten Dashboard-Parser **und die ⛽-Angaben gegen Dauer + Intensität der geplanten intervals.icu-Workouts** (`fueling_check.py`, Format und Begründungs-Syntax: `COACH_MEMORY.md` Abschnitt 6). Tag-Spalte muss exakt `Mo`/`Di`/… sein – **kein Datum** (`Mo 7.9.` bricht den Parser lautlos, das Dashboard bleibt dann leer). Pflichtformat: 6 Spalten + `**Total**`-Zeile.
 
 - Alle Workouts laufen auf **%FTP** → .zwo Dateien skalieren automatisch
 - **FTP-Update** nur nach formalem Test (3+10min, **Tarmac mit XCadey auf der Rolle, kein ERG**, DURA + Tacx-App parallel). **Tests nur am Wochenende** (Stefan, 1.10.2026). FTP 300W seit dem Baseline-Test 1.10. (XCadey). Indoor-Training = Tacx-Leistung (Aeroad ohne PM) → Offset-Faktor ≈ 1,0, Tacx-Watt = XCadey-Watt.

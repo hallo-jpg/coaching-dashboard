@@ -2,8 +2,9 @@
 """Prueft planung/kw*.md und planung/periodisierung.md gegen die echten Parser.
 
 Nutzt parse_kw_plan() und parse_periodisierung() aus generate.py, damit die
-Pruefung nicht vom Parser abdriften kann. Exit 1 wenn eine Datei leer geparst
-wird – bei der Periodisierung faellt das sonst erst auf, wenn die Saisonleiste
+Pruefung nicht vom Parser abdriften kann. Dazu der Fueling-Check (fueling_check.py):
+⛽-Angaben gegen Dauer + Intensitaet des geplanten intervals.icu-Workouts. Exit 1 wenn eine
+Datei leer geparst wird oder eine ⛽-Angabe nicht passt – bei der Periodisierung faellt das sonst erst auf, wenn die Saisonleiste
 im Dashboard "offen" zeigt.
 
     python3 validate_plans.py
@@ -11,7 +12,10 @@ im Dashboard "offen" zeigt.
 import importlib.util
 import re
 import sys
+from datetime import date
 from pathlib import Path
+
+import fueling_check
 
 
 def load_generator():
@@ -23,6 +27,22 @@ def load_generator():
     except SystemExit:
         pass
     return mod
+
+
+def fueling_problems(files, fetch, today):
+    """⛽-Angaben gegen die geplanten intervals.icu-Workouts pruefen (fueling_check.py).
+
+    Liefert (probleme, hinweise): probleme blockieren wie Parser-Fehler, hinweise
+    (intervals.icu nicht erreichbar) werden nur angezeigt.
+    """
+    probleme, hinweise = [], []
+    for path in files:
+        kw = int(re.search(r"kw(\d+)", path.name).group(1))
+        befunde, skip = fueling_check.check_plan(path.read_text(encoding="utf-8"), kw, fetch, today)
+        probleme += [(path.name, f"Fueling {b}") for b in befunde]
+        if skip:
+            hinweise.append(f"{path.name}: {skip}")
+    return probleme, hinweise
 
 
 def check_periodisierung(gen) -> list[tuple[str, str]]:
@@ -87,6 +107,13 @@ def main() -> int:
             problems.append((path.name, i))
 
     problems += problems_peri
+
+    fuel_problems, fuel_hinweise = fueling_problems(files, fueling_check.fetch_events, date.today())
+    for name, issue in fuel_problems:
+        print(f"[FEHLER] {name:12s} -> {issue}")
+    for h in fuel_hinweise:
+        print(f"[HINWEIS] {h}")
+    problems += fuel_problems
 
     print()
     if problems:
