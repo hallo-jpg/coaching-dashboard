@@ -309,6 +309,16 @@ nie die Quelle. Keine Prognose ohne Rechenweg in einen Plan schreiben.
 Stefan fährt seit Jahren alle strukturierten Formate in ERG, **30/30er inklusive**. Keine Sonderregeln für
 Indoor-Formate. KA bei 55 rpm geht in ERG. Vor Indoor-Qualität: 10min warmfahren + Spindown (Flux).
 
+### ⛽ Fueling immer nach der echten Dauer der Einheit wählen, nicht nach ihrem Namen (Stefan, 8.11.2026)
+Für die SwSp 4×15 in KW46 (1h45) stand erst 45g/h im Plan. Fehler: aus `coaching_science.md` 10.3 wurde die
+Zeile „SwSp / MIT 60–90min" genommen (50–70g/h) und dann noch das Flaschenprotokoll „SwSp / MIT" (~45g/h)
+daruntergelegt – die Einheit gehört aber in „SwSp / MIT lang >90min" = **70–90g/h, 2:1 Malto:Fructose**.
+Stefan hat es sofort als zu wenig erkannt.
+**Anwenden:** Vor jeder Fueling-Angabe die **geplante Gesamtdauer** gegen die Dauerspalte der Tabelle 10.3
+legen, nicht gegen den Workout-Typ. Danach die passende Zeile aus 10.4 wählen, nicht die mit demselben Namen.
+Ab 75g/h gehört eine zusätzliche Flasche reines Wasser in die Note. Stefans Darm trägt bis 110g/h (Sommer 2025),
+nach oben ist also Luft – zu niedrig zu fuelen ist bei ihm der wahrscheinlichere Fehler.
+
 ### 🚴 LIT-Vorgabe auf der Rolle = 60% FTP / 180W (Stefan, 1.11.2026)
 Die `.zwo`-Bibliothek gibt LIT mit **55% = 165W** vor, Stefan fährt faktisch **176–186W** (3.10. 177 · 11.10. 181 ·
 17.10. 186 · 24.10. 181 · 27.10. 176 · 1.11. 181). Dadurch rechnete intervals.icu für geplante LIT-Einheiten

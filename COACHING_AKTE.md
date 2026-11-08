@@ -4,6 +4,17 @@
 
 ---
 
+## 8. November 2026 – KW46 Di: Fueling auf 75g/h korrigiert
+
+**Stefan:** „Dienstag wirklich 45g/h? Erscheint mir wenig eigentlich" – zu Recht.
+**Fehler:** Für die SwSp 4×15 (1h45) stand 45g/h → ~75g im Plan. In `coaching_science.md` 10.3 gilt für SwSp **über 90min** aber 70–90g/h mit 2:1 Malto:Fructose; die 60–90-min-Zeile (50–70g/h) und das gleichnamige Flaschenprotokoll aus 10.4 (~45g/h) wurden fälschlich übernommen. Doppelter Fehler: falsche Dauerzeile und dann noch das Protokoll am unteren Rand davon.
+**Korrigiert:** **75g/h → ~130g gesamt**, 2:1 Malto:Fructose, Salz ~2g – 2 Flaschen à 500ml mit je 45g Malto + 22g Fructose + 1g Salz, plus dritte Flasche reines Wasser (Regel ab 75g/h aus 10.2). Stefans Darm trägt 110g/h (Sommer 2025), die Menge ist unkritisch.
+**Sa unverändert:** LIT 2h45 = 165min fällt in „LIT lang" (90–180min, 30–50g/h), 45g/h ist dort die obere Kante und bleibt.
+**Umsetzung:** Die Note liess sich per API nicht ändern (HTTP 403 auf PUT), daher Di-Workout + Note gelöscht (153145781, 153145788) und neu angelegt: **153454098** (Workout, Load unverändert 113, `4x`-Block per API verifiziert) + **153454100** (⛽-Note).
+**Regel daraus** in `COACH_MEMORY.md` Abschnitt 6: Fueling immer gegen die geplante **Gesamtdauer** der Einheit legen, nicht gegen den Workout-Typ; bei Stefan ist zu niedrig der wahrscheinlichere Fehler.
+
+---
+
 ## 8. November 2026 – KW45 Retro 🟢 + KW46 geplant (Block 1 Schwelle Woche 2)
 
 **KW45 Retro:** 🟢 Kern 3/3 · Lauf 14,1 km (genau an der Grenze) · längster 5,7 km · **Kadenz Easy 170** (Ziel 167) · Kraft 2/2 · keine Beschwerden. TSS 333/338, Polarisation Rad+Lauf LIT 82% / Grauzone 11% / HIT 7%. Erste Belastungswoche nach der Entlastung komplett durchgezogen, alle sieben Einheiten absolviert. Kadenz-Arbeitsziel 165–170 damit erreicht, nicht nur angetastet. Di SwSp 3/3 im Korridor (274/274/275W, RPE 7, HF-Drift +3 bpm) → Reserve vorhanden. LIT-Korrektur auf 180W bestätigt: Soll 90, real 88. Einziger Makel: Fr Schwelle 0/3 im Zielkorridor (6:10–6:20 statt 6:30–6:45) bei HF 175–177 und RPE 5–6 → die Vorgabe war zu langsam, nicht der Lauf zu hart.
