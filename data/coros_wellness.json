@@ -1034,7 +1034,7 @@
    "score": 84,
    "steps": 8954,
    "stress_avg": 31,
-   "fetched": "2026-11-11T07:02:21+00:00",
+   "fetched": "2026-11-11T08:03:58+00:00",
    "confirmed": true,
    "asleep_min": 483,
    "in_bed_min": 492,
@@ -1079,10 +1079,10 @@
    "stress_avg": 34,
    "sleep_hr_avg": 58,
    "sleep_hr_min": 31,
-   "fetched": "2026-11-11T07:02:21+00:00",
+   "fetched": "2026-11-11T08:03:58+00:00",
    "hrv_early": 38,
    "hrv_late": 57,
-   "confirmed": false
+   "confirmed": true
   },
   "2026-11-11": {
    "score": 66,
@@ -1106,11 +1106,11 @@
    "stress_avg": 16,
    "sleep_hr_avg": 57,
    "sleep_hr_min": 43,
-   "fetched": "2026-11-11T07:02:21+00:00",
+   "fetched": "2026-11-11T08:03:58+00:00",
    "hrv_early": 36,
    "hrv_late": 56,
-   "confirmed": false
+   "confirmed": true
   }
  },
- "updated": "2026-11-11T07:02:21+00:00"
+ "updated": "2026-11-11T08:03:58+00:00"
 }
