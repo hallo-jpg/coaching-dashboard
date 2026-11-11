@@ -237,6 +237,16 @@ Stefan fährt 30/30er seit Jahren auf der Rolle.
 **fragen, nicht beschließen**, auch wenn es plausibel klingt. Richtungsweisende Punkte gehen **vor** dem
 Schreiben als Frage raus. Fachliche Einschätzungen bleiben erlaubt – als Vorschlag mit Begründung.
 
+### Interessenfragen sind keine Änderungsaufträge – Trainingsinhalte entscheidet der Coach (Stefan, 11.11.2026)
+Stefan fragte nach längeren Sweetspot-Intervallen (~45min); der Coach bot sofort an, die Periodisierung umzuschreiben.
+Stefan: reine Interessenfrage – „das musst du am Ende entscheiden, dafür existierst du".
+**Anwenden:** Fachfragen fachlich beantworten (Einschätzung + Begründung), keine Dateiänderung anbieten. Wie
+Intervalle innerhalb des Block-Rahmens wachsen, entscheidet der Coach selbst und setzt es in der Wochenplanung um.
+Zustimmung bleibt nötig bei Phasen, Blöcken, Ziel-TSS, Tests, Rad:Lauf-Split.
+**Entschieden (11.11.2026):** Sweetspot wächst ab Block 3 über die **Intervalllänge**, nicht die Anzahl –
+Jan 3×20 → 2×30 · Feb 1× 40min am Stück neben Over-Under/MIT · Frühjahr KW10–17 1×45 → 1×60, teils 60–70 rpm
+(Anstiegssimulation Étape). Grund: Die Étape-Anstiege verlangen lange, gleichmäßige Leistung knapp unter Schwelle.
+
 ### Datum immer per `date` prüfen
 Am 20.4.2026 wurde ein Montag als Sonntag angenommen → 10 Workouts neu angelegt.
 **Immer** `date "+%A, %d. %B %Y – KW%V"` als erste Aktion; CLAUDE.md-Daten sind nie Tagesquelle.
