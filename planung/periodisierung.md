@@ -27,7 +27,7 @@ Der Winter ist der einzige Abschnitt im Jahr, in dem das gleichzeitig geht — i
 | **Rampe** | KW41–43 | 5.–25.10. | Volumen 5→7h · Kadenz-Projekt · Laufen nur Easy · Rad-SwSp ab KW42 | 170 / 294 / 327 | 70:30 |
 | **Entlastung** | KW44 | 26.10.–1.11. | −40% · Kadenz-Easy | ~194 | 70:30 |
 | **Block 1 · Schwelle** | KW45–47 | 2.–22.11. | Rad SwSp/KA · 1× Lauf-Schwelle · Longrun wächst | 340 / 370 / 400 | 65:35 |
-| **Entlastung** | KW48 | 23.–29.11. | −50% | ~200 | 65:35 |
+| **Entlastung** | KW48 | 23.–29.11. | −50% · 🔬 FTP-Test So 29.11. (vorgezogen) | ~200 | 65:35 |
 | **Block 2 · VO2max** | KW49–51 | 30.11.–20.12. | Rad HIT_EB/IE · Lauf-Intervalle · 9–10h erreicht | 420 / 440 / 460 | 60:40 |
 | **Übergang** | KW52–53 | 21.12.–3.1. | Weihnachten · reduziert, flexibel, **bewusst geplant** | ~240 / ~240 | frei |
 | **Standort** | KW01/27 | 4.–10.1. | 🔬 FTP-Test #2 + 🔬 5km-Zeitfahren (Sa/So) | ~330 | 60:40 |
@@ -92,8 +92,9 @@ Von 6,5 auf 30 km/Woche ist eine Vervierfachung. Sie hält nur mit harten Obergr
 | Test | KW | Zweck |
 |---|---|---|
 | 🔬 FTP #1 (Baseline) | **KW40** · Do 1.10. ✅ | **300W** (3min 441W gemessen, 10min geschätzt) · Offset Tacx ÷ XCadey ≈ 1,0 |
+| 🔬 FTP #1b | **KW48** · So 29.11. | **vorgezogen (Stefan, 12.11.2026):** Baseline war geschätzt, SwSp 4×15 @ 270W lief mit RPE 6 → Block 2 VO2max mit gemessenen Zonen starten. Entlastungswoche = Mini-Taper |
 | 🔬 5km-Zeitfahren | **KW01/27** · Sa 9. oder So 10.1. | Zwischenstand Laufen · Ziel <28:30 |
-| 🔬 FTP #2 | **KW01/27** · Sa 9. oder So 10.1. | nach 11 Wochen Aufbau · erwarteter Zuwachs +5–8% → ~315–325W |
+| 🔬 FTP #2 | **KW01/27** · Sa 9. oder So 10.1. | nach 11 Wochen Aufbau · zeigt den Effekt von Block 2 gegenüber KW48 |
 | 🔬 FTP #3 | **KW09/27** · Sa 6. oder So 7.3. | Abschluss Winter · Ziel +8–12% über Baseline → ~325–335W |
 | 🏁 10km-Benchmark | **KW09/27** | Ziel sub-60 · **als eigener Zeitlauf auf Standardstrecke** (kein Lauf-Event geplant) |
 | 📈 Pace bei HF 160 | **laufend** | kein eigener Test mehr (Stefan, 26.10.2026) – Dashboard-Chart wertet jeden Easy-Lauf aus (HF 157–163, ab Min 10, ohne Pendelläufe) |

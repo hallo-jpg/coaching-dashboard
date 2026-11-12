@@ -41,7 +41,7 @@
 
 ## Nächster FTP-Test
 
-**Testfenster:** KW01/27 (4.–10.1.2027) – FTP-Test #2 + 5km-Zeitfahren · **am Wochenende** (Stefan, 1.10.2026: keine Tests mehr an Arbeitstagen, mental zu zehrend).
+**Testfenster:** **So 29.11.2026 (KW48, vorgezogen – Stefan, 12.11.)**, Entlastungswoche als Mini-Taper · danach KW01/27 (4.–10.1.2027) – FTP-Test #2 + 5km-Zeitfahren · **am Wochenende** (Stefan, 1.10.2026: keine Tests mehr an Arbeitstagen, mental zu zehrend).
 **Methode:** Sentiero 3+10min · Tarmac mit XCadey auf der Rolle, kein ERG · XCadey → DURA (Tacx-App parallel nur noch optional, Offset ≈ 1,0 ist bestimmt)
 **Baseline:** 300W (1.10.2026, 10min geschätzt) · Winterziel +8–12 % → **~325–335W** bis KW09/27
 

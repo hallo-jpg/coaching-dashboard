@@ -14,8 +14,8 @@
 | **Aktuelle KW** | KW46 (9. – 15. November 2026) · Block 1 Schwelle Woche 2 · Rad komplett Rolle · Ruhetag Do · **keine zeitlichen Einschränkungen** (Stefan, 8.11.) |
 | **Aktuelle Phase** | Block 1 Schwelle KW46 · 🎯 Kern: Di SwSp 4×15 (270W) · Fr Lauf-Schwelle 3×8min (Beobachtung 1/3) · Sa LIT 2h45 · Kraft A Mo / B Mi · So Longrun 48min startet · Lauf 16,9 km (Grenze 17,1) · Kadenz 170 halten · KW45 Retro 🟢 (Kern 3/3, Lauf 14,1 km, Kadenz 170, Kraft 2/2) |
 | **🎯 Saison** | **Winter 2026/27 · KW40–KW09** · Ziel: FTP **+8–12%** über KW40-Baseline · **10km sub-60** im Frühjahr 2027 · 9–10h/Woche · Winter ohne Zielrennen, danach Frühjahrsplan rückwärts von der **Étape 11.7.2027** · Plan: `planung/periodisierung.md` |
-| **Nächste Phase** | KW47 Block 1 Abschluss (SwSp 5×12 oder KA, Longrun wächst weiter) · ~400 TSS · KW48 Entlastung −50% · KW49 Block 2 VO2max |
-| **Fixpunkte** | FTP-Baseline KW40 ✅ 300W · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 · **Tests nur am Wochenende** |
+| **Nächste Phase** | KW47 Block 1 Abschluss (SwSp 3×20 @ 275W, Longrun wächst weiter) · ~400 TSS · KW48 Entlastung −50% + 🔬 FTP-Test So 29.11. · KW49 Block 2 VO2max |
+| **Fixpunkte** | FTP-Baseline KW40 ✅ 300W · **FTP-Test So 29.11. (KW48, vorgezogen)** · FTP + 5km KW01/27 · FTP + 10km-Benchmark KW09/27 · **Tests nur am Wochenende** |
 | **CTL** | 33,4 (8.11.) · ATL 42,6 · TSB −9,1 · Readiness 73 🟡 (HRV 42, 7d-Ø 49,7, RP 57, Schlaf 8,6h) · Muster normal · ACWR 1,28 · tiefer TSB = produktive Ermüdung |
 | **🏁 Rennergebnis** | **1:05:08 / 6:31 pro km** (Uhr 66:00 / 10,1km) · Ø HF **183**, max 196 · RPE 8 · alter PR 1:11:28 → **−6:20** · Stefans Zielzeit war richtig, Coach-Ableitung (6:50) 20 sek/km zu konservativ |
 | **Lauf-Schwellenwerte** | **Schwellenpace 6:28/km · LTHR 185** (aktualisiert 20.9. aus dem Wettkampf) · Zonen: Z1 7:25–8:40 · Z2 6:55–7:25 · Z3 6:10–6:40 · Z4 5:25–6:10 · ✅ in intervals.icu übernommen (Schwellentempo 6:28, Schwellen-HF 185, HFmax 205) |

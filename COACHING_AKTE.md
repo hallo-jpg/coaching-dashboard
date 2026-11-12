@@ -1,6 +1,16 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 8. November 2026*
+*Letzte Aktualisierung: 12. November 2026*
+
+---
+
+## 12. November 2026 – Standortbestimmung · FTP-Test auf KW48 vorgezogen
+
+**Stefan:** SwSp fühlt sich nicht hart an (RPE 5–7), Laufschwelle sollte besser sein – will das Maximum rausholen, zu früh zum Anheben?
+**Daten:** Di 4×15 @ 269/269/270/272W · HF 166→171 (+5) · RPE 6. Baseline 300W war geschätzt (10min nach 2:01 abgebrochen). CTL 27 → 34 seit KW40, keine Ausfallwoche. Lauf 6.11. 3×6min 6:10/6:20/6:13 @ HF 175–177 (LTHR 185), RPE 5–6. Kadenz 170–176. Pace bei HF ~160 seit Oktober flach (7:08–7:16) – Engpass bleibt Laufvolumen.
+**Coach:** FTP vermutlich 310–320W, aber nicht nach Gefühl anheben → **FTP-Test vorgezogen auf So 29.11. (KW48)**, Entlastungswoche als Mini-Taper, Block 2 VO2max startet mit gemessenen Zonen. KW01-Test bleibt. Stefan: „ja". `periodisierung.md` (mit Zustimmung), `kw48.md` umgebaut (~217 TSS), Test in intervals.icu angelegt (154981269 + Fueling-Note).
+**KW47 Di:** SwSp **3×20 @ 275W** (Coach-Entscheidung; Stefan bot 5×20 an – abgelehnt: +67% Arbeitszeit direkt vor der Entlastung, kaum mehr Reiz).
+**Laufschwelle:** bleibt 6:28 bis Beobachtung 2 (KW47). Fr 13.11. bei 6:25 HF ≤ 180 und RPE ≤ 6 am Ende Intervall 3 → vorläufig ~6:18. 5km-Test KW01 setzt den Wert.
 
 ---
 
