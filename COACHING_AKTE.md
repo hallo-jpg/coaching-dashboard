@@ -4,6 +4,13 @@
 
 ---
 
+## 12. November 2026 – Urlaub Südtirol 27.12.–6.1. · Test-Timing
+
+**Stefan:** Überlegt, ob der Test 29.11. nötig ist oder erst im Januar „richtig". Urlaub Südtirol 27.12.–6.1., kein Rad, Laufen + evtl. Langlauf.
+**Coach:** Test 29.11. bleibt – er ist jetzt der einzige saubere FTP-Wert bis Februar. Der KW01-Test läge 3 Tage nach 11 Tagen ohne Rad und würde zu tief ausfallen. Vorschlag (offen, braucht Stefans Ok): FTP #2 → So 7.2. (Ende Entlastung KW05), 5 km Sa 6.2. oder KW01. Urlaub in COACH_MEMORY → Offene Punkte. Test-Setup: Stefan fährt ihn wie am 1.10. (Tacx-App, Freeride-Schritte, kein ERG, XCadey → DURA).
+
+---
+
 ## 12. November 2026 – Standortbestimmung · FTP-Test auf KW48 vorgezogen
 
 **Stefan:** SwSp fühlt sich nicht hart an (RPE 5–7), Laufschwelle sollte besser sein – will das Maximum rausholen, zu früh zum Anheben?
