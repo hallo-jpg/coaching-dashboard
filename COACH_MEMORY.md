@@ -436,10 +436,11 @@ intervals.icu → **COROS** (Pace 3, DURA). Regeln daraus:
 
 ## 8. Offene Punkte (nur hier führen)
 
-- **🏔️ Urlaub Südtirol 27.12.2026–6.1.2027 (Stefan, 12.11.2026):** **kein Rad**, nur Laufen und, wenn es sich
+- **🏔️ Urlaub Südtirol 27.12.2026–6.1.2027 – geplant, noch nicht fix (Stefan, 12.11.2026):** **kein Rad**, nur Laufen und, wenn es sich
   ergibt, Langlauf. Kollidiert mit dem FTP-Test KW01 (9./10.1. = 3 Tage nach 11 Tagen ohne Rad → zu tiefer Wert).
   Vorschlag offen: FTP #2 auf das Ende der Entlastung KW05 (So 7.2.), 5 km ebenfalls KW05 (Sa 6.2.) oder in KW01 lassen.
-  Bei der Planung von KW52–01: Langlauf als aerobes Volumen einplanen, Laufbudget (+10 %) gilt trotzdem.
+  Stefan: „vermerken, bei der konkreten Planung weiterdenken" → bei der Planung von KW51/52 aktiv ansprechen
+  (Urlaub fix? Tests verschieben?). Langlauf als aerobes Volumen einplanen, Laufbudget (+10 %) gilt trotzdem.
 - **ERG + Korridor:** Hält die Rolle bei einem Wattbereich den Mittelwert oder rampt sie über das Intervall
   hoch? Stefan schaut bei der ersten ERG-Einheit aufs Display. Rampt sie → Indoor-Einheiten auf feste Zielwerte,
   outdoor bleibt Korridor.
