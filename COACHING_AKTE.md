@@ -1,6 +1,17 @@
 # Coaching-Akte – Logs & Notizen
 
-*Letzte Aktualisierung: 12. November 2026*
+*Letzte Aktualisierung: 15. November 2026*
+
+---
+
+## 15. November 2026 – KW46 Retro 🟡 + KW47 geplant (Block 1 Schwelle Woche 3)
+
+**KW46 Retro:** 🟡 Kern 3/3 · Lauf 18,3 km (Grenze 17,1, +1,2 km) · längster 7,3 km (+9%) · Kadenz Easy 171 · Kraft 1/2 (A Mo – Migräne) · keine Beschwerden. TSS 412/382. SwSp 4×15 4/4 im Korridor bei RPE 6. Alle drei Läufe schneller als vorgegeben (Easy 7:10, Schwelle 6:25→6:11 bei RPE 7–8, Longrun 7:07/6:55 + 3min extra) → km-Überschreitung und Polarisation Rad+Lauf LIT 60 / Grauzone 33 / HIT 7 (Grauzone teils gewollt: SwSp-Block, Anstiege der Draußen-LIT). HRV 49 → 59, Readiness So 95.
+**KW47 geplant:** Mo LIT 1h + Kraft A (ohne Beine) · Di 🎯 SwSp 3×20 @ 275W · Mi Easy 30 · Do Ruhetag · Fr 🎯 Lauf-Schwelle 3×8 konstant 6:25 (Beobachtung 2/3, gleiche Struktur wie 13.11. für Vergleichbarkeit) · Sa 🎯 LIT 3h + Kraft B · So Longrun 54min. **ICU 435 TSS** (+6% ggü. Ist 412, Saisonplan 400).
+**Entscheidungen:** (1) Lauf-Budget von 17,1 × 1,1 = **18,8 km** gerechnet, nicht von der Ist-Überschreitung 18,3 (Dashboard zeigt 20,1) – so im Check-in 14.11. angekündigt. Geplant 17,8, realistisch ~18,5. (2) Kraft an Radtage (Mo/Sa) gemäß COACH_MEMORY statt an Lauftage wie im Stub. (3) Keine Steigerungen, kein vierter Lauf (km-Grenze bindet). (4) Rad:Lauf ~72:28 statt 65:35 – Folge der km-Grenze.
+**Checks:** kein Deload-Signal (TSB −17,9 · ACWR 1,48 bei CTL 37 und Readiness 95) · FTP-Test 29.11. bereits geplant · keine Power-/Lauf-PRs. Gewicht 93,3 kg (Ø 30d) vs. 93,6 → kein Update.
+**KW50-Stub** angelegt (Block 2 VO2max Woche 2, ~440).
+**Angelegte Events:** 156203109 (Mo LIT) · 156203113 (Mo Kraft A) · 156203116 (Di SwSp) + 156203122 (⛽) · 156203131 (Mi Easy) · 156203135 (Fr Schwelle) · 156203138 (Sa LIT) + 156203143 (⛽) · 156203147 (Sa Kraft B) · 156203151 (So Longrun). Alle über `workout_steps`, Struktur per API geprüft (SwSp `3x`-Block mit 91,7 %).
 
 ---
 
