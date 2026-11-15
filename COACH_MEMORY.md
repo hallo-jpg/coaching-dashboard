@@ -1,7 +1,7 @@
 # Coach-Memory – gelernte Regeln & Korrekturen
 
 *Führende Quelle für alles, was der Coach über Stefan gelernt hat und das nicht aus den Daten ableitbar ist.*
-*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 8. November 2026.*
+*Gilt in jeder Session – lokal wie in der Claude-App. Stand: 15. November 2026.*
 
 **Pflegeregel:** Ein Thema = ein Eintrag. Neue Erkenntnis **ersetzt** den bestehenden Eintrag, statt einen
 zweiten danebenzustellen. Die Vorgeschichte (wer hat wann was korrigiert) gehört in `COACHING_AKTE.md`,
@@ -121,7 +121,7 @@ Spitzenkraft pro Schritt ist langsam zwar niedriger, aber Bodenkontaktzeit und Z
 steigen, und Knochenbelastung akkumuliert **hoch potenziert mit Dehnung × Zyklenzahl**. Bei ~140 spm heißt
 langsam: maximaler Bremsimpuls, maximales Biegemoment auf die Tibia.
 Gegenmaßnahme ist aber **nicht** „mehr Tempo statt Easy": Tibia- und Achillessehnenlast skalieren mit dem Tempo.
-**Die fünf Regeln:** (1) Kein langsames Trotten; Easy = 7:15–7:45/km @ HF 155–165. (2) Kadenz ist in jeder
+**Die fünf Regeln:** (1) Kein langsames Trotten; Easy = ~7:05–7:45/km @ HF 155–165, die HF steuert (15.11.). (2) Kadenz ist in jeder
 Easy-Einheit die Hauptaufgabe (nach Gefühl, s.o.). (3) Aerobes Volumen kommt vom Rad. (4) Jeder Lauf hat einen
 Zweck – keine Füllkilometer. (5) 2×/Woche Kraft A/B (enthält die Läufer-Übungen für Wade und Hüfte).
 Nie wieder mit „Spitzenkraft ist langsam niedriger" argumentieren – das ist die widerlegte Fassung.
@@ -184,6 +184,14 @@ einen Longrun, der nicht wächst.
 (Kern) · 2. wachsender Longrun · 3. Easy-Lauf · 4. Steigerungen/vierter Lauf. Steigerungen werden dann durch ein
 briskes, progressives Longrun-Ende ersetzt – gleicher Reiz, keine zusätzlichen Kilometer. Das im Plan **benennen**,
 sonst sieht es aus wie vergessen (Steigerungen waren am 1.11. für KW46 angekündigt und entfielen am 8.11. genau so).
+
+### 🏃 Easy-Läufe: HF steuert, Pace ist Orientierung – km-Budget mit echter Pace planen (Stefan, 15.11.2026)
+KW46 lief Easy mit 7:07–7:10 bei HF 158–161 statt im Band 7:20–7:40; der Coach machte daraus den Lernpunkt „ruhig laufen".
+Stefan: „Wenn ich unter der HF bin, wo ist das Problem?" – keins. Das Problem war die Planung: Läufe nach Dauer mit zu
+langsamer Pace geplant, aber gegen eine km-Grenze gerechnet → 1,2 km drüber.
+**Anwenden:** Easy und Longrun-Grundteil mit Pace **84–91 % (~7:05–7:42)**, HF-Cap 165 entscheidet. Bei bindender
+km-Grenze die Distanz mit Stefans echter Easy-Pace (~7:05–7:10) rechnen und die km-Obergrenze in den Workout-Text
+schreiben. Schnellere Easy-Pace unter dem Cap nie als Fehler bewerten – sie ist ein aerober Fortschritt.
 
 ### 🔬 Tests nur am Wochenende (Stefan, 1.10.2026)
 Der KW40-Test am Donnerstag nach der Arbeit: 3min gut (441W), die 10min nach 2min abgebrochen – „mental zu
