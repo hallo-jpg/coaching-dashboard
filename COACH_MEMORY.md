@@ -110,6 +110,9 @@ ausgeheilt.
   Kein Metronom, keine Musik, kein Kadenzalarm vorschreiben. Pläne nennen nur die Zielzahl.
 - **Stand KW45 (8.11.2026): Ø 170 spm auf den Easy-Läufen erreicht** (169–171 über drei Läufe, bei 7:08–7:16/km
   und HF 158–164). Damit ist der Arbeitsbereich 165–170 ausgereizt.
+- **Stand 15.11.2026 (Stefan):** **165 läuft automatisch**, darüber braucht es noch etwas Konzentration – geht aber.
+  Im Training seit 2.11. konstant 169–171, auch im Longrun über 51min und in der Schwelle (170–172 bei 6:11–6:25).
+  Offen: Wettkampfstress (5-km-Test KW01, Ziel ≥ 165).
 - **Anwenden:** In jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Nicht höher als 170
   ansetzen (Zielwert wurde schon zweimal falsch kalibriert) – **ab KW46 geht es um Stabilität über längere
   Dauer** (170 über 48min im Longrun halten), nicht um eine höhere Zahl. Wenn 165 nach 10min verkrampft wirkt
