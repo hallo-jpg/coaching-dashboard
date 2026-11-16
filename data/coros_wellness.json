@@ -1187,7 +1187,7 @@
    "stress_avg": 29,
    "sleep_hr_avg": 55,
    "sleep_hr_min": 30,
-   "fetched": "2026-11-16T08:03:26+00:00",
+   "fetched": "2026-11-16T09:02:50+00:00",
    "hrv_early": 44,
    "hrv_late": 56,
    "confirmed": true
@@ -1214,7 +1214,7 @@
    "stress_avg": 26,
    "sleep_hr_avg": 55,
    "sleep_hr_min": 35,
-   "fetched": "2026-11-16T08:03:26+00:00",
+   "fetched": "2026-11-16T09:02:50+00:00",
    "hrv_early": 42,
    "hrv_late": 65,
    "confirmed": true
@@ -1241,11 +1241,11 @@
    "stress_avg": 18,
    "sleep_hr_avg": 56,
    "sleep_hr_min": 49,
-   "fetched": "2026-11-16T08:03:26+00:00",
+   "fetched": "2026-11-16T09:02:50+00:00",
    "hrv_early": 50,
    "hrv_late": 60,
-   "confirmed": false
+   "confirmed": true
   }
  },
- "updated": "2026-11-16T08:03:26+00:00"
+ "updated": "2026-11-16T09:02:50+00:00"
 }
