@@ -372,6 +372,10 @@ Die `.zwo`-Bibliothek gibt LIT mit **55% = 165W** vor, Stefan fährt faktisch **
 mit 55%. Die `.zwo`-Dateien in `Workout-Library/` sind unverändert bei 55% – bei Verwendung über `workout_steps`
 mit 60% ersetzen oder die Load-Abweichung im Plan benennen. Driftet die HF auf langen Einheiten über 150: 170W.
 
+**Kein Warm-up bei LIT (Stefan, 16.11.2026):** LIT-Radeinheiten – egal ob 1h oder lang – ohne Warm-up-/Cooldown-Rampe
+planen, **direkt mit 180W einsteigen** (ein einziger Steady-Schritt). Warm-up nur vor Qualität (SwSp/HIT/Test).
+Gilt ab der nächsten Planung – bestehende Wochen nicht deswegen umbauen.
+
 ### Zwei Radleistungsquellen – nie gegeneinander rechnen
 Outdoor = Tarmac + XCadey · Indoor = Aeroad auf Tacx (Rollenleistung). Realistisch 5–15% Versatz
 (Antriebsstrang, Rollen-Toleranz ±3%, Sitzposition). Fortschritt immer Quelle gegen sich selbst.
