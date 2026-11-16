@@ -375,7 +375,8 @@ mit 60% ersetzen oder die Load-Abweichung im Plan benennen. Driftet die HF auf l
 
 **Kein Warm-up bei LIT (Stefan, 16.11.2026):** LIT-Radeinheiten – egal ob 1h oder lang – ohne Warm-up-/Cooldown-Rampe
 planen, **direkt mit 180W einsteigen** (ein einziger Steady-Schritt). Warm-up nur vor Qualität (SwSp/HIT/Test).
-Gilt ab der nächsten Planung – bestehende Wochen nicht deswegen umbauen.
+Gilt auch für schon geplante, noch nicht gefahrene Einheiten – das „nicht anpassen" vom 16.11. bezog sich nur auf die Einheit
+des Tages (Stefan, 16.11.). Umgesetzt KW47 Sa LIT 3h.
 
 ### Zwei Radleistungsquellen – nie gegeneinander rechnen
 Outdoor = Tarmac + XCadey · Indoor = Aeroad auf Tacx (Rollenleistung). Realistisch 5–15% Versatz
