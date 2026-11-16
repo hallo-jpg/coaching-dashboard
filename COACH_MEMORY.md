@@ -137,6 +137,7 @@ auch leichtes Gewicht), ~10 harte Sätze pro Muskelgruppe/Woche, Läufer-Beinüb
 Equipment: 2 KH bis 10 kg, Bänder, Outdoor-Klimmzugstange in der Nähe. Nebenziel: erster Klimmzug bis KW09/27.
 **Anwenden:** A/B aktiv einplanen (flexibel, kein Kern), Übungen nur aus `athlete/profil.md` → Krafttraining.
 **Kraft nicht an Lauftage hängen (1.11.2026):** Kraft B fiel in KW42 und KW44 beide Male aus, weil sie an einem Easy-Lauf hing – nach einem Lauf am Nachmittag ist Stefan hungrig und müde und isst erst. An einer lockeren Rolleneinheit passiert das nicht (Kraft A nach LIT 1h: erledigt). Kraft deshalb an Radtage legen, A und B ≥48h auseinander, und am Vortag einer Qualitätseinheit ohne Beinübungen.
+**Nicht nach langen Einheiten (Stefan, 16.11.2026):** nach 3h LIT keine Kraft mehr („mache ich nicht"). Dann lieber an einen kurzen Lauftag (Mi nach Easy 30min ist für Stefan ok) oder So.
 Zustellung: als `WeightTraining`-Einheit mit Übungsliste als **Text** in intervals.icu – Stefan liest dort nach.
 **Kraft B immer mit Zuhause-Variante im Text (4.11.2026):** Stefan trainiert oft zuhause ohne Stange und liest nur den intervals.icu-Text – jede Stangen-Übung bekommt dort direkt ihren Ersatz (1a → Band-Latzug kniend / KH-Pullover · 2a → vorgebeugtes KH-Rudern).
 Keine COROS-Kraft-Workouts vorschlagen (28.9.2026: „nicht so wichtig").
