@@ -113,6 +113,9 @@ ausgeheilt.
 - **Stand 15.11.2026 (Stefan):** **165 läuft automatisch**, darüber braucht es noch etwas Konzentration – geht aber.
   Im Training seit 2.11. konstant 169–171, auch im Longrun über 51min und in der Schwelle (170–172 bei 6:11–6:25).
   Offen: Wettkampfstress (5-km-Test KW01, Ziel ≥ 165).
+- **Stand 25.11.2026 (Stefan): 173 spm ohne darauf zu achten** (Easy 30min, 7:00/km, HF Ø 160) – die Kadenz ist
+  im lockeren Lauf automatisiert. Nicht mehr in jedem Check-in nach Kadenz-Fokus fragen; nur noch auf Drift achten
+  (längere Läufe, Ermüdung, Tempo/Wettkampf).
 - **Anwenden:** In jeder Easy-Einheit ist die Kadenz die Hauptaufgabe, nicht die Pace. Nicht höher als 170
   ansetzen (Zielwert wurde schon zweimal falsch kalibriert) – **ab KW46 geht es um Stabilität über längere
   Dauer** (170 über 48min im Longrun halten), nicht um eine höhere Zahl. Wenn 165 nach 10min verkrampft wirkt
