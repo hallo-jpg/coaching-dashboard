@@ -1457,7 +1457,7 @@
    "stress_avg": 27,
    "sleep_hr_avg": 56,
    "sleep_hr_min": 49,
-   "fetched": "2026-11-26T07:03:21+00:00",
+   "fetched": "2026-11-26T08:03:03+00:00",
    "hrv_early": 36,
    "hrv_late": 50,
    "confirmed": true
@@ -1484,10 +1484,10 @@
    "stress_avg": 32,
    "sleep_hr_avg": 54,
    "sleep_hr_min": 42,
-   "fetched": "2026-11-26T07:03:21+00:00",
+   "fetched": "2026-11-26T08:03:03+00:00",
    "hrv_early": 42,
    "hrv_late": 61,
-   "confirmed": false
+   "confirmed": true
   },
   "2026-11-26": {
    "score": 71,
@@ -1511,11 +1511,11 @@
    "stress_avg": 16,
    "sleep_hr_avg": 57,
    "sleep_hr_min": 42,
-   "fetched": "2026-11-26T07:03:21+00:00",
+   "fetched": "2026-11-26T08:03:03+00:00",
    "hrv_early": 38,
    "hrv_late": 49,
-   "confirmed": false
+   "confirmed": true
   }
  },
- "updated": "2026-11-26T07:03:21+00:00"
+ "updated": "2026-11-26T08:03:03+00:00"
 }
