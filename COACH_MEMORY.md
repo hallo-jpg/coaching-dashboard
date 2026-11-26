@@ -144,6 +144,7 @@ Equipment: 2 KH bis 10 kg, Bänder, Outdoor-Klimmzugstange in der Nähe. Nebenzi
 Zustellung: als `WeightTraining`-Einheit mit Übungsliste als **Text** in intervals.icu – Stefan liest dort nach.
 **Kraft B immer mit Zuhause-Variante im Text (4.11.2026):** Stefan trainiert oft zuhause ohne Stange und liest nur den intervals.icu-Text – jede Stangen-Übung bekommt dort direkt ihren Ersatz (1a → Band-Latzug kniend / KH-Pullover · 2a → vorgebeugtes KH-Rudern).
 Keine COROS-Kraft-Workouts vorschlagen (28.9.2026: „nicht so wichtig").
+**🔄 Offen – Kraft-Format überdenken (Stefan, 26.11.2026):** Kraft-Lust ist gesunken (KW47 1/2, KW48 Kraft A ausgelassen: „macht gerade keinen Spaß"). Stefan kann sich vorstellen, eher Richtung **Lauf-Athletik** zu gehen, statt Oberkörper A/B. Noch nicht entschieden, Stefan will das separat besprechen. **Anwenden:** Bei der Planung von KW49 ff. ansprechen, bis dahin nichts eigenmächtig umbauen.
 Ehrlich bleiben: FTP und 10-km-Zeit bewegt das kaum – es ist Stefans eigenes Ziel und wird so behandelt.
 
 ### Stefan läuft ohne Auto-Lap – Rennpläne nicht auf km-Piepser bauen
